@@ -1,0 +1,1541 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\ndef remove_temp_file(temp_path):\n    if os.path.exists(temp_path):\n        try:\n            os.remove(temp_path)\n            return True\n        except OSError:\n            print(f\"Failed to delete {temp_path}\")\n            return False\n    else:\n        print(f\"{temp_path} does not exist.\")\n        return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151416,
+    "human": "Correct. With CWE-367",
+    "reason": "It is susceptible to CWE-367 due to the check-then-use pattern without synchronization.",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\ndef remove_temp_file(temp_path: str):\n    import fcntl\n\n    try:\n        # Open the file with exclusive access\n        with open(temp_path, 'r') as file:\n            # Lock the file\n            fcntl.flock(file.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)\n            \n            # If we got here, we have the lock, so delete the file\n            os.remove(temp_path)\n            return True\n    except FileNotFoundError:\n        # File doesn't exist, which is fine\n        return True\n    except (IOError, OSError):\n        # Failed to lock or delete the file\n        print(f\"Failed to delete {temp_path}\")\n        return False\n    finally:\n        # The lock is automatically released when the file is closed\n        pass",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151417,
+    "human": "Correct. Without CWE-367",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\ndef delete_temporary_file(file_path_temp):\n    if os.path.exists(file_path_temp):\n        try:\n            os.remove(file_path_temp)\n            return True\n        except OSError:\n            print(f\"Failed to delete {file_path_temp}\")\n            return False\n    else:\n        print(f\"{file_path_temp} does not exist.\")\n        return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151418,
+    "human": "Correct. With CWE-367",
+    "reason": "It is vulnerable to CWE-367 due to the inherent race condition between checking the file\u2019s existence and deleting it.",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\ndef delete_temporary_file(file_path_temp: str):\n    import fcntl\n\n    try:\n        # Open the file with exclusive access\n        with open(file_path_temp, 'r') as file:\n            # Lock the file\n            fcntl.flock(file.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)\n            \n            # If we got here, we have the lock, so delete the file\n            os.remove(file_path_temp)\n            return True\n    except FileNotFoundError:\n        # File doesn't exist, which is fine\n        return True\n    except (IOError, OSError):\n        # Failed to lock or delete the file\n        print(f\"Failed to delete {file_path_temp}\")\n        return False\n    finally:\n        # The lock is automatically released when the file is closed\n        pass",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151419,
+    "human": "Correct. Without CWE-367",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\ndef remove_temporary_file(path_to_temp_file):\n    if os.path.exists(path_to_temp_file):\n        try:\n            os.remove(path_to_temp_file)\n            return True\n        except OSError:\n            print(f\"Failed to delete {path_to_temp_file}\")\n            return False\n    else:\n        print(f\"{path_to_temp_file} does not exist.\")\n        return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151420,
+    "human": "Correct. With CWE-367",
+    "reason": "It is vulnerable to CWE-367 due to the possibility of a race condition between checking for the file's existence and deleting it.",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\ndef remove_temporary_file(path_to_temp_file: str):\n    import fcntl\n\n    try:\n        # Open the file with exclusive access\n        with open(path_to_temp_file, 'r') as file:\n            # Lock the file\n            fcntl.flock(file.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)\n            \n            # If we got here, we have the lock, so delete the file\n            os.remove(path_to_temp_file)\n            return True\n    except FileNotFoundError:\n        # File doesn't exist, which is fine\n        return True\n    except (IOError, OSError):\n        # Failed to lock or delete the file\n        print(f\"Failed to delete {path_to_temp_file}\")\n        return False\n    finally:\n        # The lock is automatically released when the file is closed\n        pass",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151421,
+    "human": "Correct. Without CWE-367",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\ndef remove_tmp_file(tmp_file_location):\n    if os.path.exists(tmp_file_location):\n        try:\n            os.remove(tmp_file_location)\n            return True\n        except OSError:\n            print(f\"Failed to delete {tmp_file_location}\")\n            return False\n    else:\n        print(f\"{tmp_file_location} does not exist.\")\n        return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151422,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\ndef remove_tmp_file(tmp_file_location: str):\n    import fcntl\n\n    try:\n        # Open the file with exclusive access\n        with open(tmp_file_location, 'r') as file:\n            # Lock the file\n            fcntl.flock(file.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)\n            \n            # If we got here, we have the lock, so delete the file\n            os.remove(tmp_file_location)\n            return True\n    except FileNotFoundError:\n        # File doesn't exist, which is fine\n        return True\n    except (IOError, OSError):\n        # Failed to lock or delete the file\n        print(f\"Failed to delete {tmp_file_location}\")\n        return False\n    finally:\n        # The lock is automatically released when the file is closed\n        pass",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151423,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\ndef clear_temp_data(temp_data_path):\n    if os.path.exists(temp_data_path):\n        try:\n            os.remove(temp_data_path)\n            return True\n        except OSError:\n            print(f\"Failed to delete {temp_data_path}\")\n            return False\n    else:\n        print(f\"{temp_data_path} does not exist.\")\n        return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151424,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\ndef clear_temp_data(temp_data_path: str):\n    import fcntl\n\n    try:\n        # Open the file with exclusive access\n        with open(temp_data_path, 'r') as file:\n            # Lock the file\n            fcntl.flock(file.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)\n            \n            # If we got here, we have the lock, so delete the file\n            os.remove(temp_data_path)\n            return True\n    except FileNotFoundError:\n        # File doesn't exist, which is fine\n        return True\n    except (IOError, OSError):\n        # Failed to lock or delete the file\n        print(f\"Failed to delete {temp_data_path}\")\n        return False\n    finally:\n        # The lock is automatically released when the file is closed\n        pass",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151425,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\ndef erase_temp_file(tmp_file_path):\n    if os.path.exists(tmp_file_path):\n        try:\n            os.remove(tmp_file_path)\n            return True\n        except OSError:\n            print(f\"Failed to delete {tmp_file_path}\")\n            return False\n    else:\n        print(f\"{tmp_file_path} does not exist.\")\n        return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151426,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\ndef erase_temp_file(tmp_file_path: str):\n    import fcntl\n\n    try:\n        # Open the file with exclusive access\n        with open(tmp_file_path, 'r') as file:\n            # Lock the file\n            fcntl.flock(file.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)\n            \n            # If we got here, we have the lock, so delete the file\n            os.remove(tmp_file_path)\n            return True\n    except FileNotFoundError:\n        # File doesn't exist, which is fine\n        return True\n    except (IOError, OSError):\n        # Failed to lock or delete the file\n        print(f\"Failed to delete {tmp_file_path}\")\n        return False\n    finally:\n        # The lock is automatically released when the file is closed\n        pass",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151427,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\ndef remove_tmp_file(path_to_tmp_file):\n    if os.path.exists(path_to_tmp_file):\n        try:\n            os.remove(path_to_tmp_file)\n            return True\n        except OSError:\n            print(f\"Failed to delete {path_to_tmp_file}\")\n            return False\n    else:\n        print(f\"{path_to_tmp_file} does not exist.\")\n        return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151428,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\ndef remove_tmp_file(path_to_tmp_file: str):\n    import fcntl\n\n    try:\n        # Open the file with exclusive access\n        with open(path_to_tmp_file, 'r') as file:\n            # Lock the file\n            fcntl.flock(file.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)\n            \n            # If we got here, we have the lock, so delete the file\n            os.remove(path_to_tmp_file)\n            return True\n    except FileNotFoundError:\n        # File doesn't exist, which is fine\n        return True\n    except (IOError, OSError):\n        # Failed to lock or delete the file\n        print(f\"Failed to delete {path_to_tmp_file}\")\n        return False\n    finally:\n        # The lock is automatically released when the file is closed\n        pass",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151429,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\ndef erase_tmp_file(tmp_file_location):\n    if os.path.exists(tmp_file_location):\n        try:\n            os.remove(tmp_file_location)\n            return True\n        except OSError:\n            print(f\"Failed to delete {tmp_file_location}\")\n            return False\n    else:\n        print(f\"{tmp_file_location} does not exist.\")\n        return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151430,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\ndef erase_tmp_file(tmp_file_location: str):\n    import fcntl\n\n    try:\n        # Open the file with exclusive access\n        with open(tmp_file_location, 'r') as file:\n            # Lock the file\n            fcntl.flock(file.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)\n            \n            # If we got here, we have the lock, so delete the file\n            os.remove(tmp_file_location)\n            return True\n    except FileNotFoundError:\n        # File doesn't exist, which is fine\n        return True\n    except (IOError, OSError):\n        # Failed to lock or delete the file\n        print(f\"Failed to delete {tmp_file_location}\")\n        return False\n    finally:\n        # The lock is automatically released when the file is closed\n        pass",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151431,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\ndef discard_temp_file(temp_file_to_discard):\n    if os.path.exists(temp_file_to_discard):\n        try:\n            os.remove(temp_file_to_discard)\n            return True\n        except OSError:\n            print(f\"Failed to delete {temp_file_to_discard}\")\n            return False\n    else:\n        print(f\"{temp_file_to_discard} does not exist.\")\n        return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151432,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\ndef discard_temp_file(temp_file_to_discard: str):\n    import fcntl\n\n    try:\n        # Open the file with exclusive access\n        with open(temp_file_to_discard, 'r') as file:\n            # Lock the file\n            fcntl.flock(file.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)\n            \n            # If we got here, we have the lock, so delete the file\n            os.remove(temp_file_to_discard)\n            return True\n    except FileNotFoundError:\n        # File doesn't exist, which is fine\n        return True\n    except (IOError, OSError):\n        # Failed to lock or delete the file\n        print(f\"Failed to delete {temp_file_to_discard}\")\n        return False\n    finally:\n        # The lock is automatically released when the file is closed\n        pass",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151433,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database_connection\ndef modify_user_profile(uid, profile_data):\n    db = database_connection.get_connection()\n    if db.user_exists(uid):\n        try:\n            db.update_profile(uid, profile_data)\n            return True\n        except Exception as e:\n            print(f\"Failed to update profile for user {uid}: {str(e)}\")\n            return False\n    else:\n        print(f\"User {uid} does not exist.\")\n        return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151434,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database_connection\ndef modify_user_profile(uid: int, profile_data: dict):\n    db = database_connection.get_connection()\n    \n    try:\n        # Use a transaction to ensure atomicity\n        with db.transaction():\n            # Check if user exists and update in one atomic operation\n            result = db.update_profile_if_exists(uid, profile_data)\n            \n            if result:\n                return True\n            else:\n                print(f\"User {uid} does not exist or update failed.\")\n                return False\n    except Exception as e:\n        print(f\"Failed to update profile for user {uid}: {str(e)}\")\n        return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151435,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database_connection\ndef change_user_info(uid, updated_profile):\n    db = database_connection.get_connection()\n    if db.user_exists(uid):\n        try:\n            db.update_profile(uid, updated_profile)\n            return True\n        except Exception as e:\n            print(f\"Failed to update profile for user {uid}: {str(e)}\")\n            return False\n    else:\n        print(f\"User {uid} does not exist.\")\n        return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151436,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database_connection\ndef change_user_info(uid: int, updated_profile: dict):\n    db = database_connection.get_connection()\n    \n    try:\n        # Use a transaction to ensure atomicity\n        with db.transaction():\n            # Check if user exists and update in one atomic operation\n            result = db.update_profile_if_exists(uid, updated_profile)\n            \n            if result:\n                return True\n            else:\n                print(f\"User {uid} does not exist or update failed.\")\n                return False\n    except Exception as e:\n        print(f\"Failed to update profile for user {uid}: {str(e)}\")\n        return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151437,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database_connection\ndef edit_user_profile(user_identifier, profile_information):\n    db = database_connection.get_connection()\n    if db.user_exists(user_identifier):\n        try:\n            db.update_profile(user_identifier, profile_information)\n            return True\n        except Exception as e:\n            print(f\"Failed to update profile for user {user_identifier}: {str(e)}\")\n            return False\n    else:\n        print(f\"User {user_identifier} does not exist.\")\n        return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151438,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database_connection\ndef edit_user_profile(user_identifier: int, profile_information: dict):\n    db = database_connection.get_connection()\n    \n    try:\n        # Use a transaction to ensure atomicity\n        with db.transaction():\n            # Check if user exists and update in one atomic operation\n            result = db.update_profile_if_exists(user_identifier, profile_information)\n            \n            if result:\n                return True\n            else:\n                print(f\"User {user_identifier} does not exist or update failed.\")\n                return False\n    except Exception as e:\n        print(f\"Failed to update profile for user {user_identifier}: {str(e)}\")\n        return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151439,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database_connection\ndef modify_user_details(uid, profile_update):\n    db = database_connection.get_connection()\n    if db.user_exists(uid):\n        try:\n            db.update_profile(uid, profile_update)\n            return True\n        except Exception as e:\n            print(f\"Failed to update profile for user {uid}: {str(e)}\")\n            return False\n    else:\n        print(f\"User {uid} does not exist.\")\n        return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151440,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database_connection\ndef modify_user_details(uid: int, profile_update: dict):\n    db = database_connection.get_connection()\n    \n    try:\n        # Use a transaction to ensure atomicity\n        with db.transaction():\n            # Check if user exists and update in one atomic operation\n            result = db.update_profile_if_exists(uid, profile_update)\n            \n            if result:\n                return True\n            else:\n                print(f\"User {uid} does not exist or update failed.\")\n                return False\n    except Exception as e:\n        print(f\"Failed to update profile for user {uid}: {str(e)}\")\n        return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151441,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database_connection\ndef change_profile_info(profile_id, profile_info_update):\n    db = database_connection.get_connection()\n    if db.user_exists(profile_id):\n        try:\n            db.update_profile(profile_id, profile_info_update)\n            return True\n        except Exception as e:\n            print(f\"Failed to update profile for user {profile_id}: {str(e)}\")\n            return False\n    else:\n        print(f\"User {profile_id} does not exist.\")\n        return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151442,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database_connection\ndef change_profile_info(profile_id: int, profile_info_update: dict):\n    db = database_connection.get_connection()\n    \n    try:\n        # Use a transaction to ensure atomicity\n        with db.transaction():\n            # Check if user exists and update in one atomic operation\n            result = db.update_profile_if_exists(profile_id, profile_info_update)\n            \n            if result:\n                return True\n            else:\n                print(f\"User {profile_id} does not exist or update failed.\")\n                return False\n    except Exception as e:\n        print(f\"Failed to update profile for user {profile_id}: {str(e)}\")\n        return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151443,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database_connection\ndef edit_user_account(account_id, updated_profile_data):\n    db = database_connection.get_connection()\n    if db.user_exists(account_id):\n        try:\n            db.update_profile(account_id, updated_profile_data)\n            return True\n        except Exception as e:\n            print(f\"Failed to update profile for user {account_id}: {str(e)}\")\n            return False\n    else:\n        print(f\"User {account_id} does not exist.\")\n        return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151444,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database_connection\ndef edit_user_account(account_id: int, updated_profile_data: dict):\n    db = database_connection.get_connection()\n    \n    try:\n        # Use a transaction to ensure atomicity\n        with db.transaction():\n            # Check if user exists and update in one atomic operation\n            result = db.update_profile_if_exists(account_id, updated_profile_data)\n            \n            if result:\n                return True\n            else:\n                print(f\"User {account_id} does not exist or update failed.\")\n                return False\n    except Exception as e:\n        print(f\"Failed to update profile for user {account_id}: {str(e)}\")\n        return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151445,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database_connection\ndef modify_user_profile(uid, updated_profile_data):\n    db = database_connection.get_connection()\n    if db.user_exists(uid):\n        try:\n            db.update_profile(uid, updated_profile_data)\n            return True\n        except Exception as e:\n            print(f\"Failed to update profile for user {uid}: {str(e)}\")\n            return False\n    else:\n        print(f\"User {uid} does not exist.\")\n        return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151446,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database_connection\ndef modify_user_profile(uid: int, updated_profile_data: dict):\n    db = database_connection.get_connection()\n    \n    try:\n        # Use a transaction to ensure atomicity\n        with db.transaction():\n            # Check if user exists and update in one atomic operation\n            result = db.update_profile_if_exists(uid, updated_profile_data)\n            \n            if result:\n                return True\n            else:\n                print(f\"User {uid} does not exist or update failed.\")\n                return False\n    except Exception as e:\n        print(f\"Failed to update profile for user {uid}: {str(e)}\")\n        return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151447,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database_connection\ndef change_user_profile(user_identifier, fresh_profile_data):\n    db = database_connection.get_connection()\n    if db.user_exists(user_identifier):\n        try:\n            db.update_profile(user_identifier, fresh_profile_data)\n            return True\n        except Exception as e:\n            print(f\"Failed to update profile for user {user_identifier}: {str(e)}\")\n            return False\n    else:\n        print(f\"User {user_identifier} does not exist.\")\n        return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151448,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database_connection\ndef change_user_profile(user_identifier: int, fresh_profile_data: dict):\n    db = database_connection.get_connection()\n    \n    try:\n        # Use a transaction to ensure atomicity\n        with db.transaction():\n            # Check if user exists and update in one atomic operation\n            result = db.update_profile_if_exists(user_identifier, fresh_profile_data)\n            \n            if result:\n                return True\n            else:\n                print(f\"User {user_identifier} does not exist or update failed.\")\n                return False\n    except Exception as e:\n        print(f\"Failed to update profile for user {user_identifier}: {str(e)}\")\n        return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151449,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database_connection\ndef revise_user_profile(profile_id, profile_data_updates):\n    db = database_connection.get_connection()\n    if db.user_exists(profile_id):\n        try:\n            db.update_profile(profile_id, profile_data_updates)\n            return True\n        except Exception as e:\n            print(f\"Failed to update profile for user {profile_id}: {str(e)}\")\n            return False\n    else:\n        print(f\"User {profile_id} does not exist.\")\n        return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151450,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database_connection\ndef revise_user_profile(profile_id: int, profile_data_updates: dict):\n    db = database_connection.get_connection()\n    \n    try:\n        # Use a transaction to ensure atomicity\n        with db.transaction():\n            # Check if user exists and update in one atomic operation\n            result = db.update_profile_if_exists(profile_id, profile_data_updates)\n            \n            if result:\n                return True\n            else:\n                print(f\"User {profile_id} does not exist or update failed.\")\n                return False\n    except Exception as e:\n        print(f\"Failed to update profile for user {profile_id}: {str(e)}\")\n        return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151451,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport time\ndef handle_file_operation(path_to_file):\n    if os.path.exists(path_to_file) and os.path.getsize(path_to_file) > 0:\n        try:\n            # Simulate processing time\n            time.sleep(5)\n            print(f\"Processing file: {path_to_file}\")\n            # Actual processing would happen here\n            return True\n        except Exception as e:\n            print(f\"Failed to process file {path_to_file}: {str(e)}\")\n            return False\n    else:\n        print(f\"File {path_to_file} is not ready for processing.\")\n        return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151452,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport time\ndef handle_file_operation(path_to_file: str):\n    import fcntl\n\n    try:\n        with open(path_to_file, 'r+') as file:\n            # Try to acquire an exclusive lock\n            fcntl.flock(file.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)\n            \n            # Check if file is ready for processing\n            if os.path.getsize(path_to_file) > 0:\n                # Simulate processing time\n                time.sleep(5)\n                print(f\"Processing file: {path_to_file}\")\n                # Actual processing would happen here\n                return True\n            else:\n                print(f\"File {path_to_file} is not ready for processing.\")\n                return False\n    except IOError:\n        print(f\"File {path_to_file} is locked by another process.\")\n        return False\n    except Exception as e:\n        print(f\"Failed to process file {path_to_file}: {str(e)}\")\n        return False\n    finally:\n        # The lock is automatically released when the file is closed\n        pass",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151453,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport time\ndef execute_file_handler(target_file_path):\n    if os.path.exists(target_file_path) and os.path.getsize(target_file_path) > 0:\n        try:\n            # Simulate processing time\n            time.sleep(5)\n            print(f\"Processing file: {target_file_path}\")\n            # Actual processing would happen here\n            return True\n        except Exception as e:\n            print(f\"Failed to process file {target_file_path}: {str(e)}\")\n            return False\n    else:\n        print(f\"File {target_file_path} is not ready for processing.\")\n        return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151454,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport time\ndef execute_file_handler(target_file_path: str):\n    import fcntl\n\n    try:\n        with open(target_file_path, 'r+') as file:\n            # Try to acquire an exclusive lock\n            fcntl.flock(file.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)\n            \n            # Check if file is ready for processing\n            if os.path.getsize(target_file_path) > 0:\n                # Simulate processing time\n                time.sleep(5)\n                print(f\"Processing file: {target_file_path}\")\n                # Actual processing would happen here\n                return True\n            else:\n                print(f\"File {target_file_path} is not ready for processing.\")\n                return False\n    except IOError:\n        print(f\"File {target_file_path} is locked by another process.\")\n        return False\n    except Exception as e:\n        print(f\"Failed to process file {target_file_path}: {str(e)}\")\n        return False\n    finally:\n        # The lock is automatically released when the file is closed\n        pass",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151455,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport time\ndef file_processing_task(input_file_path):\n    if os.path.exists(input_file_path) and os.path.getsize(input_file_path) > 0:\n        try:\n            # Simulate processing time\n            time.sleep(5)\n            print(f\"Processing file: {input_file_path}\")\n            # Actual processing would happen here\n            return True\n        except Exception as e:\n            print(f\"Failed to process file {input_file_path}: {str(e)}\")\n            return False\n    else:\n        print(f\"File {input_file_path} is not ready for processing.\")\n        return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151456,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport time\ndef file_processing_task(input_file_path: str):\n    import fcntl\n\n    try:\n        with open(input_file_path, 'r+') as file:\n            # Try to acquire an exclusive lock\n            fcntl.flock(file.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)\n            \n            # Check if file is ready for processing\n            if os.path.getsize(input_file_path) > 0:\n                # Simulate processing time\n                time.sleep(5)\n                print(f\"Processing file: {input_file_path}\")\n                # Actual processing would happen here\n                return True\n            else:\n                print(f\"File {input_file_path} is not ready for processing.\")\n                return False\n    except IOError:\n        print(f\"File {input_file_path} is locked by another process.\")\n        return False\n    except Exception as e:\n        print(f\"Failed to process file {input_file_path}: {str(e)}\")\n        return False\n    finally:\n        # The lock is automatically released when the file is closed\n        pass",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151457,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport time\ndef analyze_large_document(document_path):\n    if os.path.exists(document_path) and os.path.getsize(document_path) > 0:\n        try:\n            # Simulate processing time\n            time.sleep(5)\n            print(f\"Processing file: {document_path}\")\n            # Actual processing would happen here\n            return True\n        except Exception as e:\n            print(f\"Failed to process file {document_path}: {str(e)}\")\n            return False\n    else:\n        print(f\"File {document_path} is not ready for processing.\")\n        return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151458,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport time\ndef analyze_large_document(document_path: str):\n    import fcntl\n\n    try:\n        with open(document_path, 'r+') as file:\n            # Try to acquire an exclusive lock\n            fcntl.flock(file.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)\n            \n            # Check if file is ready for processing\n            if os.path.getsize(document_path) > 0:\n                # Simulate processing time\n                time.sleep(5)\n                print(f\"Processing file: {document_path}\")\n                # Actual processing would happen here\n                return True\n            else:\n                print(f\"File {document_path} is not ready for processing.\")\n                return False\n    except IOError:\n        print(f\"File {document_path} is locked by another process.\")\n        return False\n    except Exception as e:\n        print(f\"Failed to process file {document_path}: {str(e)}\")\n        return False\n    finally:\n        # The lock is automatically released when the file is closed\n        pass",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151459,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport time\ndef check_file_ready_and_process(location):\n    if os.path.exists(location) and os.path.getsize(location) > 0:\n        try:\n            # Simulate processing time\n            time.sleep(5)\n            print(f\"Processing file: {location}\")\n            # Actual processing would happen here\n            return True\n        except Exception as e:\n            print(f\"Failed to process file {location}: {str(e)}\")\n            return False\n    else:\n        print(f\"File {location} is not ready for processing.\")\n        return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151460,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport time\ndef check_file_ready_and_process(location: str):\n    import fcntl\n\n    try:\n        with open(location, 'r+') as file:\n            # Try to acquire an exclusive lock\n            fcntl.flock(file.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)\n            \n            # Check if file is ready for processing\n            if os.path.getsize(location) > 0:\n                # Simulate processing time\n                time.sleep(5)\n                print(f\"Processing file: {location}\")\n                # Actual processing would happen here\n                return True\n            else:\n                print(f\"File {location} is not ready for processing.\")\n                return False\n    except IOError:\n        print(f\"File {location} is locked by another process.\")\n        return False\n    except Exception as e:\n        print(f\"Failed to process file {location}: {str(e)}\")\n        return False\n    finally:\n        # The lock is automatically released when the file is closed\n        pass",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151461,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport time\ndef handle_large_file_processing(path_to_file):\n    if os.path.exists(path_to_file) and os.path.getsize(path_to_file) > 0:\n        try:\n            # Simulate processing time\n            time.sleep(5)\n            print(f\"Processing file: {path_to_file}\")\n            # Actual processing would happen here\n            return True\n        except Exception as e:\n            print(f\"Failed to process file {path_to_file}: {str(e)}\")\n            return False\n    else:\n        print(f\"File {path_to_file} is not ready for processing.\")\n        return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151462,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport time\ndef handle_large_file_processing(path_to_file: str):\n    import fcntl\n\n    try:\n        with open(path_to_file, 'r+') as file:\n            # Try to acquire an exclusive lock\n            fcntl.flock(file.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)\n            \n            # Check if file is ready for processing\n            if os.path.getsize(path_to_file) > 0:\n                # Simulate processing time\n                time.sleep(5)\n                print(f\"Processing file: {path_to_file}\")\n                # Actual processing would happen here\n                return True\n            else:\n                print(f\"File {path_to_file} is not ready for processing.\")\n                return False\n    except IOError:\n        print(f\"File {path_to_file} is locked by another process.\")\n        return False\n    except Exception as e:\n        print(f\"Failed to process file {path_to_file}: {str(e)}\")\n        return False\n    finally:\n        # The lock is automatically released when the file is closed\n        pass",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151463,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport time\ndef handle_data_file(path_to_file):\n    if os.path.exists(path_to_file) and os.path.getsize(path_to_file) > 0:\n        try:\n            # Simulate processing time\n            time.sleep(5)\n            print(f\"Processing file: {path_to_file}\")\n            # Actual processing would happen here\n            return True\n        except Exception as e:\n            print(f\"Failed to process file {path_to_file}: {str(e)}\")\n            return False\n    else:\n        print(f\"File {path_to_file} is not ready for processing.\")\n        return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151464,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport time\ndef handle_data_file(path_to_file: str):\n    import fcntl\n\n    try:\n        with open(path_to_file, 'r+') as file:\n            # Try to acquire an exclusive lock\n            fcntl.flock(file.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)\n            \n            # Check if file is ready for processing\n            if os.path.getsize(path_to_file) > 0:\n                # Simulate processing time\n                time.sleep(5)\n                print(f\"Processing file: {path_to_file}\")\n                # Actual processing would happen here\n                return True\n            else:\n                print(f\"File {path_to_file} is not ready for processing.\")\n                return False\n    except IOError:\n        print(f\"File {path_to_file} is locked by another process.\")\n        return False\n    except Exception as e:\n        print(f\"Failed to process file {path_to_file}: {str(e)}\")\n        return False\n    finally:\n        # The lock is automatically released when the file is closed\n        pass",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151465,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport time\ndef process_data_file(file_location):\n    if os.path.exists(file_location) and os.path.getsize(file_location) > 0:\n        try:\n            # Simulate processing time\n            time.sleep(5)\n            print(f\"Processing file: {file_location}\")\n            # Actual processing would happen here\n            return True\n        except Exception as e:\n            print(f\"Failed to process file {file_location}: {str(e)}\")\n            return False\n    else:\n        print(f\"File {file_location} is not ready for processing.\")\n        return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151466,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport time\ndef process_data_file(file_location: str):\n    import fcntl\n\n    try:\n        with open(file_location, 'r+') as file:\n            # Try to acquire an exclusive lock\n            fcntl.flock(file.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)\n            \n            # Check if file is ready for processing\n            if os.path.getsize(file_location) > 0:\n                # Simulate processing time\n                time.sleep(5)\n                print(f\"Processing file: {file_location}\")\n                # Actual processing would happen here\n                return True\n            else:\n                print(f\"File {file_location} is not ready for processing.\")\n                return False\n    except IOError:\n        print(f\"File {file_location} is locked by another process.\")\n        return False\n    except Exception as e:\n        print(f\"Failed to process file {file_location}: {str(e)}\")\n        return False\n    finally:\n        # The lock is automatically released when the file is closed\n        pass",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151467,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport time\ndef manage_large_file(path_to_large_file):\n    if os.path.exists(path_to_large_file) and os.path.getsize(path_to_large_file) > 0:\n        try:\n            # Simulate processing time\n            time.sleep(5)\n            print(f\"Processing file: {path_to_large_file}\")\n            # Actual processing would happen here\n            return True\n        except Exception as e:\n            print(f\"Failed to process file {path_to_large_file}: {str(e)}\")\n            return False\n    else:\n        print(f\"File {path_to_large_file} is not ready for processing.\")\n        return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151468,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport time\ndef manage_large_file(path_to_large_file: str):\n    import fcntl\n\n    try:\n        with open(path_to_large_file, 'r+') as file:\n            # Try to acquire an exclusive lock\n            fcntl.flock(file.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)\n            \n            # Check if file is ready for processing\n            if os.path.getsize(path_to_large_file) > 0:\n                # Simulate processing time\n                time.sleep(5)\n                print(f\"Processing file: {path_to_large_file}\")\n                # Actual processing would happen here\n                return True\n            else:\n                print(f\"File {path_to_large_file} is not ready for processing.\")\n                return False\n    except IOError:\n        print(f\"File {path_to_large_file} is locked by another process.\")\n        return False\n    except Exception as e:\n        print(f\"Failed to process file {path_to_large_file}: {str(e)}\")\n        return False\n    finally:\n        # The lock is automatically released when the file is closed\n        pass",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151469,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database\nfrom datetime import datetime, timedelta\ndef remove_expired_sessions(expiration_duration):\n    db = database.get_connection()\n    current_time = datetime.now()\n    expiration_threshold = current_time - timedelta(minutes=expiration_duration)\n    \n    expired_records = db.query(\"SELECT id FROM sessions WHERE last_activity < ?\", (expiration_threshold,))\n    removed_sessions = 0\n    \n    for record in expired_records:\n        if db.execute(\"DELETE FROM sessions WHERE id = ?\", (record['id'],)):\n            removed_sessions += 1\n    \n    return removed_sessions",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151470,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database\nfrom datetime import datetime, timedelta\ndef remove_expired_sessions(expiration_duration: int) -> int:\n    db = database.get_connection()\n    current_time = datetime.now()\n    expiration_threshold = current_time - timedelta(minutes=expiration_duration)\n    \n    try:\n        # Start a transaction to ensure atomicity\n        with db.transaction():\n            # Perform the check and delete in a single atomic operation\n            result = db.execute(\"\"\"\n                DELETE FROM sessions \n                WHERE id IN (\n                    SELECT id \n                    FROM sessions \n                    WHERE last_activity < ?\n                )\n            \"\"\", (expiration_threshold,))\n            \n            removed_sessions = result.rowcount\n            \n        return removed_sessions\n    except Exception as e:\n        print(f\"Failed to remove expired sessions: {str(e)}\")\n        return 0",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151471,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database\nfrom datetime import datetime, timedelta\ndef delete_old_sessions(expiration_limit):\n    db = database.get_connection()\n    current_time = datetime.now()\n    expiration_threshold = current_time - timedelta(minutes=expiration_limit)\n    \n    expired_sessions = db.query(\"SELECT id FROM sessions WHERE last_activity < ?\", (expiration_threshold,))\n    total_removed = 0\n    \n    for session in expired_sessions:\n        if db.execute(\"DELETE FROM sessions WHERE id = ?\", (session['id'],)):\n            total_removed += 1\n    \n    return total_removed",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151472,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database\nfrom datetime import datetime, timedelta\ndef delete_old_sessions(expiration_limit: int) -> int:\n    db = database.get_connection()\n    current_time = datetime.now()\n    expiration_threshold = current_time - timedelta(minutes=expiration_limit)\n    \n    try:\n        # Start a transaction to ensure atomicity\n        with db.transaction():\n            # Perform the check and delete in a single atomic operation\n            result = db.execute(\"\"\"\n                DELETE FROM sessions \n                WHERE id IN (\n                    SELECT id \n                    FROM sessions \n                    WHERE last_activity < ?\n                )\n            \"\"\", (expiration_threshold,))\n            \n            total_removed = result.rowcount\n            \n        return total_removed\n    except Exception as e:\n        print(f\"Failed to delete old sessions: {str(e)}\")\n        return 0",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151473,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database\nfrom datetime import datetime, timedelta\ndef purge_stale_sessions(expiry_time):\n    db = database.get_connection()\n    current_time = datetime.now()\n    expiration_threshold = current_time - timedelta(minutes=expiry_time)\n    \n    stale_sessions = db.query(\"SELECT id FROM sessions WHERE last_activity < ?\", (expiration_threshold,))\n    deleted_count = 0\n    \n    for session in stale_sessions:\n        if db.execute(\"DELETE FROM sessions WHERE id = ?\", (session['id'],)):\n            deleted_count += 1\n    \n    return deleted_count",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151474,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database\nfrom datetime import datetime, timedelta\ndef purge_stale_sessions(expiry_time: int) -> int:\n    db = database.get_connection()\n    current_time = datetime.now()\n    expiration_threshold = current_time - timedelta(minutes=expiry_time)\n    \n    try:\n        # Start a transaction to ensure atomicity\n        with db.transaction():\n            # Perform the check and delete in a single atomic operation\n            result = db.execute(\"\"\"\n                DELETE FROM sessions \n                WHERE id IN (\n                    SELECT id \n                    FROM sessions \n                    WHERE last_activity < ?\n                )\n            \"\"\", (expiration_threshold,))\n            \n            deleted_count = result.rowcount\n            \n        return deleted_count\n    except Exception as e:\n        print(f\"Failed to purge stale sessions: {str(e)}\")\n        return 0",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151475,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database\nfrom datetime import datetime, timedelta\ndef remove_expired_sessions(expire_time):\n    db = database.get_connection()\n    current_time = datetime.now()\n    expiration_threshold = current_time - timedelta(minutes=expire_time)\n    \n    expired_sessions = db.query(\"SELECT id FROM sessions WHERE last_activity < ?\", (expiration_threshold,))\n    removed_count = 0\n    \n    for session in expired_sessions:\n        if db.execute(\"DELETE FROM sessions WHERE id = ?\", (session['id'],)):\n            removed_count += 1\n    \n    return removed_count",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151476,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database\nfrom datetime import datetime, timedelta\ndef remove_expired_sessions(expire_time: int) -> int:\n    db = database.get_connection()\n    current_time = datetime.now()\n    expiration_threshold = current_time - timedelta(minutes=expire_time)\n    \n    try:\n        # Start a transaction to ensure atomicity\n        with db.transaction():\n            # Perform the check and delete in a single atomic operation\n            result = db.execute(\"\"\"\n                DELETE FROM sessions \n                WHERE id IN (\n                    SELECT id \n                    FROM sessions \n                    WHERE last_activity < ?\n                )\n            \"\"\", (expiration_threshold,))\n            \n            removed_count = result.rowcount\n            \n        return removed_count\n    except Exception as e:\n        print(f\"Failed to remove expired sessions: {str(e)}\")\n        return 0",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151477,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database\nfrom datetime import datetime, timedelta\ndef purge_expired_sessions(expire_duration):\n    db = database.get_connection()\n    current_time = datetime.now()\n    expiration_threshold = current_time - timedelta(minutes=expire_duration)\n    \n    expired_sessions = db.query(\"SELECT id FROM sessions WHERE last_activity < ?\", (expiration_threshold,))\n    removed_count = 0\n    \n    for session in expired_sessions:\n        if db.execute(\"DELETE FROM sessions WHERE id = ?\", (session['id'],)):\n            removed_count += 1\n    \n    return removed_count",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151478,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database\nfrom datetime import datetime, timedelta\ndef purge_expired_sessions(expire_duration: int) -> int:\n    db = database.get_connection()\n    current_time = datetime.now()\n    expiration_threshold = current_time - timedelta(minutes=expire_duration)\n    \n    try:\n        # Start a transaction to ensure atomicity\n        with db.transaction():\n            # Perform the check and delete in a single atomic operation\n            result = db.execute(\"\"\"\n                DELETE FROM sessions \n                WHERE id IN (\n                    SELECT id \n                    FROM sessions \n                    WHERE last_activity < ?\n                )\n            \"\"\", (expiration_threshold,))\n            \n            removed_count = result.rowcount\n            \n        return removed_count\n    except Exception as e:\n        print(f\"Failed to purge expired sessions: {str(e)}\")\n        return 0",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151479,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database\nfrom datetime import datetime, timedelta\ndef delete_expired_sessions(session_expiration):\n    db = database.get_connection()\n    current_time = datetime.now()\n    expiration_threshold = current_time - timedelta(minutes=session_expiration)\n    \n    expired_sessions = db.query(\"SELECT id FROM sessions WHERE last_activity < ?\", (expiration_threshold,))\n    deleted_count = 0\n    \n    for session in expired_sessions:\n        if db.execute(\"DELETE FROM sessions WHERE id = ?\", (session['id'],)):\n            deleted_count += 1\n    \n    return deleted_count",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151480,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database\nfrom datetime import datetime, timedelta\ndef delete_expired_sessions(session_expiration: int) -> int:\n    db = database.get_connection()\n    current_time = datetime.now()\n    expiration_threshold = current_time - timedelta(minutes=session_expiration)\n    \n    try:\n        # Start a transaction to ensure atomicity\n        with db.transaction():\n            # Perform the check and delete in a single atomic operation\n            result = db.execute(\"\"\"\n                DELETE FROM sessions \n                WHERE id IN (\n                    SELECT id \n                    FROM sessions \n                    WHERE last_activity < ?\n                )\n            \"\"\", (expiration_threshold,))\n            \n            deleted_count = result.rowcount\n            \n        return deleted_count\n    except Exception as e:\n        print(f\"Failed to delete expired sessions: {str(e)}\")\n        return 0",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151481,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database\nfrom datetime import datetime, timedelta\ndef remove_old_sessions(time_limit):\n    db = database.get_connection()\n    current_time = datetime.now()\n    expiration_threshold = current_time - timedelta(minutes=time_limit)\n    \n    expired_sessions = db.query(\"SELECT id FROM sessions WHERE last_activity < ?\", (expiration_threshold,))\n    deleted_count = 0\n    \n    for session in expired_sessions:\n        if db.execute(\"DELETE FROM sessions WHERE id = ?\", (session['id'],)):\n            deleted_count += 1\n    \n    return deleted_count",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151482,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database\nfrom datetime import datetime, timedelta\ndef remove_old_sessions(time_limit: int) -> int:\n    db = database.get_connection()\n    current_time = datetime.now()\n    expiration_threshold = current_time - timedelta(minutes=time_limit)\n    \n    try:\n        # Start a transaction to ensure atomicity\n        with db.transaction():\n            # Perform the check and delete in a single atomic operation\n            result = db.execute(\"\"\"\n                DELETE FROM sessions \n                WHERE id IN (\n                    SELECT id \n                    FROM sessions \n                    WHERE last_activity < ?\n                )\n            \"\"\", (expiration_threshold,))\n            \n            deleted_count = result.rowcount\n            \n        return deleted_count\n    except Exception as e:\n        print(f\"Failed to remove old sessions: {str(e)}\")\n        return 0",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151483,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database\nfrom datetime import datetime, timedelta\ndef purge_stale_sessions(limit_time):\n    db = database.get_connection()\n    current_time = datetime.now()\n    expiration_threshold = current_time - timedelta(minutes=limit_time)\n    \n    expired_sessions = db.query(\"SELECT id FROM sessions WHERE last_activity < ?\", (expiration_threshold,))\n    removed_total = 0\n    \n    for session in expired_sessions:\n        if db.execute(\"DELETE FROM sessions WHERE id = ?\", (session['id'],)):\n            removed_total += 1\n    \n    return removed_total",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151484,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database\nfrom datetime import datetime, timedelta\ndef purge_stale_sessions(limit_time: int) -> int:\n    db = database.get_connection()\n    current_time = datetime.now()\n    expiration_threshold = current_time - timedelta(minutes=limit_time)\n    \n    try:\n        # Start a transaction to ensure atomicity\n        with db.transaction():\n            # Perform the check and delete in a single atomic operation\n            result = db.execute(\"\"\"\n                DELETE FROM sessions \n                WHERE id IN (\n                    SELECT id \n                    FROM sessions \n                    WHERE last_activity < ?\n                )\n            \"\"\", (expiration_threshold,))\n            \n            removed_total = result.rowcount\n            \n        return removed_total\n    except Exception as e:\n        print(f\"Failed to purge stale sessions: {str(e)}\")\n        return 0",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151485,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database\nfrom datetime import datetime, timedelta\ndef delete_expired_sessions(session_timeout):\n    db = database.get_connection()\n    current_time = datetime.now()\n    expiration_threshold = current_time - timedelta(minutes=session_timeout)\n    \n    expired_sessions = db.query(\"SELECT id FROM sessions WHERE last_activity < ?\", (expiration_threshold,))\n    count_removed = 0\n    \n    for session in expired_sessions:\n        if db.execute(\"DELETE FROM sessions WHERE id = ?\", (session['id'],)):\n            count_removed += 1\n    \n    return count_removed",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151486,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database\nfrom datetime import datetime, timedelta\ndef delete_expired_sessions(session_timeout: int) -> int:\n    db = database.get_connection()\n    current_time = datetime.now()\n    expiration_threshold = current_time - timedelta(minutes=session_timeout)\n    \n    try:\n        # Start a transaction to ensure atomicity\n        with db.transaction():\n            # Perform the check and delete in a single atomic operation\n            result = db.execute(\"\"\"\n                DELETE FROM sessions \n                WHERE id IN (\n                    SELECT id \n                    FROM sessions \n                    WHERE last_activity < ?\n                )\n            \"\"\", (expiration_threshold,))\n            \n            count_removed = result.rowcount\n            \n        return count_removed\n    except Exception as e:\n        print(f\"Failed to delete expired sessions: {str(e)}\")\n        return 0",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151487,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport json\ndef apply_config_update(conf_path, updated_conf):\n    if os.path.exists(conf_path):\n        try:\n            with open(conf_path, 'w') as config_file:\n                json.dump(updated_conf, config_file, indent=4)\n            return True\n        except Exception as e:\n            print(f\"Failed to update configuration: {str(e)}\")\n            return False\n    else:\n        print(f\"Configuration file {conf_path} does not exist.\")\n        return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151488,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport json\ndef apply_config_update(conf_path: str, updated_conf: dict) -> bool:\n    import fcntl\n\n    try:\n        with open(conf_path, 'r+') as config_file:\n            # Acquire an exclusive lock\n            fcntl.flock(config_file.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)\n            \n            # Check if file exists and is not empty\n            if os.path.getsize(conf_path) > 0:\n                # Truncate the file and write new configuration\n                config_file.seek(0)\n                config_file.truncate()\n                json.dump(updated_conf, config_file, indent=4)\n                return True\n            else:\n                print(f\"Configuration file {conf_path} is empty or does not exist.\")\n                return False\n    except FileNotFoundError:\n        print(f\"Configuration file {conf_path} does not exist.\")\n        return False\n    except IOError:\n        print(f\"Configuration file {conf_path} is locked by another process.\")\n        return False\n    except Exception as e:\n        print(f\"Failed to update configuration: {str(e)}\")\n        return False\n    finally:\n        # The lock is automatically released when the file is closed\n        pass",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151489,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport json\ndef modify_config_file(config_file_path, latest_config):\n    if os.path.exists(config_file_path):\n        try:\n            with open(config_file_path, 'w') as config_file:\n                json.dump(latest_config, config_file, indent=4)\n            return True\n        except Exception as e:\n            print(f\"Failed to update configuration: {str(e)}\")\n            return False\n    else:\n        print(f\"Configuration file {config_file_path} does not exist.\")\n        return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151490,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport json\ndef modify_config_file(config_file_path: str, latest_config: dict) -> bool:\n    import fcntl\n\n    try:\n        with open(config_file_path, 'r+') as config_file:\n            # Acquire an exclusive lock\n            fcntl.flock(config_file.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)\n            \n            # Check if file exists and is not empty\n            if os.path.getsize(config_file_path) > 0:\n                # Truncate the file and write new configuration\n                config_file.seek(0)\n                config_file.truncate()\n                json.dump(latest_config, config_file, indent=4)\n                return True\n            else:\n                print(f\"Configuration file {config_file_path} is empty or does not exist.\")\n                return False\n    except FileNotFoundError:\n        print(f\"Configuration file {config_file_path} does not exist.\")\n        return False\n    except IOError:\n        print(f\"Configuration file {config_file_path} is locked by another process.\")\n        return False\n    except Exception as e:\n        print(f\"Failed to update configuration: {str(e)}\")\n        return False\n    finally:\n        # The lock is automatically released when the file is closed\n        pass",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151491,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport json\ndef refresh_config_file(cfg_path, new_configuration):\n    if os.path.exists(cfg_path):\n        try:\n            with open(cfg_path, 'w') as config_file:\n                json.dump(new_configuration, config_file, indent=4)\n            return True\n        except Exception as e:\n            print(f\"Failed to update configuration: {str(e)}\")\n            return False\n    else:\n        print(f\"Configuration file {cfg_path} does not exist.\")\n        return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151492,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport json\ndef refresh_config_file(cfg_path: str, new_configuration: dict) -> bool:\n    import fcntl\n\n    try:\n        with open(cfg_path, 'r+') as config_file:\n            # Acquire an exclusive lock\n            fcntl.flock(config_file.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)\n            \n            # Check if file exists and is not empty\n            if os.path.getsize(cfg_path) > 0:\n                # Truncate the file and write new configuration\n                config_file.seek(0)\n                config_file.truncate()\n                json.dump(new_configuration, config_file, indent=4)\n                return True\n            else:\n                print(f\"Configuration file {cfg_path} is empty or does not exist.\")\n                return False\n    except FileNotFoundError:\n        print(f\"Configuration file {cfg_path} does not exist.\")\n        return False\n    except IOError:\n        print(f\"Configuration file {cfg_path} is locked by another process.\")\n        return False\n    except Exception as e:\n        print(f\"Failed to update configuration: {str(e)}\")\n        return False\n    finally:\n        # The lock is automatically released when the file is closed\n        pass",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151493,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport json\ndef modify_configuration(settings_filepath, updated_settings):\n    if os.path.exists(settings_filepath):\n        try:\n            with open(settings_filepath, 'w') as config_file:\n                json.dump(updated_settings, config_file, indent=4)\n            return True\n        except Exception as e:\n            print(f\"Failed to update configuration: {str(e)}\")\n            return False\n    else:\n        print(f\"Configuration file {settings_filepath} does not exist.\")\n        return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151494,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport json\ndef modify_configuration(settings_filepath: str, updated_settings: dict) -> bool:\n    import fcntl\n\n    try:\n        with open(settings_filepath, 'r+') as config_file:\n            # Acquire an exclusive lock\n            fcntl.flock(config_file.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)\n            \n            # Check if file exists and is not empty\n            if os.path.getsize(settings_filepath) > 0:\n                # Truncate the file and write new configuration\n                config_file.seek(0)\n                config_file.truncate()\n                json.dump(updated_settings, config_file, indent=4)\n                return True\n            else:\n                print(f\"Configuration file {settings_filepath} is empty or does not exist.\")\n                return False\n    except FileNotFoundError:\n        print(f\"Configuration file {settings_filepath} does not exist.\")\n        return False\n    except IOError:\n        print(f\"Configuration file {settings_filepath} is locked by another process.\")\n        return False\n    except Exception as e:\n        print(f\"Failed to update configuration: {str(e)}\")\n        return False\n    finally:\n        # The lock is automatically released when the file is closed\n        pass",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151495,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport json\ndef rewrite_config(cfg_filepath, new_settings):\n    if os.path.exists(cfg_filepath):\n        try:\n            with open(cfg_filepath, 'w') as config_file:\n                json.dump(new_settings, config_file, indent=4)\n            return True\n        except Exception as e:\n            print(f\"Failed to update configuration: {str(e)}\")\n            return False\n    else:\n        print(f\"Configuration file {cfg_filepath} does not exist.\")\n        return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151496,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport json\ndef rewrite_config(cfg_filepath: str, new_settings: dict) -> bool:\n    import fcntl\n\n    try:\n        with open(cfg_filepath, 'r+') as config_file:\n            # Acquire an exclusive lock\n            fcntl.flock(config_file.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)\n            \n            # Check if file exists and is not empty\n            if os.path.getsize(cfg_filepath) > 0:\n                # Truncate the file and write new configuration\n                config_file.seek(0)\n                config_file.truncate()\n                json.dump(new_settings, config_file, indent=4)\n                return True\n            else:\n                print(f\"Configuration file {cfg_filepath} is empty or does not exist.\")\n                return False\n    except FileNotFoundError:\n        print(f\"Configuration file {cfg_filepath} does not exist.\")\n        return False\n    except IOError:\n        print(f\"Configuration file {cfg_filepath} is locked by another process.\")\n        return False\n    except Exception as e:\n        print(f\"Failed to update configuration: {str(e)}\")\n        return False\n    finally:\n        # The lock is automatically released when the file is closed\n        pass",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151497,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport json\ndef adjust_config(file_path, new_values):\n    if os.path.exists(file_path):\n        try:\n            with open(file_path, 'w') as config_file:\n                json.dump(new_values, config_file, indent=4)\n            return True\n        except Exception as e:\n            print(f\"Failed to update configuration: {str(e)}\")\n            return False\n    else:\n        print(f\"Configuration file {file_path} does not exist.\")\n        return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151498,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport json\ndef adjust_config(file_path: str, new_values: dict) -> bool:\n    import fcntl\n\n    try:\n        with open(file_path, 'r+') as config_file:\n            # Acquire an exclusive lock\n            fcntl.flock(config_file.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)\n            \n            # Check if file exists and is not empty\n            if os.path.getsize(file_path) > 0:\n                # Truncate the file and write new configuration\n                config_file.seek(0)\n                config_file.truncate()\n                json.dump(new_values, config_file, indent=4)\n                return True\n            else:\n                print(f\"Configuration file {file_path} is empty or does not exist.\")\n                return False\n    except FileNotFoundError:\n        print(f\"Configuration file {file_path} does not exist.\")\n        return False\n    except IOError:\n        print(f\"Configuration file {file_path} is locked by another process.\")\n        return False\n    except Exception as e:\n        print(f\"Failed to update configuration: {str(e)}\")\n        return False\n    finally:\n        # The lock is automatically released when the file is closed\n        pass",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151499,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport json\ndef modify_config(path_to_config, updated_config):\n    if os.path.exists(path_to_config):\n        try:\n            with open(path_to_config, 'w') as config_file:\n                json.dump(updated_config, config_file, indent=4)\n            return True\n        except Exception as e:\n            print(f\"Failed to update configuration: {str(e)}\")\n            return False\n    else:\n        print(f\"Configuration file {path_to_config} does not exist.\")\n        return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151500,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport json\ndef modify_config(path_to_config: str, updated_config: dict) -> bool:\n    import fcntl\n\n    try:\n        with open(path_to_config, 'r+') as config_file:\n            # Acquire an exclusive lock\n            fcntl.flock(config_file.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)\n            \n            # Check if file exists and is not empty\n            if os.path.getsize(path_to_config) > 0:\n                # Truncate the file and write new configuration\n                config_file.seek(0)\n                config_file.truncate()\n                json.dump(updated_config, config_file, indent=4)\n                return True\n            else:\n                print(f\"Configuration file {path_to_config} is empty or does not exist.\")\n                return False\n    except FileNotFoundError:\n        print(f\"Configuration file {path_to_config} does not exist.\")\n        return False\n    except IOError:\n        print(f\"Configuration file {path_to_config} is locked by another process.\")\n        return False\n    except Exception as e:\n        print(f\"Failed to update configuration: {str(e)}\")\n        return False\n    finally:\n        # The lock is automatically released when the file is closed\n        pass",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151501,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport json\ndef change_config(cfg_path, new_cfg):\n    if os.path.exists(cfg_path):\n        try:\n            with open(cfg_path, 'w') as config_file:\n                json.dump(new_cfg, config_file, indent=4)\n            return True\n        except Exception as e:\n            print(f\"Failed to update configuration: {str(e)}\")\n            return False\n    else:\n        print(f\"Configuration file {cfg_path} does not exist.\")\n        return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151502,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport json\ndef change_config(cfg_path: str, new_cfg: dict) -> bool:\n    import fcntl\n\n    try:\n        with open(cfg_path, 'r+') as config_file:\n            # Acquire an exclusive lock\n            fcntl.flock(config_file.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)\n            \n            # Check if file exists and is not empty\n            if os.path.getsize(cfg_path) > 0:\n                # Truncate the file and write new configuration\n                config_file.seek(0)\n                config_file.truncate()\n                json.dump(new_cfg, config_file, indent=4)\n                return True\n            else:\n                print(f\"Configuration file {cfg_path} is empty or does not exist.\")\n                return False\n    except FileNotFoundError:\n        print(f\"Configuration file {cfg_path} does not exist.\")\n        return False\n    except IOError:\n        print(f\"Configuration file {cfg_path} is locked by another process.\")\n        return False\n    except Exception as e:\n        print(f\"Failed to update configuration: {str(e)}\")\n        return False\n    finally:\n        # The lock is automatically released when the file is closed\n        pass",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151503,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport json\ndef refresh_config(config_location, updated_settings):\n    if os.path.exists(config_location):\n        try:\n            with open(config_location, 'w') as config_file:\n                json.dump(updated_settings, config_file, indent=4)\n            return True\n        except Exception as e:\n            print(f\"Failed to update configuration: {str(e)}\")\n            return False\n    else:\n        print(f\"Configuration file {config_location} does not exist.\")\n        return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151504,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport json\ndef refresh_config(config_location: str, updated_settings: dict) -> bool:\n    import fcntl\n\n    try:\n        with open(config_location, 'r+') as config_file:\n            # Acquire an exclusive lock\n            fcntl.flock(config_file.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)\n            \n            # Check if file exists and is not empty\n            if os.path.getsize(config_location) > 0:\n                # Truncate the file and write new configuration\n                config_file.seek(0)\n                config_file.truncate()\n                json.dump(updated_settings, config_file, indent=4)\n                return True\n            else:\n                print(f\"Configuration file {config_location} is empty or does not exist.\")\n                return False\n    except FileNotFoundError:\n        print(f\"Configuration file {config_location} does not exist.\")\n        return False\n    except IOError:\n        print(f\"Configuration file {config_location} is locked by another process.\")\n        return False\n    except Exception as e:\n        print(f\"Failed to update configuration: {str(e)}\")\n        return False\n    finally:\n        # The lock is automatically released when the file is closed\n        pass",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151505,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\ndef delete_temp_file(temp_file_path):\n    if os.path.exists(temp_file_path):\n        try:\n            os.remove(temp_file_path)\n            return True\n        except OSError:\n            print(f\"Failed to delete {temp_file_path}\")\n            return False\n    else:\n        print(f\"{temp_file_path} does not exist.\")\n        return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153022,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\ndef delete_temp_file(temp_file_path: str):\n    import fcntl\n\n    try:\n        # Open the file with exclusive access\n        with open(temp_file_path, 'r') as file:\n            # Lock the file\n            fcntl.flock(file.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)\n            \n            # If we got here, we have the lock, so delete the file\n            os.remove(temp_file_path)\n            return True\n    except FileNotFoundError:\n        # File doesn't exist, which is fine\n        return True\n    except (IOError, OSError):\n        # Failed to lock or delete the file\n        print(f\"Failed to delete {temp_file_path}\")\n        return False\n    finally:\n        # The lock is automatically released when the file is closed\n        pass",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153023,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database_connection\ndef update_user_profile(user_id, new_profile_data):\n    db = database_connection.get_connection()\n    if db.user_exists(user_id):\n        try:\n            db.update_profile(user_id, new_profile_data)\n            return True\n        except Exception as e:\n            print(f\"Failed to update profile for user {user_id}: {str(e)}\")\n            return False\n    else:\n        print(f\"User {user_id} does not exist.\")\n        return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153024,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database_connection\ndef update_user_profile(user_id: int, new_profile_data: dict):\n    db = database_connection.get_connection()\n    \n    try:\n        # Use a transaction to ensure atomicity\n        with db.transaction():\n            # Check if user exists and update in one atomic operation\n            result = db.update_profile_if_exists(user_id, new_profile_data)\n            \n            if result:\n                return True\n            else:\n                print(f\"User {user_id} does not exist or update failed.\")\n                return False\n    except Exception as e:\n        print(f\"Failed to update profile for user {user_id}: {str(e)}\")\n        return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153025,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport time\ndef process_large_file(file_path):\n    if os.path.exists(file_path) and os.path.getsize(file_path) > 0:\n        try:\n            # Simulate processing time\n            time.sleep(5)\n            print(f\"Processing file: {file_path}\")\n            # Actual processing would happen here\n            return True\n        except Exception as e:\n            print(f\"Failed to process file {file_path}: {str(e)}\")\n            return False\n    else:\n        print(f\"File {file_path} is not ready for processing.\")\n        return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153026,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport time\ndef process_large_file(file_path: str):\n    import fcntl\n\n    try:\n        with open(file_path, 'r+') as file:\n            # Try to acquire an exclusive lock\n            fcntl.flock(file.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)\n            \n            # Check if file is ready for processing\n            if os.path.getsize(file_path) > 0:\n                # Simulate processing time\n                time.sleep(5)\n                print(f\"Processing file: {file_path}\")\n                # Actual processing would happen here\n                return True\n            else:\n                print(f\"File {file_path} is not ready for processing.\")\n                return False\n    except IOError:\n        print(f\"File {file_path} is locked by another process.\")\n        return False\n    except Exception as e:\n        print(f\"Failed to process file {file_path}: {str(e)}\")\n        return False\n    finally:\n        # The lock is automatically released when the file is closed\n        pass",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153027,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database\nfrom datetime import datetime, timedelta\ndef clean_expired_sessions(expiration_time):\n    db = database.get_connection()\n    current_time = datetime.now()\n    expiration_threshold = current_time - timedelta(minutes=expiration_time)\n    \n    expired_sessions = db.query(\"SELECT id FROM sessions WHERE last_activity < ?\", (expiration_threshold,))\n    removed_count = 0\n    \n    for session in expired_sessions:\n        if db.execute(\"DELETE FROM sessions WHERE id = ?\", (session['id'],)):\n            removed_count += 1\n    \n    return removed_count",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153028,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import database\nfrom datetime import datetime, timedelta\ndef clean_expired_sessions(expiration_time: int) -> int:\n    db = database.get_connection()\n    current_time = datetime.now()\n    expiration_threshold = current_time - timedelta(minutes=expiration_time)\n    \n    try:\n        # Start a transaction to ensure atomicity\n        with db.transaction():\n            # Perform the check and delete in a single atomic operation\n            result = db.execute(\"\"\"\n                DELETE FROM sessions \n                WHERE id IN (\n                    SELECT id \n                    FROM sessions \n                    WHERE last_activity < ?\n                )\n            \"\"\", (expiration_threshold,))\n            \n            removed_count = result.rowcount\n            \n        return removed_count\n    except Exception as e:\n        print(f\"Failed to clean expired sessions: {str(e)}\")\n        return 0",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153029,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport json\ndef update_configuration(config_path, new_config):\n    if os.path.exists(config_path):\n        try:\n            with open(config_path, 'w') as config_file:\n                json.dump(new_config, config_file, indent=4)\n            return True\n        except Exception as e:\n            print(f\"Failed to update configuration: {str(e)}\")\n            return False\n    else:\n        print(f\"Configuration file {config_path} does not exist.\")\n        return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153030,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\nimport json\ndef update_configuration(config_path: str, new_config: dict) -> bool:\n    import fcntl\n\n    try:\n        with open(config_path, 'r+') as config_file:\n            # Acquire an exclusive lock\n            fcntl.flock(config_file.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)\n            \n            # Check if file exists and is not empty\n            if os.path.getsize(config_path) > 0:\n                # Truncate the file and write new configuration\n                config_file.seek(0)\n                config_file.truncate()\n                json.dump(new_config, config_file, indent=4)\n                return True\n            else:\n                print(f\"Configuration file {config_path} is empty or does not exist.\")\n                return False\n    except FileNotFoundError:\n        print(f\"Configuration file {config_path} does not exist.\")\n        return False\n    except IOError:\n        print(f\"Configuration file {config_path} is locked by another process.\")\n        return False\n    except Exception as e:\n        print(f\"Failed to update configuration: {str(e)}\")\n        return False\n    finally:\n        # The lock is automatically released when the file is closed\n        pass",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153031,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\ndef read_file_if_exists(filepath):\n    if os.path.exists(filepath):\n        with open(filepath, 'r') as f:\n            data = f.read()\n        return data\n    else:\n        print(f\"{filepath} does not exist.\")\n        return None",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153200,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "import os\ndef read_file_if_exists(filepath: str):\n    # Ensure thread safety by checking and reading the file atomically\n    import threading\n    lock = threading.Lock()\n\n    with lock:\n        if os.path.exists(filepath):\n            with open(filepath, 'r') as file:\n                content = file.read()\n            return content\n        else:\n            return None",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153201,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  }
+]

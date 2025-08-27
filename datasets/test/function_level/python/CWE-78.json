@@ -1,0 +1,130 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-78"
+    ],
+    "code": "def start():\n    print(\"[*] Starting backdoor process\")\n    print(\"[*] Decompressing target to tmp directory...\")\n    #subprocess.call(\"jar -x %s\" % target, shell=True)\n    with zipfile.ZipFile(target, 'r') as zip:\n        zip.extractall(\"tmp\")\n    print(\"[*] Target dumped to tmp directory\")\n\n    print(\"[*] Modifying manifest file...\")\n    oldmain=\"\"\n    man = open(\"tmp/META-INF/MANIFEST.MF\",\"r\").read()\n    with open(\"tmp/META-INF/MANIFEST.MF\",\"w\") as f:\n        for l in man.split(\"\\n\"):\n            if \"Main-Class\" in l:\n                oldmain=l[12:]\n                f.write(\"Main-Class: %s\\n\" % \"Backdoor\")\n            else:\n                f.write(\"%s\\n\" % l)\n    print(\"[*] Manifest file modified\")\n    \n    print(\"[*] Modifying provided backdoor...\")\n    inmain=False\n    level=0\n    bd=open(backdoor, \"r\").read()\n    with open(\"tmp/%s\" % backdoor,'w') as f:\n        for l in bd.split(\"\\n\"):\n            if \"main(\" in l:\n                inmain=True\n                f.write(l)\n            elif \"}\" in l and level<2 and inmain:\n                f.write(\"%s.main(args);}\" % oldmain)\n                inmain=False\n            elif \"}\" in l and level>1 and inmain:\n                level-=1\n                f.write(l)\n            elif \"{\" in l and inmain:\n                level+=1\n                f.write(l)\n            else:\n                f.write(l)\n    print(\"[*] Provided backdoor successfully modified\")\n\n    print(\"[*] Compiling modified backdoor...\")\n    if subprocess.call(\"javac -cp tmp/ tmp/%s\" % backdoor, shell=True) != 0:\n        print(\"[!] Error compiling %s\" % backdoor)\n    print(\"[*] Compiled modified backdoor\")\n                \n    if(len(oldmain)<1):\n        print(\"[!] Main-Class manifest attribute not found\")\n    else:\n        print(\"[*] Repackaging target jar file...\")\n        createZip(\"tmp\",outfile)\n        print(\"[*] Target jar successfully repackaged\")\n    shutil.rmtree('tmp/')",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 148860,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-89",
+      "CWE-917"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-78"
+    ],
+    "code": "def start():\n    print(\"[*] Starting backdoor process\")\n    print(\"[*] Decompressing target to tmp directory...\")\n    #subprocess.call(\"jar -x %s\" % target, shell=True)\n    with zipfile.ZipFile(target, 'r') as zip:\n        zip.extractall(\"tmp\")\n    print(\"[*] Target dumped to tmp directory\")\n\n    print(\"[*] Modifying manifest file...\")\n    oldmain=\"\"\n    man = open(\"tmp/META-INF/MANIFEST.MF\",\"r\").read()\n    with open(\"tmp/META-INF/MANIFEST.MF\",\"w\") as f:\n        for l in man.split(\"\\n\"):\n            if \"Main-Class\" in l:\n                oldmain=l[12:]\n                f.write(\"Main-Class: %s\\n\" % \"Backdoor\")\n            else:\n                f.write(\"%s\\n\" % l)\n    print(\"[*] Manifest file modified\")\n    \n    print(\"[*] Modifying provided backdoor...\")\n    inmain=False\n    level=0\n    bd=open(backdoor, \"r\").read()\n    with open(\"tmp/%s\" % backdoor,'w') as f:\n        for l in bd.split(\"\\n\"):\n            if \"main(\" in l:\n                inmain=True\n                f.write(l)\n            elif \"}\" in l and level<2 and inmain:\n                f.write(\"%s.main(args);}\" % oldmain)\n                inmain=False\n            elif \"}\" in l and level>1 and inmain:\n                level-=1\n                f.write(l)\n            elif \"{\" in l and inmain:\n                level+=1\n                f.write(l)\n            else:\n                f.write(l)\n    print(\"[*] Provided backdoor successfully modified\")\n\n    print(\"[*] Compiling modified backdoor...\")\n    #if subprocess.call(\"javac -cp tmp/ tmp/%s\" % backdoor, shell=True) != 0:\n    if subprocess.call(['javac','-cp','tmp/','tmp/%s'%backdoor],shell=False) != 0:\n        print(\"[!] Error compiling %s\" % backdoor)\n    print(\"[*] Compiled modified backdoor\")\n                \n    if(len(oldmain)<1):\n        print(\"[!] Main-Class manifest attribute not found\")\n    else:\n        print(\"[*] Repackaging target jar file...\")\n        createZip(\"tmp\",outfile)\n        print(\"[*] Target jar successfully repackaged\")\n    shutil.rmtree('tmp/')",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 148861,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-89",
+      "CWE-917"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-78"
+    ],
+    "code": "    def _cliq_run(self, verb, cliq_args, check_exit_code=True):\n        \"\"\"Runs a CLIQ command over SSH, without doing any result parsing\"\"\"\n        cliq_arg_strings = []\n        for k, v in cliq_args.items():\n            cliq_arg_strings.append(\" %s=%s\" % (k, v))\n        cmd = verb + ''.join(cliq_arg_strings)\n\n        return self._run_ssh(cmd, check_exit_code)",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 148866,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-89",
+      "CWE-917"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-78"
+    ],
+    "code": "    def _cliq_run(self, verb, cliq_args, check_exit_code=True):\n        \"\"\"Runs a CLIQ command over SSH, without doing any result parsing\"\"\"\n        cmd_list = [verb]\n        for k, v in cliq_args.items():\n            cmd_list.append(\"%s=%s\" % (k, v))\n\n        return self._run_ssh(cmd_list, check_exit_code)",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 148867,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-89",
+      "CWE-917"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-78"
+    ],
+    "code": "@contextmanager\ndef run_interactive_shell_command(command, **kwargs):\n    \"\"\"\n    Runs a command in shell and provides stdout, stderr and stdin streams.\n\n    This function creates a context manager that sets up the process, returns\n    to caller, closes streams and waits for process to exit on leaving.\n\n    The process is opened in `universal_newlines` mode.\n\n    :param command: The command to run on shell.\n    :param kwargs:  Additional keyword arguments to pass to `subprocess.Popen`\n                    that is used to spawn the process (except `shell`,\n                    `stdout`, `stderr`, `stdin` and `universal_newlines`, a\n                    `TypeError` is raised then).\n    :return:        A context manager yielding the process started from the\n                    command.\n    \"\"\"\n    process = Popen(command,\n                    shell=True,\n                    stdout=PIPE,\n                    stderr=PIPE,\n                    stdin=PIPE,\n                    universal_newlines=True,\n                    **kwargs)\n    try:\n        yield process\n    finally:\n        process.stdout.close()\n        process.stderr.close()\n        process.stdin.close()\n        process.wait()",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 148874,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-89",
+      "CWE-917"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-78"
+    ],
+    "code": "@contextmanager\ndef run_interactive_shell_command(command, **kwargs):\n    \"\"\"\n    Runs a single command in shell and provides stdout, stderr and stdin\n    streams.\n\n    This function creates a context manager that sets up the process (using\n    `subprocess.Popen()`), returns to caller, closes streams and waits for\n    process to exit on leaving.\n\n    Shell execution is disabled by default (so no shell expansion takes place).\n    If you want to turn shell execution on, you can pass `shell=True` like you\n    would do for `subprocess.Popen()`.\n\n    The process is opened in `universal_newlines` mode by default.\n\n    :param command: The command to run on shell. This parameter can either\n                    be a sequence of arguments that are directly passed to\n                    the process or a string. A string gets splitted beforehand\n                    using `shlex.split()`.\n    :param kwargs:  Additional keyword arguments to pass to `subprocess.Popen`\n                    that is used to spawn the process (except `stdout`,\n                    `stderr`, `stdin` and `universal_newlines`, a `TypeError`\n                    is raised then).\n    :return:        A context manager yielding the process started from the\n                    command.\n    \"\"\"\n    if isinstance(command, str):\n        command = shlex.split(command)\n\n    process = Popen(command,\n                    stdout=PIPE,\n                    stderr=PIPE,\n                    stdin=PIPE,\n                    universal_newlines=True,\n                    **kwargs)\n    try:\n        yield process\n    finally:\n        process.stdout.close()\n        process.stderr.close()\n        process.stdin.close()\n        process.wait()",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 148875,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-89",
+      "CWE-917"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-78"
+    ],
+    "code": "    def test_create_host(self):\n        self.flags(lock_path=self.tempdir)\n\n        #record\n        self.clear_mox()\n        self.stubs.Set(hpfcdriver.hpcommon.HP3PARCommon, \"get_cpg\",\n                       self.fake_get_cpg)\n        self.stubs.Set(hpfcdriver.hpcommon.HP3PARCommon, \"get_domain\",\n                       self.fake_get_domain)\n        _run_ssh = self.mox.CreateMock(hpdriver.hpcommon.HP3PARCommon._run_ssh)\n        self.stubs.Set(hpdriver.hpcommon.HP3PARCommon, \"_run_ssh\", _run_ssh)\n\n        show_host_cmd = 'showhost -verbose fakehost'\n        _run_ssh(show_host_cmd, False).AndReturn([pack('no hosts listed'), ''])\n\n        create_host_cmd = ('createhost -persona 1 -domain (\\'OpenStack\\',) '\n                           'fakehost 123456789012345 123456789054321')\n        _run_ssh(create_host_cmd, False).AndReturn([CLI_CR, ''])\n\n        _run_ssh(show_host_cmd, False).AndReturn([pack(FC_HOST_RET), ''])\n        self.mox.ReplayAll()\n\n        host = self.driver._create_host(self.volume, self.connector)\n        self.assertEqual(host['name'], self.FAKE_HOST)",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 148880,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-89",
+      "CWE-917"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-78"
+    ],
+    "code": "    def test_create_host(self):\n        self.flags(lock_path=self.tempdir)\n\n        #record\n        self.clear_mox()\n        self.stubs.Set(hpfcdriver.hpcommon.HP3PARCommon, \"get_cpg\",\n                       self.fake_get_cpg)\n        self.stubs.Set(hpfcdriver.hpcommon.HP3PARCommon, \"get_domain\",\n                       self.fake_get_domain)\n        _run_ssh = self.mox.CreateMock(hpdriver.hpcommon.HP3PARCommon._run_ssh)\n        self.stubs.Set(hpdriver.hpcommon.HP3PARCommon, \"_run_ssh\", _run_ssh)\n\n        show_host_cmd = ['showhost', '-verbose', 'fakehost']\n        _run_ssh(show_host_cmd, False).AndReturn([pack('no hosts listed'), ''])\n\n        create_host_cmd = (['createhost', '-persona', '1', '-domain',\n                            ('OpenStack',), 'fakehost', '123456789012345',\n                            '123456789054321'])\n        _run_ssh(create_host_cmd, False).AndReturn([CLI_CR, ''])\n\n        _run_ssh(show_host_cmd, False).AndReturn([pack(FC_HOST_RET), ''])\n        self.mox.ReplayAll()\n\n        host = self.driver._create_host(self.volume, self.connector)\n        self.assertEqual(host['name'], self.FAKE_HOST)",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 148881,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-89",
+      "CWE-917"
+    ]
+  }
+]

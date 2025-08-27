@@ -1,0 +1,322 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-426"
+    ],
+    "code": "#include \"std_testcase.h\"\n\n#include <wchar.h>\n#ifdef _WIN32\n#define _OS_COMMAND L\"c:\\\\windows\\\\system32\\\\cmd.exe /c dir\"\n#else \n#define _OS_COMMAND L\"/usr/bin/ls -la\"\n#endif \n\n#ifdef _WIN32\n#define POPEN _wpopen\n#define PCLOSE _pclose\n#else \n#define POPEN popen\n#define PCLOSE pclose\n#endif\n\nstatic int G2B1Static = 0;\nstatic int G2B2Static = 0;\n\nstatic wchar_t * G2B1Source(wchar_t * data)\n{\n    if(G2B1Static)\n    {\n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        wcscpy(data, _OS_COMMAND);\n    }\n    return data;\n}\n\nstatic void f_vcwuzlug()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100] = L\"\";\n    data = dataBuffer;\n    G2B1Static = 0; \n    data = G2B1Source(data);\n    {\n        FILE *pipe;\n        pipe = POPEN(data, L\"wb\");\n        if (pipe != NULL)\n        {\n            PCLOSE(pipe);\n        }\n    }\n}\n\nstatic wchar_t * G2B2Source(wchar_t * data)\n{\n    if(G2B2Static)\n    {\n        wcscpy(data, _OS_COMMAND);\n    }\n    return data;\n}\n\nstatic void f_crioutoh()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100] = L\"\";\n    data = dataBuffer;\n    G2B2Static = 1; \n    data = G2B2Source(data);\n    {\n        FILE *pipe;\n        pipe = POPEN(data, L\"wb\");\n        if (pipe != NULL)\n        {\n            PCLOSE(pipe);\n        }\n    }\n}\n\nvoid f_xzwbinab()\n{\n    f_vcwuzlug();\n    f_crioutoh();\n}\n\nint main(int argc, char * argv[])\n{\n    srand( (unsigned)time(NULL) );\n    f_xzwbinab();\n    return 0;\n}\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402776,
+    "original_file": "testcases/CWE426_Untrusted_Search_Path/CWE426_Untrusted_Search_Path__wchar_t_popen_21.c",
+    "RELATED_CWE": [
+      "CWE-22",
+      "CWE-59",
+      "CWE-552"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-426"
+    ],
+    "code": "#include \"std_testcase.h\"\n\n#include <wchar.h>\n#ifdef _WIN32\n#define _OS_COMMAND L\"cmd.exe /c dir\"\n#else \n#define _OS_COMMAND L\"ls -la\"\n#endif \n\n#ifdef _WIN32\n#define POPEN _wpopen\n#define PCLOSE _pclose\n#else \n#define POPEN popen\n#define PCLOSE pclose\n#endif\n\nstatic int Static = 0;\n\nstatic wchar_t * Source(wchar_t * data)\n{\n    if(Static)\n    {\n        wcscpy(data, _OS_COMMAND);\n    }\n    return data;\n}\n\nvoid f_cyutiabm()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100] = L\"\";\n    data = dataBuffer;\n    Static = 1; \n    data = Source(data);\n    {\n        FILE *pipe;\n        pipe = POPEN(data, L\"wb\");\n        if (pipe != NULL)\n        {\n            PCLOSE(pipe);\n        }\n    }\n}\n\nint main(int argc, char * argv[])\n{\n    srand((unsigned)time(NULL));\n    f_cyutiabm();\n    return 0;\n}\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402777,
+    "original_file": "testcases/CWE426_Untrusted_Search_Path/CWE426_Untrusted_Search_Path__wchar_t_popen_21.c",
+    "RELATED_CWE": [
+      "CWE-22",
+      "CWE-59",
+      "CWE-552"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-426"
+    ],
+    "code": "#include \"std_testcase.h\"\n\n#include <wchar.h>\n#ifdef _WIN32\n#define _OS_COMMAND \"c:\\\\windows\\\\system32\\\\cmd.exe /c dir\"\n#else \n#define _OS_COMMAND \"/usr/bin/ls -la\"\n#endif \n\n#ifdef _WIN32\n#define POPEN _popen\n#define PCLOSE _pclose\n#else \n#define POPEN popen\n#define PCLOSE pclose\n#endif\n\n\n\nstatic int G2B1Static = 0;\nstatic int G2B2Static = 0;\n\n\nstatic char * G2B1Source(char * data)\n{\n    if(G2B1Static)\n    {\n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        strcpy(data, _OS_COMMAND);\n    }\n    return data;\n}\n\nstatic void f_kmqlbwzg()\n{\n    char * data;\n    char dataBuffer[100] = \"\";\n    data = dataBuffer;\n    G2B1Static = 0; \n    data = G2B1Source(data);\n    {\n        FILE *pipe;\n        pipe = POPEN(data, \"wb\");\n        if (pipe != NULL)\n        {\n            PCLOSE(pipe);\n        }\n    }\n}\n\nstatic char * G2B2Source(char * data)\n{\n    if(G2B2Static)\n    {\n        strcpy(data, _OS_COMMAND);\n    }\n    return data;\n}\n\nstatic void f_hmmsbceo()\n{\n    char * data;\n    char dataBuffer[100] = \"\";\n    data = dataBuffer;\n    G2B2Static = 1; \n    data = G2B2Source(data);\n    {\n        FILE *pipe;\n        pipe = POPEN(data, \"wb\");\n        if (pipe != NULL)\n        {\n            PCLOSE(pipe);\n        }\n    }\n}\n\nvoid f_etjxwpsf()\n{\n    f_kmqlbwzg();\n    f_hmmsbceo();\n}\n\n\n\nint main(int argc, char * argv[])\n{\n    srand((unsigned)time(NULL));\n    f_etjxwpsf();\n    return 0;\n}\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402778,
+    "original_file": "testcases/CWE426_Untrusted_Search_Path/CWE426_Untrusted_Search_Path__char_popen_21.c",
+    "RELATED_CWE": [
+      "CWE-22",
+      "CWE-59",
+      "CWE-552"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-426"
+    ],
+    "code": "#include \"std_testcase.h\"\n\n#include <wchar.h>\n#ifdef _WIN32\n#define _OS_COMMAND \"cmd.exe /c dir\"\n#else \n#define _OS_COMMAND \"ls -la\"\n#endif \n\n#ifdef _WIN32\n#define POPEN _popen\n#define PCLOSE _pclose\n#else \n#define POPEN popen\n#define PCLOSE pclose\n#endif\n\n\n\nstatic int Static = 0;\n\nstatic char * Source(char * data)\n{\n    if(Static)\n    {\n        strcpy(data, _OS_COMMAND);\n    }\n    return data;\n}\n\nvoid f_ldvfcvym()\n{\n    char * data;\n    char dataBuffer[100] = \"\";\n    data = dataBuffer;\n    Static = 1; \n    data = Source(data);\n    {\n        FILE *pipe;\n        pipe = POPEN(data, \"wb\");\n        if (pipe != NULL)\n        {\n            PCLOSE(pipe);\n        }\n    }\n}\n\n\n\nint main(int argc, char * argv[])\n{\n    srand((unsigned)time(NULL));\n    f_ldvfcvym();\n    return 0;\n}\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402779,
+    "original_file": "testcases/CWE426_Untrusted_Search_Path/CWE426_Untrusted_Search_Path__char_popen_21.c",
+    "RELATED_CWE": [
+      "CWE-22",
+      "CWE-59",
+      "CWE-552"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-426"
+    ],
+    "code": "#include \"std_testcase.h\"\n\n#include <wchar.h>\n#ifdef _WIN32\n#define _OS_COMMAND \"c:\\\\windows\\\\system32\\\\cmd.exe /c dir\"\n#else \n#define _OS_COMMAND \"/usr/bin/ls -la\"\n#endif \n\n#ifdef _WIN32\n#define SYSTEM system\n#else \n#define SYSTEM system\n#endif\n\n\n\nstatic int G2B1Static = 0;\nstatic int G2B2Static = 0;\n\n\nstatic char * G2B1Source(char * data)\n{\n    if(G2B1Static)\n    {\n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        strcpy(data, _OS_COMMAND);\n    }\n    return data;\n}\n\nstatic void f_oksqdwit()\n{\n    char * data;\n    char dataBuffer[100] = \"\";\n    data = dataBuffer;\n    G2B1Static = 0; \n    data = G2B1Source(data);\n    if (SYSTEM(data) <= 0)\n    {\n        printLine(\"command execution failed!\");\n        exit(1);\n    }\n}\n\nstatic char * G2B2Source(char * data)\n{\n    if(G2B2Static)\n    {\n        strcpy(data, _OS_COMMAND);\n    }\n    return data;\n}\n\nstatic void f_fiqfxyze()\n{\n    char * data;\n    char dataBuffer[100] = \"\";\n    data = dataBuffer;\n    G2B2Static = 1; \n    data = G2B2Source(data);\n    if (SYSTEM(data) <= 0)\n    {\n        printLine(\"command execution failed!\");\n        exit(1);\n    }\n}\n\nvoid f_clulcnri()\n{\n    f_oksqdwit();\n    f_fiqfxyze();\n}\n\n\n\nint main(int argc, char * argv[])\n{\n    srand( (unsigned)time(NULL) );\n    f_clulcnri();\n    return 0;\n}\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402780,
+    "original_file": "testcases/CWE426_Untrusted_Search_Path/CWE426_Untrusted_Search_Path__char_system_21.c",
+    "RELATED_CWE": [
+      "CWE-22",
+      "CWE-59",
+      "CWE-552"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-426"
+    ],
+    "code": "#include \"std_testcase.h\"\n\n#include <wchar.h>\n#ifdef _WIN32\n#define _OS_COMMAND \"cmd.exe /c dir\"\n#else \n#define _OS_COMMAND \"ls -la\"\n#endif \n\n#ifdef _WIN32\n#define SYSTEM system\n#else \n#define SYSTEM system\n#endif\n\n\n\nstatic int Static = 0;\n\nstatic char * Source(char * data)\n{\n    if(Static)\n    {\n        strcpy(data, _OS_COMMAND);\n    }\n    return data;\n}\n\nvoid f_qwpwnqag()\n{\n    char * data;\n    char dataBuffer[100] = \"\";\n    data = dataBuffer;\n    Static = 1; \n    data = Source(data);\n    if (SYSTEM(data) <= 0)\n    {\n        printLine(\"command execution failed!\");\n        exit(1);\n    }\n}\n\n\n\nint main(int argc, char * argv[])\n{\n    srand( (unsigned)time(NULL) );\n    f_qwpwnqag();\n    return 0;\n}\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402781,
+    "original_file": "testcases/CWE426_Untrusted_Search_Path/CWE426_Untrusted_Search_Path__char_system_21.c",
+    "RELATED_CWE": [
+      "CWE-22",
+      "CWE-59",
+      "CWE-552"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-426"
+    ],
+    "code": "#include \"std_testcase.h\"\n\n#include <wchar.h>\n#ifdef _WIN32\n#define _OS_COMMAND L\"c:\\\\windows\\\\system32\\\\cmd.exe /c dir\"\n#else \n#define _OS_COMMAND L\"/usr/bin/ls -la\"\n#endif \n\n#ifdef _WIN32\n#define SYSTEM _wsystem\n#else \n#define SYSTEM system\n#endif\n\n\n\nstatic int G2B1Static = 0;\nstatic int G2B2Static = 0;\n\n\nstatic wchar_t * G2B1Source(wchar_t * data)\n{\n    if(G2B1Static)\n    {\n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        wcscpy(data, _OS_COMMAND);\n    }\n    return data;\n}\n\nstatic void f_zwcxrbwv()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100] = L\"\";\n    data = dataBuffer;\n    G2B1Static = 0; \n    data = G2B1Source(data);\n    if (SYSTEM(data) <= 0)\n    {\n        printLine(\"command execution failed!\");\n        exit(1);\n    }\n}\n\n\nstatic wchar_t * G2B2Source(wchar_t * data)\n{\n    if(G2B2Static)\n    {\n        wcscpy(data, _OS_COMMAND);\n    }\n    return data;\n}\n\nstatic void f_vnxkpvcl()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100] = L\"\";\n    data = dataBuffer;\n    G2B2Static = 1; \n    data = G2B2Source(data);\n    if (SYSTEM(data) <= 0)\n    {\n        printLine(\"command execution failed!\");\n        exit(1);\n    }\n}\n\nvoid f_jsbdkzdd()\n{\n    f_zwcxrbwv();\n    f_vnxkpvcl();\n}\n\n\nint main(int argc, char * argv[])\n{\n    srand( (unsigned)time(NULL) );\n    f_jsbdkzdd();\n    return 0;\n}\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402782,
+    "original_file": "testcases/CWE426_Untrusted_Search_Path/CWE426_Untrusted_Search_Path__wchar_t_system_21.c",
+    "RELATED_CWE": [
+      "CWE-22",
+      "CWE-59",
+      "CWE-552"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-426"
+    ],
+    "code": "#include \"std_testcase.h\"\n\n#include <wchar.h>\n#ifdef _WIN32\n#define _OS_COMMAND L\"cmd.exe /c dir\"\n#else \n#define _OS_COMMAND L\"ls -la\"\n#endif \n\n#ifdef _WIN32\n#define SYSTEM _wsystem\n#else \n#define SYSTEM system\n#endif\n\n\nstatic int Static = 0;\n\nstatic wchar_t * Source(wchar_t * data)\n{\n    if(Static)\n    {\n        wcscpy(data, _OS_COMMAND);\n    }\n    return data;\n}\n\nvoid f_lutbuxkr()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100] = L\"\";\n    data = dataBuffer;\n    Static = 1; \n    data = Source(data);\n    if (SYSTEM(data) <= 0)\n    {\n        printLine(\"command execution failed!\");\n        exit(1);\n    }\n}\n\n\nint main(int argc, char * argv[])\n{\n    srand( (unsigned)time(NULL) );\n    f_lutbuxkr();\n    return 0;\n}\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402783,
+    "original_file": "testcases/CWE426_Untrusted_Search_Path/CWE426_Untrusted_Search_Path__wchar_t_system_21.c",
+    "RELATED_CWE": [
+      "CWE-22",
+      "CWE-59",
+      "CWE-552"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-426"
+    ],
+    "code": "#include \"std_testcase.h\"\n\n#include <wchar.h>\n#ifdef _WIN32\n\n#define _OS_COMMAND \"c:\\\\windows\\\\system32\\\\cmd.exe /c dir\"\n#else\n#define _OS_COMMAND \"/usr/bin/ls -la\"\n#endif\n\n#ifdef _WIN32\n#define POPEN _popen\n#define PCLOSE _pclose\n#else\n#define POPEN popen\n#define PCLOSE pclose\n#endif\n\nstatic int staticReturnsTrue()\n{\n    return 1;\n}\n\nstatic int staticReturnsFalse()\n{\n    return 0;\n}\n\nstatic void f_twkurwbe()\n{\n    char * data;\n    char dataBuffer[100] = \"\";\n    data = dataBuffer;\n    if(staticReturnsFalse())\n    {\n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        strcpy(data, _OS_COMMAND);\n    }\n    {\n        FILE *pipe;\n        pipe = POPEN(data, \"wb\");\n        if (pipe != NULL)\n        {\n            PCLOSE(pipe);\n        }\n    }\n}\n\nstatic void f_cuuthwey()\n{\n    char * data;\n    char dataBuffer[100] = \"\";\n    data = dataBuffer;\n    if(staticReturnsTrue())\n    {\n        strcpy(data, _OS_COMMAND);\n    }\n    {\n        FILE *pipe;\n        pipe = POPEN(data, \"wb\");\n        if (pipe != NULL)\n        {\n            PCLOSE(pipe);\n        }\n    }\n}\n\nvoid f_wiitcfco()\n{\n    f_twkurwbe();\n    f_cuuthwey();\n}\n\nint main(int argc, char * argv[])\n{\n    srand( (unsigned)time(NULL) );\n    f_wiitcfco();\n    return 0;\n}\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402784,
+    "original_file": "testcases/CWE426_Untrusted_Search_Path/CWE426_Untrusted_Search_Path__char_popen_08.c",
+    "RELATED_CWE": [
+      "CWE-22",
+      "CWE-59",
+      "CWE-552"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-426"
+    ],
+    "code": "#include \"std_testcase.h\"\n\n#include <wchar.h>\n#ifdef _WIN32\n#define _OS_COMMAND \"cmd.exe /c dir\"\n#else\n#define _OS_COMMAND \"ls -la\"\n#endif\n\n#ifdef _WIN32\n#define POPEN _popen\n#define PCLOSE _pclose\n#else\n#define POPEN popen\n#define PCLOSE pclose\n#endif\n\nstatic int staticReturnsTrue()\n{\n    return 1;\n}\n\nstatic int staticReturnsFalse()\n{\n    return 0;\n}\n\nvoid f_utlouiqo()\n{\n    char * data;\n    char dataBuffer[100] = \"\";\n    data = dataBuffer;\n    if(staticReturnsTrue())\n    {\n        strcpy(data, _OS_COMMAND);\n    }\n    {\n        FILE *pipe;\n        pipe = POPEN(data, \"wb\");\n        if (pipe != NULL)\n        {\n            PCLOSE(pipe);\n        }\n    }\n}\n\nint main(int argc, char * argv[])\n{\n    srand( (unsigned)time(NULL) );\n    f_utlouiqo();\n    return 0;\n}\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402785,
+    "original_file": "testcases/CWE426_Untrusted_Search_Path/CWE426_Untrusted_Search_Path__char_popen_08.c",
+    "RELATED_CWE": [
+      "CWE-22",
+      "CWE-59",
+      "CWE-552"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-426"
+    ],
+    "code": "#include \"std_testcase.h\"\n\n#include <wchar.h>\n#ifdef _WIN32\n\n#define _OS_COMMAND L\"c:\\\\windows\\\\system32\\\\cmd.exe /c dir\"\n#else\n#define _OS_COMMAND L\"/usr/bin/ls -la\"\n#endif\n\n#ifdef _WIN32\n#define POPEN _wpopen\n#define PCLOSE _pclose\n#else\n#define POPEN popen\n#define PCLOSE pclose\n#endif\n\nstatic int staticReturnsTrue()\n{\n    return 1;\n}\n\nstatic int staticReturnsFalse()\n{\n    return 0;\n}\n\nstatic void f_glvknwgh()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100] = L\"\";\n    data = dataBuffer;\n    if(staticReturnsFalse())\n    {\n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        wcscpy(data, _OS_COMMAND);\n    }\n    {\n        FILE *pipe;\n        pipe = POPEN(data, L\"wb\");\n        if (pipe != NULL)\n        {\n            PCLOSE(pipe);\n        }\n    }\n}\n\nstatic void f_joxhmmyb()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100] = L\"\";\n    data = dataBuffer;\n    if(staticReturnsTrue())\n    {\n        wcscpy(data, _OS_COMMAND);\n    }\n    {\n        FILE *pipe;\n        pipe = POPEN(data, L\"wb\");\n        if (pipe != NULL)\n        {\n            PCLOSE(pipe);\n        }\n    }\n}\n\nvoid f_djonfqzi()\n{\n    f_glvknwgh();\n    f_joxhmmyb();\n}\n\nint main(int argc, char * argv[])\n{\n    srand( (unsigned)time(NULL) );\n    f_djonfqzi();\n    return 0;\n}\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402786,
+    "original_file": "testcases/CWE426_Untrusted_Search_Path/CWE426_Untrusted_Search_Path__wchar_t_popen_08.c",
+    "RELATED_CWE": [
+      "CWE-22",
+      "CWE-59",
+      "CWE-552"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-426"
+    ],
+    "code": "#include \"std_testcase.h\"\n\n#include <wchar.h>\n#ifdef _WIN32\n#define _OS_COMMAND L\"cmd.exe /c dir\"\n#else\n#define _OS_COMMAND L\"ls -la\"\n#endif\n\n#ifdef _WIN32\n#define POPEN _wpopen\n#define PCLOSE _pclose\n#else\n#define POPEN popen\n#define PCLOSE pclose\n#endif\n\nstatic int staticReturnsTrue()\n{\n    return 1;\n}\n\nstatic int staticReturnsFalse()\n{\n    return 0;\n}\n\nvoid f_kmfayuou()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100] = L\"\";\n    data = dataBuffer;\n    if(staticReturnsTrue())\n    {\n        wcscpy(data, _OS_COMMAND);\n    }\n    {\n        FILE *pipe;\n        pipe = POPEN(data, L\"wb\");\n        if (pipe != NULL)\n        {\n            PCLOSE(pipe);\n        }\n    }\n}\n\nint main(int argc, char * argv[])\n{\n    srand( (unsigned)time(NULL) );\n    f_kmfayuou();\n    return 0;\n}\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402787,
+    "original_file": "testcases/CWE426_Untrusted_Search_Path/CWE426_Untrusted_Search_Path__wchar_t_popen_08.c",
+    "RELATED_CWE": [
+      "CWE-22",
+      "CWE-59",
+      "CWE-552"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-426"
+    ],
+    "code": "#include \"std_testcase.h\"\n\n#include <wchar.h>\n#ifdef _WIN32\n\n#define _OS_COMMAND L\"c:\\\\windows\\\\system32\\\\cmd.exe /c dir\"\n#else\n#define _OS_COMMAND L\"/usr/bin/ls -la\"\n#endif\n\n#ifdef _WIN32\n#define POPEN _wpopen\n#define PCLOSE _pclose\n#else\n#define POPEN popen\n#define PCLOSE pclose\n#endif\n\n\nstatic void f_hirwlisf()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100] = L\"\";\n    data = dataBuffer;\n    switch(5)\n    {\n    case 6:\n        printLine(\"Benign, fixed string\");\n        break;\n    default:\n        wcscpy(data, _OS_COMMAND);\n        break;\n    }\n    {\n        FILE *pipe;\n        pipe = POPEN(data, L\"wb\");\n        if (pipe != NULL)\n        {\n            PCLOSE(pipe);\n        }\n    }\n}\n\nstatic void f_avmrblbz()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100] = L\"\";\n    data = dataBuffer;\n    switch(6)\n    {\n    case 6:\n        wcscpy(data, _OS_COMMAND);\n        break;\n    default:\n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    {\n        FILE *pipe;\n        pipe = POPEN(data, L\"wb\");\n        if (pipe != NULL)\n        {\n            PCLOSE(pipe);\n        }\n    }\n}\n\nvoid f_iurolacn()\n{\n    f_hirwlisf();\n    f_avmrblbz();\n}\n\nint main(int argc, char * argv[])\n{\n    srand( (unsigned)time(NULL) );\n    f_iurolacn();\n    return 0;\n}\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402788,
+    "original_file": "testcases/CWE426_Untrusted_Search_Path/CWE426_Untrusted_Search_Path__wchar_t_popen_15.c",
+    "RELATED_CWE": [
+      "CWE-22",
+      "CWE-59",
+      "CWE-552"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-426"
+    ],
+    "code": "#include \"std_testcase.h\"\n\n#include <wchar.h>\n#ifdef _WIN32\n#define _OS_COMMAND L\"cmd.exe /c dir\"\n#else\n#define _OS_COMMAND L\"ls -la\"\n#endif\n\n#ifdef _WIN32\n#define POPEN _wpopen\n#define PCLOSE _pclose\n#else\n#define POPEN popen\n#define PCLOSE pclose\n#endif\n\nvoid f_xvcvlcwp()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100] = L\"\";\n    data = dataBuffer;\n    switch(6)\n    {\n    case 6:\n        wcscpy(data, _OS_COMMAND);\n        break;\n    default:\n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    {\n        FILE *pipe;\n        pipe = POPEN(data, L\"wb\");\n        if (pipe != NULL)\n        {\n            PCLOSE(pipe);\n        }\n    }\n}\n\nint main(int argc, char * argv[])\n{\n    srand( (unsigned)time(NULL) );\n    f_xvcvlcwp();\n    return 0;\n}\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402789,
+    "original_file": "testcases/CWE426_Untrusted_Search_Path/CWE426_Untrusted_Search_Path__wchar_t_popen_15.c",
+    "RELATED_CWE": [
+      "CWE-22",
+      "CWE-59",
+      "CWE-552"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-426"
+    ],
+    "code": "#include \"std_testcase.h\"\n\n#include <wchar.h>\n#ifdef _WIN32\n\n#define _OS_COMMAND \"c:\\\\windows\\\\system32\\\\cmd.exe /c dir\"\n#else\n#define _OS_COMMAND \"/usr/bin/ls -la\"\n#endif\n\n#ifdef _WIN32\n#define POPEN _popen\n#define PCLOSE _pclose\n#else\n#define POPEN popen\n#define PCLOSE pclose\n#endif\n\n\nstatic void f_cdxeiqor()\n{\n    char * data;\n    char dataBuffer[100] = \"\";\n    data = dataBuffer;\n    switch(5)\n    {\n    case 6:\n        printLine(\"Benign, fixed string\");\n        break;\n    default:\n        strcpy(data, _OS_COMMAND);\n        break;\n    }\n    {\n        FILE *pipe;\n        pipe = POPEN(data, \"wb\");\n        if (pipe != NULL)\n        {\n            PCLOSE(pipe);\n        }\n    }\n}\n\nstatic void f_zddkxnbi()\n{\n    char * data;\n    char dataBuffer[100] = \"\";\n    data = dataBuffer;\n    switch(6)\n    {\n    case 6:\n        strcpy(data, _OS_COMMAND);\n        break;\n    default:\n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    {\n        FILE *pipe;\n        pipe = POPEN(data, \"wb\");\n        if (pipe != NULL)\n        {\n            PCLOSE(pipe);\n        }\n    }\n}\n\nvoid f_yymlklzq()\n{\n    f_cdxeiqor();\n    f_zddkxnbi();\n}\n\nint main(int argc, char * argv[])\n{\n    srand( (unsigned)time(NULL) );\n    f_yymlklzq();\n    return 0;\n}\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402790,
+    "original_file": "testcases/CWE426_Untrusted_Search_Path/CWE426_Untrusted_Search_Path__char_popen_15.c",
+    "RELATED_CWE": [
+      "CWE-22",
+      "CWE-59",
+      "CWE-552"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-426"
+    ],
+    "code": "#include \"std_testcase.h\"\n\n#include <wchar.h>\n#ifdef _WIN32\n#define _OS_COMMAND \"cmd.exe /c dir\"\n#else\n#define _OS_COMMAND \"ls -la\"\n#endif\n\n#ifdef _WIN32\n#define POPEN _popen\n#define PCLOSE _pclose\n#else\n#define POPEN popen\n#define PCLOSE pclose\n#endif\n\nvoid f_rgbwseie()\n{\n    char * data;\n    char dataBuffer[100] = \"\";\n    data = dataBuffer;\n    switch(6)\n    {\n    case 6:\n        strcpy(data, _OS_COMMAND);\n        break;\n    default:\n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    {\n        FILE *pipe;\n        pipe = POPEN(data, \"wb\");\n        if (pipe != NULL)\n        {\n            PCLOSE(pipe);\n        }\n    }\n}\n\nint main(int argc, char * argv[])\n{\n    srand( (unsigned)time(NULL) );\n    f_rgbwseie();\n    return 0;\n}\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402791,
+    "original_file": "testcases/CWE426_Untrusted_Search_Path/CWE426_Untrusted_Search_Path__char_popen_15.c",
+    "RELATED_CWE": [
+      "CWE-22",
+      "CWE-59",
+      "CWE-552"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-426"
+    ],
+    "code": "#include \"std_testcase.h\"\n\n#include <wchar.h>\n#ifdef _WIN32\n\n#define _OS_COMMAND L\"c:\\\\windows\\\\system32\\\\cmd.exe /c dir\"\n#else\n#define _OS_COMMAND L\"/usr/bin/ls -la\"\n#endif\n\n#ifdef _WIN32\n#define POPEN _wpopen\n#define PCLOSE _pclose\n#else\n#define POPEN popen\n#define PCLOSE pclose\n#endif\n\nstatic const int STATIC_CONST_TRUE = 1;\nstatic const int STATIC_CONST_FALSE = 0;\n\nstatic void f_ltfwgoqe()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100] = L\"\";\n    data = dataBuffer;\n    if(STATIC_CONST_FALSE)\n    {\n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        wcscpy(data, _OS_COMMAND);\n    }\n    {\n        FILE *pipe;\n        pipe = POPEN(data, L\"wb\");\n        if (pipe != NULL)\n        {\n            PCLOSE(pipe);\n        }\n    }\n}\n\nstatic void f_gwnrkkvd()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100] = L\"\";\n    data = dataBuffer;\n    if(STATIC_CONST_TRUE)\n    {\n        wcscpy(data, _OS_COMMAND);\n    }\n    {\n        FILE *pipe;\n        pipe = POPEN(data, L\"wb\");\n        if (pipe != NULL)\n        {\n            PCLOSE(pipe);\n        }\n    }\n}\n\nvoid f_hpwymzmi()\n{\n    f_ltfwgoqe();\n    f_gwnrkkvd();\n}\n\nint main(int argc, char * argv[])\n{\n    srand( (unsigned)time(NULL) );\n    f_hpwymzmi();\n    return 0;\n}\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402792,
+    "original_file": "testcases/CWE426_Untrusted_Search_Path/CWE426_Untrusted_Search_Path__wchar_t_popen_04.c",
+    "RELATED_CWE": [
+      "CWE-22",
+      "CWE-59",
+      "CWE-552"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-426"
+    ],
+    "code": "#include \"std_testcase.h\"\n\n#include <wchar.h>\n#ifdef _WIN32\n#define _OS_COMMAND L\"cmd.exe /c dir\"\n#else\n#define _OS_COMMAND L\"ls -la\"\n#endif\n\n#ifdef _WIN32\n#define POPEN _wpopen\n#define PCLOSE _pclose\n#else\n#define POPEN popen\n#define PCLOSE pclose\n#endif\n\nstatic const int STATIC_CONST_TRUE = 1;\nstatic const int STATIC_CONST_FALSE = 0;\n\nvoid f_pjnkazkr()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100] = L\"\";\n    data = dataBuffer;\n    if(STATIC_CONST_TRUE)\n    {\n        wcscpy(data, _OS_COMMAND);\n    }\n    {\n        FILE *pipe;\n        pipe = POPEN(data, L\"wb\");\n        if (pipe != NULL)\n        {\n            PCLOSE(pipe);\n        }\n    }\n}\n\nint main(int argc, char * argv[])\n{\n    srand( (unsigned)time(NULL) );\n    f_pjnkazkr();\n    return 0;\n}\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402793,
+    "original_file": "testcases/CWE426_Untrusted_Search_Path/CWE426_Untrusted_Search_Path__wchar_t_popen_04.c",
+    "RELATED_CWE": [
+      "CWE-22",
+      "CWE-59",
+      "CWE-552"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-426"
+    ],
+    "code": "#include \"std_testcase.h\"\n\n#include <wchar.h>\n#ifdef _WIN32\n\n#define _OS_COMMAND L\"c:\\\\windows\\\\system32\\\\cmd.exe /c dir\"\n#else\n#define _OS_COMMAND L\"/usr/bin/ls -la\"\n#endif\n\n#ifdef _WIN32\n#define POPEN _wpopen\n#define PCLOSE _pclose\n#else\n#define POPEN popen\n#define PCLOSE pclose\n#endif\n\nstatic int staticTrue = 1;\nstatic int staticFalse = 0;\n\nstatic void f_jmoevskh()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100] = L\"\";\n    data = dataBuffer;\n    if(staticFalse)\n    {\n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        wcscpy(data, _OS_COMMAND);\n    }\n    {\n        FILE *pipe;\n        pipe = POPEN(data, L\"wb\");\n        if (pipe != NULL)\n        {\n            PCLOSE(pipe);\n        }\n    }\n}\n\nstatic void f_zsxisdpl()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100] = L\"\";\n    data = dataBuffer;\n    if(staticTrue)\n    {\n        wcscpy(data, _OS_COMMAND);\n    }\n    {\n        FILE *pipe;\n        pipe = POPEN(data, L\"wb\");\n        if (pipe != NULL)\n        {\n            PCLOSE(pipe);\n        }\n    }\n}\n\nvoid f_nrorolsw()\n{\n    f_jmoevskh();\n    f_zsxisdpl();\n}\n\nint main(int argc, char * argv[])\n{\n    srand( (unsigned)time(NULL) );\n    f_nrorolsw();\n    return 0;\n}\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402794,
+    "original_file": "testcases/CWE426_Untrusted_Search_Path/CWE426_Untrusted_Search_Path__wchar_t_popen_05.c",
+    "RELATED_CWE": [
+      "CWE-22",
+      "CWE-59",
+      "CWE-552"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-426"
+    ],
+    "code": "#include \"std_testcase.h\"\n\n#include <wchar.h>\n#ifdef _WIN32\n#define _OS_COMMAND L\"cmd.exe /c dir\"\n#else\n#define _OS_COMMAND L\"ls -la\"\n#endif\n\n#ifdef _WIN32\n#define POPEN _wpopen\n#define PCLOSE _pclose\n#else\n#define POPEN popen\n#define PCLOSE pclose\n#endif\n\nstatic int staticTrue = 1;\nstatic int staticFalse = 0;\n\nvoid f_setbuzxk()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100] = L\"\";\n    data = dataBuffer;\n    if(staticTrue)\n    {\n        wcscpy(data, _OS_COMMAND);\n    }\n    {\n        FILE *pipe;\n        pipe = POPEN(data, L\"wb\");\n        if (pipe != NULL)\n        {\n            PCLOSE(pipe);\n        }\n    }\n}\n\nint main(int argc, char * argv[])\n{\n    srand( (unsigned)time(NULL) );\n    f_setbuzxk();\n    return 0;\n}\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402795,
+    "original_file": "testcases/CWE426_Untrusted_Search_Path/CWE426_Untrusted_Search_Path__wchar_t_popen_05.c",
+    "RELATED_CWE": [
+      "CWE-22",
+      "CWE-59",
+      "CWE-552"
+    ]
+  }
+]

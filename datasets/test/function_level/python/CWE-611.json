@@ -1,0 +1,98 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "def parse_xml_config(xml_data: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)\n    root = etree.fromstring(xml_data, parser=parser)\n    config = {}\n    for item in root.findall('setting'):\n        key = item.get('name')\n        value = item.text\n        config[key] = value\n    return config",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": "151776",
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "def parse_xml_config(xml_data: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(xml_data)\n    config = {}\n    for item in root.findall('setting'):\n        key = item.get('name')\n        value = item.text\n        config[key] = value\n    return config",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": "151777",
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "from lxml import etree\n\ndef parse_xml_lxml(xml_data: str):\n    try:\n        root = etree.fromstring(xml_data)\n\n        config = {}\n        for item in root.xpath('//setting'):\n            key = item.get('name')\n            value = item.text\n            config[key] = value\n        return config\n    except Exception as e:\n        print(f\"Unexpected error: {e}\")\n    return {}",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": "151778",
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "from lxml import etree\n\ndef parse_xml_lxml(xml_data: str):\n    try:\n        parser = etree.XMLParser(resolve_entities=False, no_network=True)\n        root = etree.fromstring(xml_data, parser=parser)\n\n        config = {}\n        for item in root.xpath('//setting'):\n            key = item.get('name')\n            value = item.text\n            config[key] = value\n        return config\n    except etree.XMLSyntaxError as e:\n        print(f\"XML syntax error: {e}\")\n    except etree.DocumentInvalid as e:\n        print(f\"XML validation error: {e}\")\n    except Exception as e:\n        print(f\"Unexpected error: {e}\")\n    return {}",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": "151779",
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "from xml.dom.minidom import parseString\n\ndef parse_xml_minidom(xml_data: str):\n    dom = parseString(xml_data)\n    config = {}\n    for item in dom.getElementsByTagName('setting'):\n        key = item.getAttribute('name')\n        value = item.firstChild.nodeValue\n        config[key] = value\n    return config",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": "151780",
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "import defusedxml.ElementTree as ET\n\ndef parse_xml_minidom(xml_data: str):\n    root = ET.fromstring(xml_data)\n    config = {}\n    for item in root.findall('setting'):\n        key = item.get('name')\n        value = item.text\n        config[key] = value\n    return config",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": "151781",
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  }
+]

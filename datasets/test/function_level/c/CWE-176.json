@@ -1,0 +1,226 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n#include \"_Improper_Handling_of_Unicode_Encoding__w32_82.h\"\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_ncoapnib()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\");\n    _Improper_Handling_of_Unicode_Encoding__w32_82_base* baseObject = new _Improper_Handling_of_Unicode_Encoding__w32_82_G2B;\n    baseObject->action(data);\n    delete baseObject;\n}\n\n\nstatic void f_mdtbyiqk()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    _Improper_Handling_of_Unicode_Encoding__w32_82_base* baseObject = new _Improper_Handling_of_Unicode_Encoding__w32_82_B2G;\n    baseObject->action(data);\n    delete baseObject;\n}\n\nvoid f_enmgbmzi()\n{\n    f_ncoapnib();\n    f_mdtbyiqk();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_enmgbmzi();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401054,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_82a.cpp",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n#include \"_Improper_Handling_of_Unicode_Encoding__w32_82.h\"\n\nnamespace _A_namespace\n{\n\n\nvoid f_kfuvxqtf()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    _Improper_Handling_of_Unicode_Encoding__w32_82_base* baseObject = new _Improper_Handling_of_Unicode_Encoding__w32_82_;\n    baseObject->action(data);\n    delete baseObject;\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_kfuvxqtf();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401055,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_82a.cpp",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\n\n\nvoid _Improper_Handling_of_Unicode_Encoding__w32_63b_G2BSink(wchar_t * * data);\n\nstatic void f_ttigpqbd()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\");\n    _Improper_Handling_of_Unicode_Encoding__w32_63b_G2BSink(&data);\n}\n\n\nvoid _Improper_Handling_of_Unicode_Encoding__w32_63b_B2GSink(wchar_t * * data);\n\nstatic void f_wrszumfy()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    _Improper_Handling_of_Unicode_Encoding__w32_63b_B2GSink(&data);\n}\n\nvoid f_fundnkpf()\n{\n    f_ttigpqbd();\n    f_wrszumfy();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_fundnkpf();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401056,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_63a.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\n\nvoid _Improper_Handling_of_Unicode_Encoding__w32_63b_Sink(wchar_t * * dataPtr);\n\nvoid f_jlmonsqq()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    _Improper_Handling_of_Unicode_Encoding__w32_63b_Sink(&data);\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_jlmonsqq();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401057,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_63a.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\n\n\nvoid _Improper_Handling_of_Unicode_Encoding__w32_54b_G2BSink(wchar_t * data);\n\nstatic void f_xavhjwuj()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\");\n    _Improper_Handling_of_Unicode_Encoding__w32_54b_G2BSink(data);\n}\n\n\nvoid _Improper_Handling_of_Unicode_Encoding__w32_54b_B2GSink(wchar_t * data);\n\nstatic void f_djnhmujc()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    _Improper_Handling_of_Unicode_Encoding__w32_54b_B2GSink(data);\n}\n\nvoid f_bulgqicq()\n{\n    f_xavhjwuj();\n    f_djnhmujc();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_bulgqicq();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401058,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_54a.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\n\nvoid _Improper_Handling_of_Unicode_Encoding__w32_54b_Sink(wchar_t * data);\n\nvoid f_bpcqatxs()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    _Improper_Handling_of_Unicode_Encoding__w32_54b_Sink(data);\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_bpcqatxs();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401059,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_54a.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\n\n\nvoid _Improper_Handling_of_Unicode_Encoding__w32_64b_G2BSink(void * dataVoidPtr);\n\nstatic void f_haanbqnv()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\");\n    _Improper_Handling_of_Unicode_Encoding__w32_64b_G2BSink(&data);\n}\n\n\nvoid _Improper_Handling_of_Unicode_Encoding__w32_64b_B2GSink(void * dataVoidPtr);\n\nstatic void f_datelsrr()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    _Improper_Handling_of_Unicode_Encoding__w32_64b_B2GSink(&data);\n}\n\nvoid f_jwdkuscs()\n{\n    f_haanbqnv();\n    f_datelsrr();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_jwdkuscs();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401066,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_64a.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\n\nvoid _Improper_Handling_of_Unicode_Encoding__w32_64b_Sink(void * dataVoidPtr);\n\nvoid f_aqefmlka()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    _Improper_Handling_of_Unicode_Encoding__w32_64b_Sink(&data);\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_aqefmlka();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401067,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_64a.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n#include \"_Improper_Handling_of_Unicode_Encoding__w32_81.h\"\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_lrmtofyl()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\");\n    const _Improper_Handling_of_Unicode_Encoding__w32_81_base& baseObject = _Improper_Handling_of_Unicode_Encoding__w32_81_G2B();\n    baseObject.action(data);\n}\n\n\nstatic void f_eukayyik()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    const _Improper_Handling_of_Unicode_Encoding__w32_81_base& baseObject = _Improper_Handling_of_Unicode_Encoding__w32_81_B2G();\n    baseObject.action(data);\n}\n\nvoid f_kwkdbejk()\n{\n    f_lrmtofyl();\n    f_eukayyik();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_kwkdbejk();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401068,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_81a.cpp",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n#include \"_Improper_Handling_of_Unicode_Encoding__w32_81.h\"\n\nnamespace _A_namespace\n{\n\n\nvoid f_ikcoakwo()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    const _Improper_Handling_of_Unicode_Encoding__w32_81_base& baseObject = _Improper_Handling_of_Unicode_Encoding__w32_81_();\n    baseObject.action(data);\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ikcoakwo();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401069,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_81a.cpp",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n#include \"_Improper_Handling_of_Unicode_Encoding__w32_84.h\"\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_akddjoje()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    _Improper_Handling_of_Unicode_Encoding__w32_84_G2B * G2BObject = new _Improper_Handling_of_Unicode_Encoding__w32_84_G2B(data);\n    delete G2BObject;\n}\n\n\nstatic void f_mlgkthyu()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    _Improper_Handling_of_Unicode_Encoding__w32_84_B2G * B2GObject = new _Improper_Handling_of_Unicode_Encoding__w32_84_B2G(data);\n    delete B2GObject;\n}\n\nvoid f_hkerdxmi()\n{\n    f_akddjoje();\n    f_mlgkthyu();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_hkerdxmi();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401070,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_84a.cpp",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n#include \"_Improper_Handling_of_Unicode_Encoding__w32_84.h\"\n\nnamespace _A_namespace\n{\n\n\nvoid f_adirrcxd()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    _Improper_Handling_of_Unicode_Encoding__w32_84_ * Object = new _Improper_Handling_of_Unicode_Encoding__w32_84_(data);\n    delete Object;\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_adirrcxd();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401071,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_84a.cpp",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n#include \"_Improper_Handling_of_Unicode_Encoding__w32_83.h\"\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_dvcofeub()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    _Improper_Handling_of_Unicode_Encoding__w32_83_G2B G2BObject(data);\n}\n\n\nstatic void f_nqhpcmyr()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    _Improper_Handling_of_Unicode_Encoding__w32_83_B2G B2GObject(data);\n}\n\nvoid f_imxmqznm()\n{\n    f_dvcofeub();\n    f_nqhpcmyr();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_imxmqznm();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401072,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_83a.cpp",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n#include \"_Improper_Handling_of_Unicode_Encoding__w32_83.h\"\n\nnamespace _A_namespace\n{\n\n\nvoid f_pdjhnoqz()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    _Improper_Handling_of_Unicode_Encoding__w32_83_ Object(data);\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_pdjhnoqz();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401073,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_83a.cpp",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  }
+]

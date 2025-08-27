@@ -1,0 +1,258 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-338"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <wincrypt.h>\n#pragma comment(lib, \"advapi32.lib\")\n\n\nstatic int staticReturnsTrue()\n{\n    return 1;\n}\n\nstatic int staticReturnsFalse()\n{\n    return 0;\n}\n\n\n\n\nstatic void f_sstaavnp()\n{\n    if(staticReturnsFalse())\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            HCRYPTPROV hCryptProv;\n            int data;\n            if (!CryptAcquireContextW(&hCryptProv, 0, 0, PROV_RSA_FULL, 0))\n            {\n                exit(1);\n            }\n            \n            if (!CryptGenRandom(hCryptProv, sizeof(data), (BYTE *) &data))\n            {\n                CryptReleaseContext(hCryptProv, 0);\n                exit(1);\n            }\n            if (hCryptProv)\n            {\n                CryptReleaseContext(hCryptProv, 0);\n            }\n            printIntLine(data);\n        }\n    }\n}\n\n\nstatic void f_jduvogpp()\n{\n    if(staticReturnsTrue())\n    {\n        {\n            HCRYPTPROV hCryptProv;\n            int data;\n            if (!CryptAcquireContextW(&hCryptProv, 0, 0, PROV_RSA_FULL, 0))\n            {\n                exit(1);\n            }\n            \n            if (!CryptGenRandom(hCryptProv, sizeof(data), (BYTE *) &data))\n            {\n                CryptReleaseContext(hCryptProv, 0);\n                exit(1);\n            }\n            if (hCryptProv)\n            {\n                CryptReleaseContext(hCryptProv, 0);\n            }\n            printIntLine(data);\n        }\n    }\n}\n\nvoid f_ywahdgsh()\n{\n    f_sstaavnp();\n    f_jduvogpp();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ywahdgsh();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402876,
+    "original_file": "testcases/CWE338_Weak_PRNG/CWE338_Weak_PRNG__w32_08.c",
+    "RELATED_CWE": [
+      "CWE-347",
+      "CWE-798",
+      "CWE-522"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-338"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <wincrypt.h>\n#pragma comment(lib, \"advapi32.lib\")\n\n\nstatic int staticReturnsTrue()\n{\n    return 1;\n}\n\nstatic int staticReturnsFalse()\n{\n    return 0;\n}\n\n\nvoid f_ltqetyae()\n{\n    if(staticReturnsTrue())\n    {\n        {\n            \n            int data = rand();\n            printIntLine(data);\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ltqetyae();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402877,
+    "original_file": "testcases/CWE338_Weak_PRNG/CWE338_Weak_PRNG__w32_08.c",
+    "RELATED_CWE": [
+      "CWE-347",
+      "CWE-798",
+      "CWE-522"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-338"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <wincrypt.h>\n#pragma comment(lib, \"advapi32.lib\")\n\n\n\n\nstatic void f_adezcgev()\n{\n    switch(5)\n    {\n    case 6:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    default:\n    {\n        HCRYPTPROV hCryptProv;\n        int data;\n        if (!CryptAcquireContextW(&hCryptProv, 0, 0, PROV_RSA_FULL, 0))\n        {\n            exit(1);\n        }\n        \n        if (!CryptGenRandom(hCryptProv, sizeof(data), (BYTE *) &data))\n        {\n            CryptReleaseContext(hCryptProv, 0);\n            exit(1);\n        }\n        if (hCryptProv)\n        {\n            CryptReleaseContext(hCryptProv, 0);\n        }\n        printIntLine(data);\n    }\n    break;\n    }\n}\n\n\nstatic void f_kgmmrtft()\n{\n    switch(6)\n    {\n    case 6:\n    {\n        HCRYPTPROV hCryptProv;\n        int data;\n        if (!CryptAcquireContextW(&hCryptProv, 0, 0, PROV_RSA_FULL, 0))\n        {\n            exit(1);\n        }\n        \n        if (!CryptGenRandom(hCryptProv, sizeof(data), (BYTE *) &data))\n        {\n            CryptReleaseContext(hCryptProv, 0);\n            exit(1);\n        }\n        if (hCryptProv)\n        {\n            CryptReleaseContext(hCryptProv, 0);\n        }\n        printIntLine(data);\n    }\n    break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\nvoid f_irvsocbo()\n{\n    f_adezcgev();\n    f_kgmmrtft();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_irvsocbo();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402878,
+    "original_file": "testcases/CWE338_Weak_PRNG/CWE338_Weak_PRNG__w32_15.c",
+    "RELATED_CWE": [
+      "CWE-347",
+      "CWE-798",
+      "CWE-522"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-338"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <wincrypt.h>\n#pragma comment(lib, \"advapi32.lib\")\n\n\nvoid f_rcsaurah()\n{\n    switch(6)\n    {\n    case 6:\n    {\n        \n        int data = rand();\n        printIntLine(data);\n    }\n    break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_rcsaurah();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402879,
+    "original_file": "testcases/CWE338_Weak_PRNG/CWE338_Weak_PRNG__w32_15.c",
+    "RELATED_CWE": [
+      "CWE-347",
+      "CWE-798",
+      "CWE-522"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-338"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <wincrypt.h>\n#pragma comment(lib, \"advapi32.lib\")\n\n\n\n\nstatic void f_kvpcpxtk()\n{\n    if(globalReturnsTrueOrFalse())\n    {\n        {\n            HCRYPTPROV hCryptProv;\n            int data;\n            if (!CryptAcquireContextW(&hCryptProv, 0, 0, PROV_RSA_FULL, 0))\n            {\n                exit(1);\n            }\n            \n            if (!CryptGenRandom(hCryptProv, sizeof(data), (BYTE *) &data))\n            {\n                CryptReleaseContext(hCryptProv, 0);\n                exit(1);\n            }\n            if (hCryptProv)\n            {\n                CryptReleaseContext(hCryptProv, 0);\n            }\n            printIntLine(data);\n        }\n    }\n    else\n    {\n        {\n            HCRYPTPROV hCryptProv;\n            int data;\n            if (!CryptAcquireContextW(&hCryptProv, 0, 0, PROV_RSA_FULL, 0))\n            {\n                exit(1);\n            }\n            \n            if (!CryptGenRandom(hCryptProv, sizeof(data), (BYTE *) &data))\n            {\n                CryptReleaseContext(hCryptProv, 0);\n                exit(1);\n            }\n            if (hCryptProv)\n            {\n                CryptReleaseContext(hCryptProv, 0);\n            }\n            printIntLine(data);\n        }\n    }\n}\n\nvoid f_vclobwxs()\n{\n    f_kvpcpxtk();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_vclobwxs();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402880,
+    "original_file": "testcases/CWE338_Weak_PRNG/CWE338_Weak_PRNG__w32_12.c",
+    "RELATED_CWE": [
+      "CWE-347",
+      "CWE-798",
+      "CWE-522"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-338"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <wincrypt.h>\n#pragma comment(lib, \"advapi32.lib\")\n\n\nvoid f_stlqoufs()\n{\n    if(globalReturnsTrueOrFalse())\n    {\n        {\n            \n            int data = rand();\n            printIntLine(data);\n        }\n    }\n    else\n    {\n        {\n            HCRYPTPROV hCryptProv;\n            int data;\n            if (!CryptAcquireContextW(&hCryptProv, 0, 0, PROV_RSA_FULL, 0))\n            {\n                exit(1);\n            }\n            \n            if (!CryptGenRandom(hCryptProv, sizeof(data), (BYTE *) &data))\n            {\n                CryptReleaseContext(hCryptProv, 0);\n                exit(1);\n            }\n            if (hCryptProv)\n            {\n                CryptReleaseContext(hCryptProv, 0);\n            }\n            printIntLine(data);\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_stlqoufs();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402881,
+    "original_file": "testcases/CWE338_Weak_PRNG/CWE338_Weak_PRNG__w32_12.c",
+    "RELATED_CWE": [
+      "CWE-347",
+      "CWE-798",
+      "CWE-522"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-338"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <wincrypt.h>\n#pragma comment(lib, \"advapi32.lib\")\n\n\nstatic int staticTrue = 1; \nstatic int staticFalse = 0; \n\n\n\n\nstatic void f_ubhglrsp()\n{\n    if(staticFalse)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            HCRYPTPROV hCryptProv;\n            int data;\n            if (!CryptAcquireContextW(&hCryptProv, 0, 0, PROV_RSA_FULL, 0))\n            {\n                exit(1);\n            }\n            \n            if (!CryptGenRandom(hCryptProv, sizeof(data), (BYTE *) &data))\n            {\n                CryptReleaseContext(hCryptProv, 0);\n                exit(1);\n            }\n            if (hCryptProv)\n            {\n                CryptReleaseContext(hCryptProv, 0);\n            }\n            printIntLine(data);\n        }\n    }\n}\n\n\nstatic void f_oiacctus()\n{\n    if(staticTrue)\n    {\n        {\n            HCRYPTPROV hCryptProv;\n            int data;\n            if (!CryptAcquireContextW(&hCryptProv, 0, 0, PROV_RSA_FULL, 0))\n            {\n                exit(1);\n            }\n            \n            if (!CryptGenRandom(hCryptProv, sizeof(data), (BYTE *) &data))\n            {\n                CryptReleaseContext(hCryptProv, 0);\n                exit(1);\n            }\n            if (hCryptProv)\n            {\n                CryptReleaseContext(hCryptProv, 0);\n            }\n            printIntLine(data);\n        }\n    }\n}\n\nvoid f_krolgniq()\n{\n    f_ubhglrsp();\n    f_oiacctus();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_krolgniq();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402882,
+    "original_file": "testcases/CWE338_Weak_PRNG/CWE338_Weak_PRNG__w32_05.c",
+    "RELATED_CWE": [
+      "CWE-347",
+      "CWE-798",
+      "CWE-522"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-338"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <wincrypt.h>\n#pragma comment(lib, \"advapi32.lib\")\n\n\nstatic int staticTrue = 1; \nstatic int staticFalse = 0; \n\n\nvoid f_vhjrurrg()\n{\n    if(staticTrue)\n    {\n        {\n            \n            int data = rand();\n            printIntLine(data);\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_vhjrurrg();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402883,
+    "original_file": "testcases/CWE338_Weak_PRNG/CWE338_Weak_PRNG__w32_05.c",
+    "RELATED_CWE": [
+      "CWE-347",
+      "CWE-798",
+      "CWE-522"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-338"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <wincrypt.h>\n#pragma comment(lib, \"advapi32.lib\")\n\n\nstatic const int STATIC_CONST_TRUE = 1; \nstatic const int STATIC_CONST_FALSE = 0; \n\n\n\n\nstatic void f_vajbfbce()\n{\n    if(STATIC_CONST_FALSE)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            HCRYPTPROV hCryptProv;\n            int data;\n            if (!CryptAcquireContextW(&hCryptProv, 0, 0, PROV_RSA_FULL, 0))\n            {\n                exit(1);\n            }\n            \n            if (!CryptGenRandom(hCryptProv, sizeof(data), (BYTE *) &data))\n            {\n                CryptReleaseContext(hCryptProv, 0);\n                exit(1);\n            }\n            if (hCryptProv)\n            {\n                CryptReleaseContext(hCryptProv, 0);\n            }\n            printIntLine(data);\n        }\n    }\n}\n\n\nstatic void f_agaayluc()\n{\n    if(STATIC_CONST_TRUE)\n    {\n        {\n            HCRYPTPROV hCryptProv;\n            int data;\n            if (!CryptAcquireContextW(&hCryptProv, 0, 0, PROV_RSA_FULL, 0))\n            {\n                exit(1);\n            }\n            \n            if (!CryptGenRandom(hCryptProv, sizeof(data), (BYTE *) &data))\n            {\n                CryptReleaseContext(hCryptProv, 0);\n                exit(1);\n            }\n            if (hCryptProv)\n            {\n                CryptReleaseContext(hCryptProv, 0);\n            }\n            printIntLine(data);\n        }\n    }\n}\n\nvoid f_lsetgqut()\n{\n    f_vajbfbce();\n    f_agaayluc();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_lsetgqut();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402884,
+    "original_file": "testcases/CWE338_Weak_PRNG/CWE338_Weak_PRNG__w32_04.c",
+    "RELATED_CWE": [
+      "CWE-347",
+      "CWE-798",
+      "CWE-522"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-338"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <wincrypt.h>\n#pragma comment(lib, \"advapi32.lib\")\n\n\nstatic const int STATIC_CONST_TRUE = 1; \nstatic const int STATIC_CONST_FALSE = 0; \n\n\nvoid f_xstitfhc()\n{\n    if(STATIC_CONST_TRUE)\n    {\n        {\n            \n            int data = rand();\n            printIntLine(data);\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_xstitfhc();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402885,
+    "original_file": "testcases/CWE338_Weak_PRNG/CWE338_Weak_PRNG__w32_04.c",
+    "RELATED_CWE": [
+      "CWE-347",
+      "CWE-798",
+      "CWE-522"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-338"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <wincrypt.h>\n#pragma comment(lib, \"advapi32.lib\")\n\n\nstatic const int STATIC_CONST_FIVE = 5;\n\n\n\n\nstatic void f_bwxjajpg()\n{\n    if(STATIC_CONST_FIVE!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            HCRYPTPROV hCryptProv;\n            int data;\n            if (!CryptAcquireContextW(&hCryptProv, 0, 0, PROV_RSA_FULL, 0))\n            {\n                exit(1);\n            }\n            \n            if (!CryptGenRandom(hCryptProv, sizeof(data), (BYTE *) &data))\n            {\n                CryptReleaseContext(hCryptProv, 0);\n                exit(1);\n            }\n            if (hCryptProv)\n            {\n                CryptReleaseContext(hCryptProv, 0);\n            }\n            printIntLine(data);\n        }\n    }\n}\n\n\nstatic void f_bhwwssjj()\n{\n    if(STATIC_CONST_FIVE==5)\n    {\n        {\n            HCRYPTPROV hCryptProv;\n            int data;\n            if (!CryptAcquireContextW(&hCryptProv, 0, 0, PROV_RSA_FULL, 0))\n            {\n                exit(1);\n            }\n            \n            if (!CryptGenRandom(hCryptProv, sizeof(data), (BYTE *) &data))\n            {\n                CryptReleaseContext(hCryptProv, 0);\n                exit(1);\n            }\n            if (hCryptProv)\n            {\n                CryptReleaseContext(hCryptProv, 0);\n            }\n            printIntLine(data);\n        }\n    }\n}\n\nvoid f_wzdlloop()\n{\n    f_bwxjajpg();\n    f_bhwwssjj();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_wzdlloop();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402886,
+    "original_file": "testcases/CWE338_Weak_PRNG/CWE338_Weak_PRNG__w32_06.c",
+    "RELATED_CWE": [
+      "CWE-347",
+      "CWE-798",
+      "CWE-522"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-338"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <wincrypt.h>\n#pragma comment(lib, \"advapi32.lib\")\n\n\nstatic const int STATIC_CONST_FIVE = 5;\n\n\nvoid f_blojzlsz()\n{\n    if(STATIC_CONST_FIVE==5)\n    {\n        {\n            \n            int data = rand();\n            printIntLine(data);\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_blojzlsz();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402887,
+    "original_file": "testcases/CWE338_Weak_PRNG/CWE338_Weak_PRNG__w32_06.c",
+    "RELATED_CWE": [
+      "CWE-347",
+      "CWE-798",
+      "CWE-522"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-338"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <wincrypt.h>\n#pragma comment(lib, \"advapi32.lib\")\n\n\nstatic int staticFive = 5;\n\n\n\n\nstatic void f_pscfipiu()\n{\n    if(staticFive!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            HCRYPTPROV hCryptProv;\n            int data;\n            if (!CryptAcquireContextW(&hCryptProv, 0, 0, PROV_RSA_FULL, 0))\n            {\n                exit(1);\n            }\n            \n            if (!CryptGenRandom(hCryptProv, sizeof(data), (BYTE *) &data))\n            {\n                CryptReleaseContext(hCryptProv, 0);\n                exit(1);\n            }\n            if (hCryptProv)\n            {\n                CryptReleaseContext(hCryptProv, 0);\n            }\n            printIntLine(data);\n        }\n    }\n}\n\n\nstatic void f_yqenkjzc()\n{\n    if(staticFive==5)\n    {\n        {\n            HCRYPTPROV hCryptProv;\n            int data;\n            if (!CryptAcquireContextW(&hCryptProv, 0, 0, PROV_RSA_FULL, 0))\n            {\n                exit(1);\n            }\n            \n            if (!CryptGenRandom(hCryptProv, sizeof(data), (BYTE *) &data))\n            {\n                CryptReleaseContext(hCryptProv, 0);\n                exit(1);\n            }\n            if (hCryptProv)\n            {\n                CryptReleaseContext(hCryptProv, 0);\n            }\n            printIntLine(data);\n        }\n    }\n}\n\nvoid f_apsxfuee()\n{\n    f_pscfipiu();\n    f_yqenkjzc();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_apsxfuee();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402888,
+    "original_file": "testcases/CWE338_Weak_PRNG/CWE338_Weak_PRNG__w32_07.c",
+    "RELATED_CWE": [
+      "CWE-347",
+      "CWE-798",
+      "CWE-522"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-338"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <wincrypt.h>\n#pragma comment(lib, \"advapi32.lib\")\n\n\nstatic int staticFive = 5;\n\n\nvoid f_hzicpwcf()\n{\n    if(staticFive==5)\n    {\n        {\n            \n            int data = rand();\n            printIntLine(data);\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_hzicpwcf();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402889,
+    "original_file": "testcases/CWE338_Weak_PRNG/CWE338_Weak_PRNG__w32_07.c",
+    "RELATED_CWE": [
+      "CWE-347",
+      "CWE-798",
+      "CWE-522"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-338"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <wincrypt.h>\n#pragma comment(lib, \"advapi32.lib\")\n\n\n\n\nstatic void f_qwmyahze()\n{\n    if(0)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            HCRYPTPROV hCryptProv;\n            int data;\n            if (!CryptAcquireContextW(&hCryptProv, 0, 0, PROV_RSA_FULL, 0))\n            {\n                exit(1);\n            }\n            \n            if (!CryptGenRandom(hCryptProv, sizeof(data), (BYTE *) &data))\n            {\n                CryptReleaseContext(hCryptProv, 0);\n                exit(1);\n            }\n            if (hCryptProv)\n            {\n                CryptReleaseContext(hCryptProv, 0);\n            }\n            printIntLine(data);\n        }\n    }\n}\n\n\nstatic void f_nimgqxfi()\n{\n    if(1)\n    {\n        {\n            HCRYPTPROV hCryptProv;\n            int data;\n            if (!CryptAcquireContextW(&hCryptProv, 0, 0, PROV_RSA_FULL, 0))\n            {\n                exit(1);\n            }\n            \n            if (!CryptGenRandom(hCryptProv, sizeof(data), (BYTE *) &data))\n            {\n                CryptReleaseContext(hCryptProv, 0);\n                exit(1);\n            }\n            if (hCryptProv)\n            {\n                CryptReleaseContext(hCryptProv, 0);\n            }\n            printIntLine(data);\n        }\n    }\n}\n\nvoid f_vgjegilj()\n{\n    f_qwmyahze();\n    f_nimgqxfi();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_vgjegilj();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402890,
+    "original_file": "testcases/CWE338_Weak_PRNG/CWE338_Weak_PRNG__w32_02.c",
+    "RELATED_CWE": [
+      "CWE-347",
+      "CWE-798",
+      "CWE-522"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-338"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <wincrypt.h>\n#pragma comment(lib, \"advapi32.lib\")\n\n\nvoid f_bvmohnpy()\n{\n    if(1)\n    {\n        {\n            \n            int data = rand();\n            printIntLine(data);\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_bvmohnpy();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402891,
+    "original_file": "testcases/CWE338_Weak_PRNG/CWE338_Weak_PRNG__w32_02.c",
+    "RELATED_CWE": [
+      "CWE-347",
+      "CWE-798",
+      "CWE-522"
+    ]
+  }
+]

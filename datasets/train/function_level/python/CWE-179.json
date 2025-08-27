@@ -1,0 +1,1541 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import os\nimport re\nfrom urllib.parse import unquote\n\nvalid_path_pattern = re.compile(r'^[a-zA-Z0-9._/-]+$')\ndef validate_file_path(file_input_path: str) -> bool:\n    if not valid_path_pattern.match(file_input_path):\n        return False\n    # File path is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150588,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ],
+    "human": "Correct. With CWE-179",
+    "reason": "It validates too early using regex, making it vulnerable to encoding and path traversal attacks."
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import os\nimport re\nfrom urllib.parse import unquote\n\nvalid_path_pattern = re.compile(r'^[a-zA-Z0-9._/-]+$')\ndef validate_file_path(file_input_path: str) -> bool:\n    # Canonicalize the file path by decoding URL-encoded characters\n    canonicalized_path = unquote(file_input_path)\n    \n    # Ensure the canonicalized path doesn't contain dangerous components such as '..'\n    if not valid_path_pattern.match(canonicalized_path) or '..' in canonicalized_path:\n        return False\n    \n    # Additional check to disallow absolute file paths (depending on system requirement)\n    if os.path.isabs(canonicalized_path):\n        return False\n\n    # Prevent any further manipulation of filesystem by checking directory traversal attempts\n    real_path = os.path.realpath(canonicalized_path)\n    if \"..\" in real_path.split(os.path.sep) or \".\" in real_path.split(os.path.sep):\n        return False\n    # File path is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150589,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ],
+    "human": "Correct. Without CWE-179"
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import os\nimport re\nfrom urllib.parse import unquote\n\nvalid_path_pattern = re.compile(r'^[a-zA-Z0-9._/-]+$')\ndef check_user_file_path(user_path: str) -> bool:\n    if not valid_path_pattern.match(user_path):\n        return False\n    # File path is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150590,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import os\nimport re\nfrom urllib.parse import unquote\n\nvalid_path_pattern = re.compile(r'^[a-zA-Z0-9._/-]+$')\ndef check_user_file_path(user_path: str) -> bool:\n    # Canonicalize the file path by decoding URL-encoded characters\n    canonicalized_path = unquote(user_path)\n    \n    # Ensure the canonicalized path doesn't contain dangerous components such as '..'\n    if not valid_path_pattern.match(canonicalized_path) or '..' in canonicalized_path:\n        return False\n    \n    # Additional check to disallow absolute file paths (depending on system requirement)\n    if os.path.isabs(canonicalized_path):\n        return False\n\n    # Prevent any further manipulation of filesystem by checking directory traversal attempts\n    real_path = os.path.realpath(canonicalized_path)\n    if \"..\" in real_path.split(os.path.sep) or \".\" in real_path.split(os.path.sep):\n        return False\n    # File path is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150591,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import os\nimport re\nfrom urllib.parse import unquote\n\nvalid_path_pattern = re.compile(r'^[a-zA-Z0-9._/-]+$')\ndef sanitize_file_input(input_file_path: str) -> bool:\n    if not valid_path_pattern.match(input_file_path):\n        return False\n    # File path is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150592,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import os\nimport re\nfrom urllib.parse import unquote\n\nvalid_path_pattern = re.compile(r'^[a-zA-Z0-9._/-]+$')\ndef sanitize_file_input(input_file_path: str) -> bool:\n    # Canonicalize the file path by decoding URL-encoded characters\n    canonicalized_path = unquote(input_file_path)\n    \n    # Ensure the canonicalized path doesn't contain dangerous components such as '..'\n    if not valid_path_pattern.match(canonicalized_path) or '..' in canonicalized_path:\n        return False\n    \n    # Additional check to disallow absolute file paths (depending on system requirement)\n    if os.path.isabs(canonicalized_path):\n        return False\n\n    # Prevent any further manipulation of filesystem by checking directory traversal attempts\n    real_path = os.path.realpath(canonicalized_path)\n    if \"..\" in real_path.split(os.path.sep) or \".\" in real_path.split(os.path.sep):\n        return False\n    # File path is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150593,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import os\nimport re\nfrom urllib.parse import unquote\n\nvalid_user_path_pattern = re.compile(r'^[a-zA-Z0-9._/-]+$')\ndef validate_user_filepath(user_file_path: str) -> bool:\n    if not valid_user_path_pattern.match(user_file_path):\n        return False\n    # File path is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150594,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import os\nimport re\nfrom urllib.parse import unquote\n\nvalid_user_path_pattern = re.compile(r'^[a-zA-Z0-9._/-]+$')\ndef validate_user_filepath(user_file_path: str) -> bool:\n    # Canonicalize the file path by decoding URL-encoded characters\n    canonicalized_user_path = unquote(user_file_path)\n    \n    # Ensure the canonicalized path doesn't contain dangerous components such as '..'\n    if not valid_user_path_pattern.match(canonicalized_user_path) or '..' in canonicalized_user_path:\n        return False\n    \n    # Additional check to disallow absolute file paths (depending on system requirement)\n    if os.path.isabs(canonicalized_user_path):\n        return False\n\n    # Prevent any further manipulation of filesystem by checking directory traversal attempts\n    real_user_path = os.path.realpath(canonicalized_user_path)\n    if \"..\" in real_user_path.split(os.path.sep) or \".\" in real_user_path.split(os.path.sep):\n        return False\n    # File path is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150595,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import os\nimport re\nfrom urllib.parse import unquote\n\nvalid_uploaded_pattern = re.compile(r'^[a-zA-Z0-9._/-]+$')\ndef check_uploaded_filepath(uploaded_path: str) -> bool:\n    if not valid_uploaded_pattern.match(uploaded_path):\n        return False\n    # File path is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150596,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import os\nimport re\nfrom urllib.parse import unquote\n\nvalid_uploaded_pattern = re.compile(r'^[a-zA-Z0-9._/-]+$')\ndef check_uploaded_filepath(uploaded_path: str) -> bool:\n    # Canonicalize the file path by decoding URL-encoded characters\n    canonicalized_uploaded_path = unquote(uploaded_path)\n    \n    # Ensure the canonicalized path doesn't contain dangerous components such as '..'\n    if not valid_uploaded_pattern.match(canonicalized_uploaded_path) or '..' in canonicalized_uploaded_path:\n        return False\n    \n    # Additional check to disallow absolute file paths (depending on system requirement)\n    if os.path.isabs(canonicalized_uploaded_path):\n        return False\n\n    # Prevent any further manipulation of filesystem by checking directory traversal attempts\n    real_uploaded_path = os.path.realpath(canonicalized_uploaded_path)\n    if \"..\" in real_uploaded_path.split(os.path.sep) or \".\" in real_uploaded_path.split(os.path.sep):\n        return False\n    # File path is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150597,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nemail_pattern = re.compile(r\"^[^@]+@[^@]+\\.[^@]+$\")\nBLACKLISTED_DOMAINS = ['.xyz', '.ru']\ndef validate_email(mail: str) -> bool:\n    if not email_pattern.match(mail):\n        return False\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150598,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ],
+    "human": "Correct. With CWE-179",
+    "reason": "It performs validation before decoding, making it vulnerable to encoded bypass attacks and email injection."
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nemail_pattern = re.compile(r\"^[^@]+@[^@]+\\.[^@]+$\")\nBLACKLISTED_DOMAINS = ['.xyz', '.ru']\ndef validate_email(mail: str) -> bool:\n    canonicalized_mail = unquote(mail)\n\n    if not email_pattern.match(canonicalized_mail):\n        return False\n\n    if \"<\" in canonicalized_mail or \">\" in canonicalized_mail or \"(\" in canonicalized_mail:\n        return False\n\n    if any(canonicalized_mail.lower().endswith(domain) for domain in BLACKLISTED_DOMAINS):\n        return False\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150599,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ],
+    "human": "Correct. Without CWE-179"
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import os\nimport re\nfrom urllib.parse import unquote\n\npattern_for_path = re.compile(r'^[a-zA-Z0-9./%-]+$')\ndef validate_upload_path(path_to_file: str) -> bool:\n    if not pattern_for_path.match(path_to_file):\n        return False\n # File path is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150600,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import os\nimport re\nfrom urllib.parse import unquote\n\npattern_for_path = re.compile(r'^[a-zA-Z0-9./%-]+$')\ndef validate_upload_path(path_to_file: str) -> bool:\n    # Canonicalize the file path by decoding URL-encoded characters\n    canonicalized_path = unquote(path_to_file)\n \n    # Ensure the canonicalized path doesn't contain dangerous components such as '..'\n    if not pattern_for_path.match(canonicalized_path) or '..' in canonicalized_path:\n        return False\n\n    # Prevent any further manipulation of filesystem by checking directory traversal attempts\n    real_canon_path = os.path.realpath(canonicalized_path)\n    if \"..\" in real_canon_path.split(os.path.sep) or \".\" in real_canon_path.split(os.path.sep):\n        return False\n # File path is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150601,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import os\nimport re\nfrom urllib.parse import unquote\n\nsafe_path_pattern = re.compile(r'^[a-zA-Z0-9./%-]+$')\ndef check_file_route(user_file: str) -> bool:\n    if not safe_path_pattern.match(user_file):\n        return False\n    # File path is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150602,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import os\nimport re\nfrom urllib.parse import unquote\n\nsafe_path_pattern = re.compile(r'^[a-zA-Z0-9./%-]+$')\ndef check_file_route(user_file: str) -> bool:\n    # Canonicalize the file path by decoding URL-encoded characters\n    canonicalized_route = unquote(user_file)\n \n    # Ensure the canonicalized path doesn't contain dangerous components such as '..'\n    if not safe_path_pattern.match(canonicalized_route) or '..' in canonicalized_route:\n        return False\n\n    # Prevent any further manipulation of filesystem by checking directory traversal attempts\n    real_route = os.path.realpath(canonicalized_route)\n    if \"..\" in real_route.split(os.path.sep) or \".\" in real_route.split(os.path.sep):\n        return False\n    # File path is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150603,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import os\nimport re\nfrom urllib.parse import unquote\n\nvalid_regex = re.compile(r'^[a-zA-Z0-9./%-]+$')\ndef validate_path(file_url: str) -> bool:\n    if not valid_regex.match(file_url):\n        return False\n # File path is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150604,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import os\nimport re\nfrom urllib.parse import unquote\n\nvalid_regex = re.compile(r'^[a-zA-Z0-9./%-]+$')\ndef validate_path(file_url: str) -> bool:\n    # Canonicalize the file path by decoding URL-encoded characters\n    canonical_url = unquote(file_url)\n \n # Ensure the canonicalized path doesn't contain dangerous components such as '..'\n    if not valid_regex.match(canonical_url) or '..' in canonical_url:\n        return False\n\n # Prevent any further manipulation of filesystem by checking directory traversal attempts\n    real_url = os.path.realpath(canonical_url)\n    if \"..\" in real_url.split(os.path.sep) or \".\" in real_url.split(os.path.sep):\n        return False\n # File path is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150605,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import os\nimport re\nfrom urllib.parse import unquote\n\nallowed_route_pattern = re.compile(r'^[a-zA-Z0-9./%-]+$')\ndef inspect_file_route(route: str) -> bool:\n    if not allowed_route_pattern.match(route):\n        return False\n    # File path is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150606,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import os\nimport re\nfrom urllib.parse import unquote\n\nallowed_route_pattern = re.compile(r'^[a-zA-Z0-9./%-]+$')\ndef inspect_file_route(route: str) -> bool:\n    # Canonicalize the file path by decoding URL-encoded characters\n    canonicalized_route = unquote(route)\n\n    # Ensure the canonicalized path doesn't contain dangerous components such as '..'\n    if not allowed_route_pattern.match(canonicalized_route) or '..' in canonicalized_route:\n        return False\n\n    # Prevent any further manipulation of filesystem by checking directory traversal attempts\n    real_route = os.path.realpath(canonicalized_route)\n    if \"..\" in real_route.split(os.path.sep) or \".\" in real_route.split(os.path.sep):\n        return False\n    # File path is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150607,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_query_pattern = re.compile(r\"^[a-zA-Z0-9_=&%.()]+$\")\ndef process_query_param(query_param: str) -> bool:\n    if not valid_query_pattern.match(query_param):\n        return False\n    # Query parameter is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150608,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_query_pattern = re.compile(r\"^[a-zA-Z0-9_=&%.()]+$\")\ndef process_query_param(query_param: str) -> bool:\n    # First, decode any URL-encoded characters\n    canonicalized_param = unquote(query_param)\n\n    # Validate the canonicalized parameter\n    if not valid_query_pattern.match(canonicalized_param):\n        return False\n\n    # Additional security checks to ensure no dangerous characters are present\n    if any(char in canonicalized_param for char in ['<', '>', '\"', \"'\", '{', '}']):\n        return False\n\n    # Ensure no directory traversal attempts are encoded in the parameter\n    if '..' in canonicalized_param:\n        return False\n    # Query parameter is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150609,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_username_pattern = re.compile(r'^[a-zA-Z0-9_%]+$')\ndef process_username(username: str) -> bool:\n    if not valid_username_pattern.match(username):\n        return False\n    # Username is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150610,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_username_pattern = re.compile(r'^[a-zA-Z0-9_%]+$')\ndef process_username(username: str) -> bool:\n    # First, decode any URL-encoded characters\n    canonicalized_username = unquote(username)\n    \n    # Validate the canonicalized username\n    if not valid_username_pattern.match(canonicalized_username):\n        return False\n    \n    # Prevent unnecessary characters that may lead to security issues\n    if any(char in canonicalized_username for char in ['<', '>', '/', '\\\\']):\n        return False\n    \n    # Check if the username consists purely of numbers, which may be suspicious.\n    if canonicalized_username.isdigit():\n        return False\n    # Username is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150611,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_key_pattern = re.compile(r\"^[a-zA-Z0-9_%]+$\")\ndef process_json_key(key_name: str) -> bool:\n    if not valid_key_pattern.match(key_name):\n        return False\n    # Key name is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150612,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_key_pattern = re.compile(r\"^[a-zA-Z0-9_%]+$\")\ndef process_json_key(key_name: str) -> bool:\n    # Decode any URL-encoded characters\n    canonicalized_key = unquote(key_name)\n\n    # Validate the canonicalized key\n    if not valid_key_pattern.match(canonicalized_key):\n        return False\n\n    # Further checks to prevent dangerous inputs\n    if any(char in canonicalized_key for char in ['<', '>', '{', '}', '[', ']', '(', ')']):\n        return False\n    # Key name is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150613,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_email_pattern = re.compile(r\"^[^@]+@[^@]+\\.[^@]+$\")\nRISKY_DOMAINS = ['.xyz', '.ru']\ndef sanitize_email(email: str) -> bool:\n    if not valid_email_pattern.match(email):\n        return False\n    # Email is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150614,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_email_pattern = re.compile(r\"^[^@]+@[^@]+\\.[^@]+$\")\nRISKY_DOMAINS = ['.xyz', '.ru']\ndef sanitize_email(email: str) -> bool:\n    # First, decode any URL-encoded characters\n    canonicalized_email = unquote(email)\n\n    # Validate the canonicalized email\n    if not valid_email_pattern.match(canonicalized_email):\n        return False\n\n    # Check for suspicious characters that could represent attempts to bypass filters\n    if \"<\" in canonicalized_email or \">\" in canonicalized_email or \"(\" in canonicalized_email:\n        return False\n\n    # Optionally, reject any emails from certain risky domains (could be based on business requirements)\n    if any(canonicalized_email.lower().endswith(domain) for domain in RISKY_DOMAINS):\n        return False\n    # Email is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150615,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import os\nimport re\nfrom urllib.parse import unquote\n\nvalid_path_pattern = re.compile(r'^[a-zA-Z0-9._/%-]+$')\ndef process_file_path(file_path: str) -> bool:\n    if not valid_path_pattern.match(file_path):\n        return False\n    # File path is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150616,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import os\nimport re\nfrom urllib.parse import unquote\n\nvalid_path_pattern = re.compile(r'^[a-zA-Z0-9._/%-]+$')\ndef process_file_path(file_path: str) -> bool:\n    # Canonicalize the file path by decoding URL-encoded characters\n    canonicalized_path = unquote(file_path)\n    \n    # Ensure the canonicalized path doesn't contain dangerous components such as '..'\n    if not valid_path_pattern.match(canonicalized_path) or '..' in canonicalized_path:\n        return False\n\n    # Prevent any further manipulation of filesystem by checking directory traversal attempts\n    real_path = os.path.realpath(canonicalized_path)\n    if \"..\" in real_path.split(os.path.sep) or \".\" in real_path.split(os.path.sep):\n        return False\n    # File path is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150617,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nimport unicodedata\n\nvalid_username_pattern = re.compile(r'^[a-zA-Z0-9_-]{3,20}$')\nreserved_words = ['admin', 'root', 'system', 'moderator']\ndef validate_username(username: str) -> bool:\n    if not valid_username_pattern.match(username):\n        return False\n    \n    if username.lower() in reserved_words:\n        return False\n    # Username is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150618,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nimport unicodedata\n\nvalid_username_pattern = re.compile(r'^[a-zA-Z0-9_-]{3,20}$')\nreserved_words = ['admin', 'root', 'system', 'moderator']\ndef validate_username(username: str) -> bool:\n    # First, normalize and trim the username\n    normalized_username = unicodedata.normalize('NFKC', username)\n    trimmed_username = normalized_username.strip()\n    \n    # Then, validate the normalized and trimmed username\n    if not valid_username_pattern.match(trimmed_username):\n        return False\n    \n    # Check for reserved words\n    if trimmed_username.lower() in reserved_words:\n        return False\n    \n    # Additional safety checks\n    \n    # Check for repeating characters (optional, adjust as needed)\n    if re.search(r'(.)\\1{3,}', trimmed_username):\n        return False\n    \n    # Check for offensive words (this is a simple example, real-world implementation would be more comprehensive)\n    offensive_words = ['fuck', 'shit', 'ass']\n    if any(word in trimmed_username.lower() for word in offensive_words):\n        return False\n    \n    # Check for usernames that are all numbers\n    if trimmed_username.isdigit():\n        return False\n    # Username is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150619,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import os\nimport re\nfrom urllib.parse import unquote\n\npermitted_path_pattern = re.compile(r'^[a-zA-Z0-9./%-]+$')\ndef check_user_file_path(uploaded_path: str) -> bool:\n    if not permitted_path_pattern.match(uploaded_path):\n        return False\n    # File path is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150620,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import os\nimport re\nfrom urllib.parse import unquote\n\npermitted_path_pattern = re.compile(r'^[a-zA-Z0-9./%-]+$')\ndef check_user_file_path(uploaded_path: str) -> bool:\n # Canonicalize the file path by decoding URL-encoded characters\n    decoded_uploaded_path = unquote(uploaded_path)\n\n # Ensure the canonicalized path doesn't contain dangerous components such as '..'\n    if not permitted_path_pattern.match(decoded_uploaded_path) or '..' in decoded_uploaded_path:\n        return False\n\n # Prevent any further manipulation of filesystem by checking directory traversal attempts\n    real_user_path = os.path.realpath(decoded_uploaded_path)\n    if \"..\" in real_user_path.split(os.path.sep) or \".\" in real_user_path.split(os.path.sep):\n        return False\n    # File path is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150621,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote_plus\n\nsafe_query_pattern = re.compile(r'^[a-zA-Z0-9\\s\\-_.,!?]+$')\ndef validate_search_query(query: str) -> bool:\n    if not safe_query_pattern.match(query):\n        return False\n    # Query is safe\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150622,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote_plus\n\nsafe_query_pattern = re.compile(r'^[a-zA-Z0-9\\s\\-_.,!?]+$')\ndef validate_search_query(query: str) -> bool:\n    # First, decode and normalize the query\n    decoded_query = unquote_plus(query)\n    normalized_query = ' '.join(decoded_query.split())  # Remove extra whitespace\n    \n    # Then, validate the normalized query\n    if not safe_query_pattern.match(normalized_query):\n        return False\n    \n    # Additional safety checks\n    \n    # Check for SQL injection attempts\n    sql_keywords = ['SELECT', 'INSERT', 'UPDATE', 'DELETE', 'DROP', 'UNION', 'FROM', 'WHERE']\n    if any(keyword in normalized_query.upper() for keyword in sql_keywords):\n        return False\n    \n    # Check for potential XSS attempts\n    if '<' in normalized_query or '>' in normalized_query:\n        return False\n    \n    # Check query length (optional, adjust as needed)\n    if len(normalized_query) > 200:\n        return False\n    # Query is safe\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150623,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nimport idna\n\nemail_pattern = re.compile(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')\ndef validate_email(email: str) -> bool:\n    if not email_pattern.match(email):\n        return False\n    # Email is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150624,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nimport idna\n\nemail_pattern = re.compile(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')\ndef validate_email(email: str) -> bool:\n    # First, normalize the email\n    try:\n        # Split email into local part and domain\n        local_part, domain = email.rsplit('@', 1)\n        \n        # Normalize domain (handles IDN)\n        normalized_domain = idna.encode(domain).decode('ascii')\n        \n        # Reconstruct normalized email\n        normalized_email = f\"{local_part}@{normalized_domain}\"\n    except (ValueError, idna.IDNAError):\n        return False\n    \n    # Then, validate the normalized email\n    if not email_pattern.match(normalized_email):\n        return False\n    \n    # Additional safety checks\n    \n    # Check for multiple @ symbols\n    if email.count('@') != 1:\n        return False\n    \n    # Check local part length\n    if len(local_part) > 64:\n        return False\n    \n    # Check total length\n    if len(normalized_email) > 254:\n        return False\n    \n    # Check for consecutive dots\n    if '..' in local_part:\n        return False\n    # Email is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150625,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom html import unescape\n\nscript_pattern = re.compile(r'<script.*?>.*?</script>', re.IGNORECASE | re.DOTALL)\non_event_pattern = re.compile(r'\\s+on\\w+\\s*=', re.IGNORECASE)\ndef sanitize_html(html_content: str) -> str:\n    # Remove script tags\n    sanitized = script_pattern.sub('', html_content)\n    # Remove on* event attributes\n    sanitized = on_event_pattern.sub(' ', sanitized)\n    return sanitized",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150626,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ],
+    "human": "Correct. With CWE-179",
+    "reason": "It performs early validation on raw HTML, which may allow attackers to bypass the sanitization by encoding malicious content"
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom html import unescape\n\nscript_pattern = re.compile(r'<script.*?>.*?</script>', re.IGNORECASE | re.DOTALL)\non_event_pattern = re.compile(r'\\s+on\\w+\\s*=', re.IGNORECASE)\ndef sanitize_html(html_content: str) -> str:\n    # First, decode HTML entities\n    decoded_content = unescape(html_content)\n    \n    # Then, apply sanitization\n    # Remove script tags\n    sanitized = script_pattern.sub('', decoded_content)\n    # Remove on* event attributes\n    sanitized = on_event_pattern.sub(' ', sanitized)\n    \n    # Additional safety measures\n    # Remove data: and javascript: URLs\n    sanitized = re.sub(r'(data|javascript):', '', sanitized, flags=re.IGNORECASE)\n    \n    # Remove potentially dangerous attributes\n    sanitized = re.sub(r'\\s+(href|src|style)\\s*=\\s*\".*?\"', '', sanitized, flags=re.IGNORECASE)\n    return sanitized",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150627,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ],
+    "human": "Correct. Without CWE-179"
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import os\nimport re\n\nvalid_filename_pattern = re.compile(r'^[a-zA-Z0-9_\\-\\.]+$')\ndef validate_filename(filename: str) -> bool:\n    if not valid_filename_pattern.match(filename):\n        return False\n    # Filename is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150628,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import os\nimport re\n\nvalid_filename_pattern = re.compile(r'^[a-zA-Z0-9_\\-\\.]+$')\ndef validate_filename(filename: str) -> bool:\n    # First, normalize the filename\n    normalized_filename = os.path.normpath(filename)\n    \n    # Then, validate the normalized filename\n    if not valid_filename_pattern.match(normalized_filename):\n        return False\n    \n    # Additional safety checks\n    \n    # Check for directory traversal attempts\n    if '..' in normalized_filename or normalized_filename.startswith('/'):\n        return False\n    \n    # Check for hidden files (optional, depending on requirements)\n    if normalized_filename.startswith('.'):\n        return False\n    \n    # Check filename length (optional, adjust as needed)\n    if len(normalized_filename) > 255:\n        return False\n    # Filename is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150629,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\napproved_query_pattern = re.compile(r\"^[a-zA-Z0-9_=&%.()]+$\")\ndef handle_query_param(query_value: str) -> bool:\n    if not approved_query_pattern.match(query_value):\n        return False\n    # Query parameter is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150630,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\napproved_query_pattern = re.compile(r\"^[a-zA-Z0-9_=&%.()]+$\")\ndef handle_query_param(query_value: str) -> bool:\n    # First, decode any URL-encoded characters\n    decoded_query_value = unquote(query_value)\n\n    # Validate the canonicalized parameter\n    if not approved_query_pattern.match(decoded_query_value):\n        return False\n\n    # Additional security checks to ensure no dangerous characters are present\n    if any(char in decoded_query_value for char in ['<', '>', '\"', \"'\", '{', '}']):\n        return False\n\n    # Ensure no directory traversal attempts are encoded in the parameter\n    if '..' in decoded_query_value:\n        return False\n    # Query parameter is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150631,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nallowed_query_pattern = re.compile(r\"^[a-zA-Z0-9_=&%.()]+$\")\ndef check_query_param(param_input: str) -> bool:\n    if not allowed_query_pattern.match(param_input):\n        return False\n    # Query parameter is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150632,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nallowed_query_pattern = re.compile(r\"^[a-zA-Z0-9_=&%.()]+$\")\ndef check_query_param(param_input: str) -> bool:\n    # First, decode any URL-encoded characters\n    decoded_param = unquote(param_input)\n\n    # Validate the canonicalized parameter\n    if not allowed_query_pattern.match(decoded_param):\n        return False\n\n    # Additional security checks to ensure no dangerous characters are present\n    if any(char in decoded_param for char in ['<', '>', '\"', \"'\", '{', '}']):\n        return False\n\n    # Ensure no directory traversal attempts are encoded in the parameter\n    if '..' in decoded_param:\n        return False\n    # Query parameter is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150633,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nregex_query_pattern = re.compile(r\"^[a-zA-Z0-9_=&%.()]+$\")\ndef validate_query_param(param_value: str) -> bool:\n    if not regex_query_pattern.match(param_value):\n        return False\n    # Query parameter is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150634,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nregex_query_pattern = re.compile(r\"^[a-zA-Z0-9_=&%.()]+$\")\ndef validate_query_param(param_value: str) -> bool:\n    # First, decode any URL-encoded characters\n    decoded_value = unquote(param_value)\n\n    # Validate the canonicalized parameter\n    if not regex_query_pattern.match(decoded_value):\n        return False\n\n    # Additional security checks to ensure no dangerous characters are present\n    if any(char in decoded_value for char in ['<', '>', '\"', \"'\", '{', '}']):\n        return False\n\n    # Ensure no directory traversal attempts are encoded in the parameter\n    if '..' in decoded_value:\n        return False\n    # Query parameter is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150635,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_query_pattern = re.compile(r\"^[a-zA-Z0-9_=&%.()]+$\")\ndef sanitize_query_param(url_param: str) -> bool:\n    if not valid_query_pattern.match(url_param):\n        return False\n    # Query parameter is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150636,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_query_pattern = re.compile(r\"^[a-zA-Z0-9_=&%.()]+$\")\ndef sanitize_query_param(url_param: str) -> bool:\n    # First, decode any URL-encoded characters\n    decoded_param = unquote(url_param)\n\n    # Validate the decoded parameter\n    if not valid_query_pattern.match(decoded_param):\n        return False\n\n    # Additional security checks to ensure no dangerous characters are present\n    if any(char in decoded_param for char in ['<', '>', '\"', \"'\", '{', '}']):\n        return False\n\n    # Ensure no directory traversal attempts are encoded in the parameter\n    if '..' in decoded_param:\n        return False\n    # Query parameter is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150637,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_query_pattern = re.compile(r\"^[a-zA-Z0-9_=&%.()]+$\")\ndef filter_url_param(param_str: str) -> bool:\n    if not valid_query_pattern.match(param_str):\n        return False\n    # Query parameter is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150638,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_query_pattern = re.compile(r\"^[a-zA-Z0-9_=&%.()]+$\")\ndef filter_url_param(param_str: str) -> bool:\n    # First, decode any URL-encoded characters\n    decoded_param = unquote(param_str)\n\n    # Validate the decoded parameter\n    if not valid_query_pattern.match(decoded_param):\n        return False\n\n    # Additional security checks to ensure no dangerous characters are present\n    if any(char in decoded_param for char in ['<', '>', '\"', \"'\", '{', '}']):\n        return False\n\n    # Ensure no directory traversal attempts are encoded in the parameter\n    if '..' in decoded_param:\n        return False\n    # Query parameter is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150639,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_query_pattern = re.compile(r\"^[a-zA-Z0-9_=&%.()]+$\")\ndef validate_query_parameter(param: str) -> bool:\n    if not valid_query_pattern.match(param):\n        return False\n    # Query parameter is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150640,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_query_pattern = re.compile(r\"^[a-zA-Z0-9_=&%.()]+$\")\ndef validate_query_parameter(param: str) -> bool:\n    # First, decode any URL-encoded characters\n    canonicalized_param = unquote(param)\n\n    # Validate the canonicalized parameter\n    if not valid_query_pattern.match(canonicalized_param):\n        return False\n\n    # Additional security checks to ensure no dangerous characters are present\n    if any(char in canonicalized_param for char in ['<', '>', '\"', \"'\", '{', '}']):\n        return False\n\n    # Ensure no directory traversal attempts are encoded in the parameter\n    if '..' in canonicalized_param:\n        return False\n    # Query parameter is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150641,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import os\nimport re\nfrom urllib.parse import unquote\n\nallowed_path_pattern = re.compile(r'^[a-zA-Z0-9./%-]+$')\ndef validate_path_for_upload(user_path: str) -> bool:\n    if not allowed_path_pattern.match(user_path):\n        return False\n # File path is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150642,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import os\nimport re\nfrom urllib.parse import unquote\n\nallowed_path_pattern = re.compile(r'^[a-zA-Z0-9./%-]+$')\ndef validate_path_for_upload(user_path: str) -> bool:\n # Canonicalize the file path by decoding URL-encoded characters\n    canonicalized_user_path = unquote(user_path)\n\n # Ensure the canonicalized path doesn't contain dangerous components such as '..'\n    if not allowed_path_pattern.match(canonicalized_user_path) or '..' in canonicalized_user_path:\n        return False\n\n # Prevent any further manipulation of filesystem by checking directory traversal attempts\n    real_path = os.path.realpath(canonicalized_user_path)\n    if \"..\" in real_path.split(os.path.sep) or \".\" in real_path.split(os.path.sep):\n        return False\n # File path is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150643,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_input_regex = re.compile(r\"^[a-zA-Z0-9_=&%.()]+$\")\ndef validate_query_input(query_input: str) -> bool:\n    if not valid_input_regex.match(query_input):\n        return False\n    # Query parameter is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150644,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_input_regex = re.compile(r\"^[a-zA-Z0-9_=&%.()]+$\")\ndef validate_query_input(query_input: str) -> bool:\n    # First, decode any URL-encoded characters\n    decoded_input = unquote(query_input)\n\n    # Validate the decoded parameter\n    if not valid_input_regex.match(decoded_input):\n        return False\n\n    # Additional security checks to ensure no dangerous characters are present\n    if any(char in decoded_input for char in ['<', '>', '\"', \"'\", '{', '}']):\n        return False\n\n    # Ensure no directory traversal attempts are encoded in the parameter\n    if '..' in decoded_input:\n        return False\n    # Query parameter is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150645,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_query_regex = re.compile(r\"^[a-zA-Z0-9_=&%.()]+$\")\ndef check_request_param(req_param: str) -> bool:\n    if not valid_query_regex.match(req_param):\n        return False\n    # Query parameter is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150646,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_query_regex = re.compile(r\"^[a-zA-Z0-9_=&%.()]+$\")\ndef check_request_param(req_param: str) -> bool:\n    # First, decode any URL-encoded characters\n    canonical_param = unquote(req_param)\n\n    # Validate the canonicalized parameter\n    if not valid_query_regex.match(canonical_param):\n        return False\n\n    # Additional security checks to ensure no dangerous characters are present\n    if any(char in canonical_param for char in ['<', '>', '\"', \"'\", '{', '}']):\n        return False\n\n    # Ensure no directory traversal attempts are encoded in the parameter\n    if '..' in canonical_param:\n        return False\n    # Query parameter is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150647,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_url_pattern = re.compile(r\"^[a-zA-Z0-9_=&%.()]+$\")\ndef validate_url_param(url_param: str) -> bool:\n    if not valid_url_pattern.match(url_param):\n        return False\n    # Query parameter is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150648,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_url_pattern = re.compile(r\"^[a-zA-Z0-9_=&%.()]+$\")\ndef validate_url_param(url_param: str) -> bool:\n    # First, decode any URL-encoded characters\n    canonicalized_param = unquote(url_param)\n\n    # Validate the canonicalized parameter\n    if not valid_url_pattern.match(canonicalized_param):\n        return False\n\n    # Additional security checks to ensure no dangerous characters are present\n    if any(char in canonicalized_param for char in ['<', '>', '\"', \"'\", '{', '}']):\n        return False\n\n    # Ensure no directory traversal attempts are encoded in the parameter\n    if '..' in canonicalized_param:\n        return False\n    # Query parameter is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150649,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_name_pattern = re.compile(r'^[a-zA-Z0-9%]+$')\ndef verify_username(name_input: str) -> bool:\n    if not valid_name_pattern.match(name_input):\n        return False\n    # Username is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150650,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_name_pattern = re.compile(r'^[a-zA-Z0-9%]+$')\ndef verify_username(name_input: str) -> bool:\n    # First, decode any URL-encoded characters\n    decoded_input = unquote(name_input)\n    \n    # Validate the canonicalized username\n    if not valid_name_pattern.match(decoded_input):\n        return False\n    \n    # Prevent unnecessary characters that may lead to security issues\n    if any(char in decoded_input for char in ['<', '>', '/', '\\\\']):\n        return False\n    \n    # Check if the username consists purely of numbers, which may be suspicious.\n    if decoded_input.isdigit():\n        return False\n    # Username is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150651,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_uname_pattern = re.compile(r'^[a-zA-Z0-9%]+$')\ndef check_username(uname: str) -> bool:\n    if not valid_uname_pattern.match(uname):\n        return False\n    # Username is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150652,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_uname_pattern = re.compile(r'^[a-zA-Z0-9%]+$')\ndef check_username(uname: str) -> bool:\n    # First, decode any URL-encoded characters\n    cleaned_username = unquote(uname)\n    \n    # Validate the canonicalized username\n    if not valid_uname_pattern.match(cleaned_username):\n        return False\n    \n    # Prevent unnecessary characters that may lead to security issues\n    if any(char in cleaned_username for char in ['<', '>', '/', '\\\\']):\n        return False\n    \n    # Check if the username consists purely of numbers, which may be suspicious.\n    if cleaned_username.isdigit():\n        return False\n    # Username is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150653,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_user_pattern = re.compile(r'^[a-zA-Z0-9%]+$')\ndef validate_user(uname: str) -> bool:\n    if not valid_user_pattern.match(uname):\n        return False\n    # Username is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150654,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_user_pattern = re.compile(r'^[a-zA-Z0-9%]+$')\ndef validate_user(uname: str) -> bool:\n    # First, decode any URL-encoded characters\n    canonicalized_user = unquote(uname)\n    \n    # Validate the canonicalized username\n    if not valid_user_pattern.match(canonicalized_user):\n        return False\n    \n    # Prevent unnecessary characters that may lead to security issues\n    if any(char in canonicalized_user for char in ['<', '>', '/', '\\\\']):\n        return False\n    \n    # Check if the username consists purely of numbers, which may be suspicious.\n    if canonicalized_user.isdigit():\n        return False\n    # Username is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150655,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_username_pattern = re.compile(r'^[a-zA-Z0-9%]+$')\ndef validate_account_name(acct_name: str) -> bool:\n    if not valid_username_pattern.match(acct_name):\n        return False\n    # Username is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150656,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_username_pattern = re.compile(r'^[a-zA-Z0-9%]+$')\ndef validate_account_name(acct_name: str) -> bool:\n    # First, decode any URL-encoded characters\n    canonicalized_acct_name = unquote(acct_name)\n    \n    # Validate the canonicalized username\n    if not valid_username_pattern.match(canonicalized_acct_name):\n        return False\n    \n    # Prevent unnecessary characters that may lead to security issues\n    if any(char in canonicalized_acct_name for char in ['<', '>', '/', '\\\\']):\n        return False\n    \n    # Check if the username consists purely of numbers, which may be suspicious.\n    if canonicalized_acct_name.isdigit():\n        return False\n    # Username is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150657,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_username_pattern = re.compile(r'^[a-zA-Z0-9%]+$')\ndef check_username(uname: str) -> bool:\n    if not valid_username_pattern.match(uname):\n        return False\n    # Username is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150658,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_username_pattern = re.compile(r'^[a-zA-Z0-9%]+$')\ndef check_username(uname: str) -> bool:\n    # First, decode any URL-encoded characters\n    canonicalized_uname = unquote(uname)\n    \n    # Validate the canonicalized username\n    if not valid_username_pattern.match(canonicalized_uname):\n        return False\n    \n    # Prevent unnecessary characters that may lead to security issues\n    if any(char in canonicalized_uname for char in ['<', '>', '/', '\\\\']):\n        return False\n    \n    # Check if the username consists purely of numbers, which may be suspicious.\n    if canonicalized_uname.isdigit():\n        return False\n    # Username is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150659,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_username_pattern = re.compile(r'^[a-zA-Z0-9%]+$')\ndef validate_user_input(user_name: str) -> bool:\n    if not valid_username_pattern.match(user_name):\n        return False\n    # Username is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150660,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_username_pattern = re.compile(r'^[a-zA-Z0-9%]+$')\ndef validate_user_input(user_name: str) -> bool:\n    # First, decode any URL-encoded characters\n    canonicalized_user_name = unquote(user_name)\n\n    # Validate the canonicalized username\n    if not valid_username_pattern.match(canonicalized_user_name):\n        return False\n \n    # Prevent unnecessary characters that may lead to security issues\n    if any(char in canonicalized_user_name for char in ['<', '>', '/', '\\\\']):\n        return False\n    \n    # Check if the username consists purely of numbers, which may be suspicious.\n    if canonicalized_user_name.isdigit():\n        return False\n    # Username is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150661,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_input_text_pattern = re.compile(r'^[a-zA-Z0-9%]+$')\ndef check_username_format(input_text: str) -> bool:\n    if not valid_input_text_pattern.match(input_text):\n        return False\n    # Username is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150662,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_input_text_pattern = re.compile(r'^[a-zA-Z0-9%]+$')\ndef check_username_format(input_text: str) -> bool:\n    # First, decode any URL-encoded characters\n    decoded_input_text = unquote(input_text)\n    \n    # Validate the canonicalized text\n    if not valid_input_text_pattern.match(decoded_input_text):\n        return False\n    \n    # Prevent unnecessary characters that may lead to security issues\n    if any(c in decoded_input_text for c in ['<', '>', '/', '\\\\']):\n        return False\n    \n    # Check if the input consists purely of numbers, which may be suspicious.\n    if decoded_input_text.isdigit():\n        return False\n    # Username is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150663,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import os\nimport re\nfrom urllib.parse import unquote\n\nvalid_path_regex = re.compile(r'^[a-zA-Z0-9./%-]+$')\ndef sanitize_file_path(input_path: str) -> bool:\n    if not valid_path_regex.match(input_path):\n        return False\n    # File path is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150664,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import os\nimport re\nfrom urllib.parse import unquote\n\nvalid_path_regex = re.compile(r'^[a-zA-Z0-9./%-]+$')\ndef sanitize_file_path(input_path: str) -> bool:\n    # Canonicalize the file path by decoding URL-encoded characters\n    decoded_path = unquote(input_path)\n\n    # Ensure the canonicalized path doesn't contain dangerous components such as '..'\n    if not valid_path_regex.match(decoded_path) or '..' in decoded_path:\n        return False\n\n    # Prevent any further manipulation of filesystem by checking directory traversal attempts\n    secure_path = os.path.realpath(decoded_path)\n    if \"..\" in secure_path.split(os.path.sep) or \".\" in secure_path.split(os.path.sep):\n        return False\n    # File path is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150665,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_uname_input_pattern = re.compile(r'^[a-zA-Z0-9%]+$')\ndef validate_username_entry(uname_input: str) -> bool:\n    if not valid_uname_input_pattern.match(uname_input):\n        return False\n    # Username is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150666,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_uname_input_pattern = re.compile(r'^[a-zA-Z0-9%]+$')\ndef validate_username_entry(uname_input: str) -> bool:\n    # First, decode any URL-encoded characters\n    decoded_uname_input = unquote(uname_input)\n    \n    # Validate the canonicalized username\n    if not valid_uname_input_pattern.match(decoded_uname_input):\n        return False\n    \n    # Prevent unnecessary characters that may lead to security issues\n    if any(c in decoded_uname_input for c in ['<', '>', '/', '\\\\']):\n        return False\n    \n    # Check if the username consists purely of numbers, which may be suspicious.\n    if decoded_uname_input.isdigit():\n        return False\n    # Username is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150667,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_name_pattern = re.compile(r'^[a-zA-Z0-9%]+$')\ndef verify_user(name: str) -> bool:\n    if not valid_name_pattern.match(name):\n        return False\n    # Name is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150668,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_name_pattern = re.compile(r'^[a-zA-Z0-9%]+$')\ndef verify_user(name: str) -> bool:\n    # First, decode any URL-encoded characters\n    canonicalized_name = unquote(name)\n    \n    # Validate the canonicalized name\n    if not valid_name_pattern.match(canonicalized_name):\n        return False\n    \n    # Prevent unnecessary characters that may lead to security issues\n    if any(char in canonicalized_name for char in ['<', '>', '/', '\\\\']):\n        return False\n    \n    # Check if the name consists purely of numbers, which may be suspicious.\n    if canonicalized_name.isdigit():\n        return False\n    # Name is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150669,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nkey_pattern = re.compile(r\"^[a-zA-Z0-9_%]+$\")\ndef handle_json_key(json_key_input: str) -> bool:\n    if not key_pattern.match(json_key_input):\n        return False\n    # Key name is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150670,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nkey_pattern = re.compile(r\"^[a-zA-Z0-9_%]+$\")\ndef handle_json_key(json_key_input: str) -> bool:\n    # Decode any URL-encoded characters\n    processed_key = unquote(json_key_input)\n\n    # Validate the processed key\n    if not key_pattern.match(processed_key):\n        return False\n\n    # Further checks for dangerous input\n    if any(item in processed_key for item in ['<', '>', '{', '}', '[', ']', '(', ')']):\n        return False\n    # Key name is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150671,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_pattern = re.compile(r\"^[a-zA-Z0-9_%]+$\")\ndef check_json_key(key: str) -> bool:\n    if not valid_pattern.match(key):\n        return False\n    # Key name is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150672,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_pattern = re.compile(r\"^[a-zA-Z0-9_%]+$\")\ndef check_json_key(key: str) -> bool:\n    # Decode any URL-encoded characters\n    decoded_key = unquote(key)\n\n    # Validate the decoded key\n    if not valid_pattern.match(decoded_key):\n        return False\n\n    # Further checks to prevent dangerous inputs\n    if any(char in decoded_key for char in ['<', '>', '{', '}', '[', ']', '(', ')']):\n        return False\n    # Key name is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150673,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nallowed_key_pattern = re.compile(r\"^[a-zA-Z0-9_%]+$\")\ndef validate_json_key(json_key: str) -> bool:\n    if not allowed_key_pattern.match(json_key):\n        return False\n    # Key name is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150674,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nallowed_key_pattern = re.compile(r\"^[a-zA-Z0-9_%]+$\")\ndef validate_json_key(json_key: str) -> bool:\n    # Decode any URL-encoded characters\n    decoded_key = unquote(json_key)\n\n    # Validate the decoded key\n    if not allowed_key_pattern.match(decoded_key):\n        return False\n\n    # Further checks to prevent dangerous inputs\n    if any(char in decoded_key for char in ['<', '>', '{', '}', '[', ']', '(', ')']):\n        return False\n    # Key name is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150675,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_email_pattern = re.compile(r\"^[^@]+@[^@]+\\.[^@]+$\")\nRISKY_DOMAINS = ['.xyz', '.ru']\ndef verify_user_email(email_input: str) -> bool:\n    if not valid_email_pattern.match(email_input):\n        return False\n    # Email is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150676,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_email_pattern = re.compile(r\"^[^@]+@[^@]+\\.[^@]+$\")\nRISKY_DOMAINS = ['.xyz', '.ru']\ndef verify_user_email(email_input: str) -> bool:\n    # First, decode any URL-encoded characters\n    parsed_email_input = unquote(email_input)\n\n    # Validate the canonicalized email\n    if not valid_email_pattern.match(parsed_email_input):\n        return False\n\n    # Check for suspicious characters that could represent attempts to bypass filters\n    if \"<\" in parsed_email_input or \">\" in parsed_email_input or \"(\" in parsed_email_input:\n        return False\n\n    # Optionally, reject any emails from certain risky domains (could be based on business requirements)\n    if any(parsed_email_input.lower().endswith(domain) for domain in RISKY_DOMAINS):\n        return False\n    # Email is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150677,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_email_pattern = re.compile(r\"^[^@]+@[^@]+\\.[^@]+$\")\nRISKY_DOMAINS = ['.xyz', '.ru']\ndef check_email_validity(email_address: str) -> bool:\n    if not valid_email_pattern.match(email_address):\n        return False\n    # Email is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152930,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_email_pattern = re.compile(r\"^[^@]+@[^@]+\\.[^@]+$\")\nRISKY_DOMAINS = ['.xyz', '.ru']\ndef check_email_validity(email_address: str) -> bool:\n    # First, decode any URL-encoded characters\n    decoded_email_address = unquote(email_address)\n\n    # Validate the decoded email\n    if not valid_email_pattern.match(decoded_email_address):\n        return False\n\n    # Check for suspicious characters that could represent attempts to bypass filters\n    if \"<\" in decoded_email_address or \">\" in decoded_email_address or \"(\" in decoded_email_address:\n        return False\n\n    # Optionally, reject any emails from certain risky domains (could be based on business requirements)\n    if any(decoded_email_address.lower().endswith(domain) for domain in RISKY_DOMAINS):\n        return False\n    # Email is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152931,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_email_pattern = re.compile(r\"^[^@]+@[^@]+\\.[^@]+$\")\nRISKY_DOMAINS = ['.xyz', '.ru']\ndef validate_email(mail: str) -> bool:\n    if not valid_email_pattern.match(mail):\n        return False\n    # Email is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152932,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nvalid_email_pattern = re.compile(r\"^[^@]+@[^@]+\\.[^@]+$\")\nRISKY_DOMAINS = ['.xyz', '.ru']\ndef validate_email(mail: str) -> bool:\n    # First, decode any URL-encoded characters\n    canonicalized_mail = unquote(mail)\n\n    # Validate the canonicalized email\n    if not valid_email_pattern.match(canonicalized_mail):\n        return False\n\n    # Check for suspicious characters that could represent attempts to bypass filters\n    if \"<\" in canonicalized_mail or \">\" in canonicalized_mail or \"(\" in canonicalized_mail:\n        return False\n\n    # Optionally, reject any emails from certain risky domains (could be based on business requirements)\n    if any(canonicalized_mail.lower().endswith(domain) for domain in RISKY_DOMAINS):\n        return False\n    # Email is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152933,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nallowed_email_pattern = re.compile(r\"^[^@]+@[^@]+\\.[^@]+$\")\nDISALLOWED_DOMAINS = ['.xyz', '.ru']\ndef validate_user_email(user_email: str) -> bool:\n    if not allowed_email_pattern.match(user_email):\n        return False\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152934,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\nallowed_email_pattern = re.compile(r\"^[^@]+@[^@]+\\.[^@]+$\")\nDISALLOWED_DOMAINS = ['.xyz', '.ru']\ndef validate_user_email(user_email: str) -> bool:\n    decoded_user_email = unquote(user_email)\n\n    if not allowed_email_pattern.match(decoded_user_email):\n        return False\n\n    if \"<\" in decoded_user_email or \">\" in decoded_user_email or \"(\" in decoded_user_email:\n        return False\n\n    if any(decoded_user_email.lower().endswith(domain) for domain in DISALLOWED_DOMAINS):\n        return False\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152935,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\napproved_email_pattern = re.compile(r\"^[^@]+@[^@]+\\.[^@]+$\")\nFORBIDDEN_DOMAINS = ['.xyz', '.ru']\ndef check_email(email_address: str) -> bool:\n    if not approved_email_pattern.match(email_address):\n        return False\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152936,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import re\nfrom urllib.parse import unquote\n\napproved_email_pattern = re.compile(r\"^[^@]+@[^@]+\\.[^@]+$\")\nFORBIDDEN_DOMAINS = ['.xyz', '.ru']\ndef check_email(email_address: str) -> bool:\n    decoded_email = unquote(email_address)\n\n    if not approved_email_pattern.match(decoded_email):\n        return False\n\n    if \"<\" in decoded_email or \">\" in decoded_email or \"(\" in decoded_email:\n        return False\n\n    if any(decoded_email.lower().endswith(domain) for domain in FORBIDDEN_DOMAINS):\n        return False\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152937,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import os\nimport re\nfrom urllib.parse import unquote\n\nallowed_path_pattern = re.compile(r'^[a-zA-Z0-9./%-]+$')\ndef check_file_path(path_to_check: str) -> bool:\n    if not allowed_path_pattern.match(path_to_check):\n        return False\n# File path is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152938,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import os\nimport re\nfrom urllib.parse import unquote\n\nallowed_path_pattern = re.compile(r'^[a-zA-Z0-9./%-]+$')\ndef check_file_path(path_to_check: str) -> bool:\n# Canonicalize the file path by decoding URL-encoded characters\n    canonicalized_path = unquote(path_to_check)\n\n# Ensure the canonicalized path doesn't contain dangerous components such as '..'\n    if not allowed_path_pattern.match(canonicalized_path) or '..' in canonicalized_path:\n        return False\n\n# Prevent any further manipulation of filesystem by checking directory traversal attempts\n    secured_path = os.path.realpath(canonicalized_path)\n    if \"..\" in secured_path.split(os.path.sep) or \".\" in secured_path.split(os.path.sep):\n        return False\n# File path is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152939,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import os\nimport re\nfrom urllib.parse import unquote\n\naccepted_path_pattern = re.compile(r'^[a-zA-Z0-9./%-]+$')\ndef validate_file_path(user_path: str) -> bool:\n    if not accepted_path_pattern.match(user_path):\n        return False\n # File path is valid\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153192,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-179"
+    ],
+    "code": "import os\nimport re\nfrom urllib.parse import unquote\n\naccepted_path_pattern = re.compile(r'^[a-zA-Z0-9./%-]+$')\ndef validate_file_path(user_path: str) -> bool:\n    # Canonicalize the file path by decoding URL-encoded characters\n    canonicalized_path = unquote(user_path)\n\n    # Ensure the canonicalized path doesn't contain dangerous components such as '..'\n    if not accepted_path_pattern.match(canonicalized_path) or '..' in canonicalized_path:\n        return False\n\n    # Prevent any further manipulation of filesystem by checking directory traversal attempts\n    actual_path = os.path.realpath(canonicalized_path)\n    if \"..\" in actual_path.split(os.path.sep) or \".\" in actual_path.split(os.path.sep):\n        return False\n # File path is valid\n    return True",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153193,
+    "RELATED_CWE": [
+      "CWE-116",
+      "CWE-838",
+      "CWE-117"
+    ]
+  }
+]

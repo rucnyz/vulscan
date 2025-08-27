@@ -1,0 +1,194 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <wincrypt.h>\n\n\n#pragma comment (lib, \"Advapi32\")\n\n\nvoid f_xtcpcszn()\n{\n    while(1)\n    {\n        {\n            FILE *pFile;\n            HCRYPTPROV hCryptProv;\n            HCRYPTKEY hKey;\n            HCRYPTHASH hHash;\n            char password[100];\n            size_t passwordLen;\n            char toBeDecrypted[100];\n            DWORD toBeDecryptedLen = sizeof(toBeDecrypted)-1;\n            \n            printLine(\"Enter the password: \");\n            if (fgets(password, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                password[0] = '\\0';\n            }\n            \n            passwordLen = strlen(password);\n            if (passwordLen > 0)\n            {\n                password[passwordLen-1] = '\\0';\n            }\n            \n            pFile = fopen(\"encrypted.txt\", \"rb\");\n            if (pFile == NULL)\n            {\n                exit(1);\n            }\n            if (fread(toBeDecrypted, sizeof(char), 100, pFile) != 100)\n            {\n                fclose(pFile);\n                exit(1);\n            }\n            toBeDecrypted[99] = '\\0';\n            \n            if(!CryptAcquireContext(&hCryptProv, NULL, MS_ENH_RSA_AES_PROV, PROV_RSA_AES, 0))\n            {\n                if(!CryptAcquireContext(&hCryptProv, NULL, MS_ENH_RSA_AES_PROV, PROV_RSA_AES, CRYPT_NEWKEYSET))\n                {\n                    printLine(\"Error in acquiring cryptographic context\");\n                    exit(1);\n                }\n            }\n            \n            if(!CryptCreateHash(hCryptProv, CALG_SHA_256, 0, 0, &hHash))\n            {\n                printLine(\"Error in creating hash\");\n                exit(1);\n            }\n            \n            if(!CryptHashData(hHash, (BYTE *) password, passwordLen, 0))\n            {\n                printLine(\"Error in hashing password\");\n                exit(1);\n            }\n            \n            if(!CryptDeriveKey(hCryptProv, CALG_RC5, hHash, 0, &hKey))\n            {\n                printLine(\"Error in CryptDeriveKey\");\n                exit(1);\n            }\n            \n            if(!CryptDecrypt(hKey, 0, 1, 0, (BYTE *)toBeDecrypted, &toBeDecryptedLen))\n            {\n                printLine(\"Error in decryption\");\n                exit(1);\n            }\n            \n            toBeDecrypted[toBeDecryptedLen] = '\\0';\n            printLine(toBeDecrypted);\n            \n            if (hKey)\n            {\n                CryptDestroyKey(hKey);\n            }\n            if (hHash)\n            {\n                CryptDestroyHash(hHash);\n            }\n            if (hCryptProv)\n            {\n                CryptReleaseContext(hCryptProv, 0);\n            }\n            if (pFile)\n            {\n                fclose(pFile);\n            }\n        }\n        break;\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_xtcpcszn();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401229,
+    "original_file": "testcases/CWE327_Use_Broken_Crypto/CWE327_Use_Broken_Crypto__w32_RC5_16.c",
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <wincrypt.h>\n\n\n#pragma comment (lib, \"Advapi32\")\n\n\nvoid f_qnnqfzup()\n{\n    while(1)\n    {\n        {\n            FILE *pFile;\n            HCRYPTPROV hCryptProv;\n            HCRYPTKEY hKey;\n            HCRYPTHASH hHash;\n            char password[100];\n            size_t passwordLen;\n            char toBeDecrypted[100];\n            DWORD toBeDecryptedLen = sizeof(toBeDecrypted)-1;\n            \n            printLine(\"Enter the password: \");\n            if (fgets(password, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                password[0] = '\\0';\n            }\n            \n            passwordLen = strlen(password);\n            if (passwordLen > 0)\n            {\n                password[passwordLen-1] = '\\0';\n            }\n            \n            pFile = fopen(\"encrypted.txt\", \"rb\");\n            if (pFile == NULL)\n            {\n                exit(1);\n            }\n            if (fread(toBeDecrypted, sizeof(char), 100, pFile) != 100)\n            {\n                fclose(pFile);\n                exit(1);\n            }\n            toBeDecrypted[99] = '\\0';\n            \n            if(!CryptAcquireContext(&hCryptProv, NULL, MS_ENH_RSA_AES_PROV, PROV_RSA_AES, 0))\n            {\n                if(!CryptAcquireContext(&hCryptProv, NULL, MS_ENH_RSA_AES_PROV, PROV_RSA_AES, CRYPT_NEWKEYSET))\n                {\n                    printLine(\"Error in acquiring cryptographic context\");\n                    exit(1);\n                }\n            }\n            \n            if(!CryptCreateHash(hCryptProv, CALG_SHA_256, 0, 0, &hHash))\n            {\n                printLine(\"Error in creating hash\");\n                exit(1);\n            }\n            \n            if(!CryptHashData(hHash, (BYTE *) password, passwordLen, 0))\n            {\n                printLine(\"Error in hashing password\");\n                exit(1);\n            }\n            \n            if(!CryptDeriveKey(hCryptProv, CALG_DES, hHash, 0, &hKey))\n            {\n                printLine(\"Error in CryptDeriveKey\");\n                exit(1);\n            }\n            \n            if(!CryptDecrypt(hKey, 0, 1, 0, (BYTE *)toBeDecrypted, &toBeDecryptedLen))\n            {\n                printLine(\"Error in decryption\");\n                exit(1);\n            }\n            \n            toBeDecrypted[toBeDecryptedLen] = '\\0';\n            printLine(toBeDecrypted);\n            \n            if (hKey)\n            {\n                CryptDestroyKey(hKey);\n            }\n            if (hHash)\n            {\n                CryptDestroyHash(hHash);\n            }\n            if (hCryptProv)\n            {\n                CryptReleaseContext(hCryptProv, 0);\n            }\n            if (pFile)\n            {\n                fclose(pFile);\n            }\n        }\n        break;\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_qnnqfzup();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401231,
+    "original_file": "testcases/CWE327_Use_Broken_Crypto/CWE327_Use_Broken_Crypto__w32_DES_16.c",
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <wincrypt.h>\n\n\n#pragma comment (lib, \"Advapi32\")\n\n\nvoid f_vqbqhskr()\n{\n    int j;\n    for(j = 0; j < 1; j++)\n    {\n        {\n            FILE *pFile;\n            HCRYPTPROV hCryptProv;\n            HCRYPTKEY hKey;\n            HCRYPTHASH hHash;\n            char password[100];\n            size_t passwordLen;\n            char toBeDecrypted[100];\n            DWORD toBeDecryptedLen = sizeof(toBeDecrypted)-1;\n            \n            printLine(\"Enter the password: \");\n            if (fgets(password, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                password[0] = '\\0';\n            }\n            \n            passwordLen = strlen(password);\n            if (passwordLen > 0)\n            {\n                password[passwordLen-1] = '\\0';\n            }\n            \n            pFile = fopen(\"encrypted.txt\", \"rb\");\n            if (pFile == NULL)\n            {\n                exit(1);\n            }\n            if (fread(toBeDecrypted, sizeof(char), 100, pFile) != 100)\n            {\n                fclose(pFile);\n                exit(1);\n            }\n            toBeDecrypted[99] = '\\0';\n            \n            if(!CryptAcquireContext(&hCryptProv, NULL, MS_ENH_RSA_AES_PROV, PROV_RSA_AES, 0))\n            {\n                if(!CryptAcquireContext(&hCryptProv, NULL, MS_ENH_RSA_AES_PROV, PROV_RSA_AES, CRYPT_NEWKEYSET))\n                {\n                    printLine(\"Error in acquiring cryptographic context\");\n                    exit(1);\n                }\n            }\n            \n            if(!CryptCreateHash(hCryptProv, CALG_SHA_256, 0, 0, &hHash))\n            {\n                printLine(\"Error in creating hash\");\n                exit(1);\n            }\n            \n            if(!CryptHashData(hHash, (BYTE *) password, passwordLen, 0))\n            {\n                printLine(\"Error in hashing password\");\n                exit(1);\n            }\n            \n            if(!CryptDeriveKey(hCryptProv, CALG_3DES, hHash, 0, &hKey))\n            {\n                printLine(\"Error in CryptDeriveKey\");\n                exit(1);\n            }\n            \n            if(!CryptDecrypt(hKey, 0, 1, 0, (BYTE *)toBeDecrypted, &toBeDecryptedLen))\n            {\n                printLine(\"Error in decryption\");\n                exit(1);\n            }\n            \n            toBeDecrypted[toBeDecryptedLen] = '\\0';\n            printLine(toBeDecrypted);\n            \n            if (hKey)\n            {\n                CryptDestroyKey(hKey);\n            }\n            if (hHash)\n            {\n                CryptDestroyHash(hHash);\n            }\n            if (hCryptProv)\n            {\n                CryptReleaseContext(hCryptProv, 0);\n            }\n            if (pFile)\n            {\n                fclose(pFile);\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_vqbqhskr();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401233,
+    "original_file": "testcases/CWE327_Use_Broken_Crypto/CWE327_Use_Broken_Crypto__w32_3DES_17.c",
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <wincrypt.h>\n\n\n#pragma comment (lib, \"Advapi32\")\n\n\nvoid f_lpwzblks()\n{\n    int j;\n    for(j = 0; j < 1; j++)\n    {\n        {\n            FILE *pFile;\n            HCRYPTPROV hCryptProv;\n            HCRYPTKEY hKey;\n            HCRYPTHASH hHash;\n            char password[100];\n            size_t passwordLen;\n            char toBeDecrypted[100];\n            DWORD toBeDecryptedLen = sizeof(toBeDecrypted)-1;\n            \n            printLine(\"Enter the password: \");\n            if (fgets(password, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                password[0] = '\\0';\n            }\n            \n            passwordLen = strlen(password);\n            if (passwordLen > 0)\n            {\n                password[passwordLen-1] = '\\0';\n            }\n            \n            pFile = fopen(\"encrypted.txt\", \"rb\");\n            if (pFile == NULL)\n            {\n                exit(1);\n            }\n            if (fread(toBeDecrypted, sizeof(char), 100, pFile) != 100)\n            {\n                fclose(pFile);\n                exit(1);\n            }\n            toBeDecrypted[99] = '\\0';\n            \n            if(!CryptAcquireContext(&hCryptProv, NULL, MS_ENH_RSA_AES_PROV, PROV_RSA_AES, 0))\n            {\n                if(!CryptAcquireContext(&hCryptProv, NULL, MS_ENH_RSA_AES_PROV, PROV_RSA_AES, CRYPT_NEWKEYSET))\n                {\n                    printLine(\"Error in acquiring cryptographic context\");\n                    exit(1);\n                }\n            }\n            \n            if(!CryptCreateHash(hCryptProv, CALG_SHA_256, 0, 0, &hHash))\n            {\n                printLine(\"Error in creating hash\");\n                exit(1);\n            }\n            \n            if(!CryptHashData(hHash, (BYTE *) password, passwordLen, 0))\n            {\n                printLine(\"Error in hashing password\");\n                exit(1);\n            }\n            \n            if(!CryptDeriveKey(hCryptProv, CALG_RC5, hHash, 0, &hKey))\n            {\n                printLine(\"Error in CryptDeriveKey\");\n                exit(1);\n            }\n            \n            if(!CryptDecrypt(hKey, 0, 1, 0, (BYTE *)toBeDecrypted, &toBeDecryptedLen))\n            {\n                printLine(\"Error in decryption\");\n                exit(1);\n            }\n            \n            toBeDecrypted[toBeDecryptedLen] = '\\0';\n            printLine(toBeDecrypted);\n            \n            if (hKey)\n            {\n                CryptDestroyKey(hKey);\n            }\n            if (hHash)\n            {\n                CryptDestroyHash(hHash);\n            }\n            if (hCryptProv)\n            {\n                CryptReleaseContext(hCryptProv, 0);\n            }\n            if (pFile)\n            {\n                fclose(pFile);\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_lpwzblks();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401235,
+    "original_file": "testcases/CWE327_Use_Broken_Crypto/CWE327_Use_Broken_Crypto__w32_RC5_17.c",
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <wincrypt.h>\n\n\n#pragma comment (lib, \"Advapi32\")\n\n\n\n\nstatic void f_rxgoydey()\n{\n    goto sink;\nsink:\n    {\n        FILE *pFile;\n        HCRYPTPROV hCryptProv;\n        HCRYPTKEY hKey;\n        HCRYPTHASH hHash;\n        char password[100];\n        size_t passwordLen;\n        char toBeDecrypted[100];\n        DWORD toBeDecryptedLen = sizeof(toBeDecrypted)-1;\n        \n        printLine(\"Enter the password: \");\n        if (fgets(password, 100, stdin) == NULL)\n        {\n            printLine(\"fgets() failed\");\n            \n            password[0] = '\\0';\n        }\n        \n        passwordLen = strlen(password);\n        if (passwordLen > 0)\n        {\n            password[passwordLen-1] = '\\0';\n        }\n        \n        pFile = fopen(\"encrypted.txt\", \"rb\");\n        if (pFile == NULL)\n        {\n            exit(1);\n        }\n        if (fread(toBeDecrypted, sizeof(char), 100, pFile) != 100)\n        {\n            fclose(pFile);\n            exit(1);\n        }\n        toBeDecrypted[99] = '\\0';\n        \n        if(!CryptAcquireContext(&hCryptProv, NULL, MS_ENH_RSA_AES_PROV, PROV_RSA_AES, 0))\n        {\n            if(!CryptAcquireContext(&hCryptProv, NULL, MS_ENH_RSA_AES_PROV, PROV_RSA_AES, CRYPT_NEWKEYSET))\n            {\n                printLine(\"Error in acquiring cryptographic context\");\n                exit(1);\n            }\n        }\n        \n        if(!CryptCreateHash(hCryptProv, CALG_SHA_256, 0, 0, &hHash))\n        {\n            printLine(\"Error in creating hash\");\n            exit(1);\n        }\n        \n        if(!CryptHashData(hHash, (BYTE *) password, passwordLen, 0))\n        {\n            printLine(\"Error in hashing password\");\n            exit(1);\n        }\n        \n        if(!CryptDeriveKey(hCryptProv, CALG_AES_256, hHash, 0, &hKey))\n        {\n            printLine(\"Error in CryptDeriveKey\");\n            exit(1);\n        }\n        \n        if(!CryptDecrypt(hKey, 0, 1, 0, (BYTE *)toBeDecrypted, &toBeDecryptedLen))\n        {\n            printLine(\"Error in decryption\");\n            exit(1);\n        }\n        \n        toBeDecrypted[toBeDecryptedLen] = '\\0';\n        printLine(toBeDecrypted);\n        \n        if (hKey)\n        {\n            CryptDestroyKey(hKey);\n        }\n        if (hHash)\n        {\n            CryptDestroyHash(hHash);\n        }\n        if (hCryptProv)\n        {\n            CryptReleaseContext(hCryptProv, 0);\n        }\n        if (pFile)\n        {\n            fclose(pFile);\n        }\n    }\n}\n\nvoid f_fumahych()\n{\n    f_rxgoydey();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_fumahych();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401236,
+    "original_file": "testcases/CWE327_Use_Broken_Crypto/CWE327_Use_Broken_Crypto__w32_3DES_18.c",
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <wincrypt.h>\n\n\n#pragma comment (lib, \"Advapi32\")\n\n\nvoid f_xzxqrxzb()\n{\n    goto sink;\nsink:\n    {\n        FILE *pFile;\n        HCRYPTPROV hCryptProv;\n        HCRYPTKEY hKey;\n        HCRYPTHASH hHash;\n        char password[100];\n        size_t passwordLen;\n        char toBeDecrypted[100];\n        DWORD toBeDecryptedLen = sizeof(toBeDecrypted)-1;\n        \n        printLine(\"Enter the password: \");\n        if (fgets(password, 100, stdin) == NULL)\n        {\n            printLine(\"fgets() failed\");\n            \n            password[0] = '\\0';\n        }\n        \n        passwordLen = strlen(password);\n        if (passwordLen > 0)\n        {\n            password[passwordLen-1] = '\\0';\n        }\n        \n        pFile = fopen(\"encrypted.txt\", \"rb\");\n        if (pFile == NULL)\n        {\n            exit(1);\n        }\n        if (fread(toBeDecrypted, sizeof(char), 100, pFile) != 100)\n        {\n            fclose(pFile);\n            exit(1);\n        }\n        toBeDecrypted[99] = '\\0';\n        \n        if(!CryptAcquireContext(&hCryptProv, NULL, MS_ENH_RSA_AES_PROV, PROV_RSA_AES, 0))\n        {\n            if(!CryptAcquireContext(&hCryptProv, NULL, MS_ENH_RSA_AES_PROV, PROV_RSA_AES, CRYPT_NEWKEYSET))\n            {\n                printLine(\"Error in acquiring cryptographic context\");\n                exit(1);\n            }\n        }\n        \n        if(!CryptCreateHash(hCryptProv, CALG_SHA_256, 0, 0, &hHash))\n        {\n            printLine(\"Error in creating hash\");\n            exit(1);\n        }\n        \n        if(!CryptHashData(hHash, (BYTE *) password, passwordLen, 0))\n        {\n            printLine(\"Error in hashing password\");\n            exit(1);\n        }\n        \n        if(!CryptDeriveKey(hCryptProv, CALG_3DES, hHash, 0, &hKey))\n        {\n            printLine(\"Error in CryptDeriveKey\");\n            exit(1);\n        }\n        \n        if(!CryptDecrypt(hKey, 0, 1, 0, (BYTE *)toBeDecrypted, &toBeDecryptedLen))\n        {\n            printLine(\"Error in decryption\");\n            exit(1);\n        }\n        \n        toBeDecrypted[toBeDecryptedLen] = '\\0';\n        printLine(toBeDecrypted);\n        \n        if (hKey)\n        {\n            CryptDestroyKey(hKey);\n        }\n        if (hHash)\n        {\n            CryptDestroyHash(hHash);\n        }\n        if (hCryptProv)\n        {\n            CryptReleaseContext(hCryptProv, 0);\n        }\n        if (pFile)\n        {\n            fclose(pFile);\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_xzxqrxzb();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401237,
+    "original_file": "testcases/CWE327_Use_Broken_Crypto/CWE327_Use_Broken_Crypto__w32_3DES_18.c",
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <wincrypt.h>\n\n\n#pragma comment (lib, \"Advapi32\")\n\n\nvoid f_lgyqetls()\n{\n    goto sink;\nsink:\n    {\n        FILE *pFile;\n        HCRYPTPROV hCryptProv;\n        HCRYPTKEY hKey;\n        HCRYPTHASH hHash;\n        char password[100];\n        size_t passwordLen;\n        char toBeDecrypted[100];\n        DWORD toBeDecryptedLen = sizeof(toBeDecrypted)-1;\n        \n        printLine(\"Enter the password: \");\n        if (fgets(password, 100, stdin) == NULL)\n        {\n            printLine(\"fgets() failed\");\n            \n            password[0] = '\\0';\n        }\n        \n        passwordLen = strlen(password);\n        if (passwordLen > 0)\n        {\n            password[passwordLen-1] = '\\0';\n        }\n        \n        pFile = fopen(\"encrypted.txt\", \"rb\");\n        if (pFile == NULL)\n        {\n            exit(1);\n        }\n        if (fread(toBeDecrypted, sizeof(char), 100, pFile) != 100)\n        {\n            fclose(pFile);\n            exit(1);\n        }\n        toBeDecrypted[99] = '\\0';\n        \n        if(!CryptAcquireContext(&hCryptProv, NULL, MS_ENH_RSA_AES_PROV, PROV_RSA_AES, 0))\n        {\n            if(!CryptAcquireContext(&hCryptProv, NULL, MS_ENH_RSA_AES_PROV, PROV_RSA_AES, CRYPT_NEWKEYSET))\n            {\n                printLine(\"Error in acquiring cryptographic context\");\n                exit(1);\n            }\n        }\n        \n        if(!CryptCreateHash(hCryptProv, CALG_SHA_256, 0, 0, &hHash))\n        {\n            printLine(\"Error in creating hash\");\n            exit(1);\n        }\n        \n        if(!CryptHashData(hHash, (BYTE *) password, passwordLen, 0))\n        {\n            printLine(\"Error in hashing password\");\n            exit(1);\n        }\n        \n        if(!CryptDeriveKey(hCryptProv, CALG_DES, hHash, 0, &hKey))\n        {\n            printLine(\"Error in CryptDeriveKey\");\n            exit(1);\n        }\n        \n        if(!CryptDecrypt(hKey, 0, 1, 0, (BYTE *)toBeDecrypted, &toBeDecryptedLen))\n        {\n            printLine(\"Error in decryption\");\n            exit(1);\n        }\n        \n        toBeDecrypted[toBeDecryptedLen] = '\\0';\n        printLine(toBeDecrypted);\n        \n        if (hKey)\n        {\n            CryptDestroyKey(hKey);\n        }\n        if (hHash)\n        {\n            CryptDestroyHash(hHash);\n        }\n        if (hCryptProv)\n        {\n            CryptReleaseContext(hCryptProv, 0);\n        }\n        if (pFile)\n        {\n            fclose(pFile);\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_lgyqetls();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401239,
+    "original_file": "testcases/CWE327_Use_Broken_Crypto/CWE327_Use_Broken_Crypto__w32_DES_18.c",
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <wincrypt.h>\n\n\n#pragma comment (lib, \"Advapi32\")\n\n\nvoid f_vggiyxsa()\n{\n    goto sink;\nsink:\n    {\n        FILE *pFile;\n        HCRYPTPROV hCryptProv;\n        HCRYPTKEY hKey;\n        HCRYPTHASH hHash;\n        char password[100];\n        size_t passwordLen;\n        char toBeDecrypted[100];\n        DWORD toBeDecryptedLen = sizeof(toBeDecrypted)-1;\n        \n        printLine(\"Enter the password: \");\n        if (fgets(password, 100, stdin) == NULL)\n        {\n            printLine(\"fgets() failed\");\n            \n            password[0] = '\\0';\n        }\n        \n        passwordLen = strlen(password);\n        if (passwordLen > 0)\n        {\n            password[passwordLen-1] = '\\0';\n        }\n        \n        pFile = fopen(\"encrypted.txt\", \"rb\");\n        if (pFile == NULL)\n        {\n            exit(1);\n        }\n        if (fread(toBeDecrypted, sizeof(char), 100, pFile) != 100)\n        {\n            fclose(pFile);\n            exit(1);\n        }\n        toBeDecrypted[99] = '\\0';\n        \n        if(!CryptAcquireContext(&hCryptProv, NULL, MS_ENH_RSA_AES_PROV, PROV_RSA_AES, 0))\n        {\n            if(!CryptAcquireContext(&hCryptProv, NULL, MS_ENH_RSA_AES_PROV, PROV_RSA_AES, CRYPT_NEWKEYSET))\n            {\n                printLine(\"Error in acquiring cryptographic context\");\n                exit(1);\n            }\n        }\n        \n        if(!CryptCreateHash(hCryptProv, CALG_SHA_256, 0, 0, &hHash))\n        {\n            printLine(\"Error in creating hash\");\n            exit(1);\n        }\n        \n        if(!CryptHashData(hHash, (BYTE *) password, passwordLen, 0))\n        {\n            printLine(\"Error in hashing password\");\n            exit(1);\n        }\n        \n        if(!CryptDeriveKey(hCryptProv, CALG_RC5, hHash, 0, &hKey))\n        {\n            printLine(\"Error in CryptDeriveKey\");\n            exit(1);\n        }\n        \n        if(!CryptDecrypt(hKey, 0, 1, 0, (BYTE *)toBeDecrypted, &toBeDecryptedLen))\n        {\n            printLine(\"Error in decryption\");\n            exit(1);\n        }\n        \n        toBeDecrypted[toBeDecryptedLen] = '\\0';\n        printLine(toBeDecrypted);\n        \n        if (hKey)\n        {\n            CryptDestroyKey(hKey);\n        }\n        if (hHash)\n        {\n            CryptDestroyHash(hHash);\n        }\n        if (hCryptProv)\n        {\n            CryptReleaseContext(hCryptProv, 0);\n        }\n        if (pFile)\n        {\n            fclose(pFile);\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_vggiyxsa();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401241,
+    "original_file": "testcases/CWE327_Use_Broken_Crypto/CWE327_Use_Broken_Crypto__w32_RC5_18.c",
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <wincrypt.h>\n\n\n#pragma comment (lib, \"Advapi32\")\n\n\n\nstatic void f_dyhgdqxb()\n{\n    {\n        FILE *pFile;\n        HCRYPTPROV hCryptProv;\n        HCRYPTKEY hKey;\n        HCRYPTHASH hHash;\n        char password[100];\n        size_t passwordLen;\n        char toBeDecrypted[100];\n        DWORD toBeDecryptedLen = sizeof(toBeDecrypted)-1;\n        \n        printLine(\"Enter the password: \");\n        if (fgets(password, 100, stdin) == NULL)\n        {\n            printLine(\"fgets() failed\");\n            \n            password[0] = '\\0';\n        }\n        \n        passwordLen = strlen(password);\n        if (passwordLen > 0)\n        {\n            password[passwordLen-1] = '\\0';\n        }\n        \n        pFile = fopen(\"encrypted.txt\", \"rb\");\n        if (pFile == NULL)\n        {\n            exit(1);\n        }\n        if (fread(toBeDecrypted, sizeof(char), 100, pFile) != 100)\n        {\n            fclose(pFile);\n            exit(1);\n        }\n        toBeDecrypted[99] = '\\0';\n        \n        if(!CryptAcquireContext(&hCryptProv, NULL, MS_ENH_RSA_AES_PROV, PROV_RSA_AES, 0))\n        {\n            if(!CryptAcquireContext(&hCryptProv, NULL, MS_ENH_RSA_AES_PROV, PROV_RSA_AES, CRYPT_NEWKEYSET))\n            {\n                printLine(\"Error in acquiring cryptographic context\");\n                exit(1);\n            }\n        }\n        \n        if(!CryptCreateHash(hCryptProv, CALG_SHA_256, 0, 0, &hHash))\n        {\n            printLine(\"Error in creating hash\");\n            exit(1);\n        }\n        \n        if(!CryptHashData(hHash, (BYTE *) password, passwordLen, 0))\n        {\n            printLine(\"Error in hashing password\");\n            exit(1);\n        }\n        \n        if(!CryptDeriveKey(hCryptProv, CALG_AES_256, hHash, 0, &hKey))\n        {\n            printLine(\"Error in CryptDeriveKey\");\n            exit(1);\n        }\n        \n        if(!CryptDecrypt(hKey, 0, 1, 0, (BYTE *)toBeDecrypted, &toBeDecryptedLen))\n        {\n            printLine(\"Error in decryption\");\n            exit(1);\n        }\n        \n        toBeDecrypted[toBeDecryptedLen] = '\\0';\n        printLine(toBeDecrypted);\n        \n        if (hKey)\n        {\n            CryptDestroyKey(hKey);\n        }\n        if (hHash)\n        {\n            CryptDestroyHash(hHash);\n        }\n        if (hCryptProv)\n        {\n            CryptReleaseContext(hCryptProv, 0);\n        }\n        if (pFile)\n        {\n            fclose(pFile);\n        }\n    }\n}\n\nvoid f_dnfjngcg()\n{\n    f_dyhgdqxb();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_dnfjngcg();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401242,
+    "original_file": "testcases/CWE327_Use_Broken_Crypto/CWE327_Use_Broken_Crypto__w32_3DES_01.c",
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <wincrypt.h>\n\n\n#pragma comment (lib, \"Advapi32\")\n\n\nvoid f_vmibugdf()\n{\n    {\n        FILE *pFile;\n        HCRYPTPROV hCryptProv;\n        HCRYPTKEY hKey;\n        HCRYPTHASH hHash;\n        char password[100];\n        size_t passwordLen;\n        char toBeDecrypted[100];\n        DWORD toBeDecryptedLen = sizeof(toBeDecrypted)-1;\n        \n        printLine(\"Enter the password: \");\n        if (fgets(password, 100, stdin) == NULL)\n        {\n            printLine(\"fgets() failed\");\n            \n            password[0] = '\\0';\n        }\n        \n        passwordLen = strlen(password);\n        if (passwordLen > 0)\n        {\n            password[passwordLen-1] = '\\0';\n        }\n        \n        pFile = fopen(\"encrypted.txt\", \"rb\");\n        if (pFile == NULL)\n        {\n            exit(1);\n        }\n        if (fread(toBeDecrypted, sizeof(char), 100, pFile) != 100)\n        {\n            fclose(pFile);\n            exit(1);\n        }\n        toBeDecrypted[99] = '\\0';\n        \n        if(!CryptAcquireContext(&hCryptProv, NULL, MS_ENH_RSA_AES_PROV, PROV_RSA_AES, 0))\n        {\n            if(!CryptAcquireContext(&hCryptProv, NULL, MS_ENH_RSA_AES_PROV, PROV_RSA_AES, CRYPT_NEWKEYSET))\n            {\n                printLine(\"Error in acquiring cryptographic context\");\n                exit(1);\n            }\n        }\n        \n        if(!CryptCreateHash(hCryptProv, CALG_SHA_256, 0, 0, &hHash))\n        {\n            printLine(\"Error in creating hash\");\n            exit(1);\n        }\n        \n        if(!CryptHashData(hHash, (BYTE *) password, passwordLen, 0))\n        {\n            printLine(\"Error in hashing password\");\n            exit(1);\n        }\n        \n        if(!CryptDeriveKey(hCryptProv, CALG_3DES, hHash, 0, &hKey))\n        {\n            printLine(\"Error in CryptDeriveKey\");\n            exit(1);\n        }\n        \n        if(!CryptDecrypt(hKey, 0, 1, 0, (BYTE *)toBeDecrypted, &toBeDecryptedLen))\n        {\n            printLine(\"Error in decryption\");\n            exit(1);\n        }\n        \n        toBeDecrypted[toBeDecryptedLen] = '\\0';\n        printLine(toBeDecrypted);\n        \n        if (hKey)\n        {\n            CryptDestroyKey(hKey);\n        }\n        if (hHash)\n        {\n            CryptDestroyHash(hHash);\n        }\n        if (hCryptProv)\n        {\n            CryptReleaseContext(hCryptProv, 0);\n        }\n        if (pFile)\n        {\n            fclose(pFile);\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_vmibugdf();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401243,
+    "original_file": "testcases/CWE327_Use_Broken_Crypto/CWE327_Use_Broken_Crypto__w32_3DES_01.c",
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <wincrypt.h>\n\n\n#pragma comment (lib, \"Advapi32\")\n\n\nvoid f_qshxogqu()\n{\n    {\n        FILE *pFile;\n        HCRYPTPROV hCryptProv;\n        HCRYPTKEY hKey;\n        HCRYPTHASH hHash;\n        char password[100];\n        size_t passwordLen;\n        char toBeDecrypted[100];\n        DWORD toBeDecryptedLen = sizeof(toBeDecrypted)-1;\n        \n        printLine(\"Enter the password: \");\n        if (fgets(password, 100, stdin) == NULL)\n        {\n            printLine(\"fgets() failed\");\n            \n            password[0] = '\\0';\n        }\n        \n        passwordLen = strlen(password);\n        if (passwordLen > 0)\n        {\n            password[passwordLen-1] = '\\0';\n        }\n        \n        pFile = fopen(\"encrypted.txt\", \"rb\");\n        if (pFile == NULL)\n        {\n            exit(1);\n        }\n        if (fread(toBeDecrypted, sizeof(char), 100, pFile) != 100)\n        {\n            fclose(pFile);\n            exit(1);\n        }\n        toBeDecrypted[99] = '\\0';\n        \n        if(!CryptAcquireContext(&hCryptProv, NULL, MS_ENH_RSA_AES_PROV, PROV_RSA_AES, 0))\n        {\n            if(!CryptAcquireContext(&hCryptProv, NULL, MS_ENH_RSA_AES_PROV, PROV_RSA_AES, CRYPT_NEWKEYSET))\n            {\n                printLine(\"Error in acquiring cryptographic context\");\n                exit(1);\n            }\n        }\n        \n        if(!CryptCreateHash(hCryptProv, CALG_SHA_256, 0, 0, &hHash))\n        {\n            printLine(\"Error in creating hash\");\n            exit(1);\n        }\n        \n        if(!CryptHashData(hHash, (BYTE *) password, passwordLen, 0))\n        {\n            printLine(\"Error in hashing password\");\n            exit(1);\n        }\n        \n        if(!CryptDeriveKey(hCryptProv, CALG_DES, hHash, 0, &hKey))\n        {\n            printLine(\"Error in CryptDeriveKey\");\n            exit(1);\n        }\n        \n        if(!CryptDecrypt(hKey, 0, 1, 0, (BYTE *)toBeDecrypted, &toBeDecryptedLen))\n        {\n            printLine(\"Error in decryption\");\n            exit(1);\n        }\n        \n        toBeDecrypted[toBeDecryptedLen] = '\\0';\n        printLine(toBeDecrypted);\n        \n        if (hKey)\n        {\n            CryptDestroyKey(hKey);\n        }\n        if (hHash)\n        {\n            CryptDestroyHash(hHash);\n        }\n        if (hCryptProv)\n        {\n            CryptReleaseContext(hCryptProv, 0);\n        }\n        if (pFile)\n        {\n            fclose(pFile);\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_qshxogqu();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401245,
+    "original_file": "testcases/CWE327_Use_Broken_Crypto/CWE327_Use_Broken_Crypto__w32_DES_01.c",
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <wincrypt.h>\n\n\n#pragma comment (lib, \"Advapi32\")\n\n\nvoid f_zqbubvdz()\n{\n    {\n        FILE *pFile;\n        HCRYPTPROV hCryptProv;\n        HCRYPTKEY hKey;\n        HCRYPTHASH hHash;\n        char password[100];\n        size_t passwordLen;\n        char toBeDecrypted[100];\n        DWORD toBeDecryptedLen = sizeof(toBeDecrypted)-1;\n        \n        printLine(\"Enter the password: \");\n        if (fgets(password, 100, stdin) == NULL)\n        {\n            printLine(\"fgets() failed\");\n            \n            password[0] = '\\0';\n        }\n        \n        passwordLen = strlen(password);\n        if (passwordLen > 0)\n        {\n            password[passwordLen-1] = '\\0';\n        }\n        \n        pFile = fopen(\"encrypted.txt\", \"rb\");\n        if (pFile == NULL)\n        {\n            exit(1);\n        }\n        if (fread(toBeDecrypted, sizeof(char), 100, pFile) != 100)\n        {\n            fclose(pFile);\n            exit(1);\n        }\n        toBeDecrypted[99] = '\\0';\n        \n        if(!CryptAcquireContext(&hCryptProv, NULL, MS_ENH_RSA_AES_PROV, PROV_RSA_AES, 0))\n        {\n            if(!CryptAcquireContext(&hCryptProv, NULL, MS_ENH_RSA_AES_PROV, PROV_RSA_AES, CRYPT_NEWKEYSET))\n            {\n                printLine(\"Error in acquiring cryptographic context\");\n                exit(1);\n            }\n        }\n        \n        if(!CryptCreateHash(hCryptProv, CALG_SHA_256, 0, 0, &hHash))\n        {\n            printLine(\"Error in creating hash\");\n            exit(1);\n        }\n        \n        if(!CryptHashData(hHash, (BYTE *) password, passwordLen, 0))\n        {\n            printLine(\"Error in hashing password\");\n            exit(1);\n        }\n        \n        if(!CryptDeriveKey(hCryptProv, CALG_RC5, hHash, 0, &hKey))\n        {\n            printLine(\"Error in CryptDeriveKey\");\n            exit(1);\n        }\n        \n        if(!CryptDecrypt(hKey, 0, 1, 0, (BYTE *)toBeDecrypted, &toBeDecryptedLen))\n        {\n            printLine(\"Error in decryption\");\n            exit(1);\n        }\n        \n        toBeDecrypted[toBeDecryptedLen] = '\\0';\n        printLine(toBeDecrypted);\n        \n        if (hKey)\n        {\n            CryptDestroyKey(hKey);\n        }\n        if (hHash)\n        {\n            CryptDestroyHash(hHash);\n        }\n        if (hCryptProv)\n        {\n            CryptReleaseContext(hCryptProv, 0);\n        }\n        if (pFile)\n        {\n            fclose(pFile);\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_zqbubvdz();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401247,
+    "original_file": "testcases/CWE327_Use_Broken_Crypto/CWE327_Use_Broken_Crypto__w32_RC5_01.c",
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  }
+]

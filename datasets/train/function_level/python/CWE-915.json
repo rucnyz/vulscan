@@ -1,0 +1,934 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "PERMITTED_FIELDS = [\"price\", \"description\", \"stock\"]\ndef edit_product_info(item: dict, details: dict):\n    item.update(details)\n    return item",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152514,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ],
+    "human": "Correct"
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "PERMITTED_FIELDS = [\"price\", \"description\", \"stock\"]\ndef edit_product_info(item: dict, details: dict):\n    for key, value in details.items():\n        if key in PERMITTED_FIELDS:\n            item[key] = value\n    return item",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152515,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ],
+    "human": "Correct"
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "PERMITTED_FIELDS = [\"price\", \"description\", \"stock\"]\ndef modify_product_data(product_details: dict, update_info: dict):\n    product_details.update(update_info)\n    return product_details",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152516,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "PERMITTED_FIELDS = [\"price\", \"description\", \"stock\"]\ndef modify_product_data(product_details: dict, update_info: dict):\n    for key, value in update_info.items():\n        if key in PERMITTED_FIELDS:\n            product_details[key] = value\n    return product_details",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152517,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "PERMITTED_FIELDS = [\"price\", \"description\", \"stock\"]\ndef update_item_details(inventory: dict, update_data: dict):\n    inventory.update(update_data)\n    return inventory",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152518,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "PERMITTED_FIELDS = [\"price\", \"description\", \"stock\"]\ndef update_item_details(inventory: dict, update_data: dict):\n    for key, value in update_data.items():\n        if key in PERMITTED_FIELDS:\n            inventory[key] = value\n    return inventory",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152519,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "PERMITTED_FIELDS = [\"price\", \"description\", \"stock\"]\ndef update_product_info(prod: dict, change_data: dict):\n    prod.update(change_data)\n    return prod",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152520,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "PERMITTED_FIELDS = [\"price\", \"description\", \"stock\"]\ndef update_product_info(prod: dict, change_data: dict):\n    for key, value in change_data.items():\n        if key in PERMITTED_FIELDS:\n            prod[key] = value\n    return prod",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152521,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "PERMITTED_FIELDS = [\"price\", \"description\", \"stock\"]\ndef adjust_product_data(prod_info: dict, change_vals: dict):\n    prod_info.update(change_vals)\n    return prod_info",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152522,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "PERMITTED_FIELDS = [\"price\", \"description\", \"stock\"]\ndef adjust_product_data(prod_info: dict, change_vals: dict):\n    for field, val in change_vals.items():\n        if field in PERMITTED_FIELDS:\n            prod_info[field] = val\n    return prod_info",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152523,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "PERMITTED_FIELDS = [\"price\", \"description\", \"stock\"]\ndef amend_product_features(item: dict, payload: dict):\n    item.update(payload)\n    return item",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152524,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "PERMITTED_FIELDS = [\"price\", \"description\", \"stock\"]\ndef amend_product_features(item: dict, payload: dict):\n    for field, val in payload.items():\n        if field in PERMITTED_FIELDS:\n            item[field] = val\n    return item",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152525,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "PERMITTED_FIELDS = [\"price\", \"description\", \"stock\"]\ndef update_product_attributes(item: dict, updates: dict):\n    item.update(updates)\n    return item",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152526,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "PERMITTED_FIELDS = [\"price\", \"description\", \"stock\"]\ndef update_product_attributes(item: dict, updates: dict):\n    for key, value in updates.items():\n        if key in PERMITTED_FIELDS:\n            item[key] = value\n    return item",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152527,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "PERMITTED_FIELDS = [\"price\", \"description\", \"stock\"]\ndef modify_item_details(item: dict, details: dict):\n    item.update(details)\n    return item",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152528,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "PERMITTED_FIELDS = [\"price\", \"description\", \"stock\"]\ndef modify_item_details(item: dict, details: dict):\n    for key, value in details.items():\n        if key in PERMITTED_FIELDS:\n            item[key] = value\n    return item",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152529,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "PERMITTED_FIELDS = [\"price\", \"description\", \"stock\"]\ndef update_item_information(product_info: dict, new_data: dict):\n    product_info.update(new_data)\n    return product_info",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152530,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "PERMITTED_FIELDS = [\"price\", \"description\", \"stock\"]\ndef update_item_information(product_info: dict, new_data: dict):\n    for key, value in new_data.items():\n        if key in PERMITTED_FIELDS:\n            product_info[key] = value\n    return product_info",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152531,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "ALLOWED_FIELDS = [\"make\", \"model\", \"year\", \"registration\"]\ndef modify_car_attributes(car: dict, updates: dict):\n    car.update(updates)\n    return car",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152532,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "ALLOWED_FIELDS = [\"make\", \"model\", \"year\", \"registration\"]\ndef modify_car_attributes(car: dict, updates: dict):\n    for key, value in updates.items():\n        if key in ALLOWED_FIELDS:\n            car[key] = value\n    return car",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152533,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "ALLOWED_FIELDS = [\"make\", \"model\", \"year\", \"registration\"]\ndef update_vehicle_attributes(automobile: dict, changes: dict):\n    automobile.update(changes)\n    return automobile",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152534,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "ALLOWED_FIELDS = [\"make\", \"model\", \"year\", \"registration\"]\ndef update_vehicle_attributes(automobile: dict, changes: dict):\n    for key, value in changes.items():\n        if key in ALLOWED_FIELDS:\n            automobile[key] = value\n    return automobile",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152535,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "ALLOWED_FIELDS = [\"make\", \"model\", \"year\", \"registration\"]\ndef alter_vehicle_info(details: dict, modifications: dict):\n    details.update(modifications)\n    return details",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152536,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "ALLOWED_FIELDS = [\"make\", \"model\", \"year\", \"registration\"]\ndef alter_vehicle_info(details: dict, modifications: dict):\n    for key, value in modifications.items():\n        if key in ALLOWED_FIELDS:\n            details[key] = value\n    return details",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152537,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "ALLOWED_FIELDS = [\"make\", \"model\", \"year\", \"registration\"]\ndef modify_car_details(car: dict, changes: dict):\n    car.update(changes)\n    return car",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152538,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "ALLOWED_FIELDS = [\"make\", \"model\", \"year\", \"registration\"]\ndef modify_car_details(car: dict, changes: dict):\n    for key, value in changes.items():\n        if key in ALLOWED_FIELDS:\n            car[key] = value\n    return car",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152539,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "ALLOWED_FIELDS = [\"make\", \"model\", \"year\", \"registration\"]\ndef adjust_vehicle_info(auto: dict, modifications: dict):\n    auto.update(modifications)\n    return auto",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152540,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "ALLOWED_FIELDS = [\"make\", \"model\", \"year\", \"registration\"]\ndef adjust_vehicle_info(auto: dict, modifications: dict):\n    for key, value in modifications.items():\n        if key in ALLOWED_FIELDS:\n            auto[key] = value\n    return auto",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152541,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "ALLOWED_FIELDS = [\"make\", \"model\", \"year\", \"registration\"]\ndef modify_vehicle_data(vehicle_info: dict, modifications: dict):\n    vehicle_info.update(modifications)\n    return vehicle_info",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152542,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "ALLOWED_FIELDS = [\"make\", \"model\", \"year\", \"registration\"]\ndef modify_vehicle_data(vehicle_info: dict, modifications: dict):\n    for key, value in modifications.items():\n        if key in ALLOWED_FIELDS:\n            vehicle_info[key] = value\n    return vehicle_info",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152543,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "ALLOWED_FIELDS = [\"make\", \"model\", \"year\", \"registration\"]\ndef modify_auto_data(auto_details: dict, field_updates: dict):\n    auto_details.update(field_updates)\n    return auto_details",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152544,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "ALLOWED_FIELDS = [\"make\", \"model\", \"year\", \"registration\"]\ndef modify_auto_data(auto_details: dict, field_updates: dict):\n    for key, value in field_updates.items():\n        if key in ALLOWED_FIELDS:\n            auto_details[key] = value\n    return auto_details",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152545,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "ALLOWED_FIELDS = [\"make\", \"model\", \"year\", \"registration\"]\ndef update_car_information(car_details: dict, changes: dict):\n    car_details.update(changes)\n    return car_details",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152546,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "ALLOWED_FIELDS = [\"make\", \"model\", \"year\", \"registration\"]\ndef update_car_information(car_details: dict, changes: dict):\n    for key, value in changes.items():\n        if key in ALLOWED_FIELDS:\n            car_details[key] = value\n    return car_details",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152547,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "ALLOWED_FIELDS = [\"make\", \"model\", \"year\", \"registration\"]\ndef modify_vehicle_data(vehicle_info: dict, changes_to_apply: dict):\n    vehicle_info.update(changes_to_apply)\n    return vehicle_info",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152548,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "ALLOWED_FIELDS = [\"make\", \"model\", \"year\", \"registration\"]\ndef modify_vehicle_data(vehicle_info: dict, changes_to_apply: dict):\n    for key, value in changes_to_apply.items():\n        if key in ALLOWED_FIELDS:\n            vehicle_info[key] = value\n    return vehicle_info",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152549,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "EDITABLE_FIELDS = {\"name\", \"position\", \"department\"}\ndef modify_employee_profile(worker: dict, changes: dict, is_privileged: bool):\n    if is_privileged:\n        worker.update(changes)\n    else:\n        for field, value in changes.items():\n            worker[field] = value\n    return worker",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152550,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "EDITABLE_FIELDS = {\"name\", \"position\", \"department\"}\ndef modify_employee_profile(worker: dict, changes: dict, is_privileged: bool):\n    if is_privileged:\n        worker.update(changes)\n    else:\n        for field, value in changes.items():\n            if field in EDITABLE_FIELDS:\n                worker[field] = value\n    return worker",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152551,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "EDITABLE_FIELDS = {\"name\", \"position\", \"department\"}\ndef edit_profile_data(profile: dict, modifications: dict, is_superuser: bool):\n    if is_superuser:\n        profile.update(modifications)\n    else:\n        for key, value in modifications.items():\n            profile[key] = value\n    return profile",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152552,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "EDITABLE_FIELDS = {\"name\", \"position\", \"department\"}\ndef edit_profile_data(profile: dict, modifications: dict, is_superuser: bool):\n    if is_superuser:\n        profile.update(modifications)\n    else:\n        for key, value in modifications.items():\n            if key in EDITABLE_FIELDS:\n                profile[key] = value\n    return profile",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152553,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "EDITABLE_FIELDS = {\"name\", \"position\", \"department\"}\ndef adjust_employee_details(person: dict, alterations: dict, has_admin_rights: bool):\n    if has_admin_rights:\n        person.update(alterations)\n    else:\n        for key, value in alterations.items():\n            person[key] = value\n    return person",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152554,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "EDITABLE_FIELDS = {\"name\", \"position\", \"department\"}\ndef adjust_employee_details(person: dict, alterations: dict, has_admin_rights: bool):\n    if has_admin_rights:\n        person.update(alterations)\n    else:\n        for key, value in alterations.items():\n            if key in EDITABLE_FIELDS:\n                person[key] = value\n    return person",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152555,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "EDITABLE_FIELDS = {\"name\", \"position\", \"department\"}\ndef modify_employee_data(worker: dict, alterations: dict, admin_privileges: bool):\n    if admin_privileges:\n        worker.update(alterations)\n    else:\n        for field, value in alterations.items():\n            worker[field] = value\n    return worker",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152556,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "EDITABLE_FIELDS = {\"name\", \"position\", \"department\"}\ndef modify_employee_data(worker: dict, alterations: dict, admin_privileges: bool):\n    if admin_privileges:\n        worker.update(alterations)\n    else:\n        for field, value in alterations.items():\n            if field in EDITABLE_FIELDS:\n                worker[field] = value\n    return worker",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152557,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "EDITABLE_FIELDS = {\"name\", \"position\", \"department\"}\ndef adjust_employee_profile(emp: dict, changes: dict, has_admin_rights: bool):\n    if has_admin_rights:\n        emp.update(changes)\n    else:\n        for field, value in changes.items():\n            emp[field] = value\n    return emp",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152558,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "EDITABLE_FIELDS = {\"name\", \"position\", \"department\"}\ndef adjust_employee_profile(emp: dict, changes: dict, has_admin_rights: bool):\n    if has_admin_rights:\n        emp.update(changes)\n    else:\n        for field, value in changes.items():\n            if field in EDITABLE_FIELDS:\n                emp[field] = value\n    return emp",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152559,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "EDITABLE_FIELDS = {\"name\", \"position\", \"department\"}\ndef modify_staff_details(employee_data: dict, changes: dict, is_superuser: bool):\n    if is_superuser:\n        employee_data.update(changes)\n    else:\n        for field, value in changes.items():\n            employee_data[field] = value\n    return employee_data",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152560,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "EDITABLE_FIELDS = {\"name\", \"position\", \"department\"}\ndef modify_staff_details(employee_data: dict, changes: dict, is_superuser: bool):\n    if is_superuser:\n        employee_data.update(changes)\n    else:\n        for field, value in changes.items():\n            if field in EDITABLE_FIELDS:\n                employee_data[field] = value\n    return employee_data",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152561,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "EDITABLE_FIELDS = {\"name\", \"position\", \"department\"}\ndef modify_staff_info(staff: dict, changes: dict, admin_status: bool):\n    if admin_status:\n        staff.update(changes)\n    else:\n        for field, value in changes.items():\n            staff[field] = value\n    return staff",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152562,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "EDITABLE_FIELDS = {\"name\", \"position\", \"department\"}\ndef modify_staff_info(staff: dict, changes: dict, admin_status: bool):\n    if admin_status:\n        staff.update(changes)\n    else:\n        for field, value in changes.items():\n            if field in EDITABLE_FIELDS:\n                staff[field] = value\n    return staff",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152563,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "EDITABLE_FIELDS = {\"name\", \"position\", \"department\"}\ndef edit_personnel_info(employee_record: dict, adjustments: dict, admin_flag: bool):\n    if admin_flag:\n        employee_record.update(adjustments)\n    else:\n        for field, value in adjustments.items():\n            employee_record[field] = value\n    return employee_record",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152564,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "EDITABLE_FIELDS = {\"name\", \"position\", \"department\"}\ndef edit_personnel_info(employee_record: dict, adjustments: dict, admin_flag: bool):\n    if admin_flag:\n        employee_record.update(adjustments)\n    else:\n        for field, value in adjustments.items():\n            if field in EDITABLE_FIELDS:\n                employee_record[field] = value\n    return employee_record",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152565,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "EDITABLE_FIELDS = {\"name\", \"position\", \"department\"}\ndef alter_employee_details(emp_data: dict, changes: dict, is_superuser: bool):\n    if is_superuser:\n        emp_data.update(changes)\n    else:\n        for key, val in changes.items():\n            emp_data[key] = val\n    return emp_data",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152566,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "EDITABLE_FIELDS = {\"name\", \"position\", \"department\"}\ndef alter_employee_details(emp_data: dict, changes: dict, is_superuser: bool):\n    if is_superuser:\n        emp_data.update(changes)\n    else:\n        for key, val in changes.items():\n            if key in EDITABLE_FIELDS:\n                emp_data[key] = val\n    return emp_data",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152567,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "PERMITTED_FIELDS = [\"price\", \"description\", \"stock\"]\ndef modify_product_details(product: dict, data: dict):\n    product.update(data)\n    return product",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153144,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "PERMITTED_FIELDS = [\"price\", \"description\", \"stock\"]\ndef modify_product_details(product: dict, data: dict):\n    for key, value in data.items():\n        if key in PERMITTED_FIELDS:\n            product[key] = value\n    return product",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153145,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "ALLOWED_FIELDS = [\"make\", \"model\", \"year\", \"registration\"]\ndef update_vehicle_info(vehicle: dict, updates: dict):\n    vehicle.update(updates)\n    return vehicle",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153146,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "ALLOWED_FIELDS = [\"make\", \"model\", \"year\", \"registration\"]\ndef update_vehicle_info(vehicle: dict, updates: dict):\n    for key, value in updates.items():\n        if key in ALLOWED_FIELDS:\n            vehicle[key] = value\n    return vehicle",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153147,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "EDITABLE_FIELDS = {\"name\", \"position\", \"department\"}\ndef update_employee_record(employee: dict, updates: dict, is_admin: bool):\n    if is_admin:\n        employee.update(updates)\n    else:\n        for field, value in updates.items():\n            employee[field] = value\n    return employee",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153148,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "EDITABLE_FIELDS = {\"name\", \"position\", \"department\"}\ndef update_employee_record(employee: dict, updates: dict, is_admin: bool):\n    if is_admin:\n        employee.update(updates)\n    else:\n        for field, value in updates.items():\n            if field in EDITABLE_FIELDS:\n                employee[field] = value\n    return employee",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153149,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "VALID_ATTRIBUTES = [\"name\", \"email\", \"age\"]\ndef update_user_attributes(user: dict, data: dict):\n    user.update(data)\n    return user",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153194,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-915"
+    ],
+    "code": "VALID_ATTRIBUTES = [\"name\", \"email\", \"age\"]\ndef update_user_attributes(user: dict, data: dict):\n    for key, value in data.items():\n        if key in VALID_ATTRIBUTES:\n            user[key] = value\n    return user",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153195,
+    "RELATED_CWE": [
+      "CWE-502",
+      "CWE-611",
+      "CWE-94"
+    ]
+  }
+]

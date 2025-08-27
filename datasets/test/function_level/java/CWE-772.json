@@ -1,0 +1,17 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-772"
+    ],
+    "code": "\nimport java.io.BufferedReader;\nimport java.io.InputStreamReader;\nimport java.io.IOException;\nimport java.io.UnsupportedEncodingException;\nimport java.util.logging.Level;\nimport testcasesupport.AbstractTestCase;\nimport testcasesupport.IO;\n\npublic class UaAvguE extends AbstractTestCase {\n\n    private void sEXYVUh() {\n        BufferedReader readerBuffered = null;\n        InputStreamReader readerInputStream = null;\n        try {\n            readerInputStream = new InputStreamReader(System.in, \"UTF-8\");\n            readerBuffered = new BufferedReader(readerInputStream);\n            String readString = readerBuffered.readLine();\n            IO.writeLine(readString);\n        } catch (UnsupportedEncodingException exceptUnsupportedEncoding) {\n            IO.logger.log(Level.WARNING, \"KYAaOjT\", exceptUnsupportedEncoding);\n        } catch (IOException exceptIO) {\n            IO.logger.log(Level.WARNING, \"IYYVZaV\", exceptIO);\n        } finally \n        {\n            try {\n                if (readerBuffered != null) {\n                    readerBuffered.close();\n                }\n            } catch (IOException exceptIO) {\n                IO.logger.log(Level.WARNING, \"WeqfbqF\", exceptIO);\n            }\n            try {\n                if (readerInputStream != null) {\n                    readerInputStream.close();\n                }\n            } catch (IOException exceptIO) {\n                IO.logger.log(Level.WARNING, \"kEdxQqs\", exceptIO);\n            }\n        }\n    }\n\n    public void JttWLtS() {\n        sEXYVUh();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1243139,
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-707",
+      "CWE-667"
+    ]
+  }
+]

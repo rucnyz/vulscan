@@ -1,0 +1,2102 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class nZdWiuc extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        Integer data;\n        \n        data = null;\n        \n        IO.writeLine(\"IbXSDGu\" + data.toString());\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238442,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class nZdWiuc extends AbstractTestCase {\n\n    public void JttWLtS() throws Throwable {\n        EXrOlJC();\n        NDSwpcn();\n    }\n\n    \n    private void EXrOlJC() throws Throwable {\n        Integer data;\n        \n        data = Integer.valueOf(5);\n        \n        IO.writeLine(\"IbXSDGu\" + data.toString());\n    }\n\n    \n    private void NDSwpcn() throws Throwable {\n        Integer data;\n        \n        data = null;\n        \n        if (data != null) {\n            IO.writeLine(\"IbXSDGu\" + data.toString());\n        } else {\n            IO.writeLine(\"BIyCOXk\");\n        }\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238443,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class gwdOGUU extends AbstractTestCase {\n\n    \n    private void nrUZtTn() throws Throwable {\n        Integer data;\n        if (5 != 5) {\n            \n            data = null;\n        } else {\n            \n            data = Integer.valueOf(5);\n        }\n        if (5 == 5) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.toString());\n        }\n    }\n\n    \n    private void iEftrkw() throws Throwable {\n        Integer data;\n        if (5 == 5) {\n            \n            data = Integer.valueOf(5);\n        } else {\n            \n            data = null;\n        }\n        if (5 == 5) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.toString());\n        }\n    }\n\n    \n    private void uytpYbp() throws Throwable {\n        Integer data;\n        if (5 == 5) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (5 != 5) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.toString());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    \n    private void OQsEKDS() throws Throwable {\n        Integer data;\n        if (5 == 5) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (5 == 5) {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.toString());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        nrUZtTn();\n        iEftrkw();\n        uytpYbp();\n        OQsEKDS();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238447,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class aUZQtAp extends AbstractTestCase {\n\n    \n    private void nrUZtTn() throws Throwable {\n        Integer data;\n        if (IO.STATIC_FINAL_FALSE) {\n            \n            data = null;\n        } else {\n            \n            data = Integer.valueOf(5);\n        }\n        if (IO.STATIC_FINAL_TRUE) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.toString());\n        }\n    }\n\n    \n    private void iEftrkw() throws Throwable {\n        Integer data;\n        if (IO.STATIC_FINAL_TRUE) {\n            \n            data = Integer.valueOf(5);\n        } else {\n            \n            data = null;\n        }\n        if (IO.STATIC_FINAL_TRUE) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.toString());\n        }\n    }\n\n    \n    private void uytpYbp() throws Throwable {\n        Integer data;\n        if (IO.STATIC_FINAL_TRUE) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (IO.STATIC_FINAL_FALSE) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.toString());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    \n    private void OQsEKDS() throws Throwable {\n        Integer data;\n        if (IO.STATIC_FINAL_TRUE) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (IO.STATIC_FINAL_TRUE) {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.toString());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        nrUZtTn();\n        iEftrkw();\n        uytpYbp();\n        OQsEKDS();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238459,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class vHDWynM extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        Integer data;\n        if (IO.staticTrue) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (IO.staticTrue) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.toString());\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238460,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class zDbxeId extends AbstractTestCase {\n\n    \n    private void nrUZtTn() throws Throwable {\n        Integer data;\n        if (IO.STATIC_FINAL_FIVE != 5) {\n            \n            data = null;\n        } else {\n            \n            data = Integer.valueOf(5);\n        }\n        if (IO.STATIC_FINAL_FIVE == 5) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.toString());\n        }\n    }\n\n    \n    private void iEftrkw() throws Throwable {\n        Integer data;\n        if (IO.STATIC_FINAL_FIVE == 5) {\n            \n            data = Integer.valueOf(5);\n        } else {\n            \n            data = null;\n        }\n        if (IO.STATIC_FINAL_FIVE == 5) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.toString());\n        }\n    }\n\n    \n    private void uytpYbp() throws Throwable {\n        Integer data;\n        if (IO.STATIC_FINAL_FIVE == 5) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (IO.STATIC_FINAL_FIVE != 5) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.toString());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    \n    private void OQsEKDS() throws Throwable {\n        Integer data;\n        if (IO.STATIC_FINAL_FIVE == 5) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (IO.STATIC_FINAL_FIVE == 5) {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.toString());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        nrUZtTn();\n        iEftrkw();\n        uytpYbp();\n        OQsEKDS();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238467,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class IMzAYCU extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        Integer data;\n        if (IO.staticFive == 5) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (IO.staticFive == 5) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.toString());\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238468,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class IMzAYCU extends AbstractTestCase {\n\n    \n    private void nrUZtTn() throws Throwable {\n        Integer data;\n        if (IO.staticFive != 5) {\n            \n            data = null;\n        } else {\n            \n            data = Integer.valueOf(5);\n        }\n        if (IO.staticFive == 5) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.toString());\n        }\n    }\n\n    \n    private void iEftrkw() throws Throwable {\n        Integer data;\n        if (IO.staticFive == 5) {\n            \n            data = Integer.valueOf(5);\n        } else {\n            \n            data = null;\n        }\n        if (IO.staticFive == 5) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.toString());\n        }\n    }\n\n    \n    private void uytpYbp() throws Throwable {\n        Integer data;\n        if (IO.staticFive == 5) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (IO.staticFive != 5) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.toString());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    \n    private void OQsEKDS() throws Throwable {\n        Integer data;\n        if (IO.staticFive == 5) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (IO.staticFive == 5) {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.toString());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        nrUZtTn();\n        iEftrkw();\n        uytpYbp();\n        OQsEKDS();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238469,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class HEOtBYp extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        Integer data;\n        switch(6) {\n            case 6:\n                \n                data = null;\n                break;\n            default:\n                \n                data = null;\n                break;\n        }\n        switch(7) {\n            case 7:\n                \n                IO.writeLine(\"IbXSDGu\" + data.toString());\n                break;\n            default:\n                \n                IO.writeLine(\"fWyUuQv\");\n                break;\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238470,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class yVQqyiB extends AbstractTestCase {\n\n    \n    private void EXrOlJC() throws Throwable {\n        Integer data;\n        \n        data = Integer.valueOf(5);\n        for (int j = 0; j < 1; j++) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.toString());\n        }\n    }\n\n    \n    private void NDSwpcn() throws Throwable {\n        Integer data;\n        \n        data = null;\n        for (int k = 0; k < 1; k++) {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.toString());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        EXrOlJC();\n        NDSwpcn();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238475,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class zjklTfn {\n\n    \n    public void ZpnQtvQ(Integer data) throws Throwable {\n        if (mQRLsAJ.ydhDOMq) {\n            \n            data = null;\n        } else {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.toString());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    \n    public void VmywRrZ(Integer data) throws Throwable {\n        if (mQRLsAJ.HHhrjCy) {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.toString());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        } else {\n            \n            data = null;\n        }\n    }\n\n    \n    public void fDqjRYE(Integer data) throws Throwable {\n        if (mQRLsAJ.Pywwbtz) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.toString());\n        } else {\n            \n            data = null;\n        }\n    }\n}\n\npublic class mQRLsAJ extends AbstractTestCase {\n\n    \n    public static boolean qRMEpGJ = false;\n\n    \n    public static boolean ydhDOMq = false;\n\n    public static boolean HHhrjCy = false;\n\n    public static boolean Pywwbtz = false;\n\n    public void JttWLtS() throws Throwable {\n        uytpYbp();\n        OQsEKDS();\n        EXrOlJC();\n    }\n\n    \n    private void uytpYbp() throws Throwable {\n        Integer data = null;\n        \n        data = null;\n        ydhDOMq = false;\n        (new zjklTfn()).ZpnQtvQ(data);\n    }\n\n    \n    private void OQsEKDS() throws Throwable {\n        Integer data = null;\n        \n        data = null;\n        HHhrjCy = true;\n        (new zjklTfn()).VmywRrZ(data);\n    }\n\n    \n    private void EXrOlJC() throws Throwable {\n        Integer data = null;\n        \n        data = Integer.valueOf(5);\n        Pywwbtz = true;\n        (new zjklTfn()).fDqjRYE(data);\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238479,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class hTuIvXK extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        Integer data;\n        \n        data = null;\n        (new tuoVgyv()).RYNMBky(data);\n    }\n}\n\npublic class UvljfsK {\n\n    public void RYNMBky(Integer data) throws Throwable {\n        (new FlpxErs()).RYNMBky(data);\n    }\n}\n\npublic class BGxKQkY {\n\n    public void RYNMBky(Integer data) throws Throwable {\n        \n        IO.writeLine(\"IbXSDGu\" + data.toString());\n    }\n}\n\npublic class tuoVgyv {\n\n    public void RYNMBky(Integer data) throws Throwable {\n        (new UvljfsK()).RYNMBky(data);\n    }\n}\n\npublic class FlpxErs {\n\n    public void RYNMBky(Integer data) throws Throwable {\n        (new BGxKQkY()).RYNMBky(data);\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238494,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class TDpnEiU extends AbstractTestCase {\n\n    public static Integer data;\n\n    public void boNMSnT() throws Throwable {\n        \n        data = null;\n        (new uonQQcY()).RYNMBky();\n    }\n}\n\npublic class uonQQcY {\n\n    public void RYNMBky() throws Throwable {\n        Integer data = TDpnEiU.data;\n        \n        IO.writeLine(\"IbXSDGu\" + data.toString());\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238502,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class JHbczJQ extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        Integer data;\n        \n        data = null;\n        (new FbPtVho()).RYNMBky((Object) data);\n    }\n}\n\npublic class FbPtVho {\n\n    public void RYNMBky(Object dataObject) throws Throwable {\n        Integer data = (Integer) dataObject;\n        \n        IO.writeLine(\"IbXSDGu\" + data.toString());\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238504,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class ogNNHSk extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        StringBuilder data;\n        if (5 == 5) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (5 == 5) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238518,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class nCJcbZf extends AbstractTestCase {\n\n    \n    private boolean privateTrue = true;\n\n    private boolean privateFalse = false;\n\n    public void boNMSnT() throws Throwable {\n        StringBuilder data;\n        if (privateTrue) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (privateTrue) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238522,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class nCJcbZf extends AbstractTestCase {\n\n    \n    private boolean privateTrue = true;\n\n    private boolean privateFalse = false;\n\n    \n    private void nrUZtTn() throws Throwable {\n        StringBuilder data;\n        if (privateFalse) {\n            \n            data = null;\n        } else {\n            \n            data = new StringBuilder();\n        }\n        if (privateTrue) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n\n    \n    private void iEftrkw() throws Throwable {\n        StringBuilder data;\n        if (privateTrue) {\n            \n            data = new StringBuilder();\n        } else {\n            \n            data = null;\n        }\n        if (privateTrue) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n\n    \n    private void uytpYbp() throws Throwable {\n        StringBuilder data;\n        if (privateTrue) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (privateFalse) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    \n    private void OQsEKDS() throws Throwable {\n        StringBuilder data;\n        if (privateTrue) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (privateTrue) {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        nrUZtTn();\n        iEftrkw();\n        uytpYbp();\n        OQsEKDS();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238523,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class ZxCRfTL extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        StringBuilder data;\n        if (IO.staticReturnsTrueOrFalse()) {\n            \n            data = null;\n        } else {\n            \n            data = new StringBuilder();\n        }\n        if (IO.staticReturnsTrueOrFalse()) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        } else {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238536,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class DEppdzD extends AbstractTestCase {\n\n    \n    private void nrUZtTn() throws Throwable {\n        StringBuilder data;\n        switch(5) {\n            case 6:\n                \n                data = null;\n                break;\n            default:\n                \n                data = new StringBuilder();\n                break;\n        }\n        switch(7) {\n            case 7:\n                \n                IO.writeLine(\"IbXSDGu\" + data.length());\n                break;\n            default:\n                \n                IO.writeLine(\"fWyUuQv\");\n                break;\n        }\n    }\n\n    \n    private void iEftrkw() throws Throwable {\n        StringBuilder data;\n        switch(6) {\n            case 6:\n                \n                data = new StringBuilder();\n                break;\n            default:\n                \n                data = null;\n                break;\n        }\n        switch(7) {\n            case 7:\n                \n                IO.writeLine(\"IbXSDGu\" + data.length());\n                break;\n            default:\n                \n                IO.writeLine(\"fWyUuQv\");\n                break;\n        }\n    }\n\n    \n    private void uytpYbp() throws Throwable {\n        StringBuilder data;\n        switch(6) {\n            case 6:\n                \n                data = null;\n                break;\n            default:\n                \n                data = null;\n                break;\n        }\n        switch(8) {\n            case 7:\n                \n                IO.writeLine(\"fWyUuQv\");\n                break;\n            default:\n                \n                if (data != null) {\n                    IO.writeLine(\"IbXSDGu\" + data.length());\n                } else {\n                    IO.writeLine(\"BIyCOXk\");\n                }\n                break;\n        }\n    }\n\n    \n    private void OQsEKDS() throws Throwable {\n        StringBuilder data;\n        switch(6) {\n            case 6:\n                \n                data = null;\n                break;\n            default:\n                \n                data = null;\n                break;\n        }\n        switch(7) {\n            case 7:\n                \n                if (data != null) {\n                    IO.writeLine(\"IbXSDGu\" + data.length());\n                } else {\n                    IO.writeLine(\"BIyCOXk\");\n                }\n                break;\n            default:\n                \n                IO.writeLine(\"fWyUuQv\");\n                break;\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        nrUZtTn();\n        iEftrkw();\n        uytpYbp();\n        OQsEKDS();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238543,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class QkOGFST extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        StringBuilder data;\n        \n        \n        data = null;\n        for (int j = 0; j < 1; j++) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238546,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class LLImWuQ extends AbstractTestCase {\n\n    \n    private boolean dWmGbZa = false;\n\n    \n    private boolean aRnSMVj = false;\n\n    private boolean aOWZSGn = false;\n\n    private boolean DBbhdbc = false;\n\n    public void JttWLtS() throws Throwable {\n        uytpYbp();\n        OQsEKDS();\n        EXrOlJC();\n    }\n\n    \n    private void uytpYbp() throws Throwable {\n        StringBuilder data;\n        \n        data = null;\n        aRnSMVj = false;\n        ZpnQtvQ(data);\n    }\n\n    private void ZpnQtvQ(StringBuilder data) throws Throwable {\n        if (aRnSMVj) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    \n    private void OQsEKDS() throws Throwable {\n        StringBuilder data;\n        \n        data = null;\n        aOWZSGn = true;\n        VmywRrZ(data);\n    }\n\n    private void VmywRrZ(StringBuilder data) throws Throwable {\n        if (aOWZSGn) {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    \n    private void EXrOlJC() throws Throwable {\n        StringBuilder data;\n        \n        data = new StringBuilder();\n        DBbhdbc = true;\n        fDqjRYE(data);\n    }\n\n    private void fDqjRYE(StringBuilder data) throws Throwable {\n        if (DBbhdbc) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238549,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class qNIqjOI {\n\n    \n    public void ZpnQtvQ(StringBuilder data) throws Throwable {\n        if (jliVJOA.ydhDOMq) {\n            \n            data = null;\n        } else {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    \n    public void VmywRrZ(StringBuilder data) throws Throwable {\n        if (jliVJOA.HHhrjCy) {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        } else {\n            \n            data = null;\n        }\n    }\n\n    \n    public void fDqjRYE(StringBuilder data) throws Throwable {\n        if (jliVJOA.Pywwbtz) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        } else {\n            \n            data = null;\n        }\n    }\n}\n\npublic class jliVJOA extends AbstractTestCase {\n\n    \n    public static boolean qRMEpGJ = false;\n\n    \n    public static boolean ydhDOMq = false;\n\n    public static boolean HHhrjCy = false;\n\n    public static boolean Pywwbtz = false;\n\n    public void JttWLtS() throws Throwable {\n        uytpYbp();\n        OQsEKDS();\n        EXrOlJC();\n    }\n\n    \n    private void uytpYbp() throws Throwable {\n        StringBuilder data = null;\n        \n        data = null;\n        ydhDOMq = false;\n        (new qNIqjOI()).ZpnQtvQ(data);\n    }\n\n    \n    private void OQsEKDS() throws Throwable {\n        StringBuilder data = null;\n        \n        data = null;\n        HHhrjCy = true;\n        (new qNIqjOI()).VmywRrZ(data);\n    }\n\n    \n    private void EXrOlJC() throws Throwable {\n        StringBuilder data = null;\n        \n        data = new StringBuilder();\n        Pywwbtz = true;\n        (new qNIqjOI()).fDqjRYE(data);\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238551,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class JQmjBlH extends AbstractTestCase {\n\n    public void JttWLtS() throws Throwable {\n        EXrOlJC();\n        NDSwpcn();\n    }\n\n    \n    private void EXrOlJC() throws Throwable {\n        StringBuilder dataCopy;\n        {\n            StringBuilder data;\n            \n            data = new StringBuilder();\n            dataCopy = data;\n        }\n        {\n            StringBuilder data = dataCopy;\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n\n    \n    private void NDSwpcn() throws Throwable {\n        StringBuilder dataCopy;\n        {\n            StringBuilder data;\n            \n            data = null;\n            dataCopy = data;\n        }\n        {\n            StringBuilder data = dataCopy;\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238553,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class bnmoytu extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        StringBuilder data;\n        \n        data = null;\n        (new zFOwBFW()).RYNMBky(data);\n    }\n}\n\npublic class zFOwBFW {\n\n    public void RYNMBky(StringBuilder data) throws Throwable {\n        \n        IO.writeLine(\"IbXSDGu\" + data.length());\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238560,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\nimport java.util.Vector;\n\npublic class TroNFPZ {\n\n    \n    public void fDqjRYE(Vector<StringBuilder> dataVector) throws Throwable {\n        StringBuilder data = dataVector.remove(2);\n        \n        IO.writeLine(\"IbXSDGu\" + data.length());\n    }\n\n    \n    public void KgJSeXB(Vector<StringBuilder> dataVector) throws Throwable {\n        StringBuilder data = dataVector.remove(2);\n        \n        if (data != null) {\n            IO.writeLine(\"IbXSDGu\" + data.length());\n        } else {\n            IO.writeLine(\"BIyCOXk\");\n        }\n    }\n}\n\npublic class LWKzypk extends AbstractTestCase {\n\n    public void JttWLtS() throws Throwable {\n        EXrOlJC();\n        NDSwpcn();\n    }\n\n    \n    private void EXrOlJC() throws Throwable {\n        StringBuilder data;\n        \n        data = new StringBuilder();\n        Vector<StringBuilder> dataVector = new Vector<StringBuilder>(5);\n        dataVector.add(0, data);\n        dataVector.add(1, data);\n        dataVector.add(2, data);\n        (new TroNFPZ()).fDqjRYE(dataVector);\n    }\n\n    \n    private void NDSwpcn() throws Throwable {\n        StringBuilder data;\n        \n        data = null;\n        Vector<StringBuilder> dataVector = new Vector<StringBuilder>(5);\n        dataVector.add(0, data);\n        dataVector.add(1, data);\n        dataVector.add(2, data);\n        (new TroNFPZ()).KgJSeXB(dataVector);\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238579,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\nimport java.util.LinkedList;\n\npublic class LjrAtxp extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        StringBuilder data;\n        \n        data = null;\n        LinkedList<StringBuilder> dataLinkedList = new LinkedList<StringBuilder>();\n        dataLinkedList.add(0, data);\n        dataLinkedList.add(1, data);\n        dataLinkedList.add(2, data);\n        (new kUygPZy()).RYNMBky(dataLinkedList);\n    }\n}\n\npublic class kUygPZy {\n\n    public void RYNMBky(LinkedList<StringBuilder> dataLinkedList) throws Throwable {\n        StringBuilder data = dataLinkedList.remove(2);\n        \n        IO.writeLine(\"IbXSDGu\" + data.length());\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238580,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class QKGTtoO extends AbstractTestCase {\n\n    public void JttWLtS() throws Throwable {\n        EXrOlJC();\n        NDSwpcn();\n    }\n\n    \n    private void EXrOlJC() throws Throwable {\n        String data;\n        \n        data = \"This is not null\";\n        \n        IO.writeLine(\"IbXSDGu\" + data.length());\n    }\n\n    \n    private void NDSwpcn() throws Throwable {\n        String data;\n        \n        data = null;\n        \n        if (data != null) {\n            IO.writeLine(\"IbXSDGu\" + data.length());\n        } else {\n            IO.writeLine(\"BIyCOXk\");\n        }\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238587,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class yOqRkBg extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        String data;\n        if (true) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (true) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238588,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class BSmWheB extends AbstractTestCase {\n\n    \n    private void nrUZtTn() throws Throwable {\n        String data;\n        if (5 != 5) {\n            \n            data = null;\n        } else {\n            \n            data = \"This is not null\";\n        }\n        if (5 == 5) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n\n    \n    private void iEftrkw() throws Throwable {\n        String data;\n        if (5 == 5) {\n            \n            data = \"This is not null\";\n        } else {\n            \n            data = null;\n        }\n        if (5 == 5) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n\n    \n    private void uytpYbp() throws Throwable {\n        String data;\n        if (5 == 5) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (5 != 5) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    \n    private void OQsEKDS() throws Throwable {\n        String data;\n        if (5 == 5) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (5 == 5) {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        nrUZtTn();\n        iEftrkw();\n        uytpYbp();\n        OQsEKDS();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238591,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class WmSCwkr extends AbstractTestCase {\n\n    \n    private boolean privateTrue = true;\n\n    private boolean privateFalse = false;\n\n    \n    private void nrUZtTn() throws Throwable {\n        String data;\n        if (privateFalse) {\n            \n            data = null;\n        } else {\n            \n            data = \"This is not null\";\n        }\n        if (privateTrue) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n\n    \n    private void iEftrkw() throws Throwable {\n        String data;\n        if (privateTrue) {\n            \n            data = \"This is not null\";\n        } else {\n            \n            data = null;\n        }\n        if (privateTrue) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n\n    \n    private void uytpYbp() throws Throwable {\n        String data;\n        if (privateTrue) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (privateFalse) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    \n    private void OQsEKDS() throws Throwable {\n        String data;\n        if (privateTrue) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (privateTrue) {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        nrUZtTn();\n        iEftrkw();\n        uytpYbp();\n        OQsEKDS();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238595,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class mnOEDqE extends AbstractTestCase {\n\n    \n    private int privateFive = 5;\n\n    \n    private void nrUZtTn() throws Throwable {\n        String data;\n        if (privateFive != 5) {\n            \n            data = null;\n        } else {\n            \n            data = \"This is not null\";\n        }\n        if (privateFive == 5) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n\n    \n    private void iEftrkw() throws Throwable {\n        String data;\n        if (privateFive == 5) {\n            \n            data = \"This is not null\";\n        } else {\n            \n            data = null;\n        }\n        if (privateFive == 5) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n\n    \n    private void uytpYbp() throws Throwable {\n        String data;\n        if (privateFive == 5) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (privateFive != 5) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    \n    private void OQsEKDS() throws Throwable {\n        String data;\n        if (privateFive == 5) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (privateFive == 5) {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        nrUZtTn();\n        iEftrkw();\n        uytpYbp();\n        OQsEKDS();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238599,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class AhGaNpp extends AbstractTestCase {\n\n    \n    private boolean privateReturnsTrue() {\n        return true;\n    }\n\n    public void boNMSnT() throws Throwable {\n        String data;\n        if (privateReturnsTrue()) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (privateReturnsTrue()) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238600,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class AhGaNpp extends AbstractTestCase {\n\n    \n    private boolean privateReturnsTrue() {\n        return true;\n    }\n\n    private boolean privateReturnsFalse() {\n        return false;\n    }\n\n    \n    private void nrUZtTn() throws Throwable {\n        String data;\n        if (privateReturnsFalse()) {\n            \n            data = null;\n        } else {\n            \n            data = \"This is not null\";\n        }\n        if (privateReturnsTrue()) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n\n    \n    private void iEftrkw() throws Throwable {\n        String data;\n        if (privateReturnsTrue()) {\n            \n            data = \"This is not null\";\n        } else {\n            \n            data = null;\n        }\n        if (privateReturnsTrue()) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n\n    \n    private void uytpYbp() throws Throwable {\n        String data;\n        if (privateReturnsTrue()) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (privateReturnsFalse()) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    \n    private void OQsEKDS() throws Throwable {\n        String data;\n        if (privateReturnsTrue()) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (privateReturnsTrue()) {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        nrUZtTn();\n        iEftrkw();\n        uytpYbp();\n        OQsEKDS();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238601,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class hRnBxDx extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        String data;\n        if (IO.STATIC_FINAL_FIVE == 5) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (IO.STATIC_FINAL_FIVE == 5) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238610,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class msNaBwq extends AbstractTestCase {\n\n    \n    private void nrUZtTn() throws Throwable {\n        String data;\n        switch(5) {\n            case 6:\n                \n                data = null;\n                break;\n            default:\n                \n                data = \"This is not null\";\n                break;\n        }\n        switch(7) {\n            case 7:\n                \n                IO.writeLine(\"IbXSDGu\" + data.length());\n                break;\n            default:\n                \n                IO.writeLine(\"fWyUuQv\");\n                break;\n        }\n    }\n\n    \n    private void iEftrkw() throws Throwable {\n        String data;\n        switch(6) {\n            case 6:\n                \n                data = \"This is not null\";\n                break;\n            default:\n                \n                data = null;\n                break;\n        }\n        switch(7) {\n            case 7:\n                \n                IO.writeLine(\"IbXSDGu\" + data.length());\n                break;\n            default:\n                \n                IO.writeLine(\"fWyUuQv\");\n                break;\n        }\n    }\n\n    \n    private void uytpYbp() throws Throwable {\n        String data;\n        switch(6) {\n            case 6:\n                \n                data = null;\n                break;\n            default:\n                \n                data = null;\n                break;\n        }\n        switch(8) {\n            case 7:\n                \n                IO.writeLine(\"fWyUuQv\");\n                break;\n            default:\n                \n                if (data != null) {\n                    IO.writeLine(\"IbXSDGu\" + data.length());\n                } else {\n                    IO.writeLine(\"BIyCOXk\");\n                }\n                break;\n        }\n    }\n\n    \n    private void OQsEKDS() throws Throwable {\n        String data;\n        switch(6) {\n            case 6:\n                \n                data = null;\n                break;\n            default:\n                \n                data = null;\n                break;\n        }\n        switch(7) {\n            case 7:\n                \n                if (data != null) {\n                    IO.writeLine(\"IbXSDGu\" + data.length());\n                } else {\n                    IO.writeLine(\"BIyCOXk\");\n                }\n                break;\n            default:\n                \n                IO.writeLine(\"fWyUuQv\");\n                break;\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        nrUZtTn();\n        iEftrkw();\n        uytpYbp();\n        OQsEKDS();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238615,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class zhkZlQf {\n\n    \n    public void ZpnQtvQ(String data) throws Throwable {\n        if (nqnVUNF.ydhDOMq) {\n            \n            data = null;\n        } else {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    \n    public void VmywRrZ(String data) throws Throwable {\n        if (nqnVUNF.HHhrjCy) {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        } else {\n            \n            data = null;\n        }\n    }\n\n    \n    public void fDqjRYE(String data) throws Throwable {\n        if (nqnVUNF.Pywwbtz) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        } else {\n            \n            data = null;\n        }\n    }\n}\n\npublic class nqnVUNF extends AbstractTestCase {\n\n    \n    public static boolean qRMEpGJ = false;\n\n    \n    public static boolean ydhDOMq = false;\n\n    public static boolean HHhrjCy = false;\n\n    public static boolean Pywwbtz = false;\n\n    public void JttWLtS() throws Throwable {\n        uytpYbp();\n        OQsEKDS();\n        EXrOlJC();\n    }\n\n    \n    private void uytpYbp() throws Throwable {\n        String data = null;\n        \n        data = null;\n        ydhDOMq = false;\n        (new zhkZlQf()).ZpnQtvQ(data);\n    }\n\n    \n    private void OQsEKDS() throws Throwable {\n        String data = null;\n        \n        data = null;\n        HHhrjCy = true;\n        (new zhkZlQf()).VmywRrZ(data);\n    }\n\n    \n    private void EXrOlJC() throws Throwable {\n        String data = null;\n        \n        data = \"This is not null\";\n        Pywwbtz = true;\n        (new zhkZlQf()).fDqjRYE(data);\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238623,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class SIFBSdu extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        String dataCopy;\n        {\n            String data;\n            \n            data = null;\n            dataCopy = data;\n        }\n        {\n            String data = dataCopy;\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238624,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class SIFBSdu extends AbstractTestCase {\n\n    public void JttWLtS() throws Throwable {\n        EXrOlJC();\n        NDSwpcn();\n    }\n\n    \n    private void EXrOlJC() throws Throwable {\n        String dataCopy;\n        {\n            String data;\n            \n            data = \"This is not null\";\n            dataCopy = data;\n        }\n        {\n            String data = dataCopy;\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n\n    \n    private void NDSwpcn() throws Throwable {\n        String dataCopy;\n        {\n            String data;\n            \n            data = null;\n            dataCopy = data;\n        }\n        {\n            String data = dataCopy;\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238625,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class ECEgpiI {\n\n    \n    public void fDqjRYE(String data) throws Throwable {\n        \n        IO.writeLine(\"IbXSDGu\" + data.length());\n    }\n\n    \n    public void KgJSeXB(String data) throws Throwable {\n        \n        if (data != null) {\n            IO.writeLine(\"IbXSDGu\" + data.length());\n        } else {\n            IO.writeLine(\"BIyCOXk\");\n        }\n    }\n}\n\npublic class ApJJnzD extends AbstractTestCase {\n\n    public void JttWLtS() throws Throwable {\n        EXrOlJC();\n        NDSwpcn();\n    }\n\n    \n    private void EXrOlJC() throws Throwable {\n        String data;\n        \n        data = \"This is not null\";\n        (new ECEgpiI()).fDqjRYE(data);\n    }\n\n    \n    private void NDSwpcn() throws Throwable {\n        String data;\n        \n        data = null;\n        (new ECEgpiI()).KgJSeXB(data);\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238633,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class fWSAnxA extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        String data;\n        \n        data = null;\n        (new nUOHgPr()).RYNMBky(data);\n    }\n}\n\npublic class nUOHgPr {\n\n    public void RYNMBky(String data) throws Throwable {\n        (new tpxtSNf()).RYNMBky(data);\n    }\n}\n\npublic class tpxtSNf {\n\n    public void RYNMBky(String data) throws Throwable {\n        \n        IO.writeLine(\"IbXSDGu\" + data.length());\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238634,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\nimport java.util.Vector;\n\npublic class OVyfaCO {\n\n    \n    public void fDqjRYE(Vector<String> dataVector) throws Throwable {\n        String data = dataVector.remove(2);\n        \n        IO.writeLine(\"IbXSDGu\" + data.length());\n    }\n\n    \n    public void KgJSeXB(Vector<String> dataVector) throws Throwable {\n        String data = dataVector.remove(2);\n        \n        if (data != null) {\n            IO.writeLine(\"IbXSDGu\" + data.length());\n        } else {\n            IO.writeLine(\"BIyCOXk\");\n        }\n    }\n}\n\npublic class fMmcVHB extends AbstractTestCase {\n\n    public void JttWLtS() throws Throwable {\n        EXrOlJC();\n        NDSwpcn();\n    }\n\n    \n    private void EXrOlJC() throws Throwable {\n        String data;\n        \n        data = \"This is not null\";\n        Vector<String> dataVector = new Vector<String>(5);\n        dataVector.add(0, data);\n        dataVector.add(1, data);\n        dataVector.add(2, data);\n        (new OVyfaCO()).fDqjRYE(dataVector);\n    }\n\n    \n    private void NDSwpcn() throws Throwable {\n        String data;\n        \n        data = null;\n        Vector<String> dataVector = new Vector<String>(5);\n        dataVector.add(0, data);\n        dataVector.add(1, data);\n        dataVector.add(2, data);\n        (new OVyfaCO()).KgJSeXB(dataVector);\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238651,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\nimport java.io.ByteArrayInputStream;\nimport java.io.ObjectInputStream;\nimport java.io.IOException;\nimport java.util.logging.Level;\n\npublic class CsJNGeC extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        String data;\n        \n        data = null;\n        \n        ByteArrayOutputStream streamByteArrayOutput = null;\n        ObjectOutput outputObject = null;\n        try {\n            streamByteArrayOutput = new ByteArrayOutputStream();\n            outputObject = new ObjectOutputStream(streamByteArrayOutput);\n            outputObject.writeObject(data);\n            byte[] dataSerialized = streamByteArrayOutput.toByteArray();\n            (new HNrouPC()).RYNMBky(dataSerialized);\n        } catch (IOException exceptIO) {\n            IO.logger.log(Level.WARNING, \"IQdccST\", exceptIO);\n        } finally {\n            \n            try {\n                if (outputObject != null) {\n                    outputObject.close();\n                }\n            } catch (IOException exceptIO) {\n                IO.logger.log(Level.WARNING, \"LgADWEx\", exceptIO);\n            }\n            try {\n                if (streamByteArrayOutput != null) {\n                    streamByteArrayOutput.close();\n                }\n            } catch (IOException exceptIO) {\n                IO.logger.log(Level.WARNING, \"vFutZps\", exceptIO);\n            }\n        }\n    }\n}\n\npublic class HNrouPC {\n\n    public void RYNMBky(byte[] dataSerialized) throws Throwable {\n        \n        ByteArrayInputStream streamByteArrayInput = null;\n        ObjectInputStream streamObjectInput = null;\n        try {\n            streamByteArrayInput = new ByteArrayInputStream(dataSerialized);\n            streamObjectInput = new ObjectInputStream(streamByteArrayInput);\n            String data = (String) streamObjectInput.readObject();\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        } catch (IOException exceptIO) {\n            IO.logger.log(Level.WARNING, \"VcFIKxo\", exceptIO);\n        } catch (ClassNotFoundException exceptClassNotFound) {\n            IO.logger.log(Level.WARNING, \"XOCCPfT\", exceptClassNotFound);\n        } finally {\n            \n            try {\n                if (streamObjectInput != null) {\n                    streamObjectInput.close();\n                }\n            } catch (IOException exceptIO) {\n                IO.logger.log(Level.WARNING, \"kpDMUXH\", exceptIO);\n            }\n            try {\n                if (streamByteArrayInput != null) {\n                    streamByteArrayInput.close();\n                }\n            } catch (IOException exceptIO) {\n                IO.logger.log(Level.WARNING, \"oiWyzFb\", exceptIO);\n            }\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238656,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class ODOZUFj extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (false) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            {\n                String myString = null;\n                \n                if ((myString != null) && (myString.length() > 0)) {\n                    IO.writeLine(\"jwXBOSO\");\n                }\n            }\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (true) {\n            {\n                String myString = null;\n                \n                if ((myString != null) && (myString.length() > 0)) {\n                    IO.writeLine(\"jwXBOSO\");\n                }\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238661,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class RqxfWdg extends AbstractTestCase {\n\n    \n    private boolean privateReturnsTrue() {\n        return true;\n    }\n\n    private boolean privateReturnsFalse() {\n        return false;\n    }\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (privateReturnsFalse()) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            {\n                String myString = null;\n                \n                if ((myString != null) && (myString.length() > 0)) {\n                    IO.writeLine(\"jwXBOSO\");\n                }\n            }\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (privateReturnsTrue()) {\n            {\n                String myString = null;\n                \n                if ((myString != null) && (myString.length() > 0)) {\n                    IO.writeLine(\"jwXBOSO\");\n                }\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238673,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class ksiqvMP extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (IO.staticFive != 5) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            {\n                String myString = null;\n                \n                if ((myString != null) && (myString.length() > 0)) {\n                    IO.writeLine(\"jwXBOSO\");\n                }\n            }\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (IO.staticFive == 5) {\n            {\n                String myString = null;\n                \n                if ((myString != null) && (myString.length() > 0)) {\n                    IO.writeLine(\"jwXBOSO\");\n                }\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238685,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class aLdFbcA extends AbstractTestCase {\n\n    \n    private boolean privateTrue = true;\n\n    private boolean privateFalse = false;\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (privateFalse) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            {\n                \n                String myString = null;\n                if (myString == null) {\n                    IO.writeLine(\"XtxNatq\");\n                }\n            }\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (privateTrue) {\n            {\n                \n                String myString = null;\n                if (myString == null) {\n                    IO.writeLine(\"XtxNatq\");\n                }\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238701,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class BfRYAbA extends AbstractTestCase {\n\n    \n    private static final int PRIVATE_STATIC_FINAL_FIVE = 5;\n\n    public void boNMSnT() throws Throwable {\n        if (PRIVATE_STATIC_FINAL_FIVE == 5) {\n            {\n                \n                String myString = null;\n                if (myString == null) {\n                    IO.writeLine(myString.length());\n                }\n            }\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238702,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class QsJGfUf extends AbstractTestCase {\n\n    \n    private boolean privateReturnsTrue() {\n        return true;\n    }\n\n    public void boNMSnT() throws Throwable {\n        if (privateReturnsTrue()) {\n            {\n                \n                String myString = null;\n                if (myString == null) {\n                    IO.writeLine(myString.length());\n                }\n            }\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238706,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class ktivyMv extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        if (IO.STATIC_FINAL_TRUE) {\n            {\n                \n                String myString = null;\n                if (myString == null) {\n                    IO.writeLine(myString.length());\n                }\n            }\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238708,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class DlhdStl extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        if (IO.staticReturnsTrue()) {\n            {\n                \n                String myString = null;\n                if (myString == null) {\n                    IO.writeLine(myString.length());\n                }\n            }\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238712,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class oEosOZv extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (IO.staticFive != 5) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            {\n                \n                String myString = null;\n                if (myString == null) {\n                    IO.writeLine(\"XtxNatq\");\n                }\n            }\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (IO.staticFive == 5) {\n            {\n                \n                String myString = null;\n                if (myString == null) {\n                    IO.writeLine(\"XtxNatq\");\n                }\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238719,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class pVnmFGV extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        switch(7) {\n            case 7:\n                {\n                    \n                    String myString = null;\n                    if (myString == null) {\n                        IO.writeLine(myString.length());\n                    }\n                }\n                break;\n            default:\n                \n                IO.writeLine(\"fWyUuQv\");\n                break;\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238720,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class pVnmFGV extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        switch(8) {\n            case 7:\n                \n                IO.writeLine(\"fWyUuQv\");\n                break;\n            default:\n                {\n                    \n                    String myString = null;\n                    if (myString == null) {\n                        IO.writeLine(\"XtxNatq\");\n                    }\n                }\n                break;\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        switch(7) {\n            case 7:\n                {\n                    \n                    String myString = null;\n                    if (myString == null) {\n                        IO.writeLine(\"XtxNatq\");\n                    }\n                }\n                break;\n            default:\n                \n                IO.writeLine(\"fWyUuQv\");\n                break;\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238721,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class GuQzCva extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        for (int j = 0; j < 1; j++) {\n            {\n                \n                String myString = null;\n                if (myString == null) {\n                    IO.writeLine(myString.length());\n                }\n            }\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238724,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class ZDjNxOE extends AbstractTestCase {\n\n    public void JttWLtS() throws Throwable {\n        EXrOlJC();\n        NDSwpcn();\n    }\n\n    \n    private void EXrOlJC() throws Throwable {\n        int[] data;\n        \n        data = new int[5];\n        \n        IO.writeLine(\"IbXSDGu\" + data.length);\n    }\n\n    \n    private void NDSwpcn() throws Throwable {\n        int[] data;\n        \n        data = null;\n        \n        if (data != null) {\n            IO.writeLine(\"IbXSDGu\" + data.length);\n        } else {\n            IO.writeLine(\"BIyCOXk\");\n        }\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238727,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class tXgnyOS extends AbstractTestCase {\n\n    \n    private void nrUZtTn() throws Throwable {\n        int[] data;\n        if (5 != 5) {\n            \n            data = null;\n        } else {\n            \n            data = new int[5];\n        }\n        if (5 == 5) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length);\n        }\n    }\n\n    \n    private void iEftrkw() throws Throwable {\n        int[] data;\n        if (5 == 5) {\n            \n            data = new int[5];\n        } else {\n            \n            data = null;\n        }\n        if (5 == 5) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length);\n        }\n    }\n\n    \n    private void uytpYbp() throws Throwable {\n        int[] data;\n        if (5 == 5) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (5 != 5) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length);\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    \n    private void OQsEKDS() throws Throwable {\n        int[] data;\n        if (5 == 5) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (5 == 5) {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length);\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        nrUZtTn();\n        iEftrkw();\n        uytpYbp();\n        OQsEKDS();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238731,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class HfhIgJI extends AbstractTestCase {\n\n    \n    private static final int PRIVATE_STATIC_FINAL_FIVE = 5;\n\n    public void boNMSnT() throws Throwable {\n        int[] data;\n        if (PRIVATE_STATIC_FINAL_FIVE == 5) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (PRIVATE_STATIC_FINAL_FIVE == 5) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length);\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238736,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class HfhIgJI extends AbstractTestCase {\n\n    \n    private static final int PRIVATE_STATIC_FINAL_FIVE = 5;\n\n    \n    private void nrUZtTn() throws Throwable {\n        int[] data;\n        if (PRIVATE_STATIC_FINAL_FIVE != 5) {\n            \n            data = null;\n        } else {\n            \n            data = new int[5];\n        }\n        if (PRIVATE_STATIC_FINAL_FIVE == 5) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length);\n        }\n    }\n\n    \n    private void iEftrkw() throws Throwable {\n        int[] data;\n        if (PRIVATE_STATIC_FINAL_FIVE == 5) {\n            \n            data = new int[5];\n        } else {\n            \n            data = null;\n        }\n        if (PRIVATE_STATIC_FINAL_FIVE == 5) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length);\n        }\n    }\n\n    \n    private void uytpYbp() throws Throwable {\n        int[] data;\n        if (PRIVATE_STATIC_FINAL_FIVE == 5) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (PRIVATE_STATIC_FINAL_FIVE != 5) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length);\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    \n    private void OQsEKDS() throws Throwable {\n        int[] data;\n        if (PRIVATE_STATIC_FINAL_FIVE == 5) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (PRIVATE_STATIC_FINAL_FIVE == 5) {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length);\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        nrUZtTn();\n        iEftrkw();\n        uytpYbp();\n        OQsEKDS();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238737,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class DxNixmF extends AbstractTestCase {\n\n    \n    private int privateFive = 5;\n\n    public void boNMSnT() throws Throwable {\n        int[] data;\n        if (privateFive == 5) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (privateFive == 5) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length);\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238738,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class eXyhWap extends AbstractTestCase {\n\n    \n    private void nrUZtTn() throws Throwable {\n        int[] data;\n        if (IO.STATIC_FINAL_FALSE) {\n            \n            data = null;\n        } else {\n            \n            data = new int[5];\n        }\n        if (IO.STATIC_FINAL_TRUE) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length);\n        }\n    }\n\n    \n    private void iEftrkw() throws Throwable {\n        int[] data;\n        if (IO.STATIC_FINAL_TRUE) {\n            \n            data = new int[5];\n        } else {\n            \n            data = null;\n        }\n        if (IO.STATIC_FINAL_TRUE) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length);\n        }\n    }\n\n    \n    private void uytpYbp() throws Throwable {\n        int[] data;\n        if (IO.STATIC_FINAL_TRUE) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (IO.STATIC_FINAL_FALSE) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length);\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    \n    private void OQsEKDS() throws Throwable {\n        int[] data;\n        if (IO.STATIC_FINAL_TRUE) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (IO.STATIC_FINAL_TRUE) {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length);\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        nrUZtTn();\n        iEftrkw();\n        uytpYbp();\n        OQsEKDS();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238743,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class BparmiV extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        int[] data;\n        if (IO.staticTrue) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (IO.staticTrue) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length);\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238744,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class mhUbrti extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        int[] data;\n        if (IO.staticReturnsTrue()) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (IO.staticReturnsTrue()) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length);\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238746,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class yGaCyRa extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        int[] data;\n        switch(6) {\n            case 6:\n                \n                data = null;\n                break;\n            default:\n                \n                data = null;\n                break;\n        }\n        switch(7) {\n            case 7:\n                \n                IO.writeLine(\"IbXSDGu\" + data.length);\n                break;\n            default:\n                \n                IO.writeLine(\"fWyUuQv\");\n                break;\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238754,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class HPcuYHX extends AbstractTestCase {\n\n    \n    private void EXrOlJC() throws Throwable {\n        int[] data;\n        while (true) {\n            \n            data = new int[5];\n            break;\n        }\n        while (true) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length);\n            break;\n        }\n    }\n\n    \n    private void NDSwpcn() throws Throwable {\n        int[] data;\n        while (true) {\n            \n            data = null;\n            break;\n        }\n        while (true) {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length);\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n            break;\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        EXrOlJC();\n        NDSwpcn();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238757,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class QCZBUIE extends AbstractTestCase {\n\n    \n    private void EXrOlJC() throws Throwable {\n        int[] data;\n        \n        data = new int[5];\n        for (int j = 0; j < 1; j++) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length);\n        }\n    }\n\n    \n    private void NDSwpcn() throws Throwable {\n        int[] data;\n        \n        data = null;\n        for (int k = 0; k < 1; k++) {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length);\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        EXrOlJC();\n        NDSwpcn();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238759,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class IszqMqB extends AbstractTestCase {\n\n    \n    private boolean dWmGbZa = false;\n\n    \n    private boolean aRnSMVj = false;\n\n    private boolean aOWZSGn = false;\n\n    private boolean DBbhdbc = false;\n\n    public void JttWLtS() throws Throwable {\n        uytpYbp();\n        OQsEKDS();\n        EXrOlJC();\n    }\n\n    \n    private void uytpYbp() throws Throwable {\n        int[] data;\n        \n        data = null;\n        aRnSMVj = false;\n        ZpnQtvQ(data);\n    }\n\n    private void ZpnQtvQ(int[] data) throws Throwable {\n        if (aRnSMVj) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length);\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    \n    private void OQsEKDS() throws Throwable {\n        int[] data;\n        \n        data = null;\n        aOWZSGn = true;\n        VmywRrZ(data);\n    }\n\n    private void VmywRrZ(int[] data) throws Throwable {\n        if (aOWZSGn) {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length);\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    \n    private void EXrOlJC() throws Throwable {\n        int[] data;\n        \n        data = new int[5];\n        DBbhdbc = true;\n        fDqjRYE(data);\n    }\n\n    private void fDqjRYE(int[] data) throws Throwable {\n        if (DBbhdbc) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length);\n        }\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238761,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class kTiRFZM extends AbstractTestCase {\n\n    public void JttWLtS() throws Throwable {\n        EXrOlJC();\n        NDSwpcn();\n    }\n\n    private void fDqjRYE(int[] data) throws Throwable {\n        \n        IO.writeLine(\"IbXSDGu\" + data.length);\n    }\n\n    \n    private void EXrOlJC() throws Throwable {\n        int[] data;\n        \n        data = new int[5];\n        fDqjRYE(data);\n    }\n\n    private void KgJSeXB(int[] data) throws Throwable {\n        \n        if (data != null) {\n            IO.writeLine(\"IbXSDGu\" + data.length);\n        } else {\n            IO.writeLine(\"BIyCOXk\");\n        }\n    }\n\n    \n    private void NDSwpcn() throws Throwable {\n        int[] data;\n        \n        data = null;\n        KgJSeXB(data);\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238767,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class dZOxxXL extends AbstractTestCase {\n\n    \n    private int[] wHnwAlc() throws Throwable {\n        int[] data;\n        \n        data = new int[5];\n        return data;\n    }\n\n    private void EXrOlJC() throws Throwable {\n        int[] data = wHnwAlc();\n        \n        IO.writeLine(\"IbXSDGu\" + data.length);\n    }\n\n    \n    private int[] snawHrb() throws Throwable {\n        int[] data;\n        \n        data = null;\n        return data;\n    }\n\n    private void NDSwpcn() throws Throwable {\n        int[] data = snawHrb();\n        \n        if (data != null) {\n            IO.writeLine(\"IbXSDGu\" + data.length);\n        } else {\n            IO.writeLine(\"BIyCOXk\");\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        EXrOlJC();\n        NDSwpcn();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238769,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class ZmKsojf extends AbstractTestCase {\n\n    static class Container {\n\n        public int[] containerOne;\n    }\n\n    public void boNMSnT() throws Throwable {\n        int[] data;\n        \n        data = null;\n        Container dataContainer = new Container();\n        dataContainer.containerOne = data;\n        (new vWqYqMa()).RYNMBky(dataContainer);\n    }\n}\n\npublic class vWqYqMa {\n\n    public void RYNMBky(ZmKsojf.Container dataContainer) throws Throwable {\n        int[] data = dataContainer.containerOne;\n        \n        IO.writeLine(\"IbXSDGu\" + data.length);\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238782,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class EdEUzPZ {\n\n    \n    public void fDqjRYE() throws Throwable {\n        int[] data = KbcfSMi.data;\n        \n        IO.writeLine(\"IbXSDGu\" + data.length);\n    }\n\n    \n    public void KgJSeXB() throws Throwable {\n        int[] data = KbcfSMi.data;\n        \n        if (data != null) {\n            IO.writeLine(\"IbXSDGu\" + data.length);\n        } else {\n            IO.writeLine(\"BIyCOXk\");\n        }\n    }\n}\n\npublic class KbcfSMi extends AbstractTestCase {\n\n    public static int[] data;\n\n    public void JttWLtS() throws Throwable {\n        EXrOlJC();\n        NDSwpcn();\n    }\n\n    \n    private void EXrOlJC() throws Throwable {\n        \n        data = new int[5];\n        (new EdEUzPZ()).fDqjRYE();\n    }\n\n    \n    private void NDSwpcn() throws Throwable {\n        \n        data = null;\n        (new EdEUzPZ()).KgJSeXB();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238785,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\nimport java.util.LinkedList;\n\npublic class VifNTeL extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        int[] data;\n        \n        data = null;\n        LinkedList<int[]> dataLinkedList = new LinkedList<int[]>();\n        dataLinkedList.add(0, data);\n        dataLinkedList.add(1, data);\n        dataLinkedList.add(2, data);\n        (new mJnswZH()).RYNMBky(dataLinkedList);\n    }\n}\n\npublic class mJnswZH {\n\n    public void RYNMBky(LinkedList<int[]> dataLinkedList) throws Throwable {\n        int[] data = dataLinkedList.remove(2);\n        \n        IO.writeLine(\"IbXSDGu\" + data.length);\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238790,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class ivUAeJd extends AbstractTestCase {\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n    }\n\n    private void sEXYVUh() throws Throwable {\n        {\n            String myString = null;\n            myString = \"Hello\";\n            IO.writeLine(myString.length());\n            \n            myString = \"my, how I've changed\";\n            IO.writeLine(myString.length());\n        }\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238797,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class UfNMXHD extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (5 != 5) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            {\n                String myString = null;\n                myString = \"Hello\";\n                IO.writeLine(myString.length());\n                \n                myString = \"my, how I've changed\";\n                IO.writeLine(myString.length());\n            }\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (5 == 5) {\n            {\n                String myString = null;\n                myString = \"Hello\";\n                IO.writeLine(myString.length());\n                \n                myString = \"my, how I've changed\";\n                IO.writeLine(myString.length());\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238801,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class iskskoj extends AbstractTestCase {\n\n    \n    private static final int PRIVATE_STATIC_FINAL_FIVE = 5;\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (PRIVATE_STATIC_FINAL_FIVE != 5) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            {\n                String myString = null;\n                myString = \"Hello\";\n                IO.writeLine(myString.length());\n                \n                myString = \"my, how I've changed\";\n                IO.writeLine(myString.length());\n            }\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (PRIVATE_STATIC_FINAL_FIVE == 5) {\n            {\n                String myString = null;\n                myString = \"Hello\";\n                IO.writeLine(myString.length());\n                \n                myString = \"my, how I've changed\";\n                IO.writeLine(myString.length());\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238807,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class xTvzGAD extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (IO.staticFalse) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            {\n                String myString = null;\n                myString = \"Hello\";\n                IO.writeLine(myString.length());\n                \n                myString = \"my, how I've changed\";\n                IO.writeLine(myString.length());\n            }\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (IO.staticTrue) {\n            {\n                String myString = null;\n                myString = \"Hello\";\n                IO.writeLine(myString.length());\n                \n                myString = \"my, how I've changed\";\n                IO.writeLine(myString.length());\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238815,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class quLHnCo extends AbstractTestCase {\n\n    \n    private boolean privateTrue = true;\n\n    private boolean privateFalse = false;\n\n    public void boNMSnT() throws Throwable {\n        Integer data;\n        if (privateTrue) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (privateTrue) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.toString());\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238450,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class qFrtjeI extends AbstractTestCase {\n\n    \n    private boolean dWmGbZa = false;\n\n    \n    private boolean aRnSMVj = false;\n\n    private boolean aOWZSGn = false;\n\n    private boolean DBbhdbc = false;\n\n    public void JttWLtS() throws Throwable {\n        uytpYbp();\n        OQsEKDS();\n        EXrOlJC();\n    }\n\n    \n    private void uytpYbp() throws Throwable {\n        Integer data;\n        \n        data = null;\n        aRnSMVj = false;\n        ZpnQtvQ(data);\n    }\n\n    private void ZpnQtvQ(Integer data) throws Throwable {\n        if (aRnSMVj) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.toString());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    \n    private void OQsEKDS() throws Throwable {\n        Integer data;\n        \n        data = null;\n        aOWZSGn = true;\n        VmywRrZ(data);\n    }\n\n    private void VmywRrZ(Integer data) throws Throwable {\n        if (aOWZSGn) {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.toString());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    \n    private void EXrOlJC() throws Throwable {\n        Integer data;\n        \n        data = Integer.valueOf(5);\n        DBbhdbc = true;\n        fDqjRYE(data);\n    }\n\n    private void fDqjRYE(Integer data) throws Throwable {\n        if (DBbhdbc) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.toString());\n        }\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238477,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\nimport java.io.ByteArrayOutputStream;\nimport java.io.ObjectOutput;\nimport java.io.ObjectOutputStream;\nimport java.io.IOException;\nimport java.util.logging.Level;\n\npublic class eNyEcyF extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        Integer data;\n        \n        data = null;\n        \n        ByteArrayOutputStream streamByteArrayOutput = null;\n        ObjectOutput outputObject = null;\n        try {\n            streamByteArrayOutput = new ByteArrayOutputStream();\n            outputObject = new ObjectOutputStream(streamByteArrayOutput);\n            outputObject.writeObject(data);\n            byte[] dataSerialized = streamByteArrayOutput.toByteArray();\n            (new cBoUrUy()).RYNMBky(dataSerialized);\n        } catch (IOException exceptIO) {\n            IO.logger.log(Level.WARNING, \"IQdccST\", exceptIO);\n        } finally {\n            \n            try {\n                if (outputObject != null) {\n                    outputObject.close();\n                }\n            } catch (IOException exceptIO) {\n                IO.logger.log(Level.WARNING, \"LgADWEx\", exceptIO);\n            }\n            try {\n                if (streamByteArrayOutput != null) {\n                    streamByteArrayOutput.close();\n                }\n            } catch (IOException exceptIO) {\n                IO.logger.log(Level.WARNING, \"vFutZps\", exceptIO);\n            }\n        }\n    }\n}\n\npublic class cBoUrUy {\n\n    public void RYNMBky(byte[] dataSerialized) throws Throwable {\n        \n        ByteArrayInputStream streamByteArrayInput = null;\n        ObjectInputStream streamObjectInput = null;\n        try {\n            streamByteArrayInput = new ByteArrayInputStream(dataSerialized);\n            streamObjectInput = new ObjectInputStream(streamByteArrayInput);\n            Integer data = (Integer) streamObjectInput.readObject();\n            \n            IO.writeLine(\"IbXSDGu\" + data.toString());\n        } catch (IOException exceptIO) {\n            IO.logger.log(Level.WARNING, \"VcFIKxo\", exceptIO);\n        } catch (ClassNotFoundException exceptClassNotFound) {\n            IO.logger.log(Level.WARNING, \"XOCCPfT\", exceptClassNotFound);\n        } finally {\n            \n            try {\n                if (streamObjectInput != null) {\n                    streamObjectInput.close();\n                }\n            } catch (IOException exceptIO) {\n                IO.logger.log(Level.WARNING, \"kpDMUXH\", exceptIO);\n            }\n            try {\n                if (streamByteArrayInput != null) {\n                    streamByteArrayInput.close();\n                }\n            } catch (IOException exceptIO) {\n                IO.logger.log(Level.WARNING, \"oiWyzFb\", exceptIO);\n            }\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238512,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class ogNNHSk extends AbstractTestCase {\n\n    \n    private void nrUZtTn() throws Throwable {\n        StringBuilder data;\n        if (5 != 5) {\n            \n            data = null;\n        } else {\n            \n            data = new StringBuilder();\n        }\n        if (5 == 5) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n\n    \n    private void iEftrkw() throws Throwable {\n        StringBuilder data;\n        if (5 == 5) {\n            \n            data = new StringBuilder();\n        } else {\n            \n            data = null;\n        }\n        if (5 == 5) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n\n    \n    private void uytpYbp() throws Throwable {\n        StringBuilder data;\n        if (5 == 5) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (5 != 5) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    \n    private void OQsEKDS() throws Throwable {\n        StringBuilder data;\n        if (5 == 5) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (5 == 5) {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        nrUZtTn();\n        iEftrkw();\n        uytpYbp();\n        OQsEKDS();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238519,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class ZDztJjN {\n\n    \n    public void fDqjRYE(StringBuilder data) throws Throwable {\n        (new qapyPgq()).fDqjRYE(data);\n    }\n\n    \n    public void KgJSeXB(StringBuilder data) throws Throwable {\n        (new qapyPgq()).KgJSeXB(data);\n    }\n}\n\npublic class qapyPgq {\n\n    \n    public void fDqjRYE(StringBuilder data) throws Throwable {\n        (new CQKGAxa()).fDqjRYE(data);\n    }\n\n    \n    public void KgJSeXB(StringBuilder data) throws Throwable {\n        (new CQKGAxa()).KgJSeXB(data);\n    }\n}\n\npublic class CQKGAxa {\n\n    \n    public void fDqjRYE(StringBuilder data) throws Throwable {\n        \n        IO.writeLine(\"IbXSDGu\" + data.length());\n    }\n\n    \n    public void KgJSeXB(StringBuilder data) throws Throwable {\n        \n        if (data != null) {\n            IO.writeLine(\"IbXSDGu\" + data.length());\n        } else {\n            IO.writeLine(\"BIyCOXk\");\n        }\n    }\n}\n\npublic class SmPHGXj {\n\n    \n    public void fDqjRYE(StringBuilder data) throws Throwable {\n        (new ZDztJjN()).fDqjRYE(data);\n    }\n\n    \n    public void KgJSeXB(StringBuilder data) throws Throwable {\n        (new ZDztJjN()).KgJSeXB(data);\n    }\n}\n\npublic class tvBZsad extends AbstractTestCase {\n\n    public void JttWLtS() throws Throwable {\n        EXrOlJC();\n        NDSwpcn();\n    }\n\n    \n    private void EXrOlJC() throws Throwable {\n        StringBuilder data;\n        \n        data = new StringBuilder();\n        (new SmPHGXj()).fDqjRYE(data);\n    }\n\n    \n    private void NDSwpcn() throws Throwable {\n        StringBuilder data;\n        \n        data = null;\n        (new SmPHGXj()).KgJSeXB(data);\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238567,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class FNAWikP extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (IO.STATIC_FINAL_FALSE) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            {\n                String myString = null;\n                \n                if ((myString != null) && (myString.length() > 0)) {\n                    IO.writeLine(\"jwXBOSO\");\n                }\n            }\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (IO.STATIC_FINAL_TRUE) {\n            {\n                String myString = null;\n                \n                if ((myString != null) && (myString.length() > 0)) {\n                    IO.writeLine(\"jwXBOSO\");\n                }\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238675,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class esSZRin extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (false) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            {\n                \n                String myString = null;\n                if (myString == null) {\n                    IO.writeLine(\"XtxNatq\");\n                }\n            }\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (true) {\n            {\n                \n                String myString = null;\n                if (myString == null) {\n                    IO.writeLine(\"XtxNatq\");\n                }\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238695,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class oEosOZv extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        if (IO.staticFive == 5) {\n            {\n                \n                String myString = null;\n                if (myString == null) {\n                    IO.writeLine(myString.length());\n                }\n            }\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238718,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class JxIIFKt extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        int[] data;\n        if (true) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (true) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length);\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238728,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class iRPKIyF extends AbstractTestCase {\n\n    \n    private boolean privateTrue = true;\n\n    private boolean privateFalse = false;\n\n    \n    private void nrUZtTn() throws Throwable {\n        int[] data;\n        if (privateFalse) {\n            \n            data = null;\n        } else {\n            \n            data = new int[5];\n        }\n        if (privateTrue) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length);\n        }\n    }\n\n    \n    private void iEftrkw() throws Throwable {\n        int[] data;\n        if (privateTrue) {\n            \n            data = new int[5];\n        } else {\n            \n            data = null;\n        }\n        if (privateTrue) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length);\n        }\n    }\n\n    \n    private void uytpYbp() throws Throwable {\n        int[] data;\n        if (privateTrue) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (privateFalse) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length);\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    \n    private void OQsEKDS() throws Throwable {\n        int[] data;\n        if (privateTrue) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (privateTrue) {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length);\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        nrUZtTn();\n        iEftrkw();\n        uytpYbp();\n        OQsEKDS();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238735,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class PnMKkOL extends AbstractTestCase {\n\n    \n    private void EXrOlJC() throws Throwable {\n        int[] data;\n        if (IO.staticReturnsTrueOrFalse()) {\n            \n            data = new int[5];\n        } else {\n            \n            data = new int[5];\n        }\n        if (IO.staticReturnsTrueOrFalse()) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length);\n        } else {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length);\n        }\n    }\n\n    \n    private void NDSwpcn() throws Throwable {\n        int[] data;\n        if (IO.staticReturnsTrueOrFalse()) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (IO.staticReturnsTrueOrFalse()) {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length);\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        } else {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length);\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        EXrOlJC();\n        NDSwpcn();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238749,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class FkSwyDU extends AbstractTestCase {\n\n    \n    private void nrUZtTn() throws Throwable {\n        int[] data;\n        if (IO.STATIC_FINAL_FIVE != 5) {\n            \n            data = null;\n        } else {\n            \n            data = new int[5];\n        }\n        if (IO.STATIC_FINAL_FIVE == 5) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length);\n        }\n    }\n\n    \n    private void iEftrkw() throws Throwable {\n        int[] data;\n        if (IO.STATIC_FINAL_FIVE == 5) {\n            \n            data = new int[5];\n        } else {\n            \n            data = null;\n        }\n        if (IO.STATIC_FINAL_FIVE == 5) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length);\n        }\n    }\n\n    \n    private void uytpYbp() throws Throwable {\n        int[] data;\n        if (IO.STATIC_FINAL_FIVE == 5) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (IO.STATIC_FINAL_FIVE != 5) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length);\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    \n    private void OQsEKDS() throws Throwable {\n        int[] data;\n        if (IO.STATIC_FINAL_FIVE == 5) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (IO.STATIC_FINAL_FIVE == 5) {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length);\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        nrUZtTn();\n        iEftrkw();\n        uytpYbp();\n        OQsEKDS();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238751,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\nimport java.io.ByteArrayInputStream;\nimport java.io.ObjectInputStream;\nimport java.io.IOException;\nimport java.util.logging.Level;\n\npublic class jusMZQb extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        int[] data;\n        \n        data = null;\n        \n        ByteArrayOutputStream streamByteArrayOutput = null;\n        ObjectOutput outputObject = null;\n        try {\n            streamByteArrayOutput = new ByteArrayOutputStream();\n            outputObject = new ObjectOutputStream(streamByteArrayOutput);\n            outputObject.writeObject(data);\n            byte[] dataSerialized = streamByteArrayOutput.toByteArray();\n            (new Kzrkitv()).RYNMBky(dataSerialized);\n        } catch (IOException exceptIO) {\n            IO.logger.log(Level.WARNING, \"IQdccST\", exceptIO);\n        } finally {\n            \n            try {\n                if (outputObject != null) {\n                    outputObject.close();\n                }\n            } catch (IOException exceptIO) {\n                IO.logger.log(Level.WARNING, \"LgADWEx\", exceptIO);\n            }\n            try {\n                if (streamByteArrayOutput != null) {\n                    streamByteArrayOutput.close();\n                }\n            } catch (IOException exceptIO) {\n                IO.logger.log(Level.WARNING, \"vFutZps\", exceptIO);\n            }\n        }\n    }\n}\n\npublic class Kzrkitv {\n\n    public void RYNMBky(byte[] dataSerialized) throws Throwable {\n        \n        ByteArrayInputStream streamByteArrayInput = null;\n        ObjectInputStream streamObjectInput = null;\n        try {\n            streamByteArrayInput = new ByteArrayInputStream(dataSerialized);\n            streamObjectInput = new ObjectInputStream(streamByteArrayInput);\n            int[] data = (int[]) streamObjectInput.readObject();\n            \n            IO.writeLine(\"IbXSDGu\" + data.length);\n        } catch (IOException exceptIO) {\n            IO.logger.log(Level.WARNING, \"VcFIKxo\", exceptIO);\n        } catch (ClassNotFoundException exceptClassNotFound) {\n            IO.logger.log(Level.WARNING, \"XOCCPfT\", exceptClassNotFound);\n        } finally {\n            \n            try {\n                if (streamObjectInput != null) {\n                    streamObjectInput.close();\n                }\n            } catch (IOException exceptIO) {\n                IO.logger.log(Level.WARNING, \"kpDMUXH\", exceptIO);\n            }\n            try {\n                if (streamByteArrayInput != null) {\n                    streamByteArrayInput.close();\n                }\n            } catch (IOException exceptIO) {\n                IO.logger.log(Level.WARNING, \"oiWyzFb\", exceptIO);\n            }\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238794,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class QkfjMIl extends AbstractTestCase {\n\n    \n    private static final int PRIVATE_STATIC_FINAL_FIVE = 5;\n\n    public void boNMSnT() throws Throwable {\n        Integer data;\n        if (PRIVATE_STATIC_FINAL_FIVE == 5) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (PRIVATE_STATIC_FINAL_FIVE == 5) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.toString());\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238452,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class IZqNuLt extends AbstractTestCase {\n\n    \n    private void nrUZtTn() throws Throwable {\n        Integer data;\n        if (IO.staticReturnsFalse()) {\n            \n            data = null;\n        } else {\n            \n            data = Integer.valueOf(5);\n        }\n        if (IO.staticReturnsTrue()) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.toString());\n        }\n    }\n\n    \n    private void iEftrkw() throws Throwable {\n        Integer data;\n        if (IO.staticReturnsTrue()) {\n            \n            data = Integer.valueOf(5);\n        } else {\n            \n            data = null;\n        }\n        if (IO.staticReturnsTrue()) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.toString());\n        }\n    }\n\n    \n    private void uytpYbp() throws Throwable {\n        Integer data;\n        if (IO.staticReturnsTrue()) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (IO.staticReturnsFalse()) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.toString());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    \n    private void OQsEKDS() throws Throwable {\n        Integer data;\n        if (IO.staticReturnsTrue()) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (IO.staticReturnsTrue()) {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.toString());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        nrUZtTn();\n        iEftrkw();\n        uytpYbp();\n        OQsEKDS();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238463,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class xqeJkTt extends AbstractTestCase {\n\n    \n    private void EXrOlJC() throws Throwable {\n        Integer data;\n        while (true) {\n            \n            data = Integer.valueOf(5);\n            break;\n        }\n        while (true) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.toString());\n            break;\n        }\n    }\n\n    \n    private void NDSwpcn() throws Throwable {\n        Integer data;\n        while (true) {\n            \n            data = null;\n            break;\n        }\n        while (true) {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.toString());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n            break;\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        EXrOlJC();\n        NDSwpcn();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238473,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class fCTlWBb extends AbstractTestCase {\n\n    public void JttWLtS() throws Throwable {\n        EXrOlJC();\n        NDSwpcn();\n    }\n\n    private void fDqjRYE(Integer data) throws Throwable {\n        \n        IO.writeLine(\"IbXSDGu\" + data.toString());\n    }\n\n    \n    private void EXrOlJC() throws Throwable {\n        Integer data;\n        \n        data = Integer.valueOf(5);\n        fDqjRYE(data);\n    }\n\n    private void KgJSeXB(Integer data) throws Throwable {\n        \n        if (data != null) {\n            IO.writeLine(\"IbXSDGu\" + data.toString());\n        } else {\n            IO.writeLine(\"BIyCOXk\");\n        }\n    }\n\n    \n    private void NDSwpcn() throws Throwable {\n        Integer data;\n        \n        data = null;\n        KgJSeXB(data);\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238483,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class dnZcbob {\n\n    \n    public void fDqjRYE(Integer data) throws Throwable {\n        \n        IO.writeLine(\"IbXSDGu\" + data.toString());\n    }\n\n    \n    public void KgJSeXB(Integer data) throws Throwable {\n        \n        if (data != null) {\n            IO.writeLine(\"IbXSDGu\" + data.toString());\n        } else {\n            IO.writeLine(\"BIyCOXk\");\n        }\n    }\n}\n\npublic class vidrzCE {\n\n    \n    public void fDqjRYE(Integer data) throws Throwable {\n        (new dnZcbob()).fDqjRYE(data);\n    }\n\n    \n    public void KgJSeXB(Integer data) throws Throwable {\n        (new dnZcbob()).KgJSeXB(data);\n    }\n}\n\npublic class bXjmayO extends AbstractTestCase {\n\n    public void JttWLtS() throws Throwable {\n        EXrOlJC();\n        NDSwpcn();\n    }\n\n    \n    private void EXrOlJC() throws Throwable {\n        Integer data;\n        \n        data = Integer.valueOf(5);\n        (new vidrzCE()).fDqjRYE(data);\n    }\n\n    \n    private void NDSwpcn() throws Throwable {\n        Integer data;\n        \n        data = null;\n        (new vidrzCE()).KgJSeXB(data);\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238491,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class JQmjBlH extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        StringBuilder dataCopy;\n        {\n            StringBuilder data;\n            \n            data = null;\n            dataCopy = data;\n        }\n        {\n            StringBuilder data = dataCopy;\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238552,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class DLWqXPu extends AbstractTestCase {\n\n    public static StringBuilder data;\n\n    public void boNMSnT() throws Throwable {\n        \n        data = null;\n        (new VIkidmH()).RYNMBky();\n    }\n}\n\npublic class VIkidmH {\n\n    public void RYNMBky() throws Throwable {\n        StringBuilder data = DLWqXPu.data;\n        \n        IO.writeLine(\"IbXSDGu\" + data.length());\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238574,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class BSmWheB extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        String data;\n        if (5 == 5) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (5 == 5) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238590,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class dvhbZpL extends AbstractTestCase {\n\n    \n    private static final int PRIVATE_STATIC_FINAL_FIVE = 5;\n\n    \n    private void nrUZtTn() throws Throwable {\n        String data;\n        if (PRIVATE_STATIC_FINAL_FIVE != 5) {\n            \n            data = null;\n        } else {\n            \n            data = \"This is not null\";\n        }\n        if (PRIVATE_STATIC_FINAL_FIVE == 5) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n\n    \n    private void iEftrkw() throws Throwable {\n        String data;\n        if (PRIVATE_STATIC_FINAL_FIVE == 5) {\n            \n            data = \"This is not null\";\n        } else {\n            \n            data = null;\n        }\n        if (PRIVATE_STATIC_FINAL_FIVE == 5) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n\n    \n    private void uytpYbp() throws Throwable {\n        String data;\n        if (PRIVATE_STATIC_FINAL_FIVE == 5) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (PRIVATE_STATIC_FINAL_FIVE != 5) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    \n    private void OQsEKDS() throws Throwable {\n        String data;\n        if (PRIVATE_STATIC_FINAL_FIVE == 5) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (PRIVATE_STATIC_FINAL_FIVE == 5) {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        nrUZtTn();\n        iEftrkw();\n        uytpYbp();\n        OQsEKDS();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238597,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class YSdaNQF extends AbstractTestCase {\n\n    \n    private void nrUZtTn() throws Throwable {\n        String data;\n        if (IO.STATIC_FINAL_FALSE) {\n            \n            data = null;\n        } else {\n            \n            data = \"This is not null\";\n        }\n        if (IO.STATIC_FINAL_TRUE) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n\n    \n    private void iEftrkw() throws Throwable {\n        String data;\n        if (IO.STATIC_FINAL_TRUE) {\n            \n            data = \"This is not null\";\n        } else {\n            \n            data = null;\n        }\n        if (IO.STATIC_FINAL_TRUE) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n\n    \n    private void uytpYbp() throws Throwable {\n        String data;\n        if (IO.STATIC_FINAL_TRUE) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (IO.STATIC_FINAL_FALSE) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    \n    private void OQsEKDS() throws Throwable {\n        String data;\n        if (IO.STATIC_FINAL_TRUE) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (IO.STATIC_FINAL_TRUE) {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        nrUZtTn();\n        iEftrkw();\n        uytpYbp();\n        OQsEKDS();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238603,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class dLSynOy extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        String data;\n        if (IO.staticReturnsTrueOrFalse()) {\n            \n            data = null;\n        } else {\n            \n            data = \"This is not null\";\n        }\n        if (IO.staticReturnsTrueOrFalse()) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        } else {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238608,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class CmVRJQx extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        String data;\n        if (IO.staticFive == 5) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (IO.staticFive == 5) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238612,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class kYToOim extends AbstractTestCase {\n\n    \n    private boolean dWmGbZa = false;\n\n    public void boNMSnT() throws Throwable {\n        String data;\n        \n        data = null;\n        dWmGbZa = true;\n        RYNMBky(data);\n    }\n\n    private void RYNMBky(String data) throws Throwable {\n        if (dWmGbZa) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n\n    \n    private boolean aRnSMVj = false;\n\n    private boolean aOWZSGn = false;\n\n    private boolean DBbhdbc = false;\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238620,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class UNkaiuE extends AbstractTestCase {\n\n    private String ImBBndW() throws Throwable {\n        String data;\n        \n        data = null;\n        return data;\n    }\n\n    public void boNMSnT() throws Throwable {\n        String data = ImBBndW();\n        \n        IO.writeLine(\"IbXSDGu\" + data.length());\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238628,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class gAqsAHH {\n\n    \n    public void fDqjRYE(String data) throws Throwable {\n        (new ltrJGfi()).fDqjRYE(data);\n    }\n\n    \n    public void KgJSeXB(String data) throws Throwable {\n        (new ltrJGfi()).KgJSeXB(data);\n    }\n}\n\npublic class qdSpEzn {\n\n    \n    public void fDqjRYE(String data) throws Throwable {\n        (new gAqsAHH()).fDqjRYE(data);\n    }\n\n    \n    public void KgJSeXB(String data) throws Throwable {\n        (new gAqsAHH()).KgJSeXB(data);\n    }\n}\n\npublic class ltrJGfi {\n\n    \n    public void fDqjRYE(String data) throws Throwable {\n        \n        IO.writeLine(\"IbXSDGu\" + data.length());\n    }\n\n    \n    public void KgJSeXB(String data) throws Throwable {\n        \n        if (data != null) {\n            IO.writeLine(\"IbXSDGu\" + data.length());\n        } else {\n            IO.writeLine(\"BIyCOXk\");\n        }\n    }\n}\n\npublic class fxaBtqy extends AbstractTestCase {\n\n    public void JttWLtS() throws Throwable {\n        EXrOlJC();\n        NDSwpcn();\n    }\n\n    \n    private void EXrOlJC() throws Throwable {\n        String data;\n        \n        data = \"This is not null\";\n        (new qdSpEzn()).fDqjRYE(data);\n    }\n\n    \n    private void NDSwpcn() throws Throwable {\n        String data;\n        \n        data = null;\n        (new qdSpEzn()).KgJSeXB(data);\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238637,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\nimport java.util.HashMap;\n\npublic class pDMdtNR {\n\n    \n    public void fDqjRYE(HashMap<Integer, String> dataHashMap) throws Throwable {\n        String data = dataHashMap.get(2);\n        \n        IO.writeLine(\"IbXSDGu\" + data.length());\n    }\n\n    \n    public void KgJSeXB(HashMap<Integer, String> dataHashMap) throws Throwable {\n        String data = dataHashMap.get(2);\n        \n        if (data != null) {\n            IO.writeLine(\"IbXSDGu\" + data.length());\n        } else {\n            IO.writeLine(\"BIyCOXk\");\n        }\n    }\n}\n\npublic class FpzMhIr extends AbstractTestCase {\n\n    public void JttWLtS() throws Throwable {\n        EXrOlJC();\n        NDSwpcn();\n    }\n\n    \n    private void EXrOlJC() throws Throwable {\n        String data;\n        \n        data = \"This is not null\";\n        HashMap<Integer, String> dataHashMap = new HashMap<Integer, String>();\n        dataHashMap.put(0, data);\n        dataHashMap.put(1, data);\n        dataHashMap.put(2, data);\n        (new pDMdtNR()).fDqjRYE(dataHashMap);\n    }\n\n    \n    private void NDSwpcn() throws Throwable {\n        String data;\n        \n        data = null;\n        HashMap<Integer, String> dataHashMap = new HashMap<Integer, String>();\n        dataHashMap.put(0, data);\n        dataHashMap.put(1, data);\n        dataHashMap.put(2, data);\n        (new pDMdtNR()).KgJSeXB(dataHashMap);\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238655,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class WIpTWCS extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (5 != 5) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            {\n                String myString = null;\n                \n                if ((myString != null) && (myString.length() > 0)) {\n                    IO.writeLine(\"jwXBOSO\");\n                }\n            }\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (5 == 5) {\n            {\n                String myString = null;\n                \n                if ((myString != null) && (myString.length() > 0)) {\n                    IO.writeLine(\"jwXBOSO\");\n                }\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238663,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class SROhkVq extends AbstractTestCase {\n\n    \n    private static final boolean PRIVATE_STATIC_FINAL_TRUE = true;\n\n    private static final boolean PRIVATE_STATIC_FINAL_FALSE = false;\n\n    public void boNMSnT() throws Throwable {\n        if (PRIVATE_STATIC_FINAL_TRUE) {\n            {\n                String myString = null;\n                \n                if ((myString != null) & (myString.length() > 0)) {\n                    IO.writeLine(\"jwXBOSO\");\n                }\n            }\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238664,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class tNbhQIk extends AbstractTestCase {\n\n    \n    private int privateFive = 5;\n\n    public void boNMSnT() throws Throwable {\n        if (privateFive == 5) {\n            {\n                String myString = null;\n                \n                if ((myString != null) & (myString.length() > 0)) {\n                    IO.writeLine(\"jwXBOSO\");\n                }\n            }\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238670,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class tNbhQIk extends AbstractTestCase {\n\n    \n    private int privateFive = 5;\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (privateFive != 5) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            {\n                String myString = null;\n                \n                if ((myString != null) && (myString.length() > 0)) {\n                    IO.writeLine(\"jwXBOSO\");\n                }\n            }\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (privateFive == 5) {\n            {\n                String myString = null;\n                \n                if ((myString != null) && (myString.length() > 0)) {\n                    IO.writeLine(\"jwXBOSO\");\n                }\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238671,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class eVQyulB extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        if (IO.staticReturnsTrue()) {\n            {\n                String myString = null;\n                \n                if ((myString != null) & (myString.length() > 0)) {\n                    IO.writeLine(\"jwXBOSO\");\n                }\n            }\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238678,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class aUZQtAp extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        Integer data;\n        if (IO.STATIC_FINAL_TRUE) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (IO.STATIC_FINAL_TRUE) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.toString());\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238458,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class JdZXLue extends AbstractTestCase {\n\n    \n    private void EXrOlJC() throws Throwable {\n        Integer data;\n        if (IO.staticReturnsTrueOrFalse()) {\n            \n            data = Integer.valueOf(5);\n        } else {\n            \n            data = Integer.valueOf(5);\n        }\n        if (IO.staticReturnsTrueOrFalse()) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.toString());\n        } else {\n            \n            IO.writeLine(\"IbXSDGu\" + data.toString());\n        }\n    }\n\n    \n    private void NDSwpcn() throws Throwable {\n        Integer data;\n        if (IO.staticReturnsTrueOrFalse()) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (IO.staticReturnsTrueOrFalse()) {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.toString());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        } else {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.toString());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        EXrOlJC();\n        NDSwpcn();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238465,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class UvljfsK {\n\n    \n    public void fDqjRYE(Integer data) throws Throwable {\n        (new FlpxErs()).fDqjRYE(data);\n    }\n\n    \n    public void KgJSeXB(Integer data) throws Throwable {\n        (new FlpxErs()).KgJSeXB(data);\n    }\n}\n\npublic class BGxKQkY {\n\n    \n    public void fDqjRYE(Integer data) throws Throwable {\n        \n        IO.writeLine(\"IbXSDGu\" + data.toString());\n    }\n\n    \n    public void KgJSeXB(Integer data) throws Throwable {\n        \n        if (data != null) {\n            IO.writeLine(\"IbXSDGu\" + data.toString());\n        } else {\n            IO.writeLine(\"BIyCOXk\");\n        }\n    }\n}\n\npublic class tuoVgyv {\n\n    \n    public void fDqjRYE(Integer data) throws Throwable {\n        (new UvljfsK()).fDqjRYE(data);\n    }\n\n    \n    public void KgJSeXB(Integer data) throws Throwable {\n        (new UvljfsK()).KgJSeXB(data);\n    }\n}\n\npublic class FlpxErs {\n\n    \n    public void fDqjRYE(Integer data) throws Throwable {\n        (new BGxKQkY()).fDqjRYE(data);\n    }\n\n    \n    public void KgJSeXB(Integer data) throws Throwable {\n        (new BGxKQkY()).KgJSeXB(data);\n    }\n}\n\npublic class hTuIvXK extends AbstractTestCase {\n\n    public void JttWLtS() throws Throwable {\n        EXrOlJC();\n        NDSwpcn();\n    }\n\n    \n    private void EXrOlJC() throws Throwable {\n        Integer data;\n        \n        data = Integer.valueOf(5);\n        (new tuoVgyv()).fDqjRYE(data);\n    }\n\n    \n    private void NDSwpcn() throws Throwable {\n        Integer data;\n        \n        data = null;\n        (new tuoVgyv()).KgJSeXB(data);\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238495,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class EHerUiM {\n\n    \n    public Integer wHnwAlc() throws Throwable {\n        Integer data;\n        \n        data = Integer.valueOf(5);\n        return data;\n    }\n\n    \n    public Integer snawHrb() throws Throwable {\n        Integer data;\n        \n        data = null;\n        return data;\n    }\n}\n\npublic class myXwvxk extends AbstractTestCase {\n\n    public void JttWLtS() throws Throwable {\n        EXrOlJC();\n        NDSwpcn();\n    }\n\n    \n    private void EXrOlJC() throws Throwable {\n        Integer data = (new EHerUiM()).wHnwAlc();\n        \n        IO.writeLine(\"IbXSDGu\" + data.toString());\n    }\n\n    \n    private void NDSwpcn() throws Throwable {\n        Integer data = (new EHerUiM()).snawHrb();\n        \n        if (data != null) {\n            IO.writeLine(\"IbXSDGu\" + data.toString());\n        } else {\n            IO.writeLine(\"BIyCOXk\");\n        }\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238497,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class VCOLyaU {\n\n    \n    public void fDqjRYE(Integer[] dataArray) throws Throwable {\n        Integer data = dataArray[2];\n        \n        IO.writeLine(\"IbXSDGu\" + data.toString());\n    }\n\n    \n    public void KgJSeXB(Integer[] dataArray) throws Throwable {\n        Integer data = dataArray[2];\n        \n        if (data != null) {\n            IO.writeLine(\"IbXSDGu\" + data.toString());\n        } else {\n            IO.writeLine(\"BIyCOXk\");\n        }\n    }\n}\n\npublic class ugcqWDi extends AbstractTestCase {\n\n    public void JttWLtS() throws Throwable {\n        EXrOlJC();\n        NDSwpcn();\n    }\n\n    \n    private void EXrOlJC() throws Throwable {\n        Integer data;\n        \n        data = Integer.valueOf(5);\n        Integer[] dataArray = new Integer[5];\n        dataArray[2] = data;\n        (new VCOLyaU()).fDqjRYE(dataArray);\n    }\n\n    \n    private void NDSwpcn() throws Throwable {\n        Integer data;\n        \n        data = null;\n        Integer[] dataArray = new Integer[5];\n        dataArray[2] = data;\n        (new VCOLyaU()).KgJSeXB(dataArray);\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238499,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\nimport java.util.Vector;\n\npublic class SdUFOie {\n\n    \n    public void fDqjRYE(Vector<Integer> dataVector) throws Throwable {\n        Integer data = dataVector.remove(2);\n        \n        IO.writeLine(\"IbXSDGu\" + data.toString());\n    }\n\n    \n    public void KgJSeXB(Vector<Integer> dataVector) throws Throwable {\n        Integer data = dataVector.remove(2);\n        \n        if (data != null) {\n            IO.writeLine(\"IbXSDGu\" + data.toString());\n        } else {\n            IO.writeLine(\"BIyCOXk\");\n        }\n    }\n}\n\npublic class IUbdKWB extends AbstractTestCase {\n\n    public void JttWLtS() throws Throwable {\n        EXrOlJC();\n        NDSwpcn();\n    }\n\n    \n    private void EXrOlJC() throws Throwable {\n        Integer data;\n        \n        data = Integer.valueOf(5);\n        Vector<Integer> dataVector = new Vector<Integer>(5);\n        dataVector.add(0, data);\n        dataVector.add(1, data);\n        dataVector.add(2, data);\n        (new SdUFOie()).fDqjRYE(dataVector);\n    }\n\n    \n    private void NDSwpcn() throws Throwable {\n        Integer data;\n        \n        data = null;\n        Vector<Integer> dataVector = new Vector<Integer>(5);\n        dataVector.add(0, data);\n        dataVector.add(1, data);\n        dataVector.add(2, data);\n        (new SdUFOie()).KgJSeXB(dataVector);\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238507,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\nimport java.util.HashMap;\n\npublic class gntQiPA {\n\n    \n    public void fDqjRYE(HashMap<Integer, Integer> dataHashMap) throws Throwable {\n        Integer data = dataHashMap.get(2);\n        \n        IO.writeLine(\"IbXSDGu\" + data.toString());\n    }\n\n    \n    public void KgJSeXB(HashMap<Integer, Integer> dataHashMap) throws Throwable {\n        Integer data = dataHashMap.get(2);\n        \n        if (data != null) {\n            IO.writeLine(\"IbXSDGu\" + data.toString());\n        } else {\n            IO.writeLine(\"BIyCOXk\");\n        }\n    }\n}\n\npublic class sjjVHEN extends AbstractTestCase {\n\n    public void JttWLtS() throws Throwable {\n        EXrOlJC();\n        NDSwpcn();\n    }\n\n    \n    private void EXrOlJC() throws Throwable {\n        Integer data;\n        \n        data = Integer.valueOf(5);\n        HashMap<Integer, Integer> dataHashMap = new HashMap<Integer, Integer>();\n        dataHashMap.put(0, data);\n        dataHashMap.put(1, data);\n        dataHashMap.put(2, data);\n        (new gntQiPA()).fDqjRYE(dataHashMap);\n    }\n\n    \n    private void NDSwpcn() throws Throwable {\n        Integer data;\n        \n        data = null;\n        HashMap<Integer, Integer> dataHashMap = new HashMap<Integer, Integer>();\n        dataHashMap.put(0, data);\n        dataHashMap.put(1, data);\n        dataHashMap.put(2, data);\n        (new gntQiPA()).KgJSeXB(dataHashMap);\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238511,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class klcrSUA extends AbstractTestCase {\n\n    \n    private static final int PRIVATE_STATIC_FINAL_FIVE = 5;\n\n    public void boNMSnT() throws Throwable {\n        StringBuilder data;\n        if (PRIVATE_STATIC_FINAL_FIVE == 5) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (PRIVATE_STATIC_FINAL_FIVE == 5) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238524,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class rosvfBu extends AbstractTestCase {\n\n    \n    private void nrUZtTn() throws Throwable {\n        StringBuilder data;\n        if (IO.STATIC_FINAL_FIVE != 5) {\n            \n            data = null;\n        } else {\n            \n            data = new StringBuilder();\n        }\n        if (IO.STATIC_FINAL_FIVE == 5) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n\n    \n    private void iEftrkw() throws Throwable {\n        StringBuilder data;\n        if (IO.STATIC_FINAL_FIVE == 5) {\n            \n            data = new StringBuilder();\n        } else {\n            \n            data = null;\n        }\n        if (IO.STATIC_FINAL_FIVE == 5) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n\n    \n    private void uytpYbp() throws Throwable {\n        StringBuilder data;\n        if (IO.STATIC_FINAL_FIVE == 5) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (IO.STATIC_FINAL_FIVE != 5) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    \n    private void OQsEKDS() throws Throwable {\n        StringBuilder data;\n        if (IO.STATIC_FINAL_FIVE == 5) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (IO.STATIC_FINAL_FIVE == 5) {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        nrUZtTn();\n        iEftrkw();\n        uytpYbp();\n        OQsEKDS();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238539,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class AzClJMl {\n\n    \n    public void fDqjRYE(StringBuilder data) throws Throwable {\n        \n        IO.writeLine(\"IbXSDGu\" + data.length());\n    }\n\n    \n    public void KgJSeXB(StringBuilder data) throws Throwable {\n        \n        if (data != null) {\n            IO.writeLine(\"IbXSDGu\" + data.length());\n        } else {\n            IO.writeLine(\"BIyCOXk\");\n        }\n    }\n}\n\npublic class XfvzHMf {\n\n    \n    public void fDqjRYE(StringBuilder data) throws Throwable {\n        (new KMmobfc()).fDqjRYE(data);\n    }\n\n    \n    public void KgJSeXB(StringBuilder data) throws Throwable {\n        (new KMmobfc()).KgJSeXB(data);\n    }\n}\n\npublic class KMmobfc {\n\n    \n    public void fDqjRYE(StringBuilder data) throws Throwable {\n        (new AzClJMl()).fDqjRYE(data);\n    }\n\n    \n    public void KgJSeXB(StringBuilder data) throws Throwable {\n        (new AzClJMl()).KgJSeXB(data);\n    }\n}\n\npublic class KOQZilm extends AbstractTestCase {\n\n    public void JttWLtS() throws Throwable {\n        EXrOlJC();\n        NDSwpcn();\n    }\n\n    \n    private void EXrOlJC() throws Throwable {\n        StringBuilder data;\n        \n        data = new StringBuilder();\n        (new XfvzHMf()).fDqjRYE(data);\n    }\n\n    \n    private void NDSwpcn() throws Throwable {\n        StringBuilder data;\n        \n        data = null;\n        (new XfvzHMf()).KgJSeXB(data);\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238565,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\nimport java.util.LinkedList;\n\npublic class kUygPZy {\n\n    \n    public void fDqjRYE(LinkedList<StringBuilder> dataLinkedList) throws Throwable {\n        StringBuilder data = dataLinkedList.remove(2);\n        \n        IO.writeLine(\"IbXSDGu\" + data.length());\n    }\n\n    \n    public void KgJSeXB(LinkedList<StringBuilder> dataLinkedList) throws Throwable {\n        StringBuilder data = dataLinkedList.remove(2);\n        \n        if (data != null) {\n            IO.writeLine(\"IbXSDGu\" + data.length());\n        } else {\n            IO.writeLine(\"BIyCOXk\");\n        }\n    }\n}\n\npublic class LjrAtxp extends AbstractTestCase {\n\n    public void JttWLtS() throws Throwable {\n        EXrOlJC();\n        NDSwpcn();\n    }\n\n    \n    private void EXrOlJC() throws Throwable {\n        StringBuilder data;\n        \n        data = new StringBuilder();\n        LinkedList<StringBuilder> dataLinkedList = new LinkedList<StringBuilder>();\n        dataLinkedList.add(0, data);\n        dataLinkedList.add(1, data);\n        dataLinkedList.add(2, data);\n        (new kUygPZy()).fDqjRYE(dataLinkedList);\n    }\n\n    \n    private void NDSwpcn() throws Throwable {\n        StringBuilder data;\n        \n        data = null;\n        LinkedList<StringBuilder> dataLinkedList = new LinkedList<StringBuilder>();\n        dataLinkedList.add(0, data);\n        dataLinkedList.add(1, data);\n        dataLinkedList.add(2, data);\n        (new kUygPZy()).KgJSeXB(dataLinkedList);\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238581,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\nimport java.util.HashMap;\n\npublic class MzMwqey extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        StringBuilder data;\n        \n        data = null;\n        HashMap<Integer, StringBuilder> dataHashMap = new HashMap<Integer, StringBuilder>();\n        dataHashMap.put(0, data);\n        dataHashMap.put(1, data);\n        dataHashMap.put(2, data);\n        (new svkJTNb()).RYNMBky(dataHashMap);\n    }\n}\n\npublic class svkJTNb {\n\n    public void RYNMBky(HashMap<Integer, StringBuilder> dataHashMap) throws Throwable {\n        StringBuilder data = dataHashMap.get(2);\n        \n        IO.writeLine(\"IbXSDGu\" + data.length());\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238582,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\nimport java.util.HashMap;\n\npublic class svkJTNb {\n\n    \n    public void fDqjRYE(HashMap<Integer, StringBuilder> dataHashMap) throws Throwable {\n        StringBuilder data = dataHashMap.get(2);\n        \n        IO.writeLine(\"IbXSDGu\" + data.length());\n    }\n\n    \n    public void KgJSeXB(HashMap<Integer, StringBuilder> dataHashMap) throws Throwable {\n        StringBuilder data = dataHashMap.get(2);\n        \n        if (data != null) {\n            IO.writeLine(\"IbXSDGu\" + data.length());\n        } else {\n            IO.writeLine(\"BIyCOXk\");\n        }\n    }\n}\n\npublic class MzMwqey extends AbstractTestCase {\n\n    public void JttWLtS() throws Throwable {\n        EXrOlJC();\n        NDSwpcn();\n    }\n\n    \n    private void EXrOlJC() throws Throwable {\n        StringBuilder data;\n        \n        data = new StringBuilder();\n        HashMap<Integer, StringBuilder> dataHashMap = new HashMap<Integer, StringBuilder>();\n        dataHashMap.put(0, data);\n        dataHashMap.put(1, data);\n        dataHashMap.put(2, data);\n        (new svkJTNb()).fDqjRYE(dataHashMap);\n    }\n\n    \n    private void NDSwpcn() throws Throwable {\n        StringBuilder data;\n        \n        data = null;\n        HashMap<Integer, StringBuilder> dataHashMap = new HashMap<Integer, StringBuilder>();\n        dataHashMap.put(0, data);\n        dataHashMap.put(1, data);\n        dataHashMap.put(2, data);\n        (new svkJTNb()).KgJSeXB(dataHashMap);\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238583,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\nimport java.io.ByteArrayOutputStream;\nimport java.io.ObjectOutput;\nimport java.io.ObjectOutputStream;\nimport java.io.IOException;\nimport java.util.logging.Level;\n\npublic class yLhVlnI {\n\n    \n    public void fDqjRYE(byte[] dataSerialized) throws Throwable {\n        \n        ByteArrayInputStream streamByteArrayInput = null;\n        ObjectInputStream streamObjectInput = null;\n        try {\n            streamByteArrayInput = new ByteArrayInputStream(dataSerialized);\n            streamObjectInput = new ObjectInputStream(streamByteArrayInput);\n            StringBuilder data = (StringBuilder) streamObjectInput.readObject();\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        } catch (IOException exceptIO) {\n            IO.logger.log(Level.WARNING, \"VcFIKxo\", exceptIO);\n        } catch (ClassNotFoundException exceptClassNotFound) {\n            IO.logger.log(Level.WARNING, \"XOCCPfT\", exceptClassNotFound);\n        } finally {\n            \n            try {\n                if (streamObjectInput != null) {\n                    streamObjectInput.close();\n                }\n            } catch (IOException exceptIO) {\n                IO.logger.log(Level.WARNING, \"kpDMUXH\", exceptIO);\n            }\n            try {\n                if (streamByteArrayInput != null) {\n                    streamByteArrayInput.close();\n                }\n            } catch (IOException exceptIO) {\n                IO.logger.log(Level.WARNING, \"oiWyzFb\", exceptIO);\n            }\n        }\n    }\n\n    \n    public void KgJSeXB(byte[] dataSerialized) throws Throwable {\n        \n        ByteArrayInputStream streamByteArrayInput = null;\n        ObjectInputStream streamObjectInput = null;\n        try {\n            streamByteArrayInput = new ByteArrayInputStream(dataSerialized);\n            streamObjectInput = new ObjectInputStream(streamByteArrayInput);\n            StringBuilder data = (StringBuilder) streamObjectInput.readObject();\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        } catch (IOException exceptIO) {\n            IO.logger.log(Level.WARNING, \"VcFIKxo\", exceptIO);\n        } catch (ClassNotFoundException exceptClassNotFound) {\n            IO.logger.log(Level.WARNING, \"XOCCPfT\", exceptClassNotFound);\n        } finally {\n            \n            try {\n                if (streamObjectInput != null) {\n                    streamObjectInput.close();\n                }\n            } catch (IOException exceptIO) {\n                IO.logger.log(Level.WARNING, \"kpDMUXH\", exceptIO);\n            }\n            try {\n                if (streamByteArrayInput != null) {\n                    streamByteArrayInput.close();\n                }\n            } catch (IOException exceptIO) {\n                IO.logger.log(Level.WARNING, \"oiWyzFb\", exceptIO);\n            }\n        }\n    }\n}\n\npublic class sfJQOLF extends AbstractTestCase {\n\n    public void JttWLtS() throws Throwable {\n        EXrOlJC();\n        NDSwpcn();\n    }\n\n    \n    private void EXrOlJC() throws Throwable {\n        StringBuilder data;\n        \n        data = new StringBuilder();\n        \n        ByteArrayOutputStream streamByteArrayOutput = null;\n        ObjectOutput outputObject = null;\n        try {\n            streamByteArrayOutput = new ByteArrayOutputStream();\n            outputObject = new ObjectOutputStream(streamByteArrayOutput);\n            outputObject.writeObject(data);\n            byte[] dataSerialized = streamByteArrayOutput.toByteArray();\n            (new yLhVlnI()).fDqjRYE(dataSerialized);\n        } catch (IOException exceptIO) {\n            IO.logger.log(Level.WARNING, \"IQdccST\", exceptIO);\n        } finally {\n            \n            try {\n                if (outputObject != null) {\n                    outputObject.close();\n                }\n            } catch (IOException exceptIO) {\n                IO.logger.log(Level.WARNING, \"LgADWEx\", exceptIO);\n            }\n            try {\n                if (streamByteArrayOutput != null) {\n                    streamByteArrayOutput.close();\n                }\n            } catch (IOException exceptIO) {\n                IO.logger.log(Level.WARNING, \"vFutZps\", exceptIO);\n            }\n        }\n    }\n\n    \n    private void NDSwpcn() throws Throwable {\n        StringBuilder data;\n        \n        data = null;\n        \n        ByteArrayOutputStream streamByteArrayOutput = null;\n        ObjectOutput outputObject = null;\n        try {\n            streamByteArrayOutput = new ByteArrayOutputStream();\n            outputObject = new ObjectOutputStream(streamByteArrayOutput);\n            outputObject.writeObject(data);\n            byte[] dataSerialized = streamByteArrayOutput.toByteArray();\n            (new yLhVlnI()).KgJSeXB(dataSerialized);\n        } catch (IOException exceptIO) {\n            IO.logger.log(Level.WARNING, \"IQdccST\", exceptIO);\n        } finally {\n            \n            try {\n                if (outputObject != null) {\n                    outputObject.close();\n                }\n            } catch (IOException exceptIO) {\n                IO.logger.log(Level.WARNING, \"LgADWEx\", exceptIO);\n            }\n            try {\n                if (streamByteArrayOutput != null) {\n                    streamByteArrayOutput.close();\n                }\n            } catch (IOException exceptIO) {\n                IO.logger.log(Level.WARNING, \"vFutZps\", exceptIO);\n            }\n        }\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238585,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class dvhbZpL extends AbstractTestCase {\n\n    \n    private static final int PRIVATE_STATIC_FINAL_FIVE = 5;\n\n    public void boNMSnT() throws Throwable {\n        String data;\n        if (PRIVATE_STATIC_FINAL_FIVE == 5) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (PRIVATE_STATIC_FINAL_FIVE == 5) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238596,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class RHJMUpw extends AbstractTestCase {\n\n    \n    private void nrUZtTn() throws Throwable {\n        String data;\n        if (IO.staticReturnsFalse()) {\n            \n            data = null;\n        } else {\n            \n            data = \"This is not null\";\n        }\n        if (IO.staticReturnsTrue()) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n\n    \n    private void iEftrkw() throws Throwable {\n        String data;\n        if (IO.staticReturnsTrue()) {\n            \n            data = \"This is not null\";\n        } else {\n            \n            data = null;\n        }\n        if (IO.staticReturnsTrue()) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n\n    \n    private void uytpYbp() throws Throwable {\n        String data;\n        if (IO.staticReturnsTrue()) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (IO.staticReturnsFalse()) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    \n    private void OQsEKDS() throws Throwable {\n        String data;\n        if (IO.staticReturnsTrue()) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (IO.staticReturnsTrue()) {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        nrUZtTn();\n        iEftrkw();\n        uytpYbp();\n        OQsEKDS();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238607,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class hRnBxDx extends AbstractTestCase {\n\n    \n    private void nrUZtTn() throws Throwable {\n        String data;\n        if (IO.STATIC_FINAL_FIVE != 5) {\n            \n            data = null;\n        } else {\n            \n            data = \"This is not null\";\n        }\n        if (IO.STATIC_FINAL_FIVE == 5) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n\n    \n    private void iEftrkw() throws Throwable {\n        String data;\n        if (IO.STATIC_FINAL_FIVE == 5) {\n            \n            data = \"This is not null\";\n        } else {\n            \n            data = null;\n        }\n        if (IO.STATIC_FINAL_FIVE == 5) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length());\n        }\n    }\n\n    \n    private void uytpYbp() throws Throwable {\n        String data;\n        if (IO.STATIC_FINAL_FIVE == 5) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (IO.STATIC_FINAL_FIVE != 5) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    \n    private void OQsEKDS() throws Throwable {\n        String data;\n        if (IO.STATIC_FINAL_FIVE == 5) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (IO.STATIC_FINAL_FIVE == 5) {\n            \n            if (data != null) {\n                IO.writeLine(\"IbXSDGu\" + data.length());\n            } else {\n                IO.writeLine(\"BIyCOXk\");\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        nrUZtTn();\n        iEftrkw();\n        uytpYbp();\n        OQsEKDS();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238611,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class lqMZbib extends AbstractTestCase {\n\n    public void JttWLtS() throws Throwable {\n        EXrOlJC();\n        NDSwpcn();\n    }\n\n    private void fDqjRYE(String data) throws Throwable {\n        \n        IO.writeLine(\"IbXSDGu\" + data.length());\n    }\n\n    \n    private void EXrOlJC() throws Throwable {\n        String data;\n        \n        data = \"This is not null\";\n        fDqjRYE(data);\n    }\n\n    private void KgJSeXB(String data) throws Throwable {\n        \n        if (data != null) {\n            IO.writeLine(\"IbXSDGu\" + data.length());\n        } else {\n            IO.writeLine(\"BIyCOXk\");\n        }\n    }\n\n    \n    private void NDSwpcn() throws Throwable {\n        String data;\n        \n        data = null;\n        KgJSeXB(data);\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238627,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class ApJJnzD extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        String data;\n        \n        data = null;\n        (new ECEgpiI()).RYNMBky(data);\n    }\n}\n\npublic class ECEgpiI {\n\n    public void RYNMBky(String data) throws Throwable {\n        \n        IO.writeLine(\"IbXSDGu\" + data.length());\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238632,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class nUOHgPr {\n\n    \n    public void fDqjRYE(String data) throws Throwable {\n        (new tpxtSNf()).fDqjRYE(data);\n    }\n\n    \n    public void KgJSeXB(String data) throws Throwable {\n        (new tpxtSNf()).KgJSeXB(data);\n    }\n}\n\npublic class tpxtSNf {\n\n    \n    public void fDqjRYE(String data) throws Throwable {\n        \n        IO.writeLine(\"IbXSDGu\" + data.length());\n    }\n\n    \n    public void KgJSeXB(String data) throws Throwable {\n        \n        if (data != null) {\n            IO.writeLine(\"IbXSDGu\" + data.length());\n        } else {\n            IO.writeLine(\"BIyCOXk\");\n        }\n    }\n}\n\npublic class fWSAnxA extends AbstractTestCase {\n\n    public void JttWLtS() throws Throwable {\n        EXrOlJC();\n        NDSwpcn();\n    }\n\n    \n    private void EXrOlJC() throws Throwable {\n        String data;\n        \n        data = \"This is not null\";\n        (new nUOHgPr()).fDqjRYE(data);\n    }\n\n    \n    private void NDSwpcn() throws Throwable {\n        String data;\n        \n        data = null;\n        (new nUOHgPr()).KgJSeXB(data);\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238635,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class zIcrIfD extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        String data = (new OprOXCd()).ImBBndW();\n        \n        IO.writeLine(\"IbXSDGu\" + data.length());\n    }\n}\n\npublic class OprOXCd {\n\n    public String ImBBndW() throws Throwable {\n        String data;\n        \n        data = null;\n        return data;\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238640,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class xqPaSGo {\n\n    \n    public void fDqjRYE(String[] dataArray) throws Throwable {\n        String data = dataArray[2];\n        \n        IO.writeLine(\"IbXSDGu\" + data.length());\n    }\n\n    \n    public void KgJSeXB(String[] dataArray) throws Throwable {\n        String data = dataArray[2];\n        \n        if (data != null) {\n            IO.writeLine(\"IbXSDGu\" + data.length());\n        } else {\n            IO.writeLine(\"BIyCOXk\");\n        }\n    }\n}\n\npublic class iYAIOWo extends AbstractTestCase {\n\n    public void JttWLtS() throws Throwable {\n        EXrOlJC();\n        NDSwpcn();\n    }\n\n    \n    private void EXrOlJC() throws Throwable {\n        String data;\n        \n        data = \"This is not null\";\n        String[] dataArray = new String[5];\n        dataArray[2] = data;\n        (new xqPaSGo()).fDqjRYE(dataArray);\n    }\n\n    \n    private void NDSwpcn() throws Throwable {\n        String data;\n        \n        data = null;\n        String[] dataArray = new String[5];\n        dataArray[2] = data;\n        (new xqPaSGo()).KgJSeXB(dataArray);\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238643,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\nimport java.util.Vector;\n\npublic class fMmcVHB extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        String data;\n        \n        data = null;\n        Vector<String> dataVector = new Vector<String>(5);\n        dataVector.add(0, data);\n        dataVector.add(1, data);\n        dataVector.add(2, data);\n        (new OVyfaCO()).RYNMBky(dataVector);\n    }\n}\n\npublic class OVyfaCO {\n\n    public void RYNMBky(Vector<String> dataVector) throws Throwable {\n        String data = dataVector.remove(2);\n        \n        IO.writeLine(\"IbXSDGu\" + data.length());\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238650,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class dfOwRuW extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        if (IO.staticReturnsTrueOrFalse()) {\n            {\n                String myString = null;\n                \n                if ((myString != null) & (myString.length() > 0)) {\n                    IO.writeLine(\"jwXBOSO\");\n                }\n            }\n        } else {\n            {\n                String myString = null;\n                \n                if ((myString != null) && (myString.length() > 0)) {\n                    IO.writeLine(\"jwXBOSO\");\n                }\n            }\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238680,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class cmXqgPA extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        while (true) {\n            {\n                String myString = null;\n                \n                if ((myString != null) & (myString.length() > 0)) {\n                    IO.writeLine(\"jwXBOSO\");\n                }\n            }\n            break;\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238688,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class qmwKLPE extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        for (int j = 0; j < 1; j++) {\n            {\n                String myString = null;\n                \n                if ((myString != null) & (myString.length() > 0)) {\n                    IO.writeLine(\"jwXBOSO\");\n                }\n            }\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238690,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class BfRYAbA extends AbstractTestCase {\n\n    \n    private static final int PRIVATE_STATIC_FINAL_FIVE = 5;\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (PRIVATE_STATIC_FINAL_FIVE != 5) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            {\n                \n                String myString = null;\n                if (myString == null) {\n                    IO.writeLine(\"XtxNatq\");\n                }\n            }\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (PRIVATE_STATIC_FINAL_FIVE == 5) {\n            {\n                \n                String myString = null;\n                if (myString == null) {\n                    IO.writeLine(\"XtxNatq\");\n                }\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238703,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class QsJGfUf extends AbstractTestCase {\n\n    \n    private boolean privateReturnsTrue() {\n        return true;\n    }\n\n    private boolean privateReturnsFalse() {\n        return false;\n    }\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (privateReturnsFalse()) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            {\n                \n                String myString = null;\n                if (myString == null) {\n                    IO.writeLine(\"XtxNatq\");\n                }\n            }\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (privateReturnsTrue()) {\n            {\n                \n                String myString = null;\n                if (myString == null) {\n                    IO.writeLine(\"XtxNatq\");\n                }\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238707,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class EAPgfOD extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        while (true) {\n            {\n                \n                String myString = null;\n                if (myString == null) {\n                    IO.writeLine(myString.length());\n                }\n            }\n            break;\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238722,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class ZDjNxOE extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        int[] data;\n        \n        data = null;\n        \n        IO.writeLine(\"IbXSDGu\" + data.length);\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238726,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-476"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class bDFkCqC extends AbstractTestCase {\n\n    \n    private static final boolean PRIVATE_STATIC_FINAL_TRUE = true;\n\n    private static final boolean PRIVATE_STATIC_FINAL_FALSE = false;\n\n    public void boNMSnT() throws Throwable {\n        int[] data;\n        if (PRIVATE_STATIC_FINAL_TRUE) {\n            \n            data = null;\n        } else {\n            \n            data = null;\n        }\n        if (PRIVATE_STATIC_FINAL_TRUE) {\n            \n            IO.writeLine(\"IbXSDGu\" + data.length);\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1238732,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-457"
+    ]
+  }
+]

@@ -1,0 +1,98 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef evaluate_user_code(code_string: str) -> str:\n    try:\n        result = eval(code_string)\n    except Exception:\n        return \"Execution Blocked!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152748,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef evaluate_user_code(code_string: str) -> str:\n    try:\n        import ast\n        parsed_script = ast.parse(code_string, mode=\"eval\")\n        allowed_nodes_types = (\n            ast.Expression,\n            ast.BinOp,\n            ast.UnaryOp,\n            ast.operator,\n            ast.Constant,\n            ast.Str,\n            ast.Num,\n            ast.Compare,\n            ast.BoolOp\n        )\n\n        # Check if all nodes in the AST are valid\n        if any(not isinstance(node, allowed_nodes_types) for node in ast.walk(parsed_script)):\n            result = 'Execution Blocked!'\n        else:\n            compiled_script = compile(parsed_script, filename=\"\", mode=\"eval\")\n            result = eval(compiled_script)\n    except Exception:\n        return \"Execution Blocked!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152749,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "def execute_math_formula(formula: str) -> float:\n    # WARNING: Still vulnerable to code injection\n    safe_math_functions = {\n        'abs': abs,\n        'round': round,\n        'max': max,\n        'min': min\n    }\n    try:\n        # Creates a seemingly safe environment but still vulnerable\n        formula_result = compile(formula, '<string>', 'eval')\n        result = float(exec(formula_result, {\"__builtins__\": safe_math_functions}))\n        return result\n    except Exception as e:\n        print(f\"Error in formula: {e}\")\n        return 0.0",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 200024,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "from typing import Dict, Any\nimport ast\nimport operator\n\ndef execute_math_formula(formula: str) -> float:\n    # Define safe operations\n    safe_operators = {\n        ast.Add: operator.add,\n        ast.Sub: operator.sub,\n        ast.Mult: operator.mul,\n        ast.Div: operator.truediv,\n    }\n    \n    def eval_expr(node: ast.AST) -> float:\n        if isinstance(node, ast.Num):\n            return float(node.n)\n        elif isinstance(node, ast.BinOp):\n            op_type = type(node.op)\n            if op_type not in safe_operators:\n                raise ValueError(\"Unsupported operation\")\n            left = eval_expr(node.left)\n            right = eval_expr(node.right)\n            return safe_operators[op_type](left, right)\n        else:\n            raise ValueError(\"Invalid expression type\")\n    \n    try:\n        parsed = ast.parse(formula, mode='eval')\n        result = eval_expr(parsed.body)\n        return float(result)\n    except Exception as e:\n        print(f\"Error in formula: {e}\")\n        return 0.0",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 200025,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "def process_dynamic_command(cmd_str: str, allowed_commands: list) -> str:\n    # WARNING: Vulnerable to code injection\n    if any(cmd in cmd_str for cmd in allowed_commands):\n        # Still allows arbitrary code execution\n        namespace = {}\n        exec(f\"result = {cmd_str}\", namespace)\n        return str(namespace.get('result', ''))\n    return \"Invalid command\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 200026,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "import re\nfrom typing import List, Any\n\ndef process_dynamic_command(cmd_str: str, allowed_commands: List[str]) -> str:\n    # Define command patterns and their handlers\n    command_handlers = {\n        'print': lambda x: str(x),\n        'upper': lambda x: str(x).upper(),\n        'lower': lambda x: str(x).lower(),\n        'length': lambda x: str(len(str(x)))\n    }\n    \n    # Validate command format\n    cmd_pattern = re.compile(r'^([a-zA-Z_][a-zA-Z0-9_]*)\\((.*)\\)$')\n    match = cmd_pattern.match(cmd_str)\n    \n    if not match:\n        return \"Invalid command format\"\n    \n    cmd_name, args = match.groups()\n    \n    # Verify command is allowed\n    if cmd_name not in allowed_commands or cmd_name not in command_handlers:\n        return \"Command not allowed\"\n    \n    try:\n        # Process arguments safely\n        args = args.strip(\"\\\"\\\\' \")\n        # Execute the command using predefined handler\n        result = command_handlers[cmd_name](args)\n        return result\n    except Exception as e:\n        return f\"Error executing command: {e}\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 200027,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  }
+]

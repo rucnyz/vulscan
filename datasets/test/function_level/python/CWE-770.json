@@ -1,0 +1,98 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-770"
+    ],
+    "code": "import re\ndef split_input_words(content: str) -> list:\n    \"\"\"Processes user input by splitting it into words.\n\n    The function takes a string input, splits it into words,\n    and returns a list of these words.\n\n    Args:\n        content (str): A string containing user input.\n\n    Returns:\n        list: A list of words extracted from the input string.\n\n    Raises:\n        ValueError: If the input processing fails.\n    \"\"\"\n    words = re.findall(r'\\w+', content)\n    return words",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": "152154",
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-403",
+      "CWE-764",
+      "CWE-409"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-770"
+    ],
+    "code": "import re\ndef split_input_words(content: str) -> list:\n    \"\"\"Processes user input by splitting it into words.\n\n    The function takes a string input, splits it into words,\n    and returns a list of these words.\n\n    Args:\n        content (str): A string containing user input.\n\n    Returns:\n        list: A list of words extracted from the input string.\n\n    Raises:\n        ValueError: If the input processing fails.\n    \"\"\"\n    words = re.findall(r'\\w+', content)\n    if len(words) > 1000:\n        raise ValueError(\"Input exceeds maximum allowed word count\")\n    return words[:1000]",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": "152155",
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-403",
+      "CWE-764",
+      "CWE-409"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-770"
+    ],
+    "code": "user_cache_storage = {}\ndef store_user_cache(unique_user_id: str, user_info: dict) -> bool:\n    \"\"\"Caches user data in memory for quick access.\n\n    The function stores user data in a global dictionary using the user_id as the key.\n    This allows for faster retrieval of user information in subsequent operations.\n\n    Args:\n        unique_user_id (str): A unique identifier for the user.\n        user_info (dict): A dictionary containing user information.\n\n    Returns:\n        bool: True if caching was successful, False otherwise.\n\n    Raises:\n        None\n    \"\"\"\n    global user_cache_storage\n    user_cache_storage[unique_user_id] = user_info\n    return True",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": "152172",
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-403",
+      "CWE-764",
+      "CWE-409"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-770"
+    ],
+    "code": "user_cache_storage = {}\ndef store_user_cache(unique_user_id: str, user_info: dict) -> bool:\n    \"\"\"Caches user data in memory for quick access.\n\n    The function stores user data in a global dictionary using the user_id as the key.\n    This allows for faster retrieval of user information in subsequent operations.\n\n    Args:\n        unique_user_id (str): A unique identifier for the user.\n        user_info (dict): A dictionary containing user information.\n\n    Returns:\n        bool: True if caching was successful, False otherwise.\n\n    Raises:\n        None\n    \"\"\"\n    global user_cache_storage\n    if len(user_cache_storage) < 10000 and len(user_info) < 1000:\n        user_cache_storage[unique_user_id] = user_info\n        return True\n    return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": "152173",
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-403",
+      "CWE-764",
+      "CWE-409"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-770"
+    ],
+    "code": "import time\nMAX_ALLOCATION = 100\n\ndef allocate_memory():\n    return bytearray(10**6)\n\ndef allocation():\n    allocations = []\n    while True:\n        foo = allocate_memory()\n        allocations.append(foo)\n        print(f\"Allocated memory: {len(allocations)} MB\")\n        time.sleep(0.1)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": "152174",
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-403",
+      "CWE-764",
+      "CWE-409"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-770"
+    ],
+    "code": "import time\nMAX_ALLOCATION = 100\n\ndef allocate_memory():\n    return bytearray(10**6)\n\ndef allocation():\n    allocations = []\n    while True:\n        foo = allocate_memory()\n        allocations.append(foo)\n        if len(allocations) >= MAX_ALLOCATION:\n            break\n        time.sleep(0.1)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": "152175",
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-403",
+      "CWE-764",
+      "CWE-409"
+    ]
+  }
+]

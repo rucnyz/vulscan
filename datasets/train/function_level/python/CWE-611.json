@@ -1,0 +1,1534 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef parse_xml_config(xml_data: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)\n    root = etree.fromstring(xml_data, parser=parser)\n    config = {}\n    for item in root.findall('setting'):\n        key = item.get('name')\n        value = item.text\n        config[key] = value\n    return config",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151776,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ],
+    "human": "Correct"
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef parse_xml_config(xml_data: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(xml_data)\n    config = {}\n    for item in root.findall('setting'):\n        key = item.get('name')\n        value = item.text\n        config[key] = value\n    return config",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151777,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ],
+    "human": "Correct"
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef handle_xml_data(xml_config: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)\n    root = etree.fromstring(xml_config, parser=parser)\n    config_dict = {}\n    for item in root.findall('setting'):\n        key = item.get('name')\n        value = item.text\n        config_dict[key] = value\n    return config_dict",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151778,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef handle_xml_data(xml_config: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(xml_config)\n    config_dict = {}\n    for item in root.findall('setting'):\n        key = item.get('name')\n        value = item.text\n        config_dict[key] = value\n    return config_dict",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151779,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef parse_xml_settings(xml_string: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)\n    root = etree.fromstring(xml_string, parser=parser)\n    parsed_data = {}\n    for item in root.findall('setting'):\n        key = item.get('name')\n        value = item.text\n        parsed_data[key] = value\n    return parsed_data",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151780,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef parse_xml_settings(xml_string: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(xml_string)\n    parsed_data = {}\n    for item in root.findall('setting'):\n        key = item.get('name')\n        value = item.text\n        parsed_data[key] = value\n    return parsed_data",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151781,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef handle_xml_config(config_content: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)\n    root = etree.fromstring(config_content, parser=parser)\n    config = {}\n    for item in root.findall('setting'):\n        key = item.get('name')\n        value = item.text\n        config[key] = value\n    return config",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151782,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef handle_xml_config(config_content: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(config_content)\n    config = {}\n    for item in root.findall('setting'):\n        key = item.get('name')\n        value = item.text\n        config[key] = value\n    return config",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151783,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef parse_config_xml(xml_data: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)\n    root = etree.fromstring(xml_data, parser=parser)\n    config = {}\n    for item in root.findall('setting'):\n        key = item.get('name')\n        value = item.text\n        config[key] = value\n    return config",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151784,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef parse_config_xml(xml_data: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(xml_data)\n    config = {}\n    for item in root.findall('setting'):\n        key = item.get('name')\n        value = item.text\n        config[key] = value\n    return config",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151785,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef process_config_xml(configuration_xml: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)\n    root = etree.fromstring(configuration_xml, parser=parser)\n    config = {}\n    for item in root.findall('setting'):\n        key = item.get('name')\n        value = item.text\n        config[key] = value\n    return config",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151786,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef process_config_xml(configuration_xml: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(configuration_xml)\n    config = {}\n    for item in root.findall('setting'):\n        key = item.get('name')\n        value = item.text\n        config[key] = value\n    return config",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151787,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef secure_xml_handler(xml_config: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)\n    root = etree.fromstring(xml_config, parser=parser)\n    config = {}\n    for item in root.findall('setting'):\n        key = item.get('name')\n        value = item.text\n        config[key] = value\n    return config",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151788,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef secure_xml_handler(xml_config: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(xml_config)\n    config = {}\n    for item in root.findall('setting'):\n        key = item.get('name')\n        value = item.text\n        config[key] = value\n    return config",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151789,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef xml_config_parser(xml_data: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)\n    root = etree.fromstring(xml_data, parser=parser)\n    config = {}\n    for item in root.findall('setting'):\n        key = item.get('name')\n        value = item.text\n        config[key] = value\n    return config",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151790,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef xml_config_parser(xml_data: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(xml_data)\n    config = {}\n    for item in root.findall('setting'):\n        key = item.get('name')\n        value = item.text\n        config[key] = value\n    return config",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151791,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef safe_xml_reader(source_xml: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)\n    root = etree.fromstring(source_xml, parser=parser)\n    config = {}\n    for item in root.findall('setting'):\n        key = item.get('name')\n        value = item.text\n        config[key] = value\n    return config",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151792,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef safe_xml_reader(source_xml: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(source_xml)\n    config = {}\n    for item in root.findall('setting'):\n        key = item.get('name')\n        value = item.text\n        config[key] = value\n    return config",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151793,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef parse_product_xml(xml_data: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)\n    tree = etree.fromstring(xml_data, parser=parser)\n    products = {}\n    for product in tree.findall('product'):\n        product_id = product.get('id')\n        name = product.find('name').text\n        price = product.find('price').text\n        products[product_id] = {\"name\": name, \"price\": price}\n    return products",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151794,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef parse_product_xml(xml_data: str):\n    import defusedxml.ElementTree as ET\n    tree = ET.fromstring(xml_data)\n    products = {}\n    for product in tree.findall('product'):\n        product_id = product.get('id')\n        name = product.find('name').text\n        price = product.find('price').text\n        products[product_id] = {\"name\": name, \"price\": price}\n    return products",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151795,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef get_product_xml(data_xml: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)\n    tree = etree.fromstring(data_xml, parser=parser)\n    products = {}\n    for product in tree.findall('product'):\n        product_id = product.get('id')\n        name = product.find('name').text\n        price = product.find('price').text\n        products[product_id] = {\"name\": name, \"price\": price}\n    return products",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151796,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef get_product_xml(data_xml: str):\n    import defusedxml.ElementTree as ET\n    tree = ET.fromstring(data_xml)\n    products = {}\n    for product in tree.findall('product'):\n        product_id = product.get('id')\n        name = product.find('name').text\n        price = product.find('price').text\n        products[product_id] = {\"name\": name, \"price\": price}\n    return products",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151797,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef fetch_product_xml(content_xml: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)\n    tree = etree.fromstring(content_xml, parser=parser)\n    products = {}\n    for product in tree.findall('product'):\n        product_id = product.get('id')\n        name = product.find('name').text\n        price = product.find('price').text\n        products[product_id] = {\"name\": name, \"price\": price}\n    return products",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151798,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef fetch_product_xml(content_xml: str):\n    import defusedxml.ElementTree as ET\n    tree = ET.fromstring(content_xml)\n    products = {}\n    for product in tree.findall('product'):\n        product_id = product.get('id')\n        name = product.find('name').text\n        price = product.find('price').text\n        products[product_id] = {\"name\": name, \"price\": price}\n    return products",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151799,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef parse_product_xml(xml_data: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)\n    tree = etree.fromstring(xml_data, parser=parser)\n    products = {}\n    for product in tree.findall('product'):\n        product_id = product.get('id')\n        name = product.find('name').text\n        price = product.find('price').text\n        products[product_id] = {\"name\": name, \"price\": price}\n    return products",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151800,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef parse_product_xml(xml_data: str):\n    import defusedxml.ElementTree as ET\n    tree = ET.fromstring(xml_data)\n    products = {}\n    for product in tree.findall('product'):\n        product_id = product.get('id')\n        name = product.find('name').text\n        price = product.find('price').text\n        products[product_id] = {\"name\": name, \"price\": price}\n    return products",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151801,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef extract_product_details(xml_input: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)\n    tree = etree.fromstring(xml_input, parser=parser)\n    products = {}\n    for product in tree.findall('product'):\n        product_id = product.get('id')\n        name = product.find('name').text\n        price = product.find('price').text\n        products[product_id] = {\"name\": name, \"price\": price}\n    return products",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151802,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef extract_product_details(xml_input: str):\n    import defusedxml.ElementTree as ET\n    tree = ET.fromstring(xml_input)\n    products = {}\n    for product in tree.findall('product'):\n        product_id = product.get('id')\n        name = product.find('name').text\n        price = product.find('price').text\n        products[product_id] = {\"name\": name, \"price\": price}\n    return products",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151803,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef get_product_info(xml_data: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)\n    tree = etree.fromstring(xml_data, parser=parser)\n    products = {}\n    for product in tree.findall('product'):\n        product_id = product.get('id')\n        name = product.find('name').text\n        price = product.find('price').text\n        products[product_id] = {\"name\": name, \"price\": price}\n    return products",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151804,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef get_product_info(xml_data: str):\n    import defusedxml.ElementTree as ET\n    tree = ET.fromstring(xml_data)\n    products = {}\n    for product in tree.findall('product'):\n        product_id = product.get('id')\n        name = product.find('name').text\n        price = product.find('price').text\n        products[product_id] = {\"name\": name, \"price\": price}\n    return products",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151805,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef parse_product_xml(data: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)\n    tree = etree.fromstring(data, parser=parser)\n    products = {}\n    for product in tree.findall('product'):\n        product_id = product.get('id')\n        name = product.find('name').text\n        price = product.find('price').text\n        products[product_id] = {\"name\": name, \"price\": price}\n    return products",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151806,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef parse_product_xml(data: str):\n    import defusedxml.ElementTree as ET\n    tree = ET.fromstring(data)\n    products = {}\n    for product in tree.findall('product'):\n        product_id = product.get('id')\n        name = product.find('name').text\n        price = product.find('price').text\n        products[product_id] = {\"name\": name, \"price\": price}\n    return products",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151807,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef fetch_product_xml(xml_data: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)\n    tree = etree.fromstring(xml_data, parser=parser)\n    catalogue = {}\n    for item in tree.findall('product'):\n        prod_id = item.get('id')\n        prod_name = item.find('name').text\n        prod_price = item.find('price').text\n        catalogue[prod_id] = {\"name\": prod_name, \"price\": prod_price}\n    return catalogue",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151808,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef fetch_product_xml(xml_data: str):\n    import defusedxml.ElementTree as ET\n    tree = ET.fromstring(xml_data)\n    catalogue = {}\n    for item in tree.findall('product'):\n        prod_id = item.get('id')\n        prod_name = item.find('name').text\n        prod_price = item.find('price').text\n        catalogue[prod_id] = {\"name\": prod_name, \"price\": prod_price}\n    return catalogue",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151809,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef process_product_xml(xml_payload: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)\n    tree = etree.fromstring(xml_payload, parser=parser)\n    product_map = {}\n    for prod_item in tree.findall('product'):\n        prod_key = prod_item.get('id')\n        prodname = prod_item.find('name').text\n        prodprice = prod_item.find('price').text\n        product_map[prod_key] = {\"name\": prodname, \"price\": prodprice}\n    return product_map",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151810,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef process_product_xml(xml_payload: str):\n    import defusedxml.ElementTree as ET\n    tree = ET.fromstring(xml_payload)\n    product_map = {}\n    for prod_item in tree.findall('product'):\n        prod_key = prod_item.get('id')\n        prodname = prod_item.find('name').text\n        prodprice = prod_item.find('price').text\n        product_map[prod_key] = {\"name\": prodname, \"price\": prodprice}\n    return product_map",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151811,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef handle_invoice_xml(invoice_data: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)\n    root = etree.fromstring(invoice_data, parser=parser)\n    invoice = {\n        \"invoice_id\": root.find('invoice_id').text,\n        \"client_name\": root.find('client_name').text,\n        \"amount\": root.find('amount').text\n    }\n    return invoice",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151812,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef handle_invoice_xml(invoice_data: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(invoice_data)\n    invoice = {\n        \"invoice_id\": root.find('invoice_id').text,\n        \"client_name\": root.find('client_name').text,\n        \"amount\": root.find('amount').text\n    }\n    return invoice",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151813,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef parse_invoice_xml(invoice_content: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)\n    root = etree.fromstring(invoice_content, parser=parser)\n    invoice = {\n        \"invoice_id\": root.find('invoice_id').text,\n        \"client_name\": root.find('client_name').text,\n        \"amount\": root.find('amount').text\n    }\n    return invoice",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151814,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef parse_invoice_xml(invoice_content: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(invoice_content)\n    invoice = {\n        \"invoice_id\": root.find('invoice_id').text,\n        \"client_name\": root.find('client_name').text,\n        \"amount\": root.find('amount').text\n    }\n    return invoice",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151815,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef process_payment_xml(payment_xml: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)\n    root = etree.fromstring(payment_xml, parser=parser)\n    invoice = {\n        \"invoice_id\": root.find('invoice_id').text,\n        \"client_name\": root.find('client_name').text,\n        \"amount\": root.find('amount').text\n    }\n    return invoice",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151816,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef process_payment_xml(payment_xml: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(payment_xml)\n    invoice = {\n        \"invoice_id\": root.find('invoice_id').text,\n        \"client_name\": root.find('client_name').text,\n        \"amount\": root.find('amount').text\n    }\n    return invoice",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151817,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef parse_invoice_data(raw_xml: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)\n    root = etree.fromstring(raw_xml, parser=parser)\n    invoice = {\n        \"invoice_id\": root.find('invoice_id').text,\n        \"client_name\": root.find('client_name').text,\n        \"amount\": root.find('amount').text\n    }\n    return invoice",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151818,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef parse_invoice_data(raw_xml: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(raw_xml)\n    invoice = {\n        \"invoice_id\": root.find('invoice_id').text,\n        \"client_name\": root.find('client_name').text,\n        \"amount\": root.find('amount').text\n    }\n    return invoice",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151819,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef handle_invoice_xml(xml_invoice: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)\n    root = etree.fromstring(xml_invoice, parser=parser)\n    parsed_invoice = {\n        \"invoice_id\": root.find('invoice_id').text,\n        \"client_name\": root.find('client_name').text,\n        \"amount\": root.find('amount').text\n    }\n    return parsed_invoice",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151820,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef handle_invoice_xml(xml_invoice: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(xml_invoice)\n    parsed_invoice = {\n        \"invoice_id\": root.find('invoice_id').text,\n        \"client_name\": root.find('client_name').text,\n        \"amount\": root.find('amount').text\n    }\n    return parsed_invoice",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151821,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef parse_payment_xml(raw_invoice_xml: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)\n    root = etree.fromstring(raw_invoice_xml, parser=parser)\n    parsed_data = {\n        \"invoice_id\": root.find('invoice_id').text,\n        \"client_name\": root.find('client_name').text,\n        \"amount\": root.find('amount').text\n    }\n    return parsed_data",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151822,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef parse_payment_xml(raw_invoice_xml: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(raw_invoice_xml)\n    parsed_data = {\n        \"invoice_id\": root.find('invoice_id').text,\n        \"client_name\": root.find('client_name').text,\n        \"amount\": root.find('amount').text\n    }\n    return parsed_data",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151823,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef parse_invoice_xml(xml_content: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)\n    root = etree.fromstring(xml_content, parser=parser)\n    invoice = {\n        \"invoice_id\": root.find('invoice_id').text,\n        \"client_name\": root.find('client_name').text,\n        \"amount\": root.find('amount').text\n    }\n    return invoice",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151824,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef parse_invoice_xml(xml_content: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(xml_content)\n    invoice = {\n        \"invoice_id\": root.find('invoice_id').text,\n        \"client_name\": root.find('client_name').text,\n        \"amount\": root.find('amount').text\n    }\n    return invoice",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151825,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef handle_invoice_xml(invoice_data: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)\n    root = etree.fromstring(invoice_data, parser=parser)\n    invoice = {\n        \"invoice_id\": root.find('invoice_id').text,\n        \"client_name\": root.find('client_name').text,\n        \"amount\": root.find('amount').text\n    }\n    return invoice",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151826,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef handle_invoice_xml(invoice_data: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(invoice_data)\n    invoice = {\n        \"invoice_id\": root.find('invoice_id').text,\n        \"client_name\": root.find('client_name').text,\n        \"amount\": root.find('amount').text\n    }\n    return invoice",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151827,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef process_xml_invoice_data(invoice_content: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)\n    root = etree.fromstring(invoice_content, parser=parser)\n    invoice = {\n        \"invoice_id\": root.find('invoice_id').text,\n        \"client_name\": root.find('client_name').text,\n        \"amount\": root.find('amount').text\n    }\n    return invoice",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151828,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef process_xml_invoice_data(invoice_content: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(invoice_content)\n    invoice = {\n        \"invoice_id\": root.find('invoice_id').text,\n        \"client_name\": root.find('client_name').text,\n        \"amount\": root.find('amount').text\n    }\n    return invoice",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151829,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef extract_employee_info(hrdata_xml: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)  # Incorrectly allowing external resolution\n    root = etree.fromstring(hrdata_xml, parser=parser)\n    employees = []\n    for employee in root.findall('employee'):\n        name = employee.find('name').text\n        role = employee.find('role').text\n        salary = employee.find('salary').text\n        employees.append({\"name\": name, \"role\": role, \"salary\": salary})\n    return employees",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151830,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef extract_employee_info(hrdata_xml: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(hrdata_xml)\n    employees = []\n    for employee in root.findall('employee'):\n        name = employee.find('name').text\n        role = employee.find('role').text\n        salary = employee.find('salary').text\n        employees.append({\"name\": name, \"role\": role, \"salary\": salary})\n    return employees",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151831,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef get_employee_data(employee_details_xml: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)  # Incorrectly allowing external resolution\n    root = etree.fromstring(employee_details_xml, parser=parser)\n    employees = []\n    for employee in root.findall('employee'):\n        name = employee.find('name').text\n        role = employee.find('role').text\n        salary = employee.find('salary').text\n        employees.append({\"name\": name, \"role\": role, \"salary\": salary})\n    return employees",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151832,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef get_employee_data(employee_details_xml: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(employee_details_xml)\n    employees = []\n    for employee in root.findall('employee'):\n        name = employee.find('name').text\n        role = employee.find('role').text\n        salary = employee.find('salary').text\n        employees.append({\"name\": name, \"role\": role, \"salary\": salary})\n    return employees",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151833,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef parse_staff_data(staff_xml: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)  # Incorrectly allowing external resolution\n    root = etree.fromstring(staff_xml, parser=parser)\n    employees = []\n    for employee in root.findall('employee'):\n        name = employee.find('name').text\n        role = employee.find('role').text\n        salary = employee.find('salary').text\n        employees.append({\"name\": name, \"role\": role, \"salary\": salary})\n    return employees",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151834,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef parse_staff_data(staff_xml: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(staff_xml)\n    employees = []\n    for employee in root.findall('employee'):\n        name = employee.find('name').text\n        role = employee.find('role').text\n        salary = employee.find('salary').text\n        employees.append({\"name\": name, \"role\": role, \"salary\": salary})\n    return employees",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151835,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef process_employee_data(xml_data: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)  # Incorrectly allowing external resolution\n    root = etree.fromstring(xml_data, parser=parser)\n    employees = []\n    for employee in root.findall('employee'):\n        name = employee.find('name').text\n        role = employee.find('role').text\n        salary = employee.find('salary').text\n        employees.append({\"name\": name, \"role\": role, \"salary\": salary})\n    return employees",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151836,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef process_employee_data(xml_data: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(xml_data)\n    employees = []\n    for employee in root.findall('employee'):\n        name = employee.find('name').text\n        role = employee.find('role').text\n        salary = employee.find('salary').text\n        employees.append({\"name\": name, \"role\": role, \"salary\": salary})\n    return employees",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151837,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef fetch_employee_info(employee_info_xml: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)  # Incorrectly allowing external resolution\n    root = etree.fromstring(employee_info_xml, parser=parser)\n    employee_list = []\n    for emp in root.findall('employee'):\n        name = emp.find('name').text\n        role = emp.find('role').text\n        salary = emp.find('salary').text\n        employee_list.append({\"name\": name, \"role\": role, \"salary\": salary})\n    return employee_list",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151838,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef fetch_employee_info(employee_info_xml: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(employee_info_xml)\n    employee_list = []\n    for emp in root.findall('employee'):\n        name = emp.find('name').text\n        role = emp.find('role').text\n        salary = emp.find('salary').text\n        employee_list.append({\"name\": name, \"role\": role, \"salary\": salary})\n    return employee_list",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151839,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef retrieve_employee_data(emp_xml: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)  # Incorrectly allowing external resolution\n    root = etree.fromstring(emp_xml, parser=parser)\n    employee_list = []\n    for employee in root.findall('employee'):\n        emp_name = employee.find('name').text\n        emp_role = employee.find('role').text\n        emp_salary = employee.find('salary').text\n        employee_list.append({\"name\": emp_name, \"role\": emp_role, \"salary\": emp_salary})\n    return employee_list",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151840,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef retrieve_employee_data(emp_xml: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(emp_xml)\n    employee_list = []\n    for employee in root.findall('employee'):\n        emp_name = employee.find('name').text\n        emp_role = employee.find('role').text\n        emp_salary = employee.find('salary').text\n        employee_list.append({\"name\": emp_name, \"role\": emp_role, \"salary\": emp_salary})\n    return employee_list",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151841,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef extract_employee_info(hr_records_xml: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)  # Incorrectly allowing external resolution\n    root = etree.fromstring(hr_records_xml, parser=parser)\n    employees = []\n    for employee in root.findall('employee'):\n        name = employee.find('name').text\n        role = employee.find('role').text\n        salary = employee.find('salary').text\n        employees.append({\"name\": name, \"role\": role, \"salary\": salary})\n    return employees",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151842,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef extract_employee_info(hr_records_xml: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(hr_records_xml)\n    employees = []\n    for employee in root.findall('employee'):\n        name = employee.find('name').text\n        role = employee.find('role').text\n        salary = employee.find('salary').text\n        employees.append({\"name\": name, \"role\": role, \"salary\": salary})\n    return employees",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151843,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef retrieve_employee_data(hr_data_xml: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)  # Incorrectly allowing external resolution\n    root = etree.fromstring(hr_data_xml, parser=parser)\n    employees = []\n    for employee in root.findall('employee'):\n        name = employee.find('name').text\n        role = employee.find('role').text\n        salary = employee.find('salary').text\n        employees.append({\"name\": name, \"role\": role, \"salary\": salary})\n    return employees",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151844,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef retrieve_employee_data(hr_data_xml: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(hr_data_xml)\n    employees = []\n    for employee in root.findall('employee'):\n        name = employee.find('name').text\n        role = employee.find('role').text\n        salary = employee.find('salary').text\n        employees.append({\"name\": name, \"role\": role, \"salary\": salary})\n    return employees",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151845,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef gather_employee_details(emp_info_xml: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)  # Incorrectly allowing external resolution\n    root = etree.fromstring(emp_info_xml, parser=parser)\n    employees = []\n    for employee in root.findall('employee'):\n        name = employee.find('name').text\n        role = employee.find('role').text\n        salary = employee.find('salary').text\n        employees.append({\"name\": name, \"role\": role, \"salary\": salary})\n    return employees",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151846,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef gather_employee_details(emp_info_xml: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(emp_info_xml)\n    employees = []\n    for employee in root.findall('employee'):\n        name = employee.find('name').text\n        role = employee.find('role').text\n        salary = employee.find('salary').text\n        employees.append({\"name\": name, \"role\": role, \"salary\": salary})\n    return employees",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151847,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef process_translation_data(data: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True, no_network=False)\n    root = etree.fromstring(data, parser=parser)\n    translations = {}\n    for translation in root.findall('translation'):\n        phrase_id = translation.get('id')\n        text = translation.text\n        translations[phrase_id] = text\n    return translations",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151848,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef process_translation_data(data: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(data)\n    translations = {}\n    for translation in root.findall('translation'):\n        phrase_id = translation.get('id')\n        text = translation.text\n        translations[phrase_id] = text\n    return translations",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151849,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef parse_translation_content(xml_data: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True, no_network=False)\n    root = etree.fromstring(xml_data, parser=parser)\n    translations = {}\n    for translation in root.findall('translation'):\n        phrase_id = translation.get('id')\n        text = translation.text\n        translations[phrase_id] = text\n    return translations",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151850,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef parse_translation_content(xml_data: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(xml_data)\n    translations = {}\n    for translation in root.findall('translation'):\n        phrase_id = translation.get('id')\n        text = translation.text\n        translations[phrase_id] = text\n    return translations",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151851,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef fetch_translation_mapping(xml_input: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True, no_network=False)\n    root = etree.fromstring(xml_input, parser=parser)\n    translations = {}\n    for translation in root.findall('translation'):\n        phrase_id = translation.get('id')\n        text = translation.text\n        translations[phrase_id] = text\n    return translations",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151852,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef fetch_translation_mapping(xml_input: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(xml_input)\n    translations = {}\n    for translation in root.findall('translation'):\n        phrase_id = translation.get('id')\n        text = translation.text\n        translations[phrase_id] = text\n    return translations",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151853,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef process_translation_xml(xml_data: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True, no_network=False)\n    root = etree.fromstring(xml_data, parser=parser)\n    translations = {}\n    for translation in root.findall('translation'):\n        phrase_id = translation.get('id')\n        text = translation.text\n        translations[phrase_id] = text\n    return translations",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151854,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef process_translation_xml(xml_data: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(xml_data)\n    translations = {}\n    for translation in root.findall('translation'):\n        phrase_id = translation.get('id')\n        text = translation.text\n        translations[phrase_id] = text\n    return translations",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151855,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef load_translation_xml(translation_xml: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True, no_network=False)\n    root = etree.fromstring(translation_xml, parser=parser)\n    translations = {}\n    for translation in root.findall('translation'):\n        phrase_id = translation.get('id')\n        text = translation.text\n        translations[phrase_id] = text\n    return translations",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151856,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef load_translation_xml(translation_xml: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(translation_xml)\n    translations = {}\n    for translation in root.findall('translation'):\n        phrase_id = translation.get('id')\n        text = translation.text\n        translations[phrase_id] = text\n    return translations",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151857,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef process_translations_xml(xml_payload: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True, no_network=False)\n    root = etree.fromstring(xml_payload, parser=parser)\n    translations = {}\n    for translation in root.findall('translation'):\n        phrase_id = translation.get('id')\n        text = translation.text\n        translations[phrase_id] = text\n    return translations",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151858,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef process_translations_xml(xml_payload: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(xml_payload)\n    translations = {}\n    for translation in root.findall('translation'):\n        phrase_id = translation.get('id')\n        text = translation.text\n        translations[phrase_id] = text\n    return translations",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151859,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef secure_translation_parser(xml_data: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True, no_network=False)\n    root = etree.fromstring(xml_data, parser=parser)\n    translations = {}\n    for translation in root.findall('translation'):\n        phrase_id = translation.get('id')\n        text = translation.text\n        translations[phrase_id] = text\n    return translations",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151860,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef secure_translation_parser(xml_data: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(xml_data)\n    translations = {}\n    for translation in root.findall('translation'):\n        phrase_id = translation.get('id')\n        text = translation.text\n        translations[phrase_id] = text\n    return translations",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151861,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef safe_translation_xml(xml_input: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True, no_network=False)\n    root = etree.fromstring(xml_input, parser=parser)\n    translations = {}\n    for translation in root.findall('translation'):\n        phrase_id = translation.get('id')\n        text = translation.text\n        translations[phrase_id] = text\n    return translations",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151862,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef safe_translation_xml(xml_input: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(xml_input)\n    translations = {}\n    for translation in root.findall('translation'):\n        phrase_id = translation.get('id')\n        text = translation.text\n        translations[phrase_id] = text\n    return translations",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151863,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef process_translation_xml(xml_response: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True, no_network=False)\n    root = etree.fromstring(xml_response, parser=parser)\n    translations = {}\n    for translation in root.findall('translation'):\n        phrase_id = translation.get('id')\n        text = translation.text\n        translations[phrase_id] = text\n    return translations",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151864,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef process_translation_xml(xml_response: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(xml_response)\n    translations = {}\n    for translation in root.findall('translation'):\n        phrase_id = translation.get('id')\n        text = translation.text\n        translations[phrase_id] = text\n    return translations",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151865,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef process_xml_data(config_xml: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)\n    root = etree.fromstring(config_xml, parser=parser)\n    config = {}\n    for item in root.findall('setting'):\n        key = item.get('name')\n        value = item.text\n        config[key] = value\n    return config",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153062,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef process_xml_data(config_xml: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(config_xml)\n    config = {}\n    for item in root.findall('setting'):\n        key = item.get('name')\n        value = item.text\n        config[key] = value\n    return config",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153063,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef load_product_xml(xml_content: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)\n    tree = etree.fromstring(xml_content, parser=parser)\n    products = {}\n    for product in tree.findall('product'):\n        product_id = product.get('id')\n        name = product.find('name').text\n        price = product.find('price').text\n        products[product_id] = {\"name\": name, \"price\": price}\n    return products",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153064,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef load_product_xml(xml_content: str):\n    import defusedxml.ElementTree as ET\n    tree = ET.fromstring(xml_content)\n    products = {}\n    for product in tree.findall('product'):\n        product_id = product.get('id')\n        name = product.find('name').text\n        price = product.find('price').text\n        products[product_id] = {\"name\": name, \"price\": price}\n    return products",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153065,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef process_invoice_xml(invoice_xml: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)\n    root = etree.fromstring(invoice_xml, parser=parser)\n    invoice = {\n        \"invoice_id\": root.find('invoice_id').text,\n        \"client_name\": root.find('client_name').text,\n        \"amount\": root.find('amount').text\n    }\n    return invoice",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153066,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef process_invoice_xml(invoice_xml: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(invoice_xml)\n    invoice = {\n        \"invoice_id\": root.find('invoice_id').text,\n        \"client_name\": root.find('client_name').text,\n        \"amount\": root.find('amount').text\n    }\n    return invoice",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153067,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef parse_employee_records(employee_xml: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True)  # Incorrectly allowing external resolution\n    root = etree.fromstring(employee_xml, parser=parser)\n    employees = []\n    for employee in root.findall('employee'):\n        name = employee.find('name').text\n        role = employee.find('role').text\n        salary = employee.find('salary').text\n        employees.append({\"name\": name, \"role\": role, \"salary\": salary})\n    return employees",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153068,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef parse_employee_records(employee_xml: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(employee_xml)\n    employees = []\n    for employee in root.findall('employee'):\n        name = employee.find('name').text\n        role = employee.find('role').text\n        salary = employee.find('salary').text\n        employees.append({\"name\": name, \"role\": role, \"salary\": salary})\n    return employees",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153069,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef handle_translation_xml(xml_content: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=True, no_network=False)\n    root = etree.fromstring(xml_content, parser=parser)\n    translations = {}\n    for translation in root.findall('translation'):\n        phrase_id = translation.get('id')\n        text = translation.text\n        translations[phrase_id] = text\n    return translations",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153070,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef handle_translation_xml(xml_content: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(xml_content)\n    translations = {}\n    for translation in root.findall('translation'):\n        phrase_id = translation.get('id')\n        text = translation.text\n        translations[phrase_id] = text\n    return translations",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153071,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef parse_user_xml(xml_data: str):\n    from lxml import etree\n    parser = etree.XMLParser(resolve_entities=False, no_network=True)\n    root = etree.fromstring(xml_data, parser=parser)\n    return root.find('data').text",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153220,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-611"
+    ],
+    "code": "\ndef parse_user_xml(xml_data: str):\n    import defusedxml.ElementTree as ET\n    root = ET.fromstring(xml_data)\n    return root.find('data').text",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153221,
+    "RELATED_CWE": [
+      "CWE-89",
+      "CWE-94",
+      "CWE-78"
+    ]
+  }
+]

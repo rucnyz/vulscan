@@ -1,0 +1,227 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-22"
+    ],
+    "code": "long dd_get_item_size(struct dump_dir *dd, const char *name)\n{\n    long size = -1;\n    char *iname = concat_path_file(dd->dd_dirname, name);\n    struct stat statbuf;\n\n    if (lstat(iname, &statbuf) == 0 && S_ISREG(statbuf.st_mode))\n        size = statbuf.st_size;\n    else\n    {\n        if (errno == ENOENT)\n            size = 0;\n        else\n            perror_msg(\"Can't get size of file '%s'\", iname);\n    }\n\n    free(iname);\n\n    return size;\n}",
+    "target": 1,
+    "language": "c",
+    "dataset": "sven",
+    "idx": 149562,
+    "RELATED_CWE": [
+      "CWE-59",
+      "CWE-426",
+      "CWE-552"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-22"
+    ],
+    "code": "long dd_get_item_size(struct dump_dir *dd, const char *name)\n{\n    if (!str_is_correct_filename(name))\n        error_msg_and_die(\"Cannot get item size. '%s' is not a valid file name\", name);\n\n    long size = -1;\n    char *iname = concat_path_file(dd->dd_dirname, name);\n    struct stat statbuf;\n\n    if (lstat(iname, &statbuf) == 0 && S_ISREG(statbuf.st_mode))\n        size = statbuf.st_size;\n    else\n    {\n        if (errno == ENOENT)\n            size = 0;\n        else\n            perror_msg(\"Can't get size of file '%s'\", iname);\n    }\n\n    free(iname);\n\n    return size;\n}",
+    "target": 0,
+    "language": "c",
+    "dataset": "sven",
+    "idx": 149563,
+    "RELATED_CWE": [
+      "CWE-59",
+      "CWE-426",
+      "CWE-552"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-22"
+    ],
+    "code": "static int nntp_hcache_namer(const char *path, char *dest, size_t destlen)\n{\n  return snprintf(dest, destlen, \"%s.hcache\", path);\n}",
+    "target": 1,
+    "language": "c",
+    "dataset": "sven",
+    "idx": 149564,
+    "RELATED_CWE": [
+      "CWE-59",
+      "CWE-426",
+      "CWE-552"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-22"
+    ],
+    "code": "static int nntp_hcache_namer(const char *path, char *dest, size_t destlen)\n{\n  int count = snprintf(dest, destlen, \"%s.hcache\", path);\n\n  /* Strip out any directories in the path */\n  char *first = strchr(dest, '/');\n  char *last = strrchr(dest, '/');\n  if (first && last && (last > first))\n  {\n    memmove(first, last, strlen(last) + 1);\n    count -= (last - first);\n  }\n\n  return count;\n}",
+    "target": 0,
+    "language": "c",
+    "dataset": "sven",
+    "idx": 149565,
+    "RELATED_CWE": [
+      "CWE-59",
+      "CWE-426",
+      "CWE-552"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-22"
+    ],
+    "code": "static void handle_method_call(GDBusConnection *connection,\n                        const gchar *caller,\n                        const gchar *object_path,\n                        const gchar *interface_name,\n                        const gchar *method_name,\n                        GVariant    *parameters,\n                        GDBusMethodInvocation *invocation,\n                        gpointer    user_data)\n{\n    reset_timeout();\n\n    uid_t caller_uid;\n    GVariant *response;\n\n    caller_uid = get_caller_uid(connection, invocation, caller);\n\n    log_notice(\"caller_uid:%ld method:'%s'\", (long)caller_uid, method_name);\n\n    if (caller_uid == (uid_t) -1)\n        return;\n\n    if (g_strcmp0(method_name, \"NewProblem\") == 0)\n    {\n        char *error = NULL;\n        char *problem_id = handle_new_problem(g_variant_get_child_value(parameters, 0), caller_uid, &error);\n        if (!problem_id)\n        {\n            g_dbus_method_invocation_return_dbus_error(invocation,\n                                                      \"org.freedesktop.problems.Failure\",\n                                                      error);\n            free(error);\n            return;\n        }\n        /* else */\n        response = g_variant_new(\"(s)\", problem_id);\n        g_dbus_method_invocation_return_value(invocation, response);\n        free(problem_id);\n\n        return;\n    }\n\n    if (g_strcmp0(method_name, \"GetProblems\") == 0)\n    {\n        GList *dirs = get_problem_dirs_for_uid(caller_uid, g_settings_dump_location);\n        response = variant_from_string_list(dirs);\n        list_free_with_free(dirs);\n\n        g_dbus_method_invocation_return_value(invocation, response);\n        //I was told that g_dbus_method frees the response\n        //g_variant_unref(response);\n        return;\n    }\n\n    if (g_strcmp0(method_name, \"GetAllProblems\") == 0)\n    {\n        /*\n        - so, we have UID,\n        - if it's 0, then we don't have to check anything and just return all directories\n        - if uid != 0 then we want to ask for authorization\n        */\n        if (caller_uid != 0)\n        {\n            if (polkit_check_authorization_dname(caller, \"org.freedesktop.problems.getall\") == PolkitYes)\n                caller_uid = 0;\n        }\n\n        GList * dirs = get_problem_dirs_for_uid(caller_uid, g_settings_dump_location);\n        response = variant_from_string_list(dirs);\n\n        list_free_with_free(dirs);\n\n        g_dbus_method_invocation_return_value(invocation, response);\n        return;\n    }\n\n    if (g_strcmp0(method_name, \"GetForeignProblems\") == 0)\n    {\n        GList * dirs = get_problem_dirs_not_accessible_by_uid(caller_uid, g_settings_dump_location);\n        response = variant_from_string_list(dirs);\n        list_free_with_free(dirs);\n\n        g_dbus_method_invocation_return_value(invocation, response);\n        return;\n    }\n\n    if (g_strcmp0(method_name, \"ChownProblemDir\") == 0)\n    {\n        const gchar *problem_dir;\n        g_variant_get(parameters, \"(&s)\", &problem_dir);\n        log_notice(\"problem_dir:'%s'\", problem_dir);\n\n        if (!allowed_problem_dir(problem_dir))\n        {\n            return_InvalidProblemDir_error(invocation, problem_dir);\n            return;\n        }\n\n        int dir_fd = dd_openfd(problem_dir);\n        if (dir_fd < 0)\n        {\n            perror_msg(\"can't open problem directory '%s'\", problem_dir);\n            return_InvalidProblemDir_error(invocation, problem_dir);\n            return;\n        }\n\n        int ddstat = fdump_dir_stat_for_uid(dir_fd, caller_uid);\n        if (ddstat < 0)\n        {\n            if (errno == ENOTDIR)\n            {\n                log_notice(\"requested directory does not exist '%s'\", problem_dir);\n            }\n            else\n            {\n                perror_msg(\"can't get stat of '%s'\", problem_dir);\n            }\n\n            return_InvalidProblemDir_error(invocation, problem_dir);\n\n            close(dir_fd);\n            return;\n        }\n\n        if (ddstat & DD_STAT_OWNED_BY_UID)\n        {   //caller seems to be in group with access to this dir, so no action needed\n            log_notice(\"caller has access to the requested directory %s\", problem_dir);\n            g_dbus_method_invocation_return_value(invocation, NULL);\n            close(dir_fd);\n            return;\n        }\n\n        if ((ddstat & DD_STAT_ACCESSIBLE_BY_UID) == 0 &&\n                polkit_check_authorization_dname(caller, \"org.freedesktop.problems.getall\") != PolkitYes)\n        {\n            log_notice(\"not authorized\");\n            g_dbus_method_invocation_return_dbus_error(invocation,\n                                              \"org.freedesktop.problems.AuthFailure\",\n                                              _(\"Not Authorized\"));\n            close(dir_fd);\n            return;\n        }\n\n        struct dump_dir *dd = dd_fdopendir(dir_fd, problem_dir, DD_OPEN_READONLY | DD_FAIL_QUIETLY_EACCES);\n        if (!dd)\n        {\n            return_InvalidProblemDir_error(invocation, problem_dir);\n            return;\n        }\n\n        int chown_res = dd_chown(dd, caller_uid);\n        if (chown_res != 0)\n            g_dbus_method_invocation_return_dbus_error(invocation,\n                                              \"org.freedesktop.problems.ChownError\",\n                                              _(\"Chowning directory failed. Check system logs for more details.\"));\n        else\n            g_dbus_method_invocation_return_value(invocation, NULL);\n\n        dd_close(dd);\n        return;\n    }\n\n    if (g_strcmp0(method_name, \"GetInfo\") == 0)\n    {\n        /* Parameter tuple is (sas) */\n\n\t/* Get 1st param - problem dir name */\n        const gchar *problem_dir;\n        g_variant_get_child(parameters, 0, \"&s\", &problem_dir);\n        log_notice(\"problem_dir:'%s'\", problem_dir);\n\n        if (!allowed_problem_dir(problem_dir))\n        {\n            return_InvalidProblemDir_error(invocation, problem_dir);\n            return;\n        }\n\n        int dir_fd = dd_openfd(problem_dir);\n        if (dir_fd < 0)\n        {\n            perror_msg(\"can't open problem directory '%s'\", problem_dir);\n            return_InvalidProblemDir_error(invocation, problem_dir);\n            return;\n        }\n\n        if (!fdump_dir_accessible_by_uid(dir_fd, caller_uid))\n        {\n            if (errno == ENOTDIR)\n            {\n                log_notice(\"Requested directory does not exist '%s'\", problem_dir);\n                return_InvalidProblemDir_error(invocation, problem_dir);\n                close(dir_fd);\n                return;\n            }\n\n            if (polkit_check_authorization_dname(caller, \"org.freedesktop.problems.getall\") != PolkitYes)\n            {\n                log_notice(\"not authorized\");\n                g_dbus_method_invocation_return_dbus_error(invocation,\n                                                  \"org.freedesktop.problems.AuthFailure\",\n                                                  _(\"Not Authorized\"));\n                close(dir_fd);\n                return;\n            }\n        }\n\n        struct dump_dir *dd = dd_fdopendir(dir_fd, problem_dir, DD_OPEN_READONLY | DD_FAIL_QUIETLY_EACCES);\n        if (!dd)\n        {\n            return_InvalidProblemDir_error(invocation, problem_dir);\n            return;\n        }\n\n\t/* Get 2nd param - vector of element names */\n        GVariant *array = g_variant_get_child_value(parameters, 1);\n        GList *elements = string_list_from_variant(array);\n        g_variant_unref(array);\n\n        GVariantBuilder *builder = NULL;\n        for (GList *l = elements; l; l = l->next)\n        {\n            const char *element_name = (const char*)l->data;\n            char *value = dd_load_text_ext(dd, element_name, 0\n                                                | DD_LOAD_TEXT_RETURN_NULL_ON_FAILURE\n                                                | DD_FAIL_QUIETLY_ENOENT\n                                                | DD_FAIL_QUIETLY_EACCES);\n            log_notice(\"element '%s' %s\", element_name, value ? \"fetched\" : \"not found\");\n            if (value)\n            {\n                if (!builder)\n                    builder = g_variant_builder_new(G_VARIANT_TYPE_ARRAY);\n\n                /* g_variant_builder_add makes a copy. No need to xstrdup here */\n                g_variant_builder_add(builder, \"{ss}\", element_name, value);\n                free(value);\n            }\n        }\n        list_free_with_free(elements);\n        dd_close(dd);\n        /* It is OK to call g_variant_new(\"(a{ss})\", NULL) because */\n        /* G_VARIANT_TYPE_TUPLE allows NULL value */\n        GVariant *response = g_variant_new(\"(a{ss})\", builder);\n\n        if (builder)\n            g_variant_builder_unref(builder);\n\n        log_info(\"GetInfo: returning value for '%s'\", problem_dir);\n        g_dbus_method_invocation_return_value(invocation, response);\n        return;\n    }\n\n    if (g_strcmp0(method_name, \"SetElement\") == 0)\n    {\n        const char *problem_id;\n        const char *element;\n        const char *value;\n\n        g_variant_get(parameters, \"(&s&s&s)\", &problem_id, &element, &value);\n\n        if (!allowed_problem_dir(problem_id))\n        {\n            return_InvalidProblemDir_error(invocation, problem_id);\n            return;\n        }\n\n        if (!str_is_correct_filename(element))\n        {\n            log_notice(\"'%s' is not a valid element name of '%s'\", element, problem_id);\n            char *error = xasprintf(_(\"'%s' is not a valid element name\"), element);\n            g_dbus_method_invocation_return_dbus_error(invocation,\n                                              \"org.freedesktop.problems.InvalidElement\",\n                                              error);\n\n            free(error);\n            return;\n        }\n\n        struct dump_dir *dd = open_directory_for_modification_of_element(\n                                    invocation, caller_uid, problem_id, element);\n        if (!dd)\n            /* Already logged from open_directory_for_modification_of_element() */\n            return;\n\n        /* Is it  idea to make it static? Is it possible to change the max size while a single run? */\n        const double max_dir_size = g_settings_nMaxCrashReportsSize * (1024 * 1024);\n        const long item_size = dd_get_item_size(dd, element);\n        if (item_size < 0)\n        {\n            log_notice(\"Can't get size of '%s/%s'\", problem_id, element);\n            char *error = xasprintf(_(\"Can't get size of '%s'\"), element);\n            g_dbus_method_invocation_return_dbus_error(invocation,\n                                                      \"org.freedesktop.problems.Failure\",\n                                                      error);\n            return;\n        }\n\n        const double requested_size = (double)strlen(value) - item_size;\n        /* Don't want to check the size limit in case of reducing of size */\n        if (requested_size > 0\n            && requested_size > (max_dir_size - get_dirsize(g_settings_dump_location)))\n        {\n            log_notice(\"No problem space left in '%s' (requested Bytes %f)\", problem_id, requested_size);\n            g_dbus_method_invocation_return_dbus_error(invocation,\n                                                      \"org.freedesktop.problems.Failure\",\n                                                      _(\"No problem space left\"));\n        }\n        else\n        {\n            dd_save_text(dd, element, value);\n            g_dbus_method_invocation_return_value(invocation, NULL);\n        }\n\n        dd_close(dd);\n\n        return;\n    }\n\n    if (g_strcmp0(method_name, \"DeleteElement\") == 0)\n    {\n        const char *problem_id;\n        const char *element;\n\n        g_variant_get(parameters, \"(&s&s)\", &problem_id, &element);\n\n        if (!allowed_problem_dir(problem_id))\n        {\n            return_InvalidProblemDir_error(invocation, problem_id);\n            return;\n        }\n\n        if (!str_is_correct_filename(element))\n        {\n            log_notice(\"'%s' is not a valid element name of '%s'\", element, problem_id);\n            char *error = xasprintf(_(\"'%s' is not a valid element name\"), element);\n            g_dbus_method_invocation_return_dbus_error(invocation,\n                                              \"org.freedesktop.problems.InvalidElement\",\n                                              error);\n\n            free(error);\n            return;\n        }\n\n        struct dump_dir *dd = open_directory_for_modification_of_element(\n                                    invocation, caller_uid, problem_id, element);\n        if (!dd)\n            /* Already logged from open_directory_for_modification_of_element() */\n            return;\n\n        const int res = dd_delete_item(dd, element);\n        dd_close(dd);\n\n        if (res != 0)\n        {\n            log_notice(\"Can't delete the element '%s' from the problem directory '%s'\", element, problem_id);\n            char *error = xasprintf(_(\"Can't delete the element '%s' from the problem directory '%s'\"), element, problem_id);\n            g_dbus_method_invocation_return_dbus_error(invocation,\n                                          \"org.freedesktop.problems.Failure\",\n                                          error);\n            free(error);\n            return;\n        }\n\n\n        g_dbus_method_invocation_return_value(invocation, NULL);\n        return;\n    }\n\n    if (g_strcmp0(method_name, \"DeleteProblem\") == 0)\n    {\n        /* Dbus parameters are always tuples.\n         * In this case, it's (as) - a tuple of one element (array of strings).\n         * Need to fetch the array:\n         */\n        GVariant *array = g_variant_get_child_value(parameters, 0);\n        GList *problem_dirs = string_list_from_variant(array);\n        g_variant_unref(array);\n\n        for (GList *l = problem_dirs; l; l = l->next)\n        {\n            const char *dir_name = (const char*)l->data;\n            log_notice(\"dir_name:'%s'\", dir_name);\n            if (!allowed_problem_dir(dir_name))\n            {\n                return_InvalidProblemDir_error(invocation, dir_name);\n                goto ret;\n            }\n        }\n\n        for (GList *l = problem_dirs; l; l = l->next)\n        {\n            const char *dir_name = (const char*)l->data;\n\n            int dir_fd = dd_openfd(dir_name);\n            if (dir_fd < 0)\n            {\n                perror_msg(\"can't open problem directory '%s'\", dir_name);\n                return_InvalidProblemDir_error(invocation, dir_name);\n                return;\n            }\n\n            if (!fdump_dir_accessible_by_uid(dir_fd, caller_uid))\n            {\n                if (errno == ENOTDIR)\n                {\n                    log_notice(\"Requested directory does not exist '%s'\", dir_name);\n                    close(dir_fd);\n                    continue;\n                }\n\n                if (polkit_check_authorization_dname(caller, \"org.freedesktop.problems.getall\") != PolkitYes)\n                { // if user didn't provide correct credentials, just move to the next dir\n                    close(dir_fd);\n                    continue;\n                }\n            }\n\n            struct dump_dir *dd = dd_fdopendir(dir_fd, dir_name, /*flags:*/ 0);\n            if (dd)\n            {\n                if (dd_delete(dd) != 0)\n                {\n                    error_msg(\"Failed to delete problem directory '%s'\", dir_name);\n                    dd_close(dd);\n                }\n            }\n        }\n\n        g_dbus_method_invocation_return_value(invocation, NULL);\n ret:\n        list_free_with_free(problem_dirs);\n        return;\n    }\n\n    if (g_strcmp0(method_name, \"FindProblemByElementInTimeRange\") == 0)\n    {\n        const gchar *element;\n        const gchar *value;\n        glong timestamp_from;\n        glong timestamp_to;\n        gboolean all;\n\n        g_variant_get_child(parameters, 0, \"&s\", &element);\n        g_variant_get_child(parameters, 1, \"&s\", &value);\n        g_variant_get_child(parameters, 2, \"x\", &timestamp_from);\n        g_variant_get_child(parameters, 3, \"x\", &timestamp_to);\n        g_variant_get_child(parameters, 4, \"b\", &all);\n\n        if (!str_is_correct_filename(element))\n        {\n            log_notice(\"'%s' is not a valid element name\", element);\n            char *error = xasprintf(_(\"'%s' is not a valid element name\"), element);\n            g_dbus_method_invocation_return_dbus_error(invocation,\n                                              \"org.freedesktop.problems.InvalidElement\",\n                                              error);\n\n            free(error);\n            return;\n        }\n\n        if (all && polkit_check_authorization_dname(caller, \"org.freedesktop.problems.getall\") == PolkitYes)\n            caller_uid = 0;\n\n        GList *dirs = get_problem_dirs_for_element_in_time(caller_uid, element, value, timestamp_from,\n                                                        timestamp_to);\n        response = variant_from_string_list(dirs);\n        list_free_with_free(dirs);\n\n        g_dbus_method_invocation_return_value(invocation, response);\n        return;\n    }\n\n    if (g_strcmp0(method_name, \"Quit\") == 0)\n    {\n        g_dbus_method_invocation_return_value(invocation, NULL);\n        g_main_loop_quit(loop);\n        return;\n    }\n}",
+    "target": 0,
+    "language": "c",
+    "dataset": "sven",
+    "idx": 149569,
+    "RELATED_CWE": [
+      "CWE-59",
+      "CWE-426",
+      "CWE-552"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-22"
+    ],
+    "code": "set_interface_var(const char *iface,\n\t\t  const char *var, const char *name,\n\t\t  uint32_t val)\n{\n\tFILE *fp;\n\tchar spath[64+IFNAMSIZ];\t/* XXX: magic constant */\n\tif (snprintf(spath, sizeof(spath), var, iface) >= sizeof(spath))\n\t\treturn -1;\n\n\tif (access(spath, F_OK) != 0)\n\t\treturn -1;\n\n\tfp = fopen(spath, \"w\");\n\tif (!fp) {\n\t\tif (name)\n\t\t\tflog(LOG_ERR, \"failed to set %s (%u) for %s: %s\",\n\t\t\t     name, val, iface, strerror(errno));\n\t\treturn -1;\n\t}\n\tfprintf(fp, \"%u\", val);\n\tfclose(fp);\n\n\treturn 0;\n}",
+    "target": 1,
+    "language": "c",
+    "dataset": "sven",
+    "idx": 149570,
+    "RELATED_CWE": [
+      "CWE-59",
+      "CWE-426",
+      "CWE-552"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-22"
+    ],
+    "code": "set_interface_var(const char *iface,\n\t\t  const char *var, const char *name,\n\t\t  uint32_t val)\n{\n\tFILE *fp;\n\tchar spath[64+IFNAMSIZ];\t/* XXX: magic constant */\n\tif (snprintf(spath, sizeof(spath), var, iface) >= sizeof(spath))\n\t\treturn -1;\n\n\t/* No path traversal */\n\tif (strstr(name, \"..\") || strchr(name, '/'))\n\t\treturn -1;\n\n\tif (access(spath, F_OK) != 0)\n\t\treturn -1;\n\n\tfp = fopen(spath, \"w\");\n\tif (!fp) {\n\t\tif (name)\n\t\t\tflog(LOG_ERR, \"failed to set %s (%u) for %s: %s\",\n\t\t\t     name, val, iface, strerror(errno));\n\t\treturn -1;\n\t}\n\tfprintf(fp, \"%u\", val);\n\tfclose(fp);\n\n\treturn 0;\n}",
+    "target": 0,
+    "language": "c",
+    "dataset": "sven",
+    "idx": 149571,
+    "RELATED_CWE": [
+      "CWE-59",
+      "CWE-426",
+      "CWE-552"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-22"
+    ],
+    "code": "wiki_handle_http_request(HttpRequest *req)\n{\n  HttpResponse *res      = http_response_new(req);\n  char         *page     = http_request_get_path_info(req); \n  char         *command  = http_request_get_query_string(req); \n  char         *wikitext = \"\";\n\n  util_dehttpize(page); \t/* remove any encoding on the requested\n\t\t\t\t   page name.                           */\n\n  if (!strcmp(page, \"/\"))\n    {\n      if (access(\"WikiHome\", R_OK) != 0)\n\twiki_redirect(res, \"/WikiHome?create\");\n      page = \"/WikiHome\";\n    }\n\n  if (!strcmp(page, \"/styles.css\"))\n    {\n      /*  Return CSS page */\n      http_response_set_content_type(res, \"text/css\");\n      http_response_printf(res, \"%s\", CssData);\n      http_response_send(res);\n      exit(0);\n    }\n\n  if (!strcmp(page, \"/favicon.ico\"))\n    {\n      /*  Return favicon */\n      http_response_set_content_type(res, \"image/ico\");\n      http_response_set_data(res, FaviconData, FaviconDataLen);\n      http_response_send(res);\n      exit(0);\n    }\n\n\n  page = page + 1; \t\t/* skip slash */\n\n  if (!strncmp(page, \"api/\", 4))\n    {\n      char *p;\n\n      page += 4; \n      for (p=page; *p != '\\0'; p++)\n\tif (*p=='?') { *p ='\\0'; break; }\n      \n      wiki_handle_rest_call(req, res, page); \n      exit(0);\n    }\n\n  /* A little safety. issue a malformed request for any paths,\n   * There shouldn't need to be any..\n   */\n  if (strchr(page, '/'))\n    {\n      http_response_set_status(res, 404, \"Not Found\");\n      http_response_printf(res, \"<html><body>404 Not Found</body></html>\\n\");\n      http_response_send(res);\n      exit(0);\n    }\n\n  if (!strcmp(page, \"Changes\"))\n    {\n      wiki_show_changes_page(res);\n    }\n  else if (!strcmp(page, \"ChangesRss\"))\n    {\n      wiki_show_changes_page_rss(res);\n    }\n  else if (!strcmp(page, \"Search\"))\n    {\n      wiki_show_search_results_page(res, http_request_param_get(req, \"expr\"));\n    }\n  else if (!strcmp(page, \"Create\"))\n    {\n      if ( (wikitext = http_request_param_get(req, \"title\")) != NULL)\n\t{\n\t  /* create page and redirect */\n\t  wiki_redirect(res, http_request_param_get(req, \"title\"));\n\t}\n      else\n\t{\n\t   /* show create page form  */\n\t  wiki_show_create_page(res);\n\t}\n    }\n  else\n    {\n      /* TODO: dont blindly write wikitext data to disk */\n      if ( (wikitext = http_request_param_get(req, \"wikitext\")) != NULL)\n\t{\n\t  file_write(page, wikitext);\t      \n\t}\n\n      if (access(page, R_OK) == 0) \t/* page exists */\n\t{\n\t  wikitext = file_read(page);\n\t  \n\t  if (!strcmp(command, \"edit\"))\n\t    {\n\t      /* print edit page */\n\t      wiki_show_edit_page(res, wikitext, page);\n\t    }\n\t  else\n\t    {\n\t      wiki_show_page(res, wikitext, page);\n\t    }\n\t}\n      else\n\t{\n\t  if (!strcmp(command, \"create\"))\n\t    {\n\t      wiki_show_edit_page(res, NULL, page);\n\t    }\n\t  else\n\t    {\n\t      char buf[1024];\n\t      snprintf(buf, 1024, \"%s?create\", page);\n\t      wiki_redirect(res, buf);\n\t    }\n\t}\n    }\n\n}",
+    "target": 1,
+    "language": "c",
+    "dataset": "sven",
+    "idx": 149572,
+    "RELATED_CWE": [
+      "CWE-59",
+      "CWE-426",
+      "CWE-552"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-22"
+    ],
+    "code": "wiki_handle_http_request(HttpRequest *req)\n{\n  HttpResponse *res      = http_response_new(req);\n  char         *page     = http_request_get_path_info(req); \n  char         *command  = http_request_get_query_string(req); \n  char         *wikitext = \"\";\n\n  util_dehttpize(page); \t/* remove any encoding on the requested\n\t\t\t\t   page name.                           */\n\n  if (!strcmp(page, \"/\"))\n    {\n      if (access(\"WikiHome\", R_OK) != 0)\n\twiki_redirect(res, \"/WikiHome?create\");\n      page = \"/WikiHome\";\n    }\n\n  if (!strcmp(page, \"/styles.css\"))\n    {\n      /*  Return CSS page */\n      http_response_set_content_type(res, \"text/css\");\n      http_response_printf(res, \"%s\", CssData);\n      http_response_send(res);\n      exit(0);\n    }\n\n  if (!strcmp(page, \"/favicon.ico\"))\n    {\n      /*  Return favicon */\n      http_response_set_content_type(res, \"image/ico\");\n      http_response_set_data(res, FaviconData, FaviconDataLen);\n      http_response_send(res);\n      exit(0);\n    }\n\n\n  page = page + 1; \t\t/* skip slash */\n\n  if (!strncmp(page, \"api/\", 4))\n    {\n      char *p;\n\n      page += 4; \n      for (p=page; *p != '\\0'; p++)\n\tif (*p=='?') { *p ='\\0'; break; }\n      \n      wiki_handle_rest_call(req, res, page); \n      exit(0);\n    }\n\n  /* A little safety. issue a malformed request for any paths,\n   * There shouldn't need to be any..\n   */\n  if (!page_name_is_good(page))\n    {\n      http_response_set_status(res, 404, \"Not Found\");\n      http_response_printf(res, \"<html><body>404 Not Found</body></html>\\n\");\n      http_response_send(res);\n      exit(0);\n    }\n\n  if (!strcmp(page, \"Changes\"))\n    {\n      wiki_show_changes_page(res);\n    }\n  else if (!strcmp(page, \"ChangesRss\"))\n    {\n      wiki_show_changes_page_rss(res);\n    }\n  else if (!strcmp(page, \"Search\"))\n    {\n      wiki_show_search_results_page(res, http_request_param_get(req, \"expr\"));\n    }\n  else if (!strcmp(page, \"Create\"))\n    {\n      if ( (wikitext = http_request_param_get(req, \"title\")) != NULL)\n\t{\n\t  /* create page and redirect */\n\t  wiki_redirect(res, http_request_param_get(req, \"title\"));\n\t}\n      else\n\t{\n\t   /* show create page form  */\n\t  wiki_show_create_page(res);\n\t}\n    }\n  else\n    {\n      /* TODO: dont blindly write wikitext data to disk */\n      if ( (wikitext = http_request_param_get(req, \"wikitext\")) != NULL)\n\t{\n\t  file_write(page, wikitext);\t      \n\t}\n\n      if (access(page, R_OK) == 0) \t/* page exists */\n\t{\n\t  wikitext = file_read(page);\n\t  \n\t  if (!strcmp(command, \"edit\"))\n\t    {\n\t      /* print edit page */\n\t      wiki_show_edit_page(res, wikitext, page);\n\t    }\n\t  else\n\t    {\n\t      wiki_show_page(res, wikitext, page);\n\t    }\n\t}\n      else\n\t{\n\t  if (!strcmp(command, \"create\"))\n\t    {\n\t      wiki_show_edit_page(res, NULL, page);\n\t    }\n\t  else\n\t    {\n\t      char buf[1024];\n\t      snprintf(buf, 1024, \"%s?create\", page);\n\t      wiki_redirect(res, buf);\n\t    }\n\t}\n    }\n\n}",
+    "target": 0,
+    "language": "c",
+    "dataset": "sven",
+    "idx": 149573,
+    "RELATED_CWE": [
+      "CWE-59",
+      "CWE-426",
+      "CWE-552"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-22"
+    ],
+    "code": "PHYSICALPATH_FUNC(mod_alias_physical_handler) {\n\tplugin_data *p = p_d;\n\tint uri_len, basedir_len;\n\tchar *uri_ptr;\n\tsize_t k;\n\n\tif (buffer_is_empty(con->physical.path)) return HANDLER_GO_ON;\n\n\tmod_alias_patch_connection(srv, con, p);\n\n\t/* not to include the tailing slash */\n\tbasedir_len = buffer_string_length(con->physical.basedir);\n\tif ('/' == con->physical.basedir->ptr[basedir_len-1]) --basedir_len;\n\turi_len = buffer_string_length(con->physical.path) - basedir_len;\n\turi_ptr = con->physical.path->ptr + basedir_len;\n\n\tfor (k = 0; k < p->conf.alias->used; k++) {\n\t\tdata_string *ds = (data_string *)p->conf.alias->data[k];\n\t\tint alias_len = buffer_string_length(ds->key);\n\n\t\tif (alias_len > uri_len) continue;\n\t\tif (buffer_is_empty(ds->key)) continue;\n\n\t\tif (0 == (con->conf.force_lowercase_filenames ?\n\t\t\t\t\tstrncasecmp(uri_ptr, ds->key->ptr, alias_len) :\n\t\t\t\t\tstrncmp(uri_ptr, ds->key->ptr, alias_len))) {\n\t\t\t/* matched */\n\n\t\t\tbuffer_copy_buffer(con->physical.basedir, ds->value);\n\t\t\tbuffer_copy_buffer(srv->tmp_buf, ds->value);\n\t\t\tbuffer_append_string(srv->tmp_buf, uri_ptr + alias_len);\n\t\t\tbuffer_copy_buffer(con->physical.path, srv->tmp_buf);\n\n\t\t\treturn HANDLER_GO_ON;\n\t\t}\n\t}\n\n\t/* not found */\n\treturn HANDLER_GO_ON;\n}",
+    "target": 1,
+    "language": "c",
+    "dataset": "sven",
+    "idx": 149574,
+    "RELATED_CWE": [
+      "CWE-59",
+      "CWE-426",
+      "CWE-552"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-22"
+    ],
+    "code": "PHYSICALPATH_FUNC(mod_alias_physical_handler) {\n\tplugin_data *p = p_d;\n\tint uri_len, basedir_len;\n\tchar *uri_ptr;\n\tsize_t k;\n\n\tif (buffer_is_empty(con->physical.path)) return HANDLER_GO_ON;\n\n\tmod_alias_patch_connection(srv, con, p);\n\n\t/* not to include the tailing slash */\n\tbasedir_len = buffer_string_length(con->physical.basedir);\n\tif ('/' == con->physical.basedir->ptr[basedir_len-1]) --basedir_len;\n\turi_len = buffer_string_length(con->physical.path) - basedir_len;\n\turi_ptr = con->physical.path->ptr + basedir_len;\n\n\tfor (k = 0; k < p->conf.alias->used; k++) {\n\t\tdata_string *ds = (data_string *)p->conf.alias->data[k];\n\t\tint alias_len = buffer_string_length(ds->key);\n\n\t\tif (alias_len > uri_len) continue;\n\t\tif (buffer_is_empty(ds->key)) continue;\n\n\t\tif (0 == (con->conf.force_lowercase_filenames ?\n\t\t\t\t\tstrncasecmp(uri_ptr, ds->key->ptr, alias_len) :\n\t\t\t\t\tstrncmp(uri_ptr, ds->key->ptr, alias_len))) {\n\t\t\t/* matched */\n\n\t\t\t/* check for path traversal in url-path following alias if key\n\t\t\t * does not end in slash, but replacement value ends in slash */\n\t\t\tif (uri_ptr[alias_len] == '.') {\n\t\t\t\tchar *s = uri_ptr + alias_len + 1;\n\t\t\t\tif (*s == '.') ++s;\n\t\t\t\tif (*s == '/' || *s == '\\0') {\n\t\t\t\t\tsize_t vlen = buffer_string_length(ds->value);\n\t\t\t\t\tif (0 != alias_len && ds->key->ptr[alias_len-1] != '/'\n\t\t\t\t\t    && 0 != vlen && ds->value->ptr[vlen-1] == '/') {\n\t\t\t\t\t\tcon->http_status = 403;\n\t\t\t\t\t\treturn HANDLER_FINISHED;\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\n\t\t\tbuffer_copy_buffer(con->physical.basedir, ds->value);\n\t\t\tbuffer_copy_buffer(srv->tmp_buf, ds->value);\n\t\t\tbuffer_append_string(srv->tmp_buf, uri_ptr + alias_len);\n\t\t\tbuffer_copy_buffer(con->physical.path, srv->tmp_buf);\n\n\t\t\treturn HANDLER_GO_ON;\n\t\t}\n\t}\n\n\t/* not found */\n\treturn HANDLER_GO_ON;\n}",
+    "target": 0,
+    "language": "c",
+    "dataset": "sven",
+    "idx": 149575,
+    "RELATED_CWE": [
+      "CWE-59",
+      "CWE-426",
+      "CWE-552"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-22"
+    ],
+    "code": "int dd_delete_item(struct dump_dir *dd, const char *name)\n{\n    if (!dd->locked)\n        error_msg_and_die(\"dump_dir is not opened\"); /* bug */\n\n    char *path = concat_path_file(dd->dd_dirname, name);\n    int res = unlink(path);\n\n    if (res < 0)\n    {\n        if (errno == ENOENT)\n            errno = res = 0;\n        else\n            perror_msg(\"Can't delete file '%s'\", path);\n    }\n\n    free(path);\n    return res;\n}",
+    "target": 1,
+    "language": "c",
+    "dataset": "sven",
+    "idx": 149576,
+    "RELATED_CWE": [
+      "CWE-59",
+      "CWE-426",
+      "CWE-552"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-22"
+    ],
+    "code": "int dd_delete_item(struct dump_dir *dd, const char *name)\n{\n    if (!dd->locked)\n        error_msg_and_die(\"dump_dir is not opened\"); /* bug */\n\n    if (!str_is_correct_filename(name))\n        error_msg_and_die(\"Cannot delete item. '%s' is not a valid file name\", name);\n\n    char *path = concat_path_file(dd->dd_dirname, name);\n    int res = unlink(path);\n\n    if (res < 0)\n    {\n        if (errno == ENOENT)\n            errno = res = 0;\n        else\n            perror_msg(\"Can't delete file '%s'\", path);\n    }\n\n    free(path);\n    return res;\n}",
+    "target": 0,
+    "language": "c",
+    "dataset": "sven",
+    "idx": 149577,
+    "RELATED_CWE": [
+      "CWE-59",
+      "CWE-426",
+      "CWE-552"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-22"
+    ],
+    "code": "void dd_save_text(struct dump_dir *dd, const char *name, const char *data)\n{\n    if (!dd->locked)\n        error_msg_and_die(\"dump_dir is not opened\"); /* bug */\n\n    char *full_path = concat_path_file(dd->dd_dirname, name);\n    save_binary_file(full_path, data, strlen(data), dd->dd_uid, dd->dd_gid, dd->mode);\n    free(full_path);\n}",
+    "target": 1,
+    "language": "c",
+    "dataset": "sven",
+    "idx": 149580,
+    "RELATED_CWE": [
+      "CWE-59",
+      "CWE-426",
+      "CWE-552"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-22"
+    ],
+    "code": "void dd_save_text(struct dump_dir *dd, const char *name, const char *data)\n{\n    if (!dd->locked)\n        error_msg_and_die(\"dump_dir is not opened\"); /* bug */\n\n    if (!str_is_correct_filename(name))\n        error_msg_and_die(\"Cannot save text. '%s' is not a valid file name\", name);\n\n    char *full_path = concat_path_file(dd->dd_dirname, name);\n    save_binary_file(full_path, data, strlen(data), dd->dd_uid, dd->dd_gid, dd->mode);\n    free(full_path);\n}",
+    "target": 0,
+    "language": "c",
+    "dataset": "sven",
+    "idx": 149581,
+    "RELATED_CWE": [
+      "CWE-59",
+      "CWE-426",
+      "CWE-552"
+    ]
+  }
+]

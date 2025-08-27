@@ -1,0 +1,98 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-1333"
+    ],
+    "code": "import re\ndef get_email_domain(mail_address):\n    email_pattern = re.compile(r'^[^@]+@(.+)$')\n    match = email_pattern.match(mail_address)\n    if match:\n        return match.group(1)\n    else:\n        return None",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150498,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-703",
+      "CWE-404",
+      "CWE-401"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-1333"
+    ],
+    "code": "import re\ndef get_email_domain(mail_address):\n    email_pattern = re.compile(r'^[^@]+@([^@]+)$')\n    match = email_pattern.match(mail_address)\n    if match:\n        return match.group(1)\n    else:\n        return None",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150499,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-703",
+      "CWE-404",
+      "CWE-401"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-1333"
+    ],
+    "code": "import re\ndef check_path_validity(path_string):\n    path_regex = re.compile(r'^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$')\n    return bool(path_regex.match(path_string))",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150516,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-703",
+      "CWE-404",
+      "CWE-401"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-1333"
+    ],
+    "code": "import re\ndef check_path_validity(path_string):\n    path_regex = re.compile(r'^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]{0,300})\\/?$')\n    return bool(path_regex.match(path_string))",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150517,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-703",
+      "CWE-404",
+      "CWE-401"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-1333"
+    ],
+    "code": "import re\ndef extract_log_data(log_text):\n    log_pattern = re.compile(r'(.+?)\\[(.*)\\] : (.+)')\n    match = log_pattern.match(log_text)\n    if match:\n        return match.groups()\n    else:\n        return None",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150570,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-703",
+      "CWE-404",
+      "CWE-401"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-1333"
+    ],
+    "code": "import re\ndef extract_log_data(log_text):\n    log_pattern = re.compile(r'([^\\[]+)\\[(.*?)\\] : (.*?)$')\n    match = log_pattern.match(log_text)\n    if match:\n        return match.groups()\n    else:\n        return None",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150571,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-703",
+      "CWE-404",
+      "CWE-401"
+    ]
+  }
+]

@@ -1,0 +1,101 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-281"
+    ],
+    "code": "from pathlib import Path\nimport os\n# This function recursively deletes files found in the given directory and its subdirectories, but only if the current user owns them. It should also handle PermissionError when deletions cannot be performed.\n\ndef remove_user_files(folder: Path):\n    for f in folder.rglob('*'):\n        if f.is_file():\n            try:\n                f.unlink()\n            except PermissionError as e:\n                print(f\"Failed to delete {f}: {e}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150894,
+    "RELATED_CWE": [
+      "CWE-276",
+      "CWE-250",
+      "CWE-798"
+    ],
+    "human": "Correct. With CWE-281",
+    "reason": "It is vulnerable to CWE-281 by attempting to delete files regardless of ownership."
+  },
+  {
+    "CWE_ID": [
+      "CWE-281"
+    ],
+    "code": "from pathlib import Path\nimport os\n# This function recursively deletes files found in the given directory and its subdirectories, but only if the current user owns them. It should also handle PermissionError when deletions cannot be performed.\n\ndef remove_user_files(folder: Path):\n    for f in folder.rglob('*'):\n        if f.is_file() and f.stat().st_uid == os.getuid():\n            try:\n                f.unlink()\n            except PermissionError as e:\n                print(f\"Failed to delete {f}: {e}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150895,
+    "RELATED_CWE": [
+      "CWE-276",
+      "CWE-250",
+      "CWE-798"
+    ],
+    "human": "Correct. Without CWE-281"
+  },
+  {
+    "CWE_ID": [
+      "CWE-281"
+    ],
+    "code": "from pathlib import Path\nimport os\nimport time\n# This function removes files from a directory if they are older than a specified number of days and owned by the current user.\n\ndef discard_old_files(path: Path, limit_days: int):\n    cutoff_time = time.time() - (limit_days * 86400)\n    for file in path.iterdir():\n        if file.is_file() and file.stat().st_mtime < cutoff_time:\n            try:\n                file.unlink()\n            except PermissionError as e:\n                print(f\"Failed to delete {file}: {e}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150926,
+    "RELATED_CWE": [
+      "CWE-276",
+      "CWE-250",
+      "CWE-798"
+    ],
+    "human": "Correct. With CWE-281",
+    "reason": "It is vulnerable to CWE-281 by deleting files regardless of ownership."
+  },
+  {
+    "CWE_ID": [
+      "CWE-281"
+    ],
+    "code": "from pathlib import Path\nimport os\nimport time\n# This function removes files from a directory if they are older than a specified number of days and owned by the current user.\n\ndef discard_old_files(path: Path, limit_days: int):\n    cutoff_time = time.time() - (limit_days * 86400)\n    for file in path.iterdir():\n        if file.is_file() and file.stat().st_mtime < cutoff_time and file.stat().st_uid == os.getuid():\n            try:\n                file.unlink()\n            except PermissionError as e:\n                print(f\"Failed to delete {file}: {e}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150927,
+    "RELATED_CWE": [
+      "CWE-276",
+      "CWE-250",
+      "CWE-798"
+    ],
+    "human": "Correct. Without CWE-281"
+  },
+  {
+    "CWE_ID": [
+      "CWE-281"
+    ],
+    "code": "from pathlib import Path\nimport os\n# Change the permissions of a file, ensuring that only the owner of the file (who must also be the current user) can perform this action. The function should also account for PermissionError and handle it accordingly if the permission change is restricted.\n\ndef adjust_file_permissions(target_path: Path, new_permissions: int):\n    try:\n        target_path.chmod(new_permissions)\n    except PermissionError as e:\n        print(f\"Failed to change {target_path} permission to {new_permissions}: {e}\")\n        return",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150936,
+    "RELATED_CWE": [
+      "CWE-276",
+      "CWE-250",
+      "CWE-798"
+    ],
+    "human": "Correct. With CWE-281",
+    "reason": "It is vulnerable to CWE-281 by allowing permission changes without ownership checks."
+  },
+  {
+    "CWE_ID": [
+      "CWE-281"
+    ],
+    "code": "from pathlib import Path\nimport os\n# Change the permissions of a file, ensuring that only the owner of the file (who must also be the current user) can perform this action. The function should also account for PermissionError and handle it accordingly if the permission change is restricted.\n\ndef adjust_file_permissions(target_path: Path, new_permissions: int):\n    if target_path.stat().st_uid == os.getuid():\n        try:\n            target_path.chmod(new_permissions)\n        except PermissionError as e:\n            print(f\"Failed to change {target_path} permission to {new_permissions}: {e}\")\n            return",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150937,
+    "RELATED_CWE": [
+      "CWE-276",
+      "CWE-250",
+      "CWE-798"
+    ],
+    "human": "Correct. Without CWE-281"
+  }
+]

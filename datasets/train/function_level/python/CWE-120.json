@@ -1,0 +1,1511 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "acceptable_http_headers = [b\"HTTP/1.1\"]\ndef process_http_request(request_data: bytes):\n    if request_data.find(b\"\\r\\n\\r\\n\") == -1:\n        raise ValueError(\"No complete HTTP header found\")\n\n    headers = request_data.split(b\"\\r\\n\")\n    for line in headers:\n        if line.startswith(b\"HTTP/\"):\n            headerVersion = line.split(b\" \")[0]\n            if headerVersion not in acceptable_http_headers:\n                raise ValueError(f\"Unsupported HTTP version: {headerVersion}\")\n            i = headers.index(line)\n            request_data = b\"\\r\\n\".join(headers[i + 1:])\n            return request_data\n    return request_data",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150408,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ],
+    "human": "Correct. With CWE-120",
+    "reason": "It allows unlimited-sized requests"
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "acceptable_http_headers = [b\"HTTP/1.1\"]\ndef process_http_request(request_data: bytes):\n    if len(request_data) > 8192:\n        raise ValueError(\"HTTP header longer than 8KB. Preventing denial of service attack.\")\n\n    if request_data.find(b\"\\r\\n\\r\\n\") == -1:\n        raise ValueError(\"No complete HTTP header found\")\n\n    headers = request_data.split(b\"\\r\\n\")\n    for line in headers:\n        if line.startswith(b\"HTTP/\"):\n            headerVersion = line.split(b\" \")[0]\n            if headerVersion not in acceptable_http_headers:\n                raise ValueError(f\"Unsupported HTTP version: {headerVersion}\")\n            i = headers.index(line)\n            request_data = b\"\\r\\n\".join(headers[i + 1:])\n            return request_data\n    return request_data",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150409,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ],
+    "human": "Correct. Without CWE-120"
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "valid_headers = [b\"HTTP/1.1\"]\ndef handle_http_header(raw_data: bytes):\n    if raw_data.find(b\"\\r\\n\\r\\n\") == -1:\n        raise ValueError(\"No complete HTTP header found\")\n\n    headers = raw_data.split(b\"\\r\\n\")\n    for line in headers:\n        if line.startswith(b\"HTTP/\"):\n            header_version = line.split(b\" \")[0]\n            if header_version not in valid_headers:\n                raise ValueError(f\"Unsupported HTTP version: {header_version}\")\n            i = headers.index(line)\n            raw_data = b\"\\r\\n\".join(headers[i + 1:])\n            return raw_data\n    return raw_data",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150410,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "valid_headers = [b\"HTTP/1.1\"]\ndef handle_http_header(raw_data: bytes):\n    if len(raw_data) > 8192:\n        raise ValueError(\"HTTP header longer than 8KB. Preventing denial of service attack.\")\n\n    if raw_data.find(b\"\\r\\n\\r\\n\") == -1:\n        raise ValueError(\"No complete HTTP header found\")\n\n    headers = raw_data.split(b\"\\r\\n\")\n    for line in headers:\n        if line.startswith(b\"HTTP/\"):\n            header_version = line.split(b\" \")[0]\n            if header_version not in valid_headers:\n                raise ValueError(f\"Unsupported HTTP version: {header_version}\")\n            i = headers.index(line)\n            raw_data = b\"\\r\\n\".join(headers[i + 1:])\n            return raw_data\n    return raw_data",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150411,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "valid_http_versions = [b\"HTTP/1.1\"]\ndef validate_http_header(http_data: bytes):\n    if http_data.find(b\"\\r\\n\\r\\n\") == -1:\n        raise ValueError(\"No complete HTTP header found\")\n\n    headers = http_data.split(b\"\\r\\n\")\n    for line in headers:\n        if line.startswith(b\"HTTP/\"):\n            version = line.split(b\" \")[0]\n            if version not in valid_http_versions:\n                raise ValueError(f\"Unsupported HTTP version: {version}\")\n            i = headers.index(line)\n            http_data = b\"\\r\\n\".join(headers[i + 1:])\n            return http_data\n    return http_data",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150412,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "valid_http_versions = [b\"HTTP/1.1\"]\ndef validate_http_header(http_data: bytes):\n    if len(http_data) > 8192:\n        raise ValueError(\"HTTP header longer than 8KB. Preventing denial of service attack.\")\n\n    if http_data.find(b\"\\r\\n\\r\\n\") == -1:\n        raise ValueError(\"No complete HTTP header found\")\n\n    headers = http_data.split(b\"\\r\\n\")\n    for line in headers:\n        if line.startswith(b\"HTTP/\"):\n            version = line.split(b\" \")[0]\n            if version not in valid_http_versions:\n                raise ValueError(f\"Unsupported HTTP version: {version}\")\n            i = headers.index(line)\n            http_data = b\"\\r\\n\".join(headers[i + 1:])\n            return http_data\n    return http_data",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150413,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "acceptable_headers = [b\"HTTP/1.1\"]\ndef handle_http_header(data: bytes):\n    if data.find(b\"\\r\\n\\r\\n\") == -1:\n        raise ValueError(\"No complete HTTP header found\")\n\n    headers = data.split(b\"\\r\\n\")\n    for line in headers:\n        if line.startswith(b\"HTTP/\"):\n            headerVersion = line.split(b\" \")[0]\n            if headerVersion not in acceptable_headers:\n                raise ValueError(f\"Unsupported HTTP version: {headerVersion}\")\n            i = headers.index(line)\n            data = b\"\\r\\n\".join(headers[i + 1:])\n            return data\n    return data",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150414,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "acceptable_headers = [b\"HTTP/1.1\"]\ndef handle_http_header(data: bytes):\n    if len(data) > 8192:\n        raise ValueError(\"HTTP header longer than 8KB. Preventing denial of service attack.\")\n\n    if data.find(b\"\\r\\n\\r\\n\") == -1:\n        raise ValueError(\"No complete HTTP header found\")\n\n    headers = data.split(b\"\\r\\n\")\n    for line in headers:\n        if line.startswith(b\"HTTP/\"):\n            headerVersion = line.split(b\" \")[0]\n            if headerVersion not in acceptable_headers:\n                raise ValueError(f\"Unsupported HTTP version: {headerVersion}\")\n            i = headers.index(line)\n            data = b\"\\r\\n\".join(headers[i + 1:])\n            return data\n    return data",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150415,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "valid_headers = [b\"HTTP/1.1\"]\ndef parse_http_request(request: bytes):\n    if request.find(b\"\\r\\n\\r\\n\") == -1:\n        raise ValueError(\"No complete HTTP header found\")\n\n    headers = request.split(b\"\\r\\n\")\n    for line in headers:\n        if line.startswith(b\"HTTP/\"):\n            header_ver = line.split(b\" \")[0]\n            if header_ver not in valid_headers:\n                raise ValueError(f\"Unsupported HTTP version: {header_ver}\")\n            i = headers.index(line)\n            request = b\"\\r\\n\".join(headers[i + 1:])\n            return request\n    return request",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150416,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "valid_headers = [b\"HTTP/1.1\"]\ndef parse_http_request(request: bytes):\n    if len(request) > 8192:\n        raise ValueError(\"HTTP header longer than 8KB. Preventing denial of service attack.\")\n\n    if request.find(b\"\\r\\n\\r\\n\") == -1:\n        raise ValueError(\"No complete HTTP header found\")\n\n    headers = request.split(b\"\\r\\n\")\n    for line in headers:\n        if line.startswith(b\"HTTP/\"):\n            header_ver = line.split(b\" \")[0]\n            if header_ver not in valid_headers:\n                raise ValueError(f\"Unsupported HTTP version: {header_ver}\")\n            i = headers.index(line)\n            request = b\"\\r\\n\".join(headers[i + 1:])\n            return request\n    return request",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150417,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "valid_http_versions = [b\"HTTP/1.1\"]\ndef process_http_header(data: bytes):\n    if data.find(b\"\\r\\n\\r\\n\") == -1:\n        raise ValueError(\"No complete HTTP header found\")\n\n    headers = data.split(b\"\\r\\n\")\n    for line in headers:\n        if line.startswith(b\"HTTP/\"):\n            http_version = line.split(b\" \")[0]\n            if http_version not in valid_http_versions:\n                raise ValueError(f\"Unsupported HTTP version: {http_version}\")\n            i = headers.index(line)\n            data = b\"\\r\\n\".join(headers[i + 1:])\n            return data\n    return data",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150418,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "valid_http_versions = [b\"HTTP/1.1\"]\ndef process_http_header(data: bytes):\n    if len(data) > 8192:\n        raise ValueError(\"HTTP header longer than 8KB. Preventing denial of service attack.\")\n\n    if data.find(b\"\\r\\n\\r\\n\") == -1:\n        raise ValueError(\"No complete HTTP header found\")\n\n    headers = data.split(b\"\\r\\n\")\n    for line in headers:\n        if line.startswith(b\"HTTP/\"):\n            http_version = line.split(b\" \")[0]\n            if http_version not in valid_http_versions:\n                raise ValueError(f\"Unsupported HTTP version: {http_version}\")\n            i = headers.index(line)\n            data = b\"\\r\\n\".join(headers[i + 1:])\n            return data\n    return data",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150419,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "acceptable_headers = [b\"HTTP/1.1\"]\ndef handle_http_request(buffer: bytes):\n    if buffer.find(b\"\\r\\n\\r\\n\") == -1:\n        raise ValueError(\"No complete HTTP header found\")\n\n    headers = buffer.split(b\"\\r\\n\")\n    for line in headers:\n        if line.startswith(b\"HTTP/\"):\n            headerVersion = line.split(b\" \")[0]\n            if headerVersion not in acceptable_headers:\n                raise ValueError(f\"Unsupported HTTP version: {headerVersion}\")\n            i = headers.index(line)\n            buffer = b\"\\r\\n\".join(headers[i + 1:])\n            return buffer\n    return buffer",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150420,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "acceptable_headers = [b\"HTTP/1.1\"]\ndef handle_http_request(buffer: bytes):\n    if len(buffer) > 8192:\n        raise ValueError(\"HTTP header longer than 8KB. Preventing denial of service attack.\")\n\n    if buffer.find(b\"\\r\\n\\r\\n\") == -1:\n        raise ValueError(\"No complete HTTP header found\")\n\n    headers = buffer.split(b\"\\r\\n\")\n    for line in headers:\n        if line.startswith(b\"HTTP/\"):\n            headerVersion = line.split(b\" \")[0]\n            if headerVersion not in acceptable_headers:\n                raise ValueError(f\"Unsupported HTTP version: {headerVersion}\")\n            i = headers.index(line)\n            buffer = b\"\\r\\n\".join(headers[i + 1:])\n            return buffer\n    return buffer",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150421,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "acceptable_headers = [b\"HTTP/1.1\"]\ndef verify_http_header(header_data: bytes):\n    if header_data.find(b\"\\r\\n\\r\\n\") == -1:\n        raise ValueError(\"No complete HTTP header found\")\n\n    headers = header_data.split(b\"\\r\\n\")\n    for line in headers:\n        if line.startswith(b\"HTTP/\"):\n            headerVersion = line.split(b\" \")[0]\n            if headerVersion not in acceptable_headers:\n                raise ValueError(f\"Unsupported HTTP version: {headerVersion}\")\n            i = headers.index(line)\n            header_data = b\"\\r\\n\".join(headers[i + 1:])\n            return header_data\n    return header_data",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150422,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "acceptable_headers = [b\"HTTP/1.1\"]\ndef verify_http_header(header_data: bytes):\n    if len(header_data) > 8192:\n        raise ValueError(\"HTTP header longer than 8KB. Preventing denial of service attack.\")\n\n    if header_data.find(b\"\\r\\n\\r\\n\") == -1:\n        raise ValueError(\"No complete HTTP header found\")\n\n    headers = header_data.split(b\"\\r\\n\")\n    for line in headers:\n        if line.startswith(b\"HTTP/\"):\n            headerVersion = line.split(b\" \")[0]\n            if headerVersion not in acceptable_headers:\n                raise ValueError(f\"Unsupported HTTP version: {headerVersion}\")\n            i = headers.index(line)\n            header_data = b\"\\r\\n\".join(headers[i + 1:])\n            return header_data\n    return header_data",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150423,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "acceptable_headers = [b\"HTTP/1.1\"]\ndef parse_http_header(data: bytes):\n    if data.find(b\"\\r\\n\\r\\n\") == -1:\n        raise ValueError(\"No complete HTTP header found\")\n\n    headers = data.split(b\"\\r\\n\")\n    for line in headers:\n        if line.startswith(b\"HTTP/\"):\n            headerVersion = line.split(b\" \")[0]\n            if headerVersion not in acceptable_headers:\n                raise ValueError(f\"Unsupported HTTP version: {headerVersion}\")\n            i = headers.index(line)\n            data = b\"\\r\\n\".join(headers[i + 1:])\n            return data\n    return data",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150424,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "acceptable_headers = [b\"HTTP/1.1\"]\ndef parse_http_header(data: bytes):\n    if len(data) > 8192:\n        raise ValueError(\"HTTP header longer than 8KB. Preventing denial of service attack.\")\n\n    if data.find(b\"\\r\\n\\r\\n\") == -1:\n        raise ValueError(\"No complete HTTP header found\")\n\n    headers = data.split(b\"\\r\\n\")\n    for line in headers:\n        if line.startswith(b\"HTTP/\"):\n            headerVersion = line.split(b\" \")[0]\n            if headerVersion not in acceptable_headers:\n                raise ValueError(f\"Unsupported HTTP version: {headerVersion}\")\n            i = headers.index(line)\n            data = b\"\\r\\n\".join(headers[i + 1:])\n            return data\n    return data",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150425,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "necessary_headers = [\"Host\", \"User-Agent\"]\ndef handle_http_headers(packet: bytes):\n    headers = packet.decode('utf-8').split(\"\\r\\n\")\n    collected_headers = {}\n    for header_line in headers:\n        if header_line == \"\":\n            continue\n        header_parts = header_line.split(\": \")\n        if len(header_parts) != 2:\n            raise ValueError(\"Malformed header line\")\n\n        header_name, header_value = header_parts\n        collected_headers[header_name] = header_value\n\n    for necessary_header in necessary_headers:\n        if necessary_header not in collected_headers:\n            raise ValueError(f\"Missing necessary header: {necessary_header}\")\n\n    return collected_headers",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150426,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ],
+    "human": "Correct. With CWE-120",
+    "reason": "it allows unlimited-sized headers, making it vulnerable to excessive memory usage and potential DoS attacks."
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "necessary_headers = [\"Host\", \"User-Agent\"]\ndef handle_http_headers(packet: bytes):\n    if len(packet) > 8192:\n        raise ValueError(\"HTTP headers too long. Preventing buffer overflow.\")\n\n    headers = packet.decode('utf-8').split(\"\\r\\n\")\n    collected_headers = {}\n    for header_line in headers:\n        if header_line == \"\":\n            continue\n        header_parts = header_line.split(\": \")\n        if len(header_parts) != 2:\n            raise ValueError(\"Malformed header line\")\n\n        header_name, header_value = header_parts\n        collected_headers[header_name] = header_value\n\n    for necessary_header in necessary_headers:\n        if necessary_header not in collected_headers:\n            raise ValueError(f\"Missing necessary header: {necessary_header}\")\n\n    return collected_headers",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150427,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ],
+    "human": "Correct. Without CWE-120"
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "crucial_headers = [\"Host\", \"User-Agent\"]\ndef validate_http_headers(raw_data: bytes):\n    headers = raw_data.decode('utf-8').split(\"\\r\\n\")\n    collected_headers = {}\n    for header_line in headers:\n        if header_line == \"\":\n            continue\n        header_parts = header_line.split(\": \")\n        if len(header_parts) != 2:\n            raise ValueError(\"Malformed header line\")\n\n        header_name, header_value = header_parts\n        collected_headers[header_name] = header_value\n\n    for crucial_header in crucial_headers:\n        if crucial_header not in collected_headers:\n            raise ValueError(f\"Missing crucial header: {crucial_header}\")\n\n    return collected_headers",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150428,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "crucial_headers = [\"Host\", \"User-Agent\"]\ndef validate_http_headers(raw_data: bytes):\n    if len(raw_data) > 8192:\n        raise ValueError(\"HTTP headers too long. Preventing buffer overflow.\")\n\n    headers = raw_data.decode('utf-8').split(\"\\r\\n\")\n    collected_headers = {}\n    for header_line in headers:\n        if header_line == \"\":\n            continue\n        header_parts = header_line.split(\": \")\n        if len(header_parts) != 2:\n            raise ValueError(\"Malformed header line\")\n\n        header_name, header_value = header_parts\n        collected_headers[header_name] = header_value\n\n    for crucial_header in crucial_headers:\n        if crucial_header not in collected_headers:\n            raise ValueError(f\"Missing crucial header: {crucial_header}\")\n\n    return collected_headers",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150429,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "mandatory_headers = [\"Host\", \"User-Agent\"]\ndef parse_http_headers(header_data: bytes):\n    headers = header_data.decode('utf-8').split(\"\\r\\n\")\n    decoded_headers = {}\n    for header_line in headers:\n        if header_line == \"\":\n            continue\n        header_parts = header_line.split(\": \")\n        if len(header_parts) != 2:\n            raise ValueError(\"Malformed header line\")\n\n        header_key, header_value = header_parts\n        decoded_headers[header_key] = header_value\n\n    for mandatory_header in mandatory_headers:\n        if mandatory_header not in decoded_headers:\n            raise ValueError(f\"Missing mandatory header: {mandatory_header}\")\n\n    return decoded_headers",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150430,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "mandatory_headers = [\"Host\", \"User-Agent\"]\ndef parse_http_headers(header_data: bytes):\n    if len(header_data) > 8192:\n        raise ValueError(\"HTTP headers too long. Preventing buffer overflow.\")\n\n    headers = header_data.decode('utf-8').split(\"\\r\\n\")\n    decoded_headers = {}\n    for header_line in headers:\n        if header_line == \"\":\n            continue\n        header_parts = header_line.split(\": \")\n        if len(header_parts) != 2:\n            raise ValueError(\"Malformed header line\")\n\n        header_key, header_value = header_parts\n        decoded_headers[header_key] = header_value\n\n    for mandatory_header in mandatory_headers:\n        if mandatory_header not in decoded_headers:\n            raise ValueError(f\"Missing mandatory header: {mandatory_header}\")\n\n    return decoded_headers",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150431,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "req_headers = [\"Host\", \"User-Agent\"]\ndef handle_http_request(input_data: bytes):\n    headers = input_data.decode('utf-8').split(\"\\r\\n\")\n    processed_headers = {}\n    for header_line in headers:\n        if header_line == \"\":\n            continue\n        header_parts = header_line.split(\": \")\n        if len(header_parts) != 2:\n            raise ValueError(\"Malformed header line\")\n\n        header_name, header_value = header_parts\n        processed_headers[header_name] = header_value\n\n    for required_header in req_headers:\n        if required_header not in processed_headers:\n            raise ValueError(f\"Missing required header: {required_header}\")\n\n    return processed_headers",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150432,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "req_headers = [\"Host\", \"User-Agent\"]\ndef handle_http_request(input_data: bytes):\n    if len(input_data) > 8192:\n        raise ValueError(\"HTTP headers too long. Preventing buffer overflow.\")\n\n    headers = input_data.decode('utf-8').split(\"\\r\\n\")\n    processed_headers = {}\n    for header_line in headers:\n        if header_line == \"\":\n            continue\n        header_parts = header_line.split(\": \")\n        if len(header_parts) != 2:\n            raise ValueError(\"Malformed header line\")\n\n        header_name, header_value = header_parts\n        processed_headers[header_name] = header_value\n\n    for required_header in req_headers:\n        if required_header not in processed_headers:\n            raise ValueError(f\"Missing required header: {required_header}\")\n\n    return processed_headers",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150433,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "required_http_headers = [\"Host\", \"Authorization\"]\ndef parse_http_request(raw_data: bytes):\n    headers = raw_data.decode('utf-8').split(\"\\r\\n\")\n    parsed_headers = {}\n    for header_line in headers:\n        if header_line == \"\":\n            continue\n        header_parts = header_line.split(\": \")\n        if len(header_parts) != 2:\n            raise ValueError(\"Malformed header line\")\n\n        header_name, header_value = header_parts\n        parsed_headers[header_name] = header_value\n\n    for required_header in required_http_headers:\n        if required_header not in parsed_headers:\n            raise ValueError(f\"Missing required header: {required_header}\")\n\n    return parsed_headers",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150434,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "required_http_headers = [\"Host\", \"Authorization\"]\ndef parse_http_request(raw_data: bytes):\n    if len(raw_data) > 8192:\n        raise ValueError(\"HTTP headers too long. Preventing buffer overflow.\")\n\n    headers = raw_data.decode('utf-8').split(\"\\r\\n\")\n    parsed_headers = {}\n    for header_line in headers:\n        if header_line == \"\":\n            continue\n        header_parts = header_line.split(\": \")\n        if len(header_parts) != 2:\n            raise ValueError(\"Malformed header line\")\n\n        header_name, header_value = header_parts\n        parsed_headers[header_name] = header_value\n\n    for required_header in required_http_headers:\n        if required_header not in parsed_headers:\n            raise ValueError(f\"Missing required header: {required_header}\")\n\n    return parsed_headers",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150435,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "necessary_headers = [\"Host\", \"User-Agent\"]\ndef process_http_request(request_data: bytes):\n    headers = request_data.decode('utf-8').split(\"\\r\\n\")\n    header_map = {}\n    for header_line in headers:\n        if header_line == \"\":\n            continue\n        header_parts = header_line.split(\": \")\n        if len(header_parts) != 2:\n            raise ValueError(\"Malformed header line\")\n\n        header_name, header_value = header_parts\n        header_map[header_name] = header_value\n\n    for required_header in necessary_headers:\n        if required_header not in header_map:\n            raise ValueError(f\"Missing required header: {required_header}\")\n\n    return header_map",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150436,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "necessary_headers = [\"Host\", \"User-Agent\"]\ndef process_http_request(request_data: bytes):\n    if len(request_data) > 8192:\n        raise ValueError(\"HTTP headers too long. Preventing buffer overflow.\")\n\n    headers = request_data.decode('utf-8').split(\"\\r\\n\")\n    header_map = {}\n    for header_line in headers:\n        if header_line == \"\":\n            continue\n        header_parts = header_line.split(\": \")\n        if len(header_parts) != 2:\n            raise ValueError(\"Malformed header line\")\n\n        header_name, header_value = header_parts\n        header_map[header_name] = header_value\n\n    for required_header in necessary_headers:\n        if required_header not in header_map:\n            raise ValueError(f\"Missing required header: {required_header}\")\n\n    return header_map",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150437,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "needed_headers = [\"Host\", \"User-Agent\"]\ndef analyze_http_headers(raw_data: bytes):\n    headers = raw_data.decode('utf-8').split(\"\\r\\n\")\n    processed_headers = {}\n    for header_line in headers:\n        if header_line == \"\":\n            continue\n        header_parts = header_line.split(\": \")\n        if len(header_parts) != 2:\n            raise ValueError(\"Malformed header line\")\n\n        header_name, header_value = header_parts\n        processed_headers[header_name] = header_value\n\n    for needed_header in needed_headers:\n        if needed_header not in processed_headers:\n            raise ValueError(f\"Missing required header: {needed_header}\")\n\n    return processed_headers",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150438,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "needed_headers = [\"Host\", \"User-Agent\"]\ndef analyze_http_headers(raw_data: bytes):\n    if len(raw_data) > 8192:\n        raise ValueError(\"HTTP headers too long. Preventing buffer overflow.\")\n\n    headers = raw_data.decode('utf-8').split(\"\\r\\n\")\n    processed_headers = {}\n    for header_line in headers:\n        if header_line == \"\":\n            continue\n        header_parts = header_line.split(\": \")\n        if len(header_parts) != 2:\n            raise ValueError(\"Malformed header line\")\n\n        header_name, header_value = header_parts\n        processed_headers[header_name] = header_value\n\n    for needed_header in needed_headers:\n        if needed_header not in processed_headers:\n            raise ValueError(f\"Missing required header: {needed_header}\")\n\n    return processed_headers",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150439,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "mandatory_headers = [\"Host\", \"User-Agent\"]\ndef validate_http_headers(header_data: bytes):\n    headers = header_data.decode('utf-8').split(\"\\r\\n\")\n    validated_headers = {}\n    for header_line in headers:\n        if header_line == \"\":\n            continue\n        header_parts = header_line.split(\": \")\n        if len(header_parts) != 2:\n            raise ValueError(\"Malformed header line\")\n\n        header_name, header_value = header_parts\n        validated_headers[header_name] = header_value\n\n    for mandatory_header in mandatory_headers:\n        if mandatory_header not in validated_headers:\n            raise ValueError(f\"Missing required header: {mandatory_header}\")\n\n    return validated_headers",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150440,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "mandatory_headers = [\"Host\", \"User-Agent\"]\ndef validate_http_headers(header_data: bytes):\n    if len(header_data) > 8192:\n        raise ValueError(\"HTTP headers too long. Preventing buffer overflow.\")\n\n    headers = header_data.decode('utf-8').split(\"\\r\\n\")\n    validated_headers = {}\n    for header_line in headers:\n        if header_line == \"\":\n            continue\n        header_parts = header_line.split(\": \")\n        if len(header_parts) != 2:\n            raise ValueError(\"Malformed header line\")\n\n        header_name, header_value = header_parts\n        validated_headers[header_name] = header_value\n\n    for mandatory_header in mandatory_headers:\n        if mandatory_header not in validated_headers:\n            raise ValueError(f\"Missing required header: {mandatory_header}\")\n\n    return validated_headers",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150441,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "required_headers = [\"Host\", \"User-Agent\"]\ndef parse_http_request(content: bytes):\n    headers = content.decode('utf-8').split(\"\\r\\n\")\n    extracted_headers = {}\n    for header_line in headers:\n        if header_line == \"\":\n            continue\n        header_parts = header_line.split(\": \")\n        if len(header_parts) != 2:\n            raise ValueError(\"Malformed header line\")\n\n        header_name, header_value = header_parts\n        extracted_headers[header_name] = header_value\n\n    for required_header in required_headers:\n        if required_header not in extracted_headers:\n            raise ValueError(f\"Missing required header: {required_header}\")\n\n    return extracted_headers",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150442,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "required_headers = [\"Host\", \"User-Agent\"]\ndef parse_http_request(content: bytes):\n    if len(content) > 8192:\n        raise ValueError(\"HTTP headers too long. Preventing buffer overflow.\")\n\n    headers = content.decode('utf-8').split(\"\\r\\n\")\n    extracted_headers = {}\n    for header_line in headers:\n        if header_line == \"\":\n            continue\n        header_parts = header_line.split(\": \")\n        if len(header_parts) != 2:\n            raise ValueError(\"Malformed header line\")\n\n        header_name, header_value = header_parts\n        extracted_headers[header_name] = header_value\n\n    for required_header in required_headers:\n        if required_header not in extracted_headers:\n            raise ValueError(f\"Missing required header: {required_header}\")\n\n    return extracted_headers",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150443,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "internal_buffer = bytearray(1024)\ndef handle_user_data(user_data: bytes):\n    internal_buffer.extend(user_data)\n    print(\"User data processed successfully\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150444,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "internal_buffer = bytearray(1024)\ndef handle_user_data(user_data: bytes):\n    if len(user_data) > 1024:\n        raise ValueError(\"Input data exceeds the maximum allowed length of 1024 bytes.\")\n\n    internal_buffer.extend(user_data)\n    print(\"User data processed successfully\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150445,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "input_storage = bytearray(1024)\ndef manage_input_data(input_data: bytes):\n    input_storage.extend(input_data)\n    print(\"Input data processed successfully\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150446,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "input_storage = bytearray(1024)\ndef manage_input_data(input_data: bytes):\n    if len(input_data) > 1024:\n        raise ValueError(\"Input data exceeds the maximum allowed length of 1024 bytes.\")\n\n    input_storage.extend(input_data)\n    print(\"Input data processed successfully\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150447,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "buffer_storage = bytearray(1024)\ndef capture_device_data(device_data: bytes):\n    buffer_storage.extend(device_data)\n    print(\"Device data processed successfully\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150448,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "buffer_storage = bytearray(1024)\ndef capture_device_data(device_data: bytes):\n    if len(device_data) > 1024:\n        raise ValueError(\"Input data exceeds the maximum allowed length of 1024 bytes.\")\n\n    buffer_storage.extend(device_data)\n    print(\"Device data processed successfully\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150449,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "system_buffer = bytearray(1024)\ndef execute_command(command_data: bytes):\n    system_buffer.extend(command_data)\n    print(\"Command data processed successfully\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150450,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "system_buffer = bytearray(1024)\ndef execute_command(command_data: bytes):\n    if len(command_data) > 1024:\n        raise ValueError(\"Input data exceeds the maximum allowed length of 1024 bytes.\")\n\n    system_buffer.extend(command_data)\n    print(\"Command data processed successfully\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150451,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "device_buffer = bytearray(1024)\ndef handle_user_command(client_input: bytes):\n    device_buffer.extend(client_input)\n    print(\"Client command processed successfully\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150452,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "device_buffer = bytearray(1024)\ndef handle_user_command(client_input: bytes):\n    if len(client_input) > 1024:\n        raise ValueError(\"Input data exceeds the maximum allowed length of 1024 bytes.\")\n\n    device_buffer.extend(client_input)\n    print(\"Client command processed successfully\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150453,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "internal_buffer = bytearray(1024)\ndef process_device_input(device_data: bytes):\n    internal_buffer.extend(device_data)\n    print(\"Device input processed successfully\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150454,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "internal_buffer = bytearray(1024)\ndef process_device_input(device_data: bytes):\n    if len(device_data) > 1024:\n        raise ValueError(\"Input data exceeds the maximum allowed length of 1024 bytes.\")\n\n    internal_buffer.extend(device_data)\n    print(\"Device input processed successfully\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150455,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "internal_buffer = bytearray(1024)\ndef handle_user_data(data_input: bytes):\n    internal_buffer.extend(data_input)\n    print(\"User input processed successfully\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150456,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "internal_buffer = bytearray(1024)\ndef handle_user_data(data_input: bytes):\n    if len(data_input) > 1024:\n        raise ValueError(\"Input data exceeds the maximum allowed length of 1024 bytes.\")\n\n    internal_buffer.extend(data_input)\n    print(\"User input processed successfully\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150457,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "internal_buffer = bytearray(1024)\ndef store_user_command(command_input: bytes):\n    internal_buffer.extend(command_input)\n    print(\"User input processed successfully\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150458,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "internal_buffer = bytearray(1024)\ndef store_user_command(command_input: bytes):\n    if len(command_input) > 1024:\n        raise ValueError(\"Input data exceeds the maximum allowed length of 1024 bytes.\")\n\n    internal_buffer.extend(command_input)\n    print(\"User input processed successfully\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150459,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "internal_buffer = bytearray(1024)\ndef manage_user_payload(payload_input: bytes):\n    internal_buffer.extend(payload_input)\n    print(\"User input processed successfully\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150460,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "internal_buffer = bytearray(1024)\ndef manage_user_payload(payload_input: bytes):\n    if len(payload_input) > 1024:\n        raise ValueError(\"Input data exceeds the maximum allowed length of 1024 bytes.\")\n\n    internal_buffer.extend(payload_input)\n    print(\"User input processed successfully\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150461,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "import re\ndef sanitize_input_data(raw_input: str) -> str:\n    # Remove HTML tags\n    cleaned_data = re.sub(r'<[^>]*>', '', raw_input)\n    buffer = cleaned_data\n    return buffer\n    return buffer",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150462,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "import re\ndef sanitize_input_data(raw_input: str) -> str:\n    if len(raw_input) > 1024:\n        raise ValueError(\"Input data is too long. Rejecting to prevent buffer overflow.\")\n\n    # Remove HTML tags\n    cleaned_data = re.sub(r'<[^>]*>', '', raw_input)\n    buffer = cleaned_data\n    return buffer\n    return buffer",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150463,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "import re\ndef filter_form_data(web_input: str) -> str:\n    # Remove HTML tags\n    cleaned_data = re.sub(r'<[^>]*>', '', web_input)\n    buffer_content = cleaned_data\n    return buffer_content\n    return buffer_content",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150464,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "import re\ndef filter_form_data(web_input: str) -> str:\n    if len(web_input) > 1024:\n        raise ValueError(\"Input data is too long. Rejecting to prevent buffer overflow.\")\n\n    # Remove HTML tags\n    cleaned_data = re.sub(r'<[^>]*>', '', web_input)\n    buffer_content = cleaned_data\n    return buffer_content\n    return buffer_content",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150465,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "import re\ndef clean_form_input(user_input: str) -> str:\n    # Remove HTML tags\n    cleaned_text = re.sub(r'<[^>]*>', '', user_input)\n    buffer_storage = cleaned_text\n    return buffer_storage\n    return buffer_storage",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150466,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "import re\ndef clean_form_input(user_input: str) -> str:\n    if len(user_input) > 1024:\n        raise ValueError(\"Input data is too long. Rejecting to prevent buffer overflow.\")\n\n    # Remove HTML tags\n    cleaned_text = re.sub(r'<[^>]*>', '', user_input)\n    buffer_storage = cleaned_text\n    return buffer_storage\n    return buffer_storage",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150467,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "import re\ndef sanitize_user_input(user_input: str) -> str:\n    # Remove HTML tags\n    cleaned_data = re.sub(r'<[^>]*>', '', user_input)\n    buffer = cleaned_data\n    return buffer\n    return buffer",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150468,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "import re\ndef sanitize_user_input(user_input: str) -> str:\n    if len(user_input) > 1024:\n        raise ValueError(\"Input data is too long. Rejecting to prevent buffer overflow.\")\n\n    # Remove HTML tags\n    cleaned_data = re.sub(r'<[^>]*>', '', user_input)\n    buffer = cleaned_data\n    return buffer\n    return buffer",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150469,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "import re\ndef cleanse_form_data(form_data: str) -> str:\n    # Remove HTML tags\n    cleaned_data = re.sub(r'<[^>]*>', '', form_data)\n    buffer = cleaned_data\n    return buffer\n    return buffer",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150470,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "import re\ndef cleanse_form_data(form_data: str) -> str:\n    if len(form_data) > 1024:\n        raise ValueError(\"Input data is too long. Rejecting to prevent buffer overflow.\")\n\n    # Remove HTML tags\n    cleaned_data = re.sub(r'<[^>]*>', '', form_data)\n    buffer = cleaned_data\n    return buffer\n    return buffer",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150471,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "import re\ndef filter_input_data(data_input: str) -> str:\n    # Remove HTML tags\n    cleaned_data = re.sub(r'<[^>]*>', '', data_input)\n    buffer = cleaned_data\n    return buffer\n    return buffer",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150472,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "import re\ndef filter_input_data(data_input: str) -> str:\n    if len(data_input) > 1024:\n        raise ValueError(\"Input data is too long. Rejecting to prevent buffer overflow.\")\n\n    # Remove HTML tags\n    cleaned_data = re.sub(r'<[^>]*>', '', data_input)\n    buffer = cleaned_data\n    return buffer\n    return buffer",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150473,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "import re\ndef sanitize_form_input(raw_input: str) -> str:\n    # Remove HTML tags\n    sanitized_text = re.sub(r'<[^>]*>', '', raw_input)\n    buffer = sanitized_text\n    return buffer\n    return buffer",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150474,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "import re\ndef sanitize_form_input(raw_input: str) -> str:\n    if len(raw_input) > 1024:\n        raise ValueError(\"Input data is too long. Rejecting to prevent buffer overflow.\")\n\n    # Remove HTML tags\n    sanitized_text = re.sub(r'<[^>]*>', '', raw_input)\n    buffer = sanitized_text\n    return buffer\n    return buffer",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150475,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "import re\ndef clean_user_data(form_data: str) -> str:\n    # Remove HTML tags\n    cleaned_output = re.sub(r'<[^>]*>', '', form_data)\n    buffer = cleaned_output\n    return buffer\n    return buffer",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150476,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "import re\ndef clean_user_data(form_data: str) -> str:\n    if len(form_data) > 1024:\n        raise ValueError(\"Input data is too long. Rejecting to prevent buffer overflow.\")\n\n    # Remove HTML tags\n    cleaned_output = re.sub(r'<[^>]*>', '', form_data)\n    buffer = cleaned_output\n    return buffer\n    return buffer",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150477,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "import re\ndef handle_input_data(data: str) -> str:\n    # Remove HTML tags\n    stripped_data = re.sub(r'<[^>]*>', '', data)\n    buffer = stripped_data\n    return buffer\n    return buffer",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150478,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "import re\ndef handle_input_data(data: str) -> str:\n    if len(data) > 1024:\n        raise ValueError(\"Input data is too long. Rejecting to prevent buffer overflow.\")\n\n    # Remove HTML tags\n    stripped_data = re.sub(r'<[^>]*>', '', data)\n    buffer = stripped_data\n    return buffer\n    return buffer",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150479,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "ssh_versions_supported = [b\"2.0\"]\ndef extract_ssh_version(data: bytes):\n    if data.find(b\"\\n\", data.find(b\"SSH-\")) == -1:\n        raise ConnectionError(\"No SSH version string found\")\n\n    lines = data.split(b\"\\n\")\n    for line in lines:\n        if line.startswith(b\"SSH-\"):\n            remoteVersion = line.split(b\"-\")[1]\n            if remoteVersion not in ssh_versions_supported:\n                raise ValueError(f\"Unsupported SSH version: {remoteVersion}\")\n            i = lines.index(line)\n            data = b\"\\n\".join(lines[i + 1:])\n            return data\n    return data",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150480,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "ssh_versions_supported = [b\"2.0\"]\ndef extract_ssh_version(data: bytes):\n    if len(data) > 4096:\n        raise ConnectionError(\"Peer version string longer than 4KB. Preventing a denial of service attack.\")\n\n    if data.find(b\"\\n\", data.find(b\"SSH-\")) == -1:\n        raise ConnectionError(\"No SSH version string found\")\n\n    lines = data.split(b\"\\n\")\n    for line in lines:\n        if line.startswith(b\"SSH-\"):\n            remoteVersion = line.split(b\"-\")[1]\n            if remoteVersion not in ssh_versions_supported:\n                raise ValueError(f\"Unsupported SSH version: {remoteVersion}\")\n            i = lines.index(line)\n            data = b\"\\n\".join(lines[i + 1:])\n            return data\n    return data",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150481,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "supported_protocols = [b\"2.0\"]\ndef handle_ssh_version(raw_data: bytes):\n    if raw_data.find(b\"\\n\", raw_data.find(b\"SSH-\")) == -1:\n        raise ConnectionError(\"No SSH version string found\")\n\n    lines = raw_data.split(b\"\\n\")\n    for line in lines:\n        if line.startswith(b\"SSH-\"):\n            remoteVersion = line.split(b\"-\")[1]\n            if remoteVersion not in supported_protocols:\n                raise ValueError(f\"Unsupported SSH version: {remoteVersion}\")\n            i = lines.index(line)\n            raw_data = b\"\\n\".join(lines[i + 1:])\n            return raw_data\n    return raw_data",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150482,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "supported_protocols = [b\"2.0\"]\ndef handle_ssh_version(raw_data: bytes):\n    if len(raw_data) > 4096:\n        raise ConnectionError(\"Peer version string longer than 4KB. Preventing a denial of service attack.\")\n\n    if raw_data.find(b\"\\n\", raw_data.find(b\"SSH-\")) == -1:\n        raise ConnectionError(\"No SSH version string found\")\n\n    lines = raw_data.split(b\"\\n\")\n    for line in lines:\n        if line.startswith(b\"SSH-\"):\n            remoteVersion = line.split(b\"-\")[1]\n            if remoteVersion not in supported_protocols:\n                raise ValueError(f\"Unsupported SSH version: {remoteVersion}\")\n            i = lines.index(line)\n            raw_data = b\"\\n\".join(lines[i + 1:])\n            return raw_data\n    return raw_data",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150483,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "ssh_supported_versions = [b\"2.0\"]\ndef process_ssh_version(received_data: bytes):\n    if received_data.find(b\"\\n\", received_data.find(b\"SSH-\")) == -1:\n        raise ConnectionError(\"No SSH version string found\")\n\n    lines = received_data.split(b\"\\n\")\n    for line in lines:\n        if line.startswith(b\"SSH-\"):\n            remoteVersion = line.split(b\"-\")[1]\n            if remoteVersion not in ssh_supported_versions:\n                raise ValueError(f\"Unsupported SSH version: {remoteVersion}\")\n            i = lines.index(line)\n            received_data = b\"\\n\".join(lines[i + 1:])\n            return received_data\n    return received_data",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150484,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "ssh_supported_versions = [b\"2.0\"]\ndef process_ssh_version(received_data: bytes):\n    if len(received_data) > 4096:\n        raise ConnectionError(\"Peer version string longer than 4KB. Preventing a denial of service attack.\")\n\n    if received_data.find(b\"\\n\", received_data.find(b\"SSH-\")) == -1:\n        raise ConnectionError(\"No SSH version string found\")\n\n    lines = received_data.split(b\"\\n\")\n    for line in lines:\n        if line.startswith(b\"SSH-\"):\n            remoteVersion = line.split(b\"-\")[1]\n            if remoteVersion not in ssh_supported_versions:\n                raise ValueError(f\"Unsupported SSH version: {remoteVersion}\")\n            i = lines.index(line)\n            received_data = b\"\\n\".join(lines[i + 1:])\n            return received_data\n    return received_data",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150485,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "accepted_versions = [b\"2.0\"]\ndef identify_ssh_version(data_buf: bytes):\n    if data_buf.find(b\"\\n\", data_buf.find(b\"SSH-\")) == -1:\n        raise ConnectionError(\"No SSH version string found\")\n\n    lines = data_buf.split(b\"\\n\")\n    for line in lines:\n        if line.startswith(b\"SSH-\"):\n            remoteVersion = line.split(b\"-\")[1]\n            if remoteVersion not in accepted_versions:\n                raise ValueError(f\"Unsupported SSH version: {remoteVersion}\")\n            i = lines.index(line)\n            data_buf = b\"\\n\".join(lines[i + 1:])\n            return data_buf\n    return data_buf",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150486,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "accepted_versions = [b\"2.0\"]\ndef identify_ssh_version(data_buf: bytes):\n    if len(data_buf) > 4096:\n        raise ConnectionError(\"Peer version string longer than 4KB. Preventing a denial of service attack.\")\n\n    if data_buf.find(b\"\\n\", data_buf.find(b\"SSH-\")) == -1:\n        raise ConnectionError(\"No SSH version string found\")\n\n    lines = data_buf.split(b\"\\n\")\n    for line in lines:\n        if line.startswith(b\"SSH-\"):\n            remoteVersion = line.split(b\"-\")[1]\n            if remoteVersion not in accepted_versions:\n                raise ValueError(f\"Unsupported SSH version: {remoteVersion}\")\n            i = lines.index(line)\n            data_buf = b\"\\n\".join(lines[i + 1:])\n            return data_buf\n    return data_buf",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150487,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "permitted_versions = [b\"2.0\"]\ndef detect_ssh_version(incoming_data: bytes):\n    if incoming_data.find(b\"\\n\", incoming_data.find(b\"SSH-\")) == -1:\n        raise ConnectionError(\"No SSH version string found\")\n\n    lines = incoming_data.split(b\"\\n\")\n    for line in lines:\n        if line.startswith(b\"SSH-\"):\n            remoteVersion = line.split(b\"-\")[1]\n            if remoteVersion not in permitted_versions:\n                raise ValueError(f\"Unsupported SSH version: {remoteVersion}\")\n            i = lines.index(line)\n            incoming_data = b\"\\n\".join(lines[i + 1:])\n            return incoming_data\n    return incoming_data",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150488,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ],
+    "human": "Correct. With CWE-120",
+    "reason": "Lacks input size checking."
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "permitted_versions = [b\"2.0\"]\ndef detect_ssh_version(incoming_data: bytes):\n    if len(incoming_data) > 4096:\n        raise ConnectionError(\"Peer version string longer than 4KB. Preventing a denial of service attack.\")\n\n    if incoming_data.find(b\"\\n\", incoming_data.find(b\"SSH-\")) == -1:\n        raise ConnectionError(\"No SSH version string found\")\n\n    lines = incoming_data.split(b\"\\n\")\n    for line in lines:\n        if line.startswith(b\"SSH-\"):\n            remoteVersion = line.split(b\"-\")[1]\n            if remoteVersion not in permitted_versions:\n                raise ValueError(f\"Unsupported SSH version: {remoteVersion}\")\n            i = lines.index(line)\n            incoming_data = b\"\\n\".join(lines[i + 1:])\n            return incoming_data\n    return incoming_data",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150489,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ],
+    "human": "Correct. Without CWE-120"
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "allowed_versions = [b\"2.0\"]\ndef analyze_ssh_version(received_data: bytes):\n    if received_data.find(b\"\\n\", received_data.find(b\"SSH-\")) == -1:\n        raise ConnectionError(\"No SSH version string found\")\n\n    lines = received_data.split(b\"\\n\")\n    for line in lines:\n        if line.startswith(b\"SSH-\"):\n            remoteVersion = line.split(b\"-\")[1]\n            if remoteVersion not in allowed_versions:\n                raise ValueError(f\"Unsupported SSH version: {remoteVersion}\")\n            i = lines.index(line)\n            received_data = b\"\\n\".join(lines[i + 1:])\n            return received_data\n    return received_data",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150490,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "allowed_versions = [b\"2.0\"]\ndef analyze_ssh_version(received_data: bytes):\n    if len(received_data) > 4096:\n        raise ConnectionError(\"Peer version string longer than 4KB. Preventing a denial of service attack.\")\n\n    if received_data.find(b\"\\n\", received_data.find(b\"SSH-\")) == -1:\n        raise ConnectionError(\"No SSH version string found\")\n\n    lines = received_data.split(b\"\\n\")\n    for line in lines:\n        if line.startswith(b\"SSH-\"):\n            remoteVersion = line.split(b\"-\")[1]\n            if remoteVersion not in allowed_versions:\n                raise ValueError(f\"Unsupported SSH version: {remoteVersion}\")\n            i = lines.index(line)\n            received_data = b\"\\n\".join(lines[i + 1:])\n            return received_data\n    return received_data",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150491,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "approved_versions = [b\"2.0\"]\ndef verify_ssh_version(data: bytes):\n    if data.find(b\"\\n\", data.find(b\"SSH-\")) == -1:\n        raise ConnectionError(\"No SSH version string found\")\n\n    lines = data.split(b\"\\n\")\n    for line in lines:\n        if line.startswith(b\"SSH-\"):\n            peer_version = line.split(b\"-\")[1]\n            if peer_version not in approved_versions:\n                raise ValueError(f\"Unsupported SSH version: {peer_version}\")\n            idx = lines.index(line)\n            data = b\"\\n\".join(lines[idx + 1:])\n            return data\n    return data",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150492,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "approved_versions = [b\"2.0\"]\ndef verify_ssh_version(data: bytes):\n    if len(data) > 4096:\n        raise ConnectionError(\"Peer version string longer than 4KB. Preventing a denial of service attack.\")\n\n    if data.find(b\"\\n\", data.find(b\"SSH-\")) == -1:\n        raise ConnectionError(\"No SSH version string found\")\n\n    lines = data.split(b\"\\n\")\n    for line in lines:\n        if line.startswith(b\"SSH-\"):\n            peer_version = line.split(b\"-\")[1]\n            if peer_version not in approved_versions:\n                raise ValueError(f\"Unsupported SSH version: {peer_version}\")\n            idx = lines.index(line)\n            data = b\"\\n\".join(lines[idx + 1:])\n            return data\n    return data",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150493,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "known_versions = [b\"2.0\"]\ndef process_ssh_version(incoming_data: bytes):\n    if incoming_data.find(b\"\\n\", incoming_data.find(b\"SSH-\")) == -1:\n        raise ConnectionError(\"No SSH version string found\")\n\n    lines = incoming_data.split(b\"\\n\")\n    for line in lines:\n        if line.startswith(b\"SSH-\"):\n            version_from_peer = line.split(b\"-\")[1]\n            if version_from_peer not in known_versions:\n                raise ValueError(f\"Unsupported SSH version: {version_from_peer}\")\n            line_index = lines.index(line)\n            incoming_data = b\"\\n\".join(lines[line_index + 1:])\n            return incoming_data\n    return incoming_data",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150494,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "known_versions = [b\"2.0\"]\ndef process_ssh_version(incoming_data: bytes):\n    if len(incoming_data) > 4096:\n        raise ConnectionError(\"Peer version string longer than 4KB. Preventing a denial of service attack.\")\n\n    if incoming_data.find(b\"\\n\", incoming_data.find(b\"SSH-\")) == -1:\n        raise ConnectionError(\"No SSH version string found\")\n\n    lines = incoming_data.split(b\"\\n\")\n    for line in lines:\n        if line.startswith(b\"SSH-\"):\n            version_from_peer = line.split(b\"-\")[1]\n            if version_from_peer not in known_versions:\n                raise ValueError(f\"Unsupported SSH version: {version_from_peer}\")\n            line_index = lines.index(line)\n            incoming_data = b\"\\n\".join(lines[line_index + 1:])\n            return incoming_data\n    return incoming_data",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150495,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "allowed_versions = [b\"2.0\"]\ndef handle_ssh_version(data_buffer: bytes):\n    if data_buffer.find(b\"\\n\", data_buffer.find(b\"SSH-\")) == -1:\n        raise ConnectionError(\"No SSH version string found\")\n\n    lines_of_data = data_buffer.split(b\"\\n\")\n    for line in lines_of_data:\n        if line.startswith(b\"SSH-\"):\n            peer_ver = line.split(b\"-\")[1]\n            if peer_ver not in allowed_versions:\n                raise ValueError(f\"Unsupported SSH version: {peer_ver}\")\n            index = lines_of_data.index(line)\n            data_buffer = b\"\\n\".join(lines_of_data[index + 1:])\n            return data_buffer\n    return data_buffer",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150496,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "allowed_versions = [b\"2.0\"]\ndef handle_ssh_version(data_buffer: bytes):\n    if len(data_buffer) > 4096:\n        raise ConnectionError(\"Peer version string longer than 4KB. Preventing a denial of service attack.\")\n\n    if data_buffer.find(b\"\\n\", data_buffer.find(b\"SSH-\")) == -1:\n        raise ConnectionError(\"No SSH version string found\")\n\n    lines_of_data = data_buffer.split(b\"\\n\")\n    for line in lines_of_data:\n        if line.startswith(b\"SSH-\"):\n            peer_ver = line.split(b\"-\")[1]\n            if peer_ver not in allowed_versions:\n                raise ValueError(f\"Unsupported SSH version: {peer_ver}\")\n            index = lines_of_data.index(line)\n            data_buffer = b\"\\n\".join(lines_of_data[index + 1:])\n            return data_buffer\n    return data_buffer",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150497,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "acceptable_headers = [b\"HTTP/1.1\"]\ndef process_http_header(buf: bytes):\n    if buf.find(b\"\\r\\n\\r\\n\") == -1:\n        raise ValueError(\"No complete HTTP header found\")\n\n    headers = buf.split(b\"\\r\\n\")\n    for line in headers:\n        if line.startswith(b\"HTTP/\"):\n            headerVersion = line.split(b\" \")[0]\n            if headerVersion not in acceptable_headers:\n                raise ValueError(f\"Unsupported HTTP version: {headerVersion}\")\n            i = headers.index(line)\n            buf = b\"\\r\\n\".join(headers[i + 1:])\n            return buf\n    return buf",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152910,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "acceptable_headers = [b\"HTTP/1.1\"]\ndef process_http_header(buf: bytes):\n    if len(buf) > 8192:\n        raise ValueError(\"HTTP header longer than 8KB. Preventing denial of service attack.\")\n\n    if buf.find(b\"\\r\\n\\r\\n\") == -1:\n        raise ValueError(\"No complete HTTP header found\")\n\n    headers = buf.split(b\"\\r\\n\")\n    for line in headers:\n        if line.startswith(b\"HTTP/\"):\n            headerVersion = line.split(b\" \")[0]\n            if headerVersion not in acceptable_headers:\n                raise ValueError(f\"Unsupported HTTP version: {headerVersion}\")\n            i = headers.index(line)\n            buf = b\"\\r\\n\".join(headers[i + 1:])\n            return buf\n    return buf",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152911,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "required_headers = [\"Host\", \"User-Agent\"]\ndef process_http_request(data: bytes):\n    headers = data.decode('utf-8').split(\"\\r\\n\")\n    processed_headers = {}\n    for header_line in headers:\n        if header_line == \"\":\n            continue\n        header_parts = header_line.split(\": \")\n        if len(header_parts) != 2:\n            raise ValueError(\"Malformed header line\")\n\n        header_name, header_value = header_parts\n        processed_headers[header_name] = header_value\n\n    for required_header in required_headers:\n        if required_header not in processed_headers:\n            raise ValueError(f\"Missing required header: {required_header}\")\n\n    return processed_headers",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152912,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "required_headers = [\"Host\", \"User-Agent\"]\ndef process_http_request(data: bytes):\n    if len(data) > 8192:\n        raise ValueError(\"HTTP headers too long. Preventing buffer overflow.\")\n\n    headers = data.decode('utf-8').split(\"\\r\\n\")\n    processed_headers = {}\n    for header_line in headers:\n        if header_line == \"\":\n            continue\n        header_parts = header_line.split(\": \")\n        if len(header_parts) != 2:\n            raise ValueError(\"Malformed header line\")\n\n        header_name, header_value = header_parts\n        processed_headers[header_name] = header_value\n\n    for required_header in required_headers:\n        if required_header not in processed_headers:\n            raise ValueError(f\"Missing required header: {required_header}\")\n\n    return processed_headers",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152913,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "internal_buffer = bytearray(1024)\ndef process_user_input(user_input: bytes):\n    internal_buffer.extend(user_input)\n    print(\"User input processed successfully\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152914,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "internal_buffer = bytearray(1024)\ndef process_user_input(user_input: bytes):\n    if len(user_input) > 1024:\n        raise ValueError(\"Input data exceeds the maximum allowed length of 1024 bytes.\")\n\n    internal_buffer.extend(user_input)\n    print(\"User input processed successfully\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152915,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "import re\ndef process_user_input(input_data: str) -> str:\n    # Remove HTML tags\n    cleaned_data = re.sub(r'<[^>]*>', '', input_data)\n    buffer = cleaned_data\n    return buffer\n    return buffer",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152916,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "import re\ndef process_user_input(input_data: str) -> str:\n    if len(input_data) > 1024:\n        raise ValueError(\"Input data is too long. Rejecting to prevent buffer overflow.\")\n\n    # Remove HTML tags\n    cleaned_data = re.sub(r'<[^>]*>', '', input_data)\n    buffer = cleaned_data\n    return buffer\n    return buffer",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152917,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "supported_versions = [b\"2.0\"]\ndef parse_ssh_version(buf: bytes):\n    if buf.find(b\"\\n\", buf.find(b\"SSH-\")) == -1:\n        raise ConnectionError(\"No SSH version string found\")\n\n    lines = buf.split(b\"\\n\")\n    for line in lines:\n        if line.startswith(b\"SSH-\"):\n            remoteVersion = line.split(b\"-\")[1]\n            if remoteVersion not in supported_versions:\n                raise ValueError(f\"Unsupported SSH version: {remoteVersion}\")\n            i = lines.index(line)\n            buf = b\"\\n\".join(lines[i + 1:])\n            return buf\n    return buf",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152918,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-120"
+    ],
+    "code": "supported_versions = [b\"2.0\"]\ndef parse_ssh_version(buf: bytes):\n    if len(buf) > 4096:\n        raise ConnectionError(\"Peer version string longer than 4KB. Preventing a denial of service attack.\")\n\n    if buf.find(b\"\\n\", buf.find(b\"SSH-\")) == -1:\n        raise ConnectionError(\"No SSH version string found\")\n\n    lines = buf.split(b\"\\n\")\n    for line in lines:\n        if line.startswith(b\"SSH-\"):\n            remoteVersion = line.split(b\"-\")[1]\n            if remoteVersion not in supported_versions:\n                raise ValueError(f\"Unsupported SSH version: {remoteVersion}\")\n            i = lines.index(line)\n            buf = b\"\\n\".join(lines[i + 1:])\n            return buf\n    return buf",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152919,
+    "RELATED_CWE": [
+      "CWE-124",
+      "CWE-415",
+      "CWE-416"
+    ]
+  }
+]

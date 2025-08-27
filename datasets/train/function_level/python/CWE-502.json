@@ -1,0 +1,1541 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_formats = [\"json\", \"xml\"]\ndef deserialize_data(input_data, serialization_format=\"json\"):\n    if serialization_format == \"json\":\n        import json\n        return json.loads(input_data)\n    elif serialization_format == \"xml\":\n        import xml.etree.ElementTree as ET\n        root = ET.fromstring(input_data)\n        return {child.tag: child.text for child in root}\n    elif serialization_format == \"pickle\":\n        import pickle\n        return pickle.loads(input_data)\n    else:\n        raise ValueError(f\"Format '{serialization_format}' is not supported.\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151596,
+    "human": "Correct. With CWE-502",
+    "reason": "It is vulnerable due to unsafe pickle deserialization.",
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_formats = [\"json\", \"xml\"]\ndef deserialize_data(input_data, serialization_format=\"json\"):\n    if serialization_format == \"json\":\n        import json\n        return json.loads(input_data)\n    elif serialization_format == \"xml\":\n        import xml.etree.ElementTree as ET\n        root = ET.fromstring(input_data)\n        return {child.tag: child.text for child in root}\n    elif serialization_format == \"pickle\":\n        raise ValueError(\"Deserialization using pickle is prohibited due to security concerns.\")\n    else:\n        raise ValueError(f\"Format '{serialization_format}' is not supported.\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151597,
+    "human": "Correct. Without CWE-502",
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_formats = [\"json\", \"xml\"]\ndef decode_serialized_data(encoded_data, method=\"json\"):\n    if method == \"json\":\n        import json\n        return json.loads(encoded_data)\n    elif method == \"xml\":\n        import xml.etree.ElementTree as ET\n        root = ET.fromstring(encoded_data)\n        return {child.tag: child.text for child in root}\n    elif method == \"pickle\":\n        import pickle\n        return pickle.loads(encoded_data)\n    else:\n        raise ValueError(f\"Format '{method}' is not supported.\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151598,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_formats = [\"json\", \"xml\"]\ndef decode_serialized_data(encoded_data, method=\"json\"):\n    if method == \"json\":\n        import json\n        return json.loads(encoded_data)\n    elif method == \"xml\":\n        import xml.etree.ElementTree as ET\n        root = ET.fromstring(encoded_data)\n        return {child.tag: child.text for child in root}\n    elif method == \"pickle\":\n        raise ValueError(\"Deserialization using pickle is prohibited due to security concerns.\")\n    else:\n        raise ValueError(f\"Format '{method}' is not supported.\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151599,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "safe_formats = [\"json\", \"xml\"]\ndef objectify_data(raw_data, method_name=\"json\"):\n    if method_name == \"json\":\n        import json\n        return json.loads(raw_data)\n    elif method_name == \"xml\":\n        import xml.etree.ElementTree as ET\n        root = ET.fromstring(raw_data)\n        return {child.tag: child.text for child in root}\n    elif method_name == \"pickle\":\n        import pickle\n        return pickle.loads(raw_data)\n    else:\n        raise ValueError(f\"Format '{method_name}' is not supported.\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151600,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "safe_formats = [\"json\", \"xml\"]\ndef objectify_data(raw_data, method_name=\"json\"):\n    if method_name == \"json\":\n        import json\n        return json.loads(raw_data)\n    elif method_name == \"xml\":\n        import xml.etree.ElementTree as ET\n        root = ET.fromstring(raw_data)\n        return {child.tag: child.text for child in root}\n    elif method_name == \"pickle\":\n        raise ValueError(\"Deserialization using pickle is prohibited due to security concerns.\")\n    else:\n        raise ValueError(f\"Format '{method_name}' is not supported.\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151601,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_serialization_types = [\"json\", \"xml\"]\ndef deserialize_data(raw_data, serialization_format=\"json\"):\n    if serialization_format == \"json\":\n        import json\n        return json.loads(raw_data)\n    elif serialization_format == \"xml\":\n        import xml.etree.ElementTree as ET\n        root = ET.fromstring(raw_data)\n        return {child.tag: child.text for child in root}\n    elif serialization_format == \"pickle\":\n        import pickle\n        return pickle.loads(raw_data)\n    else:\n        raise ValueError(f\"Format '{serialization_format}' is not supported.\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151602,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_serialization_types = [\"json\", \"xml\"]\ndef deserialize_data(raw_data, serialization_format=\"json\"):\n    if serialization_format == \"json\":\n        import json\n        return json.loads(raw_data)\n    elif serialization_format == \"xml\":\n        import xml.etree.ElementTree as ET\n        root = ET.fromstring(raw_data)\n        return {child.tag: child.text for child in root}\n    elif serialization_format == \"pickle\":\n        raise ValueError(\"Deserialization using pickle is prohibited due to security concerns.\")\n    else:\n        raise ValueError(f\"Format '{serialization_format}' is not supported.\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151603,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "secure_formats = [\"json\", \"xml\"]\ndef load_serialized_data(bytes_data, data_format=\"json\"):\n    if data_format == \"json\":\n        import json\n        return json.loads(bytes_data)\n    elif data_format == \"xml\":\n        import xml.etree.ElementTree as ET\n        root = ET.fromstring(bytes_data)\n        return {child.tag: child.text for child in root}\n    elif data_format == \"pickle\":\n        import pickle\n        return pickle.loads(bytes_data)\n    else:\n        raise ValueError(f\"Format '{data_format}' is not supported.\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151604,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "secure_formats = [\"json\", \"xml\"]\ndef load_serialized_data(bytes_data, data_format=\"json\"):\n    if data_format == \"json\":\n        import json\n        return json.loads(bytes_data)\n    elif data_format == \"xml\":\n        import xml.etree.ElementTree as ET\n        root = ET.fromstring(bytes_data)\n        return {child.tag: child.text for child in root}\n    elif data_format == \"pickle\":\n        raise ValueError(\"Deserialization using pickle is prohibited due to security concerns.\")\n    else:\n        raise ValueError(f\"Format '{data_format}' is not supported.\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151605,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "secure_serialization_formats = [\"json\", \"xml\"]\ndef safe_deserialize(serialized_bytes, allowed_format=\"json\"):\n    if allowed_format == \"json\":\n        import json\n        return json.loads(serialized_bytes)\n    elif allowed_format == \"xml\":\n        import xml.etree.ElementTree as ET\n        root = ET.fromstring(serialized_bytes)\n        return {child.tag: child.text for child in root}\n    elif allowed_format == \"pickle\":\n        import pickle\n        return pickle.loads(serialized_bytes)\n    else:\n        raise ValueError(f\"Format '{allowed_format}' is not supported.\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151606,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "secure_serialization_formats = [\"json\", \"xml\"]\ndef safe_deserialize(serialized_bytes, allowed_format=\"json\"):\n    if allowed_format == \"json\":\n        import json\n        return json.loads(serialized_bytes)\n    elif allowed_format == \"xml\":\n        import xml.etree.ElementTree as ET\n        root = ET.fromstring(serialized_bytes)\n        return {child.tag: child.text for child in root}\n    elif allowed_format == \"pickle\":\n        raise ValueError(\"Deserialization using pickle is prohibited due to security concerns.\")\n    else:\n        raise ValueError(f\"Format '{allowed_format}' is not supported.\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151607,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "safe_formats = [\"json\", \"xml\"]\ndef deserialize_data(input_data, data_type=\"json\"):\n    if data_type == \"json\":\n        import json\n        return json.loads(input_data)\n    elif data_type == \"xml\":\n        import xml.etree.ElementTree as ET\n        root = ET.fromstring(input_data)\n        return {child.tag: child.text for child in root}\n    elif data_type == \"pickle\":\n        import pickle\n        return pickle.loads(input_data)\n    else:\n        raise ValueError(f\"Format '{data_type}' is not supported.\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151608,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "safe_formats = [\"json\", \"xml\"]\ndef deserialize_data(input_data, data_type=\"json\"):\n    if data_type == \"json\":\n        import json\n        return json.loads(input_data)\n    elif data_type == \"xml\":\n        import xml.etree.ElementTree as ET\n        root = ET.fromstring(input_data)\n        return {child.tag: child.text for child in root}\n    elif data_type == \"pickle\":\n        raise ValueError(\"Deserialization using pickle is prohibited due to security concerns.\")\n    else:\n        raise ValueError(f\"Format '{data_type}' is not supported.\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151609,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "trusted_formats = [\"json\", \"xml\"]\ndef data_to_object(byte_data, encoding_type=\"json\"):\n    if encoding_type == \"json\":\n        import json\n        return json.loads(byte_data)\n    elif encoding_type == \"xml\":\n        import xml.etree.ElementTree as ET\n        root = ET.fromstring(byte_data)\n        return {child.tag: child.text for child in root}\n    elif encoding_type == \"pickle\":\n        import pickle\n        return pickle.loads(byte_data)\n    else:\n        raise ValueError(f\"Format '{encoding_type}' is not supported.\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151610,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "trusted_formats = [\"json\", \"xml\"]\ndef data_to_object(byte_data, encoding_type=\"json\"):\n    if encoding_type == \"json\":\n        import json\n        return json.loads(byte_data)\n    elif encoding_type == \"xml\":\n        import xml.etree.ElementTree as ET\n        root = ET.fromstring(byte_data)\n        return {child.tag: child.text for child in root}\n    elif encoding_type == \"pickle\":\n        raise ValueError(\"Deserialization using pickle is prohibited due to security concerns.\")\n    else:\n        raise ValueError(f\"Format '{encoding_type}' is not supported.\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151611,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "approved_formats = [\"json\", \"xml\"]\ndef bytes_to_obj(data_bytes, format_name=\"json\"):\n    if format_name == \"json\":\n        import json\n        return json.loads(data_bytes)\n    elif format_name == \"xml\":\n        import xml.etree.ElementTree as ET\n        root = ET.fromstring(data_bytes)\n        return {child.tag: child.text for child in root}\n    elif format_name == \"pickle\":\n        import pickle\n        return pickle.loads(data_bytes)\n    else:\n        raise ValueError(f\"Format '{format_name}' is not supported.\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151612,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "approved_formats = [\"json\", \"xml\"]\ndef bytes_to_obj(data_bytes, format_name=\"json\"):\n    if format_name == \"json\":\n        import json\n        return json.loads(data_bytes)\n    elif format_name == \"xml\":\n        import xml.etree.ElementTree as ET\n        root = ET.fromstring(data_bytes)\n        return {child.tag: child.text for child in root}\n    elif format_name == \"pickle\":\n        raise ValueError(\"Deserialization using pickle is prohibited due to security concerns.\")\n    else:\n        raise ValueError(f\"Format '{format_name}' is not supported.\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151613,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_serializations = [\"json\", \"csv\"]\ndef recover_obj(deserialized_bytes, method_for_serialization=\"json\"):\n    if method_for_serialization == \"json\":\n        import json\n        return json.loads(deserialized_bytes)\n    elif method_for_serialization == \"csv\":\n        import csv\n        from io import StringIO\n        reader = csv.reader(StringIO(deserialized_bytes.decode()))\n        return [row for row in reader]\n    elif method_for_serialization == \"pickle\":\n        import pickle\n        return pickle.loads(deserialized_bytes)\n    else:\n        raise ValueError(f\"Unsupported serialization method: {method_for_serialization}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151614,
+    "human": "Correct. With CWE-502",
+    "reason": "It is vulnerable due to unsafe pickle deserialization.",
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_serializations = [\"json\", \"csv\"]\ndef recover_obj(deserialized_bytes, method_for_serialization=\"json\"):\n    if method_for_serialization == \"json\":\n        import json\n        return json.loads(deserialized_bytes)\n    elif method_for_serialization == \"csv\":\n        import csv\n        from io import StringIO\n        reader = csv.reader(StringIO(deserialized_bytes.decode()))\n        return [row for row in reader]\n    elif method_for_serialization == \"pickle\":\n        raise ValueError(\"Deserialization with pickle is not allowed due to security vulnerabilities.\")\n    else:\n        raise ValueError(f\"Unsupported serialization method: {method_for_serialization}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151615,
+    "human": "Correct. Without CWE-502",
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "safe_serializations = [\"json\", \"csv\"]\ndef load_object(serialized_data, deserialization_method=\"json\"):\n    if deserialization_method == \"json\":\n        import json\n        return json.loads(serialized_data)\n    elif deserialization_method == \"csv\":\n        import csv\n        from io import StringIO\n        reader = csv.reader(StringIO(serialized_data.decode()))\n        return [row for row in reader]\n    elif deserialization_method == \"pickle\":\n        import pickle\n        return pickle.loads(serialized_data)\n    else:\n        raise ValueError(f\"Unsupported serialization method: {deserialization_method}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151616,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "safe_serializations = [\"json\", \"csv\"]\ndef load_object(serialized_data, deserialization_method=\"json\"):\n    if deserialization_method == \"json\":\n        import json\n        return json.loads(serialized_data)\n    elif deserialization_method == \"csv\":\n        import csv\n        from io import StringIO\n        reader = csv.reader(StringIO(serialized_data.decode()))\n        return [row for row in reader]\n    elif deserialization_method == \"pickle\":\n        raise ValueError(\"Deserialization with pickle is not allowed due to security vulnerabilities.\")\n    else:\n        raise ValueError(f\"Unsupported serialization method: {deserialization_method}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151617,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "valid_serializations = [\"json\", \"csv\"]\ndef deserialize_obj(byte_data, method_of_serialization=\"json\"):\n    if method_of_serialization == \"json\":\n        import json\n        return json.loads(byte_data)\n    elif method_of_serialization == \"csv\":\n        import csv\n        from io import StringIO\n        reader = csv.reader(StringIO(byte_data.decode()))\n        return [row for row in reader]\n    elif method_of_serialization == \"pickle\":\n        import pickle\n        return pickle.loads(byte_data)\n    else:\n        raise ValueError(f\"Unsupported serialization method: {method_of_serialization}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151618,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "valid_serializations = [\"json\", \"csv\"]\ndef deserialize_obj(byte_data, method_of_serialization=\"json\"):\n    if method_of_serialization == \"json\":\n        import json\n        return json.loads(byte_data)\n    elif method_of_serialization == \"csv\":\n        import csv\n        from io import StringIO\n        reader = csv.reader(StringIO(byte_data.decode()))\n        return [row for row in reader]\n    elif method_of_serialization == \"pickle\":\n        raise ValueError(\"Deserialization with pickle is not allowed due to security vulnerabilities.\")\n    else:\n        raise ValueError(f\"Unsupported serialization method: {method_of_serialization}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151619,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "approved_formats = [\"json\", \"csv\"]\ndef deserialize_object(raw_data, format_type=\"json\"):\n    if format_type == \"json\":\n        import json\n        return json.loads(raw_data)\n    elif format_type == \"csv\":\n        import csv\n        from io import StringIO\n        reader = csv.reader(StringIO(raw_data.decode()))\n        return [row for row in reader]\n    elif format_type == \"pickle\":\n        import pickle\n        return pickle.loads(raw_data)\n    else:\n        raise ValueError(f\"Unsupported serialization method: {format_type}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151620,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "approved_formats = [\"json\", \"csv\"]\ndef deserialize_object(raw_data, format_type=\"json\"):\n    if format_type == \"json\":\n        import json\n        return json.loads(raw_data)\n    elif format_type == \"csv\":\n        import csv\n        from io import StringIO\n        reader = csv.reader(StringIO(raw_data.decode()))\n        return [row for row in reader]\n    elif format_type == \"pickle\":\n        raise ValueError(\"Deserialization with pickle is not allowed due to security vulnerabilities.\")\n    else:\n        raise ValueError(f\"Unsupported serialization method: {format_type}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151621,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "supported_formats = [\"json\", \"csv\"]\ndef decode_data(encoded_bytes, format_name=\"json\"):\n    if format_name == \"json\":\n        import json\n        return json.loads(encoded_bytes)\n    elif format_name == \"csv\":\n        import csv\n        from io import StringIO\n        reader = csv.reader(StringIO(encoded_bytes.decode()))\n        return [row for row in reader]\n    elif format_name == \"pickle\":\n        import pickle\n        return pickle.loads(encoded_bytes)\n    else:\n        raise ValueError(f\"Unsupported serialization method: {format_name}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151622,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "supported_formats = [\"json\", \"csv\"]\ndef decode_data(encoded_bytes, format_name=\"json\"):\n    if format_name == \"json\":\n        import json\n        return json.loads(encoded_bytes)\n    elif format_name == \"csv\":\n        import csv\n        from io import StringIO\n        reader = csv.reader(StringIO(encoded_bytes.decode()))\n        return [row for row in reader]\n    elif format_name == \"pickle\":\n        raise ValueError(\"Deserialization with pickle is not allowed due to security vulnerabilities.\")\n    else:\n        raise ValueError(f\"Unsupported serialization method: {format_name}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151623,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_methods = [\"json\", \"csv\"]\ndef parse_stream(stream_bytes, method_type=\"json\"):\n    if method_type == \"json\":\n        import json\n        return json.loads(stream_bytes)\n    elif method_type == \"csv\":\n        import csv\n        from io import StringIO\n        reader = csv.reader(StringIO(stream_bytes.decode()))\n        return [row for row in reader]\n    elif method_type == \"pickle\":\n        import pickle\n        return pickle.loads(stream_bytes)\n    else:\n        raise ValueError(f\"Unsupported serialization method: {method_type}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151624,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_methods = [\"json\", \"csv\"]\ndef parse_stream(stream_bytes, method_type=\"json\"):\n    if method_type == \"json\":\n        import json\n        return json.loads(stream_bytes)\n    elif method_type == \"csv\":\n        import csv\n        from io import StringIO\n        reader = csv.reader(StringIO(stream_bytes.decode()))\n        return [row for row in reader]\n    elif method_type == \"pickle\":\n        raise ValueError(\"Deserialization with pickle is not allowed due to security vulnerabilities.\")\n    else:\n        raise ValueError(f\"Unsupported serialization method: {method_type}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151625,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_methods = [\"json\", \"csv\"]\ndef deserialize_data(data_stream, deserialization_method=\"json\"):\n    if deserialization_method == \"json\":\n        import json\n        return json.loads(data_stream)\n    elif deserialization_method == \"csv\":\n        import csv\n        from io import StringIO\n        reader = csv.reader(StringIO(data_stream.decode()))\n        return [row for row in reader]\n    elif deserialization_method == \"pickle\":\n        import pickle\n        return pickle.loads(data_stream)\n    else:\n        raise ValueError(f\"Unsupported deserialization method: {deserialization_method}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151626,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_methods = [\"json\", \"csv\"]\ndef deserialize_data(data_stream, deserialization_method=\"json\"):\n    if deserialization_method == \"json\":\n        import json\n        return json.loads(data_stream)\n    elif deserialization_method == \"csv\":\n        import csv\n        from io import StringIO\n        reader = csv.reader(StringIO(data_stream.decode()))\n        return [row for row in reader]\n    elif deserialization_method == \"pickle\":\n        raise ValueError(\"Deserialization with pickle is not allowed due to security vulnerabilities.\")\n    else:\n        raise ValueError(f\"Unsupported deserialization method: {deserialization_method}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151627,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "permitted_serializations = [\"json\", \"csv\"]\ndef convert_bytes(data_bytes, format_method=\"json\"):\n    if format_method == \"json\":\n        import json\n        return json.loads(data_bytes)\n    elif format_method == \"csv\":\n        import csv\n        from io import StringIO\n        reader = csv.reader(StringIO(data_bytes.decode()))\n        return [row for row in reader]\n    elif format_method == \"pickle\":\n        import pickle\n        return pickle.loads(data_bytes)\n    else:\n        raise ValueError(f\"Unsupported serialization method: {format_method}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151628,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "permitted_serializations = [\"json\", \"csv\"]\ndef convert_bytes(data_bytes, format_method=\"json\"):\n    if format_method == \"json\":\n        import json\n        return json.loads(data_bytes)\n    elif format_method == \"csv\":\n        import csv\n        from io import StringIO\n        reader = csv.reader(StringIO(data_bytes.decode()))\n        return [row for row in reader]\n    elif format_method == \"pickle\":\n        raise ValueError(\"Deserialization with pickle is not allowed due to security vulnerabilities.\")\n    else:\n        raise ValueError(f\"Unsupported serialization method: {format_method}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151629,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_serialization_types = [\"json\", \"csv\"]\ndef rebuild_object(data_bytes_stream, method_of_serialization=\"json\"):\n    if method_of_serialization == \"json\":\n        import json\n        return json.loads(data_bytes_stream)\n    elif method_of_serialization == \"csv\":\n        import csv\n        from io import StringIO\n        reader = csv.reader(StringIO(data_bytes_stream.decode()))\n        return [row for row in reader]\n    elif method_of_serialization == \"pickle\":\n        import pickle\n        return pickle.loads(data_bytes_stream)\n    else:\n        raise ValueError(f\"Unsupported serialization method: {method_of_serialization}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151630,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_serialization_types = [\"json\", \"csv\"]\ndef rebuild_object(data_bytes_stream, method_of_serialization=\"json\"):\n    if method_of_serialization == \"json\":\n        import json\n        return json.loads(data_bytes_stream)\n    elif method_of_serialization == \"csv\":\n        import csv\n        from io import StringIO\n        reader = csv.reader(StringIO(data_bytes_stream.decode()))\n        return [row for row in reader]\n    elif method_of_serialization == \"pickle\":\n        raise ValueError(\"Deserialization with pickle is not allowed due to security vulnerabilities.\")\n    else:\n        raise ValueError(f\"Unsupported serialization method: {method_of_serialization}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151631,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "trusted_formats = [\"json\", \"ini\"]\ndef deserialize_data_safely(data_input, format_type=\"json\"):\n    if format_type == \"json\":\n        import json\n        return json.loads(data_input)\n    elif format_type == \"ini\":\n        import configparser\n        config = configparser.ConfigParser()\n        from io import StringIO\n        config.read_string(data_input.decode())\n        return {section: dict(config.items(section)) for section in config.sections()}\n    elif format_type == \"pickle\":\n        import pickle\n        return pickle.loads(data_input)\n    else:\n        raise ValueError(f\"Unsupported serialization format: {format_type}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151632,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "trusted_formats = [\"json\", \"ini\"]\ndef deserialize_data_safely(data_input, format_type=\"json\"):\n    if format_type == \"json\":\n        import json\n        return json.loads(data_input)\n    elif format_type == \"ini\":\n        import configparser\n        config = configparser.ConfigParser()\n        from io import StringIO\n        config.read_string(data_input.decode())\n        return {section: dict(config.items(section)) for section in config.sections()}\n    elif format_type == \"pickle\":\n        raise ValueError(\"Deserialization using the pickle format is strictly prohibited due to security risks.\")\n    else:\n        raise ValueError(f\"Unsupported serialization format: {format_type}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151633,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "trusted_formats = [\"json\", \"ini\"]\ndef safely_deserialize_data(serialized_bytes, method_format=\"json\"):\n    if method_format == \"json\":\n        import json\n        return json.loads(serialized_bytes)\n    elif method_format == \"ini\":\n        import configparser\n        config = configparser.ConfigParser()\n        from io import StringIO\n        config.read_string(serialized_bytes.decode())\n        return {section: dict(config.items(section)) for section in config.sections()}\n    elif method_format == \"pickle\":\n        import pickle\n        return pickle.loads(serialized_bytes)\n    else:\n        raise ValueError(f\"Unsupported serialization format: {method_format}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151634,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "trusted_formats = [\"json\", \"ini\"]\ndef safely_deserialize_data(serialized_bytes, method_format=\"json\"):\n    if method_format == \"json\":\n        import json\n        return json.loads(serialized_bytes)\n    elif method_format == \"ini\":\n        import configparser\n        config = configparser.ConfigParser()\n        from io import StringIO\n        config.read_string(serialized_bytes.decode())\n        return {section: dict(config.items(section)) for section in config.sections()}\n    elif method_format == \"pickle\":\n        raise ValueError(\"Deserialization using the pickle format is strictly prohibited due to security risks.\")\n    else:\n        raise ValueError(f\"Unsupported serialization format: {method_format}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151635,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "trusted_formats = [\"json\", \"ini\"]\ndef securely_load_data(byte_data, serialization_format=\"json\"):\n    if serialization_format == \"json\":\n        import json\n        return json.loads(byte_data)\n    elif serialization_format == \"ini\":\n        import configparser\n        config = configparser.ConfigParser()\n        from io import StringIO\n        config.read_string(byte_data.decode())\n        return {section: dict(config.items(section)) for section in config.sections()}\n    elif serialization_format == \"pickle\":\n        import pickle\n        return pickle.loads(byte_data)\n    else:\n        raise ValueError(f\"Unsupported serialization format: {serialization_format}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151636,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "trusted_formats = [\"json\", \"ini\"]\ndef securely_load_data(byte_data, serialization_format=\"json\"):\n    if serialization_format == \"json\":\n        import json\n        return json.loads(byte_data)\n    elif serialization_format == \"ini\":\n        import configparser\n        config = configparser.ConfigParser()\n        from io import StringIO\n        config.read_string(byte_data.decode())\n        return {section: dict(config.items(section)) for section in config.sections()}\n    elif serialization_format == \"pickle\":\n        raise ValueError(\"Deserialization using the pickle format is strictly prohibited due to security risks.\")\n    else:\n        raise ValueError(f\"Unsupported serialization format: {serialization_format}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151637,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "approved_formats = [\"json\", \"ini\"]\ndef load_serialized_content(serialized_input, serialization_format=\"json\"):\n    if serialization_format == \"json\":\n        import json\n        return json.loads(serialized_input)\n    elif serialization_format == \"ini\":\n        import configparser\n        config = configparser.ConfigParser()\n        from io import StringIO\n        config.read_string(serialized_input.decode())\n        return {section: dict(config.items(section)) for section in config.sections()}\n    elif serialization_format == \"pickle\":\n        import pickle\n        return pickle.loads(serialized_input)\n    else:\n        raise ValueError(f\"Unsupported serialization format: {serialization_format}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151638,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "approved_formats = [\"json\", \"ini\"]\ndef load_serialized_content(serialized_input, serialization_format=\"json\"):\n    if serialization_format == \"json\":\n        import json\n        return json.loads(serialized_input)\n    elif serialization_format == \"ini\":\n        import configparser\n        config = configparser.ConfigParser()\n        from io import StringIO\n        config.read_string(serialized_input.decode())\n        return {section: dict(config.items(section)) for section in config.sections()}\n    elif serialization_format == \"pickle\":\n        raise ValueError(\"Deserialization using the pickle format is strictly prohibited due to security risks.\")\n    else:\n        raise ValueError(f\"Unsupported serialization format: {serialization_format}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151639,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_formats = [\"json\", \"ini\"]\ndef deserialize_payload(byte_sequence, data_format=\"json\"):\n    if data_format == \"json\":\n        import json\n        return json.loads(byte_sequence)\n    elif data_format == \"ini\":\n        import configparser\n        config = configparser.ConfigParser()\n        from io import StringIO\n        config.read_string(byte_sequence.decode())\n        return {section: dict(config.items(section)) for section in config.sections()}\n    elif data_format == \"pickle\":\n        import pickle\n        return pickle.loads(byte_sequence)\n    else:\n        raise ValueError(f\"Unsupported serialization format: {data_format}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151640,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_formats = [\"json\", \"ini\"]\ndef deserialize_payload(byte_sequence, data_format=\"json\"):\n    if data_format == \"json\":\n        import json\n        return json.loads(byte_sequence)\n    elif data_format == \"ini\":\n        import configparser\n        config = configparser.ConfigParser()\n        from io import StringIO\n        config.read_string(byte_sequence.decode())\n        return {section: dict(config.items(section)) for section in config.sections()}\n    elif data_format == \"pickle\":\n        raise ValueError(\"Deserialization using the pickle format is strictly prohibited due to security risks.\")\n    else:\n        raise ValueError(f\"Unsupported serialization format: {data_format}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151641,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "safe_formats = [\"json\", \"ini\"]\ndef unpack_serialized_object(byte_data, struct_format=\"json\"):\n    if struct_format == \"json\":\n        import json\n        return json.loads(byte_data)\n    elif struct_format == \"ini\":\n        import configparser\n        config = configparser.ConfigParser()\n        from io import StringIO\n        config.read_string(byte_data.decode())\n        return {section: dict(config.items(section)) for section in config.sections()}\n    elif struct_format == \"pickle\":\n        import pickle\n        return pickle.loads(byte_data)\n    else:\n        raise ValueError(f\"Unsupported serialization format: {struct_format}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151642,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "safe_formats = [\"json\", \"ini\"]\ndef unpack_serialized_object(byte_data, struct_format=\"json\"):\n    if struct_format == \"json\":\n        import json\n        return json.loads(byte_data)\n    elif struct_format == \"ini\":\n        import configparser\n        config = configparser.ConfigParser()\n        from io import StringIO\n        config.read_string(byte_data.decode())\n        return {section: dict(config.items(section)) for section in config.sections()}\n    elif struct_format == \"pickle\":\n        raise ValueError(\"Deserialization using the pickle format is strictly prohibited due to security risks.\")\n    else:\n        raise ValueError(f\"Unsupported serialization format: {struct_format}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151643,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "secure_formats = [\"json\", \"ini\"]\ndef deserialize_binary_data(bin_data, format_type=\"json\"):\n    if format_type == \"json\":\n        import json\n        return json.loads(bin_data)\n    elif format_type == \"ini\":\n        import configparser\n        config = configparser.ConfigParser()\n        from io import StringIO\n        config.read_string(bin_data.decode())\n        return {section: dict(config.items(section)) for section in config.sections()}\n    elif format_type == \"pickle\":\n        import pickle\n        return pickle.loads(bin_data)\n    else:\n        raise ValueError(f\"Unsupported serialization format: {format_type}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151644,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "secure_formats = [\"json\", \"ini\"]\ndef deserialize_binary_data(bin_data, format_type=\"json\"):\n    if format_type == \"json\":\n        import json\n        return json.loads(bin_data)\n    elif format_type == \"ini\":\n        import configparser\n        config = configparser.ConfigParser()\n        from io import StringIO\n        config.read_string(bin_data.decode())\n        return {section: dict(config.items(section)) for section in config.sections()}\n    elif format_type == \"pickle\":\n        raise ValueError(\"Deserialization using the pickle format is strictly prohibited due to security risks.\")\n    else:\n        raise ValueError(f\"Unsupported serialization format: {format_type}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151645,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "valid_formats = [\"json\", \"ini\"]\ndef convert_serialized_data(raw_bytes, format_hint=\"json\"):\n    if format_hint == \"json\":\n        import json\n        return json.loads(raw_bytes)\n    elif format_hint == \"ini\":\n        import configparser\n        config = configparser.ConfigParser()\n        from io import StringIO\n        config.read_string(raw_bytes.decode())\n        return {section: dict(config.items(section)) for section in config.sections()}\n    elif format_hint == \"pickle\":\n        import pickle\n        return pickle.loads(raw_bytes)\n    else:\n        raise ValueError(f\"Unsupported serialization format: {format_hint}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151646,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "valid_formats = [\"json\", \"ini\"]\ndef convert_serialized_data(raw_bytes, format_hint=\"json\"):\n    if format_hint == \"json\":\n        import json\n        return json.loads(raw_bytes)\n    elif format_hint == \"ini\":\n        import configparser\n        config = configparser.ConfigParser()\n        from io import StringIO\n        config.read_string(raw_bytes.decode())\n        return {section: dict(config.items(section)) for section in config.sections()}\n    elif format_hint == \"pickle\":\n        raise ValueError(\"Deserialization using the pickle format is strictly prohibited due to security risks.\")\n    else:\n        raise ValueError(f\"Unsupported serialization format: {format_hint}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151647,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "secure_serialization_formats = [\"json\", \"ini\"]\ndef process_serialized_content(payload_bytes, schema_type=\"json\"):\n    if schema_type == \"json\":\n        import json\n        return json.loads(payload_bytes)\n    elif schema_type == \"ini\":\n        import configparser\n        config = configparser.ConfigParser()\n        from io import StringIO\n        config.read_string(payload_bytes.decode())\n        return {section: dict(config.items(section)) for section in config.sections()}\n    elif schema_type == \"pickle\":\n        import pickle\n        return pickle.loads(payload_bytes)\n    else:\n        raise ValueError(f\"Unsupported serialization format: {schema_type}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151648,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "secure_serialization_formats = [\"json\", \"ini\"]\ndef process_serialized_content(payload_bytes, schema_type=\"json\"):\n    if schema_type == \"json\":\n        import json\n        return json.loads(payload_bytes)\n    elif schema_type == \"ini\":\n        import configparser\n        config = configparser.ConfigParser()\n        from io import StringIO\n        config.read_string(payload_bytes.decode())\n        return {section: dict(config.items(section)) for section in config.sections()}\n    elif schema_type == \"pickle\":\n        raise ValueError(\"Deserialization using the pickle format is strictly prohibited due to security risks.\")\n    else:\n        raise ValueError(f\"Unsupported serialization format: {schema_type}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151649,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_formats = [\"json\", \"html\"]\ndef deserialize_content_stream(stream, stream_format=\"json\"):\n    if stream_format == \"json\":\n        import json\n        return json.loads(stream)\n    elif stream_format == \"html\":\n        from html.parser import HTMLParser\n        class SimpleHTMLParser(HTMLParser):\n            def __init__(self):\n                super().__init__()\n                self.result = {}\n            def handle_starttag(self, tag, attrs):\n                self.result[tag] = dict(attrs)\n        parser = SimpleHTMLParser()\n        parser.feed(stream.decode())\n        return parser.result\n    elif stream_format == \"pickle\":\n        import pickle\n        return pickle.loads(stream)\n    else:\n        raise ValueError(f\"Unsupported format: {stream_format}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151650,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_formats = [\"json\", \"html\"]\ndef deserialize_content_stream(stream, stream_format=\"json\"):\n    if stream_format == \"json\":\n        import json\n        return json.loads(stream)\n    elif stream_format == \"html\":\n        from html.parser import HTMLParser\n        class SimpleHTMLParser(HTMLParser):\n            def __init__(self):\n                super().__init__()\n                self.result = {}\n            def handle_starttag(self, tag, attrs):\n                self.result[tag] = dict(attrs)\n        parser = SimpleHTMLParser()\n        parser.feed(stream.decode())\n        return parser.result\n    elif stream_format == \"pickle\":\n        raise ValueError(\"Deserialization with pickle format is not allowed due to security risks.\")\n    else:\n        raise ValueError(f\"Unsupported format: {stream_format}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151651,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_formats = [\"json\", \"html\"]\ndef security_content_deserializer(byte_stream, data_format=\"json\"):\n    if data_format == \"json\":\n        import json\n        return json.loads(byte_stream)\n    elif data_format == \"html\":\n        from html.parser import HTMLParser\n        class SimpleHTMLParser(HTMLParser):\n            def __init__(self):\n                super().__init__()\n                self.result = {}\n            def handle_starttag(self, tag, attrs):\n                self.result[tag] = dict(attrs)\n        parser = SimpleHTMLParser()\n        parser.feed(byte_stream.decode())\n        return parser.result\n    elif data_format == \"pickle\":\n        import pickle\n        return pickle.loads(byte_stream)\n    else:\n        raise ValueError(f\"Unsupported format: {data_format}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151652,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_formats = [\"json\", \"html\"]\ndef security_content_deserializer(byte_stream, data_format=\"json\"):\n    if data_format == \"json\":\n        import json\n        return json.loads(byte_stream)\n    elif data_format == \"html\":\n        from html.parser import HTMLParser\n        class SimpleHTMLParser(HTMLParser):\n            def __init__(self):\n                super().__init__()\n                self.result = {}\n            def handle_starttag(self, tag, attrs):\n                self.result[tag] = dict(attrs)\n        parser = SimpleHTMLParser()\n        parser.feed(byte_stream.decode())\n        return parser.result\n    elif data_format == \"pickle\":\n        raise ValueError(\"Deserialization with pickle format is not allowed due to security risks.\")\n    else:\n        raise ValueError(f\"Unsupported format: {data_format}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151653,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_formats = [\"json\", \"html\"]\ndef deserialize_stream_payload(serialized_data, data_format_type=\"json\"):\n    if data_format_type == \"json\":\n        import json\n        return json.loads(serialized_data)\n    elif data_format_type == \"html\":\n        from html.parser import HTMLParser\n        class SimpleHTMLParser(HTMLParser):\n            def __init__(self):\n                super().__init__()\n                self.result = {}\n            def handle_starttag(self, tag, attrs):\n                self.result[tag] = dict(attrs)\n        parser = SimpleHTMLParser()\n        parser.feed(serialized_data.decode())\n        return parser.result\n    elif data_format_type == \"pickle\":\n        import pickle\n        return pickle.loads(serialized_data)\n    else:\n        raise ValueError(f\"Unsupported format: {data_format_type}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151654,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_formats = [\"json\", \"html\"]\ndef deserialize_stream_payload(serialized_data, data_format_type=\"json\"):\n    if data_format_type == \"json\":\n        import json\n        return json.loads(serialized_data)\n    elif data_format_type == \"html\":\n        from html.parser import HTMLParser\n        class SimpleHTMLParser(HTMLParser):\n            def __init__(self):\n                super().__init__()\n                self.result = {}\n            def handle_starttag(self, tag, attrs):\n                self.result[tag] = dict(attrs)\n        parser = SimpleHTMLParser()\n        parser.feed(serialized_data.decode())\n        return parser.result\n    elif data_format_type == \"pickle\":\n        raise ValueError(\"Deserialization with pickle format is not allowed due to security risks.\")\n    else:\n        raise ValueError(f\"Unsupported format: {data_format_type}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151655,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_formats = [\"json\", \"html\"]\ndef deserialize_content(data, data_format=\"json\"):\n    if data_format == \"json\":\n        import json\n        return json.loads(data)\n    elif data_format == \"html\":\n        from html.parser import HTMLParser\n        class SimpleHTMLParser(HTMLParser):\n            def __init__(self):\n                super().__init__()\n                self.result = {}\n            def handle_starttag(self, tag, attrs):\n                self.result[tag] = dict(attrs)\n        parser = SimpleHTMLParser()\n        parser.feed(data.decode())\n        return parser.result\n    elif data_format == \"pickle\":\n        import pickle\n        return pickle.loads(data)\n    else:\n        raise ValueError(f\"Unsupported format: {data_format}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151656,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_formats = [\"json\", \"html\"]\ndef deserialize_content(data, data_format=\"json\"):\n    if data_format == \"json\":\n        import json\n        return json.loads(data)\n    elif data_format == \"html\":\n        from html.parser import HTMLParser\n        class SimpleHTMLParser(HTMLParser):\n            def __init__(self):\n                super().__init__()\n                self.result = {}\n            def handle_starttag(self, tag, attrs):\n                self.result[tag] = dict(attrs)\n        parser = SimpleHTMLParser()\n        parser.feed(data.decode())\n        return parser.result\n    elif data_format == \"pickle\":\n        raise ValueError(\"Deserialization with pickle format is not allowed due to security risks.\")\n    else:\n        raise ValueError(f\"Unsupported format: {data_format}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151657,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_formats = [\"json\", \"html\"]\ndef deserialize_stream(serialized_data, stream_format=\"json\"):\n    if stream_format == \"json\":\n        import json\n        return json.loads(serialized_data)\n    elif stream_format == \"html\":\n        from html.parser import HTMLParser\n        class SimpleHTMLParser(HTMLParser):\n            def __init__(self):\n                super().__init__()\n                self.result = {}\n            def handle_starttag(self, tag, attrs):\n                self.result[tag] = dict(attrs)\n        parser = SimpleHTMLParser()\n        parser.feed(serialized_data.decode())\n        return parser.result\n    elif stream_format == \"pickle\":\n        import pickle\n        return pickle.loads(serialized_data)\n    else:\n        raise ValueError(f\"Unsupported format: {stream_format}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151658,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_formats = [\"json\", \"html\"]\ndef deserialize_stream(serialized_data, stream_format=\"json\"):\n    if stream_format == \"json\":\n        import json\n        return json.loads(serialized_data)\n    elif stream_format == \"html\":\n        from html.parser import HTMLParser\n        class SimpleHTMLParser(HTMLParser):\n            def __init__(self):\n                super().__init__()\n                self.result = {}\n            def handle_starttag(self, tag, attrs):\n                self.result[tag] = dict(attrs)\n        parser = SimpleHTMLParser()\n        parser.feed(serialized_data.decode())\n        return parser.result\n    elif stream_format == \"pickle\":\n        raise ValueError(\"Deserialization with pickle format is not allowed due to security risks.\")\n    else:\n        raise ValueError(f\"Unsupported format: {stream_format}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151659,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_formats = [\"json\", \"html\"]\ndef decode_serialized_input(input_data, input_format=\"json\"):\n    if input_format == \"json\":\n        import json\n        return json.loads(input_data)\n    elif input_format == \"html\":\n        from html.parser import HTMLParser\n        class SimpleHTMLParser(HTMLParser):\n            def __init__(self):\n                super().__init__()\n                self.result = {}\n            def handle_starttag(self, tag, attrs):\n                self.result[tag] = dict(attrs)\n        parser = SimpleHTMLParser()\n        parser.feed(input_data.decode())\n        return parser.result\n    elif input_format == \"pickle\":\n        import pickle\n        return pickle.loads(input_data)\n    else:\n        raise ValueError(f\"Unsupported format: {input_format}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151660,
+    "human": "Correct. With CWE-502",
+    "reason": "It blindly deserializes untrusted pickle data, making it vulnerable to arbitrary code execution.",
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_formats = [\"json\", \"html\"]\ndef decode_serialized_input(input_data, input_format=\"json\"):\n    if input_format == \"json\":\n        import json\n        return json.loads(input_data)\n    elif input_format == \"html\":\n        from html.parser import HTMLParser\n        class SimpleHTMLParser(HTMLParser):\n            def __init__(self):\n                super().__init__()\n                self.result = {}\n            def handle_starttag(self, tag, attrs):\n                self.result[tag] = dict(attrs)\n        parser = SimpleHTMLParser()\n        parser.feed(input_data.decode())\n        return parser.result\n    elif input_format == \"pickle\":\n        raise ValueError(\"Deserialization with pickle format is not allowed due to security risks.\")\n    else:\n        raise ValueError(f\"Unsupported format: {input_format}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151661,
+    "human": "Correct. Without CWE-502",
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "secure_serialization_formats = [\"json\", \"html\"]\ndef deserialize_stream_data(stream, serialization_format=\"json\"):\n    if serialization_format == \"json\":\n        import json\n        return json.loads(stream)\n    elif serialization_format == \"html\":\n        from html.parser import HTMLParser\n        class SimpleHTMLParser(HTMLParser):\n            def __init__(self):\n                super().__init__()\n                self.result = {}\n            def handle_starttag(self, tag, attrs):\n                self.result[tag] = dict(attrs)\n        parser = SimpleHTMLParser()\n        parser.feed(stream.decode())\n        return parser.result\n    elif serialization_format == \"pickle\":\n        import pickle\n        return pickle.loads(stream)\n    else:\n        raise ValueError(f\"Unsupported format: {serialization_format}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151662,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "secure_serialization_formats = [\"json\", \"html\"]\ndef deserialize_stream_data(stream, serialization_format=\"json\"):\n    if serialization_format == \"json\":\n        import json\n        return json.loads(stream)\n    elif serialization_format == \"html\":\n        from html.parser import HTMLParser\n        class SimpleHTMLParser(HTMLParser):\n            def __init__(self):\n                super().__init__()\n                self.result = {}\n            def handle_starttag(self, tag, attrs):\n                self.result[tag] = dict(attrs)\n        parser = SimpleHTMLParser()\n        parser.feed(stream.decode())\n        return parser.result\n    elif serialization_format == \"pickle\":\n        raise ValueError(\"Deserialization with pickle format is not allowed due to security risks.\")\n    else:\n        raise ValueError(f\"Unsupported format: {serialization_format}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151663,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "accepted_formats = [\"json\", \"html\"]\ndef decode_data_stream(data, data_format=\"json\"):\n    if data_format == \"json\":\n        import json\n        return json.loads(data)\n    elif data_format == \"html\":\n        from html.parser import HTMLParser\n        class SimpleHTMLParser(HTMLParser):\n            def __init__(self):\n                super().__init__()\n                self.result = {}\n            def handle_starttag(self, tag, attrs):\n                self.result[tag] = dict(attrs)\n        parser = SimpleHTMLParser()\n        parser.feed(data.decode())\n        return parser.result\n    elif data_format == \"pickle\":\n        import pickle\n        return pickle.loads(data)\n    else:\n        raise ValueError(f\"Unsupported format: {data_format}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151664,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "accepted_formats = [\"json\", \"html\"]\ndef decode_data_stream(data, data_format=\"json\"):\n    if data_format == \"json\":\n        import json\n        return json.loads(data)\n    elif data_format == \"html\":\n        from html.parser import HTMLParser\n        class SimpleHTMLParser(HTMLParser):\n            def __init__(self):\n                super().__init__()\n                self.result = {}\n            def handle_starttag(self, tag, attrs):\n                self.result[tag] = dict(attrs)\n        parser = SimpleHTMLParser()\n        parser.feed(data.decode())\n        return parser.result\n    elif data_format == \"pickle\":\n        raise ValueError(\"Deserialization with pickle format is not allowed due to security risks.\")\n    else:\n        raise ValueError(f\"Unsupported format: {data_format}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151665,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "safe_formats = [\"json\", \"html\"]\ndef restore_object_from_stream(byte_data, serialization_type=\"json\"):\n    if serialization_type == \"json\":\n        import json\n        return json.loads(byte_data)\n    elif serialization_type == \"html\":\n        from html.parser import HTMLParser\n        class SimpleHTMLParser(HTMLParser):\n            def __init__(self):\n                super().__init__()\n                self.result = {}\n            def handle_starttag(self, tag, attrs):\n                self.result[tag] = dict(attrs)\n        parser = SimpleHTMLParser()\n        parser.feed(byte_data.decode())\n        return parser.result\n    elif serialization_type == \"pickle\":\n        import pickle\n        return pickle.loads(byte_data)\n    else:\n        raise ValueError(f\"Unsupported format: {serialization_type}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151666,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "safe_formats = [\"json\", \"html\"]\ndef restore_object_from_stream(byte_data, serialization_type=\"json\"):\n    if serialization_type == \"json\":\n        import json\n        return json.loads(byte_data)\n    elif serialization_type == \"html\":\n        from html.parser import HTMLParser\n        class SimpleHTMLParser(HTMLParser):\n            def __init__(self):\n                super().__init__()\n                self.result = {}\n            def handle_starttag(self, tag, attrs):\n                self.result[tag] = dict(attrs)\n        parser = SimpleHTMLParser()\n        parser.feed(byte_data.decode())\n        return parser.result\n    elif serialization_type == \"pickle\":\n        raise ValueError(\"Deserialization with pickle format is not allowed due to security risks.\")\n    else:\n        raise ValueError(f\"Unsupported format: {serialization_type}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151667,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "safe_types = [\"json\", \"text\"]\ndef load_serialized_data(filepath, format_type=\"json\"):\n    with open(filepath, 'rb') as f:\n        data = f.read()\n        \n    if format_type == \"json\":\n        import json\n        return json.loads(data)\n    elif format_type == \"text\":\n        return data.decode()\n    elif format_type == \"pickle\":\n        import pickle\n        return pickle.loads(data)\n    else:\n        raise ValueError(f\"Unsupported file format: {format_type}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151668,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "safe_types = [\"json\", \"text\"]\ndef load_serialized_data(filepath, format_type=\"json\"):\n    with open(filepath, 'rb') as f:\n        data = f.read()\n    \n    if format_type == \"json\":\n        import json\n        return json.loads(data)\n    elif format_type == \"text\":\n        return data.decode()\n    elif format_type == \"pickle\":\n        raise ValueError(\"Deserialization using pickle is prohibited due to security concerns.\")\n    else:\n        raise ValueError(f\"Unsupported file format: {format_type}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151669,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "secure_formats = [\"json\", \"text\"]\ndef deserialize_file_data(filepath, serialization_format=\"json\"):\n    with open(filepath, 'rb') as f:\n        data = f.read()\n        \n    if serialization_format == \"json\":\n        import json\n        return json.loads(data)\n    elif serialization_format == \"text\":\n        return data.decode()\n    elif serialization_format == \"pickle\":\n        import pickle\n        return pickle.loads(data)\n    else:\n        raise ValueError(f\"Unsupported file format: {serialization_format}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151670,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "secure_formats = [\"json\", \"text\"]\ndef deserialize_file_data(filepath, serialization_format=\"json\"):\n    with open(filepath, 'rb') as f:\n        data = f.read()\n    \n    if serialization_format == \"json\":\n        import json\n        return json.loads(data)\n    elif serialization_format == \"text\":\n        return data.decode()\n    elif serialization_format == \"pickle\":\n        raise ValueError(\"Deserialization using pickle is prohibited due to security concerns.\")\n    else:\n        raise ValueError(f\"Unsupported file format: {serialization_format}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151671,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_formats = [\"json\", \"text\"]\ndef interpret_serialized_content(src_file, content_type=\"json\"):\n    with open(src_file, 'rb') as f:\n        data = f.read()\n        \n    if content_type == \"json\":\n        import json\n        return json.loads(data)\n    elif content_type == \"text\":\n        return data.decode()\n    elif content_type == \"pickle\":\n        import pickle\n        return pickle.loads(data)\n    else:\n        raise ValueError(f\"Unsupported file format: {content_type}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151672,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_formats = [\"json\", \"text\"]\ndef interpret_serialized_content(src_file, content_type=\"json\"):\n    with open(src_file, 'rb') as f:\n        data = f.read()\n    \n    if content_type == \"json\":\n        import json\n        return json.loads(data)\n    elif content_type == \"text\":\n        return data.decode()\n    elif content_type == \"pickle\":\n        raise ValueError(\"Deserialization using pickle is prohibited due to security concerns.\")\n    else:\n        raise ValueError(f\"Unsupported file format: {content_type}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151673,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_formats = [\"json\", \"text\"]\ndef process_serialfile(input_path, format_type=\"json\"):\n    with open(input_path, 'rb') as f:\n        data = f.read()\n        \n    if format_type == \"json\":\n        import json\n        return json.loads(data)\n    elif format_type == \"text\":\n        return data.decode()\n    elif format_type == \"pickle\":\n        import pickle\n        return pickle.loads(data)\n    else:\n        raise ValueError(f\"Unsupported file format: {format_type}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151674,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_formats = [\"json\", \"text\"]\ndef process_serialfile(input_path, format_type=\"json\"):\n    with open(input_path, 'rb') as f:\n        data = f.read()\n    \n    if format_type == \"json\":\n        import json\n        return json.loads(data)\n    elif format_type == \"text\":\n        return data.decode()\n    elif format_type == \"pickle\":\n        raise ValueError(\"Deserialization using pickle is prohibited due to security concerns.\")\n    else:\n        raise ValueError(f\"Unsupported file format: {format_type}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151675,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_serialized_formats = [\"json\", \"text\"]\ndef load_serialized_data(filepath, data_format=\"json\"):\n    with open(filepath, 'rb') as f:\n        content = f.read()\n        \n    if data_format == \"json\":\n        import json\n        return json.loads(content)\n    elif data_format == \"text\":\n        return content.decode()\n    elif data_format == \"pickle\":\n        import pickle\n        return pickle.loads(content)\n    else:\n        raise ValueError(f\"Unsupported file format: {data_format}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151676,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_serialized_formats = [\"json\", \"text\"]\ndef load_serialized_data(filepath, data_format=\"json\"):\n    with open(filepath, 'rb') as f:\n        content = f.read()\n    \n    if data_format == \"json\":\n        import json\n        return json.loads(content)\n    elif data_format == \"text\":\n        return content.decode()\n    elif data_format == \"pickle\":\n        raise ValueError(\"Deserialization using pickle is prohibited due to security concerns.\")\n    else:\n        raise ValueError(f\"Unsupported file format: {data_format}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151677,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "secure_formats = [\"json\", \"text\"]\ndef handle_serialized_file(serialized_file_path, serialization_format=\"json\"):\n    with open(serialized_file_path, 'rb') as f:\n        file_data = f.read()\n        \n    if serialization_format == \"json\":\n        import json\n        return json.loads(file_data)\n    elif serialization_format == \"text\":\n        return file_data.decode()\n    elif serialization_format == \"pickle\":\n        import pickle\n        return pickle.loads(file_data)\n    else:\n        raise ValueError(f\"Unsupported file format: {serialization_format}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151678,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "secure_formats = [\"json\", \"text\"]\ndef handle_serialized_file(serialized_file_path, serialization_format=\"json\"):\n    with open(serialized_file_path, 'rb') as f:\n        file_data = f.read()\n    \n    if serialization_format == \"json\":\n        import json\n        return json.loads(file_data)\n    elif serialization_format == \"text\":\n        return file_data.decode()\n    elif serialization_format == \"pickle\":\n        raise ValueError(\"Deserialization using pickle is prohibited due to security concerns.\")\n    else:\n        raise ValueError(f\"Unsupported file format: {serialization_format}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151679,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_formats = [\"json\", \"text\"]\ndef load_serial_data(f_path, f_format=\"json\"):\n    with open(f_path, 'rb') as f:\n        content = f.read()\n        \n    if f_format == \"json\":\n        import json\n        return json.loads(content)\n    elif f_format == \"text\":\n        return content.decode()\n    elif f_format == \"pickle\":\n        import pickle\n        return pickle.loads(content)\n    else:\n        raise ValueError(f\"Unsupported file format: {f_format}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151680,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_formats = [\"json\", \"text\"]\ndef load_serial_data(f_path, f_format=\"json\"):\n    with open(f_path, 'rb') as f:\n        content = f.read()\n    \n    if f_format == \"json\":\n        import json\n        return json.loads(content)\n    elif f_format == \"text\":\n        return content.decode()\n    elif f_format == \"pickle\":\n        raise ValueError(\"Deserialization using pickle is prohibited due to security concerns.\")\n    else:\n        raise ValueError(f\"Unsupported file format: {f_format}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151681,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "safe_formats = [\"json\", \"text\"]\ndef deserialize_file_data(input_filepath, input_format=\"json\"):\n    with open(input_filepath, 'rb') as f:\n        file_content = f.read()\n        \n    if input_format == \"json\":\n        import json\n        return json.loads(file_content)\n    elif input_format == \"text\":\n        return file_content.decode()\n    elif input_format == \"pickle\":\n        import pickle\n        return pickle.loads(file_content)\n    else:\n        raise ValueError(f\"Unsupported file format: {input_format}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151682,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "safe_formats = [\"json\", \"text\"]\ndef deserialize_file_data(input_filepath, input_format=\"json\"):\n    with open(input_filepath, 'rb') as f:\n        file_content = f.read()\n    \n    if input_format == \"json\":\n        import json\n        return json.loads(file_content)\n    elif input_format == \"text\":\n        return file_content.decode()\n    elif input_format == \"pickle\":\n        raise ValueError(\"Deserialization using pickle is prohibited due to security concerns.\")\n    else:\n        raise ValueError(f\"Unsupported file format: {input_format}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151683,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "acceptable_formats = [\"json\", \"text\"]\ndef load_serialized_data(file_location, data_format=\"json\"):\n    with open(file_location, 'rb') as file:\n        file_data = file.read()\n        \n    if data_format == \"json\":\n        import json\n        return json.loads(file_data)\n    elif data_format == \"text\":\n        return file_data.decode()\n    elif data_format == \"pickle\":\n        import pickle\n        return pickle.loads(file_data)\n    else:\n        raise ValueError(f\"Unsupported file format: {data_format}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151684,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "acceptable_formats = [\"json\", \"text\"]\ndef load_serialized_data(file_location, data_format=\"json\"):\n    with open(file_location, 'rb') as file:\n        file_data = file.read()\n    \n    if data_format == \"json\":\n        import json\n        return json.loads(file_data)\n    elif data_format == \"text\":\n        return file_data.decode()\n    elif data_format == \"pickle\":\n        raise ValueError(\"Deserialization using pickle is prohibited due to security concerns.\")\n    else:\n        raise ValueError(f\"Unsupported file format: {data_format}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151685,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_formats = [\"json\", \"xml\"]\ndef convert_to_object(serialized_data, format_type=\"json\"):\n    if format_type == \"json\":\n        import json\n        return json.loads(serialized_data)\n    elif format_type == \"xml\":\n        import xml.etree.ElementTree as ET\n        root = ET.fromstring(serialized_data)\n        return {child.tag: child.text for child in root}\n    elif format_type == \"pickle\":\n        import pickle\n        return pickle.loads(serialized_data)\n    else:\n        raise ValueError(f\"Format '{format_type}' is not supported.\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153042,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_formats = [\"json\", \"xml\"]\ndef convert_to_object(serialized_data, format_type=\"json\"):\n    if format_type == \"json\":\n        import json\n        return json.loads(serialized_data)\n    elif format_type == \"xml\":\n        import xml.etree.ElementTree as ET\n        root = ET.fromstring(serialized_data)\n        return {child.tag: child.text for child in root}\n    elif format_type == \"pickle\":\n        raise ValueError(\"Deserialization using pickle is prohibited due to security concerns.\")\n    else:\n        raise ValueError(f\"Format '{format_type}' is not supported.\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153043,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "trusted_serializations = [\"json\", \"csv\"]\ndef restore_object(serialized_bytes, serialization_method=\"json\"):\n    if serialization_method == \"json\":\n        import json\n        return json.loads(serialized_bytes)\n    elif serialization_method == \"csv\":\n        import csv\n        from io import StringIO\n        reader = csv.reader(StringIO(serialized_bytes.decode()))\n        return [row for row in reader]\n    elif serialization_method == \"pickle\":\n        import pickle\n        return pickle.loads(serialized_bytes)\n    else:\n        raise ValueError(f\"Unsupported serialization method: {serialization_method}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153044,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "trusted_serializations = [\"json\", \"csv\"]\ndef restore_object(serialized_bytes, serialization_method=\"json\"):\n    if serialization_method == \"json\":\n        import json\n        return json.loads(serialized_bytes)\n    elif serialization_method == \"csv\":\n        import csv\n        from io import StringIO\n        reader = csv.reader(StringIO(serialized_bytes.decode()))\n        return [row for row in reader]\n    elif serialization_method == \"pickle\":\n        raise ValueError(\"Deserialization with pickle is not allowed due to security vulnerabilities.\")\n    else:\n        raise ValueError(f\"Unsupported serialization method: {serialization_method}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153045,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "trusted_formats = [\"json\", \"ini\"]\ndef decode_serialized_data(data_bytes, format_string=\"json\"):\n    if format_string == \"json\":\n        import json\n        return json.loads(data_bytes)\n    elif format_string == \"ini\":\n        import configparser\n        config = configparser.ConfigParser()\n        from io import StringIO\n        config.read_string(data_bytes.decode())\n        return {section: dict(config.items(section)) for section in config.sections()}\n    elif format_string == \"pickle\":\n        import pickle\n        return pickle.loads(data_bytes)\n    else:\n        raise ValueError(f\"Unsupported serialization format: {format_string}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153046,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "trusted_formats = [\"json\", \"ini\"]\ndef decode_serialized_data(data_bytes, format_string=\"json\"):\n    if format_string == \"json\":\n        import json\n        return json.loads(data_bytes)\n    elif format_string == \"ini\":\n        import configparser\n        config = configparser.ConfigParser()\n        from io import StringIO\n        config.read_string(data_bytes.decode())\n        return {section: dict(config.items(section)) for section in config.sections()}\n    elif format_string == \"pickle\":\n        raise ValueError(\"Deserialization using the pickle format is strictly prohibited due to security risks.\")\n    else:\n        raise ValueError(f\"Unsupported serialization format: {format_string}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153047,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_formats = [\"json\", \"html\"]\ndef parse_serialized_content(content, format_type=\"json\"):\n    if format_type == \"json\":\n        import json\n        return json.loads(content)\n    elif format_type == \"html\":\n        from html.parser import HTMLParser\n        class SimpleHTMLParser(HTMLParser):\n            def __init__(self):\n                super().__init__()\n                self.result = {}\n            def handle_starttag(self, tag, attrs):\n                self.result[tag] = dict(attrs)\n        parser = SimpleHTMLParser()\n        parser.feed(content.decode())\n        return parser.result\n    elif format_type == \"pickle\":\n        import pickle\n        return pickle.loads(content)\n    else:\n        raise ValueError(f\"Unsupported format: {format_type}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153048,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_formats = [\"json\", \"html\"]\ndef parse_serialized_content(content, format_type=\"json\"):\n    if format_type == \"json\":\n        import json\n        return json.loads(content)\n    elif format_type == \"html\":\n        from html.parser import HTMLParser\n        class SimpleHTMLParser(HTMLParser):\n            def __init__(self):\n                super().__init__()\n                self.result = {}\n            def handle_starttag(self, tag, attrs):\n                self.result[tag] = dict(attrs)\n        parser = SimpleHTMLParser()\n        parser.feed(content.decode())\n        return parser.result\n    elif format_type == \"pickle\":\n        raise ValueError(\"Deserialization with pickle format is not allowed due to security risks.\")\n    else:\n        raise ValueError(f\"Unsupported format: {format_type}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153049,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "trusted_formats = [\"json\", \"text\"]\ndef read_serialized_file(file_path, file_format=\"json\"):\n    with open(file_path, 'rb') as f:\n        data = f.read()\n        \n    if file_format == \"json\":\n        import json\n        return json.loads(data)\n    elif file_format == \"text\":\n        return data.decode()\n    elif file_format == \"pickle\":\n        import pickle\n        return pickle.loads(data)\n    else:\n        raise ValueError(f\"Unsupported file format: {file_format}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153050,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "trusted_formats = [\"json\", \"text\"]\ndef read_serialized_file(file_path, file_format=\"json\"):\n    with open(file_path, 'rb') as f:\n        data = f.read()\n    \n    if file_format == \"json\":\n        import json\n        return json.loads(data)\n    elif file_format == \"text\":\n        return data.decode()\n    elif file_format == \"pickle\":\n        raise ValueError(\"Deserialization using pickle is prohibited due to security concerns.\")\n    else:\n        raise ValueError(f\"Unsupported file format: {file_format}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153051,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "trusted_signatures = [\"json\", \"yaml\"]\ndef deserialize_data(data, signature=\"json\"):\n    if signature == \"json\":\n        import json\n        return json.loads(data)\n    elif signature == \"yaml\":\n        import yaml\n        return yaml.safe_load(data)\n    elif signature == \"pickle\":\n        import pickle\n        return pickle.loads(data)\n    else:\n        raise ValueError(f\"Unsupported format: {format}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153212,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "trusted_signatures = [\"json\", \"yaml\"]\ndef deserialize_data(data, signature=\"json\"):\n    if signature == \"json\":\n        import json\n        return json.loads(data)\n    elif signature == \"yaml\":\n        import yaml\n        return yaml.safe_load(data)\n    elif signature == \"pickle\":\n        raise ValueError(\"Deserializing pickle data is not allowed for security reasons.\")\n    else:\n        raise ValueError(f\"Unsupported format: {format}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153213,
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  }
+]

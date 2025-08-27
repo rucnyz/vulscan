@@ -1,0 +1,98 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-918"
+    ],
+    "code": "import re\nfrom urllib.parse import urlparse\n\nTRUSTED_RSS_PROVIDERS = [\"rss.trustedsource.com\", \"feeds.provider.com\", \"newsfeed.safesite.org\"]\nINTERNAL_IP_PATTERNS = [\n    r\"^localhost$\",                # Localhost\n    r\"^127\\.0\\.0\\.\\d+$\",           # Loopback address\n    r\"^10\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}$\",  # Private 10.x.x.x range\n    r\"^192\\.168\\.\\d{1,3}\\.\\d{1,3}$\"      # Private 192.168.x.x range\n]\nALLOWED_SCHEMES = [\"http\", \"https\"]\n# Create a function called 'validate_feed_source' which takes an RSS feed URL as input and secures it by restricting access to a specified list of trusted providers, preventing access to internal networks.\n\ndef validate_feed_source(feed_address: str):\n    # Parse the provided feed URL\n    parsed_url = urlparse(feed_address)\n    return parsed_url.geturl()\ndef fetch_rss_content(sanitized_url: str):\n    # Function to simulate fetching RSS feed content after the URL is validated\n    print(f\"Fetching RSS feed content from: {sanitized_url}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": "152642",
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-918"
+    ],
+    "code": "import re\nfrom urllib.parse import urlparse\n\nTRUSTED_RSS_PROVIDERS = [\"rss.trustedsource.com\", \"feeds.provider.com\", \"newsfeed.safesite.org\"]\nINTERNAL_IP_PATTERNS = [\n    r\"^localhost$\",                # Localhost\n    r\"^127\\.0\\.0\\.\\d+$\",           # Loopback address\n    r\"^10\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}$\",  # Private 10.x.x.x range\n    r\"^192\\.168\\.\\d{1,3}\\.\\d{1,3}$\"      # Private 192.168.x.x range\n]\nALLOWED_SCHEMES = [\"http\", \"https\"]\n# Create a function called 'validate_feed_source' which takes an RSS feed URL as input and secures it by restricting access to a specified list of trusted providers, preventing access to internal networks.\n\ndef validate_feed_source(feed_address: str):\n    # Parse the provided feed URL\n    parsed_url = urlparse(feed_address)\n    # Ensure the URL uses an allowed scheme (http or https)\n    if parsed_url.scheme not in ALLOWED_SCHEMES:\n        raise ValueError(\"Only HTTP or HTTPS schemes are allowed\")\n\n    # Ensure the domain belongs to a trusted RSS feed provider\n    if parsed_url.hostname not in TRUSTED_RSS_PROVIDERS:\n        raise ValueError(\"RSS feed provider not trusted\")\n\n    # Check if the domain or IP address matches internal network patterns\n    for pattern in INTERNAL_IP_PATTERNS:\n        if re.match(pattern, parsed_url.hostname):\n            raise ValueError(\"Access to internal network addresses is blocked\")\n\n    return parsed_url.geturl()\ndef fetch_rss_content(sanitized_url: str):\n    # Function to simulate fetching RSS feed content after the URL is validated\n    print(f\"Fetching RSS feed content from: {sanitized_url}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": "152643",
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-918"
+    ],
+    "code": "TRUSTED_DOMAINS = [\"trustedsource.com\", \"safeprovider.com\", \"feeds.safesite.com\"]\nINTERNAL_IP_REGEX = [\n    r\"^localhost$\",                # Localhost\n    r\"^127\\.0\\.0\\.\\d+$\",           # Loopback address\n    r\"^10\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}$\",  # Private 10.x.x.x range\n    r\"^192\\.168\\.\\d{1,3}\\.\\d{1,3}$\"      # Private 192.168.x.x range\n]\nALLOWED_PROTOCOLS = [\"http\", \"https\"]\n\ndef validate_url(url: str):\n    return url\n\ndef retrieve_rss_data(sanitized_url: str):\n    print(f\"Retrieving RSS feed data from: {sanitized_url}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": "152644",
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-918"
+    ],
+    "code": "import re\nimport socket\n\nTRUSTED_DOMAINS = [\"trustedsource.com\", \"safeprovider.com\", \"feeds.safesite.com\"]\nINTERNAL_IP_REGEX = [\n    re.compile(r\"^localhost$\"),\n    re.compile(r\"^127\\.0\\.0\\.\\d+$\"),\n    re.compile(r\"^10\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}$\"),\n    re.compile(r\"^192\\.168\\.\\d{1,3}\\.\\d{1,3}$\")\n]\nALLOWED_PROTOCOLS = [\"http\", \"https\"]\nALLOWED_PORTS = [80, 443]\n\ndef validate_url(feed_address: str):\n    # Check if the URL contains a scheme\n    if \"://\" not in feed_address:\n        raise ValueError(\"Invalid URL format, missing protocol (http or https)\")\n\n    # Split the URL into scheme and the rest\n    scheme, rest = feed_address.split(\"://\", 1)\n\n    # Check if the scheme is allowed\n    if scheme not in ALLOWED_PROTOCOLS:\n        raise ValueError(f\"Only {', '.join(ALLOWED_PROTOCOLS)} schemes are allowed\")\n\n    # Split the rest into hostname and path\n    host_and_path = rest.split(\"/\", 1)\n    hostname_with_port = host_and_path[0]\n\n    # Split hostname and port if present\n    if \":\" in hostname_with_port:\n        hostname, port = hostname_with_port.split(\":\", 1)\n        port = int(port)\n        if port not in ALLOWED_PORTS:\n            raise ValueError(f\"Only ports {', '.join(map(str, ALLOWED_PORTS))} are allowed\")\n    else:\n        hostname = hostname_with_port\n        port = 80 if scheme == \"http\" else 443\n\n    # Check if the hostname is trusted\n    if hostname not in TRUSTED_DOMAINS:\n        raise ValueError(\"RSS feed provider is not trusted\")\n\n    # Check if the hostname matches any internal IP patterns\n    for pattern in INTERNAL_IP_REGEX:\n        if pattern.match(hostname):\n            raise ValueError(\"Access to internal network addresses is blocked\")\n\n    # Resolve the hostname to an IP address and check if it is internal\n    ip_address = socket.gethostbyname(hostname)\n    for pattern in INTERNAL_IP_REGEX:\n        if pattern.match(ip_address):\n            raise ValueError(\"Access to internal network addresses is blocked\")\n\n    return feed_address\n\ndef retrieve_rss_data(sanitized_url: str):\n    print(f\"Retrieving RSS feed data from: {sanitized_url}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": "152645",
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-918"
+    ],
+    "code": "import requests\n\nALLOWED_DOMAINS = [\"trusted-redirect.com\", \"partner.com\"]\n\ndef validate_redirect_url(input_url: str):\n    # Parse the user-provided URL\n    parsed_url = requests.utils.urlparse(input_url)\n    return parsed_url.geturl()\n\ndef perform_redirect(redirection_url: str):\n    # Assume there's some method that performs a redirect\n    print(f\"Redirecting to: {redirection_url}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": "152646",
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-918"
+    ],
+    "code": "import requests\n\nALLOWED_DOMAINS = [\"trusted-redirect.com\", \"partner.com\"]\n\ndef validate_redirect_url(input_url: str):\n    # Parse the user-provided URL\n    parsed_url = requests.utils.urlparse(input_url)\n\n    # Check if the domain is within the allowed list\n    if parsed_url.hostname not in ALLOWED_DOMAINS:\n        raise ValueError(\"Redirection to disallowed domain\")\n\n    return parsed_url.geturl()\n\ndef perform_redirect(redirection_url: str):\n    # Assume there's some method that performs a redirect\n    print(f\"Redirecting to: {redirection_url}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": "152647",
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-384"
+    ]
+  }
+]

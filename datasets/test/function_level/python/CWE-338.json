@@ -1,0 +1,101 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-338"
+    ],
+    "code": "import string\ndef create_reset_key(size: int) -> str:\n    # Vulnerable: Weak PRNG\n    import random\n    alphabet = string.ascii_letters + string.digits\n    return ''.join(random.choices(alphabet, k=size))\n# No additional code needed after the function.",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151164,
+    "RELATED_CWE": [
+      "CWE-347",
+      "CWE-798",
+      "CWE-522"
+    ],
+    "human": "Correct. With CWE-338",
+    "reason": "It is vulnerable to CWE-338 due to the use of a weak PRNG (random module)."
+  },
+  {
+    "CWE_ID": [
+      "CWE-338"
+    ],
+    "code": "import string\ndef create_reset_key(size: int) -> str:\n    # Secure: Strong PRNG\n    import secrets\n    alphabet = string.ascii_letters + string.digits\n    return ''.join(secrets.choice(alphabet) for _ in range(size))\n# No additional code needed after the function.",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151165,
+    "RELATED_CWE": [
+      "CWE-347",
+      "CWE-798",
+      "CWE-522"
+    ],
+    "human": "Correct. Without CWE-338"
+  },
+  {
+    "CWE_ID": [
+      "CWE-338"
+    ],
+    "code": "import string\nimport re\ndef generate_access_token(api_length: int) -> str:\n    # Using weak pseudo-random number generator (vulnerable code)\n    import random\n    characters = string.ascii_letters + string.digits + string.punctuation\n    return ''.join(random.choices(characters, k=api_length))\n# No additional code needed after the function.",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151182,
+    "RELATED_CWE": [
+      "CWE-347",
+      "CWE-798",
+      "CWE-522"
+    ],
+    "human": "Correct. With CWE-338",
+    "reason": "It is vulnerable to CWE-338 due to the use of a weak PRNG (random module)."
+  },
+  {
+    "CWE_ID": [
+      "CWE-338"
+    ],
+    "code": "import string\nimport re\ndef generate_access_token(api_length: int) -> str:\n    # Using secure pseudo-random number generator (patched code)\n    import secrets\n    characters = string.ascii_letters + string.digits + string.punctuation\n    return ''.join(secrets.choice(characters) for _ in range(api_length))\n# No additional code needed after the function.",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151183,
+    "RELATED_CWE": [
+      "CWE-347",
+      "CWE-798",
+      "CWE-522"
+    ],
+    "human": "Correct. Without CWE-338"
+  },
+  {
+    "CWE_ID": [
+      "CWE-338"
+    ],
+    "code": "\ndef generate_secure_key(bits: int) -> str:\n    # Vulnerable: Weak PRNG for generating encryption key (vulnerable code)\n    import random\n    acceptable_bits = {128, 192, 256}\n    if bits not in acceptable_bits:\n        raise ValueError(\"Invalid key size provided. Use 128, 192, or 256 bits.\")\n    \n    bytes_key = random.getrandbits(bits).to_bytes(bits // 8, 'big')\n    return bytes_key.hex()\n# No additional code needed after the function.",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151202,
+    "RELATED_CWE": [
+      "CWE-347",
+      "CWE-798",
+      "CWE-522"
+    ],
+    "human": "Correct. With CWE-338",
+    "reason": "It is vulnerable to CWE-338 due to the use of random.getrandbits, a weak PRNG."
+  },
+  {
+    "CWE_ID": [
+      "CWE-338"
+    ],
+    "code": "\ndef generate_secure_key(bits: int) -> str:\n    # Secure: Strong PRNG for generating encryption key (patched code)\n    import secrets\n    acceptable_bits = {128, 192, 256}\n    if bits not in acceptable_bits:\n        raise ValueError(\"Invalid key size provided. Use 128, 192, or 256 bits.\")\n    \n    bytes_key = secrets.token_bytes(bits // 8)\n    return bytes_key.hex()\n# No additional code needed after the function.",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151203,
+    "RELATED_CWE": [
+      "CWE-347",
+      "CWE-798",
+      "CWE-522"
+    ],
+    "human": "Correct. Without CWE-338"
+  }
+]

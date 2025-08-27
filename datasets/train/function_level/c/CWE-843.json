@@ -1,0 +1,1858 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic int staticReturnsTrue()\n{\n    return 1;\n}\n\nstatic int staticReturnsFalse()\n{\n    return 0;\n}\n\n\n\n\nstatic void f_rttafyht()\n{\n    void * data;\n    \n    data = NULL;\n    if(staticReturnsFalse())\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            \n            int intBuffer = 8;\n            data = &intBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\nstatic void f_wdzhbalp()\n{\n    void * data;\n    \n    data = NULL;\n    if(staticReturnsTrue())\n    {\n        {\n            \n            int intBuffer = 8;\n            data = &intBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\nvoid f_gkxvasgt()\n{\n    f_rttafyht();\n    f_wdzhbalp();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_gkxvasgt();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401600,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_08.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic int staticReturnsTrue()\n{\n    return 1;\n}\n\nstatic int staticReturnsFalse()\n{\n    return 0;\n}\n\n\nvoid f_nyicknwn()\n{\n    void * data;\n    \n    data = NULL;\n    if(staticReturnsTrue())\n    {\n        {\n            \n            char charBuffer = 'a';\n            data = &charBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_nyicknwn();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401601,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_08.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic int staticReturnsTrue()\n{\n    return 1;\n}\n\nstatic int staticReturnsFalse()\n{\n    return 0;\n}\n\n\nvoid f_xwdkeuta()\n{\n    void * data;\n    \n    data = NULL;\n    if(staticReturnsTrue())\n    {\n        {\n            \n            short shortBuffer = 8;\n            data = &shortBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_xwdkeuta();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401603,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_08.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\n\nstatic void f_fpbbgbkv()\n{\n    void * data;\n    \n    data = NULL;\n    switch(5)\n    {\n    case 6:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    default:\n    {\n        \n        int intBuffer = 8;\n        data = &intBuffer;\n    }\n    break;\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\nstatic void f_fbihqkfh()\n{\n    void * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n    {\n        \n        int intBuffer = 8;\n        data = &intBuffer;\n    }\n    break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    \n    printIntLine(*((int*)data));\n}\n\nvoid f_eknlpwtq()\n{\n    f_fpbbgbkv();\n    f_fbihqkfh();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_eknlpwtq();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401604,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_15.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_nwxvzfvn()\n{\n    void * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n    {\n        \n        short shortBuffer = 8;\n        data = &shortBuffer;\n    }\n    break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_nwxvzfvn();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401605,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_15.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_drgmhinw()\n{\n    void * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n    {\n        \n        char charBuffer = 'a';\n        data = &charBuffer;\n    }\n    break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_drgmhinw();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401607,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_15.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic const int STATIC_CONST_TRUE = 1; \nstatic const int STATIC_CONST_FALSE = 0; \n\n\n\n\nstatic void f_glmvtttk()\n{\n    void * data;\n    \n    data = NULL;\n    if(STATIC_CONST_FALSE)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            \n            int intBuffer = 8;\n            data = &intBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\nstatic void f_jfbjhzpg()\n{\n    void * data;\n    \n    data = NULL;\n    if(STATIC_CONST_TRUE)\n    {\n        {\n            \n            int intBuffer = 8;\n            data = &intBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\nvoid f_fldyxfpc()\n{\n    f_glmvtttk();\n    f_jfbjhzpg();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_fldyxfpc();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401608,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_04.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic const int STATIC_CONST_TRUE = 1; \nstatic const int STATIC_CONST_FALSE = 0; \n\n\nvoid f_bvbmfesz()\n{\n    void * data;\n    \n    data = NULL;\n    if(STATIC_CONST_TRUE)\n    {\n        {\n            \n            char charBuffer = 'a';\n            data = &charBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_bvbmfesz();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401609,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_04.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic int staticTrue = 1; \nstatic int staticFalse = 0; \n\n\n\n\nstatic void f_kieejtzj()\n{\n    void * data;\n    \n    data = NULL;\n    if(staticFalse)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            \n            int intBuffer = 8;\n            data = &intBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\nstatic void f_voehpfcu()\n{\n    void * data;\n    \n    data = NULL;\n    if(staticTrue)\n    {\n        {\n            \n            int intBuffer = 8;\n            data = &intBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\nvoid f_diukwkrv()\n{\n    f_kieejtzj();\n    f_voehpfcu();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_diukwkrv();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401610,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_05.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic int staticTrue = 1; \nstatic int staticFalse = 0; \n\n\nvoid f_tpudrpbt()\n{\n    void * data;\n    \n    data = NULL;\n    if(staticTrue)\n    {\n        {\n            \n            char charBuffer = 'a';\n            data = &charBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_tpudrpbt();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401611,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_05.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic const int STATIC_CONST_TRUE = 1; \nstatic const int STATIC_CONST_FALSE = 0; \n\n\nvoid f_ycdzoawe()\n{\n    void * data;\n    \n    data = NULL;\n    if(STATIC_CONST_TRUE)\n    {\n        {\n            \n            short shortBuffer = 8;\n            data = &shortBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ycdzoawe();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401613,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_04.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic int staticTrue = 1; \nstatic int staticFalse = 0; \n\n\nvoid f_sxxsalzh()\n{\n    void * data;\n    \n    data = NULL;\n    if(staticTrue)\n    {\n        {\n            \n            short shortBuffer = 8;\n            data = &shortBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_sxxsalzh();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401615,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_05.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic int staticFive = 5;\n\n\n\n\nstatic void f_tzmhgmdo()\n{\n    void * data;\n    \n    data = NULL;\n    if(staticFive!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            \n            int intBuffer = 8;\n            data = &intBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\nstatic void f_hrqllcsx()\n{\n    void * data;\n    \n    data = NULL;\n    if(staticFive==5)\n    {\n        {\n            \n            int intBuffer = 8;\n            data = &intBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\nvoid f_gxqidfqq()\n{\n    f_tzmhgmdo();\n    f_hrqllcsx();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_gxqidfqq();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401616,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_07.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic int staticFive = 5;\n\n\nvoid f_jabjqsnr()\n{\n    void * data;\n    \n    data = NULL;\n    if(staticFive==5)\n    {\n        {\n            \n            short shortBuffer = 8;\n            data = &shortBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_jabjqsnr();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401617,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_07.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic int staticFive = 5;\n\n\nvoid f_okmhtgcj()\n{\n    void * data;\n    \n    data = NULL;\n    if(staticFive==5)\n    {\n        {\n            \n            char charBuffer = 'a';\n            data = &charBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_okmhtgcj();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401619,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_07.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic const int STATIC_CONST_FIVE = 5;\n\n\n\n\nstatic void f_yfzjllbc()\n{\n    void * data;\n    \n    data = NULL;\n    if(STATIC_CONST_FIVE!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            \n            int intBuffer = 8;\n            data = &intBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\nstatic void f_mfpykoch()\n{\n    void * data;\n    \n    data = NULL;\n    if(STATIC_CONST_FIVE==5)\n    {\n        {\n            \n            int intBuffer = 8;\n            data = &intBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\nvoid f_hxwaeqsy()\n{\n    f_yfzjllbc();\n    f_mfpykoch();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_hxwaeqsy();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401620,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_06.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic const int STATIC_CONST_FIVE = 5;\n\n\nvoid f_pjnpbocc()\n{\n    void * data;\n    \n    data = NULL;\n    if(STATIC_CONST_FIVE==5)\n    {\n        {\n            \n            char charBuffer = 'a';\n            data = &charBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_pjnpbocc();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401621,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_06.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic const int STATIC_CONST_FIVE = 5;\n\n\nvoid f_lcanyugo()\n{\n    void * data;\n    \n    data = NULL;\n    if(STATIC_CONST_FIVE==5)\n    {\n        {\n            \n            short shortBuffer = 8;\n            data = &shortBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_lcanyugo();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401623,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_06.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\n\nstatic void f_csafohbc()\n{\n    void * data;\n    \n    data = NULL;\n    if(GLOBAL_CONST_FIVE!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            \n            int intBuffer = 8;\n            data = &intBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\nstatic void f_colmnnga()\n{\n    void * data;\n    \n    data = NULL;\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        {\n            \n            int intBuffer = 8;\n            data = &intBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\nvoid f_ftysspin()\n{\n    f_csafohbc();\n    f_colmnnga();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ftysspin();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401624,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_13.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_tmuqwfqc()\n{\n    void * data;\n    \n    data = NULL;\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        {\n            \n            short shortBuffer = 8;\n            data = &shortBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_tmuqwfqc();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401625,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_13.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\n\nstatic void f_octgqsab()\n{\n    void * data;\n    \n    data = NULL;\n    if(0)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            \n            int intBuffer = 8;\n            data = &intBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\nstatic void f_zvkhjnyt()\n{\n    void * data;\n    \n    data = NULL;\n    if(1)\n    {\n        {\n            \n            int intBuffer = 8;\n            data = &intBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\nvoid f_jvcsxviu()\n{\n    f_octgqsab();\n    f_zvkhjnyt();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_jvcsxviu();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401626,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_02.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_oyunskuk()\n{\n    void * data;\n    \n    data = NULL;\n    if(1)\n    {\n        {\n            \n            short shortBuffer = 8;\n            data = &shortBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_oyunskuk();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401627,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_02.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\n\nstatic void f_rrnbxrdn()\n{\n    void * data;\n    \n    data = NULL;\n    if(globalReturnsFalse())\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            \n            int intBuffer = 8;\n            data = &intBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\nstatic void f_ctqygpwr()\n{\n    void * data;\n    \n    data = NULL;\n    if(globalReturnsTrue())\n    {\n        {\n            \n            int intBuffer = 8;\n            data = &intBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\nvoid f_cqfwqvnq()\n{\n    f_rrnbxrdn();\n    f_ctqygpwr();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_cqfwqvnq();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401628,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_11.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_stwnfdvq()\n{\n    void * data;\n    \n    data = NULL;\n    if(globalReturnsTrue())\n    {\n        {\n            \n            char charBuffer = 'a';\n            data = &charBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_stwnfdvq();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401629,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_11.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_huiwtvbr()\n{\n    void * data;\n    \n    data = NULL;\n    if(globalReturnsTrue())\n    {\n        {\n            \n            short shortBuffer = 8;\n            data = &shortBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_huiwtvbr();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401631,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_11.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_jxrviaoa()\n{\n    void * data;\n    \n    data = NULL;\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        {\n            \n            char charBuffer = 'a';\n            data = &charBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_jxrviaoa();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401633,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_13.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\n\nstatic void f_htthqkpx()\n{\n    void * data;\n    \n    data = NULL;\n    if(5!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            \n            int intBuffer = 8;\n            data = &intBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\nstatic void f_lzclucwz()\n{\n    void * data;\n    \n    data = NULL;\n    if(5==5)\n    {\n        {\n            \n            int intBuffer = 8;\n            data = &intBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\nvoid f_lzjoxbkc()\n{\n    f_htthqkpx();\n    f_lzclucwz();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_lzjoxbkc();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401634,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_03.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_ngkkkmef()\n{\n    void * data;\n    \n    data = NULL;\n    if(5==5)\n    {\n        {\n            \n            char charBuffer = 'a';\n            data = &charBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ngkkkmef();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401635,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_03.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\n\nstatic void f_vjwqmtiu()\n{\n    void * data;\n    \n    data = NULL;\n    if(globalFive!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            \n            int intBuffer = 8;\n            data = &intBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\nstatic void f_bvgeldzy()\n{\n    void * data;\n    \n    data = NULL;\n    if(globalFive==5)\n    {\n        {\n            \n            int intBuffer = 8;\n            data = &intBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\nvoid f_zsbaycsu()\n{\n    f_vjwqmtiu();\n    f_bvgeldzy();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_zsbaycsu();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401636,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_14.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_kqmkyknm()\n{\n    void * data;\n    \n    data = NULL;\n    if(globalFive==5)\n    {\n        {\n            \n            short shortBuffer = 8;\n            data = &shortBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_kqmkyknm();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401637,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_14.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\n\nstatic void f_bdyofgvm()\n{\n    void * data;\n    \n    data = NULL;\n    if(globalFalse)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            \n            int intBuffer = 8;\n            data = &intBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\nstatic void f_vaeljlda()\n{\n    void * data;\n    \n    data = NULL;\n    if(globalTrue)\n    {\n        {\n            \n            int intBuffer = 8;\n            data = &intBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\nvoid f_riawjrpa()\n{\n    f_bdyofgvm();\n    f_vaeljlda();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_riawjrpa();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401638,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_10.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_gcyjefta()\n{\n    void * data;\n    \n    data = NULL;\n    if(globalTrue)\n    {\n        {\n            \n            char charBuffer = 'a';\n            data = &charBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_gcyjefta();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401639,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_10.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_wovejfmv()\n{\n    void * data;\n    \n    data = NULL;\n    if(5==5)\n    {\n        {\n            \n            short shortBuffer = 8;\n            data = &shortBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_wovejfmv();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401641,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_03.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_ovshwzxf()\n{\n    void * data;\n    \n    data = NULL;\n    if(globalTrue)\n    {\n        {\n            \n            short shortBuffer = 8;\n            data = &shortBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ovshwzxf();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401643,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_10.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_vtmrtaas()\n{\n    void * data;\n    \n    data = NULL;\n    if(1)\n    {\n        {\n            \n            char charBuffer = 'a';\n            data = &charBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_vtmrtaas();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401645,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_02.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_qegnwwra()\n{\n    void * data;\n    \n    data = NULL;\n    if(globalFive==5)\n    {\n        {\n            \n            char charBuffer = 'a';\n            data = &charBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_qegnwwra();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401647,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_14.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\n\nstatic void f_iptowzvi()\n{\n    void * data;\n    \n    data = NULL;\n    if(GLOBAL_CONST_FALSE)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            \n            int intBuffer = 8;\n            data = &intBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\nstatic void f_hveijqxw()\n{\n    void * data;\n    \n    data = NULL;\n    if(GLOBAL_CONST_TRUE)\n    {\n        {\n            \n            int intBuffer = 8;\n            data = &intBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\nvoid f_xbwdtdzr()\n{\n    f_iptowzvi();\n    f_hveijqxw();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_xbwdtdzr();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401648,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_09.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_stsfampd()\n{\n    void * data;\n    \n    data = NULL;\n    if(GLOBAL_CONST_TRUE)\n    {\n        {\n            \n            char charBuffer = 'a';\n            data = &charBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_stsfampd();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401649,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_09.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_mauulgpj()\n{\n    void * data;\n    \n    data = NULL;\n    if(GLOBAL_CONST_TRUE)\n    {\n        {\n            \n            short shortBuffer = 8;\n            data = &shortBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_mauulgpj();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401651,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_09.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n#include <vector>\n\nusing namespace _A_namespace;\n\nnamespace _A_namespace\n{\n\n\n\n\n\n\nvoid G2BSink(vector<void *> dataVector);\n\nstatic void f_waghwgdy()\n{\n    void * data;\n    vector<void *> dataVector;\n    \n    data = NULL;\n    {\n        \n        int intBuffer = 8;\n        data = &intBuffer;\n    }\n    \n    dataVector.insert(dataVector.end(), 1, data);\n    dataVector.insert(dataVector.end(), 1, data);\n    dataVector.insert(dataVector.end(), 1, data);\n    G2BSink(dataVector);\n}\n\nvoid f_mlohyqti()\n{\n    f_waghwgdy();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_mlohyqti();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401652,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_72a.cpp",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n#include <vector>\n\nusing namespace _A_namespace;\n\nnamespace _A_namespace\n{\n\n\n\nvoid Sink(vector<void *> dataVector);\n\nvoid f_ullfqlyu()\n{\n    void * data;\n    vector<void *> dataVector;\n    \n    data = NULL;\n    {\n        \n        short shortBuffer = 8;\n        data = &shortBuffer;\n    }\n    \n    dataVector.insert(dataVector.end(), 1, data);\n    dataVector.insert(dataVector.end(), 1, data);\n    dataVector.insert(dataVector.end(), 1, data);\n    Sink(dataVector);\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ullfqlyu();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401653,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_72a.cpp",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n#include <vector>\n\nusing namespace _A_namespace;\n\nnamespace _A_namespace\n{\n\n\n\nvoid Sink(vector<void *> dataVector);\n\nvoid f_uxsteevr()\n{\n    void * data;\n    vector<void *> dataVector;\n    \n    data = NULL;\n    {\n        \n        char charBuffer = 'a';\n        data = &charBuffer;\n    }\n    \n    dataVector.insert(dataVector.end(), 1, data);\n    dataVector.insert(dataVector.end(), 1, data);\n    dataVector.insert(dataVector.end(), 1, data);\n    Sink(dataVector);\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_uxsteevr();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401655,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_72a.cpp",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n#include <list>\n\nusing namespace _A_namespace;\n\nnamespace _A_namespace\n{\n\n\n\n\n\n\nvoid G2BSink(list<void *> dataList);\n\nstatic void f_qkrogmng()\n{\n    void * data;\n    list<void *> dataList;\n    \n    data = NULL;\n    {\n        \n        int intBuffer = 8;\n        data = &intBuffer;\n    }\n    \n    dataList.push_back(data);\n    dataList.push_back(data);\n    dataList.push_back(data);\n    G2BSink(dataList);\n}\n\nvoid f_kfncguko()\n{\n    f_qkrogmng();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_kfncguko();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401656,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_73a.cpp",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n#include <list>\n\nusing namespace _A_namespace;\n\nnamespace _A_namespace\n{\n\n\n\nvoid Sink(list<void *> dataList);\n\nvoid f_gyqqcmqd()\n{\n    void * data;\n    list<void *> dataList;\n    \n    data = NULL;\n    {\n        \n        short shortBuffer = 8;\n        data = &shortBuffer;\n    }\n    \n    dataList.push_back(data);\n    dataList.push_back(data);\n    dataList.push_back(data);\n    Sink(dataList);\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_gyqqcmqd();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401657,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_73a.cpp",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n#include <map>\n\nusing namespace _A_namespace;\n\nnamespace _A_namespace\n{\n\n\n\n\n\n\nvoid G2BSink(map<int, void *> dataMap);\n\nstatic void f_buscsayz()\n{\n    void * data;\n    map<int, void *> dataMap;\n    \n    data = NULL;\n    {\n        \n        int intBuffer = 8;\n        data = &intBuffer;\n    }\n    \n    dataMap[0] = data;\n    dataMap[1] = data;\n    dataMap[2] = data;\n    G2BSink(dataMap);\n}\n\nvoid f_csaofpfv()\n{\n    f_buscsayz();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_csaofpfv();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401658,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_74a.cpp",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n#include <map>\n\nusing namespace _A_namespace;\n\nnamespace _A_namespace\n{\n\n\n\nvoid Sink(map<int, void *> dataMap);\n\nvoid f_bqoagydv()\n{\n    void * data;\n    map<int, void *> dataMap;\n    \n    data = NULL;\n    {\n        \n        short shortBuffer = 8;\n        data = &shortBuffer;\n    }\n    \n    dataMap[0] = data;\n    dataMap[1] = data;\n    dataMap[2] = data;\n    Sink(dataMap);\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_bqoagydv();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401659,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_74a.cpp",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n#include <map>\n\nusing namespace _A_namespace;\n\nnamespace _A_namespace\n{\n\n\n\nvoid Sink(map<int, void *> dataMap);\n\nvoid f_wqxbbykz()\n{\n    void * data;\n    map<int, void *> dataMap;\n    \n    data = NULL;\n    {\n        \n        char charBuffer = 'a';\n        data = &charBuffer;\n    }\n    \n    dataMap[0] = data;\n    dataMap[1] = data;\n    dataMap[2] = data;\n    Sink(dataMap);\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_wqxbbykz();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401661,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_74a.cpp",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n#include <list>\n\nusing namespace _A_namespace;\n\nnamespace _A_namespace\n{\n\n\n\nvoid Sink(list<void *> dataList);\n\nvoid f_smnoftih()\n{\n    void * data;\n    list<void *> dataList;\n    \n    data = NULL;\n    {\n        \n        char charBuffer = 'a';\n        data = &charBuffer;\n    }\n    \n    dataList.push_back(data);\n    dataList.push_back(data);\n    dataList.push_back(data);\n    Sink(dataList);\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_smnoftih();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401663,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_73a.cpp",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\n\nstatic void f_nxeclzpj()\n{\n    void * data;\n    \n    data = NULL;\n    if(globalReturnsTrueOrFalse())\n    {\n        {\n            \n            int intBuffer = 8;\n            data = &intBuffer;\n        }\n    }\n    else\n    {\n        {\n            \n            int intBuffer = 8;\n            data = &intBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\nvoid f_nxcltcce()\n{\n    f_nxeclzpj();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_nxcltcce();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401664,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_12.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_uizyxmtu()\n{\n    void * data;\n    \n    data = NULL;\n    if(globalReturnsTrueOrFalse())\n    {\n        {\n            \n            short shortBuffer = 8;\n            data = &shortBuffer;\n        }\n    }\n    else\n    {\n        {\n            \n            int intBuffer = 8;\n            data = &intBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_uizyxmtu();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401665,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_12.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_svzawftz()\n{\n    void * data;\n    \n    data = NULL;\n    if(globalReturnsTrueOrFalse())\n    {\n        {\n            \n            char charBuffer = 'a';\n            data = &charBuffer;\n        }\n    }\n    else\n    {\n        {\n            \n            int intBuffer = 8;\n            data = &intBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_svzawftz();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401667,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_12.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\n\nstatic void f_igmsfkoo()\n{\n    void * data;\n    void * *dataPtr1 = &data;\n    void * *dataPtr2 = &data;\n    \n    data = NULL;\n    {\n        void * data = *dataPtr1;\n        {\n            \n            int intBuffer = 8;\n            data = &intBuffer;\n        }\n        *dataPtr1 = data;\n    }\n    {\n        void * data = *dataPtr2;\n        \n        printIntLine(*((int*)data));\n    }\n}\n\nvoid f_qgqevhjc()\n{\n    f_igmsfkoo();\n}\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_qgqevhjc();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401668,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_32.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_jfmtaqun()\n{\n    void * data;\n    void * *dataPtr1 = &data;\n    void * *dataPtr2 = &data;\n    \n    data = NULL;\n    {\n        void * data = *dataPtr1;\n        {\n            \n            short shortBuffer = 8;\n            data = &shortBuffer;\n        }\n        *dataPtr1 = data;\n    }\n    {\n        void * data = *dataPtr2;\n        \n        printIntLine(*((int*)data));\n    }\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_jfmtaqun();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401669,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_32.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_mgnppvbt()\n{\n    void * data;\n    void * *dataPtr1 = &data;\n    void * *dataPtr2 = &data;\n    \n    data = NULL;\n    {\n        void * data = *dataPtr1;\n        {\n            \n            char charBuffer = 'a';\n            data = &charBuffer;\n        }\n        *dataPtr1 = data;\n    }\n    {\n        void * data = *dataPtr2;\n        \n        printIntLine(*((int*)data));\n    }\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_mgnppvbt();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401671,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_32.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\nstatic void * _Type_Confusion__char_45_Data;\nstatic void * _Type_Confusion__char_45_G2BData;\n\n\n\n\nstatic void f_qtpraexy()\n{\n    void * data = _Type_Confusion__char_45_G2BData;\n    \n    printIntLine(*((int*)data));\n}\n\nstatic void f_ndcvsylf()\n{\n    void * data;\n    \n    data = NULL;\n    {\n        \n        int intBuffer = 8;\n        data = &intBuffer;\n    }\n    _Type_Confusion__char_45_G2BData = data;\n    f_qtpraexy();\n}\n\nvoid f_ijkpvtpv()\n{\n    f_ndcvsylf();\n}\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ijkpvtpv();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401672,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_45.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\nstatic void * _Type_Confusion__char_45_Data;\nstatic void * _Type_Confusion__char_45_G2BData;\n\n\nstatic void f_omwmaodm()\n{\n    void * data = _Type_Confusion__char_45_Data;\n    \n    printIntLine(*((int*)data));\n}\n\nvoid f_paiwhkhs()\n{\n    void * data;\n    \n    data = NULL;\n    {\n        \n        char charBuffer = 'a';\n        data = &charBuffer;\n    }\n    _Type_Confusion__char_45_Data = data;\n    f_omwmaodm();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_paiwhkhs();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401673,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_45.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\nstatic void * _Type_Confusion__short_45_Data;\nstatic void * _Type_Confusion__short_45_G2BData;\n\n\n\n\nstatic void f_phwaetrz()\n{\n    void * data = _Type_Confusion__short_45_G2BData;\n    \n    printIntLine(*((int*)data));\n}\n\nstatic void f_shcsyxii()\n{\n    void * data;\n    \n    data = NULL;\n    {\n        \n        int intBuffer = 8;\n        data = &intBuffer;\n    }\n    _Type_Confusion__short_45_G2BData = data;\n    f_phwaetrz();\n}\n\nvoid f_dnojenhe()\n{\n    f_shcsyxii();\n}\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_dnojenhe();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401674,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_45.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\nstatic void * _Type_Confusion__short_45_Data;\nstatic void * _Type_Confusion__short_45_G2BData;\n\n\nstatic void f_bffcrqmp()\n{\n    void * data = _Type_Confusion__short_45_Data;\n    \n    printIntLine(*((int*)data));\n}\n\nvoid f_pjbcunmw()\n{\n    void * data;\n    \n    data = NULL;\n    {\n        \n        short shortBuffer = 8;\n        data = &shortBuffer;\n    }\n    _Type_Confusion__short_45_Data = data;\n    f_bffcrqmp();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_pjbcunmw();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401675,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_45.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\ntypedef union\n{\n    void * unionFirst;\n    void * unionSecond;\n} _Type_Confusion__short_34_unionType;\n\n\n\n\nstatic void f_melajgex()\n{\n    void * data;\n    _Type_Confusion__short_34_unionType myUnion;\n    \n    data = NULL;\n    {\n        \n        int intBuffer = 8;\n        data = &intBuffer;\n    }\n    myUnion.unionFirst = data;\n    {\n        void * data = myUnion.unionSecond;\n        \n        printIntLine(*((int*)data));\n    }\n}\n\nvoid f_bzpylzkm()\n{\n    f_melajgex();\n}\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_bzpylzkm();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401676,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_34.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\ntypedef union\n{\n    void * unionFirst;\n    void * unionSecond;\n} _Type_Confusion__short_34_unionType;\n\n\nvoid f_pshpfrml()\n{\n    void * data;\n    _Type_Confusion__short_34_unionType myUnion;\n    \n    data = NULL;\n    {\n        \n        short shortBuffer = 8;\n        data = &shortBuffer;\n    }\n    myUnion.unionFirst = data;\n    {\n        void * data = myUnion.unionSecond;\n        \n        printIntLine(*((int*)data));\n    }\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_pshpfrml();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401677,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_34.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\ntypedef union\n{\n    void * unionFirst;\n    void * unionSecond;\n} _Type_Confusion__char_34_unionType;\n\n\n\n\nstatic void f_xtjuvbqt()\n{\n    void * data;\n    _Type_Confusion__char_34_unionType myUnion;\n    \n    data = NULL;\n    {\n        \n        int intBuffer = 8;\n        data = &intBuffer;\n    }\n    myUnion.unionFirst = data;\n    {\n        void * data = myUnion.unionSecond;\n        \n        printIntLine(*((int*)data));\n    }\n}\n\nvoid f_byybzmop()\n{\n    f_xtjuvbqt();\n}\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_byybzmop();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401678,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_34.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\ntypedef union\n{\n    void * unionFirst;\n    void * unionSecond;\n} _Type_Confusion__char_34_unionType;\n\n\nvoid f_ewzcqgnq()\n{\n    void * data;\n    _Type_Confusion__char_34_unionType myUnion;\n    \n    data = NULL;\n    {\n        \n        char charBuffer = 'a';\n        data = &charBuffer;\n    }\n    myUnion.unionFirst = data;\n    {\n        void * data = myUnion.unionSecond;\n        \n        printIntLine(*((int*)data));\n    }\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ewzcqgnq();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401679,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_34.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_vjhpataa()\n{\n    void * data;\n    void * &dataRef = data;\n    \n    data = NULL;\n    {\n        \n        int intBuffer = 8;\n        data = &intBuffer;\n    }\n    {\n        void * data = dataRef;\n        \n        printIntLine(*((int*)data));\n    }\n}\n\nvoid f_afkbfhfb()\n{\n    f_vjhpataa();\n}\n\n\n} \n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_afkbfhfb();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401680,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_33.cpp",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\nnamespace _A_namespace\n{\n\n\nvoid f_lmgcltyf()\n{\n    void * data;\n    void * &dataRef = data;\n    \n    data = NULL;\n    {\n        \n        char charBuffer = 'a';\n        data = &charBuffer;\n    }\n    {\n        void * data = dataRef;\n        \n        printIntLine(*((int*)data));\n    }\n}\n\n\n\n} \n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_lmgcltyf();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401681,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_33.cpp",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\nnamespace _A_namespace\n{\n\n\nvoid f_rvurkxih()\n{\n    void * data;\n    void * &dataRef = data;\n    \n    data = NULL;\n    {\n        \n        short shortBuffer = 8;\n        data = &shortBuffer;\n    }\n    {\n        void * data = dataRef;\n        \n        printIntLine(*((int*)data));\n    }\n}\n\n\n\n} \n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_rvurkxih();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401683,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_33.cpp",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\n\nstatic void f_iphfsvxk(void * data)\n{\n    \n    printIntLine(*((int*)data));\n}\n\nstatic void f_dibjmfqf()\n{\n    void * data;\n    void (*funcPtr) (void *) = f_iphfsvxk;\n    \n    data = NULL;\n    {\n        \n        int intBuffer = 8;\n        data = &intBuffer;\n    }\n    funcPtr(data);\n}\n\nvoid f_hehbifsi()\n{\n    f_dibjmfqf();\n}\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_hehbifsi();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401684,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_44.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic void f_ybczhkiu(void * data)\n{\n    \n    printIntLine(*((int*)data));\n}\n\nvoid f_bveaaifn()\n{\n    void * data;\n    \n    void (*funcPtr) (void *) = f_ybczhkiu;\n    \n    data = NULL;\n    {\n        \n        short shortBuffer = 8;\n        data = &shortBuffer;\n    }\n    \n    funcPtr(data);\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_bveaaifn();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401685,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_44.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\n\nstatic void f_tewddugf(void * data)\n{\n    \n    printIntLine(*((int*)data));\n}\n\nstatic void f_thwrcxyn()\n{\n    void * data;\n    void (*funcPtr) (void *) = f_tewddugf;\n    \n    data = NULL;\n    {\n        \n        int intBuffer = 8;\n        data = &intBuffer;\n    }\n    funcPtr(data);\n}\n\nvoid f_sjbdvwlz()\n{\n    f_thwrcxyn();\n}\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_sjbdvwlz();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401686,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_44.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic void f_mzvtiyyr(void * data)\n{\n    \n    printIntLine(*((int*)data));\n}\n\nvoid f_yrxydtcl()\n{\n    void * data;\n    \n    void (*funcPtr) (void *) = f_mzvtiyyr;\n    \n    data = NULL;\n    {\n        \n        char charBuffer = 'a';\n        data = &charBuffer;\n    }\n    \n    funcPtr(data);\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_yrxydtcl();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401687,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_44.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\ntypedef struct __Type_Confusion__short_67_structType\n{\n    void * structFirst;\n} _Type_Confusion__short_67_structType;\n\n\n\n\nvoid _Type_Confusion__short_67b_G2BSink(_Type_Confusion__short_67_structType myStruct);\n\nstatic void f_uoflajzy()\n{\n    void * data;\n    _Type_Confusion__short_67_structType myStruct;\n    \n    data = NULL;\n    {\n        \n        int intBuffer = 8;\n        data = &intBuffer;\n    }\n    myStruct.structFirst = data;\n    _Type_Confusion__short_67b_G2BSink(myStruct);\n}\n\nvoid f_ifrxlpdl()\n{\n    f_uoflajzy();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ifrxlpdl();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401688,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_67a.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\ntypedef struct __Type_Confusion__short_67_structType\n{\n    void * structFirst;\n} _Type_Confusion__short_67_structType;\n\n\n\nvoid _Type_Confusion__short_67b_Sink(_Type_Confusion__short_67_structType myStruct);\n\nvoid f_bmghdpku()\n{\n    void * data;\n    _Type_Confusion__short_67_structType myStruct;\n    \n    data = NULL;\n    {\n        \n        short shortBuffer = 8;\n        data = &shortBuffer;\n    }\n    myStruct.structFirst = data;\n    _Type_Confusion__short_67b_Sink(myStruct);\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_bmghdpku();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401689,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_67a.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\ntypedef struct __Type_Confusion__char_67_structType\n{\n    void * structFirst;\n} _Type_Confusion__char_67_structType;\n\n\n\n\nvoid _Type_Confusion__char_67b_G2BSink(_Type_Confusion__char_67_structType myStruct);\n\nstatic void f_jkozsxlr()\n{\n    void * data;\n    _Type_Confusion__char_67_structType myStruct;\n    \n    data = NULL;\n    {\n        \n        int intBuffer = 8;\n        data = &intBuffer;\n    }\n    myStruct.structFirst = data;\n    _Type_Confusion__char_67b_G2BSink(myStruct);\n}\n\nvoid f_xlndppjq()\n{\n    f_jkozsxlr();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_xlndppjq();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401690,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_67a.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\ntypedef struct __Type_Confusion__char_67_structType\n{\n    void * structFirst;\n} _Type_Confusion__char_67_structType;\n\n\n\nvoid _Type_Confusion__char_67b_Sink(_Type_Confusion__char_67_structType myStruct);\n\nvoid f_stybxsry()\n{\n    void * data;\n    _Type_Confusion__char_67_structType myStruct;\n    \n    data = NULL;\n    {\n        \n        char charBuffer = 'a';\n        data = &charBuffer;\n    }\n    myStruct.structFirst = data;\n    _Type_Confusion__char_67b_Sink(myStruct);\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_stybxsry();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401691,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_67a.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n#include \"_Type_Confusion__short_82.h\"\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_qjuthttr()\n{\n    void * data;\n    \n    data = NULL;\n    {\n        \n        int intBuffer = 8;\n        data = &intBuffer;\n    }\n    _Type_Confusion__short_82_base* baseObject = new _Type_Confusion__short_82_G2B;\n    baseObject->action(data);\n    delete baseObject;\n}\n\nvoid f_lmguswtk()\n{\n    f_qjuthttr();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_lmguswtk();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401692,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_82a.cpp",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n#include \"_Type_Confusion__short_82.h\"\n\nnamespace _A_namespace\n{\n\n\nvoid f_edikdnbt()\n{\n    void * data;\n    \n    data = NULL;\n    {\n        \n        short shortBuffer = 8;\n        data = &shortBuffer;\n    }\n    _Type_Confusion__short_82_base* baseObject = new _Type_Confusion__short_82_;\n    baseObject->action(data);\n    delete baseObject;\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_edikdnbt();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401693,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_82a.cpp",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\nvoid f_mhubargr(void * data)\n{\n    \n    printIntLine(*((int*)data));\n}\n\n\nstatic void f_wqhifaew()\n{\n    void * data;\n    \n    data = NULL;\n    {\n        \n        int intBuffer = 8;\n        data = &intBuffer;\n    }\n    f_mhubargr(data);\n}\n\nvoid f_whgjdcaa()\n{\n    f_wqhifaew();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_whgjdcaa();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401694,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_41.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_yuzzeqfe(void * data)\n{\n    \n    printIntLine(*((int*)data));\n}\n\nvoid f_anwsdcib()\n{\n    void * data;\n    \n    data = NULL;\n    {\n        \n        short shortBuffer = 8;\n        data = &shortBuffer;\n    }\n    f_yuzzeqfe(data);\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_anwsdcib();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401695,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_41.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_fhwhjvug(void * data)\n{\n    \n    printIntLine(*((int*)data));\n}\n\nvoid f_ejtkxegd()\n{\n    void * data;\n    \n    data = NULL;\n    {\n        \n        char charBuffer = 'a';\n        data = &charBuffer;\n    }\n    f_fhwhjvug(data);\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ejtkxegd();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401697,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_41.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n#include \"_Type_Confusion__char_82.h\"\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_zgfyhjte()\n{\n    void * data;\n    \n    data = NULL;\n    {\n        \n        int intBuffer = 8;\n        data = &intBuffer;\n    }\n    _Type_Confusion__char_82_base* baseObject = new _Type_Confusion__char_82_G2B;\n    baseObject->action(data);\n    delete baseObject;\n}\n\nvoid f_grzohoew()\n{\n    f_zgfyhjte();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_grzohoew();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401698,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_82a.cpp",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n#include \"_Type_Confusion__char_82.h\"\n\nnamespace _A_namespace\n{\n\n\nvoid f_qburrqfr()\n{\n    void * data;\n    \n    data = NULL;\n    {\n        \n        char charBuffer = 'a';\n        data = &charBuffer;\n    }\n    _Type_Confusion__char_82_base* baseObject = new _Type_Confusion__char_82_;\n    baseObject->action(data);\n    delete baseObject;\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_qburrqfr();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401699,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_82a.cpp",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\nvoid * _Type_Confusion__char_68_Data;\nvoid * _Type_Confusion__char_68_G2BData;\n\n\n\n\nvoid _Type_Confusion__char_68b_G2BSink();\n\n\nstatic void f_nhmvgumg()\n{\n    void * data;\n    \n    data = NULL;\n    {\n        \n        int intBuffer = 8;\n        data = &intBuffer;\n    }\n    _Type_Confusion__char_68_G2BData = data;\n    _Type_Confusion__char_68b_G2BSink();\n}\n\nvoid f_iecafked()\n{\n    f_nhmvgumg();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_iecafked();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401700,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_68a.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\nvoid * _Type_Confusion__char_68_Data;\nvoid * _Type_Confusion__char_68_G2BData;\n\n\n\nvoid _Type_Confusion__char_68b_Sink();\n\nvoid f_meivrjgq()\n{\n    void * data;\n    \n    data = NULL;\n    {\n        \n        char charBuffer = 'a';\n        data = &charBuffer;\n    }\n    _Type_Confusion__char_68_Data = data;\n    _Type_Confusion__char_68b_Sink();\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_meivrjgq();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401701,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_68a.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\nvoid * _Type_Confusion__short_68_Data;\nvoid * _Type_Confusion__short_68_G2BData;\n\n\n\n\nvoid _Type_Confusion__short_68b_G2BSink();\n\n\nstatic void f_clqgbqpe()\n{\n    void * data;\n    \n    data = NULL;\n    {\n        \n        int intBuffer = 8;\n        data = &intBuffer;\n    }\n    _Type_Confusion__short_68_G2BData = data;\n    _Type_Confusion__short_68b_G2BSink();\n}\n\nvoid f_pptbvaos()\n{\n    f_clqgbqpe();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_pptbvaos();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401702,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_68a.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\nvoid * _Type_Confusion__short_68_Data;\nvoid * _Type_Confusion__short_68_G2BData;\n\n\n\nvoid _Type_Confusion__short_68b_Sink();\n\nvoid f_lfnoigad()\n{\n    void * data;\n    \n    data = NULL;\n    {\n        \n        short shortBuffer = 8;\n        data = &shortBuffer;\n    }\n    _Type_Confusion__short_68_Data = data;\n    _Type_Confusion__short_68b_Sink();\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_lfnoigad();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401703,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_68a.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\n\nstatic void f_jwnxvxbl()\n{\n    void * data;\n    \n    data = NULL;\n    while(1)\n    {\n        {\n            \n            int intBuffer = 8;\n            data = &intBuffer;\n        }\n        break;\n    }\n    \n    printIntLine(*((int*)data));\n}\n\nvoid f_usluyuqz()\n{\n    f_jwnxvxbl();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_usluyuqz();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401704,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_16.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_kxsrwzya()\n{\n    void * data;\n    \n    data = NULL;\n    while(1)\n    {\n        {\n            \n            char charBuffer = 'a';\n            data = &charBuffer;\n        }\n        break;\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_kxsrwzya();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401705,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_16.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_hihyiyet()\n{\n    void * data;\n    \n    data = NULL;\n    while(1)\n    {\n        {\n            \n            short shortBuffer = 8;\n            data = &shortBuffer;\n        }\n        break;\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_hihyiyet();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401707,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_16.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\n\nstatic void f_qntqvyzs()\n{\n    int h;\n    void * data;\n    \n    data = NULL;\n    for(h = 0; h < 1; h++)\n    {\n        {\n            \n            int intBuffer = 8;\n            data = &intBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\nvoid f_xehgowtv()\n{\n    f_qntqvyzs();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_xehgowtv();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401708,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_17.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_rhblmice()\n{\n    int i;\n    void * data;\n    \n    data = NULL;\n    for(i = 0; i < 1; i++)\n    {\n        {\n            \n            char charBuffer = 'a';\n            data = &charBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_rhblmice();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401709,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_17.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\n\nvoid _Type_Confusion__short_66b_G2BSink(void * dataArray[]);\n\nstatic void f_jjzvmyjy()\n{\n    void * data;\n    void * dataArray[5];\n    \n    data = NULL;\n    {\n        \n        int intBuffer = 8;\n        data = &intBuffer;\n    }\n    dataArray[2] = data;\n    _Type_Confusion__short_66b_G2BSink(dataArray);\n}\n\nvoid f_dvewijhw()\n{\n    f_jjzvmyjy();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_dvewijhw();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401710,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_66a.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\nvoid _Type_Confusion__short_66b_Sink(void * dataArray[]);\n\nvoid f_vvledijr()\n{\n    void * data;\n    void * dataArray[5];\n    \n    data = NULL;\n    {\n        \n        short shortBuffer = 8;\n        data = &shortBuffer;\n    }\n    \n    dataArray[2] = data;\n    _Type_Confusion__short_66b_Sink(dataArray);\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_vvledijr();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401711,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_66a.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_zsyxemmg()\n{\n    int i;\n    void * data;\n    \n    data = NULL;\n    for(i = 0; i < 1; i++)\n    {\n        {\n            \n            short shortBuffer = 8;\n            data = &shortBuffer;\n        }\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_zsyxemmg();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401713,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_17.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n#include \"_Type_Confusion__char_81.h\"\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_whhspycm()\n{\n    void * data;\n    \n    data = NULL;\n    {\n        \n        int intBuffer = 8;\n        data = &intBuffer;\n    }\n    const _Type_Confusion__char_81_base& baseObject = _Type_Confusion__char_81_G2B();\n    baseObject.action(data);\n}\n\nvoid f_fdtbccvj()\n{\n    f_whhspycm();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_fdtbccvj();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401714,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_81a.cpp",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n#include \"_Type_Confusion__char_81.h\"\n\nnamespace _A_namespace\n{\n\n\nvoid f_twhewjup()\n{\n    void * data;\n    \n    data = NULL;\n    {\n        \n        char charBuffer = 'a';\n        data = &charBuffer;\n    }\n    const _Type_Confusion__char_81_base& baseObject = _Type_Confusion__char_81_();\n    baseObject.action(data);\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_twhewjup();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401715,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_81a.cpp",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\n\nvoid _Type_Confusion__char_66b_G2BSink(void * dataArray[]);\n\nstatic void f_qgngmepq()\n{\n    void * data;\n    void * dataArray[5];\n    \n    data = NULL;\n    {\n        \n        int intBuffer = 8;\n        data = &intBuffer;\n    }\n    dataArray[2] = data;\n    _Type_Confusion__char_66b_G2BSink(dataArray);\n}\n\nvoid f_eyasltuy()\n{\n    f_qgngmepq();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_eyasltuy();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401716,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_66a.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\nvoid _Type_Confusion__char_66b_Sink(void * dataArray[]);\n\nvoid f_cxbuovkw()\n{\n    void * data;\n    void * dataArray[5];\n    \n    data = NULL;\n    {\n        \n        char charBuffer = 'a';\n        data = &charBuffer;\n    }\n    \n    dataArray[2] = data;\n    _Type_Confusion__char_66b_Sink(dataArray);\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_cxbuovkw();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401717,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_66a.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n#include \"_Type_Confusion__short_81.h\"\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_kgsjzyab()\n{\n    void * data;\n    \n    data = NULL;\n    {\n        \n        int intBuffer = 8;\n        data = &intBuffer;\n    }\n    const _Type_Confusion__short_81_base& baseObject = _Type_Confusion__short_81_G2B();\n    baseObject.action(data);\n}\n\nvoid f_msqdcnke()\n{\n    f_kgsjzyab();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_msqdcnke();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401718,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_81a.cpp",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n#include \"_Type_Confusion__short_81.h\"\n\nnamespace _A_namespace\n{\n\n\nvoid f_abauleyv()\n{\n    void * data;\n    \n    data = NULL;\n    {\n        \n        short shortBuffer = 8;\n        data = &shortBuffer;\n    }\n    const _Type_Confusion__short_81_base& baseObject = _Type_Confusion__short_81_();\n    baseObject.action(data);\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_abauleyv();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401719,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_81a.cpp",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\n\nstatic void f_rojmyrti()\n{\n    void * data;\n    \n    data = NULL;\n    {\n        \n        int intBuffer = 8;\n        data = &intBuffer;\n    }\n    {\n        void * dataCopy = data;\n        void * data = dataCopy;\n        \n        printIntLine(*((int*)data));\n    }\n}\n\nvoid f_tfdsnnxj()\n{\n    f_rojmyrti();\n}\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_tfdsnnxj();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401720,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_31.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_njhpasjt()\n{\n    void * data;\n    \n    data = NULL;\n    {\n        \n        short shortBuffer = 8;\n        data = &shortBuffer;\n    }\n    {\n        void * dataCopy = data;\n        void * data = dataCopy;\n        \n        printIntLine(*((int*)data));\n    }\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_njhpasjt();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401721,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_31.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\n\nvoid _Type_Confusion__char_65b_G2BSink(void * data);\n\nstatic void f_bkztqmdm()\n{\n    void * data;\n    void (*funcPtr) (void *) = _Type_Confusion__char_65b_G2BSink;\n    \n    data = NULL;\n    {\n        \n        int intBuffer = 8;\n        data = &intBuffer;\n    }\n    funcPtr(data);\n}\n\nvoid f_atwyeelw()\n{\n    f_bkztqmdm();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_atwyeelw();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401722,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_65a.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\nvoid _Type_Confusion__char_65b_Sink(void * data);\n\nvoid f_bqpginiu()\n{\n    void * data;\n    \n    void (*funcPtr) (void *) = _Type_Confusion__char_65b_Sink;\n    \n    data = NULL;\n    {\n        \n        char charBuffer = 'a';\n        data = &charBuffer;\n    }\n    \n    funcPtr(data);\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_bqpginiu();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401723,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_65a.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_wrknylvf()\n{\n    void * data;\n    \n    data = NULL;\n    {\n        \n        char charBuffer = 'a';\n        data = &charBuffer;\n    }\n    {\n        void * dataCopy = data;\n        void * data = dataCopy;\n        \n        printIntLine(*((int*)data));\n    }\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_wrknylvf();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401725,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_31.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\n\nvoid _Type_Confusion__short_65b_G2BSink(void * data);\n\nstatic void f_tdoyhohs()\n{\n    void * data;\n    void (*funcPtr) (void *) = _Type_Confusion__short_65b_G2BSink;\n    \n    data = NULL;\n    {\n        \n        int intBuffer = 8;\n        data = &intBuffer;\n    }\n    funcPtr(data);\n}\n\nvoid f_dpewirbw()\n{\n    f_tdoyhohs();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_dpewirbw();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401726,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_65a.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\nvoid _Type_Confusion__short_65b_Sink(void * data);\n\nvoid f_byndjjlc()\n{\n    void * data;\n    \n    void (*funcPtr) (void *) = _Type_Confusion__short_65b_Sink;\n    \n    data = NULL;\n    {\n        \n        short shortBuffer = 8;\n        data = &shortBuffer;\n    }\n    \n    funcPtr(data);\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_byndjjlc();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401727,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_65a.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\n\nvoid _Type_Confusion__short_51b_G2BSink(void * data);\n\n\nstatic void f_iuzqsyni()\n{\n    void * data;\n    \n    data = NULL;\n    {\n        \n        int intBuffer = 8;\n        data = &intBuffer;\n    }\n    _Type_Confusion__short_51b_G2BSink(data);\n}\n\nvoid f_unhaxxzc()\n{\n    f_iuzqsyni();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_unhaxxzc();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401728,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_51a.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\nvoid _Type_Confusion__short_51b_Sink(void * data);\n\nvoid f_gbnfxasc()\n{\n    void * data;\n    \n    data = NULL;\n    {\n        \n        short shortBuffer = 8;\n        data = &shortBuffer;\n    }\n    _Type_Confusion__short_51b_Sink(data);\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_gbnfxasc();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401729,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_51a.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\n\nstatic void f_xkdnqwov()\n{\n    void * data;\n    \n    data = NULL;\n    goto source;\nsource:\n    {\n        \n        int intBuffer = 8;\n        data = &intBuffer;\n    }\n    \n    printIntLine(*((int*)data));\n}\n\nvoid f_ndlqsnpu()\n{\n    f_xkdnqwov();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ndlqsnpu();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401730,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_18.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_kzrnlfhr()\n{\n    void * data;\n    \n    data = NULL;\n    goto source;\nsource:\n    {\n        \n        char charBuffer = 'a';\n        data = &charBuffer;\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_kzrnlfhr();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401731,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_18.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_kfnobasb()\n{\n    void * data;\n    \n    data = NULL;\n    goto source;\nsource:\n    {\n        \n        short shortBuffer = 8;\n        data = &shortBuffer;\n    }\n    \n    printIntLine(*((int*)data));\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_kfnobasb();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401733,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_18.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\n\nvoid _Type_Confusion__char_51b_G2BSink(void * data);\n\n\nstatic void f_jkilyebo()\n{\n    void * data;\n    \n    data = NULL;\n    {\n        \n        int intBuffer = 8;\n        data = &intBuffer;\n    }\n    _Type_Confusion__char_51b_G2BSink(data);\n}\n\nvoid f_rlxfmgoi()\n{\n    f_jkilyebo();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_rlxfmgoi();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401734,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_51a.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\nvoid _Type_Confusion__char_51b_Sink(void * data);\n\nvoid f_bfiissop()\n{\n    void * data;\n    \n    data = NULL;\n    {\n        \n        char charBuffer = 'a';\n        data = &charBuffer;\n    }\n    _Type_Confusion__char_51b_Sink(data);\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_bfiissop();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401735,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_51a.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\n\nvoid _Type_Confusion__char_53b_G2BSink(void * data);\n\n\nstatic void f_vdcvgbpr()\n{\n    void * data;\n    \n    data = NULL;\n    {\n        \n        int intBuffer = 8;\n        data = &intBuffer;\n    }\n    _Type_Confusion__char_53b_G2BSink(data);\n}\n\nvoid f_tlhswlyg()\n{\n    f_vdcvgbpr();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_tlhswlyg();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401736,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_53a.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\nvoid _Type_Confusion__char_53b_Sink(void * data);\n\nvoid f_ptyyptzk()\n{\n    void * data;\n    \n    data = NULL;\n    {\n        \n        char charBuffer = 'a';\n        data = &charBuffer;\n    }\n    _Type_Confusion__char_53b_Sink(data);\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ptyyptzk();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401737,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__char_53a.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\n\nvoid _Type_Confusion__short_54b_G2BSink(void * data);\n\n\nstatic void f_lsazkdzh()\n{\n    void * data;\n    \n    data = NULL;\n    {\n        \n        int intBuffer = 8;\n        data = &intBuffer;\n    }\n    _Type_Confusion__short_54b_G2BSink(data);\n}\n\nvoid f_hlmkwhho()\n{\n    f_lsazkdzh();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_hlmkwhho();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401738,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_54a.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-843"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\nvoid _Type_Confusion__short_54b_Sink(void * data);\n\nvoid f_lykzpclm()\n{\n    void * data;\n    \n    data = NULL;\n    {\n        \n        short shortBuffer = 8;\n        data = &shortBuffer;\n    }\n    _Type_Confusion__short_54b_Sink(data);\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_lykzpclm();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401739,
+    "original_file": "testcases/CWE843_Type_Confusion/CWE843_Type_Confusion__short_54a.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  }
+]

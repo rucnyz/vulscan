@@ -1,0 +1,322 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-23"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define BASEPATH \"c:\\\\temp\\\\\"\n#else\n#include <wchar.h>\n#define BASEPATH \"/tmp/\"\n#endif\n\n#ifdef _WIN32\n#include <winsock2.h>\n#include <windows.h>\n#include <direct.h>\n#pragma comment(lib, \"ws2_32\") \n#define CLOSE_SOCKET closesocket\n#else \n#include <sys/types.h>\n#include <sys/socket.h>\n#include <netinet/in.h>\n#include <arpa/inet.h>\n#include <unistd.h>\n#define INVALID_SOCKET -1\n#define SOCKET_ERROR -1\n#define CLOSE_SOCKET close\n#define SOCKET int\n#endif\n\n#define TCP_PORT 27015\n#define IP_ADDRESS \"127.0.0.1\"\n\n#ifdef _WIN32\n#define FOPEN fopen\n#else\n#define FOPEN fopen\n#endif\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_nwjjyflt()\n{\n    char * data;\n    char dataBuffer[FILENAME_MAX] = BASEPATH;\n    data = dataBuffer;\n    switch(5)\n    {\n    case 6:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    default:\n        \n        strcat(data, \"file.txt\");\n        break;\n    }\n    {\n        FILE *pFile = NULL;\n        \n        pFile = FOPEN(data, \"wb+\");\n        if (pFile != NULL)\n        {\n            fclose(pFile);\n        }\n    }\n}\n\n\nstatic void f_wsxnvseb()\n{\n    char * data;\n    char dataBuffer[FILENAME_MAX] = BASEPATH;\n    data = dataBuffer;\n    switch(6)\n    {\n    case 6:\n        \n        strcat(data, \"file.txt\");\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    {\n        FILE *pFile = NULL;\n        \n        pFile = FOPEN(data, \"wb+\");\n        if (pFile != NULL)\n        {\n            fclose(pFile);\n        }\n    }\n}\n\nvoid f_nszzugcf()\n{\n    f_nwjjyflt();\n    f_wsxnvseb();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_nszzugcf();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 403152,
+    "original_file": "testcases/CWE23_Relative_Path_Traversal/s01/CWE23_Relative_Path_Traversal__char_connect_socket_fopen_15.cpp",
+    "RELATED_CWE": [
+      "CWE-15",
+      "CWE-59",
+      "CWE-426"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-23"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define BASEPATH \"c:\\\\temp\\\\\"\n#else\n#include <wchar.h>\n#define BASEPATH \"/tmp/\"\n#endif\n\n#ifdef _WIN32\n#include <winsock2.h>\n#include <windows.h>\n#include <direct.h>\n#pragma comment(lib, \"ws2_32\") \n#define CLOSE_SOCKET closesocket\n#else \n#include <sys/types.h>\n#include <sys/socket.h>\n#include <netinet/in.h>\n#include <arpa/inet.h>\n#include <unistd.h>\n#define INVALID_SOCKET -1\n#define SOCKET_ERROR -1\n#define CLOSE_SOCKET close\n#define SOCKET int\n#endif\n\n#define TCP_PORT 27015\n#define IP_ADDRESS \"127.0.0.1\"\n\n#ifdef _WIN32\n#define FOPEN fopen\n#else\n#define FOPEN fopen\n#endif\n\nnamespace _A_namespace\n{\n\n\nvoid f_lhdzixcz()\n{\n    char * data;\n    char dataBuffer[FILENAME_MAX] = BASEPATH;\n    data = dataBuffer;\n    switch(6)\n    {\n    case 6:\n    {\n#ifdef _WIN32\n        WSADATA wsaData;\n        int wsaDataInit = 0;\n#endif\n        int recvResult;\n        struct sockaddr_in service;\n        char *replace;\n        SOCKET connectSocket = INVALID_SOCKET;\n        size_t dataLen = strlen(data);\n        do\n        {\n#ifdef _WIN32\n            if (WSAStartup(MAKEWORD(2,2), &wsaData) != NO_ERROR)\n            {\n                break;\n            }\n            wsaDataInit = 1;\n#endif\n            \n            connectSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);\n            if (connectSocket == INVALID_SOCKET)\n            {\n                break;\n            }\n            memset(&service, 0, sizeof(service));\n            service.sin_family = AF_INET;\n            service.sin_addr.s_addr = inet_addr(IP_ADDRESS);\n            service.sin_port = htons(TCP_PORT);\n            if (connect(connectSocket, (struct sockaddr*)&service, sizeof(service)) == SOCKET_ERROR)\n            {\n                break;\n            }\n            \n            \n            recvResult = recv(connectSocket, (char *)(data + dataLen), sizeof(char) * (FILENAME_MAX - dataLen - 1), 0);\n            if (recvResult == SOCKET_ERROR || recvResult == 0)\n            {\n                break;\n            }\n            \n            data[dataLen + recvResult / sizeof(char)] = '\\0';\n            \n            replace = strchr(data, '\\r');\n            if (replace)\n            {\n                *replace = '\\0';\n            }\n            replace = strchr(data, '\\n');\n            if (replace)\n            {\n                *replace = '\\0';\n            }\n        }\n        while (0);\n        if (connectSocket != INVALID_SOCKET)\n        {\n            CLOSE_SOCKET(connectSocket);\n        }\n#ifdef _WIN32\n        if (wsaDataInit)\n        {\n            WSACleanup();\n        }\n#endif\n    }\n    break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    {\n        FILE *pFile = NULL;\n        \n        pFile = FOPEN(data, \"wb+\");\n        if (pFile != NULL)\n        {\n            fclose(pFile);\n        }\n    }\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_lhdzixcz();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 403153,
+    "original_file": "testcases/CWE23_Relative_Path_Traversal/s01/CWE23_Relative_Path_Traversal__char_connect_socket_fopen_15.cpp",
+    "RELATED_CWE": [
+      "CWE-15",
+      "CWE-59",
+      "CWE-426"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-23"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define BASEPATH \"c:\\\\temp\\\\\"\n#else\n#include <wchar.h>\n#define BASEPATH \"/tmp/\"\n#endif\n\n#ifdef _WIN32\n#include <winsock2.h>\n#include <windows.h>\n#include <direct.h>\n#pragma comment(lib, \"ws2_32\") \n#define CLOSE_SOCKET closesocket\n#else \n#include <sys/types.h>\n#include <sys/socket.h>\n#include <netinet/in.h>\n#include <arpa/inet.h>\n#include <unistd.h>\n#define INVALID_SOCKET -1\n#define SOCKET_ERROR -1\n#define CLOSE_SOCKET close\n#define SOCKET int\n#endif\n\n#define TCP_PORT 27015\n#define IP_ADDRESS \"127.0.0.1\"\n\n#ifdef _WIN32\n#define FOPEN fopen\n#else\n#define FOPEN fopen\n#endif\n\n\nstatic int staticReturnsTrue()\n{\n    return 1;\n}\n\nstatic int staticReturnsFalse()\n{\n    return 0;\n}\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_ijgzrvuk()\n{\n    char * data;\n    char dataBuffer[FILENAME_MAX] = BASEPATH;\n    data = dataBuffer;\n    if(staticReturnsFalse())\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        strcat(data, \"file.txt\");\n    }\n    {\n        FILE *pFile = NULL;\n        \n        pFile = FOPEN(data, \"wb+\");\n        if (pFile != NULL)\n        {\n            fclose(pFile);\n        }\n    }\n}\n\n\nstatic void f_bdltszru()\n{\n    char * data;\n    char dataBuffer[FILENAME_MAX] = BASEPATH;\n    data = dataBuffer;\n    if(staticReturnsTrue())\n    {\n        \n        strcat(data, \"file.txt\");\n    }\n    {\n        FILE *pFile = NULL;\n        \n        pFile = FOPEN(data, \"wb+\");\n        if (pFile != NULL)\n        {\n            fclose(pFile);\n        }\n    }\n}\n\nvoid f_bdjuxjgd()\n{\n    f_ijgzrvuk();\n    f_bdltszru();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_bdjuxjgd();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 403154,
+    "original_file": "testcases/CWE23_Relative_Path_Traversal/s01/CWE23_Relative_Path_Traversal__char_connect_socket_fopen_08.cpp",
+    "RELATED_CWE": [
+      "CWE-15",
+      "CWE-59",
+      "CWE-426"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-23"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define BASEPATH \"c:\\\\temp\\\\\"\n#else\n#include <wchar.h>\n#define BASEPATH \"/tmp/\"\n#endif\n\n#ifdef _WIN32\n#include <winsock2.h>\n#include <windows.h>\n#include <direct.h>\n#pragma comment(lib, \"ws2_32\") \n#define CLOSE_SOCKET closesocket\n#else \n#include <sys/types.h>\n#include <sys/socket.h>\n#include <netinet/in.h>\n#include <arpa/inet.h>\n#include <unistd.h>\n#define INVALID_SOCKET -1\n#define SOCKET_ERROR -1\n#define CLOSE_SOCKET close\n#define SOCKET int\n#endif\n\n#define TCP_PORT 27015\n#define IP_ADDRESS \"127.0.0.1\"\n\n#ifdef _WIN32\n#define FOPEN fopen\n#else\n#define FOPEN fopen\n#endif\n\n\nstatic int staticReturnsTrue()\n{\n    return 1;\n}\n\nstatic int staticReturnsFalse()\n{\n    return 0;\n}\n\nnamespace _A_namespace\n{\n\n\nvoid f_albjdrxe()\n{\n    char * data;\n    char dataBuffer[FILENAME_MAX] = BASEPATH;\n    data = dataBuffer;\n    if(staticReturnsTrue())\n    {\n        {\n#ifdef _WIN32\n            WSADATA wsaData;\n            int wsaDataInit = 0;\n#endif\n            int recvResult;\n            struct sockaddr_in service;\n            char *replace;\n            SOCKET connectSocket = INVALID_SOCKET;\n            size_t dataLen = strlen(data);\n            do\n            {\n#ifdef _WIN32\n                if (WSAStartup(MAKEWORD(2,2), &wsaData) != NO_ERROR)\n                {\n                    break;\n                }\n                wsaDataInit = 1;\n#endif\n                \n                connectSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);\n                if (connectSocket == INVALID_SOCKET)\n                {\n                    break;\n                }\n                memset(&service, 0, sizeof(service));\n                service.sin_family = AF_INET;\n                service.sin_addr.s_addr = inet_addr(IP_ADDRESS);\n                service.sin_port = htons(TCP_PORT);\n                if (connect(connectSocket, (struct sockaddr*)&service, sizeof(service)) == SOCKET_ERROR)\n                {\n                    break;\n                }\n                \n                \n                recvResult = recv(connectSocket, (char *)(data + dataLen), sizeof(char) * (FILENAME_MAX - dataLen - 1), 0);\n                if (recvResult == SOCKET_ERROR || recvResult == 0)\n                {\n                    break;\n                }\n                \n                data[dataLen + recvResult / sizeof(char)] = '\\0';\n                \n                replace = strchr(data, '\\r');\n                if (replace)\n                {\n                    *replace = '\\0';\n                }\n                replace = strchr(data, '\\n');\n                if (replace)\n                {\n                    *replace = '\\0';\n                }\n            }\n            while (0);\n            if (connectSocket != INVALID_SOCKET)\n            {\n                CLOSE_SOCKET(connectSocket);\n            }\n#ifdef _WIN32\n            if (wsaDataInit)\n            {\n                WSACleanup();\n            }\n#endif\n        }\n    }\n    {\n        FILE *pFile = NULL;\n        \n        pFile = FOPEN(data, \"wb+\");\n        if (pFile != NULL)\n        {\n            fclose(pFile);\n        }\n    }\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_albjdrxe();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 403155,
+    "original_file": "testcases/CWE23_Relative_Path_Traversal/s01/CWE23_Relative_Path_Traversal__char_connect_socket_fopen_08.cpp",
+    "RELATED_CWE": [
+      "CWE-15",
+      "CWE-59",
+      "CWE-426"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-23"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define BASEPATH \"c:\\\\temp\\\\\"\n#else\n#include <wchar.h>\n#define BASEPATH \"/tmp/\"\n#endif\n\n#ifdef _WIN32\n#include <winsock2.h>\n#include <windows.h>\n#include <direct.h>\n#pragma comment(lib, \"ws2_32\") \n#define CLOSE_SOCKET closesocket\n#else \n#include <sys/types.h>\n#include <sys/socket.h>\n#include <netinet/in.h>\n#include <arpa/inet.h>\n#include <unistd.h>\n#define INVALID_SOCKET -1\n#define SOCKET_ERROR -1\n#define CLOSE_SOCKET close\n#define SOCKET int\n#endif\n\n#define TCP_PORT 27015\n#define IP_ADDRESS \"127.0.0.1\"\n\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_pfmkiaty()\n{\n    char * data;\n    char dataBuffer[FILENAME_MAX] = BASEPATH;\n    data = dataBuffer;\n    if(globalFive!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        strcat(data, \"file.txt\");\n    }\n    {\n        HANDLE hFile;\n        \n        hFile = CreateFileA(data,\n                            (GENERIC_WRITE|GENERIC_READ),\n                            0,\n                            NULL,\n                            OPEN_ALWAYS,\n                            FILE_ATTRIBUTE_NORMAL,\n                            NULL);\n        if (hFile != INVALID_HANDLE_VALUE)\n        {\n            CloseHandle(hFile);\n        }\n    }\n}\n\n\nstatic void f_isfrzxxm()\n{\n    char * data;\n    char dataBuffer[FILENAME_MAX] = BASEPATH;\n    data = dataBuffer;\n    if(globalFive==5)\n    {\n        \n        strcat(data, \"file.txt\");\n    }\n    {\n        HANDLE hFile;\n        \n        hFile = CreateFileA(data,\n                            (GENERIC_WRITE|GENERIC_READ),\n                            0,\n                            NULL,\n                            OPEN_ALWAYS,\n                            FILE_ATTRIBUTE_NORMAL,\n                            NULL);\n        if (hFile != INVALID_HANDLE_VALUE)\n        {\n            CloseHandle(hFile);\n        }\n    }\n}\n\nvoid f_lnchhscz()\n{\n    f_pfmkiaty();\n    f_isfrzxxm();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_lnchhscz();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 403156,
+    "original_file": "testcases/CWE23_Relative_Path_Traversal/s01/CWE23_Relative_Path_Traversal__char_connect_socket_w32CreateFile_14.cpp",
+    "RELATED_CWE": [
+      "CWE-15",
+      "CWE-59",
+      "CWE-426"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-23"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define BASEPATH \"c:\\\\temp\\\\\"\n#else\n#include <wchar.h>\n#define BASEPATH \"/tmp/\"\n#endif\n\n#ifdef _WIN32\n#include <winsock2.h>\n#include <windows.h>\n#include <direct.h>\n#pragma comment(lib, \"ws2_32\") \n#define CLOSE_SOCKET closesocket\n#else \n#include <sys/types.h>\n#include <sys/socket.h>\n#include <netinet/in.h>\n#include <arpa/inet.h>\n#include <unistd.h>\n#define INVALID_SOCKET -1\n#define SOCKET_ERROR -1\n#define CLOSE_SOCKET close\n#define SOCKET int\n#endif\n\n#define TCP_PORT 27015\n#define IP_ADDRESS \"127.0.0.1\"\n\n\nnamespace _A_namespace\n{\n\n\nvoid f_gfzeihvv()\n{\n    char * data;\n    char dataBuffer[FILENAME_MAX] = BASEPATH;\n    data = dataBuffer;\n    if(globalFive==5)\n    {\n        {\n#ifdef _WIN32\n            WSADATA wsaData;\n            int wsaDataInit = 0;\n#endif\n            int recvResult;\n            struct sockaddr_in service;\n            char *replace;\n            SOCKET connectSocket = INVALID_SOCKET;\n            size_t dataLen = strlen(data);\n            do\n            {\n#ifdef _WIN32\n                if (WSAStartup(MAKEWORD(2,2), &wsaData) != NO_ERROR)\n                {\n                    break;\n                }\n                wsaDataInit = 1;\n#endif\n                \n                connectSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);\n                if (connectSocket == INVALID_SOCKET)\n                {\n                    break;\n                }\n                memset(&service, 0, sizeof(service));\n                service.sin_family = AF_INET;\n                service.sin_addr.s_addr = inet_addr(IP_ADDRESS);\n                service.sin_port = htons(TCP_PORT);\n                if (connect(connectSocket, (struct sockaddr*)&service, sizeof(service)) == SOCKET_ERROR)\n                {\n                    break;\n                }\n                \n                \n                recvResult = recv(connectSocket, (char *)(data + dataLen), sizeof(char) * (FILENAME_MAX - dataLen - 1), 0);\n                if (recvResult == SOCKET_ERROR || recvResult == 0)\n                {\n                    break;\n                }\n                \n                data[dataLen + recvResult / sizeof(char)] = '\\0';\n                \n                replace = strchr(data, '\\r');\n                if (replace)\n                {\n                    *replace = '\\0';\n                }\n                replace = strchr(data, '\\n');\n                if (replace)\n                {\n                    *replace = '\\0';\n                }\n            }\n            while (0);\n            if (connectSocket != INVALID_SOCKET)\n            {\n                CLOSE_SOCKET(connectSocket);\n            }\n#ifdef _WIN32\n            if (wsaDataInit)\n            {\n                WSACleanup();\n            }\n#endif\n        }\n    }\n    {\n        HANDLE hFile;\n        \n        hFile = CreateFileA(data,\n                            (GENERIC_WRITE|GENERIC_READ),\n                            0,\n                            NULL,\n                            OPEN_ALWAYS,\n                            FILE_ATTRIBUTE_NORMAL,\n                            NULL);\n        if (hFile != INVALID_HANDLE_VALUE)\n        {\n            CloseHandle(hFile);\n        }\n    }\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_gfzeihvv();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 403157,
+    "original_file": "testcases/CWE23_Relative_Path_Traversal/s01/CWE23_Relative_Path_Traversal__char_connect_socket_w32CreateFile_14.cpp",
+    "RELATED_CWE": [
+      "CWE-15",
+      "CWE-59",
+      "CWE-426"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-23"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define BASEPATH \"c:\\\\temp\\\\\"\n#else\n#include <wchar.h>\n#define BASEPATH \"/tmp/\"\n#endif\n\n#ifdef _WIN32\n#include <winsock2.h>\n#include <windows.h>\n#include <direct.h>\n#pragma comment(lib, \"ws2_32\") \n#define CLOSE_SOCKET closesocket\n#else \n#include <sys/types.h>\n#include <sys/socket.h>\n#include <netinet/in.h>\n#include <arpa/inet.h>\n#include <unistd.h>\n#define INVALID_SOCKET -1\n#define SOCKET_ERROR -1\n#define CLOSE_SOCKET close\n#define SOCKET int\n#endif\n\n#define TCP_PORT 27015\n#define IP_ADDRESS \"127.0.0.1\"\n\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_bsigrjpf()\n{\n    char * data;\n    char dataBuffer[FILENAME_MAX] = BASEPATH;\n    data = dataBuffer;\n    if(5!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        strcat(data, \"file.txt\");\n    }\n    {\n        HANDLE hFile;\n        \n        hFile = CreateFileA(data,\n                            (GENERIC_WRITE|GENERIC_READ),\n                            0,\n                            NULL,\n                            OPEN_ALWAYS,\n                            FILE_ATTRIBUTE_NORMAL,\n                            NULL);\n        if (hFile != INVALID_HANDLE_VALUE)\n        {\n            CloseHandle(hFile);\n        }\n    }\n}\n\n\nstatic void f_poeeucqh()\n{\n    char * data;\n    char dataBuffer[FILENAME_MAX] = BASEPATH;\n    data = dataBuffer;\n    if(5==5)\n    {\n        \n        strcat(data, \"file.txt\");\n    }\n    {\n        HANDLE hFile;\n        \n        hFile = CreateFileA(data,\n                            (GENERIC_WRITE|GENERIC_READ),\n                            0,\n                            NULL,\n                            OPEN_ALWAYS,\n                            FILE_ATTRIBUTE_NORMAL,\n                            NULL);\n        if (hFile != INVALID_HANDLE_VALUE)\n        {\n            CloseHandle(hFile);\n        }\n    }\n}\n\nvoid f_bfdnoebf()\n{\n    f_bsigrjpf();\n    f_poeeucqh();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_bfdnoebf();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 403158,
+    "original_file": "testcases/CWE23_Relative_Path_Traversal/s01/CWE23_Relative_Path_Traversal__char_connect_socket_w32CreateFile_03.cpp",
+    "RELATED_CWE": [
+      "CWE-15",
+      "CWE-59",
+      "CWE-426"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-23"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define BASEPATH \"c:\\\\temp\\\\\"\n#else\n#include <wchar.h>\n#define BASEPATH \"/tmp/\"\n#endif\n\n#ifdef _WIN32\n#include <winsock2.h>\n#include <windows.h>\n#include <direct.h>\n#pragma comment(lib, \"ws2_32\") \n#define CLOSE_SOCKET closesocket\n#else \n#include <sys/types.h>\n#include <sys/socket.h>\n#include <netinet/in.h>\n#include <arpa/inet.h>\n#include <unistd.h>\n#define INVALID_SOCKET -1\n#define SOCKET_ERROR -1\n#define CLOSE_SOCKET close\n#define SOCKET int\n#endif\n\n#define TCP_PORT 27015\n#define IP_ADDRESS \"127.0.0.1\"\n\n\nnamespace _A_namespace\n{\n\n\nvoid f_vyaxrtpa()\n{\n    char * data;\n    char dataBuffer[FILENAME_MAX] = BASEPATH;\n    data = dataBuffer;\n    if(5==5)\n    {\n        {\n#ifdef _WIN32\n            WSADATA wsaData;\n            int wsaDataInit = 0;\n#endif\n            int recvResult;\n            struct sockaddr_in service;\n            char *replace;\n            SOCKET connectSocket = INVALID_SOCKET;\n            size_t dataLen = strlen(data);\n            do\n            {\n#ifdef _WIN32\n                if (WSAStartup(MAKEWORD(2,2), &wsaData) != NO_ERROR)\n                {\n                    break;\n                }\n                wsaDataInit = 1;\n#endif\n                \n                connectSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);\n                if (connectSocket == INVALID_SOCKET)\n                {\n                    break;\n                }\n                memset(&service, 0, sizeof(service));\n                service.sin_family = AF_INET;\n                service.sin_addr.s_addr = inet_addr(IP_ADDRESS);\n                service.sin_port = htons(TCP_PORT);\n                if (connect(connectSocket, (struct sockaddr*)&service, sizeof(service)) == SOCKET_ERROR)\n                {\n                    break;\n                }\n                \n                \n                recvResult = recv(connectSocket, (char *)(data + dataLen), sizeof(char) * (FILENAME_MAX - dataLen - 1), 0);\n                if (recvResult == SOCKET_ERROR || recvResult == 0)\n                {\n                    break;\n                }\n                \n                data[dataLen + recvResult / sizeof(char)] = '\\0';\n                \n                replace = strchr(data, '\\r');\n                if (replace)\n                {\n                    *replace = '\\0';\n                }\n                replace = strchr(data, '\\n');\n                if (replace)\n                {\n                    *replace = '\\0';\n                }\n            }\n            while (0);\n            if (connectSocket != INVALID_SOCKET)\n            {\n                CLOSE_SOCKET(connectSocket);\n            }\n#ifdef _WIN32\n            if (wsaDataInit)\n            {\n                WSACleanup();\n            }\n#endif\n        }\n    }\n    {\n        HANDLE hFile;\n        \n        hFile = CreateFileA(data,\n                            (GENERIC_WRITE|GENERIC_READ),\n                            0,\n                            NULL,\n                            OPEN_ALWAYS,\n                            FILE_ATTRIBUTE_NORMAL,\n                            NULL);\n        if (hFile != INVALID_HANDLE_VALUE)\n        {\n            CloseHandle(hFile);\n        }\n    }\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_vyaxrtpa();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 403159,
+    "original_file": "testcases/CWE23_Relative_Path_Traversal/s01/CWE23_Relative_Path_Traversal__char_connect_socket_w32CreateFile_03.cpp",
+    "RELATED_CWE": [
+      "CWE-15",
+      "CWE-59",
+      "CWE-426"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-23"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define BASEPATH \"c:\\\\temp\\\\\"\n#else\n#include <wchar.h>\n#define BASEPATH \"/tmp/\"\n#endif\n\n#ifdef _WIN32\n#include <winsock2.h>\n#include <windows.h>\n#include <direct.h>\n#pragma comment(lib, \"ws2_32\") \n#define CLOSE_SOCKET closesocket\n#else \n#include <sys/types.h>\n#include <sys/socket.h>\n#include <netinet/in.h>\n#include <arpa/inet.h>\n#include <unistd.h>\n#define INVALID_SOCKET -1\n#define SOCKET_ERROR -1\n#define CLOSE_SOCKET close\n#define SOCKET int\n#endif\n\n#define TCP_PORT 27015\n#define IP_ADDRESS \"127.0.0.1\"\n\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_wdgacmgu()\n{\n    char * data;\n    char dataBuffer[FILENAME_MAX] = BASEPATH;\n    data = dataBuffer;\n    if(globalFalse)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        strcat(data, \"file.txt\");\n    }\n    {\n        HANDLE hFile;\n        \n        hFile = CreateFileA(data,\n                            (GENERIC_WRITE|GENERIC_READ),\n                            0,\n                            NULL,\n                            OPEN_ALWAYS,\n                            FILE_ATTRIBUTE_NORMAL,\n                            NULL);\n        if (hFile != INVALID_HANDLE_VALUE)\n        {\n            CloseHandle(hFile);\n        }\n    }\n}\n\n\nstatic void f_nqvqfzir()\n{\n    char * data;\n    char dataBuffer[FILENAME_MAX] = BASEPATH;\n    data = dataBuffer;\n    if(globalTrue)\n    {\n        \n        strcat(data, \"file.txt\");\n    }\n    {\n        HANDLE hFile;\n        \n        hFile = CreateFileA(data,\n                            (GENERIC_WRITE|GENERIC_READ),\n                            0,\n                            NULL,\n                            OPEN_ALWAYS,\n                            FILE_ATTRIBUTE_NORMAL,\n                            NULL);\n        if (hFile != INVALID_HANDLE_VALUE)\n        {\n            CloseHandle(hFile);\n        }\n    }\n}\n\nvoid f_xmimfyeg()\n{\n    f_wdgacmgu();\n    f_nqvqfzir();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_xmimfyeg();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 403160,
+    "original_file": "testcases/CWE23_Relative_Path_Traversal/s01/CWE23_Relative_Path_Traversal__char_connect_socket_w32CreateFile_10.cpp",
+    "RELATED_CWE": [
+      "CWE-15",
+      "CWE-59",
+      "CWE-426"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-23"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define BASEPATH \"c:\\\\temp\\\\\"\n#else\n#include <wchar.h>\n#define BASEPATH \"/tmp/\"\n#endif\n\n#ifdef _WIN32\n#include <winsock2.h>\n#include <windows.h>\n#include <direct.h>\n#pragma comment(lib, \"ws2_32\") \n#define CLOSE_SOCKET closesocket\n#else \n#include <sys/types.h>\n#include <sys/socket.h>\n#include <netinet/in.h>\n#include <arpa/inet.h>\n#include <unistd.h>\n#define INVALID_SOCKET -1\n#define SOCKET_ERROR -1\n#define CLOSE_SOCKET close\n#define SOCKET int\n#endif\n\n#define TCP_PORT 27015\n#define IP_ADDRESS \"127.0.0.1\"\n\n\nnamespace _A_namespace\n{\n\n\nvoid f_oglxtiik()\n{\n    char * data;\n    char dataBuffer[FILENAME_MAX] = BASEPATH;\n    data = dataBuffer;\n    if(globalTrue)\n    {\n        {\n#ifdef _WIN32\n            WSADATA wsaData;\n            int wsaDataInit = 0;\n#endif\n            int recvResult;\n            struct sockaddr_in service;\n            char *replace;\n            SOCKET connectSocket = INVALID_SOCKET;\n            size_t dataLen = strlen(data);\n            do\n            {\n#ifdef _WIN32\n                if (WSAStartup(MAKEWORD(2,2), &wsaData) != NO_ERROR)\n                {\n                    break;\n                }\n                wsaDataInit = 1;\n#endif\n                \n                connectSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);\n                if (connectSocket == INVALID_SOCKET)\n                {\n                    break;\n                }\n                memset(&service, 0, sizeof(service));\n                service.sin_family = AF_INET;\n                service.sin_addr.s_addr = inet_addr(IP_ADDRESS);\n                service.sin_port = htons(TCP_PORT);\n                if (connect(connectSocket, (struct sockaddr*)&service, sizeof(service)) == SOCKET_ERROR)\n                {\n                    break;\n                }\n                \n                \n                recvResult = recv(connectSocket, (char *)(data + dataLen), sizeof(char) * (FILENAME_MAX - dataLen - 1), 0);\n                if (recvResult == SOCKET_ERROR || recvResult == 0)\n                {\n                    break;\n                }\n                \n                data[dataLen + recvResult / sizeof(char)] = '\\0';\n                \n                replace = strchr(data, '\\r');\n                if (replace)\n                {\n                    *replace = '\\0';\n                }\n                replace = strchr(data, '\\n');\n                if (replace)\n                {\n                    *replace = '\\0';\n                }\n            }\n            while (0);\n            if (connectSocket != INVALID_SOCKET)\n            {\n                CLOSE_SOCKET(connectSocket);\n            }\n#ifdef _WIN32\n            if (wsaDataInit)\n            {\n                WSACleanup();\n            }\n#endif\n        }\n    }\n    {\n        HANDLE hFile;\n        \n        hFile = CreateFileA(data,\n                            (GENERIC_WRITE|GENERIC_READ),\n                            0,\n                            NULL,\n                            OPEN_ALWAYS,\n                            FILE_ATTRIBUTE_NORMAL,\n                            NULL);\n        if (hFile != INVALID_HANDLE_VALUE)\n        {\n            CloseHandle(hFile);\n        }\n    }\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_oglxtiik();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 403161,
+    "original_file": "testcases/CWE23_Relative_Path_Traversal/s01/CWE23_Relative_Path_Traversal__char_connect_socket_w32CreateFile_10.cpp",
+    "RELATED_CWE": [
+      "CWE-15",
+      "CWE-59",
+      "CWE-426"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-23"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define BASEPATH \"c:\\\\temp\\\\\"\n#else\n#include <wchar.h>\n#define BASEPATH \"/tmp/\"\n#endif\n\n#ifdef _WIN32\n#include <winsock2.h>\n#include <windows.h>\n#include <direct.h>\n#pragma comment(lib, \"ws2_32\") \n#define CLOSE_SOCKET closesocket\n#else \n#include <sys/types.h>\n#include <sys/socket.h>\n#include <netinet/in.h>\n#include <arpa/inet.h>\n#include <unistd.h>\n#define INVALID_SOCKET -1\n#define SOCKET_ERROR -1\n#define CLOSE_SOCKET close\n#define SOCKET int\n#endif\n\n#define TCP_PORT 27015\n#define IP_ADDRESS \"127.0.0.1\"\n\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_pvvrpomw()\n{\n    char * data;\n    char dataBuffer[FILENAME_MAX] = BASEPATH;\n    data = dataBuffer;\n    if(GLOBAL_CONST_FIVE!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        strcat(data, \"file.txt\");\n    }\n    {\n        HANDLE hFile;\n        \n        hFile = CreateFileA(data,\n                            (GENERIC_WRITE|GENERIC_READ),\n                            0,\n                            NULL,\n                            OPEN_ALWAYS,\n                            FILE_ATTRIBUTE_NORMAL,\n                            NULL);\n        if (hFile != INVALID_HANDLE_VALUE)\n        {\n            CloseHandle(hFile);\n        }\n    }\n}\n\n\nstatic void f_bokfxsxy()\n{\n    char * data;\n    char dataBuffer[FILENAME_MAX] = BASEPATH;\n    data = dataBuffer;\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        \n        strcat(data, \"file.txt\");\n    }\n    {\n        HANDLE hFile;\n        \n        hFile = CreateFileA(data,\n                            (GENERIC_WRITE|GENERIC_READ),\n                            0,\n                            NULL,\n                            OPEN_ALWAYS,\n                            FILE_ATTRIBUTE_NORMAL,\n                            NULL);\n        if (hFile != INVALID_HANDLE_VALUE)\n        {\n            CloseHandle(hFile);\n        }\n    }\n}\n\nvoid f_hyqmibxx()\n{\n    f_pvvrpomw();\n    f_bokfxsxy();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_hyqmibxx();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 403162,
+    "original_file": "testcases/CWE23_Relative_Path_Traversal/s01/CWE23_Relative_Path_Traversal__char_connect_socket_w32CreateFile_13.cpp",
+    "RELATED_CWE": [
+      "CWE-15",
+      "CWE-59",
+      "CWE-426"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-23"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define BASEPATH \"c:\\\\temp\\\\\"\n#else\n#include <wchar.h>\n#define BASEPATH \"/tmp/\"\n#endif\n\n#ifdef _WIN32\n#include <winsock2.h>\n#include <windows.h>\n#include <direct.h>\n#pragma comment(lib, \"ws2_32\") \n#define CLOSE_SOCKET closesocket\n#else \n#include <sys/types.h>\n#include <sys/socket.h>\n#include <netinet/in.h>\n#include <arpa/inet.h>\n#include <unistd.h>\n#define INVALID_SOCKET -1\n#define SOCKET_ERROR -1\n#define CLOSE_SOCKET close\n#define SOCKET int\n#endif\n\n#define TCP_PORT 27015\n#define IP_ADDRESS \"127.0.0.1\"\n\n\nnamespace _A_namespace\n{\n\n\nvoid f_ewxojnrc()\n{\n    char * data;\n    char dataBuffer[FILENAME_MAX] = BASEPATH;\n    data = dataBuffer;\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        {\n#ifdef _WIN32\n            WSADATA wsaData;\n            int wsaDataInit = 0;\n#endif\n            int recvResult;\n            struct sockaddr_in service;\n            char *replace;\n            SOCKET connectSocket = INVALID_SOCKET;\n            size_t dataLen = strlen(data);\n            do\n            {\n#ifdef _WIN32\n                if (WSAStartup(MAKEWORD(2,2), &wsaData) != NO_ERROR)\n                {\n                    break;\n                }\n                wsaDataInit = 1;\n#endif\n                \n                connectSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);\n                if (connectSocket == INVALID_SOCKET)\n                {\n                    break;\n                }\n                memset(&service, 0, sizeof(service));\n                service.sin_family = AF_INET;\n                service.sin_addr.s_addr = inet_addr(IP_ADDRESS);\n                service.sin_port = htons(TCP_PORT);\n                if (connect(connectSocket, (struct sockaddr*)&service, sizeof(service)) == SOCKET_ERROR)\n                {\n                    break;\n                }\n                \n                \n                recvResult = recv(connectSocket, (char *)(data + dataLen), sizeof(char) * (FILENAME_MAX - dataLen - 1), 0);\n                if (recvResult == SOCKET_ERROR || recvResult == 0)\n                {\n                    break;\n                }\n                \n                data[dataLen + recvResult / sizeof(char)] = '\\0';\n                \n                replace = strchr(data, '\\r');\n                if (replace)\n                {\n                    *replace = '\\0';\n                }\n                replace = strchr(data, '\\n');\n                if (replace)\n                {\n                    *replace = '\\0';\n                }\n            }\n            while (0);\n            if (connectSocket != INVALID_SOCKET)\n            {\n                CLOSE_SOCKET(connectSocket);\n            }\n#ifdef _WIN32\n            if (wsaDataInit)\n            {\n                WSACleanup();\n            }\n#endif\n        }\n    }\n    {\n        HANDLE hFile;\n        \n        hFile = CreateFileA(data,\n                            (GENERIC_WRITE|GENERIC_READ),\n                            0,\n                            NULL,\n                            OPEN_ALWAYS,\n                            FILE_ATTRIBUTE_NORMAL,\n                            NULL);\n        if (hFile != INVALID_HANDLE_VALUE)\n        {\n            CloseHandle(hFile);\n        }\n    }\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ewxojnrc();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 403163,
+    "original_file": "testcases/CWE23_Relative_Path_Traversal/s01/CWE23_Relative_Path_Traversal__char_connect_socket_w32CreateFile_13.cpp",
+    "RELATED_CWE": [
+      "CWE-15",
+      "CWE-59",
+      "CWE-426"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-23"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define BASEPATH \"c:\\\\temp\\\\\"\n#else\n#include <wchar.h>\n#define BASEPATH \"/tmp/\"\n#endif\n\n#ifdef _WIN32\n#include <winsock2.h>\n#include <windows.h>\n#include <direct.h>\n#pragma comment(lib, \"ws2_32\") \n#define CLOSE_SOCKET closesocket\n#else \n#include <sys/types.h>\n#include <sys/socket.h>\n#include <netinet/in.h>\n#include <arpa/inet.h>\n#include <unistd.h>\n#define INVALID_SOCKET -1\n#define SOCKET_ERROR -1\n#define CLOSE_SOCKET close\n#define SOCKET int\n#endif\n\n#define TCP_PORT 27015\n#define IP_ADDRESS \"127.0.0.1\"\n\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_tfqvixcj()\n{\n    char * data;\n    char dataBuffer[FILENAME_MAX] = BASEPATH;\n    data = dataBuffer;\n    if(globalReturnsFalse())\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        strcat(data, \"file.txt\");\n    }\n    {\n        HANDLE hFile;\n        \n        hFile = CreateFileA(data,\n                            (GENERIC_WRITE|GENERIC_READ),\n                            0,\n                            NULL,\n                            OPEN_ALWAYS,\n                            FILE_ATTRIBUTE_NORMAL,\n                            NULL);\n        if (hFile != INVALID_HANDLE_VALUE)\n        {\n            CloseHandle(hFile);\n        }\n    }\n}\n\n\nstatic void f_gbnxwair()\n{\n    char * data;\n    char dataBuffer[FILENAME_MAX] = BASEPATH;\n    data = dataBuffer;\n    if(globalReturnsTrue())\n    {\n        \n        strcat(data, \"file.txt\");\n    }\n    {\n        HANDLE hFile;\n        \n        hFile = CreateFileA(data,\n                            (GENERIC_WRITE|GENERIC_READ),\n                            0,\n                            NULL,\n                            OPEN_ALWAYS,\n                            FILE_ATTRIBUTE_NORMAL,\n                            NULL);\n        if (hFile != INVALID_HANDLE_VALUE)\n        {\n            CloseHandle(hFile);\n        }\n    }\n}\n\nvoid f_hdbggdju()\n{\n    f_tfqvixcj();\n    f_gbnxwair();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_hdbggdju();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 403164,
+    "original_file": "testcases/CWE23_Relative_Path_Traversal/s01/CWE23_Relative_Path_Traversal__char_connect_socket_w32CreateFile_11.cpp",
+    "RELATED_CWE": [
+      "CWE-15",
+      "CWE-59",
+      "CWE-426"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-23"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define BASEPATH \"c:\\\\temp\\\\\"\n#else\n#include <wchar.h>\n#define BASEPATH \"/tmp/\"\n#endif\n\n#ifdef _WIN32\n#include <winsock2.h>\n#include <windows.h>\n#include <direct.h>\n#pragma comment(lib, \"ws2_32\") \n#define CLOSE_SOCKET closesocket\n#else \n#include <sys/types.h>\n#include <sys/socket.h>\n#include <netinet/in.h>\n#include <arpa/inet.h>\n#include <unistd.h>\n#define INVALID_SOCKET -1\n#define SOCKET_ERROR -1\n#define CLOSE_SOCKET close\n#define SOCKET int\n#endif\n\n#define TCP_PORT 27015\n#define IP_ADDRESS \"127.0.0.1\"\n\n\nnamespace _A_namespace\n{\n\n\nvoid f_ymlvvrxs()\n{\n    char * data;\n    char dataBuffer[FILENAME_MAX] = BASEPATH;\n    data = dataBuffer;\n    if(globalReturnsTrue())\n    {\n        {\n#ifdef _WIN32\n            WSADATA wsaData;\n            int wsaDataInit = 0;\n#endif\n            int recvResult;\n            struct sockaddr_in service;\n            char *replace;\n            SOCKET connectSocket = INVALID_SOCKET;\n            size_t dataLen = strlen(data);\n            do\n            {\n#ifdef _WIN32\n                if (WSAStartup(MAKEWORD(2,2), &wsaData) != NO_ERROR)\n                {\n                    break;\n                }\n                wsaDataInit = 1;\n#endif\n                \n                connectSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);\n                if (connectSocket == INVALID_SOCKET)\n                {\n                    break;\n                }\n                memset(&service, 0, sizeof(service));\n                service.sin_family = AF_INET;\n                service.sin_addr.s_addr = inet_addr(IP_ADDRESS);\n                service.sin_port = htons(TCP_PORT);\n                if (connect(connectSocket, (struct sockaddr*)&service, sizeof(service)) == SOCKET_ERROR)\n                {\n                    break;\n                }\n                \n                \n                recvResult = recv(connectSocket, (char *)(data + dataLen), sizeof(char) * (FILENAME_MAX - dataLen - 1), 0);\n                if (recvResult == SOCKET_ERROR || recvResult == 0)\n                {\n                    break;\n                }\n                \n                data[dataLen + recvResult / sizeof(char)] = '\\0';\n                \n                replace = strchr(data, '\\r');\n                if (replace)\n                {\n                    *replace = '\\0';\n                }\n                replace = strchr(data, '\\n');\n                if (replace)\n                {\n                    *replace = '\\0';\n                }\n            }\n            while (0);\n            if (connectSocket != INVALID_SOCKET)\n            {\n                CLOSE_SOCKET(connectSocket);\n            }\n#ifdef _WIN32\n            if (wsaDataInit)\n            {\n                WSACleanup();\n            }\n#endif\n        }\n    }\n    {\n        HANDLE hFile;\n        \n        hFile = CreateFileA(data,\n                            (GENERIC_WRITE|GENERIC_READ),\n                            0,\n                            NULL,\n                            OPEN_ALWAYS,\n                            FILE_ATTRIBUTE_NORMAL,\n                            NULL);\n        if (hFile != INVALID_HANDLE_VALUE)\n        {\n            CloseHandle(hFile);\n        }\n    }\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ymlvvrxs();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 403165,
+    "original_file": "testcases/CWE23_Relative_Path_Traversal/s01/CWE23_Relative_Path_Traversal__char_connect_socket_w32CreateFile_11.cpp",
+    "RELATED_CWE": [
+      "CWE-15",
+      "CWE-59",
+      "CWE-426"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-23"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define BASEPATH \"c:\\\\temp\\\\\"\n#else\n#include <wchar.h>\n#define BASEPATH \"/tmp/\"\n#endif\n\n#ifdef _WIN32\n#include <winsock2.h>\n#include <windows.h>\n#include <direct.h>\n#pragma comment(lib, \"ws2_32\") \n#define CLOSE_SOCKET closesocket\n#else \n#include <sys/types.h>\n#include <sys/socket.h>\n#include <netinet/in.h>\n#include <arpa/inet.h>\n#include <unistd.h>\n#define INVALID_SOCKET -1\n#define SOCKET_ERROR -1\n#define CLOSE_SOCKET close\n#define SOCKET int\n#endif\n\n#define TCP_PORT 27015\n#define IP_ADDRESS \"127.0.0.1\"\n\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_jqfkpuat()\n{\n    char * data;\n    char dataBuffer[FILENAME_MAX] = BASEPATH;\n    data = dataBuffer;\n    if(GLOBAL_CONST_FALSE)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        strcat(data, \"file.txt\");\n    }\n    {\n        HANDLE hFile;\n        \n        hFile = CreateFileA(data,\n                            (GENERIC_WRITE|GENERIC_READ),\n                            0,\n                            NULL,\n                            OPEN_ALWAYS,\n                            FILE_ATTRIBUTE_NORMAL,\n                            NULL);\n        if (hFile != INVALID_HANDLE_VALUE)\n        {\n            CloseHandle(hFile);\n        }\n    }\n}\n\n\nstatic void f_zjspxvsd()\n{\n    char * data;\n    char dataBuffer[FILENAME_MAX] = BASEPATH;\n    data = dataBuffer;\n    if(GLOBAL_CONST_TRUE)\n    {\n        \n        strcat(data, \"file.txt\");\n    }\n    {\n        HANDLE hFile;\n        \n        hFile = CreateFileA(data,\n                            (GENERIC_WRITE|GENERIC_READ),\n                            0,\n                            NULL,\n                            OPEN_ALWAYS,\n                            FILE_ATTRIBUTE_NORMAL,\n                            NULL);\n        if (hFile != INVALID_HANDLE_VALUE)\n        {\n            CloseHandle(hFile);\n        }\n    }\n}\n\nvoid f_jeyevxzt()\n{\n    f_jqfkpuat();\n    f_zjspxvsd();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_jeyevxzt();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 403166,
+    "original_file": "testcases/CWE23_Relative_Path_Traversal/s01/CWE23_Relative_Path_Traversal__char_connect_socket_w32CreateFile_09.cpp",
+    "RELATED_CWE": [
+      "CWE-15",
+      "CWE-59",
+      "CWE-426"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-23"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define BASEPATH \"c:\\\\temp\\\\\"\n#else\n#include <wchar.h>\n#define BASEPATH \"/tmp/\"\n#endif\n\n#ifdef _WIN32\n#include <winsock2.h>\n#include <windows.h>\n#include <direct.h>\n#pragma comment(lib, \"ws2_32\") \n#define CLOSE_SOCKET closesocket\n#else \n#include <sys/types.h>\n#include <sys/socket.h>\n#include <netinet/in.h>\n#include <arpa/inet.h>\n#include <unistd.h>\n#define INVALID_SOCKET -1\n#define SOCKET_ERROR -1\n#define CLOSE_SOCKET close\n#define SOCKET int\n#endif\n\n#define TCP_PORT 27015\n#define IP_ADDRESS \"127.0.0.1\"\n\n\nnamespace _A_namespace\n{\n\n\nvoid f_psccfeyh()\n{\n    char * data;\n    char dataBuffer[FILENAME_MAX] = BASEPATH;\n    data = dataBuffer;\n    if(GLOBAL_CONST_TRUE)\n    {\n        {\n#ifdef _WIN32\n            WSADATA wsaData;\n            int wsaDataInit = 0;\n#endif\n            int recvResult;\n            struct sockaddr_in service;\n            char *replace;\n            SOCKET connectSocket = INVALID_SOCKET;\n            size_t dataLen = strlen(data);\n            do\n            {\n#ifdef _WIN32\n                if (WSAStartup(MAKEWORD(2,2), &wsaData) != NO_ERROR)\n                {\n                    break;\n                }\n                wsaDataInit = 1;\n#endif\n                \n                connectSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);\n                if (connectSocket == INVALID_SOCKET)\n                {\n                    break;\n                }\n                memset(&service, 0, sizeof(service));\n                service.sin_family = AF_INET;\n                service.sin_addr.s_addr = inet_addr(IP_ADDRESS);\n                service.sin_port = htons(TCP_PORT);\n                if (connect(connectSocket, (struct sockaddr*)&service, sizeof(service)) == SOCKET_ERROR)\n                {\n                    break;\n                }\n                \n                \n                recvResult = recv(connectSocket, (char *)(data + dataLen), sizeof(char) * (FILENAME_MAX - dataLen - 1), 0);\n                if (recvResult == SOCKET_ERROR || recvResult == 0)\n                {\n                    break;\n                }\n                \n                data[dataLen + recvResult / sizeof(char)] = '\\0';\n                \n                replace = strchr(data, '\\r');\n                if (replace)\n                {\n                    *replace = '\\0';\n                }\n                replace = strchr(data, '\\n');\n                if (replace)\n                {\n                    *replace = '\\0';\n                }\n            }\n            while (0);\n            if (connectSocket != INVALID_SOCKET)\n            {\n                CLOSE_SOCKET(connectSocket);\n            }\n#ifdef _WIN32\n            if (wsaDataInit)\n            {\n                WSACleanup();\n            }\n#endif\n        }\n    }\n    {\n        HANDLE hFile;\n        \n        hFile = CreateFileA(data,\n                            (GENERIC_WRITE|GENERIC_READ),\n                            0,\n                            NULL,\n                            OPEN_ALWAYS,\n                            FILE_ATTRIBUTE_NORMAL,\n                            NULL);\n        if (hFile != INVALID_HANDLE_VALUE)\n        {\n            CloseHandle(hFile);\n        }\n    }\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_psccfeyh();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 403167,
+    "original_file": "testcases/CWE23_Relative_Path_Traversal/s01/CWE23_Relative_Path_Traversal__char_connect_socket_w32CreateFile_09.cpp",
+    "RELATED_CWE": [
+      "CWE-15",
+      "CWE-59",
+      "CWE-426"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-23"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define BASEPATH \"c:\\\\temp\\\\\"\n#else\n#include <wchar.h>\n#define BASEPATH \"/tmp/\"\n#endif\n\n#ifdef _WIN32\n#include <winsock2.h>\n#include <windows.h>\n#include <direct.h>\n#pragma comment(lib, \"ws2_32\") \n#define CLOSE_SOCKET closesocket\n#else \n#include <sys/types.h>\n#include <sys/socket.h>\n#include <netinet/in.h>\n#include <arpa/inet.h>\n#include <unistd.h>\n#define INVALID_SOCKET -1\n#define SOCKET_ERROR -1\n#define CLOSE_SOCKET close\n#define SOCKET int\n#endif\n\n#define TCP_PORT 27015\n#define IP_ADDRESS \"127.0.0.1\"\n\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_qijaajjr()\n{\n    char * data;\n    char dataBuffer[FILENAME_MAX] = BASEPATH;\n    data = dataBuffer;\n    if(0)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        strcat(data, \"file.txt\");\n    }\n    {\n        HANDLE hFile;\n        \n        hFile = CreateFileA(data,\n                            (GENERIC_WRITE|GENERIC_READ),\n                            0,\n                            NULL,\n                            OPEN_ALWAYS,\n                            FILE_ATTRIBUTE_NORMAL,\n                            NULL);\n        if (hFile != INVALID_HANDLE_VALUE)\n        {\n            CloseHandle(hFile);\n        }\n    }\n}\n\n\nstatic void f_fvvfojcp()\n{\n    char * data;\n    char dataBuffer[FILENAME_MAX] = BASEPATH;\n    data = dataBuffer;\n    if(1)\n    {\n        \n        strcat(data, \"file.txt\");\n    }\n    {\n        HANDLE hFile;\n        \n        hFile = CreateFileA(data,\n                            (GENERIC_WRITE|GENERIC_READ),\n                            0,\n                            NULL,\n                            OPEN_ALWAYS,\n                            FILE_ATTRIBUTE_NORMAL,\n                            NULL);\n        if (hFile != INVALID_HANDLE_VALUE)\n        {\n            CloseHandle(hFile);\n        }\n    }\n}\n\nvoid f_leorpnai()\n{\n    f_qijaajjr();\n    f_fvvfojcp();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_leorpnai();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 403168,
+    "original_file": "testcases/CWE23_Relative_Path_Traversal/s01/CWE23_Relative_Path_Traversal__char_connect_socket_w32CreateFile_02.cpp",
+    "RELATED_CWE": [
+      "CWE-15",
+      "CWE-59",
+      "CWE-426"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-23"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define BASEPATH \"c:\\\\temp\\\\\"\n#else\n#include <wchar.h>\n#define BASEPATH \"/tmp/\"\n#endif\n\n#ifdef _WIN32\n#include <winsock2.h>\n#include <windows.h>\n#include <direct.h>\n#pragma comment(lib, \"ws2_32\") \n#define CLOSE_SOCKET closesocket\n#else \n#include <sys/types.h>\n#include <sys/socket.h>\n#include <netinet/in.h>\n#include <arpa/inet.h>\n#include <unistd.h>\n#define INVALID_SOCKET -1\n#define SOCKET_ERROR -1\n#define CLOSE_SOCKET close\n#define SOCKET int\n#endif\n\n#define TCP_PORT 27015\n#define IP_ADDRESS \"127.0.0.1\"\n\n\nnamespace _A_namespace\n{\n\n\nvoid f_pnpdsmrn()\n{\n    char * data;\n    char dataBuffer[FILENAME_MAX] = BASEPATH;\n    data = dataBuffer;\n    if(1)\n    {\n        {\n#ifdef _WIN32\n            WSADATA wsaData;\n            int wsaDataInit = 0;\n#endif\n            int recvResult;\n            struct sockaddr_in service;\n            char *replace;\n            SOCKET connectSocket = INVALID_SOCKET;\n            size_t dataLen = strlen(data);\n            do\n            {\n#ifdef _WIN32\n                if (WSAStartup(MAKEWORD(2,2), &wsaData) != NO_ERROR)\n                {\n                    break;\n                }\n                wsaDataInit = 1;\n#endif\n                \n                connectSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);\n                if (connectSocket == INVALID_SOCKET)\n                {\n                    break;\n                }\n                memset(&service, 0, sizeof(service));\n                service.sin_family = AF_INET;\n                service.sin_addr.s_addr = inet_addr(IP_ADDRESS);\n                service.sin_port = htons(TCP_PORT);\n                if (connect(connectSocket, (struct sockaddr*)&service, sizeof(service)) == SOCKET_ERROR)\n                {\n                    break;\n                }\n                \n                \n                recvResult = recv(connectSocket, (char *)(data + dataLen), sizeof(char) * (FILENAME_MAX - dataLen - 1), 0);\n                if (recvResult == SOCKET_ERROR || recvResult == 0)\n                {\n                    break;\n                }\n                \n                data[dataLen + recvResult / sizeof(char)] = '\\0';\n                \n                replace = strchr(data, '\\r');\n                if (replace)\n                {\n                    *replace = '\\0';\n                }\n                replace = strchr(data, '\\n');\n                if (replace)\n                {\n                    *replace = '\\0';\n                }\n            }\n            while (0);\n            if (connectSocket != INVALID_SOCKET)\n            {\n                CLOSE_SOCKET(connectSocket);\n            }\n#ifdef _WIN32\n            if (wsaDataInit)\n            {\n                WSACleanup();\n            }\n#endif\n        }\n    }\n    {\n        HANDLE hFile;\n        \n        hFile = CreateFileA(data,\n                            (GENERIC_WRITE|GENERIC_READ),\n                            0,\n                            NULL,\n                            OPEN_ALWAYS,\n                            FILE_ATTRIBUTE_NORMAL,\n                            NULL);\n        if (hFile != INVALID_HANDLE_VALUE)\n        {\n            CloseHandle(hFile);\n        }\n    }\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_pnpdsmrn();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 403169,
+    "original_file": "testcases/CWE23_Relative_Path_Traversal/s01/CWE23_Relative_Path_Traversal__char_connect_socket_w32CreateFile_02.cpp",
+    "RELATED_CWE": [
+      "CWE-15",
+      "CWE-59",
+      "CWE-426"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-23"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define BASEPATH \"c:\\\\temp\\\\\"\n#else\n#include <wchar.h>\n#define BASEPATH \"/tmp/\"\n#endif\n\n#ifdef _WIN32\n#include <winsock2.h>\n#include <windows.h>\n#include <direct.h>\n#pragma comment(lib, \"ws2_32\") \n#define CLOSE_SOCKET closesocket\n#else\n#include <sys/types.h>\n#include <sys/socket.h>\n#include <netinet/in.h>\n#include <arpa/inet.h>\n#include <unistd.h>\n#define INVALID_SOCKET -1\n#define SOCKET_ERROR -1\n#define CLOSE_SOCKET close\n#define SOCKET int\n#endif\n\n#define TCP_PORT 27015\n#define LISTEN_BACKLOG 5\n\n#include <fstream>\nusing namespace _A_namespace;\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_xodwlbyt()\n{\n    char * data;\n    char dataBuffer[FILENAME_MAX] = BASEPATH;\n    data = dataBuffer;\n    switch(5)\n    {\n    case 6:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    default:\n        \n        strcat(data, \"file.txt\");\n        break;\n    }\n    {\n        ofstream outputFile;\n        \n        outputFile.open((char *)data);\n        outputFile.close();\n    }\n}\n\n\nstatic void f_nbjwafpj()\n{\n    char * data;\n    char dataBuffer[FILENAME_MAX] = BASEPATH;\n    data = dataBuffer;\n    switch(6)\n    {\n    case 6:\n        \n        strcat(data, \"file.txt\");\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    {\n        ofstream outputFile;\n        \n        outputFile.open((char *)data);\n        outputFile.close();\n    }\n}\n\nvoid f_fcofokhp()\n{\n    f_xodwlbyt();\n    f_nbjwafpj();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_fcofokhp();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 403170,
+    "original_file": "testcases/CWE23_Relative_Path_Traversal/s02/CWE23_Relative_Path_Traversal__char_listen_socket_ofstream_15.cpp",
+    "RELATED_CWE": [
+      "CWE-15",
+      "CWE-59",
+      "CWE-426"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-23"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define BASEPATH \"c:\\\\temp\\\\\"\n#else\n#include <wchar.h>\n#define BASEPATH \"/tmp/\"\n#endif\n\n#ifdef _WIN32\n#include <winsock2.h>\n#include <windows.h>\n#include <direct.h>\n#pragma comment(lib, \"ws2_32\") \n#define CLOSE_SOCKET closesocket\n#else\n#include <sys/types.h>\n#include <sys/socket.h>\n#include <netinet/in.h>\n#include <arpa/inet.h>\n#include <unistd.h>\n#define INVALID_SOCKET -1\n#define SOCKET_ERROR -1\n#define CLOSE_SOCKET close\n#define SOCKET int\n#endif\n\n#define TCP_PORT 27015\n#define LISTEN_BACKLOG 5\n\n#include <fstream>\nusing namespace _A_namespace;\n\nnamespace _A_namespace\n{\n\n\nvoid f_bbrkffim()\n{\n    char * data;\n    char dataBuffer[FILENAME_MAX] = BASEPATH;\n    data = dataBuffer;\n    switch(6)\n    {\n    case 6:\n    {\n#ifdef _WIN32\n        WSADATA wsaData;\n        int wsaDataInit = 0;\n#endif\n        int recvResult;\n        struct sockaddr_in service;\n        char *replace;\n        SOCKET listenSocket = INVALID_SOCKET;\n        SOCKET acceptSocket = INVALID_SOCKET;\n        size_t dataLen = strlen(data);\n        do\n        {\n#ifdef _WIN32\n            if (WSAStartup(MAKEWORD(2,2), &wsaData) != NO_ERROR)\n            {\n                break;\n            }\n            wsaDataInit = 1;\n#endif\n            \n            listenSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);\n            if (listenSocket == INVALID_SOCKET)\n            {\n                break;\n            }\n            memset(&service, 0, sizeof(service));\n            service.sin_family = AF_INET;\n            service.sin_addr.s_addr = INADDR_ANY;\n            service.sin_port = htons(TCP_PORT);\n            if (::bind(listenSocket, (struct sockaddr*)&service, sizeof(service)) == SOCKET_ERROR)\n            {\n                break;\n            }\n            if (listen(listenSocket, LISTEN_BACKLOG) == SOCKET_ERROR)\n            {\n                break;\n            }\n            acceptSocket = accept(listenSocket, NULL, NULL);\n            if (acceptSocket == SOCKET_ERROR)\n            {\n                break;\n            }\n            \n            recvResult = recv(acceptSocket, (char *)(data + dataLen), sizeof(char) * (FILENAME_MAX - dataLen - 1), 0);\n            if (recvResult == SOCKET_ERROR || recvResult == 0)\n            {\n                break;\n            }\n            \n            data[dataLen + recvResult / sizeof(char)] = '\\0';\n            \n            replace = strchr(data, '\\r');\n            if (replace)\n            {\n                *replace = '\\0';\n            }\n            replace = strchr(data, '\\n');\n            if (replace)\n            {\n                *replace = '\\0';\n            }\n        }\n        while (0);\n        if (listenSocket != INVALID_SOCKET)\n        {\n            CLOSE_SOCKET(listenSocket);\n        }\n        if (acceptSocket != INVALID_SOCKET)\n        {\n            CLOSE_SOCKET(acceptSocket);\n        }\n#ifdef _WIN32\n        if (wsaDataInit)\n        {\n            WSACleanup();\n        }\n#endif\n    }\n    break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    {\n        ofstream outputFile;\n        \n        outputFile.open((char *)data);\n        outputFile.close();\n    }\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_bbrkffim();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 403171,
+    "original_file": "testcases/CWE23_Relative_Path_Traversal/s02/CWE23_Relative_Path_Traversal__char_listen_socket_ofstream_15.cpp",
+    "RELATED_CWE": [
+      "CWE-15",
+      "CWE-59",
+      "CWE-426"
+    ]
+  }
+]

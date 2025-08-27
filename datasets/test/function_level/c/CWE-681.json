@@ -1,0 +1,322 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-681"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <float.h>\n#define CHAR_ARRAY_SIZE 256\n\n\n\n\nstatic void f_ioozwylc()\n{\n    if(globalReturnsTrueOrFalse())\n    {\n        {\n            char inputBuffer[CHAR_ARRAY_SIZE];\n            double doubleNumber = 0;\n            \n            if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)\n            {\n                \n                doubleNumber = atof(inputBuffer);\n            }\n            else\n            {\n                printLine(\"fgets() failed.\");\n            }\n            \n            if (doubleNumber > FLT_MAX || doubleNumber < FLT_MIN)\n            {\n                printLine(\"Value is too small or large to be represented as a float\");\n            }\n            else\n            {\n                printFloatLine((float)doubleNumber);\n            }\n        }\n    }\n    else\n    {\n        {\n            char inputBuffer[CHAR_ARRAY_SIZE];\n            double doubleNumber = 0;\n            \n            if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)\n            {\n                \n                doubleNumber = atof(inputBuffer);\n            }\n            else\n            {\n                printLine(\"fgets() failed.\");\n            }\n            \n            if (doubleNumber > FLT_MAX || doubleNumber < FLT_MIN)\n            {\n                printLine(\"Value is too small or large to be represented as a float\");\n            }\n            else\n            {\n                printFloatLine((float)doubleNumber);\n            }\n        }\n    }\n}\n\nvoid f_znkmihlr()\n{\n    f_ioozwylc();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_znkmihlr();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402796,
+    "original_file": "testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__double2float_12.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-681"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <float.h>\n#define CHAR_ARRAY_SIZE 256\n\n\nvoid f_brgmdksu()\n{\n    if(globalReturnsTrueOrFalse())\n    {\n        {\n            char inputBuffer[CHAR_ARRAY_SIZE];\n            double doubleNumber = 0;\n            \n            if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)\n            {\n                \n                doubleNumber = atof(inputBuffer);\n            }\n            else\n            {\n                printLine(\"fgets() failed.\");\n            }\n            \n            printFloatLine((float)doubleNumber);\n        }\n    }\n    else\n    {\n        {\n            char inputBuffer[CHAR_ARRAY_SIZE];\n            double doubleNumber = 0;\n            \n            if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)\n            {\n                \n                doubleNumber = atof(inputBuffer);\n            }\n            else\n            {\n                printLine(\"fgets() failed.\");\n            }\n            \n            if (doubleNumber > FLT_MAX || doubleNumber < FLT_MIN)\n            {\n                printLine(\"Value is too small or large to be represented as a float\");\n            }\n            else\n            {\n                printFloatLine((float)doubleNumber);\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_brgmdksu();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402797,
+    "original_file": "testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__double2float_12.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-681"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <math.h>\n#define CHAR_ARRAY_SIZE 256\n\n\n\n\nstatic void f_ecpnrqre()\n{\n    if(globalReturnsTrueOrFalse())\n    {\n        {\n            char inputBuffer[CHAR_ARRAY_SIZE];\n            double doubleNumber = 0;\n            \n            if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)\n            {\n                \n                doubleNumber = atof(inputBuffer);\n            }\n            else\n            {\n                printLine(\"fgets() failed.\");\n            }\n            \n            \n            if (doubleNumber < 0)\n            {\n                printLine(\"Value is negative\");\n            }\n            else\n            {\n                printIntLine((int)(sqrt(doubleNumber)));\n            }\n        }\n    }\n    else\n    {\n        {\n            char inputBuffer[CHAR_ARRAY_SIZE];\n            double doubleNumber = 0;\n            \n            if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)\n            {\n                \n                doubleNumber = atof(inputBuffer);\n            }\n            else\n            {\n                printLine(\"fgets() failed.\");\n            }\n            \n            \n            if (doubleNumber < 0)\n            {\n                printLine(\"Value is negative\");\n            }\n            else\n            {\n                printIntLine((int)(sqrt(doubleNumber)));\n            }\n        }\n    }\n}\n\nvoid f_xhpfjwtx()\n{\n    f_ecpnrqre();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_xhpfjwtx();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402798,
+    "original_file": "testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__doubleNaN2int_12.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-681"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <math.h>\n#define CHAR_ARRAY_SIZE 256\n\n\nvoid f_pstyfwgh()\n{\n    if(globalReturnsTrueOrFalse())\n    {\n        {\n            char inputBuffer[CHAR_ARRAY_SIZE];\n            double doubleNumber = 0;\n            \n            if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)\n            {\n                \n                doubleNumber = atof(inputBuffer);\n            }\n            else\n            {\n                printLine(\"fgets() failed.\");\n            }\n            \n            printIntLine((int)(sqrt(doubleNumber)));\n        }\n    }\n    else\n    {\n        {\n            char inputBuffer[CHAR_ARRAY_SIZE];\n            double doubleNumber = 0;\n            \n            if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)\n            {\n                \n                doubleNumber = atof(inputBuffer);\n            }\n            else\n            {\n                printLine(\"fgets() failed.\");\n            }\n            \n            \n            if (doubleNumber < 0)\n            {\n                printLine(\"Value is negative\");\n            }\n            else\n            {\n                printIntLine((int)(sqrt(doubleNumber)));\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_pstyfwgh();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402799,
+    "original_file": "testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__doubleNaN2int_12.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-681"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#define CHAR_ARRAY_SIZE 256\n\n\n\n\nstatic void f_bmhkxhsp()\n{\n    if(globalReturnsTrueOrFalse())\n    {\n        {\n            char inputBuffer[CHAR_ARRAY_SIZE];\n            double doubleNumber = 0;\n            \n            if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)\n            {\n                \n                doubleNumber = atof(inputBuffer);\n            }\n            else\n            {\n                printLine(\"fgets() failed.\");\n            }\n            \n            if (doubleNumber > INT_MAX || doubleNumber < INT_MIN)\n            {\n                printLine(\"Value is too small or large to be represented as an int\");\n            }\n            else\n            {\n                printIntLine((int)doubleNumber);\n            }\n        }\n    }\n    else\n    {\n        {\n            char inputBuffer[CHAR_ARRAY_SIZE];\n            double doubleNumber = 0;\n            \n            if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)\n            {\n                \n                doubleNumber = atof(inputBuffer);\n            }\n            else\n            {\n                printLine(\"fgets() failed.\");\n            }\n            \n            if (doubleNumber > INT_MAX || doubleNumber < INT_MIN)\n            {\n                printLine(\"Value is too small or large to be represented as an int\");\n            }\n            else\n            {\n                printIntLine((int)doubleNumber);\n            }\n        }\n    }\n}\n\nvoid f_vjqxjjyy()\n{\n    f_bmhkxhsp();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_vjqxjjyy();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402800,
+    "original_file": "testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__double2int_12.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-681"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#define CHAR_ARRAY_SIZE 256\n\n\nvoid f_gkyjnlca()\n{\n    if(globalReturnsTrueOrFalse())\n    {\n        {\n            char inputBuffer[CHAR_ARRAY_SIZE];\n            double doubleNumber = 0;\n            \n            if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)\n            {\n                \n                doubleNumber = atof(inputBuffer);\n            }\n            else\n            {\n                printLine(\"fgets() failed.\");\n            }\n            \n            printIntLine((int)doubleNumber);\n        }\n    }\n    else\n    {\n        {\n            char inputBuffer[CHAR_ARRAY_SIZE];\n            double doubleNumber = 0;\n            \n            if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)\n            {\n                \n                doubleNumber = atof(inputBuffer);\n            }\n            else\n            {\n                printLine(\"fgets() failed.\");\n            }\n            \n            if (doubleNumber > INT_MAX || doubleNumber < INT_MIN)\n            {\n                printLine(\"Value is too small or large to be represented as an int\");\n            }\n            else\n            {\n                printIntLine((int)doubleNumber);\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_gkyjnlca();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402801,
+    "original_file": "testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__double2int_12.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-681"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <float.h>\n#define CHAR_ARRAY_SIZE 256\n\n\nstatic int staticReturnsTrue()\n{\n    return 1;\n}\n\nstatic int staticReturnsFalse()\n{\n    return 0;\n}\n\n\n\n\nstatic void f_itksehoc()\n{\n    if(staticReturnsFalse())\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char inputBuffer[CHAR_ARRAY_SIZE];\n            double doubleNumber = 0;\n            \n            if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)\n            {\n                \n                doubleNumber = atof(inputBuffer);\n            }\n            else\n            {\n                printLine(\"fgets() failed.\");\n            }\n            \n            if (doubleNumber > FLT_MAX || doubleNumber < FLT_MIN)\n            {\n                printLine(\"Value is too small or large to be represented as a float\");\n            }\n            else\n            {\n                printFloatLine((float)doubleNumber);\n            }\n        }\n    }\n}\n\n\nstatic void f_nkykzexf()\n{\n    if(staticReturnsTrue())\n    {\n        {\n            char inputBuffer[CHAR_ARRAY_SIZE];\n            double doubleNumber = 0;\n            \n            if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)\n            {\n                \n                doubleNumber = atof(inputBuffer);\n            }\n            else\n            {\n                printLine(\"fgets() failed.\");\n            }\n            \n            if (doubleNumber > FLT_MAX || doubleNumber < FLT_MIN)\n            {\n                printLine(\"Value is too small or large to be represented as a float\");\n            }\n            else\n            {\n                printFloatLine((float)doubleNumber);\n            }\n        }\n    }\n}\n\nvoid f_abikxlpg()\n{\n    f_itksehoc();\n    f_nkykzexf();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_abikxlpg();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402802,
+    "original_file": "testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__double2float_08.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-681"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <float.h>\n#define CHAR_ARRAY_SIZE 256\n\n\nstatic int staticReturnsTrue()\n{\n    return 1;\n}\n\nstatic int staticReturnsFalse()\n{\n    return 0;\n}\n\n\nvoid f_lihybutv()\n{\n    if(staticReturnsTrue())\n    {\n        {\n            char inputBuffer[CHAR_ARRAY_SIZE];\n            double doubleNumber = 0;\n            \n            if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)\n            {\n                \n                doubleNumber = atof(inputBuffer);\n            }\n            else\n            {\n                printLine(\"fgets() failed.\");\n            }\n            \n            printFloatLine((float)doubleNumber);\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_lihybutv();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402803,
+    "original_file": "testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__double2float_08.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-681"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <float.h>\n#define CHAR_ARRAY_SIZE 256\n\n\n\n\nstatic void f_tlrfzghe()\n{\n    switch(5)\n    {\n    case 6:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    default:\n    {\n        char inputBuffer[CHAR_ARRAY_SIZE];\n        double doubleNumber = 0;\n        \n        if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)\n        {\n            \n            doubleNumber = atof(inputBuffer);\n        }\n        else\n        {\n            printLine(\"fgets() failed.\");\n        }\n        \n        if (doubleNumber > FLT_MAX || doubleNumber < FLT_MIN)\n        {\n            printLine(\"Value is too small or large to be represented as a float\");\n        }\n        else\n        {\n            printFloatLine((float)doubleNumber);\n        }\n    }\n    break;\n    }\n}\n\n\nstatic void f_rlibdpgt()\n{\n    switch(6)\n    {\n    case 6:\n    {\n        char inputBuffer[CHAR_ARRAY_SIZE];\n        double doubleNumber = 0;\n        \n        if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)\n        {\n            \n            doubleNumber = atof(inputBuffer);\n        }\n        else\n        {\n            printLine(\"fgets() failed.\");\n        }\n        \n        if (doubleNumber > FLT_MAX || doubleNumber < FLT_MIN)\n        {\n            printLine(\"Value is too small or large to be represented as a float\");\n        }\n        else\n        {\n            printFloatLine((float)doubleNumber);\n        }\n    }\n    break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\nvoid f_vlyrtoce()\n{\n    f_tlrfzghe();\n    f_rlibdpgt();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_vlyrtoce();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402804,
+    "original_file": "testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__double2float_15.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-681"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <float.h>\n#define CHAR_ARRAY_SIZE 256\n\n\nvoid f_zxbexxib()\n{\n    switch(6)\n    {\n    case 6:\n    {\n        char inputBuffer[CHAR_ARRAY_SIZE];\n        double doubleNumber = 0;\n        \n        if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)\n        {\n            \n            doubleNumber = atof(inputBuffer);\n        }\n        else\n        {\n            printLine(\"fgets() failed.\");\n        }\n        \n        printFloatLine((float)doubleNumber);\n    }\n    break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_zxbexxib();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402805,
+    "original_file": "testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__double2float_15.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-681"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <math.h>\n#define CHAR_ARRAY_SIZE 256\n\n\n\n\nstatic void f_hoqiqaju()\n{\n    switch(5)\n    {\n    case 6:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    default:\n    {\n        char inputBuffer[CHAR_ARRAY_SIZE];\n        double doubleNumber = 0;\n        \n        if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)\n        {\n            \n            doubleNumber = atof(inputBuffer);\n        }\n        else\n        {\n            printLine(\"fgets() failed.\");\n        }\n        \n        \n        if (doubleNumber < 0)\n        {\n            printLine(\"Value is negative\");\n        }\n        else\n        {\n            printIntLine((int)(sqrt(doubleNumber)));\n        }\n    }\n    break;\n    }\n}\n\n\nstatic void f_pnvpvifx()\n{\n    switch(6)\n    {\n    case 6:\n    {\n        char inputBuffer[CHAR_ARRAY_SIZE];\n        double doubleNumber = 0;\n        \n        if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)\n        {\n            \n            doubleNumber = atof(inputBuffer);\n        }\n        else\n        {\n            printLine(\"fgets() failed.\");\n        }\n        \n        \n        if (doubleNumber < 0)\n        {\n            printLine(\"Value is negative\");\n        }\n        else\n        {\n            printIntLine((int)(sqrt(doubleNumber)));\n        }\n    }\n    break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\nvoid f_svegfjby()\n{\n    f_hoqiqaju();\n    f_pnvpvifx();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_svegfjby();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402806,
+    "original_file": "testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__doubleNaN2int_15.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-681"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <math.h>\n#define CHAR_ARRAY_SIZE 256\n\n\nvoid f_nfmhyoqg()\n{\n    switch(6)\n    {\n    case 6:\n    {\n        char inputBuffer[CHAR_ARRAY_SIZE];\n        double doubleNumber = 0;\n        \n        if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)\n        {\n            \n            doubleNumber = atof(inputBuffer);\n        }\n        else\n        {\n            printLine(\"fgets() failed.\");\n        }\n        \n        printIntLine((int)(sqrt(doubleNumber)));\n    }\n    break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_nfmhyoqg();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402807,
+    "original_file": "testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__doubleNaN2int_15.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-681"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <math.h>\n#define CHAR_ARRAY_SIZE 256\n\n\nstatic int staticReturnsTrue()\n{\n    return 1;\n}\n\nstatic int staticReturnsFalse()\n{\n    return 0;\n}\n\n\n\n\nstatic void f_bxmrpcnu()\n{\n    if(staticReturnsFalse())\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char inputBuffer[CHAR_ARRAY_SIZE];\n            double doubleNumber = 0;\n            \n            if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)\n            {\n                \n                doubleNumber = atof(inputBuffer);\n            }\n            else\n            {\n                printLine(\"fgets() failed.\");\n            }\n            \n            \n            if (doubleNumber < 0)\n            {\n                printLine(\"Value is negative\");\n            }\n            else\n            {\n                printIntLine((int)(sqrt(doubleNumber)));\n            }\n        }\n    }\n}\n\n\nstatic void f_wweigois()\n{\n    if(staticReturnsTrue())\n    {\n        {\n            char inputBuffer[CHAR_ARRAY_SIZE];\n            double doubleNumber = 0;\n            \n            if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)\n            {\n                \n                doubleNumber = atof(inputBuffer);\n            }\n            else\n            {\n                printLine(\"fgets() failed.\");\n            }\n            \n            \n            if (doubleNumber < 0)\n            {\n                printLine(\"Value is negative\");\n            }\n            else\n            {\n                printIntLine((int)(sqrt(doubleNumber)));\n            }\n        }\n    }\n}\n\nvoid f_jxvxsiol()\n{\n    f_bxmrpcnu();\n    f_wweigois();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_jxvxsiol();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402808,
+    "original_file": "testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__doubleNaN2int_08.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-681"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <math.h>\n#define CHAR_ARRAY_SIZE 256\n\n\nstatic int staticReturnsTrue()\n{\n    return 1;\n}\n\nstatic int staticReturnsFalse()\n{\n    return 0;\n}\n\n\nvoid f_rypnoiqh()\n{\n    if(staticReturnsTrue())\n    {\n        {\n            char inputBuffer[CHAR_ARRAY_SIZE];\n            double doubleNumber = 0;\n            \n            if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)\n            {\n                \n                doubleNumber = atof(inputBuffer);\n            }\n            else\n            {\n                printLine(\"fgets() failed.\");\n            }\n            \n            printIntLine((int)(sqrt(doubleNumber)));\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_rypnoiqh();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402809,
+    "original_file": "testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__doubleNaN2int_08.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-681"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#define CHAR_ARRAY_SIZE 256\n\n\nstatic int staticReturnsTrue()\n{\n    return 1;\n}\n\nstatic int staticReturnsFalse()\n{\n    return 0;\n}\n\n\n\n\nstatic void f_hctfxlvi()\n{\n    if(staticReturnsFalse())\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char inputBuffer[CHAR_ARRAY_SIZE];\n            double doubleNumber = 0;\n            \n            if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)\n            {\n                \n                doubleNumber = atof(inputBuffer);\n            }\n            else\n            {\n                printLine(\"fgets() failed.\");\n            }\n            \n            if (doubleNumber > INT_MAX || doubleNumber < INT_MIN)\n            {\n                printLine(\"Value is too small or large to be represented as an int\");\n            }\n            else\n            {\n                printIntLine((int)doubleNumber);\n            }\n        }\n    }\n}\n\n\nstatic void f_rbwblbhr()\n{\n    if(staticReturnsTrue())\n    {\n        {\n            char inputBuffer[CHAR_ARRAY_SIZE];\n            double doubleNumber = 0;\n            \n            if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)\n            {\n                \n                doubleNumber = atof(inputBuffer);\n            }\n            else\n            {\n                printLine(\"fgets() failed.\");\n            }\n            \n            if (doubleNumber > INT_MAX || doubleNumber < INT_MIN)\n            {\n                printLine(\"Value is too small or large to be represented as an int\");\n            }\n            else\n            {\n                printIntLine((int)doubleNumber);\n            }\n        }\n    }\n}\n\nvoid f_ioacqdmo()\n{\n    f_hctfxlvi();\n    f_rbwblbhr();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ioacqdmo();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402810,
+    "original_file": "testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__double2int_08.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-681"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#define CHAR_ARRAY_SIZE 256\n\n\nstatic int staticReturnsTrue()\n{\n    return 1;\n}\n\nstatic int staticReturnsFalse()\n{\n    return 0;\n}\n\n\nvoid f_vgwqxxme()\n{\n    if(staticReturnsTrue())\n    {\n        {\n            char inputBuffer[CHAR_ARRAY_SIZE];\n            double doubleNumber = 0;\n            \n            if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)\n            {\n                \n                doubleNumber = atof(inputBuffer);\n            }\n            else\n            {\n                printLine(\"fgets() failed.\");\n            }\n            \n            printIntLine((int)doubleNumber);\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_vgwqxxme();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402811,
+    "original_file": "testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__double2int_08.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-681"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#define CHAR_ARRAY_SIZE 256\n\n\n\n\nstatic void f_ocydcdlh()\n{\n    switch(5)\n    {\n    case 6:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    default:\n    {\n        char inputBuffer[CHAR_ARRAY_SIZE];\n        double doubleNumber = 0;\n        \n        if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)\n        {\n            \n            doubleNumber = atof(inputBuffer);\n        }\n        else\n        {\n            printLine(\"fgets() failed.\");\n        }\n        \n        if (doubleNumber > INT_MAX || doubleNumber < INT_MIN)\n        {\n            printLine(\"Value is too small or large to be represented as an int\");\n        }\n        else\n        {\n            printIntLine((int)doubleNumber);\n        }\n    }\n    break;\n    }\n}\n\n\nstatic void f_kuootinl()\n{\n    switch(6)\n    {\n    case 6:\n    {\n        char inputBuffer[CHAR_ARRAY_SIZE];\n        double doubleNumber = 0;\n        \n        if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)\n        {\n            \n            doubleNumber = atof(inputBuffer);\n        }\n        else\n        {\n            printLine(\"fgets() failed.\");\n        }\n        \n        if (doubleNumber > INT_MAX || doubleNumber < INT_MIN)\n        {\n            printLine(\"Value is too small or large to be represented as an int\");\n        }\n        else\n        {\n            printIntLine((int)doubleNumber);\n        }\n    }\n    break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\nvoid f_medseceg()\n{\n    f_ocydcdlh();\n    f_kuootinl();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_medseceg();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402812,
+    "original_file": "testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__double2int_15.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-681"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#define CHAR_ARRAY_SIZE 256\n\n\nvoid f_udhsdyqq()\n{\n    switch(6)\n    {\n    case 6:\n    {\n        char inputBuffer[CHAR_ARRAY_SIZE];\n        double doubleNumber = 0;\n        \n        if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)\n        {\n            \n            doubleNumber = atof(inputBuffer);\n        }\n        else\n        {\n            printLine(\"fgets() failed.\");\n        }\n        \n        printIntLine((int)doubleNumber);\n    }\n    break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_udhsdyqq();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402813,
+    "original_file": "testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__double2int_15.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-681"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <float.h>\n#define CHAR_ARRAY_SIZE 256\n\n\nstatic int staticTrue = 1; \nstatic int staticFalse = 0; \n\n\n\n\nstatic void f_zryvqxns()\n{\n    if(staticFalse)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char inputBuffer[CHAR_ARRAY_SIZE];\n            double doubleNumber = 0;\n            \n            if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)\n            {\n                \n                doubleNumber = atof(inputBuffer);\n            }\n            else\n            {\n                printLine(\"fgets() failed.\");\n            }\n            \n            if (doubleNumber > FLT_MAX || doubleNumber < FLT_MIN)\n            {\n                printLine(\"Value is too small or large to be represented as a float\");\n            }\n            else\n            {\n                printFloatLine((float)doubleNumber);\n            }\n        }\n    }\n}\n\n\nstatic void f_ldmiaaha()\n{\n    if(staticTrue)\n    {\n        {\n            char inputBuffer[CHAR_ARRAY_SIZE];\n            double doubleNumber = 0;\n            \n            if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)\n            {\n                \n                doubleNumber = atof(inputBuffer);\n            }\n            else\n            {\n                printLine(\"fgets() failed.\");\n            }\n            \n            if (doubleNumber > FLT_MAX || doubleNumber < FLT_MIN)\n            {\n                printLine(\"Value is too small or large to be represented as a float\");\n            }\n            else\n            {\n                printFloatLine((float)doubleNumber);\n            }\n        }\n    }\n}\n\nvoid f_kzjyrbly()\n{\n    f_zryvqxns();\n    f_ldmiaaha();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_kzjyrbly();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402814,
+    "original_file": "testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__double2float_05.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-681"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <float.h>\n#define CHAR_ARRAY_SIZE 256\n\n\nstatic int staticTrue = 1; \nstatic int staticFalse = 0; \n\n\nvoid f_jqanlkgl()\n{\n    if(staticTrue)\n    {\n        {\n            char inputBuffer[CHAR_ARRAY_SIZE];\n            double doubleNumber = 0;\n            \n            if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)\n            {\n                \n                doubleNumber = atof(inputBuffer);\n            }\n            else\n            {\n                printLine(\"fgets() failed.\");\n            }\n            \n            printFloatLine((float)doubleNumber);\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_jqanlkgl();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402815,
+    "original_file": "testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__double2float_05.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  }
+]

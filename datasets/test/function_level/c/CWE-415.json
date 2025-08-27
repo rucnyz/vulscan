@@ -1,0 +1,322 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-415"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <wchar.h>\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_dsrluzbv()\n{\n    TwoIntsClass * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new TwoIntsClass[100];\n        \n        delete [] data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(8)\n    {\n    case 7:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    default:\n        \n        \n        ; \n        break;\n    }\n}\n\n\nstatic void f_yhckrmfx()\n{\n    TwoIntsClass * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new TwoIntsClass[100];\n        \n        delete [] data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        \n        ; \n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\nstatic void f_iqktxclb()\n{\n    TwoIntsClass * data;\n    \n    data = NULL;\n    switch(5)\n    {\n    case 6:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    default:\n        data = new TwoIntsClass[100];\n        \n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        delete [] data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\nstatic void f_efctbpvc()\n{\n    TwoIntsClass * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new TwoIntsClass[100];\n        \n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        delete [] data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\nvoid f_dmqmvvmf()\n{\n    f_dsrluzbv();\n    f_yhckrmfx();\n    f_iqktxclb();\n    f_efctbpvc();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_dmqmvvmf();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402736,
+    "original_file": "testcases/CWE415_Double_Free/s01/CWE415_Double_Free__new_delete_array_class_15.cpp",
+    "RELATED_CWE": [
+      "CWE-761",
+      "CWE-119",
+      "CWE-787"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-415"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <wchar.h>\n\nnamespace _A_namespace\n{\n\n\nvoid f_wbeuvsss()\n{\n    TwoIntsClass * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new TwoIntsClass[100];\n        \n        delete [] data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        delete [] data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_wbeuvsss();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402737,
+    "original_file": "testcases/CWE415_Double_Free/s01/CWE415_Double_Free__new_delete_array_class_15.cpp",
+    "RELATED_CWE": [
+      "CWE-761",
+      "CWE-119",
+      "CWE-787"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-415"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <wchar.h>\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_psnpewsc()\n{\n    char * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new char[100];\n        \n        delete [] data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(8)\n    {\n    case 7:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    default:\n        \n        \n        ; \n        break;\n    }\n}\n\n\nstatic void f_hjuphkcg()\n{\n    char * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new char[100];\n        \n        delete [] data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        \n        ; \n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\nstatic void f_ejdpibrh()\n{\n    char * data;\n    \n    data = NULL;\n    switch(5)\n    {\n    case 6:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    default:\n        data = new char[100];\n        \n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        delete [] data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\nstatic void f_zzysmpkc()\n{\n    char * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new char[100];\n        \n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        delete [] data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\nvoid f_yvjtyyum()\n{\n    f_psnpewsc();\n    f_hjuphkcg();\n    f_ejdpibrh();\n    f_zzysmpkc();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_yvjtyyum();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402738,
+    "original_file": "testcases/CWE415_Double_Free/s01/CWE415_Double_Free__new_delete_array_char_15.cpp",
+    "RELATED_CWE": [
+      "CWE-761",
+      "CWE-119",
+      "CWE-787"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-415"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <wchar.h>\n\nnamespace _A_namespace\n{\n\n\nvoid f_bbyafooj()\n{\n    char * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new char[100];\n        \n        delete [] data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        delete [] data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_bbyafooj();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402739,
+    "original_file": "testcases/CWE415_Double_Free/s01/CWE415_Double_Free__new_delete_array_char_15.cpp",
+    "RELATED_CWE": [
+      "CWE-761",
+      "CWE-119",
+      "CWE-787"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-415"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <wchar.h>\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_yjfhzkzo()\n{\n    long * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new long[100];\n        \n        delete [] data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(8)\n    {\n    case 7:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    default:\n        \n        \n        ; \n        break;\n    }\n}\n\n\nstatic void f_kdinlbew()\n{\n    long * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new long[100];\n        \n        delete [] data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        \n        ; \n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\nstatic void f_wcyakbys()\n{\n    long * data;\n    \n    data = NULL;\n    switch(5)\n    {\n    case 6:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    default:\n        data = new long[100];\n        \n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        delete [] data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\nstatic void f_npuosslu()\n{\n    long * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new long[100];\n        \n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        delete [] data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\nvoid f_mflaibmx()\n{\n    f_yjfhzkzo();\n    f_kdinlbew();\n    f_wcyakbys();\n    f_npuosslu();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_mflaibmx();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402740,
+    "original_file": "testcases/CWE415_Double_Free/s01/CWE415_Double_Free__new_delete_array_long_15.cpp",
+    "RELATED_CWE": [
+      "CWE-761",
+      "CWE-119",
+      "CWE-787"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-415"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <wchar.h>\n\nnamespace _A_namespace\n{\n\n\nvoid f_nzvsexir()\n{\n    long * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new long[100];\n        \n        delete [] data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        delete [] data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_nzvsexir();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402741,
+    "original_file": "testcases/CWE415_Double_Free/s01/CWE415_Double_Free__new_delete_array_long_15.cpp",
+    "RELATED_CWE": [
+      "CWE-761",
+      "CWE-119",
+      "CWE-787"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-415"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <wchar.h>\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_nepmtbdk()\n{\n    int64_t * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new int64_t[100];\n        \n        delete [] data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(8)\n    {\n    case 7:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    default:\n        \n        \n        ; \n        break;\n    }\n}\n\n\nstatic void f_tyqcuuve()\n{\n    int64_t * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new int64_t[100];\n        \n        delete [] data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        \n        ; \n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\nstatic void f_rgcjabbj()\n{\n    int64_t * data;\n    \n    data = NULL;\n    switch(5)\n    {\n    case 6:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    default:\n        data = new int64_t[100];\n        \n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        delete [] data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\nstatic void f_ymtbsagk()\n{\n    int64_t * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new int64_t[100];\n        \n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        delete [] data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\nvoid f_gqtfhkgh()\n{\n    f_nepmtbdk();\n    f_tyqcuuve();\n    f_rgcjabbj();\n    f_ymtbsagk();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_gqtfhkgh();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402742,
+    "original_file": "testcases/CWE415_Double_Free/s01/CWE415_Double_Free__new_delete_array_int64_t_15.cpp",
+    "RELATED_CWE": [
+      "CWE-761",
+      "CWE-119",
+      "CWE-787"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-415"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <wchar.h>\n\nnamespace _A_namespace\n{\n\n\nvoid f_oxdgylzd()\n{\n    int64_t * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new int64_t[100];\n        \n        delete [] data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        delete [] data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_oxdgylzd();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402743,
+    "original_file": "testcases/CWE415_Double_Free/s01/CWE415_Double_Free__new_delete_array_int64_t_15.cpp",
+    "RELATED_CWE": [
+      "CWE-761",
+      "CWE-119",
+      "CWE-787"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-415"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <wchar.h>\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_upsteril()\n{\n    int * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new int[100];\n        \n        delete [] data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(8)\n    {\n    case 7:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    default:\n        \n        \n        ; \n        break;\n    }\n}\n\n\nstatic void f_gbkrbfuf()\n{\n    int * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new int[100];\n        \n        delete [] data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        \n        ; \n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\nstatic void f_krfijszs()\n{\n    int * data;\n    \n    data = NULL;\n    switch(5)\n    {\n    case 6:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    default:\n        data = new int[100];\n        \n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        delete [] data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\nstatic void f_shxprwhc()\n{\n    int * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new int[100];\n        \n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        delete [] data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\nvoid f_hrjfdwlr()\n{\n    f_upsteril();\n    f_gbkrbfuf();\n    f_krfijszs();\n    f_shxprwhc();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_hrjfdwlr();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402744,
+    "original_file": "testcases/CWE415_Double_Free/s01/CWE415_Double_Free__new_delete_array_int_15.cpp",
+    "RELATED_CWE": [
+      "CWE-761",
+      "CWE-119",
+      "CWE-787"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-415"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <wchar.h>\n\nnamespace _A_namespace\n{\n\n\nvoid f_uwngqrce()\n{\n    int * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new int[100];\n        \n        delete [] data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        delete [] data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_uwngqrce();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402745,
+    "original_file": "testcases/CWE415_Double_Free/s01/CWE415_Double_Free__new_delete_array_int_15.cpp",
+    "RELATED_CWE": [
+      "CWE-761",
+      "CWE-119",
+      "CWE-787"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-415"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <wchar.h>\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_ylesdicm()\n{\n    twoIntsStruct * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new twoIntsStruct[100];\n        \n        delete [] data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(8)\n    {\n    case 7:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    default:\n        \n        \n        ; \n        break;\n    }\n}\n\n\nstatic void f_hvaclecm()\n{\n    twoIntsStruct * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new twoIntsStruct[100];\n        \n        delete [] data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        \n        ; \n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\nstatic void f_unoaiont()\n{\n    twoIntsStruct * data;\n    \n    data = NULL;\n    switch(5)\n    {\n    case 6:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    default:\n        data = new twoIntsStruct[100];\n        \n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        delete [] data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\nstatic void f_mwhuwfpa()\n{\n    twoIntsStruct * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new twoIntsStruct[100];\n        \n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        delete [] data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\nvoid f_nariyzlo()\n{\n    f_ylesdicm();\n    f_hvaclecm();\n    f_unoaiont();\n    f_mwhuwfpa();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_nariyzlo();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402746,
+    "original_file": "testcases/CWE415_Double_Free/s02/CWE415_Double_Free__new_delete_array_struct_15.cpp",
+    "RELATED_CWE": [
+      "CWE-761",
+      "CWE-119",
+      "CWE-787"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-415"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <wchar.h>\n\nnamespace _A_namespace\n{\n\n\nvoid f_mdnlvhux()\n{\n    twoIntsStruct * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new twoIntsStruct[100];\n        \n        delete [] data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        delete [] data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_mdnlvhux();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402747,
+    "original_file": "testcases/CWE415_Double_Free/s02/CWE415_Double_Free__new_delete_array_struct_15.cpp",
+    "RELATED_CWE": [
+      "CWE-761",
+      "CWE-119",
+      "CWE-787"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-415"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <wchar.h>\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_lyvonqbq()\n{\n    int * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new int;\n        \n        delete data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(8)\n    {\n    case 7:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    default:\n        \n        \n        ; \n        break;\n    }\n}\n\n\nstatic void f_mtyazfsh()\n{\n    int * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new int;\n        \n        delete data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        \n        ; \n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\nstatic void f_fqifpbqb()\n{\n    int * data;\n    \n    data = NULL;\n    switch(5)\n    {\n    case 6:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    default:\n        data = new int;\n        \n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        delete data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\nstatic void f_bplrcssk()\n{\n    int * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new int;\n        \n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        delete data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\nvoid f_ooxuundy()\n{\n    f_lyvonqbq();\n    f_mtyazfsh();\n    f_fqifpbqb();\n    f_bplrcssk();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ooxuundy();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402748,
+    "original_file": "testcases/CWE415_Double_Free/s02/CWE415_Double_Free__new_delete_int_15.cpp",
+    "RELATED_CWE": [
+      "CWE-761",
+      "CWE-119",
+      "CWE-787"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-415"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <wchar.h>\n\nnamespace _A_namespace\n{\n\n\nvoid f_upjfuoko()\n{\n    int * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new int;\n        \n        delete data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        delete data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_upjfuoko();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402749,
+    "original_file": "testcases/CWE415_Double_Free/s02/CWE415_Double_Free__new_delete_int_15.cpp",
+    "RELATED_CWE": [
+      "CWE-761",
+      "CWE-119",
+      "CWE-787"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-415"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <wchar.h>\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_fqqpocha()\n{\n    int64_t * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new int64_t;\n        \n        delete data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(8)\n    {\n    case 7:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    default:\n        \n        \n        ; \n        break;\n    }\n}\n\n\nstatic void f_fqbwgcva()\n{\n    int64_t * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new int64_t;\n        \n        delete data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        \n        ; \n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\nstatic void f_ripwjwxz()\n{\n    int64_t * data;\n    \n    data = NULL;\n    switch(5)\n    {\n    case 6:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    default:\n        data = new int64_t;\n        \n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        delete data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\nstatic void f_trrjnlek()\n{\n    int64_t * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new int64_t;\n        \n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        delete data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\nvoid f_qhveanek()\n{\n    f_fqqpocha();\n    f_fqbwgcva();\n    f_ripwjwxz();\n    f_trrjnlek();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_qhveanek();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402750,
+    "original_file": "testcases/CWE415_Double_Free/s02/CWE415_Double_Free__new_delete_int64_t_15.cpp",
+    "RELATED_CWE": [
+      "CWE-761",
+      "CWE-119",
+      "CWE-787"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-415"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <wchar.h>\n\nnamespace _A_namespace\n{\n\n\nvoid f_aunmmtmk()\n{\n    int64_t * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new int64_t;\n        \n        delete data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        delete data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_aunmmtmk();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402751,
+    "original_file": "testcases/CWE415_Double_Free/s02/CWE415_Double_Free__new_delete_int64_t_15.cpp",
+    "RELATED_CWE": [
+      "CWE-761",
+      "CWE-119",
+      "CWE-787"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-415"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <wchar.h>\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_ozgphlqi()\n{\n    long * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new long;\n        \n        delete data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(8)\n    {\n    case 7:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    default:\n        \n        \n        ; \n        break;\n    }\n}\n\n\nstatic void f_gahuhsgi()\n{\n    long * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new long;\n        \n        delete data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        \n        ; \n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\nstatic void f_esinhylt()\n{\n    long * data;\n    \n    data = NULL;\n    switch(5)\n    {\n    case 6:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    default:\n        data = new long;\n        \n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        delete data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\nstatic void f_vegwlblm()\n{\n    long * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new long;\n        \n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        delete data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\nvoid f_ffahycik()\n{\n    f_ozgphlqi();\n    f_gahuhsgi();\n    f_esinhylt();\n    f_vegwlblm();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ffahycik();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402752,
+    "original_file": "testcases/CWE415_Double_Free/s02/CWE415_Double_Free__new_delete_long_15.cpp",
+    "RELATED_CWE": [
+      "CWE-761",
+      "CWE-119",
+      "CWE-787"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-415"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <wchar.h>\n\nnamespace _A_namespace\n{\n\n\nvoid f_lrvdxpeq()\n{\n    long * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new long;\n        \n        delete data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        delete data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_lrvdxpeq();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402753,
+    "original_file": "testcases/CWE415_Double_Free/s02/CWE415_Double_Free__new_delete_long_15.cpp",
+    "RELATED_CWE": [
+      "CWE-761",
+      "CWE-119",
+      "CWE-787"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-415"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <wchar.h>\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_hvgjmfzd()\n{\n    char * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new char;\n        \n        delete data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(8)\n    {\n    case 7:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    default:\n        \n        \n        ; \n        break;\n    }\n}\n\n\nstatic void f_soippyvv()\n{\n    char * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new char;\n        \n        delete data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        \n        ; \n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\nstatic void f_pctdzgwn()\n{\n    char * data;\n    \n    data = NULL;\n    switch(5)\n    {\n    case 6:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    default:\n        data = new char;\n        \n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        delete data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\nstatic void f_esflssaj()\n{\n    char * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new char;\n        \n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        delete data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\nvoid f_upqjldxc()\n{\n    f_hvgjmfzd();\n    f_soippyvv();\n    f_pctdzgwn();\n    f_esflssaj();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_upqjldxc();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402754,
+    "original_file": "testcases/CWE415_Double_Free/s02/CWE415_Double_Free__new_delete_char_15.cpp",
+    "RELATED_CWE": [
+      "CWE-761",
+      "CWE-119",
+      "CWE-787"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-415"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <wchar.h>\n\nnamespace _A_namespace\n{\n\n\nvoid f_eymlxzzu()\n{\n    char * data;\n    \n    data = NULL;\n    switch(6)\n    {\n    case 6:\n        data = new char;\n        \n        delete data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(7)\n    {\n    case 7:\n        \n        delete data;\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_eymlxzzu();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402755,
+    "original_file": "testcases/CWE415_Double_Free/s02/CWE415_Double_Free__new_delete_char_15.cpp",
+    "RELATED_CWE": [
+      "CWE-761",
+      "CWE-119",
+      "CWE-787"
+    ]
+  }
+]

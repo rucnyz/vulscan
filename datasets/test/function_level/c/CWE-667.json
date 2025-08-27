@@ -1,0 +1,322 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-667"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include \"std_thread.h\"\n\n\n\n\nstatic void f_vdbofgjr()\n{\n    switch(5)\n    {\n    case 6:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    default:\n    {\n        static stdThreadLock Lock = NULL;\n        printLine(\"Creating lock...\");\n        if (!stdThreadLockCreate(&Lock))\n        {\n            printLine(\"Could not create lock\");\n            exit(1);\n        }\n        printLine(\"Acquiring lock...\");\n        stdThreadLockAcquire(Lock);\n        \n        printLine(\"Releasing lock...\");\n        stdThreadLockRelease(Lock);\n        printLine(\"Destroying lock...\");\n        stdThreadLockDestroy(Lock);\n    }\n    break;\n    }\n}\n\n\nstatic void f_oehjslwi()\n{\n    switch(6)\n    {\n    case 6:\n    {\n        static stdThreadLock Lock = NULL;\n        printLine(\"Creating lock...\");\n        if (!stdThreadLockCreate(&Lock))\n        {\n            printLine(\"Could not create lock\");\n            exit(1);\n        }\n        printLine(\"Acquiring lock...\");\n        stdThreadLockAcquire(Lock);\n        \n        printLine(\"Releasing lock...\");\n        stdThreadLockRelease(Lock);\n        printLine(\"Destroying lock...\");\n        stdThreadLockDestroy(Lock);\n    }\n    break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\nvoid f_havbdcqm()\n{\n    f_vdbofgjr();\n    f_oehjslwi();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_havbdcqm();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402756,
+    "original_file": "testcases/CWE667_Improper_Locking/CWE667_Improper_Locking__basic_15.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-667"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include \"std_thread.h\"\n\n\nvoid f_esqfshji()\n{\n    switch(6)\n    {\n    case 6:\n    {\n        static stdThreadLock Lock = NULL;\n        printLine(\"Creating lock...\");\n        if (!stdThreadLockCreate(&Lock))\n        {\n            printLine(\"Could not create lock\");\n            exit(1);\n        }\n        printLine(\"Acquiring lock...\");\n        stdThreadLockAcquire(Lock);\n        \n    }\n    break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_esqfshji();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402757,
+    "original_file": "testcases/CWE667_Improper_Locking/CWE667_Improper_Locking__basic_15.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-667"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include \"std_thread.h\"\n\n\nstatic int staticReturnsTrue()\n{\n    return 1;\n}\n\nstatic int staticReturnsFalse()\n{\n    return 0;\n}\n\n\n\n\nstatic void f_wyslneza()\n{\n    if(staticReturnsFalse())\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            static stdThreadLock Lock = NULL;\n            printLine(\"Creating lock...\");\n            if (!stdThreadLockCreate(&Lock))\n            {\n                printLine(\"Could not create lock\");\n                exit(1);\n            }\n            printLine(\"Acquiring lock...\");\n            stdThreadLockAcquire(Lock);\n            \n            printLine(\"Releasing lock...\");\n            stdThreadLockRelease(Lock);\n            printLine(\"Destroying lock...\");\n            stdThreadLockDestroy(Lock);\n        }\n    }\n}\n\n\nstatic void f_hchxvuyo()\n{\n    if(staticReturnsTrue())\n    {\n        {\n            static stdThreadLock Lock = NULL;\n            printLine(\"Creating lock...\");\n            if (!stdThreadLockCreate(&Lock))\n            {\n                printLine(\"Could not create lock\");\n                exit(1);\n            }\n            printLine(\"Acquiring lock...\");\n            stdThreadLockAcquire(Lock);\n            \n            printLine(\"Releasing lock...\");\n            stdThreadLockRelease(Lock);\n            printLine(\"Destroying lock...\");\n            stdThreadLockDestroy(Lock);\n        }\n    }\n}\n\nvoid f_dkvwtsxb()\n{\n    f_wyslneza();\n    f_hchxvuyo();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_dkvwtsxb();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402758,
+    "original_file": "testcases/CWE667_Improper_Locking/CWE667_Improper_Locking__basic_08.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-667"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include \"std_thread.h\"\n\n\nstatic int staticReturnsTrue()\n{\n    return 1;\n}\n\nstatic int staticReturnsFalse()\n{\n    return 0;\n}\n\n\nvoid f_hxkgwtiq()\n{\n    if(staticReturnsTrue())\n    {\n        {\n            static stdThreadLock Lock = NULL;\n            printLine(\"Creating lock...\");\n            if (!stdThreadLockCreate(&Lock))\n            {\n                printLine(\"Could not create lock\");\n                exit(1);\n            }\n            printLine(\"Acquiring lock...\");\n            stdThreadLockAcquire(Lock);\n            \n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_hxkgwtiq();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402759,
+    "original_file": "testcases/CWE667_Improper_Locking/CWE667_Improper_Locking__basic_08.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-667"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include \"std_thread.h\"\n\n\n\n\nstatic void f_eccukgrm()\n{\n    if(globalReturnsTrueOrFalse())\n    {\n        {\n            static stdThreadLock Lock = NULL;\n            printLine(\"Creating lock...\");\n            if (!stdThreadLockCreate(&Lock))\n            {\n                printLine(\"Could not create lock\");\n                exit(1);\n            }\n            printLine(\"Acquiring lock...\");\n            stdThreadLockAcquire(Lock);\n            \n            printLine(\"Releasing lock...\");\n            stdThreadLockRelease(Lock);\n            printLine(\"Destroying lock...\");\n            stdThreadLockDestroy(Lock);\n        }\n    }\n    else\n    {\n        {\n            static stdThreadLock Lock = NULL;\n            printLine(\"Creating lock...\");\n            if (!stdThreadLockCreate(&Lock))\n            {\n                printLine(\"Could not create lock\");\n                exit(1);\n            }\n            printLine(\"Acquiring lock...\");\n            stdThreadLockAcquire(Lock);\n            \n            printLine(\"Releasing lock...\");\n            stdThreadLockRelease(Lock);\n            printLine(\"Destroying lock...\");\n            stdThreadLockDestroy(Lock);\n        }\n    }\n}\n\nvoid f_tgzyuzjv()\n{\n    f_eccukgrm();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_tgzyuzjv();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402760,
+    "original_file": "testcases/CWE667_Improper_Locking/CWE667_Improper_Locking__basic_12.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-667"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include \"std_thread.h\"\n\n\nvoid f_cmofueme()\n{\n    if(globalReturnsTrueOrFalse())\n    {\n        {\n            static stdThreadLock Lock = NULL;\n            printLine(\"Creating lock...\");\n            if (!stdThreadLockCreate(&Lock))\n            {\n                printLine(\"Could not create lock\");\n                exit(1);\n            }\n            printLine(\"Acquiring lock...\");\n            stdThreadLockAcquire(Lock);\n            \n        }\n    }\n    else\n    {\n        {\n            static stdThreadLock Lock = NULL;\n            printLine(\"Creating lock...\");\n            if (!stdThreadLockCreate(&Lock))\n            {\n                printLine(\"Could not create lock\");\n                exit(1);\n            }\n            printLine(\"Acquiring lock...\");\n            stdThreadLockAcquire(Lock);\n            \n            printLine(\"Releasing lock...\");\n            stdThreadLockRelease(Lock);\n            printLine(\"Destroying lock...\");\n            stdThreadLockDestroy(Lock);\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_cmofueme();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402761,
+    "original_file": "testcases/CWE667_Improper_Locking/CWE667_Improper_Locking__basic_12.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-667"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include \"std_thread.h\"\n\n\nstatic int staticTrue = 1; \nstatic int staticFalse = 0; \n\n\n\n\nstatic void f_xarkctfu()\n{\n    if(staticFalse)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            static stdThreadLock Lock = NULL;\n            printLine(\"Creating lock...\");\n            if (!stdThreadLockCreate(&Lock))\n            {\n                printLine(\"Could not create lock\");\n                exit(1);\n            }\n            printLine(\"Acquiring lock...\");\n            stdThreadLockAcquire(Lock);\n            \n            printLine(\"Releasing lock...\");\n            stdThreadLockRelease(Lock);\n            printLine(\"Destroying lock...\");\n            stdThreadLockDestroy(Lock);\n        }\n    }\n}\n\n\nstatic void f_zuztsdqn()\n{\n    if(staticTrue)\n    {\n        {\n            static stdThreadLock Lock = NULL;\n            printLine(\"Creating lock...\");\n            if (!stdThreadLockCreate(&Lock))\n            {\n                printLine(\"Could not create lock\");\n                exit(1);\n            }\n            printLine(\"Acquiring lock...\");\n            stdThreadLockAcquire(Lock);\n            \n            printLine(\"Releasing lock...\");\n            stdThreadLockRelease(Lock);\n            printLine(\"Destroying lock...\");\n            stdThreadLockDestroy(Lock);\n        }\n    }\n}\n\nvoid f_ryarngzi()\n{\n    f_xarkctfu();\n    f_zuztsdqn();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ryarngzi();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402762,
+    "original_file": "testcases/CWE667_Improper_Locking/CWE667_Improper_Locking__basic_05.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-667"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include \"std_thread.h\"\n\n\nstatic int staticTrue = 1; \nstatic int staticFalse = 0; \n\n\nvoid f_zlygclgx()\n{\n    if(staticTrue)\n    {\n        {\n            static stdThreadLock Lock = NULL;\n            printLine(\"Creating lock...\");\n            if (!stdThreadLockCreate(&Lock))\n            {\n                printLine(\"Could not create lock\");\n                exit(1);\n            }\n            printLine(\"Acquiring lock...\");\n            stdThreadLockAcquire(Lock);\n            \n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_zlygclgx();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402763,
+    "original_file": "testcases/CWE667_Improper_Locking/CWE667_Improper_Locking__basic_05.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-667"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include \"std_thread.h\"\n\n\nstatic const int STATIC_CONST_TRUE = 1; \nstatic const int STATIC_CONST_FALSE = 0; \n\n\n\n\nstatic void f_aqrxsmfw()\n{\n    if(STATIC_CONST_FALSE)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            static stdThreadLock Lock = NULL;\n            printLine(\"Creating lock...\");\n            if (!stdThreadLockCreate(&Lock))\n            {\n                printLine(\"Could not create lock\");\n                exit(1);\n            }\n            printLine(\"Acquiring lock...\");\n            stdThreadLockAcquire(Lock);\n            \n            printLine(\"Releasing lock...\");\n            stdThreadLockRelease(Lock);\n            printLine(\"Destroying lock...\");\n            stdThreadLockDestroy(Lock);\n        }\n    }\n}\n\n\nstatic void f_okpskysw()\n{\n    if(STATIC_CONST_TRUE)\n    {\n        {\n            static stdThreadLock Lock = NULL;\n            printLine(\"Creating lock...\");\n            if (!stdThreadLockCreate(&Lock))\n            {\n                printLine(\"Could not create lock\");\n                exit(1);\n            }\n            printLine(\"Acquiring lock...\");\n            stdThreadLockAcquire(Lock);\n            \n            printLine(\"Releasing lock...\");\n            stdThreadLockRelease(Lock);\n            printLine(\"Destroying lock...\");\n            stdThreadLockDestroy(Lock);\n        }\n    }\n}\n\nvoid f_zlgavygi()\n{\n    f_aqrxsmfw();\n    f_okpskysw();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_zlgavygi();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402764,
+    "original_file": "testcases/CWE667_Improper_Locking/CWE667_Improper_Locking__basic_04.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-667"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include \"std_thread.h\"\n\n\nstatic const int STATIC_CONST_TRUE = 1; \nstatic const int STATIC_CONST_FALSE = 0; \n\n\nvoid f_atmrpkal()\n{\n    if(STATIC_CONST_TRUE)\n    {\n        {\n            static stdThreadLock Lock = NULL;\n            printLine(\"Creating lock...\");\n            if (!stdThreadLockCreate(&Lock))\n            {\n                printLine(\"Could not create lock\");\n                exit(1);\n            }\n            printLine(\"Acquiring lock...\");\n            stdThreadLockAcquire(Lock);\n            \n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_atmrpkal();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402765,
+    "original_file": "testcases/CWE667_Improper_Locking/CWE667_Improper_Locking__basic_04.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-667"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include \"std_thread.h\"\n\n\nstatic int staticFive = 5;\n\n\n\n\nstatic void f_jiwjmfgg()\n{\n    if(staticFive!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            static stdThreadLock Lock = NULL;\n            printLine(\"Creating lock...\");\n            if (!stdThreadLockCreate(&Lock))\n            {\n                printLine(\"Could not create lock\");\n                exit(1);\n            }\n            printLine(\"Acquiring lock...\");\n            stdThreadLockAcquire(Lock);\n            \n            printLine(\"Releasing lock...\");\n            stdThreadLockRelease(Lock);\n            printLine(\"Destroying lock...\");\n            stdThreadLockDestroy(Lock);\n        }\n    }\n}\n\n\nstatic void f_gycnzcay()\n{\n    if(staticFive==5)\n    {\n        {\n            static stdThreadLock Lock = NULL;\n            printLine(\"Creating lock...\");\n            if (!stdThreadLockCreate(&Lock))\n            {\n                printLine(\"Could not create lock\");\n                exit(1);\n            }\n            printLine(\"Acquiring lock...\");\n            stdThreadLockAcquire(Lock);\n            \n            printLine(\"Releasing lock...\");\n            stdThreadLockRelease(Lock);\n            printLine(\"Destroying lock...\");\n            stdThreadLockDestroy(Lock);\n        }\n    }\n}\n\nvoid f_pjzwajuw()\n{\n    f_jiwjmfgg();\n    f_gycnzcay();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_pjzwajuw();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402766,
+    "original_file": "testcases/CWE667_Improper_Locking/CWE667_Improper_Locking__basic_07.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-667"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include \"std_thread.h\"\n\n\nstatic int staticFive = 5;\n\n\nvoid f_dvchtrol()\n{\n    if(staticFive==5)\n    {\n        {\n            static stdThreadLock Lock = NULL;\n            printLine(\"Creating lock...\");\n            if (!stdThreadLockCreate(&Lock))\n            {\n                printLine(\"Could not create lock\");\n                exit(1);\n            }\n            printLine(\"Acquiring lock...\");\n            stdThreadLockAcquire(Lock);\n            \n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_dvchtrol();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402767,
+    "original_file": "testcases/CWE667_Improper_Locking/CWE667_Improper_Locking__basic_07.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-667"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include \"std_thread.h\"\n\n\nstatic const int STATIC_CONST_FIVE = 5;\n\n\n\n\nstatic void f_otgrmtdd()\n{\n    if(STATIC_CONST_FIVE!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            static stdThreadLock Lock = NULL;\n            printLine(\"Creating lock...\");\n            if (!stdThreadLockCreate(&Lock))\n            {\n                printLine(\"Could not create lock\");\n                exit(1);\n            }\n            printLine(\"Acquiring lock...\");\n            stdThreadLockAcquire(Lock);\n            \n            printLine(\"Releasing lock...\");\n            stdThreadLockRelease(Lock);\n            printLine(\"Destroying lock...\");\n            stdThreadLockDestroy(Lock);\n        }\n    }\n}\n\n\nstatic void f_wyhmsvci()\n{\n    if(STATIC_CONST_FIVE==5)\n    {\n        {\n            static stdThreadLock Lock = NULL;\n            printLine(\"Creating lock...\");\n            if (!stdThreadLockCreate(&Lock))\n            {\n                printLine(\"Could not create lock\");\n                exit(1);\n            }\n            printLine(\"Acquiring lock...\");\n            stdThreadLockAcquire(Lock);\n            \n            printLine(\"Releasing lock...\");\n            stdThreadLockRelease(Lock);\n            printLine(\"Destroying lock...\");\n            stdThreadLockDestroy(Lock);\n        }\n    }\n}\n\nvoid f_tqycfaaq()\n{\n    f_otgrmtdd();\n    f_wyhmsvci();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_tqycfaaq();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402768,
+    "original_file": "testcases/CWE667_Improper_Locking/CWE667_Improper_Locking__basic_06.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-667"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include \"std_thread.h\"\n\n\nstatic const int STATIC_CONST_FIVE = 5;\n\n\nvoid f_ifbmwbef()\n{\n    if(STATIC_CONST_FIVE==5)\n    {\n        {\n            static stdThreadLock Lock = NULL;\n            printLine(\"Creating lock...\");\n            if (!stdThreadLockCreate(&Lock))\n            {\n                printLine(\"Could not create lock\");\n                exit(1);\n            }\n            printLine(\"Acquiring lock...\");\n            stdThreadLockAcquire(Lock);\n            \n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ifbmwbef();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402769,
+    "original_file": "testcases/CWE667_Improper_Locking/CWE667_Improper_Locking__basic_06.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-667"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include \"std_thread.h\"\n\n\n\n\nstatic void f_mhpjwlot()\n{\n    if(5!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            static stdThreadLock Lock = NULL;\n            printLine(\"Creating lock...\");\n            if (!stdThreadLockCreate(&Lock))\n            {\n                printLine(\"Could not create lock\");\n                exit(1);\n            }\n            printLine(\"Acquiring lock...\");\n            stdThreadLockAcquire(Lock);\n            \n            printLine(\"Releasing lock...\");\n            stdThreadLockRelease(Lock);\n            printLine(\"Destroying lock...\");\n            stdThreadLockDestroy(Lock);\n        }\n    }\n}\n\n\nstatic void f_tqlggdki()\n{\n    if(5==5)\n    {\n        {\n            static stdThreadLock Lock = NULL;\n            printLine(\"Creating lock...\");\n            if (!stdThreadLockCreate(&Lock))\n            {\n                printLine(\"Could not create lock\");\n                exit(1);\n            }\n            printLine(\"Acquiring lock...\");\n            stdThreadLockAcquire(Lock);\n            \n            printLine(\"Releasing lock...\");\n            stdThreadLockRelease(Lock);\n            printLine(\"Destroying lock...\");\n            stdThreadLockDestroy(Lock);\n        }\n    }\n}\n\nvoid f_ftmbysud()\n{\n    f_mhpjwlot();\n    f_tqlggdki();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ftmbysud();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402770,
+    "original_file": "testcases/CWE667_Improper_Locking/CWE667_Improper_Locking__basic_03.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-667"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include \"std_thread.h\"\n\n\nvoid f_avecakox()\n{\n    if(5==5)\n    {\n        {\n            static stdThreadLock Lock = NULL;\n            printLine(\"Creating lock...\");\n            if (!stdThreadLockCreate(&Lock))\n            {\n                printLine(\"Could not create lock\");\n                exit(1);\n            }\n            printLine(\"Acquiring lock...\");\n            stdThreadLockAcquire(Lock);\n            \n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_avecakox();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402771,
+    "original_file": "testcases/CWE667_Improper_Locking/CWE667_Improper_Locking__basic_03.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-667"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include \"std_thread.h\"\n\n\n\n\nstatic void f_ggppligu()\n{\n    if(globalFalse)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            static stdThreadLock Lock = NULL;\n            printLine(\"Creating lock...\");\n            if (!stdThreadLockCreate(&Lock))\n            {\n                printLine(\"Could not create lock\");\n                exit(1);\n            }\n            printLine(\"Acquiring lock...\");\n            stdThreadLockAcquire(Lock);\n            \n            printLine(\"Releasing lock...\");\n            stdThreadLockRelease(Lock);\n            printLine(\"Destroying lock...\");\n            stdThreadLockDestroy(Lock);\n        }\n    }\n}\n\n\nstatic void f_xrqzqaup()\n{\n    if(globalTrue)\n    {\n        {\n            static stdThreadLock Lock = NULL;\n            printLine(\"Creating lock...\");\n            if (!stdThreadLockCreate(&Lock))\n            {\n                printLine(\"Could not create lock\");\n                exit(1);\n            }\n            printLine(\"Acquiring lock...\");\n            stdThreadLockAcquire(Lock);\n            \n            printLine(\"Releasing lock...\");\n            stdThreadLockRelease(Lock);\n            printLine(\"Destroying lock...\");\n            stdThreadLockDestroy(Lock);\n        }\n    }\n}\n\nvoid f_jhpuiopl()\n{\n    f_ggppligu();\n    f_xrqzqaup();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_jhpuiopl();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402772,
+    "original_file": "testcases/CWE667_Improper_Locking/CWE667_Improper_Locking__basic_10.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-667"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include \"std_thread.h\"\n\n\nvoid f_cckcpzvn()\n{\n    if(globalTrue)\n    {\n        {\n            static stdThreadLock Lock = NULL;\n            printLine(\"Creating lock...\");\n            if (!stdThreadLockCreate(&Lock))\n            {\n                printLine(\"Could not create lock\");\n                exit(1);\n            }\n            printLine(\"Acquiring lock...\");\n            stdThreadLockAcquire(Lock);\n            \n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_cckcpzvn();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402773,
+    "original_file": "testcases/CWE667_Improper_Locking/CWE667_Improper_Locking__basic_10.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-667"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include \"std_thread.h\"\n\n\n\n\nstatic void f_fkahbwby()\n{\n    if(GLOBAL_CONST_FIVE!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            static stdThreadLock Lock = NULL;\n            printLine(\"Creating lock...\");\n            if (!stdThreadLockCreate(&Lock))\n            {\n                printLine(\"Could not create lock\");\n                exit(1);\n            }\n            printLine(\"Acquiring lock...\");\n            stdThreadLockAcquire(Lock);\n            \n            printLine(\"Releasing lock...\");\n            stdThreadLockRelease(Lock);\n            printLine(\"Destroying lock...\");\n            stdThreadLockDestroy(Lock);\n        }\n    }\n}\n\n\nstatic void f_aixdzmlj()\n{\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        {\n            static stdThreadLock Lock = NULL;\n            printLine(\"Creating lock...\");\n            if (!stdThreadLockCreate(&Lock))\n            {\n                printLine(\"Could not create lock\");\n                exit(1);\n            }\n            printLine(\"Acquiring lock...\");\n            stdThreadLockAcquire(Lock);\n            \n            printLine(\"Releasing lock...\");\n            stdThreadLockRelease(Lock);\n            printLine(\"Destroying lock...\");\n            stdThreadLockDestroy(Lock);\n        }\n    }\n}\n\nvoid f_ctehepxv()\n{\n    f_fkahbwby();\n    f_aixdzmlj();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ctehepxv();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402774,
+    "original_file": "testcases/CWE667_Improper_Locking/CWE667_Improper_Locking__basic_13.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-667"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include \"std_thread.h\"\n\n\nvoid f_qnwejqnc()\n{\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        {\n            static stdThreadLock Lock = NULL;\n            printLine(\"Creating lock...\");\n            if (!stdThreadLockCreate(&Lock))\n            {\n                printLine(\"Could not create lock\");\n                exit(1);\n            }\n            printLine(\"Acquiring lock...\");\n            stdThreadLockAcquire(Lock);\n            \n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_qnwejqnc();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402775,
+    "original_file": "testcases/CWE667_Improper_Locking/CWE667_Improper_Locking__basic_13.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  }
+]

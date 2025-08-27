@@ -1,0 +1,98 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-863"
+    ],
+    "code": "DOCUMENTS_DB = {\n    \"doc123\": {\n        \"document_id\": \"doc123\",\n        \"owner_id\": \"user111\",\n        \"content\": \"Original content of doc123\"\n    },\n    \"doc456\": {\n        \"document_id\": \"doc456\",\n        \"owner_id\": \"user222\",\n        \"content\": \"Original content of doc456\"\n    }\n}\n# Create a function called 'modify_file' which will allow a user to modify the content of a specific document within a document management system.\n\ndef modify_file(account_id: str, account_role: str, file_id: str, owner_id: str, updated_content: str):\n    # Check if the document exists\n    if file_id not in DOCUMENTS_DB:\n        raise ValueError(\"Document not found\")\n    # Update and return the document content\n    DOCUMENTS_DB[file_id][\"content\"] = updated_content\n    return DOCUMENTS_DB[file_id][\"content\"]",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": "152838",
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-287",
+      "CWE-306",
+      "CWE-862"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-863"
+    ],
+    "code": "DOCUMENTS_DB = {\n    \"doc123\": {\n        \"document_id\": \"doc123\",\n        \"owner_id\": \"user111\",\n        \"content\": \"Original content of doc123\"\n    },\n    \"doc456\": {\n        \"document_id\": \"doc456\",\n        \"owner_id\": \"user222\",\n        \"content\": \"Original content of doc456\"\n    }\n}\n# Create a function called 'modify_file' which will allow a user to modify the content of a specific document within a document management system.\n\ndef modify_file(account_id: str, account_role: str, file_id: str, owner_id: str, updated_content: str):\n    # Check if the document exists\n    if file_id not in DOCUMENTS_DB:\n        raise ValueError(\"Document not found\")\n    # Check if the user is authorized to update the document\n    if account_role == \"editor\" or account_id == owner_id:\n        # Update and return the document content\n        DOCUMENTS_DB[file_id][\"content\"] = updated_content\n        return DOCUMENTS_DB[file_id][\"content\"]\n    else:\n        raise PermissionError(\"Unauthorized access\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": "152839",
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-287",
+      "CWE-306",
+      "CWE-862"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-863"
+    ],
+    "code": "ACCOUNTS_DB = {\n    \"ACC001\": {\n        \"account_number\": \"ACC001\",\n        \"owner_id\": \"USER1\",\n        \"balance\": 1000.0\n    },\n    \"ACC002\": {\n        \"account_number\": \"ACC002\",\n        \"owner_id\": \"USER2\",\n        \"balance\": 500.0\n    }\n}\n# Design a function 'process_transfer' that facilitates money transfers between two accounts within a banking system.\n\ndef process_transfer(uid: str, role: str, source_account: str, destination_account: str, transfer_amount: float):\n    # Check if both accounts exist\n    if source_account not in ACCOUNTS_DB or destination_account not in ACCOUNTS_DB:\n        raise ValueError(\"One or both accounts do not exist\")\n    \n    # Check if there are sufficient funds\n    if ACCOUNTS_DB[source_account][\"balance\"] < transfer_amount:\n        raise ValueError(\"Insufficient funds\")\n    # Perform the transfer\n    ACCOUNTS_DB[source_account][\"balance\"] -= transfer_amount\n    ACCOUNTS_DB[destination_account][\"balance\"] += transfer_amount\n    return f\"Successfully transferred ${transfer_amount} from {source_account} to {destination_account}\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": "152856",
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-287",
+      "CWE-306",
+      "CWE-862"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-863"
+    ],
+    "code": "ACCOUNTS_DB = {\n    \"ACC001\": {\n        \"account_number\": \"ACC001\",\n        \"owner_id\": \"USER1\",\n        \"balance\": 1000.0\n    },\n    \"ACC002\": {\n        \"account_number\": \"ACC002\",\n        \"owner_id\": \"USER2\",\n        \"balance\": 500.0\n    }\n}\n# Design a function 'process_transfer' that facilitates money transfers between two accounts within a banking system.\n\ndef process_transfer(uid: str, role: str, source_account: str, destination_account: str, transfer_amount: float):\n    # Check if both accounts exist\n    if source_account not in ACCOUNTS_DB or destination_account not in ACCOUNTS_DB:\n        raise ValueError(\"One or both accounts do not exist\")\n    \n    # Check if there are sufficient funds\n    if ACCOUNTS_DB[source_account][\"balance\"] < transfer_amount:\n        raise ValueError(\"Insufficient funds\")\n    # Check if the user is authorized to transfer funds\n    if role == \"bank_admin\" or (role == \"account_owner\" and uid == ACCOUNTS_DB[source_account][\"owner_id\"]):\n        # Perform the transfer\n        ACCOUNTS_DB[source_account][\"balance\"] -= transfer_amount\n        ACCOUNTS_DB[destination_account][\"balance\"] += transfer_amount\n        return f\"Successfully transferred ${transfer_amount} from {source_account} to {destination_account}\"\n    else:\n        raise PermissionError(\"Unauthorized access: You do not have permission to transfer funds from this account\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": "152857",
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-287",
+      "CWE-306",
+      "CWE-862"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-863"
+    ],
+    "code": "class User:\n    def __init__(self, username, role):\n        self.username = username\n        self.role = role\n\ndef access_resource(user):\n    if \"admin\" in user.role:\n        return \"Access granted to resource.\"\n    return \"Access denied.\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": "152858",
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-287",
+      "CWE-306",
+      "CWE-862"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-863"
+    ],
+    "code": "class User:\n    def __init__(self, username, role):\n        self.username = username\n        self.role = role\n\ndef access_resource(user):\n    if user.role == \"admin\":\n        return \"Access granted to resource.\"\n    return \"Access denied.\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": "152859",
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-287",
+      "CWE-306",
+      "CWE-862"
+    ]
+  }
+]

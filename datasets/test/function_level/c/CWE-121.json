@@ -1,0 +1,322 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-121"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic const int STATIC_CONST_TRUE = 1; \nstatic const int STATIC_CONST_FALSE = 0; \n\n\n\n\nstatic void f_qvdcopbb()\n{\n    int data;\n    \n    data = -1;\n    if(STATIC_CONST_TRUE)\n    {\n        \n        data = 10;\n    }\n    if(STATIC_CONST_FALSE)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0 && data < (10))\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is out-of-bounds\");\n            }\n        }\n    }\n}\n\n\nstatic void f_oyihqlxn()\n{\n    int data;\n    \n    data = -1;\n    if(STATIC_CONST_TRUE)\n    {\n        \n        data = 10;\n    }\n    if(STATIC_CONST_TRUE)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0 && data < (10))\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is out-of-bounds\");\n            }\n        }\n    }\n}\n\n\nstatic void f_bvmbnvmw()\n{\n    int data;\n    \n    data = -1;\n    if(STATIC_CONST_FALSE)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        data = 7;\n    }\n    if(STATIC_CONST_TRUE)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0)\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is negative.\");\n            }\n        }\n    }\n}\n\n\nstatic void f_hzoxoqnj()\n{\n    int data;\n    \n    data = -1;\n    if(STATIC_CONST_TRUE)\n    {\n        \n        data = 7;\n    }\n    if(STATIC_CONST_TRUE)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0)\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is negative.\");\n            }\n        }\n    }\n}\n\nvoid f_zrtbzday()\n{\n    f_qvdcopbb();\n    f_oyihqlxn();\n    f_bvmbnvmw();\n    f_hzoxoqnj();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_zrtbzday();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400460,
+    "original_file": "testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_large_04.c",
+    "RELATED_CWE": [
+      "CWE-122",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-121"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic const int STATIC_CONST_TRUE = 1; \nstatic const int STATIC_CONST_FALSE = 0; \n\n\nvoid f_vvffrydc()\n{\n    int data;\n    \n    data = -1;\n    if(STATIC_CONST_TRUE)\n    {\n        \n        data = 10;\n    }\n    if(STATIC_CONST_TRUE)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0)\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is negative.\");\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_vvffrydc();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400461,
+    "original_file": "testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_large_04.c",
+    "RELATED_CWE": [
+      "CWE-122",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-121"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic const int STATIC_CONST_TRUE = 1; \nstatic const int STATIC_CONST_FALSE = 0; \n\n\n\n\nstatic void f_pcifxrac()\n{\n    int data;\n    \n    data = -1;\n    if(STATIC_CONST_TRUE)\n    {\n        \n        data = RAND32();\n    }\n    if(STATIC_CONST_FALSE)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0 && data < (10))\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is out-of-bounds\");\n            }\n        }\n    }\n}\n\n\nstatic void f_xfamvdiz()\n{\n    int data;\n    \n    data = -1;\n    if(STATIC_CONST_TRUE)\n    {\n        \n        data = RAND32();\n    }\n    if(STATIC_CONST_TRUE)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0 && data < (10))\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is out-of-bounds\");\n            }\n        }\n    }\n}\n\n\nstatic void f_zeuclhwj()\n{\n    int data;\n    \n    data = -1;\n    if(STATIC_CONST_FALSE)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        data = 7;\n    }\n    if(STATIC_CONST_TRUE)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0)\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is negative.\");\n            }\n        }\n    }\n}\n\n\nstatic void f_iyfnxfdl()\n{\n    int data;\n    \n    data = -1;\n    if(STATIC_CONST_TRUE)\n    {\n        \n        data = 7;\n    }\n    if(STATIC_CONST_TRUE)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0)\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is negative.\");\n            }\n        }\n    }\n}\n\nvoid f_bghxoygv()\n{\n    f_pcifxrac();\n    f_xfamvdiz();\n    f_zeuclhwj();\n    f_iyfnxfdl();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_bghxoygv();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400462,
+    "original_file": "testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_rand_04.c",
+    "RELATED_CWE": [
+      "CWE-122",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-121"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic const int STATIC_CONST_TRUE = 1; \nstatic const int STATIC_CONST_FALSE = 0; \n\n\nvoid f_bybxtkte()\n{\n    int data;\n    \n    data = -1;\n    if(STATIC_CONST_TRUE)\n    {\n        \n        data = RAND32();\n    }\n    if(STATIC_CONST_TRUE)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0)\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is negative.\");\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_bybxtkte();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400463,
+    "original_file": "testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_rand_04.c",
+    "RELATED_CWE": [
+      "CWE-122",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-121"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic const int STATIC_CONST_TRUE = 1; \nstatic const int STATIC_CONST_FALSE = 0; \n\n\n\n\nstatic void f_zhozbopv()\n{\n    int data;\n    \n    data = -1;\n    if(STATIC_CONST_TRUE)\n    {\n        \n        fscanf(stdin, \"%d\", &data);\n    }\n    if(STATIC_CONST_FALSE)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0 && data < (10))\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is out-of-bounds\");\n            }\n        }\n    }\n}\n\n\nstatic void f_xtqeytfg()\n{\n    int data;\n    \n    data = -1;\n    if(STATIC_CONST_TRUE)\n    {\n        \n        fscanf(stdin, \"%d\", &data);\n    }\n    if(STATIC_CONST_TRUE)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0 && data < (10))\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is out-of-bounds\");\n            }\n        }\n    }\n}\n\n\nstatic void f_dqteehvx()\n{\n    int data;\n    \n    data = -1;\n    if(STATIC_CONST_FALSE)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        data = 7;\n    }\n    if(STATIC_CONST_TRUE)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0)\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is negative.\");\n            }\n        }\n    }\n}\n\n\nstatic void f_dsjucvwk()\n{\n    int data;\n    \n    data = -1;\n    if(STATIC_CONST_TRUE)\n    {\n        \n        data = 7;\n    }\n    if(STATIC_CONST_TRUE)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0)\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is negative.\");\n            }\n        }\n    }\n}\n\nvoid f_tspcbjuq()\n{\n    f_zhozbopv();\n    f_xtqeytfg();\n    f_dqteehvx();\n    f_dsjucvwk();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_tspcbjuq();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400464,
+    "original_file": "testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_fscanf_04.c",
+    "RELATED_CWE": [
+      "CWE-122",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-121"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic const int STATIC_CONST_TRUE = 1; \nstatic const int STATIC_CONST_FALSE = 0; \n\n\nvoid f_dbswopsq()\n{\n    int data;\n    \n    data = -1;\n    if(STATIC_CONST_TRUE)\n    {\n        \n        fscanf(stdin, \"%d\", &data);\n    }\n    if(STATIC_CONST_TRUE)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0)\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is negative.\");\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_dbswopsq();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400465,
+    "original_file": "testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_fscanf_04.c",
+    "RELATED_CWE": [
+      "CWE-122",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-121"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic int staticTrue = 1; \nstatic int staticFalse = 0; \n\n\n\n\nstatic void f_qohchhxc()\n{\n    int data;\n    \n    data = -1;\n    if(staticTrue)\n    {\n        \n        data = RAND32();\n    }\n    if(staticFalse)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0 && data < (10))\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is out-of-bounds\");\n            }\n        }\n    }\n}\n\n\nstatic void f_izonqefk()\n{\n    int data;\n    \n    data = -1;\n    if(staticTrue)\n    {\n        \n        data = RAND32();\n    }\n    if(staticTrue)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0 && data < (10))\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is out-of-bounds\");\n            }\n        }\n    }\n}\n\n\nstatic void f_igodohmi()\n{\n    int data;\n    \n    data = -1;\n    if(staticFalse)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        data = 7;\n    }\n    if(staticTrue)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0)\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is negative.\");\n            }\n        }\n    }\n}\n\n\nstatic void f_thxjllkk()\n{\n    int data;\n    \n    data = -1;\n    if(staticTrue)\n    {\n        \n        data = 7;\n    }\n    if(staticTrue)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0)\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is negative.\");\n            }\n        }\n    }\n}\n\nvoid f_qvtmyikn()\n{\n    f_qohchhxc();\n    f_izonqefk();\n    f_igodohmi();\n    f_thxjllkk();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_qvtmyikn();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400466,
+    "original_file": "testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_rand_05.c",
+    "RELATED_CWE": [
+      "CWE-122",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-121"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic int staticTrue = 1; \nstatic int staticFalse = 0; \n\n\nvoid f_pwnidhxu()\n{\n    int data;\n    \n    data = -1;\n    if(staticTrue)\n    {\n        \n        data = RAND32();\n    }\n    if(staticTrue)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0)\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is negative.\");\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_pwnidhxu();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400467,
+    "original_file": "testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_rand_05.c",
+    "RELATED_CWE": [
+      "CWE-122",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-121"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic int staticTrue = 1; \nstatic int staticFalse = 0; \n\n\n\n\nstatic void f_gxofjnuw()\n{\n    int data;\n    \n    data = -1;\n    if(staticTrue)\n    {\n        \n        fscanf(stdin, \"%d\", &data);\n    }\n    if(staticFalse)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0 && data < (10))\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is out-of-bounds\");\n            }\n        }\n    }\n}\n\n\nstatic void f_hzczijew()\n{\n    int data;\n    \n    data = -1;\n    if(staticTrue)\n    {\n        \n        fscanf(stdin, \"%d\", &data);\n    }\n    if(staticTrue)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0 && data < (10))\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is out-of-bounds\");\n            }\n        }\n    }\n}\n\n\nstatic void f_apxtdzkd()\n{\n    int data;\n    \n    data = -1;\n    if(staticFalse)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        data = 7;\n    }\n    if(staticTrue)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0)\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is negative.\");\n            }\n        }\n    }\n}\n\n\nstatic void f_qkmavnkh()\n{\n    int data;\n    \n    data = -1;\n    if(staticTrue)\n    {\n        \n        data = 7;\n    }\n    if(staticTrue)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0)\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is negative.\");\n            }\n        }\n    }\n}\n\nvoid f_ivizfkoh()\n{\n    f_gxofjnuw();\n    f_hzczijew();\n    f_apxtdzkd();\n    f_qkmavnkh();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ivizfkoh();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400468,
+    "original_file": "testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_fscanf_05.c",
+    "RELATED_CWE": [
+      "CWE-122",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-121"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic int staticTrue = 1; \nstatic int staticFalse = 0; \n\n\nvoid f_lbucpore()\n{\n    int data;\n    \n    data = -1;\n    if(staticTrue)\n    {\n        \n        fscanf(stdin, \"%d\", &data);\n    }\n    if(staticTrue)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0)\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is negative.\");\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_lbucpore();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400469,
+    "original_file": "testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_fscanf_05.c",
+    "RELATED_CWE": [
+      "CWE-122",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-121"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic int staticFive = 5;\n\n\n\n\nstatic void f_mlegejjh()\n{\n    int data;\n    \n    data = -1;\n    if(staticFive==5)\n    {\n        \n        fscanf(stdin, \"%d\", &data);\n    }\n    if(staticFive!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0 && data < (10))\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is out-of-bounds\");\n            }\n        }\n    }\n}\n\n\nstatic void f_daybkiks()\n{\n    int data;\n    \n    data = -1;\n    if(staticFive==5)\n    {\n        \n        fscanf(stdin, \"%d\", &data);\n    }\n    if(staticFive==5)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0 && data < (10))\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is out-of-bounds\");\n            }\n        }\n    }\n}\n\n\nstatic void f_wkysulfj()\n{\n    int data;\n    \n    data = -1;\n    if(staticFive!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        data = 7;\n    }\n    if(staticFive==5)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0)\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is negative.\");\n            }\n        }\n    }\n}\n\n\nstatic void f_evmundjf()\n{\n    int data;\n    \n    data = -1;\n    if(staticFive==5)\n    {\n        \n        data = 7;\n    }\n    if(staticFive==5)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0)\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is negative.\");\n            }\n        }\n    }\n}\n\nvoid f_aiwobjdk()\n{\n    f_mlegejjh();\n    f_daybkiks();\n    f_wkysulfj();\n    f_evmundjf();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_aiwobjdk();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400470,
+    "original_file": "testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_fscanf_07.c",
+    "RELATED_CWE": [
+      "CWE-122",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-121"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic int staticFive = 5;\n\n\nvoid f_rfhuxzap()\n{\n    int data;\n    \n    data = -1;\n    if(staticFive==5)\n    {\n        \n        fscanf(stdin, \"%d\", &data);\n    }\n    if(staticFive==5)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0)\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is negative.\");\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_rfhuxzap();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400471,
+    "original_file": "testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_fscanf_07.c",
+    "RELATED_CWE": [
+      "CWE-122",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-121"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic const int STATIC_CONST_FIVE = 5;\n\n\n\n\nstatic void f_uutefnmf()\n{\n    int data;\n    \n    data = -1;\n    if(STATIC_CONST_FIVE==5)\n    {\n        \n        data = RAND32();\n    }\n    if(STATIC_CONST_FIVE!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0 && data < (10))\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is out-of-bounds\");\n            }\n        }\n    }\n}\n\n\nstatic void f_ssxfgkbr()\n{\n    int data;\n    \n    data = -1;\n    if(STATIC_CONST_FIVE==5)\n    {\n        \n        data = RAND32();\n    }\n    if(STATIC_CONST_FIVE==5)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0 && data < (10))\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is out-of-bounds\");\n            }\n        }\n    }\n}\n\n\nstatic void f_scmnzulf()\n{\n    int data;\n    \n    data = -1;\n    if(STATIC_CONST_FIVE!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        data = 7;\n    }\n    if(STATIC_CONST_FIVE==5)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0)\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is negative.\");\n            }\n        }\n    }\n}\n\n\nstatic void f_rvvkjtjw()\n{\n    int data;\n    \n    data = -1;\n    if(STATIC_CONST_FIVE==5)\n    {\n        \n        data = 7;\n    }\n    if(STATIC_CONST_FIVE==5)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0)\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is negative.\");\n            }\n        }\n    }\n}\n\nvoid f_ebvxskey()\n{\n    f_uutefnmf();\n    f_ssxfgkbr();\n    f_scmnzulf();\n    f_rvvkjtjw();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ebvxskey();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400472,
+    "original_file": "testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_rand_06.c",
+    "RELATED_CWE": [
+      "CWE-122",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-121"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic const int STATIC_CONST_FIVE = 5;\n\n\nvoid f_vzkhtona()\n{\n    int data;\n    \n    data = -1;\n    if(STATIC_CONST_FIVE==5)\n    {\n        \n        data = RAND32();\n    }\n    if(STATIC_CONST_FIVE==5)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0)\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is negative.\");\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_vzkhtona();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400473,
+    "original_file": "testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_rand_06.c",
+    "RELATED_CWE": [
+      "CWE-122",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-121"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic int staticFive = 5;\n\n\n\n\nstatic void f_tftyofge()\n{\n    int data;\n    \n    data = -1;\n    if(staticFive==5)\n    {\n        \n        data = 10;\n    }\n    if(staticFive!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0 && data < (10))\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is out-of-bounds\");\n            }\n        }\n    }\n}\n\n\nstatic void f_pthbwhrd()\n{\n    int data;\n    \n    data = -1;\n    if(staticFive==5)\n    {\n        \n        data = 10;\n    }\n    if(staticFive==5)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0 && data < (10))\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is out-of-bounds\");\n            }\n        }\n    }\n}\n\n\nstatic void f_hcaydfok()\n{\n    int data;\n    \n    data = -1;\n    if(staticFive!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        data = 7;\n    }\n    if(staticFive==5)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0)\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is negative.\");\n            }\n        }\n    }\n}\n\n\nstatic void f_othdhfle()\n{\n    int data;\n    \n    data = -1;\n    if(staticFive==5)\n    {\n        \n        data = 7;\n    }\n    if(staticFive==5)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0)\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is negative.\");\n            }\n        }\n    }\n}\n\nvoid f_lbksxesn()\n{\n    f_tftyofge();\n    f_pthbwhrd();\n    f_hcaydfok();\n    f_othdhfle();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_lbksxesn();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400474,
+    "original_file": "testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_large_07.c",
+    "RELATED_CWE": [
+      "CWE-122",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-121"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic int staticFive = 5;\n\n\nvoid f_hivcnewt()\n{\n    int data;\n    \n    data = -1;\n    if(staticFive==5)\n    {\n        \n        data = 10;\n    }\n    if(staticFive==5)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0)\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is negative.\");\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_hivcnewt();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400475,
+    "original_file": "testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_large_07.c",
+    "RELATED_CWE": [
+      "CWE-122",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-121"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic const int STATIC_CONST_FIVE = 5;\n\n\n\n\nstatic void f_sjwqjfkm()\n{\n    int data;\n    \n    data = -1;\n    if(STATIC_CONST_FIVE==5)\n    {\n        \n        data = 10;\n    }\n    if(STATIC_CONST_FIVE!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0 && data < (10))\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is out-of-bounds\");\n            }\n        }\n    }\n}\n\n\nstatic void f_vnhuyfjg()\n{\n    int data;\n    \n    data = -1;\n    if(STATIC_CONST_FIVE==5)\n    {\n        \n        data = 10;\n    }\n    if(STATIC_CONST_FIVE==5)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0 && data < (10))\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is out-of-bounds\");\n            }\n        }\n    }\n}\n\n\nstatic void f_pubapfha()\n{\n    int data;\n    \n    data = -1;\n    if(STATIC_CONST_FIVE!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        data = 7;\n    }\n    if(STATIC_CONST_FIVE==5)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0)\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is negative.\");\n            }\n        }\n    }\n}\n\n\nstatic void f_lpsreidd()\n{\n    int data;\n    \n    data = -1;\n    if(STATIC_CONST_FIVE==5)\n    {\n        \n        data = 7;\n    }\n    if(STATIC_CONST_FIVE==5)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0)\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is negative.\");\n            }\n        }\n    }\n}\n\nvoid f_iofzrjuv()\n{\n    f_sjwqjfkm();\n    f_vnhuyfjg();\n    f_pubapfha();\n    f_lpsreidd();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_iofzrjuv();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400476,
+    "original_file": "testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_large_06.c",
+    "RELATED_CWE": [
+      "CWE-122",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-121"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic const int STATIC_CONST_FIVE = 5;\n\n\nvoid f_grnnmuss()\n{\n    int data;\n    \n    data = -1;\n    if(STATIC_CONST_FIVE==5)\n    {\n        \n        data = 10;\n    }\n    if(STATIC_CONST_FIVE==5)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0)\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is negative.\");\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_grnnmuss();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400477,
+    "original_file": "testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_large_06.c",
+    "RELATED_CWE": [
+      "CWE-122",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-121"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic int staticFive = 5;\n\n\n\n\nstatic void f_suwbtxwg()\n{\n    int data;\n    \n    data = -1;\n    if(staticFive==5)\n    {\n        \n        data = RAND32();\n    }\n    if(staticFive!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0 && data < (10))\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is out-of-bounds\");\n            }\n        }\n    }\n}\n\n\nstatic void f_zfbdyxwv()\n{\n    int data;\n    \n    data = -1;\n    if(staticFive==5)\n    {\n        \n        data = RAND32();\n    }\n    if(staticFive==5)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0 && data < (10))\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is out-of-bounds\");\n            }\n        }\n    }\n}\n\n\nstatic void f_xfmyryqh()\n{\n    int data;\n    \n    data = -1;\n    if(staticFive!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        data = 7;\n    }\n    if(staticFive==5)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0)\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is negative.\");\n            }\n        }\n    }\n}\n\n\nstatic void f_cgklnnid()\n{\n    int data;\n    \n    data = -1;\n    if(staticFive==5)\n    {\n        \n        data = 7;\n    }\n    if(staticFive==5)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0)\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is negative.\");\n            }\n        }\n    }\n}\n\nvoid f_pjioxqsp()\n{\n    f_suwbtxwg();\n    f_zfbdyxwv();\n    f_xfmyryqh();\n    f_cgklnnid();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_pjioxqsp();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400478,
+    "original_file": "testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_rand_07.c",
+    "RELATED_CWE": [
+      "CWE-122",
+      "CWE-415",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-121"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic int staticFive = 5;\n\n\nvoid f_hhrpjhjr()\n{\n    int data;\n    \n    data = -1;\n    if(staticFive==5)\n    {\n        \n        data = RAND32();\n    }\n    if(staticFive==5)\n    {\n        {\n            int i;\n            int buffer[10] = { 0 };\n            \n            if (data >= 0)\n            {\n                buffer[data] = 1;\n                \n                for(i = 0; i < 10; i++)\n                {\n                    printIntLine(buffer[i]);\n                }\n            }\n            else\n            {\n                printLine(\"ERROR: Array index is negative.\");\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_hhrpjhjr();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400479,
+    "original_file": "testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_rand_07.c",
+    "RELATED_CWE": [
+      "CWE-122",
+      "CWE-415",
+      "CWE-416"
+    ]
+  }
+]

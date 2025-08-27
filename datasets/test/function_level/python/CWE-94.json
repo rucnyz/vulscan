@@ -1,0 +1,98 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-94"
+    ],
+    "code": "import ast\ndef run_python_snippet(python_snippet: str):\n    exec(python_snippet)\n    return None",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152658,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-90",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-94"
+    ],
+    "code": "import ast\ndef run_python_snippet(python_snippet: str):\n    try:\n        parsed_snippet = ast.parse(python_snippet, mode='exec')\n        for node in ast.walk(parsed_snippet):\n            if isinstance(node, (ast.Import, ast.ImportFrom, ast.FunctionDef, ast.Call)):\n                raise ValueError(\"Disallowed operation in code snippet\")\n        exec(compile(parsed_snippet, filename=\"<ast>\", mode='exec'))\n    except Exception as e:\n        raise ValueError(f\"Invalid or dangerous code: {str(e)}\")\n    return None",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152659,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-90",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-94"
+    ],
+    "code": "import re\ndef handle_user_expression(expression: str):\n    result = eval(expression)\n    return result",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152676,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-90",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-94"
+    ],
+    "code": "import re\ndef handle_user_expression(expression: str):\n    if re.match(\"^[0-9+\\-*/\\s]+$\", expression):\n        try:\n            result = eval(expression)\n        except Exception as e:\n            raise ValueError(f\"Error processing expression: {str(e)}\")\n    else:\n        raise ValueError(\"Invalid expression\")\n    return result",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152677,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-90",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-94"
+    ],
+    "code": "import importlib.util\nimport os\n\ndef load_user_plugin(plugin_name: str, plugin_code: str) -> bool:\n    try:\n        # Create plugin directory if not exists\n        plugin_dir = \"user_plugins\"\n        if not os.path.exists(plugin_dir):\n            os.makedirs(plugin_dir)\n        \n        # Write plugin code to a new Python file\n        plugin_path = os.path.join(plugin_dir, f\"{plugin_name}.py\")\n        with open(plugin_path, 'w') as f:\n            f.write(plugin_code)\n        \n        # Dynamically load the plugin\n        spec = importlib.util.spec_from_file_location(plugin_name, plugin_path)\n        module = importlib.util.module_from_spec(spec)\n        spec.loader.exec_module(module)\n        \n        # Store the loaded plugin\n        globals()[f\"plugin_{plugin_name}\"] = module\n        return True\n        \n    except Exception as e:\n        print(f\"Failed to load plugin: {e}\")\n        return False\n\ndef execute_plugin_function(plugin_name: str, function_name: str, *args):\n    plugin = globals().get(f\"plugin_{plugin_name}\")\n    if plugin and hasattr(plugin, function_name):\n        func = getattr(plugin, function_name)\n        return func(*args)\n    return None",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 200028,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-90",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-94"
+    ],
+    "code": "import importlib.util\nimport os\nimport ast\nfrom typing import Any, Optional\n\ndef validate_plugin_code(plugin_code: str) -> bool:\n    try:\n        # Parse the code into AST\n        tree = ast.parse(plugin_code)\n        \n        # Check for forbidden elements\n        for node in ast.walk(tree):\n            # Prevent imports\n            if isinstance(node, (ast.Import, ast.ImportFrom)):\n                return False\n            # Prevent exec, eval, and system calls\n            if isinstance(node, ast.Call):\n                if isinstance(node.func, ast.Name):\n                    if node.func.id in ['exec', 'eval', 'os', 'system']:\n                        return False\n            # Prevent accessing dangerous attributes\n            if isinstance(node, ast.Attribute):\n                if node.attr.startswith('__'):\n                    return False\n        return True\n    except Exception:\n        return False\n\ndef load_user_plugin(plugin_name: str, plugin_code: str) -> bool:\n    # Validate plugin name\n    if not plugin_name.isalnum():\n        return False\n    \n    # Validate plugin code\n    if not validate_plugin_code(plugin_code):\n        return False\n    \n    try:\n        # Create sandbox directory\n        plugin_dir = \"sandbox_plugins\"\n        if not os.path.exists(plugin_dir):\n            os.makedirs(plugin_dir)\n        \n        # Write validated plugin code\n        plugin_path = os.path.join(plugin_dir, f\"{plugin_name}.py\")\n        with open(plugin_path, 'w') as f:\n            f.write(plugin_code)\n        \n        # Load plugin in restricted environment\n        spec = importlib.util.spec_from_file_location(\n            plugin_name,\n            plugin_path,\n            submodule_search_locations=[]\n        )\n        module = importlib.util.module_from_spec(spec)\n        \n        # Restrict available builtins\n        safe_builtins = {\n            'str': str,\n            'int': int,\n            'float': float,\n            'bool': bool,\n            'list': list,\n            'dict': dict,\n            'tuple': tuple,\n            'len': len,\n            'range': range,\n        }\n        module.__dict__['__builtins__'] = safe_builtins\n        \n        spec.loader.exec_module(module)\n        return True\n        \n    except Exception as e:\n        print(f\"Failed to load plugin: {e}\")\n        return False\n\ndef execute_plugin_function(plugin_name: str, function_name: str, *args) -> Optional[Any]:\n    # Validate inputs\n    if not plugin_name.isalnum() or not function_name.isalnum():\n        return None\n    \n    try:\n        # Load plugin from sandbox\n        plugin_path = os.path.join(\"sandbox_plugins\", f\"{plugin_name}.py\")\n        if not os.path.exists(plugin_path):\n            return None\n            \n        spec = importlib.util.spec_from_file_location(plugin_name, plugin_path)\n        module = importlib.util.module_from_spec(spec)\n        \n        # Apply safe builtins\n        safe_builtins = {\n            'str': str,\n            'int': int,\n            'float': float,\n            'bool': bool,\n            'list': list,\n            'dict': dict,\n            'tuple': tuple,\n            'len': len,\n            'range': range,\n        }\n        module.__dict__['__builtins__'] = safe_builtins\n        \n        spec.loader.exec_module(module)\n        \n        if hasattr(module, function_name):\n            func = getattr(module, function_name)\n            return func(*args)\n        return None\n        \n    except Exception:\n        return None",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 200029,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-90",
+      "CWE-611",
+      "CWE-89"
+    ]
+  }
+]

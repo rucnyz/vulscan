@@ -1,0 +1,98 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-732"
+    ],
+    "code": "import os\nimport stat\ndef save_api_tokens(token_file, secrets):\n    # Check if the directory exists\n    directory = os.path.dirname(token_file)\n    if not os.path.exists(directory):\n        print(f\"Directory '{directory}' does not exist.\")\n        return\n    # Proceed to write the API keys to the file\n    try:\n        with open(token_file, 'w') as file:\n            # Write each API key in the file\n            for service, key in secrets.items():\n                file.write(f\"{service}:{key}\\n\")\n            print(f\"Successfully stored API tokens at '{token_file}'\")\n    except Exception as e:\n        print(f\"Error writing API tokens to '{token_file}': {e}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": "151866",
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-285",
+      "CWE-287",
+      "CWE-789"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-732"
+    ],
+    "code": "import os\nimport stat\ndef save_api_tokens(token_file, secrets):\n    # Check if the directory exists\n    directory = os.path.dirname(token_file)\n    if not os.path.exists(directory):\n        print(f\"Directory '{directory}' does not exist.\")\n        return\n    # Proceed to write the API keys to the file with ownership and permission validations\n    try:\n        file_exists = os.path.exists(token_file)\n        if file_exists:\n            file_stat = os.stat(token_file)\n            file_mode = file_stat.st_mode            \n            # Check if the file is owned by the current user\n            if file_stat.st_uid != os.getuid():\n                print(f\"File '{token_file}' is not owned by the current user.\")\n                return\n            # Check if 'group' or 'others' have any permissions\n            if file_mode & 0o077:\n                print(f\"File '{token_file}' has group or others permissions. Aborting write operation.\")\n                return\n        \n        # Write API keys to the file\n        with open(token_file, 'w') as file:\n            for service, key in secrets.items():\n                file.write(f\"{service}:{key}\\n\")\n\n        # Set secure file permissions (600)\n        os.chmod(token_file, stat.S_IRUSR | stat.S_IWUSR)\n        print(f\"API tokens securely stored in '{token_file}'\")\n        \n    except Exception as e:\n        print(f\"Error securing and writing API tokens to '{token_file}': {e}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": "151867",
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-285",
+      "CWE-287",
+      "CWE-789"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-732"
+    ],
+    "code": "import os\n\ndef create_config_file():\n    path = \"/tmp/config.txt\"\n    \n    with open(path, \"w\") as f:\n        f.write(\"admin_password=supersecret\\n\")\n\n    os.chown(path, os.getuid(), os.getgid())",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": "151868",
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-285",
+      "CWE-287",
+      "CWE-789"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-732"
+    ],
+    "code": "import os\n\ndef create_secure_config_file():\n    path = \"/tmp/config.txt\"\n    \n    fd = os.open(path, os.O_WRONLY | os.O_CREAT, 0o600)\n    with os.fdopen(fd, \"w\") as f:\n        f.write(\"admin_password=supersecret\\n\")\n\n    os.chown(path, os.getuid(), os.getgid())\n\ncreate_secure_config_file()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": "151869",
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-285",
+      "CWE-287",
+      "CWE-789"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-732"
+    ],
+    "code": "import os\nimport shutil\n\ndef backup_data():\n    src = \"/etc/important_config.conf\"\n    dst = \"/tmp/backup_config.conf\"\n    shutil.copy(src, dst)\n    print(f\"Backup saved at {dst}\")\n\nbackup_data()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": "151870",
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-285",
+      "CWE-287",
+      "CWE-789"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-732"
+    ],
+    "code": "import os\nimport shutil\nimport stat\n\ndef secure_backup_data():\n    src = \"/etc/important_config.conf\"\n    dst = \"/tmp/backup_config.conf\"\n    shutil.copy(src, dst)\n    os.chmod(dst, stat.S_IRUSR | stat.S_IWUSR)  # 600 permission\n    print(f\"Secure backup saved at {dst}\")\n\nsecure_backup_data()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": "151871",
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-285",
+      "CWE-287",
+      "CWE-789"
+    ]
+  }
+]

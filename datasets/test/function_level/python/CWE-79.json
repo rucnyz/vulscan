@@ -1,0 +1,98 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "    def init_settings(self, ipython_app, kernel_manager, contents_manager,\n                      cluster_manager, session_manager, kernel_spec_manager,\n                      config_manager,\n                      log, base_url, default_url, settings_overrides,\n                      jinja_env_options=None):\n\n        _template_path = settings_overrides.get(\n            \"template_path\",\n            ipython_app.template_file_path,\n        )\n        if isinstance(_template_path, py3compat.string_types):\n            _template_path = (_template_path,)\n        template_path = [os.path.expanduser(path) for path in _template_path]\n\n        jenv_opt = jinja_env_options if jinja_env_options else {}\n        env = Environment(loader=FileSystemLoader(template_path), **jenv_opt)\n        \n        sys_info = get_sys_info()\n        if sys_info['commit_source'] == 'repository':\n            # don't cache (rely on 304) when working from master\n            version_hash = ''\n        else:\n            # reset the cache on server restart\n            version_hash = datetime.datetime.now().strftime(\"%Y%m%d%H%M%S\")\n\n        settings = dict(\n            # basics\n            log_function=log_request,\n            base_url=base_url,\n            default_url=default_url,\n            template_path=template_path,\n            static_path=ipython_app.static_file_path,\n            static_handler_class = FileFindHandler,\n            static_url_prefix = url_path_join(base_url,'/static/'),\n            static_handler_args = {\n                # don't cache custom.js\n                'no_cache_paths': [url_path_join(base_url, 'static', 'custom')],\n            },\n            version_hash=version_hash,\n            \n            # authentication\n            cookie_secret=ipython_app.cookie_secret,\n            login_url=url_path_join(base_url,'/login'),\n            login_handler_class=ipython_app.login_handler_class,\n            logout_handler_class=ipython_app.logout_handler_class,\n            password=ipython_app.password,\n\n            # managers\n            kernel_manager=kernel_manager,\n            contents_manager=contents_manager,\n            cluster_manager=cluster_manager,\n            session_manager=session_manager,\n            kernel_spec_manager=kernel_spec_manager,\n            config_manager=config_manager,\n\n            # IPython stuff\n            jinja_template_vars=ipython_app.jinja_template_vars,\n            nbextensions_path=ipython_app.nbextensions_path,\n            websocket_url=ipython_app.websocket_url,\n            mathjax_url=ipython_app.mathjax_url,\n            config=ipython_app.config,\n            jinja2_env=env,\n            terminals_available=False,  # Set later if terminals are available\n        )\n\n        # allow custom overrides for the tornado web app.\n        settings.update(settings_overrides)\n        return settings",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149042,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "    def init_settings(self, ipython_app, kernel_manager, contents_manager,\n                      cluster_manager, session_manager, kernel_spec_manager,\n                      config_manager,\n                      log, base_url, default_url, settings_overrides,\n                      jinja_env_options=None):\n\n        _template_path = settings_overrides.get(\n            \"template_path\",\n            ipython_app.template_file_path,\n        )\n        if isinstance(_template_path, py3compat.string_types):\n            _template_path = (_template_path,)\n        template_path = [os.path.expanduser(path) for path in _template_path]\n\n        jenv_opt = {\"autoescape\": True}\n        jenv_opt.update(jinja_env_options if jinja_env_options else {})\n\n        env = Environment(loader=FileSystemLoader(template_path), **jenv_opt)\n        \n        sys_info = get_sys_info()\n        if sys_info['commit_source'] == 'repository':\n            # don't cache (rely on 304) when working from master\n            version_hash = ''\n        else:\n            # reset the cache on server restart\n            version_hash = datetime.datetime.now().strftime(\"%Y%m%d%H%M%S\")\n\n        settings = dict(\n            # basics\n            log_function=log_request,\n            base_url=base_url,\n            default_url=default_url,\n            template_path=template_path,\n            static_path=ipython_app.static_file_path,\n            static_handler_class = FileFindHandler,\n            static_url_prefix = url_path_join(base_url,'/static/'),\n            static_handler_args = {\n                # don't cache custom.js\n                'no_cache_paths': [url_path_join(base_url, 'static', 'custom')],\n            },\n            version_hash=version_hash,\n            \n            # authentication\n            cookie_secret=ipython_app.cookie_secret,\n            login_url=url_path_join(base_url,'/login'),\n            login_handler_class=ipython_app.login_handler_class,\n            logout_handler_class=ipython_app.logout_handler_class,\n            password=ipython_app.password,\n\n            # managers\n            kernel_manager=kernel_manager,\n            contents_manager=contents_manager,\n            cluster_manager=cluster_manager,\n            session_manager=session_manager,\n            kernel_spec_manager=kernel_spec_manager,\n            config_manager=config_manager,\n\n            # IPython stuff\n            jinja_template_vars=ipython_app.jinja_template_vars,\n            nbextensions_path=ipython_app.nbextensions_path,\n            websocket_url=ipython_app.websocket_url,\n            mathjax_url=ipython_app.mathjax_url,\n            config=ipython_app.config,\n            jinja2_env=env,\n            terminals_available=False,  # Set later if terminals are available\n        )\n\n        # allow custom overrides for the tornado web app.\n        settings.update(settings_overrides)\n        return settings",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149043,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "  @auth.public\n  def get(self, build_id):\n    try:\n      build_id = int(build_id)\n    except ValueError as ex:\n      self.response.write(ex.message)\n      self.abort(400)\n\n    build = model.Build.get_by_id(build_id)\n    can_view = build and user.can_view_build_async(build).get_result()\n\n    if not can_view:\n      if auth.get_current_identity().is_anonymous:\n        return self.redirect(gae_users.create_login_url(self.request.url))\n      self.response.write('build %d not found' % build_id)\n      self.abort(404)\n\n    return self.redirect(str(build.url))",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149044,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "  @auth.public\n  def get(self, build_id):\n    try:\n      build_id = int(build_id)\n    except ValueError:\n      self.response.write('invalid build id')\n      self.abort(400)\n\n    build = model.Build.get_by_id(build_id)\n    can_view = build and user.can_view_build_async(build).get_result()\n\n    if not can_view:\n      if auth.get_current_identity().is_anonymous:\n        return self.redirect(self.create_login_url(self.request.url))\n      self.response.write('build %d not found' % build_id)\n      self.abort(404)\n\n    return self.redirect(str(build.url))",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149045,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "def index(request, is_mobile=False):\n  hue_collections = DashboardController(request.user).get_search_collections()\n  collection_id = request.GET.get('collection')\n\n  if not hue_collections or not collection_id:\n    return admin_collections(request, True, is_mobile)\n\n  try:\n    collection_doc = Document2.objects.get(id=collection_id)\n    if USE_NEW_EDITOR.get():\n      collection_doc.can_read_or_exception(request.user)\n    else:\n      collection_doc.doc.get().can_read_or_exception(request.user)\n    collection = Collection2(request.user, document=collection_doc)\n  except Exception, e:\n    raise PopupException(e, title=_(\"Dashboard does not exist or you don't have the permission to access it.\"))\n\n  query = {'qs': [{'q': ''}], 'fqs': [], 'start': 0}\n\n  if request.method == 'GET':\n    if 'q' in request.GET:\n      query['qs'][0]['q'] = request.GET.get('q')\n    if 'qd' in request.GET:\n      query['qd'] = request.GET.get('qd')\n\n  template = 'search.mako'\n  if is_mobile:\n    template = 'search_m.mako'\n\n  return render(template, request, {\n    'collection': collection,\n    'query': json.dumps(query),\n    'initial': json.dumps({\n        'collections': [],\n        'layout': DEFAULT_LAYOUT,\n        'is_latest': LATEST.get(),\n        'engines': get_engines(request.user)\n    }),\n    'is_owner': collection_doc.doc.get().can_write(request.user),\n    'can_edit_index': can_edit_index(request.user),\n    'is_embeddable': request.GET.get('is_embeddable', False),\n    'mobile': is_mobile,\n  })",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149046,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "def index(request, is_mobile=False):\n  hue_collections = DashboardController(request.user).get_search_collections()\n  collection_id = request.GET.get('collection')\n\n  if not hue_collections or not collection_id:\n    return admin_collections(request, True, is_mobile)\n\n  try:\n    collection_doc = Document2.objects.get(id=collection_id)\n    if USE_NEW_EDITOR.get():\n      collection_doc.can_read_or_exception(request.user)\n    else:\n      collection_doc.doc.get().can_read_or_exception(request.user)\n    collection = Collection2(request.user, document=collection_doc)\n  except Exception, e:\n    raise PopupException(e, title=_(\"Dashboard does not exist or you don't have the permission to access it.\"))\n\n  query = {'qs': [{'q': ''}], 'fqs': [], 'start': 0}\n\n  if request.method == 'GET':\n    if 'q' in request.GET:\n      query['qs'][0]['q'] = antixss(request.GET.get('q', ''))\n    if 'qd' in request.GET:\n      query['qd'] = antixss(request.GET.get('qd', ''))\n\n  template = 'search.mako'\n  if is_mobile:\n    template = 'search_m.mako'\n\n  return render(template, request, {\n    'collection': collection,\n    'query': json.dumps(query),\n    'initial': json.dumps({\n        'collections': [],\n        'layout': DEFAULT_LAYOUT,\n        'is_latest': LATEST.get(),\n        'engines': get_engines(request.user)\n    }),\n    'is_owner': collection_doc.can_write(request.user) if USE_NEW_EDITOR.get() else collection_doc.doc.get().can_write(request.user),\n    'can_edit_index': can_edit_index(request.user),\n    'is_embeddable': request.GET.get('is_embeddable', False),\n    'mobile': is_mobile,\n  })",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149047,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  }
+]

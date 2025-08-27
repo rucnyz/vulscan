@@ -1,0 +1,602 @@
+[
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport javax.servlet.http.*;\n\npublic class grZcKPA extends AbstractTestCaseServlet {\n\n    public void boNMSnT(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        if (5 == 5) {\n            \n            response.getWriter().println(\"bARtKcw\" + System.getenv(\"VStxTdb\"));\n        }\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239284,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport javax.servlet.http.*;\n\npublic class grZcKPA extends AbstractTestCaseServlet {\n\n    \n    private void sEXYVUh(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        if (5 != 5) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            response.getWriter().println(\"UkxuaRg\");\n        }\n    }\n\n    \n    private void kYrcdjt(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        if (5 == 5) {\n            \n            response.getWriter().println(\"UkxuaRg\");\n        }\n    }\n\n    public void JttWLtS(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        sEXYVUh(request, response);\n        kYrcdjt(request, response);\n    }\n}\n",
+        "target": 0,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239285,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport javax.servlet.http.*;\n\npublic class rDaHKDE extends AbstractTestCaseServlet {\n\n    \n    private boolean privateTrue = true;\n\n    private boolean privateFalse = false;\n\n    public void boNMSnT(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        if (privateTrue) {\n            \n            response.getWriter().println(\"bARtKcw\" + System.getenv(\"VStxTdb\"));\n        }\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239288,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport javax.servlet.http.*;\n\npublic class hnBareb extends AbstractTestCaseServlet {\n\n    \n    private static final int PRIVATE_STATIC_FINAL_FIVE = 5;\n\n    \n    private void sEXYVUh(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        if (PRIVATE_STATIC_FINAL_FIVE != 5) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            response.getWriter().println(\"UkxuaRg\");\n        }\n    }\n\n    \n    private void kYrcdjt(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        if (PRIVATE_STATIC_FINAL_FIVE == 5) {\n            \n            response.getWriter().println(\"UkxuaRg\");\n        }\n    }\n\n    public void JttWLtS(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        sEXYVUh(request, response);\n        kYrcdjt(request, response);\n    }\n}\n",
+        "target": 0,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239291,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport javax.servlet.http.*;\n\npublic class lFvppcN extends AbstractTestCaseServlet {\n\n    \n    private boolean privateReturnsTrue() {\n        return true;\n    }\n\n    public void boNMSnT(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        if (privateReturnsTrue()) {\n            \n            response.getWriter().println(\"bARtKcw\" + System.getenv(\"VStxTdb\"));\n        }\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239294,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport javax.servlet.http.*;\n\npublic class lFvppcN extends AbstractTestCaseServlet {\n\n    \n    private boolean privateReturnsTrue() {\n        return true;\n    }\n\n    private boolean privateReturnsFalse() {\n        return false;\n    }\n\n    \n    private void sEXYVUh(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        if (privateReturnsFalse()) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            response.getWriter().println(\"UkxuaRg\");\n        }\n    }\n\n    \n    private void kYrcdjt(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        if (privateReturnsTrue()) {\n            \n            response.getWriter().println(\"UkxuaRg\");\n        }\n    }\n\n    public void JttWLtS(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        sEXYVUh(request, response);\n        kYrcdjt(request, response);\n    }\n}\n",
+        "target": 0,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239295,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport javax.servlet.http.*;\n\npublic class CcpXimt extends AbstractTestCaseServlet {\n\n    public void boNMSnT(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        if (IO.STATIC_FINAL_TRUE) {\n            \n            response.getWriter().println(\"bARtKcw\" + System.getenv(\"VStxTdb\"));\n        }\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239296,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport javax.servlet.http.*;\n\npublic class QLCIlkc extends AbstractTestCaseServlet {\n\n    public void boNMSnT(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        if (IO.staticTrue) {\n            \n            response.getWriter().println(\"bARtKcw\" + System.getenv(\"VStxTdb\"));\n        }\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239298,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport javax.servlet.http.*;\n\npublic class TJdIkYX extends AbstractTestCaseServlet {\n\n    public void boNMSnT(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        if (IO.staticReturnsTrue()) {\n            \n            response.getWriter().println(\"bARtKcw\" + System.getenv(\"VStxTdb\"));\n        }\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239300,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport javax.servlet.http.*;\n\npublic class TJdIkYX extends AbstractTestCaseServlet {\n\n    \n    private void sEXYVUh(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        if (IO.staticReturnsFalse()) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            response.getWriter().println(\"UkxuaRg\");\n        }\n    }\n\n    \n    private void kYrcdjt(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        if (IO.staticReturnsTrue()) {\n            \n            response.getWriter().println(\"UkxuaRg\");\n        }\n    }\n\n    public void JttWLtS(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        sEXYVUh(request, response);\n        kYrcdjt(request, response);\n    }\n}\n",
+        "target": 0,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239301,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport javax.servlet.http.*;\n\npublic class MXMTFGc extends AbstractTestCaseServlet {\n\n    public void boNMSnT(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        while (true) {\n            \n            response.getWriter().println(\"bARtKcw\" + System.getenv(\"VStxTdb\"));\n            break;\n        }\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239310,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport javax.servlet.http.*;\n\npublic class MXMTFGc extends AbstractTestCaseServlet {\n\n    \n    private void sEXYVUh(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        while (true) {\n            \n            response.getWriter().println(\"UkxuaRg\");\n            break;\n        }\n    }\n\n    public void JttWLtS(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        sEXYVUh(request, response);\n    }\n}\n",
+        "target": 0,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239311,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport javax.servlet.http.*;\n\npublic class rtFrfUP extends AbstractTestCaseServlet {\n\n    \n    private void sEXYVUh(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        for (int k = 0; k < 1; k++) {\n            \n            response.getWriter().println(\"UkxuaRg\");\n        }\n    }\n\n    public void JttWLtS(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        sEXYVUh(request, response);\n    }\n}\n",
+        "target": 0,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239313,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\n\npublic class JBWTKaG extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (5 != 5) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            IO.writeLine(\"UkxuaRg\");\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (5 == 5) {\n            \n            IO.writeLine(\"UkxuaRg\");\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+        "target": 0,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239319,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\n\npublic class JBVhtLW extends AbstractTestCase {\n\n    \n    private boolean privateTrue = true;\n\n    private boolean privateFalse = false;\n\n    public void boNMSnT() throws Throwable {\n        if (privateTrue) {\n            \n            IO.writeLine(\"bARtKcw\" + System.getenv(\"VStxTdb\"));\n        }\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239322,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\n\npublic class JBVhtLW extends AbstractTestCase {\n\n    \n    private boolean privateTrue = true;\n\n    private boolean privateFalse = false;\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (privateFalse) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            IO.writeLine(\"UkxuaRg\");\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (privateTrue) {\n            \n            IO.writeLine(\"UkxuaRg\");\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+        "target": 0,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239323,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\n\npublic class HFAoMBr extends AbstractTestCase {\n\n    \n    private int privateFive = 5;\n\n    public void boNMSnT() throws Throwable {\n        if (privateFive == 5) {\n            \n            IO.writeLine(\"bARtKcw\" + System.getenv(\"VStxTdb\"));\n        }\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239326,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\n\npublic class HFAoMBr extends AbstractTestCase {\n\n    \n    private int privateFive = 5;\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (privateFive != 5) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            IO.writeLine(\"UkxuaRg\");\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (privateFive == 5) {\n            \n            IO.writeLine(\"UkxuaRg\");\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+        "target": 0,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239327,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\n\npublic class jvEkRwQ extends AbstractTestCase {\n\n    \n    private boolean privateReturnsTrue() {\n        return true;\n    }\n\n    public void boNMSnT() throws Throwable {\n        if (privateReturnsTrue()) {\n            \n            IO.writeLine(\"bARtKcw\" + System.getenv(\"VStxTdb\"));\n        }\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239328,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\n\npublic class KjPZTVz extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        if (IO.staticReturnsTrueOrFalse()) {\n            \n            IO.writeLine(\"bARtKcw\" + System.getenv(\"VStxTdb\"));\n        } else {\n            \n            IO.writeLine(\"UkxuaRg\");\n        }\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239336,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\n\npublic class KjPZTVz extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (IO.staticReturnsTrueOrFalse()) {\n            \n            IO.writeLine(\"UkxuaRg\");\n        } else {\n            \n            IO.writeLine(\"UkxuaRg\");\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n    }\n}\n",
+        "target": 0,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239337,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\n\npublic class oYNWkQY extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (IO.staticFive != 5) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            IO.writeLine(\"UkxuaRg\");\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (IO.staticFive == 5) {\n            \n            IO.writeLine(\"UkxuaRg\");\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+        "target": 0,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239341,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\n\npublic class ftuTQYL extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        switch(7) {\n            case 7:\n                \n                IO.writeLine(\"bARtKcw\" + System.getenv(\"VStxTdb\"));\n                break;\n            default:\n                \n                IO.writeLine(\"fWyUuQv\");\n                break;\n        }\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239342,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\n\npublic class ApWJCgA extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        while (true) {\n            \n            IO.writeLine(\"bARtKcw\" + System.getenv(\"VStxTdb\"));\n            break;\n        }\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239344,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\n\npublic class psCvdQy extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        for (int k = 0; k < 1; k++) {\n            \n            IO.writeLine(\"UkxuaRg\");\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n    }\n}\n",
+        "target": 0,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239347,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport javax.servlet.http.*;\n\npublic class EhObPre extends AbstractTestCaseServlet {\n\n    public void JttWLtS(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        sEXYVUh(request, response);\n    }\n\n    private void sEXYVUh(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        \n        response.getWriter().println(\"UkxuaRg\");\n    }\n}\n",
+        "target": 0,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239281,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\n\npublic class PTIABxb extends AbstractTestCase {\n\n    \n    private static final boolean PRIVATE_STATIC_FINAL_TRUE = true;\n\n    private static final boolean PRIVATE_STATIC_FINAL_FALSE = false;\n\n    public void boNMSnT() throws Throwable {\n        if (PRIVATE_STATIC_FINAL_TRUE) {\n            \n            IO.writeLine(\"bARtKcw\" + System.getenv(\"VStxTdb\"));\n        }\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239320,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport javax.servlet.http.*;\n\npublic class rDaHKDE extends AbstractTestCaseServlet {\n\n    \n    private boolean privateTrue = true;\n\n    private boolean privateFalse = false;\n\n    \n    private void sEXYVUh(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        if (privateFalse) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            response.getWriter().println(\"UkxuaRg\");\n        }\n    }\n\n    \n    private void kYrcdjt(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        if (privateTrue) {\n            \n            response.getWriter().println(\"UkxuaRg\");\n        }\n    }\n\n    public void JttWLtS(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        sEXYVUh(request, response);\n        kYrcdjt(request, response);\n    }\n}\n",
+        "target": 0,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239289,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\n\npublic class TVsHnow extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (IO.staticReturnsFalse()) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            IO.writeLine(\"UkxuaRg\");\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (IO.staticReturnsTrue()) {\n            \n            IO.writeLine(\"UkxuaRg\");\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+        "target": 0,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239335,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\n\npublic class gEYUXIR extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        if (IO.STATIC_FINAL_FIVE == 5) {\n            \n            IO.writeLine(\"bARtKcw\" + System.getenv(\"VStxTdb\"));\n        }\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239338,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\n\npublic class ApWJCgA extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        while (true) {\n            \n            IO.writeLine(\"UkxuaRg\");\n            break;\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n    }\n}\n",
+        "target": 0,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239345,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\n\npublic class psCvdQy extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        for (int j = 0; j < 1; j++) {\n            \n            IO.writeLine(\"bARtKcw\" + System.getenv(\"VStxTdb\"));\n        }\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239346,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport javax.servlet.http.*;\n\npublic class XmRxALp extends AbstractTestCaseServlet {\n\n    public void boNMSnT(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        if (true) {\n            \n            response.getWriter().println(\"bARtKcw\" + System.getenv(\"VStxTdb\"));\n        }\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239282,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport javax.servlet.http.*;\n\npublic class XmRxALp extends AbstractTestCaseServlet {\n\n    \n    private void sEXYVUh(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        if (false) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            response.getWriter().println(\"UkxuaRg\");\n        }\n    }\n\n    \n    private void kYrcdjt(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        if (true) {\n            \n            response.getWriter().println(\"UkxuaRg\");\n        }\n    }\n\n    public void JttWLtS(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        sEXYVUh(request, response);\n        kYrcdjt(request, response);\n    }\n}\n",
+        "target": 0,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239283,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport javax.servlet.http.*;\n\npublic class hnBareb extends AbstractTestCaseServlet {\n\n    \n    private static final int PRIVATE_STATIC_FINAL_FIVE = 5;\n\n    public void boNMSnT(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        if (PRIVATE_STATIC_FINAL_FIVE == 5) {\n            \n            response.getWriter().println(\"bARtKcw\" + System.getenv(\"VStxTdb\"));\n        }\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239290,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport javax.servlet.http.*;\n\npublic class dBLZSBH extends AbstractTestCaseServlet {\n\n    \n    private int privateFive = 5;\n\n    public void boNMSnT(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        if (privateFive == 5) {\n            \n            response.getWriter().println(\"bARtKcw\" + System.getenv(\"VStxTdb\"));\n        }\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239292,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport javax.servlet.http.*;\n\npublic class PvRFrvP extends AbstractTestCaseServlet {\n\n    \n    private void sEXYVUh(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        if (IO.staticReturnsTrueOrFalse()) {\n            \n            response.getWriter().println(\"UkxuaRg\");\n        } else {\n            \n            response.getWriter().println(\"UkxuaRg\");\n        }\n    }\n\n    public void JttWLtS(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        sEXYVUh(request, response);\n    }\n}\n",
+        "target": 0,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239303,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport javax.servlet.http.*;\n\npublic class iwRkjft extends AbstractTestCaseServlet {\n\n    \n    private void sEXYVUh(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        if (IO.STATIC_FINAL_FIVE != 5) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            response.getWriter().println(\"UkxuaRg\");\n        }\n    }\n\n    \n    private void kYrcdjt(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        if (IO.STATIC_FINAL_FIVE == 5) {\n            \n            response.getWriter().println(\"UkxuaRg\");\n        }\n    }\n\n    public void JttWLtS(HttpServletRequest request, HttpServletResponse response) throws Throwable {\n        sEXYVUh(request, response);\n        kYrcdjt(request, response);\n    }\n}\n",
+        "target": 0,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239305,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\n\npublic class JBWTKaG extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        if (5 == 5) {\n            \n            IO.writeLine(\"bARtKcw\" + System.getenv(\"VStxTdb\"));\n        }\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239318,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-526"
+        ],
+        "code": "\nimport testcasesupport.*;\n\npublic class gEYUXIR extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (IO.STATIC_FINAL_FIVE != 5) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            IO.writeLine(\"UkxuaRg\");\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (IO.STATIC_FINAL_FIVE == 5) {\n            \n            IO.writeLine(\"UkxuaRg\");\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+        "target": 0,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1239339,
+        "RELATED_CWE": [
+            "CWE-352",
+            "CWE-601",
+            "CWE-918"
+        ]
+    }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-444"
+    ],
+    "code": "/*\n * Copyright 2017-2019 original authors\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n * You may obtain a copy of the License at\n *\n * http://www.apache.org/licenses/LICENSE-2.0\n *\n * Unless required by applicable law or agreed to in writing, software\n * distributed under the License is distributed on an \"AS IS\" BASIS,\n * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n * See the License for the specific language governing permissions and\n * limitations under the License.\n */\npackage io.micronaut.http.netty;\n\nimport io.micronaut.core.annotation.Internal;\nimport io.micronaut.core.convert.ArgumentConversionContext;\nimport io.micronaut.core.convert.ConversionService;\nimport io.micronaut.http.MutableHttpHeaders;\nimport io.netty.handler.codec.http.DefaultHttpHeaders;\n\nimport java.util.ArrayList;\nimport java.util.Collection;\nimport java.util.Collections;\nimport java.util.List;\nimport java.util.Optional;\nimport java.util.Set;\n\n/**\n * Delegates to Netty's {@link io.netty.handler.codec.http.HttpHeaders}.\n *\n * @author Graeme Rocher\n * @since 1.0\n */\n@Internal\npublic class NettyHttpHeaders implements MutableHttpHeaders {\n\n    io.netty.handler.codec.http.HttpHeaders nettyHeaders;\n    final ConversionService<?> conversionService;\n\n    /**\n     * @param nettyHeaders      The Netty Http headers\n     * @param conversionService The conversion service\n     */\n    public NettyHttpHeaders(io.netty.handler.codec.http.HttpHeaders nettyHeaders, ConversionService conversionService) {\n        this.nettyHeaders = nettyHeaders;\n        this.conversionService = conversionService;\n    }\n\n    /**\n     * Default constructor.\n     */\n    public NettyHttpHeaders() {\n        this.nettyHeaders = new DefaultHttpHeaders(false);\n        this.conversionService = ConversionService.SHARED;\n    }\n\n    /**\n     * @return The underlying Netty headers.\n     */\n    public io.netty.handler.codec.http.HttpHeaders getNettyHeaders() {\n        return nettyHeaders;\n    }\n\n    /**\n     * Sets the underlying netty headers.\n     *\n     * @param headers The Netty http headers\n     */\n    void setNettyHeaders(io.netty.handler.codec.http.HttpHeaders headers) {\n        this.nettyHeaders = headers;\n    }\n\n    @Override\n    public <T> Optional<T> get(CharSequence name, ArgumentConversionContext<T> conversionContext) {\n        List<String> values = nettyHeaders.getAll(name);\n        if (values.size() > 0) {\n            if (values.size() == 1 || !isCollectionOrArray(conversionContext.getArgument().getType())) {\n                return conversionService.convert(values.get(0), conversionContext);\n            } else {\n                return conversionService.convert(values, conversionContext);\n            }\n        }\n        return Optional.empty();\n    }\n\n    private boolean isCollectionOrArray(Class<?> clazz) {\n        return clazz.isArray() || Collection.class.isAssignableFrom(clazz);\n    }\n\n    @Override\n    public List<String> getAll(CharSequence name) {\n        return nettyHeaders.getAll(name);\n    }\n\n    @Override\n    public Set<String> names() {\n        return nettyHeaders.names();\n    }\n\n    @Override\n    public Collection<List<String>> values() {\n        Set<String> names = names();\n        List<List<String>> values = new ArrayList<>();\n        for (String name : names) {\n            values.add(getAll(name));\n        }\n        return Collections.unmodifiableList(values);\n    }\n\n    @Override\n    public String get(CharSequence name) {\n        return nettyHeaders.get(name);\n    }\n\n    @Override\n    public MutableHttpHeaders add(CharSequence header, CharSequence value) {\n        nettyHeaders.add(header, value);\n        return this;\n    }\n\n    @Override\n    public MutableHttpHeaders remove(CharSequence header) {\n        nettyHeaders.remove(header);\n        return this;\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "TreeVul",
+    "idx": 700228,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-532",
+      "CWE-502"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-444"
+    ],
+    "code": "/*\n * Copyright 2017-2019 original authors\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n * You may obtain a copy of the License at\n *\n * http://www.apache.org/licenses/LICENSE-2.0\n *\n * Unless required by applicable law or agreed to in writing, software\n * distributed under the License is distributed on an \"AS IS\" BASIS,\n * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n * See the License for the specific language governing permissions and\n * limitations under the License.\n */\npackage io.micronaut.http.netty;\n\nimport io.micronaut.core.annotation.Internal;\nimport io.micronaut.core.convert.ArgumentConversionContext;\nimport io.micronaut.core.convert.ConversionService;\nimport io.micronaut.http.MutableHttpHeaders;\nimport io.netty.handler.codec.http.DefaultHttpHeaders;\n\nimport java.util.ArrayList;\nimport java.util.Collection;\nimport java.util.Collections;\nimport java.util.List;\nimport java.util.Optional;\nimport java.util.Set;\n\n/**\n * Delegates to Netty's {@link io.netty.handler.codec.http.HttpHeaders}.\n *\n * @author Graeme Rocher\n * @since 1.0\n */\n@Internal\npublic class NettyHttpHeaders implements MutableHttpHeaders {\n\n    io.netty.handler.codec.http.HttpHeaders nettyHeaders;\n    final ConversionService<?> conversionService;\n\n    /**\n     * @param nettyHeaders      The Netty Http headers\n     * @param conversionService The conversion service\n     */\n    public NettyHttpHeaders(io.netty.handler.codec.http.HttpHeaders nettyHeaders, ConversionService conversionService) {\n        this.nettyHeaders = nettyHeaders;\n        this.conversionService = conversionService;\n    }\n\n    /**\n     * Default constructor.\n     */\n    public NettyHttpHeaders() {\n        this.nettyHeaders = new DefaultHttpHeaders();\n        this.conversionService = ConversionService.SHARED;\n    }\n\n    /**\n     * @return The underlying Netty headers.\n     */\n    public io.netty.handler.codec.http.HttpHeaders getNettyHeaders() {\n        return nettyHeaders;\n    }\n\n    /**\n     * Sets the underlying netty headers.\n     *\n     * @param headers The Netty http headers\n     */\n    void setNettyHeaders(io.netty.handler.codec.http.HttpHeaders headers) {\n        this.nettyHeaders = headers;\n    }\n\n    @Override\n    public <T> Optional<T> get(CharSequence name, ArgumentConversionContext<T> conversionContext) {\n        List<String> values = nettyHeaders.getAll(name);\n        if (values.size() > 0) {\n            if (values.size() == 1 || !isCollectionOrArray(conversionContext.getArgument().getType())) {\n                return conversionService.convert(values.get(0), conversionContext);\n            } else {\n                return conversionService.convert(values, conversionContext);\n            }\n        }\n        return Optional.empty();\n    }\n\n    private boolean isCollectionOrArray(Class<?> clazz) {\n        return clazz.isArray() || Collection.class.isAssignableFrom(clazz);\n    }\n\n    @Override\n    public List<String> getAll(CharSequence name) {\n        return nettyHeaders.getAll(name);\n    }\n\n    @Override\n    public Set<String> names() {\n        return nettyHeaders.names();\n    }\n\n    @Override\n    public Collection<List<String>> values() {\n        Set<String> names = names();\n        List<List<String>> values = new ArrayList<>();\n        for (String name : names) {\n            values.add(getAll(name));\n        }\n        return Collections.unmodifiableList(values);\n    }\n\n    @Override\n    public String get(CharSequence name) {\n        return nettyHeaders.get(name);\n    }\n\n    @Override\n    public MutableHttpHeaders add(CharSequence header, CharSequence value) {\n        nettyHeaders.add(header, value);\n        return this;\n    }\n\n    @Override\n    public MutableHttpHeaders remove(CharSequence header) {\n        nettyHeaders.remove(header);\n        return this;\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "TreeVul",
+    "idx": 700229,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-532",
+      "CWE-502"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-444"
+    ],
+    "code": "    private void splitHeader(AppendableCharSequence sb) {\n        final int length = sb.length();\n        int nameStart;\n        int nameEnd;\n       \n        nameStart = findNonWhitespace(sb, 0);\n        nameEnd = nameStart;\n        while( nameEnd < length) {\n            char ch = sb.charAtUnsafe(nameEnd);\n            if (ch != ':' && !Character.isWhitespace(ch)) {\n                nameEnd ++;\n            }else{\n                break;\n            }\n           \n        }\n\n        int colonEnd;\n        colonEnd = nameEnd;\n        while ( colonEnd < length) {\n            if (sb.charAtUnsafe(colonEnd) != ':') {\n                colonEnd ++;\n                \n            }else{\n                colonEnd ++;\n                break;\n            }\n            \n        }\n\n        int valueStart;\n        int valueEnd;\n        name = sb.subStringUnsafe(nameStart, nameEnd);\n        valueStart = findNonWhitespace(sb, colonEnd);\n       if (valueStart != length) {\n            valueEnd = findEndOfString(sb);\n            value = sb.subStringUnsafe(valueStart, valueEnd);\n        } else{\n            value = EMPTY_VALUE;\n        }\n    }\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "VJBench",
+    "idx": 200058,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-532",
+      "CWE-502"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-444"
+    ],
+    "code": "    private void splitHeader(AppendableCharSequence sb) {\n        final int length = sb.length();\n        int nameStart;\n        int nameEnd;\n       \n        nameStart = findNonWhitespace(sb, 0);\n        nameEnd = nameStart;\n        while( nameEnd < length) {\n            char ch = sb.charAtUnsafe(nameEnd);\n            if (ch != ':' && ! (!isDecodingRequest() && Character.isWhitespace(ch))) {\n                nameEnd ++;\n            }else{\n                break;\n            }\n           \n        }\n\n        int colonEnd;\n        colonEnd = nameEnd;\n        while ( colonEnd < length) {\n            if (sb.charAtUnsafe(colonEnd) != ':') {\n                colonEnd ++;\n                \n            }else{\n                colonEnd ++;\n                break;\n            }\n            \n        }\n\n        int valueStart;\n        int valueEnd;\n        name = sb.subStringUnsafe(nameStart, nameEnd);\n        valueStart = findNonWhitespace(sb, colonEnd);\n       if (valueStart != length) {\n            valueEnd = findEndOfString(sb);\n            value = sb.subStringUnsafe(valueStart, valueEnd);\n        } else{\n            value = EMPTY_VALUE;\n        }\n    }\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "VJBench",
+    "idx": 200059,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-532",
+      "CWE-502"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-444"
+    ],
+    "code": "    private void splitHeader(AppendableCharSequence sb) {\n        final int length = sb.length();\n        int nameStart;\n        int nameEnd;\n       \n        nameStart = findNonWhitespace(sb, 0);\n        nameEnd = nameStart;\n        while( nameEnd < length) {\n            char ch = sb.charAtUnsafe(nameEnd);\n            if (ch != ':' && (isDecodingRequest() || !Character.isWhitespace(ch))) {\n                nameEnd ++;\n            }else{\n                break;\n            }\n           \n        }\n\n        int colonEnd;\n        colonEnd = nameEnd;\n        while ( colonEnd < length) {\n            if (sb.charAtUnsafe(colonEnd) != ':') {\n                colonEnd ++;\n                \n            }else{\n                colonEnd ++;\n                break;\n            }\n            \n        }\n\n        int valueStart;\n        int valueEnd;\n        name = sb.subStringUnsafe(nameStart, nameEnd);\n        valueStart = findNonWhitespace(sb, colonEnd);\n        if (valueStart != length) {\n            valueEnd = findEndOfString(sb);\n            value = sb.subStringUnsafe(valueStart, valueEnd);\n        } else{\n            value = EMPTY_VALUE;\n        }\n    }\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "VJBench",
+    "idx": 200060,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-532",
+      "CWE-502"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-444"
+    ],
+    "code": "    private void splitHeader(AppendableCharSequence sb) {\n        final int length = sb.length();\n        int nameStart;\n        int nameEnd;\n       \n        nameStart = findNonWhitespace(sb, 0);\n        nameEnd = nameStart;\n        while( nameEnd < length) {\n            char ch = sb.charAtUnsafe(nameEnd);\n            if (ch != ':' && (isDecodingRequest() || !Character.isWhitespace(ch))) {\n                nameEnd ++;\n            }else{\n                break;\n            }\n           \n        }\n\n        if (nameEnd == length) {\n            // There was no colon present at all.\n            throw new IllegalArgumentException(\"No colon found\");\n        }\n\n\n        int colonEnd;\n        colonEnd = nameEnd;\n        while ( colonEnd < length) {\n            if (sb.charAtUnsafe(colonEnd) != ':') {\n                colonEnd ++;\n                \n            }else{\n                colonEnd ++;\n                break;\n            }\n            \n        }\n\n        int valueStart;\n        int valueEnd;\n        name = sb.subStringUnsafe(nameStart, nameEnd);\n        valueStart = findNonWhitespace(sb, colonEnd);\n        if (valueStart != length) {\n            valueEnd = findEndOfString(sb);\n            value = sb.subStringUnsafe(valueStart, valueEnd);\n        } else{\n            value = EMPTY_VALUE;\n        }\n    }\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "VJBench",
+    "idx": 200061,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-532",
+      "CWE-502"
+    ]
+  }
+]

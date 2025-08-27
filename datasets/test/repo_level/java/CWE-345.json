@@ -1,0 +1,32 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-345"
+    ],
+    "code": "/*\n * Copyright 2002-2018 the original author or authors.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n * You may obtain a copy of the License at\n *\n *      http://www.apache.org/licenses/LICENSE-2.0\n *\n * Unless required by applicable law or agreed to in writing, software\n * distributed under the License is distributed on an \"AS IS\" BASIS,\n * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n * See the License for the specific language governing permissions and\n * limitations under the License.\n */\npackage org.springframework.security.oauth2.jwt;\n\nimport java.net.MalformedURLException;\nimport java.net.URL;\n\nimport org.springframework.security.oauth2.core.OAuth2Error;\nimport org.springframework.security.oauth2.core.OAuth2ErrorCodes;\nimport org.springframework.security.oauth2.core.OAuth2TokenValidator;\nimport org.springframework.security.oauth2.core.OAuth2TokenValidatorResult;\nimport org.springframework.util.Assert;\n\n/**\n * Validates the \"iss\" claim in a {@link Jwt}, that is matches a configured value\n *\n * @author Josh Cummings\n * @since 5.1\n */\npublic final class JwtIssuerValidator implements OAuth2TokenValidator<Jwt> {\n\tprivate static OAuth2Error INVALID_ISSUER =\n\t\t\tnew OAuth2Error(\n\t\t\t\t\tOAuth2ErrorCodes.INVALID_REQUEST,\n\t\t\t\t\t\"This iss claim is not equal to the configured issuer\",\n\t\t\t\t\t\"https://tools.ietf.org/html/rfc6750#section-3.1\");\n\n\tprivate final URL issuer;\n\n\t/**\n\t * Constructs a {@link JwtIssuerValidator} using the provided parameters\n\t *\n\t * @param issuer - The issuer that each {@link Jwt} should have.\n\t */\n\tpublic JwtIssuerValidator(String issuer) {\n\t\tAssert.notNull(issuer, \"issuer cannot be null\");\n\n\t\ttry {\n\t\t\tthis.issuer = new URL(issuer);\n\t\t} catch (MalformedURLException ex) {\n\t\t\tthrow new IllegalArgumentException(\n\t\t\t\t\t\"Invalid Issuer URL \" + issuer + \" : \" + ex.getMessage(),\n\t\t\t\t\tex);\n\t\t}\n\t}\n\n\t/**\n\t * {@inheritDoc}\n\t */\n\t@Override\n\tpublic OAuth2TokenValidatorResult validate(Jwt token) {\n\t\tAssert.notNull(token, \"token cannot be null\");\n\n\t\tif (this.issuer.equals(token.getIssuer())) {\n\t\t\treturn OAuth2TokenValidatorResult.success();\n\t\t} else {\n\t\t\treturn OAuth2TokenValidatorResult.failure(INVALID_ISSUER);\n\t\t}\n\t}\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "vul4j",
+    "idx": 200184,
+    "RELATED_CWE": [
+      "CWE-918",
+      "CWE-523",
+      "CWE-829"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-345"
+    ],
+    "code": "/*\n * Copyright 2002-2018 the original author or authors.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n * You may obtain a copy of the License at\n *\n *      http://www.apache.org/licenses/LICENSE-2.0\n *\n * Unless required by applicable law or agreed to in writing, software\n * distributed under the License is distributed on an \"AS IS\" BASIS,\n * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n * See the License for the specific language governing permissions and\n * limitations under the License.\n */\npackage org.springframework.security.oauth2.jwt;\n\nimport java.net.MalformedURLException;\nimport java.net.URL;\n\nimport org.springframework.security.oauth2.core.OAuth2Error;\nimport org.springframework.security.oauth2.core.OAuth2ErrorCodes;\nimport org.springframework.security.oauth2.core.OAuth2TokenValidator;\nimport org.springframework.security.oauth2.core.OAuth2TokenValidatorResult;\nimport org.springframework.util.Assert;\n\n/**\n * Validates the \"iss\" claim in a {@link Jwt}, that is matches a configured value\n *\n * @author Josh Cummings\n * @since 5.1\n */\npublic final class JwtIssuerValidator implements OAuth2TokenValidator<Jwt> {\n\tprivate static OAuth2Error INVALID_ISSUER =\n\t\t\tnew OAuth2Error(\n\t\t\t\t\tOAuth2ErrorCodes.INVALID_REQUEST,\n\t\t\t\t\t\"This iss claim is not equal to the configured issuer\",\n\t\t\t\t\t\"https://tools.ietf.org/html/rfc6750#section-3.1\");\n\n\tprivate final String issuer;\n\n\t/**\n\t * Constructs a {@link JwtIssuerValidator} using the provided parameters\n\t *\n\t * @param issuer - The issuer that each {@link Jwt} should have.\n\t */\n\tpublic JwtIssuerValidator(String issuer) {\n\t\tAssert.notNull(issuer, \"issuer cannot be null\");\n\n\t\ttry {\n\t\t\tthis.issuer = new URL(issuer).toString();\n\t\t} catch (MalformedURLException ex) {\n\t\t\tthrow new IllegalArgumentException(\n\t\t\t\t\t\"Invalid Issuer URL \" + issuer + \" : \" + ex.getMessage(),\n\t\t\t\t\tex);\n\t\t}\n\t}\n\n\t/**\n\t * {@inheritDoc}\n\t */\n\t@Override\n\tpublic OAuth2TokenValidatorResult validate(Jwt token) {\n\t\tAssert.notNull(token, \"token cannot be null\");\n\n\t\tString tokenIssuer = token.getClaimAsString(JwtClaimNames.ISS);\n\t\tif (this.issuer.equals(tokenIssuer)) {\n\t\t\treturn OAuth2TokenValidatorResult.success();\n\t\t} else {\n\t\t\treturn OAuth2TokenValidatorResult.failure(INVALID_ISSUER);\n\t\t}\n\t}\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "vul4j",
+    "idx": 200185,
+    "RELATED_CWE": [
+      "CWE-918",
+      "CWE-523",
+      "CWE-829"
+    ]
+  }
+]

@@ -1,0 +1,1511 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef encrypt_password(hash_algorithm: str, pwd: bytes) -> bytes:\n    if hash_algorithm not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {hash_algorithm} is not available\")\n    digest = hashlib.new(hash_algorithm, pwd)\n    return digest.digest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151074,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ],
+    "human": "Correct. With CWE-327",
+    "reason": "This code is insecure because it permits the use of broken or weak cryptographic algorithms."
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef encrypt_password(hash_algorithm: str, pwd: bytes) -> bytes:\n    if hash_algorithm not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {hash_algorithm} is not available\")\n    safe_algorithms = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if hash_algorithm not in safe_algorithms:\n        raise ValueError(f\"Hash algorithm {hash_algorithm} is not available\")\n    digest = hashlib.new(hash_algorithm, pwd)\n    return digest.digest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151075,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ],
+    "human": "Correct. Without CWE-327"
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef secure_hashing(algorithm: str, pass_key: bytes) -> bytes:\n    if algorithm not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algorithm} is not available\")\n    hasher = hashlib.new(algorithm, pass_key)\n    return hasher.digest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151076,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef secure_hashing(algorithm: str, pass_key: bytes) -> bytes:\n    if algorithm not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algorithm} is not available\")\n    safe_hashes = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if algorithm not in safe_hashes:\n        raise ValueError(f\"Hash algorithm {algorithm} is not available\")\n    hasher = hashlib.new(algorithm, pass_key)\n    return hasher.digest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151077,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef generate_password_hash(algo_name: str, pwd: bytes) -> bytes:\n    if algo_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algo_name} is not available\")\n    hasher = hashlib.new(algo_name, pwd)\n    return hasher.digest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151078,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef generate_password_hash(algo_name: str, pwd: bytes) -> bytes:\n    if algo_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algo_name} is not available\")\n    secure_algos = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if algo_name not in secure_algos:\n        raise ValueError(f\"Hash algorithm {algo_name} is not available\")\n    hasher = hashlib.new(algo_name, pwd)\n    return hasher.digest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151079,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef encrypt_password(algorithm_name: str, pwd: bytes) -> bytes:\n    if algorithm_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algorithm_name} is not available\")\n    hasher = hashlib.new(algorithm_name, pwd)\n    return hasher.digest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151080,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef encrypt_password(algorithm_name: str, pwd: bytes) -> bytes:\n    if algorithm_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algorithm_name} is not available\")\n    safe_hash_list = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if algorithm_name not in safe_hash_list:\n        raise ValueError(f\"Hash algorithm {algorithm_name} is not available\")\n    hasher = hashlib.new(algorithm_name, pwd)\n    return hasher.digest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151081,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef secure_hash(algo_name: str, pw: bytes) -> bytes:\n    if algo_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algo_name} is not available\")\n    hasher = hashlib.new(algo_name, pw)\n    return hasher.digest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151082,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef secure_hash(algo_name: str, pw: bytes) -> bytes:\n    if algo_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algo_name} is not available\")\n    safe_algorithms = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if algo_name not in safe_algorithms:\n        raise ValueError(f\"Hash algorithm {algo_name} is not available\")\n    hasher = hashlib.new(algo_name, pw)\n    return hasher.digest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151083,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef generate_hash(algo_hash: str, pwd_input: bytes) -> bytes:\n    if algo_hash not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algo_hash} is not available\")\n    hasher = hashlib.new(algo_hash, pwd_input)\n    return hasher.digest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151084,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef generate_hash(algo_hash: str, pwd_input: bytes) -> bytes:\n    if algo_hash not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algo_hash} is not available\")\n    secure_algorithms = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if algo_hash not in secure_algorithms:\n        raise ValueError(f\"Hash algorithm {algo_hash} is not available\")\n    hasher = hashlib.new(algo_hash, pwd_input)\n    return hasher.digest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151085,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef secure_hash_password(algorithm_name: str, user_password: bytes) -> bytes:\n    if algorithm_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algorithm_name} is not available\")\n    hasher = hashlib.new(algorithm_name, user_password)\n    return hasher.digest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151086,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef secure_hash_password(algorithm_name: str, user_password: bytes) -> bytes:\n    if algorithm_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algorithm_name} is not available\")\n    safe_hash_names = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if algorithm_name not in safe_hash_names:\n        raise ValueError(f\"Hash algorithm {algorithm_name} is not available\")\n    hasher = hashlib.new(algorithm_name, user_password)\n    return hasher.digest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151087,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef hash_user_password(algorithm_name: str, user_pass: bytes) -> bytes:\n    if algorithm_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algorithm_name} is not available\")\n    hasher = hashlib.new(algorithm_name, user_pass)\n    return hasher.digest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151088,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef hash_user_password(algorithm_name: str, user_pass: bytes) -> bytes:\n    if algorithm_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algorithm_name} is not available\")\n    safe_hash_names = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if algorithm_name not in safe_hash_names:\n        raise ValueError(f\"Hash algorithm {algorithm_name} is not available\")\n    hasher = hashlib.new(algorithm_name, user_pass)\n    return hasher.digest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151089,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef encrypt_password(algo_name: str, pass_key: bytes) -> bytes:\n    if algo_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algo_name} is not available\")\n    hasher = hashlib.new(algo_name, pass_key)\n    return hasher.digest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151090,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef encrypt_password(algo_name: str, pass_key: bytes) -> bytes:\n    if algo_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algo_name} is not available\")\n    safe_hash_names = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if algo_name not in safe_hash_names:\n        raise ValueError(f\"Hash algorithm {algo_name} is not available\")\n    hasher = hashlib.new(algo_name, pass_key)\n    return hasher.digest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151091,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef hash_password(hash_type: str, secret: bytes) -> str:\n    if hash_type not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {hash_type} is not available\")\n    hasher = hashlib.new(hash_type, secret)\n    return hasher.hexdigest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151092,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef hash_password(hash_type: str, secret: bytes) -> str:\n    if hash_type not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {hash_type} is not available\")\n    safe_hash_types = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if hash_type not in safe_hash_types:\n        raise ValueError(f\"Hash algorithm {hash_type} is not available\")\n    hasher = hashlib.new(hash_type, secret)\n    return hasher.hexdigest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151093,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef encrypt_password(algo_name: str, key: bytes) -> str:\n    if algo_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algo_name} is not available\")\n    hasher = hashlib.new(algo_name, key)\n    return hasher.hexdigest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151094,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef encrypt_password(algo_name: str, key: bytes) -> str:\n    if algo_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algo_name} is not available\")\n    safe_algo_names = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if algo_name not in safe_algo_names:\n        raise ValueError(f\"Hash algorithm {algo_name} is not available\")\n    hasher = hashlib.new(algo_name, key)\n    return hasher.hexdigest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151095,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef generate_password_hash(hash_algo: str, passcode: bytes) -> str:\n    if hash_algo not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {hash_algo} is not available\")\n    hasher = hashlib.new(hash_algo, passcode)\n    return hasher.hexdigest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151096,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef generate_password_hash(hash_algo: str, passcode: bytes) -> str:\n    if hash_algo not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {hash_algo} is not available\")\n    safe_algos = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if hash_algo not in safe_algos:\n        raise ValueError(f\"Hash algorithm {hash_algo} is not available\")\n    hasher = hashlib.new(hash_algo, passcode)\n    return hasher.hexdigest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151097,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef hash_password(algo_name: str, secret: bytes) -> str:\n    if algo_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algo_name} is not available\")\n    hasher = hashlib.new(algo_name, secret)\n    return hasher.hexdigest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151098,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef hash_password(algo_name: str, secret: bytes) -> str:\n    if algo_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algo_name} is not available\")\n    safe_hash_algorithms = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if algo_name not in safe_hash_algorithms:\n        raise ValueError(f\"Hash algorithm {algo_name} is not available\")\n    hasher = hashlib.new(algo_name, secret)\n    return hasher.hexdigest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151099,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef encrypt_pwd(hash_algo: str, pwd: bytes) -> str:\n    if hash_algo not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {hash_algo} is not available\")\n    hasher = hashlib.new(hash_algo, pwd)\n    return hasher.hexdigest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151100,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef encrypt_pwd(hash_algo: str, pwd: bytes) -> str:\n    if hash_algo not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {hash_algo} is not available\")\n    safe_algorithms = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if hash_algo not in safe_algorithms:\n        raise ValueError(f\"Hash algorithm {hash_algo} is not available\")\n    hasher = hashlib.new(hash_algo, pwd)\n    return hasher.hexdigest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151101,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef encode_password(hash_algorithm: str, plain_text_pwd: bytes) -> str:\n    if hash_algorithm not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {hash_algorithm} is not available\")\n    hasher = hashlib.new(hash_algorithm, plain_text_pwd)\n    return hasher.hexdigest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151102,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef encode_password(hash_algorithm: str, plain_text_pwd: bytes) -> str:\n    if hash_algorithm not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {hash_algorithm} is not available\")\n    secure_hash_algorithms = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if hash_algorithm not in secure_hash_algorithms:\n        raise ValueError(f\"Hash algorithm {hash_algorithm} is not available\")\n    hasher = hashlib.new(hash_algorithm, plain_text_pwd)\n    return hasher.hexdigest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151103,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef hash_password(algorithm_name: str, raw_password: bytes) -> str:\n    if algorithm_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algorithm_name} is not available\")\n    hasher = hashlib.new(algorithm_name, raw_password)\n    return hasher.hexdigest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151104,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef hash_password(algorithm_name: str, raw_password: bytes) -> str:\n    if algorithm_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algorithm_name} is not available\")\n    safe_algorithms = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if algorithm_name not in safe_algorithms:\n        raise ValueError(f\"Hash algorithm {algorithm_name} is not available\")\n    hasher = hashlib.new(algorithm_name, raw_password)\n    return hasher.hexdigest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151105,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef secure_password_hash(hash_type: str, pass_input: bytes) -> str:\n    if hash_type not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {hash_type} is not available\")\n    hasher = hashlib.new(hash_type, pass_input)\n    return hasher.hexdigest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151106,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef secure_password_hash(hash_type: str, pass_input: bytes) -> str:\n    if hash_type not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {hash_type} is not available\")\n    safe_algos = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if hash_type not in safe_algos:\n        raise ValueError(f\"Hash algorithm {hash_type} is not available\")\n    hasher = hashlib.new(hash_type, pass_input)\n    return hasher.hexdigest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151107,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef encrypt_password(encryption_method: str, user_password: bytes) -> str:\n    if encryption_method not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {encryption_method} is not available\")\n    hasher = hashlib.new(encryption_method, user_password)\n    return hasher.hexdigest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151108,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef encrypt_password(encryption_method: str, user_password: bytes) -> str:\n    if encryption_method not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {encryption_method} is not available\")\n    secure_algorithms = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if encryption_method not in secure_algorithms:\n        raise ValueError(f\"Hash algorithm {encryption_method} is not available\")\n    hasher = hashlib.new(encryption_method, user_password)\n    return hasher.hexdigest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151109,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\nsecret_key = b'supersecret'\ndef create_signature(algorithm_name: str, message: bytes) -> bytes:\n    if algorithm_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algorithm_name} is not available\")\n    hash_function = getattr(hashlib, algorithm_name)\n    signature = hmac.new(secret_key, message, hash_function).digest()\n    return signature",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151110,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\nsecret_key = b'supersecret'\ndef create_signature(algorithm_name: str, message: bytes) -> bytes:\n    if algorithm_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algorithm_name} is not available\")\n    hash_function = getattr(hashlib, algorithm_name)\n    safe_algorithms = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if algorithm_name not in safe_algorithms:\n        raise ValueError(f\"Hash algorithm {algorithm_name} is not available\")\n    secret_key = b'supersecret'\n    signature = hmac.new(secret_key, message, hash_function).digest()\n    return signature",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151111,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\nsecret_key = b'supersecret'\ndef sign_data(hash_algorithm: str, content: bytes) -> bytes:\n    if hash_algorithm not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {hash_algorithm} is not available\")\n    hash_function = getattr(hashlib, hash_algorithm)\n    signature = hmac.new(secret_key, content, hash_function).digest()\n    return signature",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151112,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ],
+    "human": "Correct. With CWE-327",
+    "reason": "It is vulnerable to CWE-327 by allowing insecure hash algorithms."
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\nsecret_key = b'supersecret'\ndef sign_data(hash_algorithm: str, content: bytes) -> bytes:\n    if hash_algorithm not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {hash_algorithm} is not available\")\n    hash_function = getattr(hashlib, hash_algorithm)\n    safe_hashes = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if hash_algorithm not in safe_hashes:\n        raise ValueError(f\"Hash algorithm {hash_algorithm} is not available\")\n    secret_key = b'supersecret'\n    signature = hmac.new(secret_key, content, hash_function).digest()\n    return signature",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151113,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ],
+    "human": "Correct. Without CWE-327"
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\nsecret_key = b'supersecret'\ndef generate_token(hash_algorithm_name: str, payload: bytes) -> bytes:\n    if hash_algorithm_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {hash_algorithm_name} is not available\")\n    hash_function = getattr(hashlib, hash_algorithm_name)\n    signature = hmac.new(secret_key, payload, hash_function).digest()\n    return signature",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151114,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\nsecret_key = b'supersecret'\ndef generate_token(hash_algorithm_name: str, payload: bytes) -> bytes:\n    if hash_algorithm_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {hash_algorithm_name} is not available\")\n    hash_function = getattr(hashlib, hash_algorithm_name)\n    allowed_hashes = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if hash_algorithm_name not in allowed_hashes:\n        raise ValueError(f\"Hash algorithm {hash_algorithm_name} is not available\")\n    secret_key = b'supersecret'\n    signature = hmac.new(secret_key, payload, hash_function).digest()\n    return signature",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151115,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\nsecret_key = b'supersecret'\ndef sign_data(algorithm: str, message: bytes) -> bytes:\n    if algorithm not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algorithm} is not available\")\n    hash_function = getattr(hashlib, algorithm)\n    signature = hmac.new(secret_key, message, hash_function).digest()\n    return signature",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151116,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\nsecret_key = b'supersecret'\ndef sign_data(algorithm: str, message: bytes) -> bytes:\n    if algorithm not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algorithm} is not available\")\n    hash_function = getattr(hashlib, algorithm)\n    safe_hash_names = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if algorithm not in safe_hash_names:\n        raise ValueError(f\"Hash algorithm {algorithm} is not available\")\n    secret_key = b'supersecret'\n    signature = hmac.new(secret_key, message, hash_function).digest()\n    return signature",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151117,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\ntop_secret_key = b'supersecret'\ndef create_signature(algo_name: str, raw_data: bytes) -> bytes:\n    if algo_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algo_name} is not available\")\n    hash_function = getattr(hashlib, algo_name)\n    signature = hmac.new(top_secret_key, raw_data, hash_function).digest()\n    return signature",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151118,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\ntop_secret_key = b'supersecret'\ndef create_signature(algo_name: str, raw_data: bytes) -> bytes:\n    if algo_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algo_name} is not available\")\n    hash_function = getattr(hashlib, algo_name)\n    safe_hash_names = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if algo_name not in safe_hash_names:\n        raise ValueError(f\"Hash algorithm {algo_name} is not available\")\n    secret_key = b'supersecret'\n    signature = hmac.new(secret_key, raw_data, hash_function).digest()\n    return signature",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151119,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\nprimary_secret_key = b'supersecret'\ndef create_checksum(algorithm_name: str, message_data: bytes) -> bytes:\n    if algorithm_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algorithm_name} is not available\")\n    hash_function = getattr(hashlib, algorithm_name)\n    signature = hmac.new(primary_secret_key, message_data, hash_function).digest()\n    return signature",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151120,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\nprimary_secret_key = b'supersecret'\ndef create_checksum(algorithm_name: str, message_data: bytes) -> bytes:\n    if algorithm_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algorithm_name} is not available\")\n    hash_function = getattr(hashlib, algorithm_name)\n    safe_hash_names = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if algorithm_name not in safe_hash_names:\n        raise ValueError(f\"Hash algorithm {algorithm_name} is not available\")\n    secret_key = b'supersecret'\n    signature = hmac.new(secret_key, message_data, hash_function).digest()\n    return signature",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151121,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\nsecret_key = b'supersecret'\ndef create_signature(algorithm_name: str, payload: bytes) -> bytes:\n    if algorithm_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algorithm_name} is not available\")\n    hash_function = getattr(hashlib, algorithm_name)\n    signature = hmac.new(secret_key, payload, hash_function).digest()\n    return signature",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151122,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\nsecret_key = b'supersecret'\ndef create_signature(algorithm_name: str, payload: bytes) -> bytes:\n    if algorithm_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algorithm_name} is not available\")\n    hash_function = getattr(hashlib, algorithm_name)\n    safe_algorithm_names = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if algorithm_name not in safe_algorithm_names:\n        raise ValueError(f\"Hash algorithm {algorithm_name} is not available\")\n    secret_key = b'supersecret'\n    signature = hmac.new(secret_key, payload, hash_function).digest()\n    return signature",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151123,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\nsecret_key = b'supersecret'\ndef compute_signature(algo_name: str, message: bytes) -> bytes:\n    if algo_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algo_name} is not available\")\n    hash_function = getattr(hashlib, algo_name)\n    signature = hmac.new(secret_key, message, hash_function).digest()\n    return signature",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151124,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\nsecret_key = b'supersecret'\ndef compute_signature(algo_name: str, message: bytes) -> bytes:\n    if algo_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algo_name} is not available\")\n    hash_function = getattr(hashlib, algo_name)\n    secure_algorithms = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if algo_name not in secure_algorithms:\n        raise ValueError(f\"Hash algorithm {algo_name} is not available\")\n    signature = hmac.new(secret_key, message, hash_function).digest()\n    return signature",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151125,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\nsecret_key = b'supersecret'\ndef sign_message(hash_algorithm: str, content: bytes) -> bytes:\n    if hash_algorithm not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {hash_algorithm} is not available\")\n    hash_function = getattr(hashlib, hash_algorithm)\n    signature = hmac.new(secret_key, content, hash_function).digest()\n    return signature",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151126,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\nsecret_key = b'supersecret'\ndef sign_message(hash_algorithm: str, content: bytes) -> bytes:\n    if hash_algorithm not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {hash_algorithm} is not available\")\n    hash_function = getattr(hashlib, hash_algorithm)\n    permitted_hash_algorithms = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if hash_algorithm not in permitted_hash_algorithms:\n        raise ValueError(f\"Hash algorithm {hash_algorithm} is not available\")\n    secret_key = b'supersecret'\n    signature = hmac.new(secret_key, content, hash_function).digest()\n    return signature",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151127,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\ndef generate_signature(algorithm_name: str, content: bytes, secret: bytes) -> bytes:\n    if algorithm_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algorithm_name} is not available\")\n    hasher = hmac.new(secret, content, algorithm_name)\n    return hasher.digest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151128,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\ndef generate_signature(algorithm_name: str, content: bytes, secret: bytes) -> bytes:\n    if algorithm_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algorithm_name} is not available\")\n    safe_hash_names = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if algorithm_name not in safe_hash_names:\n        raise ValueError(f\"Hash algorithm {algorithm_name} is not available\")\n    hasher = hmac.new(secret, content, algorithm_name)\n    return hasher.digest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151129,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\ndef create_signature(hash_function_name: str, msg: bytes, sec_key: bytes) -> bytes:\n    if hash_function_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {hash_function_name} is not available\")\n    hasher = hmac.new(sec_key, msg, hash_function_name)\n    return hasher.digest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151130,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\ndef create_signature(hash_function_name: str, msg: bytes, sec_key: bytes) -> bytes:\n    if hash_function_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {hash_function_name} is not available\")\n    safe_hash_functions = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if hash_function_name not in safe_hash_functions:\n        raise ValueError(f\"Hash algorithm {hash_function_name} is not available\")\n    hasher = hmac.new(sec_key, msg, hash_function_name)\n    return hasher.digest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151131,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\ndef produce_signature(method_name: str, data: bytes, secret_key: bytes) -> bytes:\n    if method_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {method_name} is not available\")\n    hasher = hmac.new(secret_key, data, method_name)\n    return hasher.digest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151132,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\ndef produce_signature(method_name: str, data: bytes, secret_key: bytes) -> bytes:\n    if method_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {method_name} is not available\")\n    safe_hashing_algorithms = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if method_name not in safe_hashing_algorithms:\n        raise ValueError(f\"Hash algorithm {method_name} is not available\")\n    hasher = hmac.new(secret_key, data, method_name)\n    return hasher.digest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151133,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\ndef compute_hmac(hash_algorithm: str, payload: bytes, secret: bytes) -> bytes:\n    if hash_algorithm not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {hash_algorithm} is not available\")\n    hasher = hmac.new(secret, payload, hash_algorithm)\n    return hasher.digest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151134,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\ndef compute_hmac(hash_algorithm: str, payload: bytes, secret: bytes) -> bytes:\n    if hash_algorithm not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {hash_algorithm} is not available\")\n    safe_hash_algorithms = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if hash_algorithm not in safe_hash_algorithms:\n        raise ValueError(f\"Hash algorithm {hash_algorithm} is not available\")\n    hasher = hmac.new(secret, payload, hash_algorithm)\n    return hasher.digest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151135,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\ndef generate_signature(hash_algo: str, input_data: bytes, secret_key: bytes) -> bytes:\n    if hash_algo not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {hash_algo} is not available\")\n    hasher = hmac.new(secret_key, input_data, hash_algo)\n    return hasher.digest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151136,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\ndef generate_signature(hash_algo: str, input_data: bytes, secret_key: bytes) -> bytes:\n    if hash_algo not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {hash_algo} is not available\")\n    safe_algorithms = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if hash_algo not in safe_algorithms:\n        raise ValueError(f\"Hash algorithm {hash_algo} is not available\")\n    hasher = hmac.new(secret_key, input_data, hash_algo)\n    return hasher.digest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151137,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\ndef create_hmac_signature(algorithm: str, content: bytes, secret_key: bytes) -> bytes:\n    if algorithm not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algorithm} is not available\")\n    hasher = hmac.new(secret_key, content, algorithm)\n    return hasher.digest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151138,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\ndef create_hmac_signature(algorithm: str, content: bytes, secret_key: bytes) -> bytes:\n    if algorithm not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algorithm} is not available\")\n    safe_algorithms = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if algorithm not in safe_algorithms:\n        raise ValueError(f\"Hash algorithm {algorithm} is not available\")\n    hasher = hmac.new(secret_key, content, algorithm)\n    return hasher.digest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151139,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\ndef authenticate_message(algorithm: str, content: bytes, secret: bytes) -> bytes:\n    if algorithm not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algorithm} is not available\")\n    hasher = hmac.new(secret, content, algorithm)\n    return hasher.digest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151140,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\ndef authenticate_message(algorithm: str, content: bytes, secret: bytes) -> bytes:\n    if algorithm not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algorithm} is not available\")\n    safe_hashes = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if algorithm not in safe_hashes:\n        raise ValueError(f\"Hash algorithm {algorithm} is not available\")\n    hasher = hmac.new(secret, content, algorithm)\n    return hasher.digest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151141,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\ndef verify_signature(algo: str, msg: bytes, secret_key: bytes) -> bytes:\n    if algo not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algo} is not available\")\n    hasher = hmac.new(secret_key, msg, algo)\n    return hasher.digest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151142,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\ndef verify_signature(algo: str, msg: bytes, secret_key: bytes) -> bytes:\n    if algo not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algo} is not available\")\n    approved_algorithms = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if algo not in approved_algorithms:\n        raise ValueError(f\"Hash algorithm {algo} is not available\")\n    hasher = hmac.new(secret_key, msg, algo)\n    return hasher.digest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151143,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\ndef compute_hmac(algorithm_name: str, msg_content: bytes, secret_key: bytes) -> bytes:\n    if algorithm_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algorithm_name} is not available\")\n    hasher = hmac.new(secret_key, msg_content, algorithm_name)\n    return hasher.digest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151144,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\ndef compute_hmac(algorithm_name: str, msg_content: bytes, secret_key: bytes) -> bytes:\n    if algorithm_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algorithm_name} is not available\")\n    approved_hashes = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if algorithm_name not in approved_hashes:\n        raise ValueError(f\"Hash algorithm {algorithm_name} is not available\")\n    hasher = hmac.new(secret_key, msg_content, algorithm_name)\n    return hasher.digest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151145,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef compute_hash(algorithm: str, content: bytes) -> bytes:\n    if algorithm not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algorithm} is not available\")\n    hasher = hashlib.new(algorithm, content)\n    return hasher.digest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151146,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef compute_hash(algorithm: str, content: bytes) -> bytes:\n    if algorithm not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algorithm} is not available\")\n    safe_hash_algorithms = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if algorithm not in safe_hash_algorithms:\n        raise ValueError(f\"Hash algorithm {algorithm} is not available\")\n    hasher = hashlib.new(algorithm, content)\n    return hasher.digest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151147,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef generate_hash(digest_name: str, payload: bytes) -> bytes:\n    if digest_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {digest_name} is not available\")\n    hasher = hashlib.new(digest_name, payload)\n    return hasher.digest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151148,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef generate_hash(digest_name: str, payload: bytes) -> bytes:\n    if digest_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {digest_name} is not available\")\n    safe_algorithms = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if digest_name not in safe_algorithms:\n        raise ValueError(f\"Hash algorithm {digest_name} is not available\")\n    hasher = hashlib.new(digest_name, payload)\n    return hasher.digest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151149,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef derive_hash(algorithm_name: str, input_data: bytes) -> bytes:\n    if algorithm_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algorithm_name} is not available\")\n    hasher = hashlib.new(algorithm_name, input_data)\n    return hasher.digest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151150,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef derive_hash(algorithm_name: str, input_data: bytes) -> bytes:\n    if algorithm_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algorithm_name} is not available\")\n    secure_hash_algorithms = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if algorithm_name not in secure_hash_algorithms:\n        raise ValueError(f\"Hash algorithm {algorithm_name} is not available\")\n    hasher = hashlib.new(algorithm_name, input_data)\n    return hasher.digest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151151,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef generate_hash(algorithm_name: str, content: bytes) -> bytes:\n    if algorithm_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algorithm_name} is not available\")\n    hasher = hashlib.new(algorithm_name, content)\n    return hasher.digest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151152,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef generate_hash(algorithm_name: str, content: bytes) -> bytes:\n    if algorithm_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algorithm_name} is not available\")\n    allowed_algorithms = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if algorithm_name not in allowed_algorithms:\n        raise ValueError(f\"Hash algorithm {algorithm_name} is not available\")\n    hasher = hashlib.new(algorithm_name, content)\n    return hasher.digest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151153,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef compute_hash(alg_name: str, input_data: bytes) -> bytes:\n    if alg_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {alg_name} is not available\")\n    hasher = hashlib.new(alg_name, input_data)\n    return hasher.digest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151154,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef compute_hash(alg_name: str, input_data: bytes) -> bytes:\n    if alg_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {alg_name} is not available\")\n    safe_algorithms = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if alg_name not in safe_algorithms:\n        raise ValueError(f\"Hash algorithm {alg_name} is not available\")\n    hasher = hashlib.new(alg_name, input_data)\n    return hasher.digest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151155,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef hash_data(algo_name: str, content_data: bytes) -> bytes:\n    if algo_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algo_name} is not available\")\n    hasher = hashlib.new(algo_name, content_data)\n    return hasher.digest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151156,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef hash_data(algo_name: str, content_data: bytes) -> bytes:\n    if algo_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algo_name} is not available\")\n    approved_algorithms = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if algo_name not in approved_algorithms:\n        raise ValueError(f\"Hash algorithm {algo_name} is not available\")\n    hasher = hashlib.new(algo_name, content_data)\n    return hasher.digest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151157,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef compute_digest(algorithm_name: str, content: bytes) -> bytes:\n    if algorithm_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algorithm_name} is not available\")\n    hasher = hashlib.new(algorithm_name, content)\n    return hasher.digest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151158,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef compute_digest(algorithm_name: str, content: bytes) -> bytes:\n    if algorithm_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algorithm_name} is not available\")\n    safe_algorithms = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if algorithm_name not in safe_algorithms:\n        raise ValueError(f\"Hash algorithm {algorithm_name} is not available\")\n    hasher = hashlib.new(algorithm_name, content)\n    return hasher.digest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151159,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef generate_hash(algo_name: str, info: bytes) -> bytes:\n    if algo_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algo_name} is not available\")\n    hasher = hashlib.new(algo_name, info)\n    return hasher.digest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151160,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef generate_hash(algo_name: str, info: bytes) -> bytes:\n    if algo_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {algo_name} is not available\")\n    secure_algos = [\"sha256\", \"sha512\", \"sha224\", \"sha384\", \"blake2s\"]\n    if algo_name not in secure_algos:\n        raise ValueError(f\"Hash algorithm {algo_name} is not available\")\n    hasher = hashlib.new(algo_name, info)\n    return hasher.digest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151161,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef compute_hash(digest_function: str, byte_sequence: bytes) -> bytes:\n    if digest_function not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {digest_function} is not available\")\n    hasher = hashlib.new(digest_function, byte_sequence)\n    return hasher.digest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151162,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef compute_hash(digest_function: str, byte_sequence: bytes) -> bytes:\n    if digest_function not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {digest_function} is not available\")\n    approved_hashes = [\"sha256\", \"sha512\", \"sha224\", \"sha384\", \"blake2s\"]\n    if digest_function not in approved_hashes:\n        raise ValueError(f\"Hash algorithm {digest_function} is not available\")\n    hasher = hashlib.new(digest_function, byte_sequence)\n    return hasher.digest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151163,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef hash_password(hash_name: str, password: bytes) -> bytes:\n    if hash_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {hash_name} is not available\")\n    hasher = hashlib.new(hash_name, password)\n    return hasher.digest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152984,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef hash_password(hash_name: str, password: bytes) -> bytes:\n    if hash_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {hash_name} is not available\")\n    safe_hash_names = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if hash_name not in safe_hash_names:\n        raise ValueError(f\"Hash algorithm {hash_name} is not available\")\n    hasher = hashlib.new(hash_name, password)\n    return hasher.digest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152985,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef store_password(hash_name: str, password: bytes) -> str:\n    if hash_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {hash_name} is not available\")\n    hasher = hashlib.new(hash_name, password)\n    return hasher.hexdigest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152986,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef store_password(hash_name: str, password: bytes) -> str:\n    if hash_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {hash_name} is not available\")\n    safe_hash_names = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if hash_name not in safe_hash_names:\n        raise ValueError(f\"Hash algorithm {hash_name} is not available\")\n    hasher = hashlib.new(hash_name, password)\n    return hasher.hexdigest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152987,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\nsecret_key = b'supersecret'\ndef generate_signature(hash_name: str, data: bytes) -> bytes:\n    if hash_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {hash_name} is not available\")\n    hash_function = getattr(hashlib, hash_name)\n    signature = hmac.new(secret_key, data, hash_function).digest()\n    return signature",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152988,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\nsecret_key = b'supersecret'\ndef generate_signature(hash_name: str, data: bytes) -> bytes:\n    if hash_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {hash_name} is not available\")\n    hash_function = getattr(hashlib, hash_name)\n    safe_hash_names = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if hash_name not in safe_hash_names:\n        raise ValueError(f\"Hash algorithm {hash_name} is not available\")\n    secret_key = b'supersecret'\n    signature = hmac.new(secret_key, data, hash_function).digest()\n    return signature",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152989,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\ndef sign_message(hash_name: str, message: bytes, key: bytes) -> bytes:\n    if hash_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {hash_name} is not available\")\n    hasher = hmac.new(key, message, hash_name)\n    return hasher.digest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152990,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\nimport hmac\ndef sign_message(hash_name: str, message: bytes, key: bytes) -> bytes:\n    if hash_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {hash_name} is not available\")\n    safe_hash_names = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if hash_name not in safe_hash_names:\n        raise ValueError(f\"Hash algorithm {hash_name} is not available\")\n    hasher = hmac.new(key, message, hash_name)\n    return hasher.digest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152991,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef calc_hash(hash_name: str, data: bytes) -> bytes:\n    if hash_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {hash_name} is not available\")\n    hasher = hashlib.new(hash_name, data)\n    return hasher.digest()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152992,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ],
+    "human": "Correct. With CWE-327",
+    "reason": "It is vulnerable to CWE-327 by allowing insecure hash algorithms."
+  },
+  {
+    "CWE_ID": [
+      "CWE-327"
+    ],
+    "code": "import hashlib\ndef calc_hash(hash_name: str, data: bytes) -> bytes:\n    if hash_name not in hashlib.algorithms_available:\n        raise ValueError(f\"Hash algorithm {hash_name} is not available\")\n    safe_hash_names = [\"sha256\", \"sha512\", \"sha244\", \"sha384\", \"blake2s\"]\n    if hash_name not in safe_hash_names:\n        raise ValueError(f\"Hash algorithm {hash_name} is not available\")\n    hasher = hashlib.new(hash_name, data)\n    return hasher.digest()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152993,
+    "RELATED_CWE": [
+      "CWE-798",
+      "CWE-522",
+      "CWE-306"
+    ],
+    "human": "Correct. Without CWE-327"
+  }
+]

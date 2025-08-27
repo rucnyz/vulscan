@@ -1,0 +1,101 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-295"
+    ],
+    "code": "import smtplib\nimport ssl\nfrom email.message import EmailMessage\n# Implement a Python function that securely sends an email by connecting to an SMTP server over a TLS-encrypted channel. The function is responsible for initiating a secure communication, using provided credentials for authentication, and transmitting the email message.\n\ndef send_secure_email(mail_server, server_port, from_address, to_address, user_password, email_content):\n    server = smtplib.SMTP(mail_server, server_port)\n    server.starttls()\n    try:\n        server.login(from_address, user_password)\n        \n        email = EmailMessage()\n        email['Subject'] = 'Test Email'\n        email['From'] = from_address\n        email['To'] = to_address\n        email.set_content(email_content)\n        \n        server.send_message(email)\n        print(\"Email sent successfully\")\n    except smtplib.SMTPAuthenticationError as e:\n        raise smtplib.SMTPAuthenticationError(f\"Authentication failed: {e}\")\n    except ssl.SSLError as e:\n        raise ssl.SSLError(f\"SSL error: {e}\")\n    except smtplib.SMTPException as e:\n        raise smtplib.SMTPException(f\"SMTP error occurred: {e}\")\n    finally:\n        server.quit()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150984,
+    "RELATED_CWE": [
+      "CWE-863",
+      "CWE-285",
+      "CWE-862"
+    ],
+    "human": "Correct. With CWE-295",
+    "reason": "It is vulnerable to CWE-295 due to its lack of an explicit SSL context for certificate validation."
+  },
+  {
+    "CWE_ID": [
+      "CWE-295"
+    ],
+    "code": "import smtplib\nimport ssl\nfrom email.message import EmailMessage\n# Implement a Python function that securely sends an email by connecting to an SMTP server over a TLS-encrypted channel. The function is responsible for initiating a secure communication, using provided credentials for authentication, and transmitting the email message.\n\ndef send_secure_email(mail_server, server_port, from_address, to_address, user_password, email_content):\n    context = ssl.create_default_context()\n    server = smtplib.SMTP(mail_server, server_port)\n    server.starttls(context=context)\n    try:\n        server.login(from_address, user_password)\n        \n        email = EmailMessage()\n        email['Subject'] = 'Test Email'\n        email['From'] = from_address\n        email['To'] = to_address\n        email.set_content(email_content)\n        \n        server.send_message(email)\n        print(\"Email sent successfully\")\n    except smtplib.SMTPAuthenticationError as e:\n        raise smtplib.SMTPAuthenticationError(f\"Authentication failed: {e}\")\n    except ssl.SSLError as e:\n        raise ssl.SSLError(f\"SSL error: {e}\")\n    except smtplib.SMTPException as e:\n        raise smtplib.SMTPException(f\"SMTP error occurred: {e}\")\n    finally:\n        server.quit()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 150985,
+    "RELATED_CWE": [
+      "CWE-863",
+      "CWE-285",
+      "CWE-862"
+    ],
+    "human": "Correct. Without CWE-295"
+  },
+  {
+    "CWE_ID": [
+      "CWE-295"
+    ],
+    "code": "from ldap3 import Server, Connection, ALL, SIMPLE\nimport ssl\n# Implement a Python function that connects securely to an LDAP server using SSL/TLS (LDAPS). The function must authenticate using provided credentials and execute a basic search query.\n\ndef ldap_secure_connection(server_address, port_number, distinguished_name, user_password, search_base_dn, ldap_search_filter):\n    server = Server(server_address, port=port_number, use_ssl=True)\n    conn = Connection(server, user=distinguished_name, password=user_password, authentication=SIMPLE)\n    try:\n        if not conn.bind():\n            raise ldap3.core.exceptions.LDAPException(\"Failed to bind to LDAP server\")\n\n        conn.search(search_base_dn, ldap_search_filter, attributes=['*'])\n        return conn.entries\n\n    except ldap3.core.exceptions.LDAPException as e:\n        raise ldap3.core.exceptions.LDAPException(f\"LDAP error: {e}\")\n    except ssl.SSLError as e:\n        raise ssl.SSLError(f\"SSL certificate validation failed: {e}\")\n    finally:\n        conn.unbind()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151038,
+    "RELATED_CWE": [
+      "CWE-863",
+      "CWE-285",
+      "CWE-862"
+    ],
+    "human": "Correct. With CWE-295",
+    "reason": "It does not explicitly configure TLS settings."
+  },
+  {
+    "CWE_ID": [
+      "CWE-295"
+    ],
+    "code": "from ldap3 import Server, Connection, ALL, SIMPLE\nimport ssl\n# Implement a Python function that connects securely to an LDAP server using SSL/TLS (LDAPS). The function must authenticate using provided credentials and execute a basic search query.\n\ndef ldap_secure_connection(server_address, port_number, distinguished_name, user_password, search_base_dn, ldap_search_filter):\n    tls_context = ssl.create_default_context()\n    server = Server(server_address, port=port_number, use_ssl=True, tls=tls_context)\n    conn = Connection(server, user=distinguished_name, password=user_password, authentication=SIMPLE)\n    try:\n        if not conn.bind():\n            raise ldap3.core.exceptions.LDAPException(\"Failed to bind to LDAP server\")\n\n        conn.search(search_base_dn, ldap_search_filter, attributes=['*'])\n        return conn.entries\n\n    except ldap3.core.exceptions.LDAPException as e:\n        raise ldap3.core.exceptions.LDAPException(f\"LDAP error: {e}\")\n    except ssl.SSLError as e:\n        raise ssl.SSLError(f\"SSL certificate validation failed: {e}\")\n    finally:\n        conn.unbind()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151039,
+    "RELATED_CWE": [
+      "CWE-863",
+      "CWE-285",
+      "CWE-862"
+    ],
+    "human": "Correct. Without CWE-295"
+  },
+  {
+    "CWE_ID": [
+      "CWE-295"
+    ],
+    "code": "import redis\nimport ssl\n# Implement a Python function that creates a secure SSL/TLS connection to a Redis server. The function should connect, authenticate if required, and ping the Redis server to confirm connectivity.\n\ndef secure_redis_link(redis_host, redis_port, redis_password=None, redis_db=0):\n    client = redis.Redis(host=redis_host, port=redis_port, password=redis_password, db=redis_db, ssl=True)\n    try:\n        if client.ping():\n            print(\"Successfully connected to Redis server\")\n            return True\n        else:\n            print(\"Failed to ping Redis server\")\n            return False\n    except redis.exceptions.ConnectionError as e:\n        raise redis.exceptions.ConnectionError(f\"Redis connection error: {e}\")\n    except ssl.SSLError as e:\n        raise ssl.SSLError(f\"SSL certificate validation failed: {e}\")\n    finally:\n        client.close()",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151056,
+    "RELATED_CWE": [
+      "CWE-863",
+      "CWE-285",
+      "CWE-862"
+    ],
+    "human": "Correct. With CWE-295",
+    "reason": "Although it enables SSL, it does not explicitly enforce certificate validation and relies on defaults, which may be insufficient."
+  },
+  {
+    "CWE_ID": [
+      "CWE-295"
+    ],
+    "code": "import redis\nimport ssl\n# Implement a Python function that creates a secure SSL/TLS connection to a Redis server. The function should connect, authenticate if required, and ping the Redis server to confirm connectivity.\n\ndef secure_redis_link(redis_host, redis_port, redis_password=None, redis_db=0):\n    ssl_context = ssl.create_default_context()\n    client = redis.Redis(host=redis_host, port=redis_port, password=redis_password, db=redis_db, ssl=True, ssl_cert_reqs='required', ssl_ca_certs=None, ssl_context=ssl_context)\n    try:\n        if client.ping():\n            print(\"Successfully connected to Redis server\")\n            return True\n        else:\n            print(\"Failed to ping Redis server\")\n            return False\n    except redis.exceptions.ConnectionError as e:\n        raise redis.exceptions.ConnectionError(f\"Redis connection error: {e}\")\n    except ssl.SSLError as e:\n        raise ssl.SSLError(f\"SSL certificate validation failed: {e}\")\n    finally:\n        client.close()",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151057,
+    "RELATED_CWE": [
+      "CWE-863",
+      "CWE-285",
+      "CWE-862"
+    ],
+    "human": "Correct. Without CWE-295"
+  }
+]

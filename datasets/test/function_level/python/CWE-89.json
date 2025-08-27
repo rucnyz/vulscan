@@ -1,0 +1,129 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-89"
+    ],
+    "code": "def build_board(conn, game,size):\n    # we'll build the empty board, and then fill in with the move list that\n    # we get from the DB.\n    board = []\n    for i in range(size):\n        board.append([\"\"]*size)\n\n\n    # search for all moves that have happenend during this game.\n    cursor = conn.cursor()\n    cursor.execute(\"SELECT x,y,letter FROM moves WHERE gameID = %d;\" % game)\n\n    counts = {\"X\":0, \"O\":0}\n    for move in cursor.fetchall():\n        (x,y,letter) = move\n\n        x = int(x)\n        y = int(y)\n        assert x >= 0 and x < size\n        assert y >= 0 and y < size\n\n        assert letter in \"XO\"\n\n        assert board[x][y] == \"\"\n        board[x][y] = letter\n\n        counts[letter] += 1\n\n    cursor.close()\n\n    assert counts[\"X\"] >= counts[\"O\"]\n    assert counts[\"X\"] <= counts[\"O\"]+1\n\n    if counts[\"X\"] == counts[\"O\"]:\n        nextPlayer = 0\n    else:\n        nextPlayer = 1\n    letter = \"XO\"[nextPlayer]\n\n    return (board,nextPlayer,letter)",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149118,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-90",
+      "CWE-91",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-89"
+    ],
+    "code": "def build_board(conn, game,size):\n    # we'll build the empty board, and then fill in with the move list that\n    # we get from the DB.\n    board = []\n    for i in range(size):\n        board.append([\"\"]*size)\n\n\n    # search for all moves that have happenend during this game.\n    cursor = conn.cursor()\n    cursor.execute(\"SELECT x,y,letter FROM moves WHERE gameID = %d;\", (game,))\n\n    counts = {\"X\":0, \"O\":0}\n    for move in cursor.fetchall():\n        (x,y,letter) = move\n\n        x = int(x)\n        y = int(y)\n        assert x >= 0 and x < size\n        assert y >= 0 and y < size\n\n        assert letter in \"XO\"\n\n        assert board[x][y] == \"\"\n        board[x][y] = letter\n\n        counts[letter] += 1\n\n    cursor.close()\n\n    assert counts[\"X\"] >= counts[\"O\"]\n    assert counts[\"X\"] <= counts[\"O\"]+1\n\n    if counts[\"X\"] == counts[\"O\"]:\n        nextPlayer = 0\n    else:\n        nextPlayer = 1\n    letter = \"XO\"[nextPlayer]\n\n    return (board,nextPlayer,letter)",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149119,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-90",
+      "CWE-91",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-89"
+    ],
+    "code": "    def check_and_update_ranks(self, scene):\n        # There are 2 cases here:\n        #   1) Ranks have never been calculated for this scene before\n        #       - This means we need to calculate what the ranks were every month of this scenes history\n        #       - We should only do this if ranks don't already exist for this scene\n        #   2) Ranks have been calculated for this scene before\n        #       - We already have bulk ranks. We should check if it has been more than 1 month since we last\n        #           calculated ranks. If so, calculate again with the brackets that have come out this month\n\n        LOG.info('About to check if ranks need updating for {}'.format(scene))\n        # First, do we have any ranks for this scene already?\n        sql = 'select count(*) from ranks where scene=\"{}\";'.format(scene)\n        res = self.db.exec(sql)\n        count = res[0][0]\n\n        n = 5 if (scene == 'pro' or scene == 'pro_wiiu') else constants.TOURNAMENTS_PER_RANK\n        if count == 0:\n            LOG.info('Detected that we need to bulk update ranks for {}'.format(scene))\n            # Alright, we have nothing. Bulk update ranks\n            first_month = bracket_utils.get_first_month(self.db, scene)\n            last_month = bracket_utils.get_last_month(self.db, scene)\n            \n            # Iterate through all tournaments going month by month, and calculate ranks\n            months = bracket_utils.iter_months(first_month, last_month, include_first=False, include_last=True)\n            for month in months:\n                urls, _ = bracket_utils.get_n_tournaments_before_date(self.db, scene, month, n)\n                self.process_ranks(scene, urls, month)\n        else:\n\n            # Get the date of the last time we calculated ranks\n            sql = \"select date from ranks where scene='{}' order by date desc limit 1;\".format(scene)\n            res = self.db.exec(sql)\n            last_rankings_date = res[0][0]\n\n            # Check to see if it's been more than 1 month since we last calculated ranks\n            more_than_one_month = bracket_utils.has_month_passed(last_rankings_date)\n            if more_than_one_month:\n                # Get only the last n tournaments, so it doesn't take too long to process\n                today = datetime.datetime.today().strftime('%Y-%m-%d')\n                msg = 'Detected that we need up update monthly ranks for {}, on {}'.format(scene, today)\n                LOG.info(msg)\n\n                # We should only ever calculate ranks on the 1st. If today is not the first, log error\n                if not today.split('-')[-1] == '1':\n                    LOG.exc('We are calculating ranks today, {}, but it isnt the first'.format(today))\n\n                months = bracket_utils.iter_months(last_rankings_date, today, include_first=False, include_last=True)\n                for month in months:\n                    # Make sure that we actually have matches during this month\n                    # Say we are trying to calculate ranks for 2018-05-01, the player would need to have matches during 2018-04-01, 2018-04-30\n                    prev_date = bracket_utils.get_previous_month(month)\n                    brackets_during_month = bracket_utils.get_tournaments_during_month(self.db, scene, prev_date)\n\n                    if len(brackets_during_month) > 0:\n                        tweet('Calculating {} ranks for {}'.format(month, scene))\n                        urls, _ = bracket_utils.get_n_tournaments_before_date(self.db, scene, month, n)\n                        self.process_ranks(scene, urls, month)\n\n            else:\n                LOG.info('It has not yet been 1 month since we calculated ranks for {}. Skipping'.format(scene))",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149120,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-90",
+      "CWE-91",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-89"
+    ],
+    "code": "    def check_and_update_ranks(self, scene):\n        # There are 2 cases here:\n        #   1) Ranks have never been calculated for this scene before\n        #       - This means we need to calculate what the ranks were every month of this scenes history\n        #       - We should only do this if ranks don't already exist for this scene\n        #   2) Ranks have been calculated for this scene before\n        #       - We already have bulk ranks. We should check if it has been more than 1 month since we last\n        #           calculated ranks. If so, calculate again with the brackets that have come out this month\n\n        LOG.info('About to check if ranks need updating for {}'.format(scene))\n        # First, do we have any ranks for this scene already?\n        sql = 'select count(*) from ranks where scene=\"{scene}\";'\n        args = {'scene': scene}\n        res = self.db.exec(sql, args)\n        count = res[0][0]\n\n        n = 5 if (scene == 'pro' or scene == 'pro_wiiu') else constants.TOURNAMENTS_PER_RANK\n        if count == 0:\n            LOG.info('Detected that we need to bulk update ranks for {}'.format(scene))\n            # Alright, we have nothing. Bulk update ranks\n            first_month = bracket_utils.get_first_month(self.db, scene)\n            last_month = bracket_utils.get_last_month(self.db, scene)\n            \n            # Iterate through all tournaments going month by month, and calculate ranks\n            months = bracket_utils.iter_months(first_month, last_month, include_first=False, include_last=True)\n            for month in months:\n                urls, _ = bracket_utils.get_n_tournaments_before_date(self.db, scene, month, n)\n                self.process_ranks(scene, urls, month)\n        else:\n\n            # Get the date of the last time we calculated ranks\n            sql = \"select date from ranks where scene='{scene}' order by date desc limit 1;\"\n            args = {'scene': scene}\n            res = self.db.exec(sql, args)\n            last_rankings_date = res[0][0]\n\n            # Check to see if it's been more than 1 month since we last calculated ranks\n            more_than_one_month = bracket_utils.has_month_passed(last_rankings_date)\n            if more_than_one_month:\n                # Get only the last n tournaments, so it doesn't take too long to process\n                today = datetime.datetime.today().strftime('%Y-%m-%d')\n                msg = 'Detected that we need up update monthly ranks for {}, on {}'.format(scene, today)\n                LOG.info(msg)\n\n                # We should only ever calculate ranks on the 1st. If today is not the first, log error\n                if not today.split('-')[-1] == '1':\n                    LOG.exc('We are calculating ranks today, {}, but it isnt the first'.format(today))\n\n                months = bracket_utils.iter_months(last_rankings_date, today, include_first=False, include_last=True)\n                for month in months:\n                    # Make sure that we actually have matches during this month\n                    # Say we are trying to calculate ranks for 2018-05-01, the player would need to have matches during 2018-04-01, 2018-04-30\n                    prev_date = bracket_utils.get_previous_month(month)\n                    brackets_during_month = bracket_utils.get_tournaments_during_month(self.db, scene, prev_date)\n\n                    if len(brackets_during_month) > 0:\n                        tweet('Calculating {} ranks for {}'.format(month, scene))\n                        urls, _ = bracket_utils.get_n_tournaments_before_date(self.db, scene, month, n)\n                        self.process_ranks(scene, urls, month)\n\n            else:\n                LOG.info('It has not yet been 1 month since we calculated ranks for {}. Skipping'.format(scene))",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149121,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-90",
+      "CWE-91",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-89"
+    ],
+    "code": "    def tag_num_to_tag(self, tag_num):\n        ''' Returns tag given tag_num. '''\n\n        q = \"SELECT tag FROM tags WHERE rowid = '\" + str(tag_num) + \"'\"\n        self.query(q)\n        return self.c.fetchone()[0]",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149122,
+    "RELATED_CWE": [
+      "CWE-90",
+      "CWE-91",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-89"
+    ],
+    "code": "    def tag_num_to_tag(self, tag_num):\n        ''' Returns tag given tag_num. '''\n\n        q = \"SELECT tag FROM tags WHERE rowid = ?\"\n        self.query(q, tag_num)\n        return self.c.fetchone()[0]",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149123,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-90",
+      "CWE-91",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-89"
+    ],
+    "code": "@api.route('/items/<int:item_id>', methods=['GET'])\ndef get_item(item_id):\n    sql = '''SELECT id, name_enus FROM tblDBCItem WHERE id = {} AND auctionable = true;'''.format(item_id)\n    cursor = mysql.connection.cursor()\n    cursor.execute(sql)\n    data = cursor.fetchone()\n\n    if data:\n        item = {}\n        for tup in zip([column[0] for column in cursor.description], data):\n            item[tup[0]] = tup[1]\n    else:\n        return jsonify({\"error\": \"item not found\"}), 404\n\n    return jsonify(item)",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149124,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-90",
+      "CWE-91",
+      "CWE-78"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-89"
+    ],
+    "code": "@api.route('/items/<int:item_id>', methods=['GET'])\ndef get_item(item_id):\n    sql = '''SELECT id, name_enus FROM tblDBCItem WHERE id = %s AND auctionable = true;'''\n    cursor = mysql.connection.cursor()\n    cursor.execute(sql, [item_id])\n    data = cursor.fetchone()\n\n    if data:\n        item = {}\n        for tup in zip([column[0] for column in cursor.description], data):\n            item[tup[0]] = tup[1]\n    else:\n        return jsonify({\"error\": \"item not found\"}), 404\n\n    return jsonify(item)",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149125,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-90",
+      "CWE-91",
+      "CWE-78"
+    ]
+  }
+]

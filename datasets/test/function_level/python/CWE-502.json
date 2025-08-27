@@ -1,0 +1,101 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_formats = [\"json\", \"xml\"]\ndef deserialize_data(input_data, serialization_format=\"json\"):\n    if serialization_format == \"json\":\n        import json\n        return json.loads(input_data)\n    elif serialization_format == \"xml\":\n        import xml.etree.ElementTree as ET\n        root = ET.fromstring(input_data)\n        return {child.tag: child.text for child in root}\n    elif serialization_format == \"pickle\":\n        import pickle\n        return pickle.loads(input_data)\n    else:\n        raise ValueError(f\"Format '{serialization_format}' is not supported.\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151596,
+    "human": "Correct. With CWE-502",
+    "reason": "It is vulnerable due to unsafe pickle deserialization.",
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_formats = [\"json\", \"xml\"]\ndef deserialize_data(input_data, serialization_format=\"json\"):\n    if serialization_format == \"json\":\n        import json\n        return json.loads(input_data)\n    elif serialization_format == \"xml\":\n        import xml.etree.ElementTree as ET\n        root = ET.fromstring(input_data)\n        return {child.tag: child.text for child in root}\n    elif serialization_format == \"pickle\":\n        raise ValueError(\"Deserialization using pickle is prohibited due to security concerns.\")\n    else:\n        raise ValueError(f\"Format '{serialization_format}' is not supported.\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151597,
+    "human": "Correct. Without CWE-502",
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_serializations = [\"json\", \"csv\"]\ndef recover_obj(deserialized_bytes, method_for_serialization=\"json\"):\n    if method_for_serialization == \"json\":\n        import json\n        return json.loads(deserialized_bytes)\n    elif method_for_serialization == \"csv\":\n        import csv\n        from io import StringIO\n        reader = csv.reader(StringIO(deserialized_bytes.decode()))\n        return [row for row in reader]\n    elif method_for_serialization == \"pickle\":\n        import pickle\n        return pickle.loads(deserialized_bytes)\n    else:\n        raise ValueError(f\"Unsupported serialization method: {method_for_serialization}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151614,
+    "human": "Correct. With CWE-502",
+    "reason": "It is vulnerable due to unsafe pickle deserialization.",
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_serializations = [\"json\", \"csv\"]\ndef recover_obj(deserialized_bytes, method_for_serialization=\"json\"):\n    if method_for_serialization == \"json\":\n        import json\n        return json.loads(deserialized_bytes)\n    elif method_for_serialization == \"csv\":\n        import csv\n        from io import StringIO\n        reader = csv.reader(StringIO(deserialized_bytes.decode()))\n        return [row for row in reader]\n    elif method_for_serialization == \"pickle\":\n        raise ValueError(\"Deserialization with pickle is not allowed due to security vulnerabilities.\")\n    else:\n        raise ValueError(f\"Unsupported serialization method: {method_for_serialization}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151615,
+    "human": "Correct. Without CWE-502",
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_formats = [\"json\", \"html\"]\ndef decode_serialized_input(input_data, input_format=\"json\"):\n    if input_format == \"json\":\n        import json\n        return json.loads(input_data)\n    elif input_format == \"html\":\n        from html.parser import HTMLParser\n        class SimpleHTMLParser(HTMLParser):\n            def __init__(self):\n                super().__init__()\n                self.result = {}\n            def handle_starttag(self, tag, attrs):\n                self.result[tag] = dict(attrs)\n        parser = SimpleHTMLParser()\n        parser.feed(input_data.decode())\n        return parser.result\n    elif input_format == \"pickle\":\n        import pickle\n        return pickle.loads(input_data)\n    else:\n        raise ValueError(f\"Unsupported format: {input_format}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151660,
+    "human": "Correct. With CWE-502",
+    "reason": "It blindly deserializes untrusted pickle data, making it vulnerable to arbitrary code execution.",
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-502"
+    ],
+    "code": "allowed_formats = [\"json\", \"html\"]\ndef decode_serialized_input(input_data, input_format=\"json\"):\n    if input_format == \"json\":\n        import json\n        return json.loads(input_data)\n    elif input_format == \"html\":\n        from html.parser import HTMLParser\n        class SimpleHTMLParser(HTMLParser):\n            def __init__(self):\n                super().__init__()\n                self.result = {}\n            def handle_starttag(self, tag, attrs):\n                self.result[tag] = dict(attrs)\n        parser = SimpleHTMLParser()\n        parser.feed(input_data.decode())\n        return parser.result\n    elif input_format == \"pickle\":\n        raise ValueError(\"Deserialization with pickle format is not allowed due to security risks.\")\n    else:\n        raise ValueError(f\"Unsupported format: {input_format}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151661,
+    "human": "Correct. Without CWE-502",
+    "RELATED_CWE": [
+      "CWE-94",
+      "CWE-78",
+      "CWE-97"
+    ]
+  }
+]

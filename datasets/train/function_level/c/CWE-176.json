@@ -1,0 +1,1218 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\n\n\nstatic void f_wzbcjjgi()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    switch(6)\n    {\n    case 6:\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(8)\n    {\n    case 7:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    default:\n    {\n        char convertedText[10] = \"\";\n        int requiredSize;\n        requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n        \n        if (requiredSize < 10)\n        {\n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n        else\n        {\n            printLine(\"Destination buffer not large enough to perform conversion.\");\n        }\n    }\n    break;\n    }\n}\n\n\nstatic void f_frblanoj()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    switch(6)\n    {\n    case 6:\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(7)\n    {\n    case 7:\n    {\n        char convertedText[10] = \"\";\n        int requiredSize;\n        requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n        \n        if (requiredSize < 10)\n        {\n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n        else\n        {\n            printLine(\"Destination buffer not large enough to perform conversion.\");\n        }\n    }\n    break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\nstatic void f_rjsiztih()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    switch(5)\n    {\n    case 6:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    default:\n        \n        wcscpy(data, L\"\\\\u9580\");\n        break;\n    }\n    switch(7)\n    {\n    case 7:\n    {\n        char convertedText[10] = \"\";\n        int requiredSize;\n        requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n        \n        WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n    }\n    break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\nstatic void f_fwutnaqa()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    switch(6)\n    {\n    case 6:\n        \n        wcscpy(data, L\"\\\\u9580\");\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(7)\n    {\n    case 7:\n    {\n        char convertedText[10] = \"\";\n        int requiredSize;\n        requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n        \n        WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n    }\n    break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\nvoid f_fruqivdm()\n{\n    f_wzbcjjgi();\n    f_frblanoj();\n    f_rjsiztih();\n    f_fwutnaqa();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_fruqivdm();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 500976,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_15.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\nvoid f_hqvdtfqp()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    switch(6)\n    {\n    case 6:\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n    switch(7)\n    {\n    case 7:\n    {\n        char convertedText[10] = \"\";\n        int requiredSize;\n        requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n        \n        WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n    }\n    break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_hqvdtfqp();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 500977,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_15.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\nstatic int staticReturnsTrue()\n{\n    return 1;\n}\n\nstatic int staticReturnsFalse()\n{\n    return 0;\n}\n\n\n\n\nstatic void f_umcocqim()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(staticReturnsTrue())\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    if(staticReturnsFalse())\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            if (requiredSize < 10)\n            {\n                WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n            }\n            else\n            {\n                printLine(\"Destination buffer not large enough to perform conversion.\");\n            }\n        }\n    }\n}\n\n\nstatic void f_arcdpykv()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(staticReturnsTrue())\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    if(staticReturnsTrue())\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            if (requiredSize < 10)\n            {\n                WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n            }\n            else\n            {\n                printLine(\"Destination buffer not large enough to perform conversion.\");\n            }\n        }\n    }\n}\n\n\nstatic void f_valxoyed()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(staticReturnsFalse())\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        wcscpy(data, L\"\\\\u9580\");\n    }\n    if(staticReturnsTrue())\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\n\nstatic void f_pqnshvhk()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(staticReturnsTrue())\n    {\n        \n        wcscpy(data, L\"\\\\u9580\");\n    }\n    if(staticReturnsTrue())\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\nvoid f_yobthpgw()\n{\n    f_umcocqim();\n    f_arcdpykv();\n    f_valxoyed();\n    f_pqnshvhk();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_yobthpgw();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 500978,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_08.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\nstatic int staticReturnsTrue()\n{\n    return 1;\n}\n\nstatic int staticReturnsFalse()\n{\n    return 0;\n}\n\n\nvoid f_odcxvntu()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(staticReturnsTrue())\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    if(staticReturnsTrue())\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_odcxvntu();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 500979,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_08.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\nstatic int staticTrue = 1; \nstatic int staticFalse = 0; \n\n\n\n\nstatic void f_hplvwopo()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(staticTrue)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    if(staticFalse)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            if (requiredSize < 10)\n            {\n                WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n            }\n            else\n            {\n                printLine(\"Destination buffer not large enough to perform conversion.\");\n            }\n        }\n    }\n}\n\n\nstatic void f_zphezpch()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(staticTrue)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    if(staticTrue)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            if (requiredSize < 10)\n            {\n                WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n            }\n            else\n            {\n                printLine(\"Destination buffer not large enough to perform conversion.\");\n            }\n        }\n    }\n}\n\n\nstatic void f_mabsjlqf()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(staticFalse)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        wcscpy(data, L\"\\\\u9580\");\n    }\n    if(staticTrue)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\n\nstatic void f_spsrayxz()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(staticTrue)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\");\n    }\n    if(staticTrue)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\nvoid f_awpafdzy()\n{\n    f_hplvwopo();\n    f_zphezpch();\n    f_mabsjlqf();\n    f_spsrayxz();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_awpafdzy();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 500980,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_05.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\nstatic int staticTrue = 1; \nstatic int staticFalse = 0; \n\n\nvoid f_tgvwbrpr()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(staticTrue)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    if(staticTrue)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_tgvwbrpr();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 500981,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_05.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\nstatic const int STATIC_CONST_TRUE = 1; \nstatic const int STATIC_CONST_FALSE = 0; \n\n\n\n\nstatic void f_kvzmhtbo()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(STATIC_CONST_TRUE)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    if(STATIC_CONST_FALSE)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            if (requiredSize < 10)\n            {\n                WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n            }\n            else\n            {\n                printLine(\"Destination buffer not large enough to perform conversion.\");\n            }\n        }\n    }\n}\n\n\nstatic void f_mikkcnhk()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(STATIC_CONST_TRUE)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    if(STATIC_CONST_TRUE)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            if (requiredSize < 10)\n            {\n                WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n            }\n            else\n            {\n                printLine(\"Destination buffer not large enough to perform conversion.\");\n            }\n        }\n    }\n}\n\n\nstatic void f_apiwdxlo()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(STATIC_CONST_FALSE)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        wcscpy(data, L\"\\\\u9580\");\n    }\n    if(STATIC_CONST_TRUE)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\n\nstatic void f_xlaopwbt()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(STATIC_CONST_TRUE)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\");\n    }\n    if(STATIC_CONST_TRUE)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\nvoid f_bvtxunzz()\n{\n    f_kvzmhtbo();\n    f_mikkcnhk();\n    f_apiwdxlo();\n    f_xlaopwbt();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_bvtxunzz();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 500982,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_04.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\nstatic const int STATIC_CONST_TRUE = 1; \nstatic const int STATIC_CONST_FALSE = 0; \n\n\nvoid f_nulwmoqr()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(STATIC_CONST_TRUE)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    if(STATIC_CONST_TRUE)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_nulwmoqr();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 500983,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_04.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\nstatic int staticFive = 5;\n\n\n\n\nstatic void f_fyyduauk()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(staticFive==5)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    if(staticFive!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            if (requiredSize < 10)\n            {\n                WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n            }\n            else\n            {\n                printLine(\"Destination buffer not large enough to perform conversion.\");\n            }\n        }\n    }\n}\n\n\nstatic void f_bijiujax()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(staticFive==5)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    if(staticFive==5)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            if (requiredSize < 10)\n            {\n                WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n            }\n            else\n            {\n                printLine(\"Destination buffer not large enough to perform conversion.\");\n            }\n        }\n    }\n}\n\n\nstatic void f_kfviunek()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(staticFive!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        wcscpy(data, L\"\\\\u9580\");\n    }\n    if(staticFive==5)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\n\nstatic void f_wicfhafv()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(staticFive==5)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\");\n    }\n    if(staticFive==5)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\nvoid f_nrxanryx()\n{\n    f_fyyduauk();\n    f_bijiujax();\n    f_kfviunek();\n    f_wicfhafv();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_nrxanryx();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 500984,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_07.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\nstatic int staticFive = 5;\n\n\nvoid f_gprulcjt()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(staticFive==5)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    if(staticFive==5)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_gprulcjt();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 500985,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_07.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\nstatic const int STATIC_CONST_FIVE = 5;\n\n\n\n\nstatic void f_fyokraly()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(STATIC_CONST_FIVE==5)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    if(STATIC_CONST_FIVE!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            if (requiredSize < 10)\n            {\n                WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n            }\n            else\n            {\n                printLine(\"Destination buffer not large enough to perform conversion.\");\n            }\n        }\n    }\n}\n\n\nstatic void f_mrpxehnq()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(STATIC_CONST_FIVE==5)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    if(STATIC_CONST_FIVE==5)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            if (requiredSize < 10)\n            {\n                WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n            }\n            else\n            {\n                printLine(\"Destination buffer not large enough to perform conversion.\");\n            }\n        }\n    }\n}\n\n\nstatic void f_vswxthmg()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(STATIC_CONST_FIVE!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        wcscpy(data, L\"\\\\u9580\");\n    }\n    if(STATIC_CONST_FIVE==5)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\n\nstatic void f_sxfrmejf()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(STATIC_CONST_FIVE==5)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\");\n    }\n    if(STATIC_CONST_FIVE==5)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\nvoid f_qvdlmryx()\n{\n    f_fyokraly();\n    f_mrpxehnq();\n    f_vswxthmg();\n    f_sxfrmejf();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_qvdlmryx();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 500986,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_06.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\nstatic const int STATIC_CONST_FIVE = 5;\n\n\nvoid f_wlhbcohv()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(STATIC_CONST_FIVE==5)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    if(STATIC_CONST_FIVE==5)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_wlhbcohv();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 500987,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_06.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\n\n\nstatic void f_bwrukdka()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(globalReturnsTrue())\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    if(globalReturnsFalse())\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            if (requiredSize < 10)\n            {\n                WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n            }\n            else\n            {\n                printLine(\"Destination buffer not large enough to perform conversion.\");\n            }\n        }\n    }\n}\n\n\nstatic void f_cwewmues()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(globalReturnsTrue())\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    if(globalReturnsTrue())\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            if (requiredSize < 10)\n            {\n                WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n            }\n            else\n            {\n                printLine(\"Destination buffer not large enough to perform conversion.\");\n            }\n        }\n    }\n}\n\n\nstatic void f_mfpcncbg()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(globalReturnsFalse())\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        wcscpy(data, L\"\\\\u9580\");\n    }\n    if(globalReturnsTrue())\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\n\nstatic void f_ktncahuu()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(globalReturnsTrue())\n    {\n        \n        wcscpy(data, L\"\\\\u9580\");\n    }\n    if(globalReturnsTrue())\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\nvoid f_cyiervdr()\n{\n    f_bwrukdka();\n    f_cwewmues();\n    f_mfpcncbg();\n    f_ktncahuu();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_cyiervdr();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 500988,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_11.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\nvoid f_jtldegby()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(globalReturnsTrue())\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    if(globalReturnsTrue())\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_jtldegby();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 500989,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_11.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\n\n\nstatic void f_jahqutdv()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(GLOBAL_CONST_TRUE)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    if(GLOBAL_CONST_FALSE)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            if (requiredSize < 10)\n            {\n                WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n            }\n            else\n            {\n                printLine(\"Destination buffer not large enough to perform conversion.\");\n            }\n        }\n    }\n}\n\n\nstatic void f_dgtwywym()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(GLOBAL_CONST_TRUE)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    if(GLOBAL_CONST_TRUE)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            if (requiredSize < 10)\n            {\n                WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n            }\n            else\n            {\n                printLine(\"Destination buffer not large enough to perform conversion.\");\n            }\n        }\n    }\n}\n\n\nstatic void f_zzfogznr()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(GLOBAL_CONST_FALSE)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        wcscpy(data, L\"\\\\u9580\");\n    }\n    if(GLOBAL_CONST_TRUE)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\n\nstatic void f_cyokevdb()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(GLOBAL_CONST_TRUE)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\");\n    }\n    if(GLOBAL_CONST_TRUE)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\nvoid f_lhxxwrcy()\n{\n    f_jahqutdv();\n    f_dgtwywym();\n    f_zzfogznr();\n    f_cyokevdb();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_lhxxwrcy();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 500990,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_09.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\nvoid f_igqkqepx()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(GLOBAL_CONST_TRUE)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    if(GLOBAL_CONST_TRUE)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_igqkqepx();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 500991,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_09.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\n\n\nstatic void f_egnvypmf()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(globalTrue)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    if(globalFalse)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            if (requiredSize < 10)\n            {\n                WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n            }\n            else\n            {\n                printLine(\"Destination buffer not large enough to perform conversion.\");\n            }\n        }\n    }\n}\n\n\nstatic void f_pciqhsqs()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(globalTrue)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    if(globalTrue)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            if (requiredSize < 10)\n            {\n                WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n            }\n            else\n            {\n                printLine(\"Destination buffer not large enough to perform conversion.\");\n            }\n        }\n    }\n}\n\n\nstatic void f_hcybdztz()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(globalFalse)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        wcscpy(data, L\"\\\\u9580\");\n    }\n    if(globalTrue)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\n\nstatic void f_gcoupong()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(globalTrue)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\");\n    }\n    if(globalTrue)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\nvoid f_xywbxtws()\n{\n    f_egnvypmf();\n    f_pciqhsqs();\n    f_hcybdztz();\n    f_gcoupong();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_xywbxtws();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 500992,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_10.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\nvoid f_pmjveylh()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(globalTrue)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    if(globalTrue)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_pmjveylh();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 500993,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_10.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\n\n\nstatic void f_ehzpjojl()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(5==5)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    if(5!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            if (requiredSize < 10)\n            {\n                WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n            }\n            else\n            {\n                printLine(\"Destination buffer not large enough to perform conversion.\");\n            }\n        }\n    }\n}\n\n\nstatic void f_qaawxngn()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(5==5)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    if(5==5)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            if (requiredSize < 10)\n            {\n                WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n            }\n            else\n            {\n                printLine(\"Destination buffer not large enough to perform conversion.\");\n            }\n        }\n    }\n}\n\n\nstatic void f_njrauiww()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(5!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        wcscpy(data, L\"\\\\u9580\");\n    }\n    if(5==5)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\n\nstatic void f_nneyohpd()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(5==5)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\");\n    }\n    if(5==5)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\nvoid f_batagyce()\n{\n    f_ehzpjojl();\n    f_qaawxngn();\n    f_njrauiww();\n    f_nneyohpd();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_batagyce();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 500994,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_03.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\nvoid f_vovqtsaw()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(5==5)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    if(5==5)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_vovqtsaw();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 500995,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_03.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\n\n\nstatic void f_rdljhole()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    if(GLOBAL_CONST_FIVE!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            if (requiredSize < 10)\n            {\n                WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n            }\n            else\n            {\n                printLine(\"Destination buffer not large enough to perform conversion.\");\n            }\n        }\n    }\n}\n\n\nstatic void f_llkizjlo()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            if (requiredSize < 10)\n            {\n                WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n            }\n            else\n            {\n                printLine(\"Destination buffer not large enough to perform conversion.\");\n            }\n        }\n    }\n}\n\n\nstatic void f_gslkzdjb()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(GLOBAL_CONST_FIVE!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        wcscpy(data, L\"\\\\u9580\");\n    }\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\n\nstatic void f_zysdzjhn()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\");\n    }\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\nvoid f_srxoydrs()\n{\n    f_rdljhole();\n    f_llkizjlo();\n    f_gslkzdjb();\n    f_zysdzjhn();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_srxoydrs();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 500996,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_13.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\nvoid f_tlufsgjc()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_tlufsgjc();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 500997,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_13.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\n\n\nstatic void f_angpgogb()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(globalFive==5)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    if(globalFive!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            if (requiredSize < 10)\n            {\n                WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n            }\n            else\n            {\n                printLine(\"Destination buffer not large enough to perform conversion.\");\n            }\n        }\n    }\n}\n\n\nstatic void f_xfhqfbjj()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(globalFive==5)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    if(globalFive==5)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            if (requiredSize < 10)\n            {\n                WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n            }\n            else\n            {\n                printLine(\"Destination buffer not large enough to perform conversion.\");\n            }\n        }\n    }\n}\n\n\nstatic void f_vjoavxqq()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(globalFive!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        wcscpy(data, L\"\\\\u9580\");\n    }\n    if(globalFive==5)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\n\nstatic void f_hozazroz()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(globalFive==5)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\");\n    }\n    if(globalFive==5)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\nvoid f_tfpnvnvi()\n{\n    f_angpgogb();\n    f_xfhqfbjj();\n    f_vjoavxqq();\n    f_hozazroz();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_tfpnvnvi();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 500998,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_14.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\nvoid f_dclgejba()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(globalFive==5)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    if(globalFive==5)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_dclgejba();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 500999,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_14.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\n\n\nstatic void f_sjktcnfn()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(1)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    if(0)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            if (requiredSize < 10)\n            {\n                WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n            }\n            else\n            {\n                printLine(\"Destination buffer not large enough to perform conversion.\");\n            }\n        }\n    }\n}\n\n\nstatic void f_hbaqlpga()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(1)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    if(1)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            if (requiredSize < 10)\n            {\n                WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n            }\n            else\n            {\n                printLine(\"Destination buffer not large enough to perform conversion.\");\n            }\n        }\n    }\n}\n\n\nstatic void f_fexwiyri()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(0)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        wcscpy(data, L\"\\\\u9580\");\n    }\n    if(1)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\n\nstatic void f_wjxtgkmy()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(1)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\");\n    }\n    if(1)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\nvoid f_gfrmgodj()\n{\n    f_sjktcnfn();\n    f_hbaqlpga();\n    f_fexwiyri();\n    f_wjxtgkmy();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_gfrmgodj();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501000,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_02.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\nvoid f_lqokuufu()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(1)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    if(1)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_lqokuufu();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501001,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_02.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\n\n\nstatic void f_bzdzduiy()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(globalReturnsTrueOrFalse())\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    else\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    if(globalReturnsTrueOrFalse())\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            if (requiredSize < 10)\n            {\n                WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n            }\n            else\n            {\n                printLine(\"Destination buffer not large enough to perform conversion.\");\n            }\n        }\n    }\n    else\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            if (requiredSize < 10)\n            {\n                WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n            }\n            else\n            {\n                printLine(\"Destination buffer not large enough to perform conversion.\");\n            }\n        }\n    }\n}\n\n\nstatic void f_abfjafnc()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(globalReturnsTrueOrFalse())\n    {\n        \n        wcscpy(data, L\"\\\\u9580\");\n    }\n    else\n    {\n        \n        wcscpy(data, L\"\\\\u9580\");\n    }\n    if(globalReturnsTrueOrFalse())\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n    else\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\nvoid f_riwjgmgn()\n{\n    f_bzdzduiy();\n    f_abfjafnc();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_riwjgmgn();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501002,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_12.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\nvoid f_yjdrhrrl()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    if(globalReturnsTrueOrFalse())\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    else\n    {\n        \n        wcscpy(data, L\"\\\\u9580\");\n    }\n    if(globalReturnsTrueOrFalse())\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n    else\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            if (requiredSize < 10)\n            {\n                WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n            }\n            else\n            {\n                printLine(\"Destination buffer not large enough to perform conversion.\");\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_yjdrhrrl();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501003,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_12.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\n\n\nstatic int B2G1Static = 0;\nstatic int B2G2Static = 0;\nstatic int G2BStatic = 0;\n\n\nstatic void f_iofjaoey(wchar_t * data)\n{\n    if(B2G1Static)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            if (requiredSize < 10)\n            {\n                WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n            }\n            else\n            {\n                printLine(\"Destination buffer not large enough to perform conversion.\");\n            }\n        }\n    }\n}\n\nstatic void f_vjqwbayk()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    B2G1Static = 0; \n    f_iofjaoey(data);\n}\n\n\nstatic void f_afakppad(wchar_t * data)\n{\n    if(B2G2Static)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            if (requiredSize < 10)\n            {\n                WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n            }\n            else\n            {\n                printLine(\"Destination buffer not large enough to perform conversion.\");\n            }\n        }\n    }\n}\n\nstatic void f_ebxhvxqt()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    B2G2Static = 1; \n    f_afakppad(data);\n}\n\n\nstatic void f_dyelfuia(wchar_t * data)\n{\n    if(G2BStatic)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\nstatic void f_qnhmxtns()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\");\n    G2BStatic = 1; \n    f_dyelfuia(data);\n}\n\nvoid f_qsgeamcp()\n{\n    f_vjqwbayk();\n    f_ebxhvxqt();\n    f_qnhmxtns();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_qsgeamcp();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501004,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_21.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\n\nstatic int Static = 0;\n\nstatic void f_ptbtiply(wchar_t * data)\n{\n    if(Static)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\nvoid f_rtrmrdnd()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    Static = 1; \n    f_ptbtiply(data);\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_rtrmrdnd();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501005,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_21.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\n\n\nstatic void f_yzqmqfhm()\n{\n    wchar_t * data;\n    wchar_t * *dataPtr1 = &data;\n    wchar_t * *dataPtr2 = &data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    {\n        wchar_t * data = *dataPtr1;\n        \n        wcscpy(data, L\"\\\\u9580\");\n        *dataPtr1 = data;\n    }\n    {\n        wchar_t * data = *dataPtr2;\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\n\nstatic void f_wpuzvmat()\n{\n    wchar_t * data;\n    wchar_t * *dataPtr1 = &data;\n    wchar_t * *dataPtr2 = &data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    {\n        wchar_t * data = *dataPtr1;\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n        *dataPtr1 = data;\n    }\n    {\n        wchar_t * data = *dataPtr2;\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            if (requiredSize < 10)\n            {\n                WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n            }\n            else\n            {\n                printLine(\"Destination buffer not large enough to perform conversion.\");\n            }\n        }\n    }\n}\n\nvoid f_ttvajius()\n{\n    f_yzqmqfhm();\n    f_wpuzvmat();\n}\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ttvajius();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501006,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_32.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\nvoid f_jjnuruyg()\n{\n    wchar_t * data;\n    wchar_t * *dataPtr1 = &data;\n    wchar_t * *dataPtr2 = &data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    {\n        wchar_t * data = *dataPtr1;\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n        *dataPtr1 = data;\n    }\n    {\n        wchar_t * data = *dataPtr2;\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_jjnuruyg();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501007,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_32.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\nstatic wchar_t * _Improper_Handling_of_Unicode_Encoding__w32_45_Data;\nstatic wchar_t * _Improper_Handling_of_Unicode_Encoding__w32_45_G2BData;\nstatic wchar_t * _Improper_Handling_of_Unicode_Encoding__w32_45_B2GData;\n\n\n\n\nstatic void f_ggjmiozu()\n{\n    wchar_t * data = _Improper_Handling_of_Unicode_Encoding__w32_45_G2BData;\n    {\n        char convertedText[10] = \"\";\n        int requiredSize;\n        requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n        \n        WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n    }\n}\n\nstatic void f_mbmzhhmy()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\");\n    _Improper_Handling_of_Unicode_Encoding__w32_45_G2BData = data;\n    f_ggjmiozu();\n}\n\n\nstatic void f_qhgarcyt()\n{\n    wchar_t * data = _Improper_Handling_of_Unicode_Encoding__w32_45_B2GData;\n    {\n        char convertedText[10] = \"\";\n        int requiredSize;\n        requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n        \n        if (requiredSize < 10)\n        {\n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n        else\n        {\n            printLine(\"Destination buffer not large enough to perform conversion.\");\n        }\n    }\n}\n\nstatic void f_blrpnhme()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    _Improper_Handling_of_Unicode_Encoding__w32_45_B2GData = data;\n    f_qhgarcyt();\n}\n\nvoid f_ktlmdmed()\n{\n    f_mbmzhhmy();\n    f_blrpnhme();\n}\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ktlmdmed();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501008,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_45.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\nstatic wchar_t * _Improper_Handling_of_Unicode_Encoding__w32_45_Data;\nstatic wchar_t * _Improper_Handling_of_Unicode_Encoding__w32_45_G2BData;\nstatic wchar_t * _Improper_Handling_of_Unicode_Encoding__w32_45_B2GData;\n\n\nstatic void f_qeikobfj()\n{\n    wchar_t * data = _Improper_Handling_of_Unicode_Encoding__w32_45_Data;\n    {\n        char convertedText[10] = \"\";\n        int requiredSize;\n        requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n        \n        WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n    }\n}\n\nvoid f_wksemqow()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    _Improper_Handling_of_Unicode_Encoding__w32_45_Data = data;\n    f_qeikobfj();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_wksemqow();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501009,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_45.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\n\n\nstatic void f_zmqyyjov()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    while(1)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n        break;\n    }\n    while(1)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            if (requiredSize < 10)\n            {\n                WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n            }\n            else\n            {\n                printLine(\"Destination buffer not large enough to perform conversion.\");\n            }\n        }\n        break;\n    }\n}\n\n\nstatic void f_vmwmcgnb()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    while(1)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\");\n        break;\n    }\n    while(1)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n        break;\n    }\n}\n\nvoid f_uowskqoh()\n{\n    f_zmqyyjov();\n    f_vmwmcgnb();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_uowskqoh();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501010,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_16.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\nvoid f_vriawdxh()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    while(1)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n        break;\n    }\n    while(1)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n        break;\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_vriawdxh();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501011,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_16.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_qcexuiin(wchar_t * &data)\n{\n    \n    wcscpy(data, L\"\\\\u9580\");\n}\n\nstatic void f_xamozhtk()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    f_qcexuiin(data);\n    {\n        char convertedText[10] = \"\";\n        int requiredSize;\n        requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n        \n        WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n    }\n}\n\n\nstatic void f_djczerua(wchar_t * &data)\n{\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n}\n\nstatic void f_hilgojqi()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    f_djczerua(data);\n    {\n        char convertedText[10] = \"\";\n        int requiredSize;\n        requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n        \n        if (requiredSize < 10)\n        {\n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n        else\n        {\n            printLine(\"Destination buffer not large enough to perform conversion.\");\n        }\n    }\n}\n\nvoid f_mcndifyk()\n{\n    f_xamozhtk();\n    f_hilgojqi();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_mcndifyk();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501012,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_43.cpp",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\nnamespace _A_namespace\n{\n\n\nstatic void f_fyjtmxrz(wchar_t * &data)\n{\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n}\n\nvoid f_hrvjxolt()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    f_fyjtmxrz(data);\n    {\n        char convertedText[10] = \"\";\n        int requiredSize;\n        requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n        \n        WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n    }\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_hrvjxolt();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501013,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_43.cpp",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\n\n\nstatic void f_vvsrfzzo()\n{\n    int i,k;\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    for(i = 0; i < 1; i++)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    for(k = 0; k < 1; k++)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            if (requiredSize < 10)\n            {\n                WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n            }\n            else\n            {\n                printLine(\"Destination buffer not large enough to perform conversion.\");\n            }\n        }\n    }\n}\n\n\nstatic void f_pqbcauco()\n{\n    int h,j;\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    for(h = 0; h < 1; h++)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\");\n    }\n    for(j = 0; j < 1; j++)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\nvoid f_hogfgopj()\n{\n    f_vvsrfzzo();\n    f_pqbcauco();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_hogfgopj();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501014,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_17.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\nvoid f_vellundx()\n{\n    int i,j;\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    for(i = 0; i < 1; i++)\n    {\n        \n        wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    }\n    for(j = 0; j < 1; j++)\n    {\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_vellundx();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501015,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_17.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\ntypedef union\n{\n    wchar_t * unionFirst;\n    wchar_t * unionSecond;\n} _Improper_Handling_of_Unicode_Encoding__w32_34_unionType;\n\n\n\n\nstatic void f_zolyjavu()\n{\n    wchar_t * data;\n    _Improper_Handling_of_Unicode_Encoding__w32_34_unionType myUnion;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\");\n    myUnion.unionFirst = data;\n    {\n        wchar_t * data = myUnion.unionSecond;\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\n\nstatic void f_phaisdgc()\n{\n    wchar_t * data;\n    _Improper_Handling_of_Unicode_Encoding__w32_34_unionType myUnion;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    myUnion.unionFirst = data;\n    {\n        wchar_t * data = myUnion.unionSecond;\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            if (requiredSize < 10)\n            {\n                WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n            }\n            else\n            {\n                printLine(\"Destination buffer not large enough to perform conversion.\");\n            }\n        }\n    }\n}\n\nvoid f_hrjgowha()\n{\n    f_zolyjavu();\n    f_phaisdgc();\n}\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_hrjgowha();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501016,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_34.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\ntypedef union\n{\n    wchar_t * unionFirst;\n    wchar_t * unionSecond;\n} _Improper_Handling_of_Unicode_Encoding__w32_34_unionType;\n\n\nvoid f_mkagnjci()\n{\n    wchar_t * data;\n    _Improper_Handling_of_Unicode_Encoding__w32_34_unionType myUnion;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    myUnion.unionFirst = data;\n    {\n        wchar_t * data = myUnion.unionSecond;\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_mkagnjci();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501017,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_34.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\n\n\nstatic void f_ugtctiul(wchar_t * data)\n{\n    {\n        char convertedText[10] = \"\";\n        int requiredSize;\n        requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n        \n        WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n    }\n}\n\nstatic void f_mwknskmm()\n{\n    wchar_t * data;\n    void (*funcPtr) (wchar_t *) = f_ugtctiul;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\");\n    funcPtr(data);\n}\n\n\nstatic void f_lsilmdao(wchar_t * data)\n{\n    {\n        char convertedText[10] = \"\";\n        int requiredSize;\n        requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n        \n        if (requiredSize < 10)\n        {\n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n        else\n        {\n            printLine(\"Destination buffer not large enough to perform conversion.\");\n        }\n    }\n}\n\nstatic void f_vbqyouwh()\n{\n    wchar_t * data;\n    void (*funcPtr) (wchar_t *) = f_lsilmdao;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    funcPtr(data);\n}\n\nvoid f_rbrcijyy()\n{\n    f_mwknskmm();\n    f_vbqyouwh();\n}\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_rbrcijyy();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501018,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_44.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\nstatic void f_xfrwiask(wchar_t * data)\n{\n    {\n        char convertedText[10] = \"\";\n        int requiredSize;\n        requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n        \n        WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n    }\n}\n\nvoid f_rialllbc()\n{\n    wchar_t * data;\n    \n    void (*funcPtr) (wchar_t *) = f_xfrwiask;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    \n    funcPtr(data);\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_rialllbc();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501019,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_44.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_oibmrdvb()\n{\n    wchar_t * data;\n    wchar_t * &dataRef = data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\");\n    {\n        wchar_t * data = dataRef;\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\n\nstatic void f_kreuryep()\n{\n    wchar_t * data;\n    wchar_t * &dataRef = data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    {\n        wchar_t * data = dataRef;\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            if (requiredSize < 10)\n            {\n                WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n            }\n            else\n            {\n                printLine(\"Destination buffer not large enough to perform conversion.\");\n            }\n        }\n    }\n}\n\nvoid f_bhkvehde()\n{\n    f_oibmrdvb();\n    f_kreuryep();\n}\n\n\n} \n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_bhkvehde();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501020,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_33.cpp",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\nnamespace _A_namespace\n{\n\n\nvoid f_nwyuibgw()\n{\n    wchar_t * data;\n    wchar_t * &dataRef = data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    {\n        wchar_t * data = dataRef;\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\n\n\n} \n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_nwyuibgw();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501021,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_33.cpp",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\n\n\nstatic wchar_t * G2BSource(wchar_t * data)\n{\n    \n    wcscpy(data, L\"\\\\u9580\");\n    return data;\n}\n\nstatic void f_fylbwaip()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    data = G2BSource(data);\n    {\n        char convertedText[10] = \"\";\n        int requiredSize;\n        requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n        \n        WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n    }\n}\n\n\nstatic wchar_t * B2GSource(wchar_t * data)\n{\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    return data;\n}\n\nstatic void f_qkddbwcu()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    data = B2GSource(data);\n    {\n        char convertedText[10] = \"\";\n        int requiredSize;\n        requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n        \n        if (requiredSize < 10)\n        {\n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n        else\n        {\n            printLine(\"Destination buffer not large enough to perform conversion.\");\n        }\n    }\n}\n\nvoid f_tpcwapiz()\n{\n    f_qkddbwcu();\n    f_fylbwaip();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_tpcwapiz();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501022,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_42.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\nstatic wchar_t * Source(wchar_t * data)\n{\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    return data;\n}\n\nvoid f_rcqzuamt()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    data = Source(data);\n    {\n        char convertedText[10] = \"\";\n        int requiredSize;\n        requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n        \n        WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_rcqzuamt();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501023,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_42.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\n\n\nstatic void f_pczelurb(wchar_t * data)\n{\n    {\n        char convertedText[10] = \"\";\n        int requiredSize;\n        requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n        \n        WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n    }\n}\n\nstatic void f_nmavxcnf()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\");\n    f_pczelurb(data);\n}\n\n\nstatic void f_hqdfmuin(wchar_t * data)\n{\n    {\n        char convertedText[10] = \"\";\n        int requiredSize;\n        requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n        \n        if (requiredSize < 10)\n        {\n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n        else\n        {\n            printLine(\"Destination buffer not large enough to perform conversion.\");\n        }\n    }\n}\n\nstatic void f_yznkjtng()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    f_hqdfmuin(data);\n}\n\nvoid f_solzpiql()\n{\n    f_yznkjtng();\n    f_nmavxcnf();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_solzpiql();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501024,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_41.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\nstatic void f_ktexfmot(wchar_t * data)\n{\n    {\n        char convertedText[10] = \"\";\n        int requiredSize;\n        requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n        \n        WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n    }\n}\n\nvoid f_fwvdidcs()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    f_ktexfmot(data);\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_fwvdidcs();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501025,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_41.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\n\n\nstatic void f_lumkjgzf()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    goto source;\nsource:\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    goto sink;\nsink:\n    {\n        char convertedText[10] = \"\";\n        int requiredSize;\n        requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n        \n        if (requiredSize < 10)\n        {\n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n        else\n        {\n            printLine(\"Destination buffer not large enough to perform conversion.\");\n        }\n    }\n}\n\n\nstatic void f_uwnzozit()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    goto source;\nsource:\n    \n    wcscpy(data, L\"\\\\u9580\");\n    goto sink;\nsink:\n    {\n        char convertedText[10] = \"\";\n        int requiredSize;\n        requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n        \n        WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n    }\n}\n\nvoid f_adskniby()\n{\n    f_lumkjgzf();\n    f_uwnzozit();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_adskniby();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501026,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_18.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\nvoid f_mjrhmqbi()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    goto source;\nsource:\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    goto sink;\nsink:\n    {\n        char convertedText[10] = \"\";\n        int requiredSize;\n        requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n        \n        WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_mjrhmqbi();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501027,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_18.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\nnamespace _A_namespace\n{\n\n\n\n\nvoid G2BSource(wchar_t * &data);\n\nstatic void f_ygydbnaz()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    G2BSource(data);\n    {\n        char convertedText[10] = \"\";\n        int requiredSize;\n        requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n        \n        WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n    }\n}\n\n\nvoid B2GSource(wchar_t * &data);\n\nstatic void f_iavqenuj()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    B2GSource(data);\n    {\n        char convertedText[10] = \"\";\n        int requiredSize;\n        requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n        \n        if (requiredSize < 10)\n        {\n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n        else\n        {\n            printLine(\"Destination buffer not large enough to perform conversion.\");\n        }\n    }\n}\n\nvoid f_ibjgmjoz()\n{\n    f_ygydbnaz();\n    f_iavqenuj();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ibjgmjoz();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501028,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_62a.cpp",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\nnamespace _A_namespace\n{\n\n\n\nvoid Source(wchar_t * &data);\n\nvoid f_eenxwsqb()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    Source(data);\n    {\n        char convertedText[10] = \"\";\n        int requiredSize;\n        requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n        \n        WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n    }\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_eenxwsqb();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501029,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_62a.cpp",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\n\n\nstatic void f_dmebxtiu()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\");\n    {\n        wchar_t * dataCopy = data;\n        wchar_t * data = dataCopy;\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\n\nstatic void f_fgfiidri()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    {\n        wchar_t * dataCopy = data;\n        wchar_t * data = dataCopy;\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            if (requiredSize < 10)\n            {\n                WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n            }\n            else\n            {\n                printLine(\"Destination buffer not large enough to perform conversion.\");\n            }\n        }\n    }\n}\n\nvoid f_mnizmdti()\n{\n    f_dmebxtiu();\n    f_fgfiidri();\n}\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_mnizmdti();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501030,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_31.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\nvoid f_llzcwjch()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    {\n        wchar_t * dataCopy = data;\n        wchar_t * data = dataCopy;\n        {\n            char convertedText[10] = \"\";\n            int requiredSize;\n            requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n            \n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n    }\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_llzcwjch();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501031,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_31.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\n\n\nint _Improper_Handling_of_Unicode_Encoding__w32_22_B2G1Global = 0;\nint _Improper_Handling_of_Unicode_Encoding__w32_22_B2G2Global = 0;\nint _Improper_Handling_of_Unicode_Encoding__w32_22_G2BGlobal = 0;\n\n\nvoid _Improper_Handling_of_Unicode_Encoding__w32_22_B2G1Sink(wchar_t * data);\n\nstatic void f_cfvcijcv()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    _Improper_Handling_of_Unicode_Encoding__w32_22_B2G1Global = 0; \n    _Improper_Handling_of_Unicode_Encoding__w32_22_B2G1Sink(data);\n}\n\n\nvoid _Improper_Handling_of_Unicode_Encoding__w32_22_B2G2Sink(wchar_t * data);\n\nstatic void f_dsueqxda()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    _Improper_Handling_of_Unicode_Encoding__w32_22_B2G2Global = 1; \n    _Improper_Handling_of_Unicode_Encoding__w32_22_B2G2Sink(data);\n}\n\n\nvoid _Improper_Handling_of_Unicode_Encoding__w32_22_G2BSink(wchar_t * data);\n\nstatic void f_wdnshuej()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\");\n    _Improper_Handling_of_Unicode_Encoding__w32_22_G2BGlobal = 1; \n    _Improper_Handling_of_Unicode_Encoding__w32_22_G2BSink(data);\n}\n\nvoid f_rbbilmed()\n{\n    f_cfvcijcv();\n    f_dsueqxda();\n    f_wdnshuej();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_rbbilmed();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501032,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_22a.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\n\nint _Improper_Handling_of_Unicode_Encoding__w32_22_Global = 0;\n\nvoid _Improper_Handling_of_Unicode_Encoding__w32_22_Sink(wchar_t * data);\n\nvoid f_ybcsxwwu()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    _Improper_Handling_of_Unicode_Encoding__w32_22_Global = 1; \n    _Improper_Handling_of_Unicode_Encoding__w32_22_Sink(data);\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ybcsxwwu();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501033,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_22a.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n#include <list>\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\nusing namespace _A_namespace;\n\nnamespace _A_namespace\n{\n\n\n\n\nvoid G2BSink(list<wchar_t *> dataList);\n\nstatic void f_xehnwksw()\n{\n    wchar_t * data;\n    list<wchar_t *> dataList;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\");\n    \n    dataList.push_back(data);\n    dataList.push_back(data);\n    dataList.push_back(data);\n    G2BSink(dataList);\n}\n\n\nvoid B2GSink(list<wchar_t *> dataList);\n\nstatic void f_yzbfpkwk()\n{\n    wchar_t * data;\n    list<wchar_t *> dataList;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    dataList.push_back(data);\n    dataList.push_back(data);\n    dataList.push_back(data);\n    B2GSink(dataList);\n}\n\nvoid f_jjxhlbiz()\n{\n    f_xehnwksw();\n    f_yzbfpkwk();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_jjxhlbiz();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501034,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_73a.cpp",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n#include <list>\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\nusing namespace _A_namespace;\n\nnamespace _A_namespace\n{\n\n\n\nvoid Sink(list<wchar_t *> dataList);\n\nvoid f_dwpuweme()\n{\n    wchar_t * data;\n    list<wchar_t *> dataList;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    \n    dataList.push_back(data);\n    dataList.push_back(data);\n    dataList.push_back(data);\n    Sink(dataList);\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_dwpuweme();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501035,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_73a.cpp",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n#include <map>\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\nusing namespace _A_namespace;\n\nnamespace _A_namespace\n{\n\n\n\n\nvoid G2BSink(map<int, wchar_t *> dataMap);\n\nstatic void f_vklzjzzt()\n{\n    wchar_t * data;\n    map<int, wchar_t *> dataMap;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\");\n    \n    dataMap[0] = data;\n    dataMap[1] = data;\n    dataMap[2] = data;\n    G2BSink(dataMap);\n}\n\n\nvoid B2GSink(map<int, wchar_t *> dataMap);\n\nstatic void f_hyepqtqn()\n{\n    wchar_t * data;\n    map<int, wchar_t *> dataMap;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    dataMap[0] = data;\n    dataMap[1] = data;\n    dataMap[2] = data;\n    B2GSink(dataMap);\n}\n\nvoid f_qbwwgymk()\n{\n    f_vklzjzzt();\n    f_hyepqtqn();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_qbwwgymk();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501036,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_74a.cpp",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n#include <map>\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\nusing namespace _A_namespace;\n\nnamespace _A_namespace\n{\n\n\n\nvoid Sink(map<int, wchar_t *> dataMap);\n\nvoid f_wwouzdro()\n{\n    wchar_t * data;\n    map<int, wchar_t *> dataMap;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    \n    dataMap[0] = data;\n    dataMap[1] = data;\n    dataMap[2] = data;\n    Sink(dataMap);\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_wwouzdro();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501037,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_74a.cpp",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n#include <vector>\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\nusing namespace _A_namespace;\n\nnamespace _A_namespace\n{\n\n\n\n\nvoid G2BSink(vector<wchar_t *> dataVector);\n\nstatic void f_crpeflrd()\n{\n    wchar_t * data;\n    vector<wchar_t *> dataVector;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\");\n    \n    dataVector.insert(dataVector.end(), 1, data);\n    dataVector.insert(dataVector.end(), 1, data);\n    dataVector.insert(dataVector.end(), 1, data);\n    G2BSink(dataVector);\n}\n\n\nvoid B2GSink(vector<wchar_t *> dataVector);\n\nstatic void f_wuwhezok()\n{\n    wchar_t * data;\n    vector<wchar_t *> dataVector;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    dataVector.insert(dataVector.end(), 1, data);\n    dataVector.insert(dataVector.end(), 1, data);\n    dataVector.insert(dataVector.end(), 1, data);\n    B2GSink(dataVector);\n}\n\nvoid f_gpozyape()\n{\n    f_crpeflrd();\n    f_wuwhezok();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_gpozyape();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501038,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_72a.cpp",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n#include <vector>\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\nusing namespace _A_namespace;\n\nnamespace _A_namespace\n{\n\n\n\nvoid Sink(vector<wchar_t *> dataVector);\n\nvoid f_wpdhjxxb()\n{\n    wchar_t * data;\n    vector<wchar_t *> dataVector;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    \n    dataVector.insert(dataVector.end(), 1, data);\n    dataVector.insert(dataVector.end(), 1, data);\n    dataVector.insert(dataVector.end(), 1, data);\n    Sink(dataVector);\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_wpdhjxxb();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501039,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_72a.cpp",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\n\n\nwchar_t * _Improper_Handling_of_Unicode_Encoding__w32_61b_G2BSource(wchar_t * data);\n\nstatic void f_hukrtnzr()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    data = _Improper_Handling_of_Unicode_Encoding__w32_61b_G2BSource(data);\n    {\n        char convertedText[10] = \"\";\n        int requiredSize;\n        requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n        \n        WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n    }\n}\n\n\nwchar_t * _Improper_Handling_of_Unicode_Encoding__w32_61b_B2GSource(wchar_t * data);\n\nstatic void f_dzdrbfpg()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    data = _Improper_Handling_of_Unicode_Encoding__w32_61b_B2GSource(data);\n    {\n        char convertedText[10] = \"\";\n        int requiredSize;\n        requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n        \n        if (requiredSize < 10)\n        {\n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n        else\n        {\n            printLine(\"Destination buffer not large enough to perform conversion.\");\n        }\n    }\n}\n\nvoid f_yddxamas()\n{\n    f_hukrtnzr();\n    f_dzdrbfpg();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_yddxamas();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501040,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_61a.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\n\nwchar_t * _Improper_Handling_of_Unicode_Encoding__w32_61b_Source(wchar_t * data);\n\nvoid f_sqhwrtqu()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    data = _Improper_Handling_of_Unicode_Encoding__w32_61b_Source(data);\n    {\n        char convertedText[10] = \"\";\n        int requiredSize;\n        requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n        \n        WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_sqhwrtqu();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501041,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_61a.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\n\n\nstatic void f_hwwermor()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\");\n    {\n        char convertedText[10] = \"\";\n        int requiredSize;\n        requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n        \n        WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n    }\n}\n\n\nstatic void f_hzsvxodm()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    {\n        char convertedText[10] = \"\";\n        int requiredSize;\n        requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n        \n        if (requiredSize < 10)\n        {\n            WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n        }\n        else\n        {\n            printLine(\"Destination buffer not large enough to perform conversion.\");\n        }\n    }\n}\n\nvoid f_cobvgbfi()\n{\n    f_hwwermor();\n    f_hzsvxodm();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_cobvgbfi();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501042,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_01.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\nvoid f_bjchyxow()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    {\n        char convertedText[10] = \"\";\n        int requiredSize;\n        requiredSize = WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, 0, 0, 0);\n        \n        WideCharToMultiByte(CP_ACP, WC_COMPOSITECHECK, data, -1, convertedText, requiredSize , 0, 0);\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_bjchyxow();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501043,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_01.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\ntypedef struct __Improper_Handling_of_Unicode_Encoding__w32_67_structType\n{\n    wchar_t * structFirst;\n} _Improper_Handling_of_Unicode_Encoding__w32_67_structType;\n\n\n\n\nvoid _Improper_Handling_of_Unicode_Encoding__w32_67b_G2BSink(_Improper_Handling_of_Unicode_Encoding__w32_67_structType myStruct);\n\nstatic void f_ntidfmli()\n{\n    wchar_t * data;\n    _Improper_Handling_of_Unicode_Encoding__w32_67_structType myStruct;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\");\n    myStruct.structFirst = data;\n    _Improper_Handling_of_Unicode_Encoding__w32_67b_G2BSink(myStruct);\n}\n\n\nvoid _Improper_Handling_of_Unicode_Encoding__w32_67b_B2GSink(_Improper_Handling_of_Unicode_Encoding__w32_67_structType myStruct);\n\nstatic void f_ldgjzchz()\n{\n    wchar_t * data;\n    _Improper_Handling_of_Unicode_Encoding__w32_67_structType myStruct;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    myStruct.structFirst = data;\n    _Improper_Handling_of_Unicode_Encoding__w32_67b_B2GSink(myStruct);\n}\n\nvoid f_ksohpuib()\n{\n    f_ntidfmli();\n    f_ldgjzchz();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ksohpuib();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501046,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_67a.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\ntypedef struct __Improper_Handling_of_Unicode_Encoding__w32_67_structType\n{\n    wchar_t * structFirst;\n} _Improper_Handling_of_Unicode_Encoding__w32_67_structType;\n\n\n\nvoid _Improper_Handling_of_Unicode_Encoding__w32_67b_Sink(_Improper_Handling_of_Unicode_Encoding__w32_67_structType myStruct);\n\nvoid f_aimuydbx()\n{\n    wchar_t * data;\n    _Improper_Handling_of_Unicode_Encoding__w32_67_structType myStruct;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    myStruct.structFirst = data;\n    _Improper_Handling_of_Unicode_Encoding__w32_67b_Sink(myStruct);\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_aimuydbx();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501047,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_67a.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\n\n\nvoid _Improper_Handling_of_Unicode_Encoding__w32_66b_G2BSink(wchar_t * dataArray[]);\n\nstatic void f_mmdcxkeq()\n{\n    wchar_t * data;\n    wchar_t * dataArray[5];\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\");\n    dataArray[2] = data;\n    _Improper_Handling_of_Unicode_Encoding__w32_66b_G2BSink(dataArray);\n}\n\n\nvoid _Improper_Handling_of_Unicode_Encoding__w32_66b_B2GSink(wchar_t * dataArray[]);\n\nstatic void f_rraxaucg()\n{\n    wchar_t * data;\n    wchar_t * dataArray[5];\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    dataArray[2] = data;\n    _Improper_Handling_of_Unicode_Encoding__w32_66b_B2GSink(dataArray);\n}\n\nvoid f_hioyqjda()\n{\n    f_mmdcxkeq();\n    f_rraxaucg();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_hioyqjda();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501048,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_66a.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\n\nvoid _Improper_Handling_of_Unicode_Encoding__w32_66b_Sink(wchar_t * dataArray[]);\n\nvoid f_vmhuwzmg()\n{\n    wchar_t * data;\n    wchar_t * dataArray[5];\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    \n    dataArray[2] = data;\n    _Improper_Handling_of_Unicode_Encoding__w32_66b_Sink(dataArray);\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_vmhuwzmg();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501049,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_66a.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\nwchar_t * _Improper_Handling_of_Unicode_Encoding__w32_68_Data;\nwchar_t * _Improper_Handling_of_Unicode_Encoding__w32_68_G2BData;\nwchar_t * _Improper_Handling_of_Unicode_Encoding__w32_68_B2GData;\n\n\n\n\nvoid _Improper_Handling_of_Unicode_Encoding__w32_68b_G2BSink();\nvoid _Improper_Handling_of_Unicode_Encoding__w32_68b_B2GSink();\n\n\nstatic void f_jezfixvi()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\");\n    _Improper_Handling_of_Unicode_Encoding__w32_68_G2BData = data;\n    _Improper_Handling_of_Unicode_Encoding__w32_68b_G2BSink();\n}\n\n\nstatic void f_xdgdaedw()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    _Improper_Handling_of_Unicode_Encoding__w32_68_B2GData = data;\n    _Improper_Handling_of_Unicode_Encoding__w32_68b_B2GSink();\n}\n\nvoid f_pypdejyu()\n{\n    f_jezfixvi();\n    f_xdgdaedw();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_pypdejyu();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501050,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_68a.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\nwchar_t * _Improper_Handling_of_Unicode_Encoding__w32_68_Data;\nwchar_t * _Improper_Handling_of_Unicode_Encoding__w32_68_G2BData;\nwchar_t * _Improper_Handling_of_Unicode_Encoding__w32_68_B2GData;\n\n\n\nvoid _Improper_Handling_of_Unicode_Encoding__w32_68b_Sink();\n\nvoid f_gbcuqkxs()\n{\n    wchar_t * data;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    _Improper_Handling_of_Unicode_Encoding__w32_68_Data = data;\n    _Improper_Handling_of_Unicode_Encoding__w32_68b_Sink();\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_gbcuqkxs();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501051,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_68a.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\n\n\nvoid _Improper_Handling_of_Unicode_Encoding__w32_65b_G2BSink(wchar_t * data);\n\nstatic void f_ydiufgjb()\n{\n    wchar_t * data;\n    void (*funcPtr) (wchar_t *) = _Improper_Handling_of_Unicode_Encoding__w32_65b_G2BSink;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\");\n    funcPtr(data);\n}\n\n\nvoid _Improper_Handling_of_Unicode_Encoding__w32_65b_B2GSink(wchar_t * data);\n\nstatic void f_qshkrqow()\n{\n    wchar_t * data;\n    void (*funcPtr) (wchar_t *) = _Improper_Handling_of_Unicode_Encoding__w32_65b_B2GSink;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    funcPtr(data);\n}\n\nvoid f_qglmyafn()\n{\n    f_ydiufgjb();\n    f_qshkrqow();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_qglmyafn();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501052,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_65a.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-176"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#include <windows.h>\n#include <stdio.h>\n#include <wchar.h>\n#include <string.h>\n#pragma comment( lib, \"advapi32\" )\n\n\n\nvoid _Improper_Handling_of_Unicode_Encoding__w32_65b_Sink(wchar_t * data);\n\nvoid f_dkaxkzko()\n{\n    wchar_t * data;\n    \n    void (*funcPtr) (wchar_t *) = _Improper_Handling_of_Unicode_Encoding__w32_65b_Sink;\n    wchar_t dataBuffer[100];\n    data = dataBuffer;\n    \n    wcscpy(data, L\"\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\\\\u9580\\\\u961c\\\\u9640\\\\u963f\\\\u963b\\\\u9644\");\n    \n    funcPtr(data);\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_dkaxkzko();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 501053,
+    "original_file": "testcases/CWE176_Improper_Handling_of_Unicode_Encoding/CWE176_Improper_Handling_of_Unicode_Encoding__w32_65a.c",
+    "RELATED_CWE": [
+      "CWE-119",
+      "CWE-787",
+      "CWE-125"
+    ]
+  }
+]

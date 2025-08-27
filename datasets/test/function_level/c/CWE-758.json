@@ -1,0 +1,322 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-758"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic const int STATIC_CONST_FIVE = 5;\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_bebqgogx()\n{\n    if(STATIC_CONST_FIVE!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            int * data;\n            \n            data = new int;\n            *data = 5;\n            int * * pointer = new int *;\n            *pointer = data; \n            {\n                int * data = *pointer;\n                printIntLine(*data);\n            }\n            delete pointer;\n        }\n    }\n}\n\n\nstatic void f_vaacghqp()\n{\n    if(STATIC_CONST_FIVE==5)\n    {\n        {\n            int * data;\n            \n            data = new int;\n            *data = 5;\n            int * * pointer = new int *;\n            *pointer = data; \n            {\n                int * data = *pointer;\n                printIntLine(*data);\n            }\n            delete pointer;\n        }\n    }\n}\n\nvoid f_iiprctiq()\n{\n    f_bebqgogx();\n    f_vaacghqp();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_iiprctiq();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401120,
+    "original_file": "juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__int_pointer_new_use_06.cpp",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-758"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic const int STATIC_CONST_FIVE = 5;\n\nnamespace _A_namespace\n{\n\n\nvoid f_valynyqr()\n{\n    if(STATIC_CONST_FIVE==5)\n    {\n        {\n            int * * pointer = new int *;\n            int * data = *pointer; \n            delete pointer;\n            printIntLine(*data);\n        }\n    }\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_valynyqr();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401121,
+    "original_file": "juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__int_pointer_new_use_06.cpp",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-758"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic const int STATIC_CONST_TRUE = 1; \nstatic const int STATIC_CONST_FALSE = 0; \n\n\n\n\nstatic void f_rsfnmrmx()\n{\n    if(STATIC_CONST_FALSE)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            double * data;\n            double * * pointer = (double * *)malloc(sizeof(double *));\n            if (pointer == NULL) {exit(-1);}\n            \n            data = (double *)malloc(sizeof(double));\n            if (data == NULL) {exit(-1);}\n            *data = 5.0;\n            *pointer = data; \n            {\n                double * data = *pointer;\n                printDoubleLine(*data);\n            }\n            free(pointer);\n        }\n    }\n}\n\n\nstatic void f_aygmtseb()\n{\n    if(STATIC_CONST_TRUE)\n    {\n        {\n            double * data;\n            double * * pointer = (double * *)malloc(sizeof(double *));\n            if (pointer == NULL) {exit(-1);}\n            \n            data = (double *)malloc(sizeof(double));\n            if (data == NULL) {exit(-1);}\n            *data = 5.0;\n            *pointer = data; \n            {\n                double * data = *pointer;\n                printDoubleLine(*data);\n            }\n            free(pointer);\n        }\n    }\n}\n\nvoid f_fbneyijf()\n{\n    f_rsfnmrmx();\n    f_aygmtseb();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_fbneyijf();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401122,
+    "original_file": "juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__double_pointer_malloc_use_04.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-758"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic const int STATIC_CONST_TRUE = 1; \nstatic const int STATIC_CONST_FALSE = 0; \n\n\nvoid f_qifjieun()\n{\n    if(STATIC_CONST_TRUE)\n    {\n        {\n            double * * pointer = (double * *)malloc(sizeof(double *));\n            if (pointer == NULL) {exit(-1);}\n            double * data = *pointer; \n            free(pointer);\n            printDoubleLine(*data);\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_qifjieun();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401123,
+    "original_file": "juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__double_pointer_malloc_use_04.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-758"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic int staticTrue = 1; \nstatic int staticFalse = 0; \n\n\n\n\nstatic void f_odkjcpeg()\n{\n    if(staticFalse)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            int * data;\n            int * * pointer = (int * *)malloc(sizeof(int *));\n            if (pointer == NULL) {exit(-1);}\n            \n            data = (int *)malloc(sizeof(int));\n            if (data == NULL) {exit(-1);}\n            *data = 5;\n            *pointer = data; \n            {\n                int * data = *pointer;\n                printIntLine(*data);\n            }\n            free(pointer);\n        }\n    }\n}\n\n\nstatic void f_tyqlyoso()\n{\n    if(staticTrue)\n    {\n        {\n            int * data;\n            int * * pointer = (int * *)malloc(sizeof(int *));\n            if (pointer == NULL) {exit(-1);}\n            \n            data = (int *)malloc(sizeof(int));\n            if (data == NULL) {exit(-1);}\n            *data = 5;\n            *pointer = data; \n            {\n                int * data = *pointer;\n                printIntLine(*data);\n            }\n            free(pointer);\n        }\n    }\n}\n\nvoid f_lfmligoe()\n{\n    f_odkjcpeg();\n    f_tyqlyoso();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_lfmligoe();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401124,
+    "original_file": "juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__int_pointer_malloc_use_05.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-758"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic int staticTrue = 1; \nstatic int staticFalse = 0; \n\n\nvoid f_gpzhjpwe()\n{\n    if(staticTrue)\n    {\n        {\n            int * * pointer = (int * *)malloc(sizeof(int *));\n            if (pointer == NULL) {exit(-1);}\n            int * data = *pointer; \n            free(pointer);\n            printIntLine(*data);\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_gpzhjpwe();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401125,
+    "original_file": "juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__int_pointer_malloc_use_05.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-758"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic const int STATIC_CONST_TRUE = 1; \nstatic const int STATIC_CONST_FALSE = 0; \n\n\n\n\nstatic void f_ltnxdyuv()\n{\n    if(STATIC_CONST_FALSE)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            int * data;\n            int * * pointer = (int * *)malloc(sizeof(int *));\n            if (pointer == NULL) {exit(-1);}\n            \n            data = (int *)malloc(sizeof(int));\n            if (data == NULL) {exit(-1);}\n            *data = 5;\n            *pointer = data; \n            {\n                int * data = *pointer;\n                printIntLine(*data);\n            }\n            free(pointer);\n        }\n    }\n}\n\n\nstatic void f_kzglzysl()\n{\n    if(STATIC_CONST_TRUE)\n    {\n        {\n            int * data;\n            int * * pointer = (int * *)malloc(sizeof(int *));\n            if (pointer == NULL) {exit(-1);}\n            \n            data = (int *)malloc(sizeof(int));\n            if (data == NULL) {exit(-1);}\n            *data = 5;\n            *pointer = data; \n            {\n                int * data = *pointer;\n                printIntLine(*data);\n            }\n            free(pointer);\n        }\n    }\n}\n\nvoid f_oycdrzzb()\n{\n    f_ltnxdyuv();\n    f_kzglzysl();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_oycdrzzb();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401126,
+    "original_file": "juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__int_pointer_malloc_use_04.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-758"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic const int STATIC_CONST_TRUE = 1; \nstatic const int STATIC_CONST_FALSE = 0; \n\n\nvoid f_mkbxameo()\n{\n    if(STATIC_CONST_TRUE)\n    {\n        {\n            int * * pointer = (int * *)malloc(sizeof(int *));\n            if (pointer == NULL) {exit(-1);}\n            int * data = *pointer; \n            free(pointer);\n            printIntLine(*data);\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_mkbxameo();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401127,
+    "original_file": "juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__int_pointer_malloc_use_04.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-758"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\n\nstatic void f_bdjtsqil()\n{\n    switch(5)\n    {\n    case 6:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    default:\n    {\n        twoIntsStruct data;\n        twoIntsStruct * pointer = (twoIntsStruct *)ALLOCA(sizeof(twoIntsStruct));\n        data.intOne = 1;\n        data.intTwo = 2;\n        *pointer = data; \n        {\n            twoIntsStruct data = *pointer;\n            printIntLine(data.intOne);\n            printIntLine(data.intTwo);\n        }\n    }\n    break;\n    }\n}\n\n\nstatic void f_cdtysxsq()\n{\n    switch(6)\n    {\n    case 6:\n    {\n        twoIntsStruct data;\n        twoIntsStruct * pointer = (twoIntsStruct *)ALLOCA(sizeof(twoIntsStruct));\n        data.intOne = 1;\n        data.intTwo = 2;\n        *pointer = data; \n        {\n            twoIntsStruct data = *pointer;\n            printIntLine(data.intOne);\n            printIntLine(data.intTwo);\n        }\n    }\n    break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\nvoid f_veqgzqbg()\n{\n    f_bdjtsqil();\n    f_cdtysxsq();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_veqgzqbg();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401128,
+    "original_file": "juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_alloca_use_15.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-758"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_mbmkhhze()\n{\n    switch(6)\n    {\n    case 6:\n    {\n        twoIntsStruct * pointer = (twoIntsStruct *)ALLOCA(sizeof(twoIntsStruct));\n        twoIntsStruct data = *pointer; \n        printIntLine(data.intOne);\n        printIntLine(data.intTwo);\n    }\n    break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_mbmkhhze();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401129,
+    "original_file": "juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_alloca_use_15.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-758"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic int staticReturnsTrue()\n{\n    return 1;\n}\n\nstatic int staticReturnsFalse()\n{\n    return 0;\n}\n\n\n\n\nstatic void f_ysyxahpn()\n{\n    if(staticReturnsFalse())\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            twoIntsStruct data;\n            twoIntsStruct * pointer = (twoIntsStruct *)ALLOCA(sizeof(twoIntsStruct));\n            data.intOne = 1;\n            data.intTwo = 2;\n            *pointer = data; \n            {\n                twoIntsStruct data = *pointer;\n                printIntLine(data.intOne);\n                printIntLine(data.intTwo);\n            }\n        }\n    }\n}\n\n\nstatic void f_yyfgfqiq()\n{\n    if(staticReturnsTrue())\n    {\n        {\n            twoIntsStruct data;\n            twoIntsStruct * pointer = (twoIntsStruct *)ALLOCA(sizeof(twoIntsStruct));\n            data.intOne = 1;\n            data.intTwo = 2;\n            *pointer = data; \n            {\n                twoIntsStruct data = *pointer;\n                printIntLine(data.intOne);\n                printIntLine(data.intTwo);\n            }\n        }\n    }\n}\n\nvoid f_gqanktde()\n{\n    f_ysyxahpn();\n    f_yyfgfqiq();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_gqanktde();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401130,
+    "original_file": "juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_alloca_use_08.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-758"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic int staticReturnsTrue()\n{\n    return 1;\n}\n\nstatic int staticReturnsFalse()\n{\n    return 0;\n}\n\n\nvoid f_eiwauyzl()\n{\n    if(staticReturnsTrue())\n    {\n        {\n            twoIntsStruct * pointer = (twoIntsStruct *)ALLOCA(sizeof(twoIntsStruct));\n            twoIntsStruct data = *pointer; \n            printIntLine(data.intOne);\n            printIntLine(data.intTwo);\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_eiwauyzl();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401131,
+    "original_file": "juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_alloca_use_08.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-758"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic int staticTrue = 1; \nstatic int staticFalse = 0; \n\n\n\n\nstatic void f_mbwmdukl()\n{\n    if(staticFalse)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            double * data;\n            double * * pointer = (double * *)malloc(sizeof(double *));\n            if (pointer == NULL) {exit(-1);}\n            \n            data = (double *)malloc(sizeof(double));\n            if (data == NULL) {exit(-1);}\n            *data = 5.0;\n            *pointer = data; \n            {\n                double * data = *pointer;\n                printDoubleLine(*data);\n            }\n            free(pointer);\n        }\n    }\n}\n\n\nstatic void f_xjwfyhlt()\n{\n    if(staticTrue)\n    {\n        {\n            double * data;\n            double * * pointer = (double * *)malloc(sizeof(double *));\n            if (pointer == NULL) {exit(-1);}\n            \n            data = (double *)malloc(sizeof(double));\n            if (data == NULL) {exit(-1);}\n            *data = 5.0;\n            *pointer = data; \n            {\n                double * data = *pointer;\n                printDoubleLine(*data);\n            }\n            free(pointer);\n        }\n    }\n}\n\nvoid f_poqooadv()\n{\n    f_mbwmdukl();\n    f_xjwfyhlt();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_poqooadv();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401132,
+    "original_file": "juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__double_pointer_malloc_use_05.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-758"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic int staticTrue = 1; \nstatic int staticFalse = 0; \n\n\nvoid f_vjffjjsg()\n{\n    if(staticTrue)\n    {\n        {\n            double * * pointer = (double * *)malloc(sizeof(double *));\n            if (pointer == NULL) {exit(-1);}\n            double * data = *pointer; \n            free(pointer);\n            printDoubleLine(*data);\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_vjffjjsg();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401133,
+    "original_file": "juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__double_pointer_malloc_use_05.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-758"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\n\nstatic void f_fpufsvfv()\n{\n    if(globalReturnsTrueOrFalse())\n    {\n        {\n            twoIntsStruct * data;\n            twoIntsStruct * * pointer = (twoIntsStruct * *)ALLOCA(sizeof(twoIntsStruct *));\n            \n            data = (twoIntsStruct *)malloc(sizeof(twoIntsStruct));\n            if (data == NULL) {exit(-1);}\n            data->intOne = 5;\n            data->intTwo = 6;\n            *pointer = data; \n            {\n                twoIntsStruct * data = *pointer;\n                printIntLine(data->intOne);\n                printIntLine(data->intTwo);\n            }\n        }\n    }\n    else\n    {\n        {\n            twoIntsStruct * data;\n            twoIntsStruct * * pointer = (twoIntsStruct * *)ALLOCA(sizeof(twoIntsStruct *));\n            \n            data = (twoIntsStruct *)malloc(sizeof(twoIntsStruct));\n            if (data == NULL) {exit(-1);}\n            data->intOne = 5;\n            data->intTwo = 6;\n            *pointer = data; \n            {\n                twoIntsStruct * data = *pointer;\n                printIntLine(data->intOne);\n                printIntLine(data->intTwo);\n            }\n        }\n    }\n}\n\nvoid f_qfecmspe()\n{\n    f_fpufsvfv();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_qfecmspe();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401134,
+    "original_file": "juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_pointer_alloca_use_12.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-758"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_hjjhojer()\n{\n    if(globalReturnsTrueOrFalse())\n    {\n        {\n            twoIntsStruct * * pointer = (twoIntsStruct * *)ALLOCA(sizeof(twoIntsStruct *));\n            twoIntsStruct * data = *pointer; \n            printIntLine(data->intOne);\n            printIntLine(data->intTwo);\n        }\n    }\n    else\n    {\n        {\n            twoIntsStruct * data;\n            twoIntsStruct * * pointer = (twoIntsStruct * *)ALLOCA(sizeof(twoIntsStruct *));\n            \n            data = (twoIntsStruct *)malloc(sizeof(twoIntsStruct));\n            if (data == NULL) {exit(-1);}\n            data->intOne = 5;\n            data->intTwo = 6;\n            *pointer = data; \n            {\n                twoIntsStruct * data = *pointer;\n                printIntLine(data->intOne);\n                printIntLine(data->intTwo);\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_hjjhojer();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401135,
+    "original_file": "juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_pointer_alloca_use_12.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-758"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\n\nstatic void f_vorjhgbk()\n{\n    if(0)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            twoIntsStruct * data;\n            twoIntsStruct * * pointer = (twoIntsStruct * *)malloc(sizeof(twoIntsStruct *));\n            if (pointer == NULL) {exit(-1);}\n            \n            data = (twoIntsStruct *)malloc(sizeof(twoIntsStruct));\n            if (data == NULL) {exit(-1);}\n            data->intOne = 5;\n            data->intTwo = 6;\n            *pointer = data; \n            {\n                twoIntsStruct * data = *pointer;\n                printIntLine(data->intOne);\n                printIntLine(data->intTwo);\n            }\n            free(pointer);\n        }\n    }\n}\n\n\nstatic void f_xfmubfpu()\n{\n    if(1)\n    {\n        {\n            twoIntsStruct * data;\n            twoIntsStruct * * pointer = (twoIntsStruct * *)malloc(sizeof(twoIntsStruct *));\n            if (pointer == NULL) {exit(-1);}\n            \n            data = (twoIntsStruct *)malloc(sizeof(twoIntsStruct));\n            if (data == NULL) {exit(-1);}\n            data->intOne = 5;\n            data->intTwo = 6;\n            *pointer = data; \n            {\n                twoIntsStruct * data = *pointer;\n                printIntLine(data->intOne);\n                printIntLine(data->intTwo);\n            }\n            free(pointer);\n        }\n    }\n}\n\nvoid f_eajsovya()\n{\n    f_vorjhgbk();\n    f_xfmubfpu();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_eajsovya();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401136,
+    "original_file": "juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_pointer_malloc_use_02.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-758"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_gsamxgyx()\n{\n    if(1)\n    {\n        {\n            twoIntsStruct * * pointer = (twoIntsStruct * *)malloc(sizeof(twoIntsStruct *));\n            if (pointer == NULL) {exit(-1);}\n            twoIntsStruct * data = *pointer; \n            free(pointer);\n            printIntLine(data->intOne);\n            printIntLine(data->intTwo);\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_gsamxgyx();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401137,
+    "original_file": "juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_pointer_malloc_use_02.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-758"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\n\nstatic void f_dldgsmij()\n{\n    if(globalFalse)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            twoIntsStruct * data;\n            twoIntsStruct * * pointer = (twoIntsStruct * *)malloc(sizeof(twoIntsStruct *));\n            if (pointer == NULL) {exit(-1);}\n            \n            data = (twoIntsStruct *)malloc(sizeof(twoIntsStruct));\n            if (data == NULL) {exit(-1);}\n            data->intOne = 5;\n            data->intTwo = 6;\n            *pointer = data; \n            {\n                twoIntsStruct * data = *pointer;\n                printIntLine(data->intOne);\n                printIntLine(data->intTwo);\n            }\n            free(pointer);\n        }\n    }\n}\n\n\nstatic void f_wkzucjgm()\n{\n    if(globalTrue)\n    {\n        {\n            twoIntsStruct * data;\n            twoIntsStruct * * pointer = (twoIntsStruct * *)malloc(sizeof(twoIntsStruct *));\n            if (pointer == NULL) {exit(-1);}\n            \n            data = (twoIntsStruct *)malloc(sizeof(twoIntsStruct));\n            if (data == NULL) {exit(-1);}\n            data->intOne = 5;\n            data->intTwo = 6;\n            *pointer = data; \n            {\n                twoIntsStruct * data = *pointer;\n                printIntLine(data->intOne);\n                printIntLine(data->intTwo);\n            }\n            free(pointer);\n        }\n    }\n}\n\nvoid f_mjquegue()\n{\n    f_dldgsmij();\n    f_wkzucjgm();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_mjquegue();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401138,
+    "original_file": "juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_pointer_malloc_use_10.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-758"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_vzhcxuth()\n{\n    if(globalTrue)\n    {\n        {\n            twoIntsStruct * * pointer = (twoIntsStruct * *)malloc(sizeof(twoIntsStruct *));\n            if (pointer == NULL) {exit(-1);}\n            twoIntsStruct * data = *pointer; \n            free(pointer);\n            printIntLine(data->intOne);\n            printIntLine(data->intTwo);\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_vzhcxuth();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401139,
+    "original_file": "juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_pointer_malloc_use_10.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  }
+]

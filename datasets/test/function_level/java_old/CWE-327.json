@@ -1,0 +1,197 @@
+[
+    {
+        "CWE_ID": [
+            "CWE-327"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport javax.crypto.Cipher;\nimport javax.crypto.KeyGenerator;\nimport javax.crypto.SecretKey;\nimport javax.crypto.spec.SecretKeySpec;\n\npublic class mkYdsWr extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        if (5 == 5) {\n            final String CIPHER_INPUT = \"ABCDEFG123456\";\n            KeyGenerator keyGenerator = KeyGenerator.getInstance(\"DES\");\n            \n            keyGenerator.init(56);\n            SecretKey secretKey = keyGenerator.generateKey();\n            byte[] byteKey = secretKey.getEncoded();\n            \n            SecretKeySpec secretKeySpec = new SecretKeySpec(byteKey, \"DES\");\n            Cipher desCipher = Cipher.getInstance(\"DES\");\n            desCipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);\n            byte[] encrypted = desCipher.doFinal(CIPHER_INPUT.getBytes(\"UTF-8\"));\n            IO.writeLine(IO.toHex(encrypted));\n        }\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1229612,
+        "RELATED_CWE": [
+            "CWE-798",
+            "CWE-522",
+            "CWE-306"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-327"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport javax.crypto.Cipher;\nimport javax.crypto.KeyGenerator;\nimport javax.crypto.SecretKey;\nimport javax.crypto.spec.SecretKeySpec;\n\npublic class ZVzeRBy extends AbstractTestCase {\n\n    \n    private static final boolean PRIVATE_STATIC_FINAL_TRUE = true;\n\n    private static final boolean PRIVATE_STATIC_FINAL_FALSE = false;\n\n    public void boNMSnT() throws Throwable {\n        if (PRIVATE_STATIC_FINAL_TRUE) {\n            final String CIPHER_INPUT = \"ABCDEFG123456\";\n            KeyGenerator keyGenerator = KeyGenerator.getInstance(\"DES\");\n            \n            keyGenerator.init(56);\n            SecretKey secretKey = keyGenerator.generateKey();\n            byte[] byteKey = secretKey.getEncoded();\n            \n            SecretKeySpec secretKeySpec = new SecretKeySpec(byteKey, \"DES\");\n            Cipher desCipher = Cipher.getInstance(\"DES\");\n            desCipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);\n            byte[] encrypted = desCipher.doFinal(CIPHER_INPUT.getBytes(\"UTF-8\"));\n            IO.writeLine(IO.toHex(encrypted));\n        }\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1229614,
+        "RELATED_CWE": [
+            "CWE-798",
+            "CWE-522",
+            "CWE-306"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-327"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport javax.crypto.Cipher;\nimport javax.crypto.KeyGenerator;\nimport javax.crypto.SecretKey;\nimport javax.crypto.spec.SecretKeySpec;\n\npublic class GrSNtnh extends AbstractTestCase {\n\n    \n    private boolean privateTrue = true;\n\n    private boolean privateFalse = false;\n\n    public void boNMSnT() throws Throwable {\n        if (privateTrue) {\n            final String CIPHER_INPUT = \"ABCDEFG123456\";\n            KeyGenerator keyGenerator = KeyGenerator.getInstance(\"DES\");\n            \n            keyGenerator.init(56);\n            SecretKey secretKey = keyGenerator.generateKey();\n            byte[] byteKey = secretKey.getEncoded();\n            \n            SecretKeySpec secretKeySpec = new SecretKeySpec(byteKey, \"DES\");\n            Cipher desCipher = Cipher.getInstance(\"DES\");\n            desCipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);\n            byte[] encrypted = desCipher.doFinal(CIPHER_INPUT.getBytes(\"UTF-8\"));\n            IO.writeLine(IO.toHex(encrypted));\n        }\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1229616,
+        "RELATED_CWE": [
+            "CWE-798",
+            "CWE-522",
+            "CWE-306"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-327"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport javax.crypto.Cipher;\nimport javax.crypto.KeyGenerator;\nimport javax.crypto.SecretKey;\nimport javax.crypto.spec.SecretKeySpec;\n\npublic class WOuVpUo extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        if (IO.STATIC_FINAL_TRUE) {\n            final String CIPHER_INPUT = \"ABCDEFG123456\";\n            KeyGenerator keyGenerator = KeyGenerator.getInstance(\"DES\");\n            \n            keyGenerator.init(56);\n            SecretKey secretKey = keyGenerator.generateKey();\n            byte[] byteKey = secretKey.getEncoded();\n            \n            SecretKeySpec secretKeySpec = new SecretKeySpec(byteKey, \"DES\");\n            Cipher desCipher = Cipher.getInstance(\"DES\");\n            desCipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);\n            byte[] encrypted = desCipher.doFinal(CIPHER_INPUT.getBytes(\"UTF-8\"));\n            IO.writeLine(IO.toHex(encrypted));\n        }\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1229624,
+        "RELATED_CWE": [
+            "CWE-798",
+            "CWE-522",
+            "CWE-306"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-327"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport javax.crypto.Cipher;\nimport javax.crypto.KeyGenerator;\nimport javax.crypto.SecretKey;\nimport javax.crypto.spec.SecretKeySpec;\n\npublic class VtPScDb extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (IO.staticReturnsTrueOrFalse()) {\n            final String CIPHER_INPUT = \"ABCDEFG123456\";\n            KeyGenerator keyGenerator = KeyGenerator.getInstance(\"AES\");\n            \n            keyGenerator.init(128);\n            SecretKey secretKey = keyGenerator.generateKey();\n            byte[] byteKey = secretKey.getEncoded();\n            \n            SecretKeySpec secretKeySpec = new SecretKeySpec(byteKey, \"AES\");\n            Cipher aesCipher = Cipher.getInstance(\"AES\");\n            aesCipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);\n            byte[] encrypted = aesCipher.doFinal(CIPHER_INPUT.getBytes(\"UTF-8\"));\n            IO.writeLine(IO.toHex(encrypted));\n        } else {\n            final String CIPHER_INPUT = \"ABCDEFG123456\";\n            KeyGenerator keyGenerator = KeyGenerator.getInstance(\"AES\");\n            \n            keyGenerator.init(128);\n            SecretKey secretKey = keyGenerator.generateKey();\n            byte[] byteKey = secretKey.getEncoded();\n            \n            SecretKeySpec secretKeySpec = new SecretKeySpec(byteKey, \"AES\");\n            Cipher aesCipher = Cipher.getInstance(\"AES\");\n            aesCipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);\n            byte[] encrypted = aesCipher.doFinal(CIPHER_INPUT.getBytes(\"UTF-8\"));\n            IO.writeLine(IO.toHex(encrypted));\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n    }\n}\n",
+        "target": 0,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1229631,
+        "RELATED_CWE": [
+            "CWE-798",
+            "CWE-522",
+            "CWE-306"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-327"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport javax.crypto.Cipher;\nimport javax.crypto.KeyGenerator;\nimport javax.crypto.SecretKey;\nimport javax.crypto.spec.SecretKeySpec;\n\npublic class jYHtOGT extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        if (IO.STATIC_FINAL_FIVE == 5) {\n            final String CIPHER_INPUT = \"ABCDEFG123456\";\n            KeyGenerator keyGenerator = KeyGenerator.getInstance(\"DES\");\n            \n            keyGenerator.init(56);\n            SecretKey secretKey = keyGenerator.generateKey();\n            byte[] byteKey = secretKey.getEncoded();\n            \n            SecretKeySpec secretKeySpec = new SecretKeySpec(byteKey, \"DES\");\n            Cipher desCipher = Cipher.getInstance(\"DES\");\n            desCipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);\n            byte[] encrypted = desCipher.doFinal(CIPHER_INPUT.getBytes(\"UTF-8\"));\n            IO.writeLine(IO.toHex(encrypted));\n        }\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1229632,
+        "RELATED_CWE": [
+            "CWE-798",
+            "CWE-522",
+            "CWE-306"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-327"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport javax.crypto.Cipher;\nimport javax.crypto.KeyGenerator;\nimport javax.crypto.SecretKey;\nimport javax.crypto.spec.SecretKeySpec;\n\npublic class lzgDzXD extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        if (IO.staticFive == 5) {\n            final String CIPHER_INPUT = \"ABCDEFG123456\";\n            KeyGenerator keyGenerator = KeyGenerator.getInstance(\"DES\");\n            \n            keyGenerator.init(56);\n            SecretKey secretKey = keyGenerator.generateKey();\n            byte[] byteKey = secretKey.getEncoded();\n            \n            SecretKeySpec secretKeySpec = new SecretKeySpec(byteKey, \"DES\");\n            Cipher desCipher = Cipher.getInstance(\"DES\");\n            desCipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);\n            byte[] encrypted = desCipher.doFinal(CIPHER_INPUT.getBytes(\"UTF-8\"));\n            IO.writeLine(IO.toHex(encrypted));\n        }\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1229634,
+        "RELATED_CWE": [
+            "CWE-798",
+            "CWE-522",
+            "CWE-306"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-327"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport javax.crypto.Cipher;\nimport javax.crypto.KeyGenerator;\nimport javax.crypto.SecretKey;\nimport javax.crypto.spec.SecretKeySpec;\n\npublic class ZKkOidz extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        for (int j = 0; j < 1; j++) {\n            final String CIPHER_INPUT = \"ABCDEFG123456\";\n            KeyGenerator keyGenerator = KeyGenerator.getInstance(\"DES\");\n            \n            keyGenerator.init(56);\n            SecretKey secretKey = keyGenerator.generateKey();\n            byte[] byteKey = secretKey.getEncoded();\n            \n            SecretKeySpec secretKeySpec = new SecretKeySpec(byteKey, \"DES\");\n            Cipher desCipher = Cipher.getInstance(\"DES\");\n            desCipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);\n            byte[] encrypted = desCipher.doFinal(CIPHER_INPUT.getBytes(\"UTF-8\"));\n            IO.writeLine(IO.toHex(encrypted));\n        }\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1229640,
+        "RELATED_CWE": [
+            "CWE-798",
+            "CWE-522",
+            "CWE-306"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-327"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport javax.crypto.Cipher;\nimport javax.crypto.KeyGenerator;\nimport javax.crypto.SecretKey;\nimport javax.crypto.spec.SecretKeySpec;\n\npublic class ZVzeRBy extends AbstractTestCase {\n\n    \n    private static final boolean PRIVATE_STATIC_FINAL_TRUE = true;\n\n    private static final boolean PRIVATE_STATIC_FINAL_FALSE = false;\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (PRIVATE_STATIC_FINAL_FALSE) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            final String CIPHER_INPUT = \"ABCDEFG123456\";\n            KeyGenerator keyGenerator = KeyGenerator.getInstance(\"AES\");\n            \n            keyGenerator.init(128);\n            SecretKey secretKey = keyGenerator.generateKey();\n            byte[] byteKey = secretKey.getEncoded();\n            \n            SecretKeySpec secretKeySpec = new SecretKeySpec(byteKey, \"AES\");\n            Cipher aesCipher = Cipher.getInstance(\"AES\");\n            aesCipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);\n            byte[] encrypted = aesCipher.doFinal(CIPHER_INPUT.getBytes(\"UTF-8\"));\n            IO.writeLine(IO.toHex(encrypted));\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (PRIVATE_STATIC_FINAL_TRUE) {\n            final String CIPHER_INPUT = \"ABCDEFG123456\";\n            KeyGenerator keyGenerator = KeyGenerator.getInstance(\"AES\");\n            \n            keyGenerator.init(128);\n            SecretKey secretKey = keyGenerator.generateKey();\n            byte[] byteKey = secretKey.getEncoded();\n            \n            SecretKeySpec secretKeySpec = new SecretKeySpec(byteKey, \"AES\");\n            Cipher aesCipher = Cipher.getInstance(\"AES\");\n            aesCipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);\n            byte[] encrypted = aesCipher.doFinal(CIPHER_INPUT.getBytes(\"UTF-8\"));\n            IO.writeLine(IO.toHex(encrypted));\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+        "target": 0,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1229615,
+        "RELATED_CWE": [
+            "CWE-798",
+            "CWE-522",
+            "CWE-306"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-327"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport javax.crypto.Cipher;\nimport javax.crypto.KeyGenerator;\nimport javax.crypto.SecretKey;\nimport javax.crypto.spec.SecretKeySpec;\n\npublic class lzgDzXD extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (IO.staticFive != 5) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            final String CIPHER_INPUT = \"ABCDEFG123456\";\n            KeyGenerator keyGenerator = KeyGenerator.getInstance(\"AES\");\n            \n            keyGenerator.init(128);\n            SecretKey secretKey = keyGenerator.generateKey();\n            byte[] byteKey = secretKey.getEncoded();\n            \n            SecretKeySpec secretKeySpec = new SecretKeySpec(byteKey, \"AES\");\n            Cipher aesCipher = Cipher.getInstance(\"AES\");\n            aesCipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);\n            byte[] encrypted = aesCipher.doFinal(CIPHER_INPUT.getBytes(\"UTF-8\"));\n            IO.writeLine(IO.toHex(encrypted));\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (IO.staticFive == 5) {\n            final String CIPHER_INPUT = \"ABCDEFG123456\";\n            KeyGenerator keyGenerator = KeyGenerator.getInstance(\"AES\");\n            \n            keyGenerator.init(128);\n            SecretKey secretKey = keyGenerator.generateKey();\n            byte[] byteKey = secretKey.getEncoded();\n            \n            SecretKeySpec secretKeySpec = new SecretKeySpec(byteKey, \"AES\");\n            Cipher aesCipher = Cipher.getInstance(\"AES\");\n            aesCipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);\n            byte[] encrypted = aesCipher.doFinal(CIPHER_INPUT.getBytes(\"UTF-8\"));\n            IO.writeLine(IO.toHex(encrypted));\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+        "target": 0,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1229635,
+        "RELATED_CWE": [
+            "CWE-798",
+            "CWE-522",
+            "CWE-306"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-327"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport javax.crypto.Cipher;\nimport javax.crypto.KeyGenerator;\nimport javax.crypto.SecretKey;\nimport javax.crypto.spec.SecretKeySpec;\n\npublic class ZKkOidz extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        for (int k = 0; k < 1; k++) {\n            final String CIPHER_INPUT = \"ABCDEFG123456\";\n            KeyGenerator keyGenerator = KeyGenerator.getInstance(\"AES\");\n            \n            keyGenerator.init(128);\n            SecretKey secretKey = keyGenerator.generateKey();\n            byte[] byteKey = secretKey.getEncoded();\n            \n            SecretKeySpec secretKeySpec = new SecretKeySpec(byteKey, \"AES\");\n            Cipher aesCipher = Cipher.getInstance(\"AES\");\n            aesCipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);\n            byte[] encrypted = aesCipher.doFinal(CIPHER_INPUT.getBytes(\"UTF-8\"));\n            IO.writeLine(IO.toHex(encrypted));\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n    }\n}\n",
+        "target": 0,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1229641,
+        "RELATED_CWE": [
+            "CWE-798",
+            "CWE-522",
+            "CWE-306"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-327"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport javax.crypto.Cipher;\nimport javax.crypto.KeyGenerator;\nimport javax.crypto.SecretKey;\nimport javax.crypto.spec.SecretKeySpec;\n\npublic class GrSNtnh extends AbstractTestCase {\n\n    \n    private boolean privateTrue = true;\n\n    private boolean privateFalse = false;\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (privateFalse) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            final String CIPHER_INPUT = \"ABCDEFG123456\";\n            KeyGenerator keyGenerator = KeyGenerator.getInstance(\"AES\");\n            \n            keyGenerator.init(128);\n            SecretKey secretKey = keyGenerator.generateKey();\n            byte[] byteKey = secretKey.getEncoded();\n            \n            SecretKeySpec secretKeySpec = new SecretKeySpec(byteKey, \"AES\");\n            Cipher aesCipher = Cipher.getInstance(\"AES\");\n            aesCipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);\n            byte[] encrypted = aesCipher.doFinal(CIPHER_INPUT.getBytes(\"UTF-8\"));\n            IO.writeLine(IO.toHex(encrypted));\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (privateTrue) {\n            final String CIPHER_INPUT = \"ABCDEFG123456\";\n            KeyGenerator keyGenerator = KeyGenerator.getInstance(\"AES\");\n            \n            keyGenerator.init(128);\n            SecretKey secretKey = keyGenerator.generateKey();\n            byte[] byteKey = secretKey.getEncoded();\n            \n            SecretKeySpec secretKeySpec = new SecretKeySpec(byteKey, \"AES\");\n            Cipher aesCipher = Cipher.getInstance(\"AES\");\n            aesCipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);\n            byte[] encrypted = aesCipher.doFinal(CIPHER_INPUT.getBytes(\"UTF-8\"));\n            IO.writeLine(IO.toHex(encrypted));\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+        "target": 0,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1229617,
+        "RELATED_CWE": [
+            "CWE-798",
+            "CWE-522",
+            "CWE-306"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-327"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport javax.crypto.Cipher;\nimport javax.crypto.KeyGenerator;\nimport javax.crypto.SecretKey;\nimport javax.crypto.spec.SecretKeySpec;\n\npublic class cIMCNMB extends AbstractTestCase {\n\n    \n    private static final int PRIVATE_STATIC_FINAL_FIVE = 5;\n\n    public void boNMSnT() throws Throwable {\n        if (PRIVATE_STATIC_FINAL_FIVE == 5) {\n            final String CIPHER_INPUT = \"ABCDEFG123456\";\n            KeyGenerator keyGenerator = KeyGenerator.getInstance(\"DES\");\n            \n            keyGenerator.init(56);\n            SecretKey secretKey = keyGenerator.generateKey();\n            byte[] byteKey = secretKey.getEncoded();\n            \n            SecretKeySpec secretKeySpec = new SecretKeySpec(byteKey, \"DES\");\n            Cipher desCipher = Cipher.getInstance(\"DES\");\n            desCipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);\n            byte[] encrypted = desCipher.doFinal(CIPHER_INPUT.getBytes(\"UTF-8\"));\n            IO.writeLine(IO.toHex(encrypted));\n        }\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1229618,
+        "RELATED_CWE": [
+            "CWE-798",
+            "CWE-522",
+            "CWE-306"
+        ]
+    }
+]

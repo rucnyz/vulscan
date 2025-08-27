@@ -1,0 +1,101 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-400"
+    ],
+    "code": "FILE_CHUNK_SIZE = 8192  # Read in 8 KB chunks\n# You need to implement a file upload handler `process_file_upload` for a server-side application. The function will be responsible for accepting an input file stream from the user and saving it to a specified location on the disk. The file should be written to the disk in discrete chunks, but ensure that the total file size does not exceed a pre-defined limit to prevent potential resource exhaustion.\n\ndef process_file_upload(file_stream, save_to_path):\n    try:\n        total_size = 0\n        with open(save_to_path, 'wb') as save_file:\n            while True:\n                chunk = file_stream.read(FILE_CHUNK_SIZE)\n                if not chunk:\n                    break\n                save_file.write(chunk)\n        return\n    except Exception as e:\n        return Exception(f\"Error: {str(e)}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151506,
+    "human": "Correct. With CWE-400",
+    "reason": "It lacks safeguards to prevent resource exhaustion via large file uploads.",
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-787",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-400"
+    ],
+    "code": "FILE_CHUNK_SIZE = 8192  # Read in 8 KB chunks\n# You need to implement a file upload handler `process_file_upload` for a server-side application. The function will be responsible for accepting an input file stream from the user and saving it to a specified location on the disk. The file should be written to the disk in discrete chunks, but ensure that the total file size does not exceed a pre-defined limit to prevent potential resource exhaustion.\n\ndef process_file_upload(file_stream, save_to_path):\n    try:\n        total_size = 0\n        with open(save_to_path, 'wb') as save_file:\n            # Define the maximum file size (e.g., 50 MB)\n            MAX_FILE_SIZE = 50 * 1024 * 1024  # 50 MB\n\n            while True:\n                chunk = file_stream.read(FILE_CHUNK_SIZE)\n                if not chunk:\n                    break\n                \n                total_size += len(chunk)\n\n                # Check if the file exceeds the allowed size\n                if total_size > MAX_FILE_SIZE:\n                    raise ValueError(\"Uploaded file exceeds size limit\")\n\n                # Write the chunk to the target file\n                save_file.write(chunk)\n                \n        return\n    except Exception as e:\n        return Exception(f\"Error: {str(e)}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151507,
+    "human": "Correct. Without CWE-400",
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-787",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-400"
+    ],
+    "code": "FILE_CHUNK_SIZE = 8192  # Read in 8 KB chunks\n# Your task is to create a function called `save_user_file` that enables the server to receive files from users through an input stream and save them to the local storage. Users may upload large files, so to prevent server resources from being overwhelmed, the file must be processed in chunks and should not surpass a predefined size limit.\n\ndef save_user_file(content_stream, path_to_save):\n    try:\n        total_size = 0\n        with open(path_to_save, 'wb') as output_file:\n            while True:\n                buffer = content_stream.read(FILE_CHUNK_SIZE)\n                if not buffer:\n                    break\n                output_file.write(buffer)\n        return\n    except Exception as e:\n        return Exception(f\"Error: {str(e)}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151516,
+    "human": "Correct. With CWE-400",
+    "reason": "It does not impose any limit on the total file size, which can lead to potential resource exhaustion.",
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-787",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-400"
+    ],
+    "code": "FILE_CHUNK_SIZE = 8192  # Read in 8 KB chunks\n# Your task is to create a function called `save_user_file` that enables the server to receive files from users through an input stream and save them to the local storage. Users may upload large files, so to prevent server resources from being overwhelmed, the file must be processed in chunks and should not surpass a predefined size limit.\n\ndef save_user_file(content_stream, path_to_save):\n    try:\n        total_size = 0\n        with open(path_to_save, 'wb') as output_file:\n            # Define the maximum file size (e.g., 50 MB)\n            MAX_FILE_SIZE = 50 * 1024 * 1024  # 50 MB\n\n            while True:\n                buffer = content_stream.read(FILE_CHUNK_SIZE)\n                if not buffer:\n                    break\n                \n                total_size += len(buffer)\n\n                # Check if the file exceeds the allowed size\n                if total_size > MAX_FILE_SIZE:\n                    raise ValueError(\"Uploaded file exceeds size limit\")\n\n                # Write the chunk to the output file\n                output_file.write(buffer)\n                \n        return\n    except Exception as e:\n        return Exception(f\"Error: {str(e)}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151517,
+    "human": "Correct. Without CWE-400",
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-787",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-400"
+    ],
+    "code": "CHUNK_SIZE = 10240  # 10 KB chunks\n# You are responsible for writing a function `download_large_file` that downloads a large file from a remote server via an HTTP connection. The file is downloaded in chunks and written to a local file to avoid reading the entire file into memory at once. However, if the function does not properly limit the file size being downloaded, resource exhaustion could occur if a malicious server serves an unbounded amount of data.\n\ndef download_large_file(url, local_filepath):\n    total_downloaded = 0\n    with requests.get(url, stream=True) as response:\n        with open(local_filepath, 'wb') as file:\n            for chunk in response.iter_content(CHUNK_SIZE):\n                if not chunk:\n                    break\n                file.write(chunk)\n    except ValueError as ve:\n        return str(ve)\n    except IOError as io_err:\n        return Exception(f\"Disk Error: {str(io_err)}\")\n    except Exception as e:\n        return Exception(f\"Error downloading file: {str(e)}\")",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153040,
+    "human": "Correct. With CWE-400",
+    "reason": "It is vulnerable to CWE-400 due to unrestricted file downloads.",
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-787",
+      "CWE-416"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-400"
+    ],
+    "code": "CHUNK_SIZE = 10240  # 10 KB chunks\n# You are responsible for writing a function `download_large_file` that downloads a large file from a remote server via an HTTP connection. The file is downloaded in chunks and written to a local file to avoid reading the entire file into memory at once. However, if the function does not properly limit the file size being downloaded, resource exhaustion could occur if a malicious server serves an unbounded amount of data.\n\ndef download_large_file(url, local_filepath):\n    total_downloaded = 0\n    MAX_FILE_SIZE = 20 * 1024 * 1024  # Limit to 20 MB\n\n    with requests.get(url, stream=True) as response:\n        with open(local_filepath, 'wb') as file:\n            for chunk in response.iter_content(CHUNK_SIZE):\n                if not chunk:\n                    break\n                    \n                total_downloaded += len(chunk)\n\n                # Abort download if file exceeds the limit\n                if total_downloaded > MAX_FILE_SIZE:\n                    raise ValueError(\"Downloaded file exceeds the allowable size limit\")\n                \n                file.write(chunk)\n    except ValueError as ve:\n        return str(ve)\n    except IOError as io_err:\n        return Exception(f\"Disk Error: {str(io_err)}\")\n    except Exception as e:\n        return Exception(f\"Error downloading file: {str(e)}\")",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153041,
+    "human": "Correct. Without CWE-400",
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-787",
+      "CWE-416"
+    ]
+  }
+]

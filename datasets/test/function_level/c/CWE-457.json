@@ -1,0 +1,322 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-457"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_lmtruktj()\n{\n    double * data;\n    data = new double[10];\n    if(GLOBAL_CONST_TRUE)\n    {\n        \n        {\n            int i;\n            for(i=0; i<(10/2); i++)\n            {\n                data[i] = (double)i;\n            }\n        }\n    }\n    if(GLOBAL_CONST_FALSE)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i] = (double)i;\n            }\n        }\n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printDoubleLine(data[i]);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\n\nstatic void f_zateghen()\n{\n    double * data;\n    data = new double[10];\n    if(GLOBAL_CONST_TRUE)\n    {\n        \n        {\n            int i;\n            for(i=0; i<(10/2); i++)\n            {\n                data[i] = (double)i;\n            }\n        }\n    }\n    if(GLOBAL_CONST_TRUE)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i] = (double)i;\n            }\n        }\n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printDoubleLine(data[i]);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\n\nstatic void f_bhpzqcjx()\n{\n    double * data;\n    data = new double[10];\n    if(GLOBAL_CONST_FALSE)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i] = (double)i;\n            }\n        }\n    }\n    if(GLOBAL_CONST_TRUE)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printDoubleLine(data[i]);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\n\nstatic void f_htkpfoid()\n{\n    double * data;\n    data = new double[10];\n    if(GLOBAL_CONST_TRUE)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i] = (double)i;\n            }\n        }\n    }\n    if(GLOBAL_CONST_TRUE)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printDoubleLine(data[i]);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\nvoid f_qsjwbxfv()\n{\n    f_lmtruktj();\n    f_zateghen();\n    f_bhpzqcjx();\n    f_htkpfoid();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_qsjwbxfv();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400716,
+    "original_file": "testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__new_double_array_partial_init_09.cpp",
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-476"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-457"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\nnamespace _A_namespace\n{\n\n\nvoid f_prrkbcyn()\n{\n    double * data;\n    data = new double[10];\n    if(GLOBAL_CONST_TRUE)\n    {\n        \n        {\n            int i;\n            for(i=0; i<(10/2); i++)\n            {\n                data[i] = (double)i;\n            }\n        }\n    }\n    if(GLOBAL_CONST_TRUE)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printDoubleLine(data[i]);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_prrkbcyn();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400717,
+    "original_file": "testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__new_double_array_partial_init_09.cpp",
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-476"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-457"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\n\nstatic void f_ywxsngkc()\n{\n    twoIntsStruct * data;\n    data = (twoIntsStruct *)malloc(10*sizeof(twoIntsStruct));\n    if (data == NULL) {exit(-1);}\n    if(GLOBAL_CONST_TRUE)\n    {\n        \n        {\n            int i;\n            for(i=0; i<(10/2); i++)\n            {\n                data[i].intOne = i;\n                data[i].intTwo = i;\n            }\n        }\n    }\n    if(GLOBAL_CONST_FALSE)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i].intOne = i;\n                data[i].intTwo = i;\n            }\n        }\n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printIntLine(data[i].intOne);\n                printIntLine(data[i].intTwo);\n            }\n        }\n    }\n}\n\n\nstatic void f_svlinyon()\n{\n    twoIntsStruct * data;\n    data = (twoIntsStruct *)malloc(10*sizeof(twoIntsStruct));\n    if (data == NULL) {exit(-1);}\n    if(GLOBAL_CONST_TRUE)\n    {\n        \n        {\n            int i;\n            for(i=0; i<(10/2); i++)\n            {\n                data[i].intOne = i;\n                data[i].intTwo = i;\n            }\n        }\n    }\n    if(GLOBAL_CONST_TRUE)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i].intOne = i;\n                data[i].intTwo = i;\n            }\n        }\n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printIntLine(data[i].intOne);\n                printIntLine(data[i].intTwo);\n            }\n        }\n    }\n}\n\n\nstatic void f_csuxjpzz()\n{\n    twoIntsStruct * data;\n    data = (twoIntsStruct *)malloc(10*sizeof(twoIntsStruct));\n    if (data == NULL) {exit(-1);}\n    if(GLOBAL_CONST_FALSE)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i].intOne = i;\n                data[i].intTwo = i;\n            }\n        }\n    }\n    if(GLOBAL_CONST_TRUE)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printIntLine(data[i].intOne);\n                printIntLine(data[i].intTwo);\n            }\n        }\n    }\n}\n\n\nstatic void f_llnggfgy()\n{\n    twoIntsStruct * data;\n    data = (twoIntsStruct *)malloc(10*sizeof(twoIntsStruct));\n    if (data == NULL) {exit(-1);}\n    if(GLOBAL_CONST_TRUE)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i].intOne = i;\n                data[i].intTwo = i;\n            }\n        }\n    }\n    if(GLOBAL_CONST_TRUE)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printIntLine(data[i].intOne);\n                printIntLine(data[i].intTwo);\n            }\n        }\n    }\n}\n\nvoid f_itzhlkgd()\n{\n    f_ywxsngkc();\n    f_svlinyon();\n    f_csuxjpzz();\n    f_llnggfgy();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_itzhlkgd();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400718,
+    "original_file": "testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_array_malloc_partial_init_09.c",
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-476"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-457"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_zvizxxxc()\n{\n    twoIntsStruct * data;\n    data = (twoIntsStruct *)malloc(10*sizeof(twoIntsStruct));\n    if (data == NULL) {exit(-1);}\n    if(GLOBAL_CONST_TRUE)\n    {\n        \n        {\n            int i;\n            for(i=0; i<(10/2); i++)\n            {\n                data[i].intOne = i;\n                data[i].intTwo = i;\n            }\n        }\n    }\n    if(GLOBAL_CONST_TRUE)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printIntLine(data[i].intOne);\n                printIntLine(data[i].intTwo);\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_zvizxxxc();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400719,
+    "original_file": "testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_array_malloc_partial_init_09.c",
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-476"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-457"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\n\nstatic void f_mjdwuwvn()\n{\n    twoIntsStruct * data;\n    twoIntsStruct dataUninitArray[10];\n    data = dataUninitArray;\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<(10/2); i++)\n            {\n                data[i].intOne = i;\n                data[i].intTwo = i;\n            }\n        }\n    }\n    if(GLOBAL_CONST_FIVE!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i].intOne = i;\n                data[i].intTwo = i;\n            }\n        }\n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printIntLine(data[i].intOne);\n                printIntLine(data[i].intTwo);\n            }\n        }\n    }\n}\n\n\nstatic void f_pvsmdzhs()\n{\n    twoIntsStruct * data;\n    twoIntsStruct dataUninitArray[10];\n    data = dataUninitArray;\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<(10/2); i++)\n            {\n                data[i].intOne = i;\n                data[i].intTwo = i;\n            }\n        }\n    }\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i].intOne = i;\n                data[i].intTwo = i;\n            }\n        }\n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printIntLine(data[i].intOne);\n                printIntLine(data[i].intTwo);\n            }\n        }\n    }\n}\n\n\nstatic void f_ytkcbfdc()\n{\n    twoIntsStruct * data;\n    twoIntsStruct dataUninitArray[10];\n    data = dataUninitArray;\n    if(GLOBAL_CONST_FIVE!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i].intOne = i;\n                data[i].intTwo = i;\n            }\n        }\n    }\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printIntLine(data[i].intOne);\n                printIntLine(data[i].intTwo);\n            }\n        }\n    }\n}\n\n\nstatic void f_ijtjqsro()\n{\n    twoIntsStruct * data;\n    twoIntsStruct dataUninitArray[10];\n    data = dataUninitArray;\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i].intOne = i;\n                data[i].intTwo = i;\n            }\n        }\n    }\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printIntLine(data[i].intOne);\n                printIntLine(data[i].intTwo);\n            }\n        }\n    }\n}\n\nvoid f_rifrnyss()\n{\n    f_mjdwuwvn();\n    f_pvsmdzhs();\n    f_ytkcbfdc();\n    f_ijtjqsro();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_rifrnyss();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400720,
+    "original_file": "testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_array_declare_partial_init_13.c",
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-476"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-457"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_ychbahtm()\n{\n    twoIntsStruct * data;\n    twoIntsStruct dataUninitArray[10];\n    data = dataUninitArray;\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<(10/2); i++)\n            {\n                data[i].intOne = i;\n                data[i].intTwo = i;\n            }\n        }\n    }\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printIntLine(data[i].intOne);\n                printIntLine(data[i].intTwo);\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ychbahtm();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400721,
+    "original_file": "testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_array_declare_partial_init_13.c",
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-476"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-457"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_rlwlevzz()\n{\n    int * data;\n    data = new int[10];\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<(10/2); i++)\n            {\n                data[i] = i;\n            }\n        }\n    }\n    if(GLOBAL_CONST_FIVE!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i] = i;\n            }\n        }\n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printIntLine(data[i]);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\n\nstatic void f_gzlcqusv()\n{\n    int * data;\n    data = new int[10];\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<(10/2); i++)\n            {\n                data[i] = i;\n            }\n        }\n    }\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i] = i;\n            }\n        }\n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printIntLine(data[i]);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\n\nstatic void f_cwcugblw()\n{\n    int * data;\n    data = new int[10];\n    if(GLOBAL_CONST_FIVE!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i] = i;\n            }\n        }\n    }\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printIntLine(data[i]);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\n\nstatic void f_snjmyvjn()\n{\n    int * data;\n    data = new int[10];\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i] = i;\n            }\n        }\n    }\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printIntLine(data[i]);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\nvoid f_ovibcssy()\n{\n    f_rlwlevzz();\n    f_gzlcqusv();\n    f_cwcugblw();\n    f_snjmyvjn();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ovibcssy();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400722,
+    "original_file": "testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__new_int_array_partial_init_13.cpp",
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-476"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-457"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\nnamespace _A_namespace\n{\n\n\nvoid f_uoocoqpz()\n{\n    int * data;\n    data = new int[10];\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<(10/2); i++)\n            {\n                data[i] = i;\n            }\n        }\n    }\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printIntLine(data[i]);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_uoocoqpz();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400723,
+    "original_file": "testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__new_int_array_partial_init_13.cpp",
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-476"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-457"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_cnxgaico()\n{\n    double * data;\n    data = new double[10];\n    if(globalReturnsTrue())\n    {\n        \n        {\n            int i;\n            for(i=0; i<(10/2); i++)\n            {\n                data[i] = (double)i;\n            }\n        }\n    }\n    if(globalReturnsFalse())\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i] = (double)i;\n            }\n        }\n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printDoubleLine(data[i]);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\n\nstatic void f_dzxqausg()\n{\n    double * data;\n    data = new double[10];\n    if(globalReturnsTrue())\n    {\n        \n        {\n            int i;\n            for(i=0; i<(10/2); i++)\n            {\n                data[i] = (double)i;\n            }\n        }\n    }\n    if(globalReturnsTrue())\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i] = (double)i;\n            }\n        }\n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printDoubleLine(data[i]);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\n\nstatic void f_nhntbbdx()\n{\n    double * data;\n    data = new double[10];\n    if(globalReturnsFalse())\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i] = (double)i;\n            }\n        }\n    }\n    if(globalReturnsTrue())\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printDoubleLine(data[i]);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\n\nstatic void f_smmhrlwr()\n{\n    double * data;\n    data = new double[10];\n    if(globalReturnsTrue())\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i] = (double)i;\n            }\n        }\n    }\n    if(globalReturnsTrue())\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printDoubleLine(data[i]);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\nvoid f_rvnavprf()\n{\n    f_cnxgaico();\n    f_dzxqausg();\n    f_nhntbbdx();\n    f_smmhrlwr();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_rvnavprf();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400724,
+    "original_file": "testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__new_double_array_partial_init_11.cpp",
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-476"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-457"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\nnamespace _A_namespace\n{\n\n\nvoid f_htzdjgdr()\n{\n    double * data;\n    data = new double[10];\n    if(globalReturnsTrue())\n    {\n        \n        {\n            int i;\n            for(i=0; i<(10/2); i++)\n            {\n                data[i] = (double)i;\n            }\n        }\n    }\n    if(globalReturnsTrue())\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printDoubleLine(data[i]);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_htzdjgdr();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400725,
+    "original_file": "testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__new_double_array_partial_init_11.cpp",
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-476"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-457"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_evaqwemg()\n{\n    double * data;\n    data = new double[10];\n    if(globalFive==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<(10/2); i++)\n            {\n                data[i] = (double)i;\n            }\n        }\n    }\n    if(globalFive!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i] = (double)i;\n            }\n        }\n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printDoubleLine(data[i]);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\n\nstatic void f_llzxgqiq()\n{\n    double * data;\n    data = new double[10];\n    if(globalFive==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<(10/2); i++)\n            {\n                data[i] = (double)i;\n            }\n        }\n    }\n    if(globalFive==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i] = (double)i;\n            }\n        }\n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printDoubleLine(data[i]);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\n\nstatic void f_blxbqpos()\n{\n    double * data;\n    data = new double[10];\n    if(globalFive!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i] = (double)i;\n            }\n        }\n    }\n    if(globalFive==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printDoubleLine(data[i]);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\n\nstatic void f_hgdavjpy()\n{\n    double * data;\n    data = new double[10];\n    if(globalFive==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i] = (double)i;\n            }\n        }\n    }\n    if(globalFive==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printDoubleLine(data[i]);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\nvoid f_lbvlrths()\n{\n    f_evaqwemg();\n    f_llzxgqiq();\n    f_blxbqpos();\n    f_hgdavjpy();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_lbvlrths();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400726,
+    "original_file": "testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__new_double_array_partial_init_14.cpp",
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-476"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-457"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\nnamespace _A_namespace\n{\n\n\nvoid f_priugpxv()\n{\n    double * data;\n    data = new double[10];\n    if(globalFive==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<(10/2); i++)\n            {\n                data[i] = (double)i;\n            }\n        }\n    }\n    if(globalFive==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printDoubleLine(data[i]);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_priugpxv();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400727,
+    "original_file": "testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__new_double_array_partial_init_14.cpp",
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-476"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-457"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_umjgvrnu()\n{\n    double * data;\n    data = new double[10];\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<(10/2); i++)\n            {\n                data[i] = (double)i;\n            }\n        }\n    }\n    if(GLOBAL_CONST_FIVE!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i] = (double)i;\n            }\n        }\n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printDoubleLine(data[i]);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\n\nstatic void f_ihxlqgda()\n{\n    double * data;\n    data = new double[10];\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<(10/2); i++)\n            {\n                data[i] = (double)i;\n            }\n        }\n    }\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i] = (double)i;\n            }\n        }\n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printDoubleLine(data[i]);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\n\nstatic void f_pqzzfkjm()\n{\n    double * data;\n    data = new double[10];\n    if(GLOBAL_CONST_FIVE!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i] = (double)i;\n            }\n        }\n    }\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printDoubleLine(data[i]);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\n\nstatic void f_zbyyxqbm()\n{\n    double * data;\n    data = new double[10];\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i] = (double)i;\n            }\n        }\n    }\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printDoubleLine(data[i]);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\nvoid f_cxrujjyw()\n{\n    f_umjgvrnu();\n    f_ihxlqgda();\n    f_pqzzfkjm();\n    f_zbyyxqbm();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_cxrujjyw();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400728,
+    "original_file": "testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__new_double_array_partial_init_13.cpp",
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-476"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-457"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\nnamespace _A_namespace\n{\n\n\nvoid f_vjuopvme()\n{\n    double * data;\n    data = new double[10];\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<(10/2); i++)\n            {\n                data[i] = (double)i;\n            }\n        }\n    }\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printDoubleLine(data[i]);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_vjuopvme();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400729,
+    "original_file": "testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__new_double_array_partial_init_13.cpp",
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-476"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-457"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_xvubkjoz()\n{\n    int * data;\n    data = new int[10];\n    if(globalFive==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<(10/2); i++)\n            {\n                data[i] = i;\n            }\n        }\n    }\n    if(globalFive!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i] = i;\n            }\n        }\n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printIntLine(data[i]);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\n\nstatic void f_jahtxtks()\n{\n    int * data;\n    data = new int[10];\n    if(globalFive==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<(10/2); i++)\n            {\n                data[i] = i;\n            }\n        }\n    }\n    if(globalFive==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i] = i;\n            }\n        }\n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printIntLine(data[i]);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\n\nstatic void f_ilvhivin()\n{\n    int * data;\n    data = new int[10];\n    if(globalFive!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i] = i;\n            }\n        }\n    }\n    if(globalFive==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printIntLine(data[i]);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\n\nstatic void f_swjvhwqv()\n{\n    int * data;\n    data = new int[10];\n    if(globalFive==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i] = i;\n            }\n        }\n    }\n    if(globalFive==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printIntLine(data[i]);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\nvoid f_pwbydwsu()\n{\n    f_xvubkjoz();\n    f_jahtxtks();\n    f_ilvhivin();\n    f_swjvhwqv();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_pwbydwsu();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400730,
+    "original_file": "testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__new_int_array_partial_init_14.cpp",
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-476"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-457"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\nnamespace _A_namespace\n{\n\n\nvoid f_yeozsacy()\n{\n    int * data;\n    data = new int[10];\n    if(globalFive==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<(10/2); i++)\n            {\n                data[i] = i;\n            }\n        }\n    }\n    if(globalFive==5)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printIntLine(data[i]);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_yeozsacy();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400731,
+    "original_file": "testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__new_int_array_partial_init_14.cpp",
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-476"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-457"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_goxdccrl()\n{\n    int * data;\n    data = new int[10];\n    if(globalReturnsTrue())\n    {\n        \n        {\n            int i;\n            for(i=0; i<(10/2); i++)\n            {\n                data[i] = i;\n            }\n        }\n    }\n    if(globalReturnsFalse())\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i] = i;\n            }\n        }\n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printIntLine(data[i]);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\n\nstatic void f_udhiarbd()\n{\n    int * data;\n    data = new int[10];\n    if(globalReturnsTrue())\n    {\n        \n        {\n            int i;\n            for(i=0; i<(10/2); i++)\n            {\n                data[i] = i;\n            }\n        }\n    }\n    if(globalReturnsTrue())\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i] = i;\n            }\n        }\n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printIntLine(data[i]);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\n\nstatic void f_ufupqdjz()\n{\n    int * data;\n    data = new int[10];\n    if(globalReturnsFalse())\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i] = i;\n            }\n        }\n    }\n    if(globalReturnsTrue())\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printIntLine(data[i]);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\n\nstatic void f_kynfiohl()\n{\n    int * data;\n    data = new int[10];\n    if(globalReturnsTrue())\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i] = i;\n            }\n        }\n    }\n    if(globalReturnsTrue())\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printIntLine(data[i]);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\nvoid f_ckzswbbn()\n{\n    f_goxdccrl();\n    f_udhiarbd();\n    f_ufupqdjz();\n    f_kynfiohl();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ckzswbbn();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400732,
+    "original_file": "testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__new_int_array_partial_init_11.cpp",
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-476"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-457"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\nnamespace _A_namespace\n{\n\n\nvoid f_ktpxtcqf()\n{\n    int * data;\n    data = new int[10];\n    if(globalReturnsTrue())\n    {\n        \n        {\n            int i;\n            for(i=0; i<(10/2); i++)\n            {\n                data[i] = i;\n            }\n        }\n    }\n    if(globalReturnsTrue())\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printIntLine(data[i]);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ktpxtcqf();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400733,
+    "original_file": "testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__new_int_array_partial_init_11.cpp",
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-476"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-457"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic int staticTrue = 1; \nstatic int staticFalse = 0; \n\nnamespace _A_namespace\n{\n\n\n\n\nstatic void f_dytswixn()\n{\n    twoIntsStruct * data;\n    data = new twoIntsStruct[10];\n    if(staticTrue)\n    {\n        \n        ; \n    }\n    if(staticFalse)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i].intOne = i;\n                data[i].intTwo = i;\n            }\n        }\n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printIntLine(data[i].intOne);\n                printIntLine(data[i].intTwo);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\n\nstatic void f_wqpzcjuw()\n{\n    twoIntsStruct * data;\n    data = new twoIntsStruct[10];\n    if(staticTrue)\n    {\n        \n        ; \n    }\n    if(staticTrue)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i].intOne = i;\n                data[i].intTwo = i;\n            }\n        }\n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printIntLine(data[i].intOne);\n                printIntLine(data[i].intTwo);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\n\nstatic void f_rmqktkqj()\n{\n    twoIntsStruct * data;\n    data = new twoIntsStruct[10];\n    if(staticFalse)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i].intOne = i;\n                data[i].intTwo = i;\n            }\n        }\n    }\n    if(staticTrue)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printIntLine(data[i].intOne);\n                printIntLine(data[i].intTwo);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\n\nstatic void f_sxxoclga()\n{\n    twoIntsStruct * data;\n    data = new twoIntsStruct[10];\n    if(staticTrue)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                data[i].intOne = i;\n                data[i].intTwo = i;\n            }\n        }\n    }\n    if(staticTrue)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printIntLine(data[i].intOne);\n                printIntLine(data[i].intTwo);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\nvoid f_lwscgfxs()\n{\n    f_dytswixn();\n    f_wqpzcjuw();\n    f_rmqktkqj();\n    f_sxxoclga();\n}\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_lwscgfxs();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400734,
+    "original_file": "testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__new_struct_array_no_init_05.cpp",
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-476"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-457"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic int staticTrue = 1; \nstatic int staticFalse = 0; \n\nnamespace _A_namespace\n{\n\n\nvoid f_eshforxq()\n{\n    twoIntsStruct * data;\n    data = new twoIntsStruct[10];\n    if(staticTrue)\n    {\n        \n        ; \n    }\n    if(staticTrue)\n    {\n        \n        {\n            int i;\n            for(i=0; i<10; i++)\n            {\n                printIntLine(data[i].intOne);\n                printIntLine(data[i].intTwo);\n            }\n        }\n        \n        delete [] data;\n    }\n}\n\n\n\n} \n\n\n\n\nusing namespace _A_namespace; \n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_eshforxq();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 400735,
+    "original_file": "testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__new_struct_array_no_init_05.cpp",
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-415",
+      "CWE-476"
+    ]
+  }
+]

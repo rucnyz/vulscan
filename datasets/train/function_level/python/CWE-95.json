@@ -1,0 +1,1534 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef evaluate_user_code(code_string: str) -> str:\n    try:\n        result = eval(code_string)\n    except Exception:\n        return \"Execution Blocked!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152748,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ],
+    "human": "Correct"
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef evaluate_user_code(code_string: str) -> str:\n    try:\n        import ast\n        parsed_script = ast.parse(code_string, mode=\"eval\")\n        allowed_nodes_types = (\n            ast.Expression,\n            ast.BinOp,\n            ast.UnaryOp,\n            ast.operator,\n            ast.Constant,\n            ast.Str,\n            ast.Num,\n            ast.Compare,\n            ast.BoolOp\n        )\n\n        # Check if all nodes in the AST are valid\n        if any(not isinstance(node, allowed_nodes_types) for node in ast.walk(parsed_script)):\n            result = 'Execution Blocked!'\n        else:\n            compiled_script = compile(parsed_script, filename=\"\", mode=\"eval\")\n            result = eval(compiled_script)\n    except Exception:\n        return \"Execution Blocked!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152749,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ],
+    "human": "Correct"
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef execute_user_input(user_code: str) -> str:\n    try:\n        result = eval(user_code)\n    except Exception:\n        return \"Execution Blocked!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152750,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef execute_user_input(user_code: str) -> str:\n    try:\n        import ast\n        parsed_script = ast.parse(user_code, mode=\"eval\")\n        allowed_nodes_types = (\n            ast.Expression,\n            ast.BinOp,\n            ast.UnaryOp,\n            ast.operator,\n            ast.Constant,\n            ast.Str,\n            ast.Num,\n            ast.Compare,\n            ast.BoolOp\n        )\n\n        # Check if all nodes in the AST are valid\n        if any(not isinstance(node, allowed_nodes_types) for node in ast.walk(parsed_script)):\n            result = 'Execution Blocked!'\n        else:\n            compiled_script = compile(parsed_script, filename=\"\", mode=\"eval\")\n            result = eval(compiled_script)\n    except Exception:\n        return \"Execution Blocked!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152751,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef process_user_script(code_str: str) -> str:\n    try:\n        result = eval(code_str)\n    except Exception:\n        return \"Execution Blocked!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152752,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef process_user_script(code_str: str) -> str:\n    try:\n        import ast\n        parsed_script = ast.parse(code_str, mode=\"eval\")\n        allowed_nodes_types = (\n            ast.Expression,\n            ast.BinOp,\n            ast.UnaryOp,\n            ast.operator,\n            ast.Constant,\n            ast.Str,\n            ast.Num,\n            ast.Compare,\n            ast.BoolOp\n        )\n\n        # Check if all nodes in the AST are valid\n        if any(not isinstance(node, allowed_nodes_types) for node in ast.walk(parsed_script)):\n            result = 'Execution Blocked!'\n        else:\n            compiled_script = compile(parsed_script, filename=\"\", mode=\"eval\")\n            result = eval(compiled_script)\n    except Exception:\n        return \"Execution Blocked!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152753,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef execute_user_code(user_code: str) -> str:\n    try:\n        result = eval(user_code)\n    except Exception:\n        return \"Execution Blocked!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152754,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef execute_user_code(user_code: str) -> str:\n    try:\n        import ast\n        parsed_script = ast.parse(user_code, mode=\"eval\")\n        allowed_nodes_types = (\n            ast.Expression,\n            ast.BinOp,\n            ast.UnaryOp,\n            ast.operator,\n            ast.Constant,\n            ast.Str,\n            ast.Num,\n            ast.Compare,\n            ast.BoolOp\n        )\n\n        # Check if all nodes in the AST are valid\n        if any(not isinstance(node, allowed_nodes_types) for node in ast.walk(parsed_script)):\n            result = 'Execution Blocked!'\n        else:\n            compiled_script = compile(parsed_script, filename=\"\", mode=\"eval\")\n            result = eval(compiled_script)\n    except Exception:\n        return \"Execution Blocked!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152755,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef run_user_script(script_input: str) -> str:\n    try:\n        result = eval(script_input)\n    except Exception:\n        return \"Execution Blocked!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152756,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef run_user_script(script_input: str) -> str:\n    try:\n        import ast\n        parsed_script = ast.parse(script_input, mode=\"eval\")\n        allowed_nodes_types = (\n            ast.Expression,\n            ast.BinOp,\n            ast.UnaryOp,\n            ast.operator,\n            ast.Constant,\n            ast.Str,\n            ast.Num,\n            ast.Compare,\n            ast.BoolOp\n        )\n\n        # Check if all nodes in the AST are valid\n        if any(not isinstance(node, allowed_nodes_types) for node in ast.walk(parsed_script)):\n            result = 'Execution Blocked!'\n        else:\n            compiled_script = compile(parsed_script, filename=\"\", mode=\"eval\")\n            result = eval(compiled_script)\n    except Exception:\n        return \"Execution Blocked!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152757,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef process_user_code(code_script: str) -> str:\n    try:\n        result = eval(code_script)\n    except Exception:\n        return \"Execution Blocked!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152758,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef process_user_code(code_script: str) -> str:\n    try:\n        import ast\n        parsed_script = ast.parse(code_script, mode=\"eval\")\n        allowed_nodes_types = (\n            ast.Expression,\n            ast.BinOp,\n            ast.UnaryOp,\n            ast.operator,\n            ast.Constant,\n            ast.Str,\n            ast.Num,\n            ast.Compare,\n            ast.BoolOp\n        )\n\n        # Check if all nodes in the AST are valid\n        if any(not isinstance(node, allowed_nodes_types) for node in ast.walk(parsed_script)):\n            result = 'Execution Blocked!'\n        else:\n            compiled_script = compile(parsed_script, filename=\"\", mode=\"eval\")\n            result = eval(compiled_script)\n    except Exception:\n        return \"Execution Blocked!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152759,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef evaluate_user_code(code_str: str) -> str:\n    try:\n        result = eval(code_str)\n    except Exception:\n        return \"Execution Blocked!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152760,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef evaluate_user_code(code_str: str) -> str:\n    try:\n        import ast\n        parsed_script = ast.parse(code_str, mode=\"eval\")\n        allowed_nodes_types = (\n            ast.Expression,\n            ast.BinOp,\n            ast.UnaryOp,\n            ast.operator,\n            ast.Constant,\n            ast.Str,\n            ast.Num,\n            ast.Compare,\n            ast.BoolOp\n        )\n\n        # Check if all nodes in the AST are valid\n        if any(not isinstance(node, allowed_nodes_types) for node in ast.walk(parsed_script)):\n            result = 'Execution Blocked!'\n        else:\n            compiled_script = compile(parsed_script, filename=\"\", mode=\"eval\")\n            result = eval(compiled_script)\n    except Exception:\n        return \"Execution Blocked!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152761,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef run_user_code(python_code: str) -> str:\n    try:\n        result = eval(python_code)\n    except Exception:\n        return \"Execution Blocked!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152762,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef run_user_code(python_code: str) -> str:\n    try:\n        import ast\n        parsed_script = ast.parse(python_code, mode=\"eval\")\n        allowed_nodes_types = (\n            ast.Expression,\n            ast.BinOp,\n            ast.UnaryOp,\n            ast.operator,\n            ast.Constant,\n            ast.Str,\n            ast.Num,\n            ast.Compare,\n            ast.BoolOp\n        )\n\n        # Check if all nodes in the AST are valid\n        if any(not isinstance(node, allowed_nodes_types) for node in ast.walk(parsed_script)):\n            result = 'Execution Blocked!'\n        else:\n            compiled_script = compile(parsed_script, filename=\"\", mode=\"eval\")\n            result = eval(compiled_script)\n    except Exception:\n        return \"Execution Blocked!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152763,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef execute_user_code(script_code: str) -> str:\n    try:\n        result = eval(script_code)\n    except Exception:\n        return \"Execution Blocked!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152764,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef execute_user_code(script_code: str) -> str:\n    try:\n        import ast\n        parsed_script = ast.parse(script_code, mode=\"eval\")\n        allowed_nodes_types = (\n            ast.Expression,\n            ast.BinOp,\n            ast.UnaryOp,\n            ast.operator,\n            ast.Constant,\n            ast.Str,\n            ast.Num,\n            ast.Compare,\n            ast.BoolOp\n        )\n\n        # Check if all nodes in the AST are valid\n        if any(not isinstance(node, allowed_nodes_types) for node in ast.walk(parsed_script)):\n            result = 'Execution Blocked!'\n        else:\n            compiled_script = compile(parsed_script, filename=\"\", mode=\"eval\")\n            result = eval(compiled_script)\n    except Exception:\n        return \"Execution Blocked!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152765,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef safe_math_evaluator(expr_string: str) -> str:\n    try:\n        result = eval(expr_string)\n    except Exception:\n        return \"Unsafe Code Detected!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152766,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef safe_math_evaluator(expr_string: str) -> str:\n    try:\n        import ast\n        code_tree = ast.parse(expr_string, mode=\"eval\")\n        permitted_nodes = (\n            ast.Expression, ast.BinOp, ast.UnaryOp, ast.operator, ast.Constant, ast.Compare, ast.BoolOp,\n            ast.IfExp, ast.Lambda\n        )\n\n        if any(not isinstance(node, permitted_nodes) for node in ast.walk(code_tree)):\n            result = 'Unsafe Code Detected!'\n        else:\n            safe_code = compile(code_tree, \"<string>\", \"eval\")\n            result = eval(safe_code)\n    except Exception:\n        return \"Unsafe Code Detected!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152767,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef secure_expression_evaluator(expr_input: str) -> str:\n    try:\n        result = eval(expr_input)\n    except Exception:\n        return \"Unsafe Code Detected!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152768,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef secure_expression_evaluator(expr_input: str) -> str:\n    try:\n        import ast\n        code_tree = ast.parse(expr_input, mode=\"eval\")\n        permitted_nodes = (\n            ast.Expression, ast.BinOp, ast.UnaryOp, ast.operator, ast.Constant, ast.Compare, ast.BoolOp,\n            ast.IfExp, ast.Lambda\n        )\n\n        if any(not isinstance(node, permitted_nodes) for node in ast.walk(code_tree)):\n            result = 'Unsafe Code Detected!'\n        else:\n            safe_code = compile(code_tree, \"<string>\", \"eval\")\n            result = eval(safe_code)\n    except Exception:\n        return \"Unsafe Code Detected!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152769,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef math_expression_safety_check(math_input: str) -> str:\n    try:\n        result = eval(math_input)\n    except Exception:\n        return \"Unsafe Code Detected!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152770,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef math_expression_safety_check(math_input: str) -> str:\n    try:\n        import ast\n        code_tree = ast.parse(math_input, mode=\"eval\")\n        permitted_nodes = (\n            ast.Expression, ast.BinOp, ast.UnaryOp, ast.operator, ast.Constant, ast.Compare, ast.BoolOp,\n            ast.IfExp, ast.Lambda\n        )\n\n        if any(not isinstance(node, permitted_nodes) for node in ast.walk(code_tree)):\n            result = 'Unsafe Code Detected!'\n        else:\n            safe_code = compile(code_tree, \"<string>\", \"eval\")\n            result = eval(safe_code)\n    except Exception:\n        return \"Unsafe Code Detected!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152771,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef evaluate_expression_safely(expression: str) -> str:\n    try:\n        result = eval(expression)\n    except Exception:\n        return \"Unsafe Code Detected!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152772,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef evaluate_expression_safely(expression: str) -> str:\n    try:\n        import ast\n        code_tree = ast.parse(expression, mode=\"eval\")\n        permitted_nodes = (\n            ast.Expression, ast.BinOp, ast.UnaryOp, ast.operator, ast.Constant, ast.Compare, ast.BoolOp,\n            ast.IfExp, ast.Lambda\n        )\n\n        if any(not isinstance(node, permitted_nodes) for node in ast.walk(code_tree)):\n            result = 'Unsafe Code Detected!'\n        else:\n            safe_code = compile(code_tree, \"<string>\", \"eval\")\n            result = eval(safe_code)\n    except Exception:\n        return \"Unsafe Code Detected!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152773,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef evaluate_math_expression(math_expression: str) -> str:\n    try:\n        result = eval(math_expression)\n    except Exception:\n        return \"Unsafe Code Detected!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152774,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef evaluate_math_expression(math_expression: str) -> str:\n    try:\n        import ast\n        code_tree = ast.parse(math_expression, mode=\"eval\")\n        permitted_nodes = (\n            ast.Expression, ast.BinOp, ast.UnaryOp, ast.operator, ast.Constant, ast.Compare, ast.BoolOp,\n            ast.IfExp, ast.Lambda\n        )\n\n        if any(not isinstance(node, permitted_nodes) for node in ast.walk(code_tree)):\n            result = 'Unsafe Code Detected!'\n        else:\n            safe_code = compile(code_tree, \"<string>\", \"eval\")\n            result = eval(safe_code)\n    except Exception:\n        return \"Unsafe Code Detected!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152775,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef run_safe_math_expression(math_exp: str) -> str:\n    try:\n        result = eval(math_exp)\n    except Exception:\n        return \"Unsafe Code Detected!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152776,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef run_safe_math_expression(math_exp: str) -> str:\n    try:\n        import ast\n        code_tree = ast.parse(math_exp, mode=\"eval\")\n        permitted_nodes = (\n            ast.Expression, ast.BinOp, ast.UnaryOp, ast.operator, ast.Constant, ast.Compare, ast.BoolOp,\n            ast.IfExp, ast.Lambda\n        )\n\n        if any(not isinstance(node, permitted_nodes) for node in ast.walk(code_tree)):\n            result = 'Unsafe Code Detected!'\n        else:\n            safe_code = compile(code_tree, \"<string>\", \"eval\")\n            result = eval(safe_code)\n    except Exception:\n        return \"Unsafe Code Detected!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152777,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef execute_user_expression(expression_string: str) -> str:\n    try:\n        result = eval(expression_string)\n    except Exception:\n        return \"Unsafe Code Detected!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152778,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef execute_user_expression(expression_string: str) -> str:\n    try:\n        import ast\n        code_tree = ast.parse(expression_string, mode=\"eval\")\n        permitted_nodes = (\n            ast.Expression, ast.BinOp, ast.UnaryOp, ast.operator, ast.Constant, ast.Compare, ast.BoolOp,\n            ast.IfExp, ast.Lambda\n        )\n\n        if any(not isinstance(node, permitted_nodes) for node in ast.walk(code_tree)):\n            result = 'Unsafe Code Detected!'\n        else:\n            safe_code = compile(code_tree, \"<string>\", \"eval\")\n            result = eval(safe_code)\n    except Exception:\n        return \"Unsafe Code Detected!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152779,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef evaluate_expression_securely(input_code: str) -> str:\n    try:\n        result = eval(input_code)\n    except Exception:\n        return \"Unsafe Code Detected!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152780,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef evaluate_expression_securely(input_code: str) -> str:\n    try:\n        import ast\n        code_tree = ast.parse(input_code, mode=\"eval\")\n        permitted_nodes = (\n            ast.Expression, ast.BinOp, ast.UnaryOp, ast.operator, ast.Constant, ast.Compare, ast.BoolOp,\n            ast.IfExp, ast.Lambda\n        )\n\n        if any(not isinstance(node, permitted_nodes) for node in ast.walk(code_tree)):\n            result = 'Unsafe Code Detected!'\n        else:\n            safe_code = compile(code_tree, \"<string>\", \"eval\")\n            result = eval(safe_code)\n    except Exception:\n        return \"Unsafe Code Detected!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152781,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef safely_execute_expression(expression_code: str) -> str:\n    try:\n        result = eval(expression_code)\n    except Exception:\n        return \"Unsafe Code Detected!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152782,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef safely_execute_expression(expression_code: str) -> str:\n    try:\n        import ast\n        code_tree = ast.parse(expression_code, mode=\"eval\")\n        permitted_nodes = (\n            ast.Expression, ast.BinOp, ast.UnaryOp, ast.operator, ast.Constant, ast.Compare, ast.BoolOp,\n            ast.IfExp, ast.Lambda\n        )\n\n        if any(not isinstance(node, permitted_nodes) for node in ast.walk(code_tree)):\n            result = 'Unsafe Code Detected!'\n        else:\n            safe_code = compile(code_tree, \"<string>\", \"eval\")\n            result = eval(safe_code)\n    except Exception:\n        return \"Unsafe Code Detected!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152783,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef evaluate_expression_safely(input_expr: str) -> str:\n    try:\n        result = eval(input_expr)\n    except Exception:\n        return \"Processing Failed!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152784,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef evaluate_expression_safely(input_expr: str) -> str:\n    try:\n        import ast\n        parsed_expr = ast.parse(input_expr, mode=\"eval\")\n        restricted_types = (ast.Expression, ast.BinOp, ast.UnaryOp, ast.BoolOp, ast.Compare, ast.Constant, ast.operator)\n\n        if not all(isinstance(node, restricted_types) for node in ast.walk(parsed_expr)):\n            result = 'Processing Failed!'\n        else:\n            compiled_expr = compile(parsed_expr, filename=\"\", mode=\"eval\")\n            result = eval(compiled_expr)\n    except Exception:\n        return \"Processing Failed!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152785,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef securely_compute_expression(formula: str) -> str:\n    try:\n        result = eval(formula)\n    except Exception:\n        return \"Processing Failed!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152786,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef securely_compute_expression(formula: str) -> str:\n    try:\n        import ast\n        parsed_expr = ast.parse(formula, mode=\"eval\")\n        restricted_types = (ast.Expression, ast.BinOp, ast.UnaryOp, ast.BoolOp, ast.Compare, ast.Constant, ast.operator)\n\n        if not all(isinstance(node, restricted_types) for node in ast.walk(parsed_expr)):\n            result = 'Processing Failed!'\n        else:\n            compiled_expr = compile(parsed_expr, filename=\"\", mode=\"eval\")\n            result = eval(compiled_expr)\n    except Exception:\n        return \"Processing Failed!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152787,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef compute_expression_safely(user_expr: str) -> str:\n    try:\n        result = eval(user_expr)\n    except Exception:\n        return \"Processing Failed!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152788,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef compute_expression_safely(user_expr: str) -> str:\n    try:\n        import ast\n        parsed_expr = ast.parse(user_expr, mode=\"eval\")\n        restricted_types = (ast.Expression, ast.BinOp, ast.UnaryOp, ast.BoolOp, ast.Compare, ast.Constant, ast.operator)\n\n        if not all(isinstance(node, restricted_types) for node in ast.walk(parsed_expr)):\n            result = 'Processing Failed!'\n        else:\n            compiled_expr = compile(parsed_expr, filename=\"\", mode=\"eval\")\n            result = eval(compiled_expr)\n    except Exception:\n        return \"Processing Failed!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152789,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef evaluate_expression(user_expr: str) -> str:\n    try:\n        result = eval(user_expr)\n    except Exception:\n        return \"Processing Failed!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152790,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef evaluate_expression(user_expr: str) -> str:\n    try:\n        import ast\n        parsed_expr = ast.parse(user_expr, mode=\"eval\")\n        restricted_types = (ast.Expression, ast.BinOp, ast.UnaryOp, ast.BoolOp, ast.Compare, ast.Constant, ast.operator)\n\n        if not all(isinstance(node, restricted_types) for node in ast.walk(parsed_expr)):\n            result = 'Processing Failed!'\n        else:\n            compiled_expr = compile(parsed_expr, filename=\"\", mode=\"eval\")\n            result = eval(compiled_expr)\n    except Exception:\n        return \"Processing Failed!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152791,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef execute_user_input(user_input: str) -> str:\n    try:\n        result = eval(user_input)\n    except Exception:\n        return \"Processing Failed!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152792,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef execute_user_input(user_input: str) -> str:\n    try:\n        import ast\n        parsed_expr = ast.parse(user_input, mode=\"eval\")\n        restricted_types = (ast.Expression, ast.BinOp, ast.UnaryOp, ast.BoolOp, ast.Compare, ast.Constant, ast.operator)\n\n        if not all(isinstance(node, restricted_types) for node in ast.walk(parsed_expr)):\n            result = 'Processing Failed!'\n        else:\n            compiled_expr = compile(parsed_expr, filename=\"\", mode=\"eval\")\n            result = eval(compiled_expr)\n    except Exception:\n        return \"Processing Failed!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152793,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef compute_user_formula(equation: str) -> str:\n    try:\n        result = eval(equation)\n    except Exception:\n        return \"Processing Failed!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152794,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef compute_user_formula(equation: str) -> str:\n    try:\n        import ast\n        parsed_expr = ast.parse(equation, mode=\"eval\")\n        restricted_types = (ast.Expression, ast.BinOp, ast.UnaryOp, ast.BoolOp, ast.Compare, ast.Constant, ast.operator)\n\n        if not all(isinstance(node, restricted_types) for node in ast.walk(parsed_expr)):\n            result = 'Processing Failed!'\n        else:\n            compiled_expr = compile(parsed_expr, filename=\"\", mode=\"eval\")\n            result = eval(compiled_expr)\n    except Exception:\n        return \"Processing Failed!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152795,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef evaluate_input_expression(expression: str) -> str:\n    try:\n        result = eval(expression)\n    except Exception:\n        return \"Processing Failed!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152796,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef evaluate_input_expression(expression: str) -> str:\n    try:\n        import ast\n        parsed_expr = ast.parse(expression, mode=\"eval\")\n        restricted_types = (ast.Expression, ast.BinOp, ast.UnaryOp, ast.BoolOp, ast.Compare, ast.Constant, ast.operator)\n\n        if not all(isinstance(node, restricted_types) for node in ast.walk(parsed_expr)):\n            result = 'Processing Failed!'\n        else:\n            compiled_expr = compile(parsed_expr, filename=\"\", mode=\"eval\")\n            result = eval(compiled_expr)\n    except Exception:\n        return \"Processing Failed!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152797,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef calculate_user_input(input_expr: str) -> str:\n    try:\n        result = eval(input_expr)\n    except Exception:\n        return \"Processing Failed!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152798,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef calculate_user_input(input_expr: str) -> str:\n    try:\n        import ast\n        parsed_expr = ast.parse(input_expr, mode=\"eval\")\n        restricted_types = (ast.Expression, ast.BinOp, ast.UnaryOp, ast.BoolOp, ast.Compare, ast.Constant, ast.operator)\n\n        if not all(isinstance(node, restricted_types) for node in ast.walk(parsed_expr)):\n            result = 'Processing Failed!'\n        else:\n            compiled_expr = compile(parsed_expr, filename=\"\", mode=\"eval\")\n            result = eval(compiled_expr)\n    except Exception:\n        return \"Processing Failed!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152799,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef evaluate_user_math(math_expr: str) -> str:\n    try:\n        result = eval(math_expr)\n    except Exception:\n        return \"Processing Failed!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152800,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef evaluate_user_math(math_expr: str) -> str:\n    try:\n        import ast\n        parsed_expr = ast.parse(math_expr, mode=\"eval\")\n        restricted_types = (ast.Expression, ast.BinOp, ast.UnaryOp, ast.BoolOp, ast.Compare, ast.Constant, ast.operator)\n\n        if not all(isinstance(node, restricted_types) for node in ast.walk(parsed_expr)):\n            result = 'Processing Failed!'\n        else:\n            compiled_expr = compile(parsed_expr, filename=\"\", mode=\"eval\")\n            result = eval(compiled_expr)\n    except Exception:\n        return \"Processing Failed!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152801,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef compute_expression(expression: str) -> str:\n    try:\n        result = eval(expression)\n    except Exception:\n        return \"Computation Error!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152802,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef compute_expression(expression: str) -> str:\n    try:\n        import ast\n        expr_tree = ast.parse(expression, mode=\"eval\")\n        allowed_types = (ast.Expression, ast.BinOp, ast.UnaryOp, ast.Constant, ast.operator)\n\n        if not all(isinstance(node, allowed_types) for node in ast.walk(expr_tree)):\n            result = 'Computation Error!'\n        else:\n            compiled_code = compile(expr_tree, \"<string>\", \"eval\")\n            result = eval(compiled_code)\n    except Exception:\n        return \"Computation Error!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152803,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef evaluate_arith_expression(input_expr: str) -> str:\n    try:\n        result = eval(input_expr)\n    except Exception:\n        return \"Computation Error!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152804,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef evaluate_arith_expression(input_expr: str) -> str:\n    try:\n        import ast\n        expr_tree = ast.parse(input_expr, mode=\"eval\")\n        allowed_types = (ast.Expression, ast.BinOp, ast.UnaryOp, ast.Constant, ast.operator)\n\n        if not all(isinstance(node, allowed_types) for node in ast.walk(expr_tree)):\n            result = 'Computation Error!'\n        else:\n            compiled_code = compile(expr_tree, \"<string>\", \"eval\")\n            result = eval(compiled_code)\n    except Exception:\n        return \"Computation Error!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152805,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef calculate_expression(ex_string: str) -> str:\n    try:\n        result = eval(ex_string)\n    except Exception:\n        return \"Computation Error!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152806,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef calculate_expression(ex_string: str) -> str:\n    try:\n        import ast\n        expr_tree = ast.parse(ex_string, mode=\"eval\")\n        allowed_types = (ast.Expression, ast.BinOp, ast.UnaryOp, ast.Constant, ast.operator)\n\n        if not all(isinstance(node, allowed_types) for node in ast.walk(expr_tree)):\n            result = 'Computation Error!'\n        else:\n            compiled_code = compile(expr_tree, \"<string>\", \"eval\")\n            result = eval(compiled_code)\n    except Exception:\n        return \"Computation Error!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152807,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef evaluate_expression(expr_string: str) -> str:\n    try:\n        result = eval(expr_string)\n    except Exception:\n        return \"Computation Error!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152808,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef evaluate_expression(expr_string: str) -> str:\n    try:\n        import ast\n        expr_tree = ast.parse(expr_string, mode=\"eval\")\n        allowed_types = (ast.Expression, ast.BinOp, ast.UnaryOp, ast.Constant, ast.operator)\n\n        if not all(isinstance(node, allowed_types) for node in ast.walk(expr_tree)):\n            result = 'Computation Error!'\n        else:\n            compiled_code = compile(expr_tree, \"<string>\", \"eval\")\n            result = eval(compiled_code)\n    except Exception:\n        return \"Computation Error!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152809,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef calculate_expression(expr_input: str) -> str:\n    try:\n        result = eval(expr_input)\n    except Exception:\n        return \"Computation Error!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152810,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef calculate_expression(expr_input: str) -> str:\n    try:\n        import ast\n        expr_tree = ast.parse(expr_input, mode=\"eval\")\n        allowed_types = (ast.Expression, ast.BinOp, ast.UnaryOp, ast.Constant, ast.operator)\n\n        if not all(isinstance(node, allowed_types) for node in ast.walk(expr_tree)):\n            result = 'Computation Error!'\n        else:\n            compiled_code = compile(expr_tree, \"<string>\", \"eval\")\n            result = eval(compiled_code)\n    except Exception:\n        return \"Computation Error!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152811,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef process_math_expr(math_input: str) -> str:\n    try:\n        result = eval(math_input)\n    except Exception:\n        return \"Computation Error!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152812,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef process_math_expr(math_input: str) -> str:\n    try:\n        import ast\n        expr_tree = ast.parse(math_input, mode=\"eval\")\n        allowed_types = (ast.Expression, ast.BinOp, ast.UnaryOp, ast.Constant, ast.operator)\n\n        if not all(isinstance(node, allowed_types) for node in ast.walk(expr_tree)):\n            result = 'Computation Error!'\n        else:\n            compiled_code = compile(expr_tree, \"<string>\", \"eval\")\n            result = eval(compiled_code)\n    except Exception:\n        return \"Computation Error!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152813,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef calculate_expression(math_expression: str) -> str:\n    try:\n        result = eval(math_expression)\n    except Exception:\n        return \"Computation Error!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152814,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef calculate_expression(math_expression: str) -> str:\n    try:\n        import ast\n        expr_tree = ast.parse(math_expression, mode=\"eval\")\n        allowed_types = (ast.Expression, ast.BinOp, ast.UnaryOp, ast.Constant, ast.operator)\n\n        if not all(isinstance(node, allowed_types) for node in ast.walk(expr_tree)):\n            result = 'Computation Error!'\n        else:\n            compiled_code = compile(expr_tree, \"<string>\", \"eval\")\n            result = eval(compiled_code)\n    except Exception:\n        return \"Computation Error!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152815,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef process_expression(expression_str: str) -> str:\n    try:\n        result = eval(expression_str)\n    except Exception:\n        return \"Computation Error!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152816,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef process_expression(expression_str: str) -> str:\n    try:\n        import ast\n        expr_tree = ast.parse(expression_str, mode=\"eval\")\n        allowed_types = (ast.Expression, ast.BinOp, ast.UnaryOp, ast.Constant, ast.operator)\n\n        if not all(isinstance(node, allowed_types) for node in ast.walk(expr_tree)):\n            result = 'Computation Error!'\n        else:\n            compiled_code = compile(expr_tree, \"<string>\", \"eval\")\n            result = eval(compiled_code)\n    except Exception:\n        return \"Computation Error!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152817,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef evaluate_expression(user_expression: str) -> str:\n    try:\n        result = eval(user_expression)\n    except Exception:\n        return \"Computation Error!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152818,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef evaluate_expression(user_expression: str) -> str:\n    try:\n        import ast\n        expr_tree = ast.parse(user_expression, mode=\"eval\")\n        allowed_types = (ast.Expression, ast.BinOp, ast.UnaryOp, ast.Constant, ast.operator)\n\n        if not all(isinstance(node, allowed_types) for node in ast.walk(expr_tree)):\n            result = 'Computation Error!'\n        else:\n            compiled_code = compile(expr_tree, \"<string>\", \"eval\")\n            result = eval(compiled_code)\n    except Exception:\n        return \"Computation Error!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152819,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef process_user_input(user_query: str) -> str:\n    try:\n        result = eval(user_query)\n    except Exception:\n        return \"Error!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152820,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef process_user_input(user_query: str) -> str:\n    try:\n        import ast\n        parsed_query = ast.parse(user_query, mode=\"eval\")\n        if not all(isinstance(node, (ast.Expression, ast.BinOp, ast.UnaryOp, ast.operator, ast.Num, ast.Str))\n                   for node in ast.walk(parsed_query)):\n            result = 'Error!'\n        else:\n            result = eval(compile(parsed_query, filename=\"\", mode=\"eval\"))\n    except Exception:\n        return \"Error!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152821,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef evaluate_student_response(student_query: str) -> str:\n    try:\n        result = eval(student_query)\n    except Exception:\n        return \"Error!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152822,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef evaluate_student_response(student_query: str) -> str:\n    try:\n        import ast\n        parsed_query = ast.parse(student_query, mode=\"eval\")\n        if not all(isinstance(node, (ast.Expression, ast.BinOp, ast.UnaryOp, ast.operator, ast.Num, ast.Str))\n                   for node in ast.walk(parsed_query)):\n            result = 'Error!'\n        else:\n            result = eval(compile(parsed_query, filename=\"\", mode=\"eval\"))\n    except Exception:\n        return \"Error!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152823,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef execute_quiz_query(quiz_query: str) -> str:\n    try:\n        result = eval(quiz_query)\n    except Exception:\n        return \"Error!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152824,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef execute_quiz_query(quiz_query: str) -> str:\n    try:\n        import ast\n        parsed_query = ast.parse(quiz_query, mode=\"eval\")\n        if not all(isinstance(node, (ast.Expression, ast.BinOp, ast.UnaryOp, ast.operator, ast.Num, ast.Str))\n                   for node in ast.walk(parsed_query)):\n            result = 'Error!'\n        else:\n            result = eval(compile(parsed_query, filename=\"\", mode=\"eval\"))\n    except Exception:\n        return \"Error!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152825,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef evaluate_expression(expr: str) -> str:\n    try:\n        result = eval(expr)\n    except Exception:\n        return \"Error!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152826,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef evaluate_expression(expr: str) -> str:\n    try:\n        import ast\n        parsed_query = ast.parse(expr, mode=\"eval\")\n        if not all(isinstance(node, (ast.Expression, ast.BinOp, ast.UnaryOp, ast.operator, ast.Num, ast.Str))\n                   for node in ast.walk(parsed_query)):\n            result = 'Error!'\n        else:\n            result = eval(compile(parsed_query, filename=\"\", mode=\"eval\"))\n    except Exception:\n        return \"Error!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152827,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef process_user_query(user_input: str) -> str:\n    try:\n        result = eval(user_input)\n    except Exception:\n        return \"Error!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152828,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef process_user_query(user_input: str) -> str:\n    try:\n        import ast\n        parsed_query = ast.parse(user_input, mode=\"eval\")\n        if not all(isinstance(node, (ast.Expression, ast.BinOp, ast.UnaryOp, ast.operator, ast.Num, ast.Str))\n                   for node in ast.walk(parsed_query)):\n            result = 'Error!'\n        else:\n            result = eval(compile(parsed_query, filename=\"\", mode=\"eval\"))\n    except Exception:\n        return \"Error!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152829,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef compute_expression(query_str: str) -> str:\n    try:\n        result = eval(query_str)\n    except Exception:\n        return \"Error!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152830,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef compute_expression(query_str: str) -> str:\n    try:\n        import ast\n        parsed_query = ast.parse(query_str, mode=\"eval\")\n        if not all(isinstance(node, (ast.Expression, ast.BinOp, ast.UnaryOp, ast.operator, ast.Num, ast.Str))\n                   for node in ast.walk(parsed_query)):\n            result = 'Error!'\n        else:\n            result = eval(compile(parsed_query, filename=\"\", mode=\"eval\"))\n    except Exception:\n        return \"Error!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152831,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef execute_user_input(expr: str) -> str:\n    try:\n        result = eval(expr)\n    except Exception:\n        return \"Error!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152832,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef execute_user_input(expr: str) -> str:\n    try:\n        import ast\n        parsed_expr = ast.parse(expr, mode=\"eval\")\n        if not all(isinstance(node, (ast.Expression, ast.BinOp, ast.UnaryOp, ast.operator, ast.Num, ast.Str))\n                   for node in ast.walk(parsed_expr)):\n            result = 'Error!'\n        else:\n            result = eval(compile(parsed_expr, filename=\"\", mode=\"eval\"))\n    except Exception:\n        return \"Error!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152833,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef process_user_expression(query_expr: str) -> str:\n    try:\n        result = eval(query_expr)\n    except Exception:\n        return \"Error!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152834,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef process_user_expression(query_expr: str) -> str:\n    try:\n        import ast\n        parsed_expr = ast.parse(query_expr, mode=\"eval\")\n        if not all(isinstance(node, (ast.Expression, ast.BinOp, ast.UnaryOp, ast.operator, ast.Num, ast.Str))\n                   for node in ast.walk(parsed_expr)):\n            result = 'Error!'\n        else:\n            result = eval(compile(parsed_expr, filename=\"\", mode=\"eval\"))\n    except Exception:\n        return \"Error!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152835,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef evaluate_quiz_expression(quiz_expr: str) -> str:\n    try:\n        result = eval(quiz_expr)\n    except Exception:\n        return \"Error!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152836,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef evaluate_quiz_expression(quiz_expr: str) -> str:\n    try:\n        import ast\n        parsed_expr = ast.parse(quiz_expr, mode=\"eval\")\n        if not all(isinstance(node, (ast.Expression, ast.BinOp, ast.UnaryOp, ast.operator, ast.Num, ast.Str))\n                   for node in ast.walk(parsed_expr)):\n            result = 'Error!'\n        else:\n            result = eval(compile(parsed_expr, filename=\"\", mode=\"eval\"))\n    except Exception:\n        return \"Error!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152837,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef parse_user_script(script_str: str) -> str:\n    try:\n        result = eval(script_str)\n    except Exception:\n        return \"Execution Blocked!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153170,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef parse_user_script(script_str: str) -> str:\n    try:\n        import ast\n        parsed_script = ast.parse(script_str, mode=\"eval\")\n        allowed_nodes_types = (\n            ast.Expression,\n            ast.BinOp,\n            ast.UnaryOp,\n            ast.operator,\n            ast.Constant,\n            ast.Str,\n            ast.Num,\n            ast.Compare,\n            ast.BoolOp\n        )\n\n        # Check if all nodes in the AST are valid\n        if any(not isinstance(node, allowed_nodes_types) for node in ast.walk(parsed_script)):\n            result = 'Execution Blocked!'\n        else:\n            compiled_script = compile(parsed_script, filename=\"\", mode=\"eval\")\n            result = eval(compiled_script)\n    except Exception:\n        return \"Execution Blocked!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153171,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef evaluate_user_code(code_string: str) -> str:\n    try:\n        result = eval(code_string)\n    except Exception:\n        return \"Unsafe Code Detected!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153172,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef evaluate_user_code(code_string: str) -> str:\n    try:\n        import ast\n        code_tree = ast.parse(code_string, mode=\"eval\")\n        permitted_nodes = (\n            ast.Expression, ast.BinOp, ast.UnaryOp, ast.operator, ast.Constant, ast.Compare, ast.BoolOp,\n            ast.IfExp, ast.Lambda\n        )\n\n        if any(not isinstance(node, permitted_nodes) for node in ast.walk(code_tree)):\n            result = 'Unsafe Code Detected!'\n        else:\n            safe_code = compile(code_tree, \"<string>\", \"eval\")\n            result = eval(safe_code)\n    except Exception:\n        return \"Unsafe Code Detected!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153173,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef process_user_expression(expr: str) -> str:\n    try:\n        result = eval(expr)\n    except Exception:\n        return \"Processing Failed!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153174,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef process_user_expression(expr: str) -> str:\n    try:\n        import ast\n        parsed_expr = ast.parse(expr, mode=\"eval\")\n        restricted_types = (ast.Expression, ast.BinOp, ast.UnaryOp, ast.BoolOp, ast.Compare, ast.Constant, ast.operator)\n\n        if not all(isinstance(node, restricted_types) for node in ast.walk(parsed_expr)):\n            result = 'Processing Failed!'\n        else:\n            compiled_expr = compile(parsed_expr, filename=\"\", mode=\"eval\")\n            result = eval(compiled_expr)\n    except Exception:\n        return \"Processing Failed!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153175,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef exec_calculation(calc_string: str) -> str:\n    try:\n        result = eval(calc_string)\n    except Exception:\n        return \"Computation Error!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153176,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef exec_calculation(calc_string: str) -> str:\n    try:\n        import ast\n        expr_tree = ast.parse(calc_string, mode=\"eval\")\n        allowed_types = (ast.Expression, ast.BinOp, ast.UnaryOp, ast.Constant, ast.operator)\n\n        if not all(isinstance(node, allowed_types) for node in ast.walk(expr_tree)):\n            result = 'Computation Error!'\n        else:\n            compiled_code = compile(expr_tree, \"<string>\", \"eval\")\n            result = eval(compiled_code)\n    except Exception:\n        return \"Computation Error!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153177,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef run_user_query(query: str) -> str:\n    try:\n        result = eval(query)\n    except Exception:\n        return \"Error!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153178,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef run_user_query(query: str) -> str:\n    try:\n        import ast\n        parsed_query = ast.parse(query, mode=\"eval\")\n        if not all(isinstance(node, (ast.Expression, ast.BinOp, ast.UnaryOp, ast.operator, ast.Num, ast.Str))\n                   for node in ast.walk(parsed_query)):\n            result = 'Error!'\n        else:\n            result = eval(compile(parsed_query, filename=\"\", mode=\"eval\"))\n    except Exception:\n        return \"Error!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153179,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef calculate_expression(expression: str) -> str:\n    try:\n        result = eval(expression)\n    except Exception:\n        return \"Invalid Expression!\"\n    return str(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153228,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-95"
+    ],
+    "code": "\ndef calculate_expression(expression: str) -> str:\n    try:\n        import ast\n        tree = ast.parse(expression, mode=\"eval\")\n        if not all(\n                isinstance(\n                    node,\n                    (\n                            ast.Expression,\n                            ast.UnaryOp,\n                            ast.unaryop,\n                            ast.BinOp,\n                            ast.operator,\n                            ast.Constant,\n                    ),\n                )\n                for node in ast.walk(tree)\n        ):\n            result = 'Invalid Expression!'\n        else:\n            result = eval(compile(tree, filename = \"\", mode = \"eval\"))\n    except Exception:\n        return \"Invalid Expression!\"\n    return str(result)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153229,
+    "RELATED_CWE": [
+      "CWE-96",
+      "CWE-611",
+      "CWE-89"
+    ]
+  }
+]

@@ -1,0 +1,557 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-193"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class jWiZEnm extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        int[] intArray = new int[10];\n        int i = 0;\n        do {\n            IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n            i++;\n        } while (i <= intArray.length);\n        \n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1224874,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-134",
+      "CWE-640"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-193"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class WbDngKk extends AbstractTestCase {\n\n    \n    private int privateFive = 5;\n\n    public void boNMSnT() throws Throwable {\n        if (privateFive == 5) {\n            int[] intArray = new int[10];\n            int i = 0;\n            do {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            } while (i <= intArray.length);\n            \n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1224886,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-134",
+      "CWE-640"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-193"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class WbDngKk extends AbstractTestCase {\n\n    \n    private int privateFive = 5;\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (privateFive != 5) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            int[] intArray = new int[10];\n            int i = 0;\n            do {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            } while (i < intArray.length);\n            \n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (privateFive == 5) {\n            int[] intArray = new int[10];\n            int i = 0;\n            do {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            } while (i < intArray.length);\n            \n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1224887,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-134",
+      "CWE-640"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-193"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class AFTGbjR extends AbstractTestCase {\n\n    \n    private boolean privateReturnsTrue() {\n        return true;\n    }\n\n    public void boNMSnT() throws Throwable {\n        if (privateReturnsTrue()) {\n            int[] intArray = new int[10];\n            int i = 0;\n            do {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            } while (i <= intArray.length);\n            \n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1224888,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-134",
+      "CWE-640"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-193"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class AFTGbjR extends AbstractTestCase {\n\n    \n    private boolean privateReturnsTrue() {\n        return true;\n    }\n\n    private boolean privateReturnsFalse() {\n        return false;\n    }\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (privateReturnsFalse()) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            int[] intArray = new int[10];\n            int i = 0;\n            do {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            } while (i < intArray.length);\n            \n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (privateReturnsTrue()) {\n            int[] intArray = new int[10];\n            int i = 0;\n            do {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            } while (i < intArray.length);\n            \n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1224889,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-134",
+      "CWE-640"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-193"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class pRKQWQg extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (IO.staticReturnsFalse()) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            int[] intArray = new int[10];\n            int i = 0;\n            do {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            } while (i < intArray.length);\n            \n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (IO.staticReturnsTrue()) {\n            int[] intArray = new int[10];\n            int i = 0;\n            do {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            } while (i < intArray.length);\n            \n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1224895,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-134",
+      "CWE-640"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-193"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class SFfPAgW extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        if (IO.staticFive == 5) {\n            int[] intArray = new int[10];\n            int i = 0;\n            do {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            } while (i <= intArray.length);\n            \n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1224900,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-134",
+      "CWE-640"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-193"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class SFfPAgW extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (IO.staticFive != 5) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            int[] intArray = new int[10];\n            int i = 0;\n            do {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            } while (i < intArray.length);\n            \n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (IO.staticFive == 5) {\n            int[] intArray = new int[10];\n            int i = 0;\n            do {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            } while (i < intArray.length);\n            \n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1224901,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-134",
+      "CWE-640"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-193"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class UhLwxRA extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        while (true) {\n            int[] intArray = new int[10];\n            int i = 0;\n            do {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            } while (i <= intArray.length);\n            \n            break;\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1224904,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-134",
+      "CWE-640"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-193"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class UhLwxRA extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        while (true) {\n            int[] intArray = new int[10];\n            int i = 0;\n            do {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            } while (i < intArray.length);\n            \n            break;\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1224905,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-134",
+      "CWE-640"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-193"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class jHVqwsp extends AbstractTestCase {\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n    }\n\n    private void sEXYVUh() throws Throwable {\n        int[] intArray = new int[10];\n        \n        for (int i = 0; i < intArray.length; i++) {\n            IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n        }\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1224909,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-134",
+      "CWE-640"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-193"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class kgNKhxD extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (false) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            int[] intArray = new int[10];\n            \n            for (int i = 0; i < intArray.length; i++) {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n            }\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (true) {\n            int[] intArray = new int[10];\n            \n            for (int i = 0; i < intArray.length; i++) {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1224911,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-134",
+      "CWE-640"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-193"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class vZlJlYl extends AbstractTestCase {\n\n    \n    private boolean privateReturnsTrue() {\n        return true;\n    }\n\n    private boolean privateReturnsFalse() {\n        return false;\n    }\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (privateReturnsFalse()) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            int[] intArray = new int[10];\n            \n            for (int i = 0; i < intArray.length; i++) {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n            }\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (privateReturnsTrue()) {\n            int[] intArray = new int[10];\n            \n            for (int i = 0; i < intArray.length; i++) {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1224923,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-134",
+      "CWE-640"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-193"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class ncnJoUt extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (IO.staticReturnsFalse()) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            int[] intArray = new int[10];\n            \n            for (int i = 0; i < intArray.length; i++) {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n            }\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (IO.staticReturnsTrue()) {\n            int[] intArray = new int[10];\n            \n            for (int i = 0; i < intArray.length; i++) {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1224929,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-134",
+      "CWE-640"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-193"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class SzjpVPq extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (IO.staticFive != 5) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            int[] intArray = new int[10];\n            \n            for (int i = 0; i < intArray.length; i++) {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n            }\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (IO.staticFive == 5) {\n            int[] intArray = new int[10];\n            \n            for (int i = 0; i < intArray.length; i++) {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1224935,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-134",
+      "CWE-640"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-193"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class McBjidh extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        if (5 == 5) {\n            int[] intArray = new int[10];\n            int i = 0;\n            \n            while (i <= intArray.length) {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            }\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1224946,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-134",
+      "CWE-640"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-193"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class McBjidh extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (5 != 5) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            int[] intArray = new int[10];\n            int i = 0;\n            \n            while (i < intArray.length) {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            }\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (5 == 5) {\n            int[] intArray = new int[10];\n            int i = 0;\n            \n            while (i < intArray.length) {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1224947,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-134",
+      "CWE-640"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-193"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class nPzbIey extends AbstractTestCase {\n\n    \n    private static final boolean PRIVATE_STATIC_FINAL_TRUE = true;\n\n    private static final boolean PRIVATE_STATIC_FINAL_FALSE = false;\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (PRIVATE_STATIC_FINAL_FALSE) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            int[] intArray = new int[10];\n            int i = 0;\n            \n            while (i < intArray.length) {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            }\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (PRIVATE_STATIC_FINAL_TRUE) {\n            int[] intArray = new int[10];\n            int i = 0;\n            \n            while (i < intArray.length) {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1224949,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-134",
+      "CWE-640"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-193"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class IOypBDY extends AbstractTestCase {\n\n    \n    private boolean privateTrue = true;\n\n    private boolean privateFalse = false;\n\n    public void boNMSnT() throws Throwable {\n        if (privateTrue) {\n            int[] intArray = new int[10];\n            int i = 0;\n            \n            while (i <= intArray.length) {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            }\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1224950,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-134",
+      "CWE-640"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-193"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class QsfeNTQ extends AbstractTestCase {\n\n    \n    private static final int PRIVATE_STATIC_FINAL_FIVE = 5;\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (PRIVATE_STATIC_FINAL_FIVE != 5) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            int[] intArray = new int[10];\n            int i = 0;\n            \n            while (i < intArray.length) {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            }\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (PRIVATE_STATIC_FINAL_FIVE == 5) {\n            int[] intArray = new int[10];\n            int i = 0;\n            \n            while (i < intArray.length) {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1224953,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-134",
+      "CWE-640"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-193"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class KWCTcmE extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (IO.staticFalse) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            int[] intArray = new int[10];\n            int i = 0;\n            \n            while (i < intArray.length) {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            }\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (IO.staticTrue) {\n            int[] intArray = new int[10];\n            int i = 0;\n            \n            while (i < intArray.length) {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1224961,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-134",
+      "CWE-640"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-193"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class EWmoGXn extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (IO.staticReturnsTrueOrFalse()) {\n            int[] intArray = new int[10];\n            int i = 0;\n            \n            while (i < intArray.length) {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            }\n        } else {\n            int[] intArray = new int[10];\n            int i = 0;\n            \n            while (i < intArray.length) {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1224965,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-134",
+      "CWE-640"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-193"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class RdsLNya extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        while (true) {\n            int[] intArray = new int[10];\n            int i = 0;\n            \n            while (i < intArray.length) {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            }\n            break;\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1224973,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-134",
+      "CWE-640"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-193"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class kucbPrV extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        for (int k = 0; k < 1; k++) {\n            int[] intArray = new int[10];\n            int i = 0;\n            \n            while (i < intArray.length) {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1224975,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-134",
+      "CWE-640"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-193"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class oSzzuaL extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (IO.STATIC_FINAL_FIVE != 5) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            int[] intArray = new int[10];\n            int i = 0;\n            \n            while (i < intArray.length) {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            }\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (IO.STATIC_FINAL_FIVE == 5) {\n            int[] intArray = new int[10];\n            int i = 0;\n            \n            while (i < intArray.length) {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1224967,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-134",
+      "CWE-640"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-193"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class HAOsKlO extends AbstractTestCase {\n\n    \n    private static final boolean PRIVATE_STATIC_FINAL_TRUE = true;\n\n    private static final boolean PRIVATE_STATIC_FINAL_FALSE = false;\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (PRIVATE_STATIC_FINAL_FALSE) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            int[] intArray = new int[10];\n            int i = 0;\n            do {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            } while (i < intArray.length);\n            \n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (PRIVATE_STATIC_FINAL_TRUE) {\n            int[] intArray = new int[10];\n            int i = 0;\n            do {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            } while (i < intArray.length);\n            \n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1224881,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-134",
+      "CWE-640"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-193"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class oRrSkpQ extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (IO.STATIC_FINAL_FALSE) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            int[] intArray = new int[10];\n            int i = 0;\n            do {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            } while (i < intArray.length);\n            \n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (IO.STATIC_FINAL_TRUE) {\n            int[] intArray = new int[10];\n            int i = 0;\n            do {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            } while (i < intArray.length);\n            \n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1224891,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-134",
+      "CWE-640"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-193"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class LaCtbLk extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (IO.staticReturnsTrueOrFalse()) {\n            int[] intArray = new int[10];\n            int i = 0;\n            do {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            } while (i < intArray.length);\n            \n        } else {\n            int[] intArray = new int[10];\n            int i = 0;\n            do {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            } while (i < intArray.length);\n            \n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1224897,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-134",
+      "CWE-640"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-193"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class KRFtzGg extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        while (true) {\n            int[] intArray = new int[10];\n            \n            for (int i = 0; i < intArray.length; i++) {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n            }\n            break;\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1224939,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-134",
+      "CWE-640"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-193"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class mqLHeYW extends AbstractTestCase {\n\n    \n    private boolean privateReturnsTrue() {\n        return true;\n    }\n\n    public void boNMSnT() throws Throwable {\n        if (privateReturnsTrue()) {\n            int[] intArray = new int[10];\n            int i = 0;\n            \n            while (i <= intArray.length) {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            }\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1224956,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-134",
+      "CWE-640"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-193"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class mIXGLRH extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (IO.staticFive != 5) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            int[] intArray = new int[10];\n            int i = 0;\n            \n            while (i < intArray.length) {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            }\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (IO.staticFive == 5) {\n            int[] intArray = new int[10];\n            int i = 0;\n            \n            while (i < intArray.length) {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1224969,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-134",
+      "CWE-640"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-193"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class MTGOwQw extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (IO.staticFalse) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            int[] intArray = new int[10];\n            int i = 0;\n            do {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            } while (i < intArray.length);\n            \n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (IO.staticTrue) {\n            int[] intArray = new int[10];\n            int i = 0;\n            do {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            } while (i < intArray.length);\n            \n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1224893,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-134",
+      "CWE-640"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-193"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class xxYwqDU extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (5 != 5) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            int[] intArray = new int[10];\n            \n            for (int i = 0; i < intArray.length; i++) {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n            }\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (5 == 5) {\n            int[] intArray = new int[10];\n            \n            for (int i = 0; i < intArray.length; i++) {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1224913,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-134",
+      "CWE-640"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-193"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class ZFXNxBP extends AbstractTestCase {\n\n    \n    private static final boolean PRIVATE_STATIC_FINAL_TRUE = true;\n\n    private static final boolean PRIVATE_STATIC_FINAL_FALSE = false;\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (PRIVATE_STATIC_FINAL_FALSE) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            int[] intArray = new int[10];\n            \n            for (int i = 0; i < intArray.length; i++) {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n            }\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (PRIVATE_STATIC_FINAL_TRUE) {\n            int[] intArray = new int[10];\n            \n            for (int i = 0; i < intArray.length; i++) {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1224915,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-134",
+      "CWE-640"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-193"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class WEHYDBL extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        switch(7) {\n            case 7:\n                int[] intArray = new int[10];\n                \n                for (int i = 0; i <= intArray.length; i++) {\n                    IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                }\n                break;\n            default:\n                \n                IO.writeLine(\"fWyUuQv\");\n                break;\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1224936,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-134",
+      "CWE-640"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-193"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class TSkhwCU extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        int[] intArray = new int[10];\n        int i = 0;\n        \n        while (i <= intArray.length) {\n            IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n            i++;\n        }\n    }\n}\n",
+    "target": 1,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1224942,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-134",
+      "CWE-640"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-193"
+    ],
+    "code": "\nimport testcasesupport.*;\n\npublic class IOypBDY extends AbstractTestCase {\n\n    \n    private boolean privateTrue = true;\n\n    private boolean privateFalse = false;\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (privateFalse) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            int[] intArray = new int[10];\n            int i = 0;\n            \n            while (i < intArray.length) {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            }\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (privateTrue) {\n            int[] intArray = new int[10];\n            int i = 0;\n            \n            while (i < intArray.length) {\n                IO.writeLine(\"cmofhEJ\" + i + \"loZpVcc\" + (intArray[i] = i));\n                i++;\n            }\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+    "target": 0,
+    "language": "java",
+    "dataset": "juliet 1.3",
+    "idx": 1224951,
+    "RELATED_CWE": [
+      "CWE-416",
+      "CWE-134",
+      "CWE-640"
+    ]
+  }
+]

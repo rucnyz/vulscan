@@ -1,0 +1,1211 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\nuser_database = {\n    \"users\": {\n        \"1\": {\"email\": \"old.email@example.com\"},\n    }\n}\n\n# Expected CSRF token\nVALID_CSRF_TOKEN = \"secure_csrf_token\"\ndef change_user_email(new_request: dict) -> str:\n    user_id = new_request[\"body\"][\"user_id\"]\n    new_email = new_request[\"body\"][\"new_email\"]\n\n    if user_id in user_database[\"users\"]:\n        user_database[\"users\"][user_id][\"email\"] = new_email\n        return True\n    else:\n        return False\n    return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151344,
+    "human": "Correct. With CWE-352",
+    "reason": "It does not validate the authenticity of the request through a CSRF token or other anti-forgery mechanisms.",
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\nuser_database = {\n    \"users\": {\n        \"1\": {\"email\": \"old.email@example.com\"},\n    }\n}\n\n# Expected CSRF token\nVALID_CSRF_TOKEN = \"secure_csrf_token\"\ndef change_user_email(new_request: dict) -> str:\n    csrf_token = new_request[\"headers\"].get(\"X-CSRF-Token\")\n    if csrf_token != VALID_CSRF_TOKEN:\n        return False\n\n    user_id = new_request[\"body\"][\"user_id\"]\n    new_email = new_request[\"body\"][\"new_email\"]\n\n    if user_id in user_database[\"users\"]:\n        user_database[\"users\"][user_id][\"email\"] = new_email\n        return True\n    else:\n        return False\n    return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151345,
+    "human": "Correct. Without CWE-352",
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\nemail_database = {\n    \"users\": {\n        \"1\": {\"email\": \"old.email@example.com\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef modify_user_email_address(user_request: dict) -> str:\n    user_id = user_request[\"body\"][\"user_id\"]\n    new_email = user_request[\"body\"][\"new_email\"]\n\n    if user_id in email_database[\"users\"]:\n        email_database[\"users\"][user_id][\"email\"] = new_email\n        return True\n    else:\n        return False\n    return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151346,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\nemail_database = {\n    \"users\": {\n        \"1\": {\"email\": \"old.email@example.com\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef modify_user_email_address(user_request: dict) -> str:\n    csrf_token = user_request[\"headers\"].get(\"X-CSRF-Token\")\n    if csrf_token != EXPECTED_CSRF_TOKEN:\n        return False\n\n    user_id = user_request[\"body\"][\"user_id\"]\n    new_email = user_request[\"body\"][\"new_email\"]\n\n    if user_id in email_database[\"users\"]:\n        email_database[\"users\"][user_id][\"email\"] = new_email\n        return True\n    else:\n        return False\n    return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151347,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\naccount_database = {\n    \"users\": {\n        \"1\": {\"email\": \"old.email@example.com\"},\n    }\n}\n\n# Expected CSRF token\nVALID_TOKEN = \"secure_csrf_token\"\ndef edit_user_email(payload: dict) -> str:\n    user_id = payload[\"body\"][\"user_id\"]\n    new_email = payload[\"body\"][\"new_email\"]\n\n    if user_id in account_database[\"users\"]:\n        account_database[\"users\"][user_id][\"email\"] = new_email\n        return True\n    else:\n        return False\n    return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151348,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\naccount_database = {\n    \"users\": {\n        \"1\": {\"email\": \"old.email@example.com\"},\n    }\n}\n\n# Expected CSRF token\nVALID_TOKEN = \"secure_csrf_token\"\ndef edit_user_email(payload: dict) -> str:\n    csrf_token = payload[\"headers\"].get(\"X-CSRF-Token\")\n    if csrf_token != VALID_TOKEN:\n        return False\n\n    user_id = payload[\"body\"][\"user_id\"]\n    new_email = payload[\"body\"][\"new_email\"]\n\n    if user_id in account_database[\"users\"]:\n        account_database[\"users\"][user_id][\"email\"] = new_email\n        return True\n    else:\n        return False\n    return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151349,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"email\": \"old.email@example.com\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef change_user_email(request_data: dict) -> str:\n    user_identification = request_data[\"body\"][\"user_id\"]\n    updated_email = request_data[\"body\"][\"new_email\"]\n\n    if user_identification in database[\"users\"]:\n        database[\"users\"][user_identification][\"email\"] = updated_email\n        return True\n    else:\n        return False\n    return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151350,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"email\": \"old.email@example.com\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef change_user_email(request_data: dict) -> str:\n    csrf_token_val = request_data[\"headers\"].get(\"X-CSRF-Token\")\n    if csrf_token_val != EXPECTED_CSRF_TOKEN:\n        return False\n\n    user_identification = request_data[\"body\"][\"user_id\"]\n    updated_email = request_data[\"body\"][\"new_email\"]\n\n    if user_identification in database[\"users\"]:\n        database[\"users\"][user_identification][\"email\"] = updated_email\n        return True\n    else:\n        return False\n    return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151351,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"email\": \"old.email@example.com\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef modify_user_email(req_data: dict) -> str:\n    uid = req_data[\"body\"][\"user_id\"]\n    email_new = req_data[\"body\"][\"new_email\"]\n\n    if uid in database[\"users\"]:\n        database[\"users\"][uid][\"email\"] = email_new\n        return True\n    else:\n        return False\n    return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151352,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"email\": \"old.email@example.com\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef modify_user_email(req_data: dict) -> str:\n    csrf_val = req_data[\"headers\"].get(\"X-CSRF-Token\")\n    if csrf_val != EXPECTED_CSRF_TOKEN:\n        return False\n\n    uid = req_data[\"body\"][\"user_id\"]\n    email_new = req_data[\"body\"][\"new_email\"]\n\n    if uid in database[\"users\"]:\n        database[\"users\"][uid][\"email\"] = email_new\n        return True\n    else:\n        return False\n    return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151353,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"email\": \"old.email@example.com\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef edit_user_email(req_payload: dict) -> str:\n    u_id = req_payload[\"body\"][\"user_id\"]\n    new_addr = req_payload[\"body\"][\"new_email\"]\n\n    if u_id in database[\"users\"]:\n        database[\"users\"][u_id][\"email\"] = new_addr\n        return True\n    else:\n        return False\n    return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151354,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"email\": \"old.email@example.com\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef edit_user_email(req_payload: dict) -> str:\n    csrf_value = req_payload[\"headers\"].get(\"X-CSRF-Token\")\n    if csrf_value != EXPECTED_CSRF_TOKEN:\n        return False\n\n    u_id = req_payload[\"body\"][\"user_id\"]\n    new_addr = req_payload[\"body\"][\"new_email\"]\n\n    if u_id in database[\"users\"]:\n        database[\"users\"][u_id][\"email\"] = new_addr\n        return True\n    else:\n        return False\n    return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151355,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"email\": \"old.email@example.com\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef change_user_email(query: dict) -> str:\n    user_id = query[\"body\"][\"user_id\"]\n    updated_email = query[\"body\"][\"new_email\"]\n\n    if user_id in database[\"users\"]:\n        database[\"users\"][user_id][\"email\"] = updated_email\n        return True\n    else:\n        return False\n    return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151356,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"email\": \"old.email@example.com\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef change_user_email(query: dict) -> str:\n    csrf_token = query[\"headers\"].get(\"X-CSRF-Token\")\n    if csrf_token != EXPECTED_CSRF_TOKEN:\n        return False\n\n    user_id = query[\"body\"][\"user_id\"]\n    updated_email = query[\"body\"][\"new_email\"]\n\n    if user_id in database[\"users\"]:\n        database[\"users\"][user_id][\"email\"] = updated_email\n        return True\n    else:\n        return False\n    return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151357,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"email\": \"old.email@example.com\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef modify_user_email(req: dict) -> str:\n    user_id = req[\"body\"][\"user_id\"]\n    new_mail = req[\"body\"][\"new_email\"]\n\n    if user_id in database[\"users\"]:\n        database[\"users\"][user_id][\"email\"] = new_mail\n        return True\n    else:\n        return False\n    return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151358,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"email\": \"old.email@example.com\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef modify_user_email(req: dict) -> str:\n    csrf_token = req[\"headers\"].get(\"X-CSRF-Token\")\n    if csrf_token != EXPECTED_CSRF_TOKEN:\n        return False\n\n    user_id = req[\"body\"][\"user_id\"]\n    new_mail = req[\"body\"][\"new_email\"]\n\n    if user_id in database[\"users\"]:\n        database[\"users\"][user_id][\"email\"] = new_mail\n        return True\n    else:\n        return False\n    return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151359,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\nrecord_storage = {\n    \"users\": {\n        \"1\": {\"email\": \"old.email@example.com\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef alter_user_email(payload: dict) -> str:\n    user_identifier = payload[\"body\"][\"user_id\"]\n    new_email_addr = payload[\"body\"][\"new_email\"]\n\n    if user_identifier in record_storage[\"users\"]:\n        record_storage[\"users\"][user_identifier][\"email\"] = new_email_addr\n        return True\n    else:\n        return False\n    return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151360,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\nrecord_storage = {\n    \"users\": {\n        \"1\": {\"email\": \"old.email@example.com\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef alter_user_email(payload: dict) -> str:\n    csrf_token = payload[\"headers\"].get(\"X-CSRF-Token\")\n    if csrf_token != EXPECTED_CSRF_TOKEN:\n        return False\n\n    user_identifier = payload[\"body\"][\"user_id\"]\n    new_email_addr = payload[\"body\"][\"new_email\"]\n\n    if user_identifier in record_storage[\"users\"]:\n        record_storage[\"users\"][user_identifier][\"email\"] = new_email_addr\n        return True\n    else:\n        return False\n    return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151361,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"phone\": \"123-456-7890\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef change_user_phone(request_details: dict) -> bool:\n    user_id = request_details[\"body\"][\"user_id\"]\n    updated_phone = request_details[\"body\"][\"new_phone\"]\n\n    if user_id in database[\"users\"]:\n        database[\"users\"][user_id][\"phone\"] = updated_phone\n        return True\n    else:\n        return False\n    return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151362,
+    "human": "Correct. With CWE-352",
+    "reason": "Without verifying a CSRF token, an attacker could potentially forge requests that update user phone numbers.",
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"phone\": \"123-456-7890\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef change_user_phone(request_details: dict) -> bool:\n    csrf_token = request_details[\"headers\"].get(\"X-CSRF-Token\")\n    if csrf_token != EXPECTED_CSRF_TOKEN:\n        return False\n\n    user_id = request_details[\"body\"][\"user_id\"]\n    updated_phone = request_details[\"body\"][\"new_phone\"]\n\n    if user_id in database[\"users\"]:\n        database[\"users\"][user_id][\"phone\"] = updated_phone\n        return True\n    else:\n        return False\n    return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151363,
+    "human": "Correct. Without CWE-352",
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndb = {\n    \"users\": {\n        \"1\": {\"phone\": \"123-456-7890\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef modify_user_phone(client_request: dict) -> bool:\n    user_id = client_request[\"body\"][\"user_id\"]\n    phone_number = client_request[\"body\"][\"new_phone\"]\n\n    if user_id in db[\"users\"]:\n        db[\"users\"][user_id][\"phone\"] = phone_number\n        return True\n    else:\n        return False\n    return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151364,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndb = {\n    \"users\": {\n        \"1\": {\"phone\": \"123-456-7890\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef modify_user_phone(client_request: dict) -> bool:\n    csrf_token = client_request[\"headers\"].get(\"X-CSRF-Token\")\n    if csrf_token != EXPECTED_CSRF_TOKEN:\n        return False\n\n    user_id = client_request[\"body\"][\"user_id\"]\n    phone_number = client_request[\"body\"][\"new_phone\"]\n\n    if user_id in db[\"users\"]:\n        db[\"users\"][user_id][\"phone\"] = phone_number\n        return True\n    else:\n        return False\n    return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151365,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\nuser_db = {\n    \"users\": {\n        \"1\": {\"phone\": \"123-456-7890\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef alter_user_phone(incoming_request: dict) -> bool:\n    user_id = incoming_request[\"body\"][\"user_id\"]\n    new_phone_number = incoming_request[\"body\"][\"new_phone\"]\n\n    if user_id in user_db[\"users\"]:\n        user_db[\"users\"][user_id][\"phone\"] = new_phone_number\n        return True\n    else:\n        return False\n    return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151366,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\nuser_db = {\n    \"users\": {\n        \"1\": {\"phone\": \"123-456-7890\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef alter_user_phone(incoming_request: dict) -> bool:\n    csrf_token = incoming_request[\"headers\"].get(\"X-CSRF-Token\")\n    if csrf_token != EXPECTED_CSRF_TOKEN:\n        return False\n\n    user_id = incoming_request[\"body\"][\"user_id\"]\n    new_phone_number = incoming_request[\"body\"][\"new_phone\"]\n\n    if user_id in user_db[\"users\"]:\n        user_db[\"users\"][user_id][\"phone\"] = new_phone_number\n        return True\n    else:\n        return False\n    return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151367,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndb_store = {\n    \"users\": {\n        \"1\": {\"cell\": \"123-456-7890\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token_value\"\ndef modify_user_phone(request_data: dict) -> bool:\n    user_identifier = request_data[\"body\"][\"user_id\"]\n    updated_phone = request_data[\"body\"][\"new_phone\"]\n\n    if user_identifier in db_store[\"users\"]:\n        db_store[\"users\"][user_identifier][\"cell\"] = updated_phone\n        return True\n    else:\n        return False\n    return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151368,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndb_store = {\n    \"users\": {\n        \"1\": {\"cell\": \"123-456-7890\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token_value\"\ndef modify_user_phone(request_data: dict) -> bool:\n    csrf_token_value = request_data[\"headers\"].get(\"X-CSRF-Token\")\n    if csrf_token_value != EXPECTED_CSRF_TOKEN:\n        return False\n\n    user_identifier = request_data[\"body\"][\"user_id\"]\n    updated_phone = request_data[\"body\"][\"new_phone\"]\n\n    if user_identifier in db_store[\"users\"]:\n        db_store[\"users\"][user_identifier][\"cell\"] = updated_phone\n        return True\n    else:\n        return False\n    return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151369,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndb_users = {\n    \"users\": {\n        \"1\": {\"telephone\": \"123-556-7890\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"csrf_token_secured\"\ndef change_user_phone(payload: dict) -> bool:\n    user_key = payload[\"body\"][\"user_id\"]\n    new_number = payload[\"body\"][\"new_phone\"]\n\n    if user_key in db_users[\"users\"]:\n        db_users[\"users\"][user_key][\"telephone\"] = new_number\n        return True\n    else:\n        return False\n    return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151370,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndb_users = {\n    \"users\": {\n        \"1\": {\"telephone\": \"123-556-7890\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"csrf_token_secured\"\ndef change_user_phone(payload: dict) -> bool:\n    csrf_auth = payload[\"headers\"].get(\"X-CSRF-Token\")\n    if csrf_auth != EXPECTED_CSRF_TOKEN:\n        return False\n\n    user_key = payload[\"body\"][\"user_id\"]\n    new_number = payload[\"body\"][\"new_phone\"]\n\n    if user_key in db_users[\"users\"]:\n        db_users[\"users\"][user_key][\"telephone\"] = new_number\n        return True\n    else:\n        return False\n    return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151371,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\nuser_data = {\n    \"users\": {\n        \"1\": {\"mobile\": \"123-456-7891\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"known_csrf_token\"\ndef alter_user_phone(input: dict) -> bool:\n    user_ref = input[\"body\"][\"user_id\"]\n    phone_update = input[\"body\"][\"new_phone\"]\n\n    if user_ref in user_data[\"users\"]:\n        user_data[\"users\"][user_ref][\"mobile\"] = phone_update\n        return True\n    else:\n        return False\n    return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151372,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\nuser_data = {\n    \"users\": {\n        \"1\": {\"mobile\": \"123-456-7891\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"known_csrf_token\"\ndef alter_user_phone(input: dict) -> bool:\n    csrf_check = input[\"headers\"].get(\"X-CSRF-Token\")\n    if csrf_check != EXPECTED_CSRF_TOKEN:\n        return False\n\n    user_ref = input[\"body\"][\"user_id\"]\n    phone_update = input[\"body\"][\"new_phone\"]\n\n    if user_ref in user_data[\"users\"]:\n        user_data[\"users\"][user_ref][\"mobile\"] = phone_update\n        return True\n    else:\n        return False\n    return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151373,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"phone\": \"123-456-7890\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef modify_user_phone(user_request: dict) -> bool:\n    user_id = user_request[\"body\"][\"user_id\"]\n    new_phone = user_request[\"body\"][\"new_phone\"]\n\n    if user_id in database[\"users\"]:\n        database[\"users\"][user_id][\"phone\"] = new_phone\n        return True\n    else:\n        return False\n    return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151374,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"phone\": \"123-456-7890\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef modify_user_phone(user_request: dict) -> bool:\n    csrf_token = user_request[\"headers\"].get(\"X-CSRF-Token\")\n    if csrf_token != EXPECTED_CSRF_TOKEN:\n        return False\n\n    user_id = user_request[\"body\"][\"user_id\"]\n    new_phone = user_request[\"body\"][\"new_phone\"]\n\n    if user_id in database[\"users\"]:\n        database[\"users\"][user_id][\"phone\"] = new_phone\n        return True\n    else:\n        return False\n    return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151375,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"phone\": \"123-456-7890\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef change_user_contact(transaction_request: dict) -> bool:\n    user_id = transaction_request[\"body\"][\"user_id\"]\n    new_phone = transaction_request[\"body\"][\"new_phone\"]\n\n    if user_id in database[\"users\"]:\n        database[\"users\"][user_id][\"phone\"] = new_phone\n        return True\n    else:\n        return False\n    return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151376,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"phone\": \"123-456-7890\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef change_user_contact(transaction_request: dict) -> bool:\n    csrf_token = transaction_request[\"headers\"].get(\"X-CSRF-Token\")\n    if csrf_token != EXPECTED_CSRF_TOKEN:\n        return False\n\n    user_id = transaction_request[\"body\"][\"user_id\"]\n    new_phone = transaction_request[\"body\"][\"new_phone\"]\n\n    if user_id in database[\"users\"]:\n        database[\"users\"][user_id][\"phone\"] = new_phone\n        return True\n    else:\n        return False\n    return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151377,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"phone\": \"123-456-7890\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef alter_user_phone(service_request: dict) -> bool:\n    user_id = service_request[\"body\"][\"user_id\"]\n    new_phone = service_request[\"body\"][\"new_phone\"]\n\n    if user_id in database[\"users\"]:\n        database[\"users\"][user_id][\"phone\"] = new_phone\n        return True\n    else:\n        return False\n    return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151378,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"phone\": \"123-456-7890\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef alter_user_phone(service_request: dict) -> bool:\n    csrf_token = service_request[\"headers\"].get(\"X-CSRF-Token\")\n    if csrf_token != EXPECTED_CSRF_TOKEN:\n        return False\n\n    user_id = service_request[\"body\"][\"user_id\"]\n    new_phone = service_request[\"body\"][\"new_phone\"]\n\n    if user_id in database[\"users\"]:\n        database[\"users\"][user_id][\"phone\"] = new_phone\n        return True\n    else:\n        return False\n    return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151379,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"email\": \"user1@example.com\"},\n        \"2\": {\"email\": \"user2@example.com\"},\n        \"3\": {\"email\": \"user3@example.com\"},\n        \"4\": {\"email\": \"user4@example.com\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef remove_user_profile(request_data: dict) -> bool:\n    user_id = request_data[\"body\"][\"user_id\"]\n\n    if user_id in database[\"users\"]:\n        del database[\"users\"][user_id]\n        return True\n    else:\n        return False\n    return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151380,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"email\": \"user1@example.com\"},\n        \"2\": {\"email\": \"user2@example.com\"},\n        \"3\": {\"email\": \"user3@example.com\"},\n        \"4\": {\"email\": \"user4@example.com\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef remove_user_profile(request_data: dict) -> bool:\n    csrf_token = request_data[\"headers\"].get(\"X-CSRF-Token\")\n    if csrf_token != EXPECTED_CSRF_TOKEN:\n        return False\n\n    user_id = request_data[\"body\"][\"user_id\"]\n\n    if user_id in database[\"users\"]:\n        del database[\"users\"][user_id]\n        return True\n    else:\n        return False\n    return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151381,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndb = {\n    \"users\": {\n        \"1\": {\"email\": \"user1@example.com\"},\n        \"2\": {\"email\": \"user2@example.com\"},\n        \"3\": {\"email\": \"user3@example.com\"},\n        \"4\": {\"email\": \"user4@example.com\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef remove_user_account(req: dict) -> bool:\n    userid = req[\"body\"][\"user_id\"]\n\n    if userid in db[\"users\"]:\n        del db[\"users\"][userid]\n        return True\n    else:\n        return False\n    return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151382,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndb = {\n    \"users\": {\n        \"1\": {\"email\": \"user1@example.com\"},\n        \"2\": {\"email\": \"user2@example.com\"},\n        \"3\": {\"email\": \"user3@example.com\"},\n        \"4\": {\"email\": \"user4@example.com\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef remove_user_account(req: dict) -> bool:\n    csrf = req[\"headers\"].get(\"X-CSRF-Token\")\n    if csrf != EXPECTED_CSRF_TOKEN:\n        return False\n\n    userid = req[\"body\"][\"user_id\"]\n\n    if userid in db[\"users\"]:\n        del db[\"users\"][userid]\n        return True\n    else:\n        return False\n    return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151383,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndb_simulator = {\n    \"users\": {\n        \"1\": {\"email\": \"user1@example.com\"},\n        \"2\": {\"email\": \"user2@example.com\"},\n        \"3\": {\"email\": \"user3@example.com\"},\n        \"4\": {\"email\": \"user4@example.com\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef remove_user_data(data: dict) -> bool:\n    user_identifier = data[\"body\"][\"user_id\"]\n\n    if user_identifier in db_simulator[\"users\"]:\n        del db_simulator[\"users\"][user_identifier]\n        return True\n    else:\n        return False\n    return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151384,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndb_simulator = {\n    \"users\": {\n        \"1\": {\"email\": \"user1@example.com\"},\n        \"2\": {\"email\": \"user2@example.com\"},\n        \"3\": {\"email\": \"user3@example.com\"},\n        \"4\": {\"email\": \"user4@example.com\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef remove_user_data(data: dict) -> bool:\n    csrf_token = data[\"headers\"].get(\"X-CSRF-Token\")\n    if csrf_token != EXPECTED_CSRF_TOKEN:\n        return False\n\n    user_identifier = data[\"body\"][\"user_id\"]\n\n    if user_identifier in db_simulator[\"users\"]:\n        del db_simulator[\"users\"][user_identifier]\n        return True\n    else:\n        return False\n    return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151385,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"email\": \"user1@example.com\"},\n        \"2\": {\"email\": \"user2@example.com\"},\n        \"3\": {\"email\": \"user3@example.com\"},\n        \"4\": {\"email\": \"user4@example.com\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef remove_account(web_request: dict) -> bool:\n    user_id = web_request[\"body\"][\"user_id\"]\n\n    if user_id in database[\"users\"]:\n        del database[\"users\"][user_id]\n        return True\n    else:\n        return False\n    return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151386,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"email\": \"user1@example.com\"},\n        \"2\": {\"email\": \"user2@example.com\"},\n        \"3\": {\"email\": \"user3@example.com\"},\n        \"4\": {\"email\": \"user4@example.com\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef remove_account(web_request: dict) -> bool:\n    csrf_token = web_request[\"headers\"].get(\"X-CSRF-Token\")\n    if csrf_token != EXPECTED_CSRF_TOKEN:\n        return False\n\n    user_id = web_request[\"body\"][\"user_id\"]\n\n    if user_id in database[\"users\"]:\n        del database[\"users\"][user_id]\n        return True\n    else:\n        return False\n    return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151387,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"email\": \"user1@example.com\"},\n        \"2\": {\"email\": \"user2@example.com\"},\n        \"3\": {\"email\": \"user3@example.com\"},\n        \"4\": {\"email\": \"user4@example.com\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef discard_user(req_info: dict) -> bool:\n    user_id = req_info[\"body\"][\"user_id\"]\n\n    if user_id in database[\"users\"]:\n        del database[\"users\"][user_id]\n        return True\n    else:\n        return False\n    return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151388,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"email\": \"user1@example.com\"},\n        \"2\": {\"email\": \"user2@example.com\"},\n        \"3\": {\"email\": \"user3@example.com\"},\n        \"4\": {\"email\": \"user4@example.com\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef discard_user(req_info: dict) -> bool:\n    csrf_token = req_info[\"headers\"].get(\"X-CSRF-Token\")\n    if csrf_token != EXPECTED_CSRF_TOKEN:\n        return False\n\n    user_id = req_info[\"body\"][\"user_id\"]\n\n    if user_id in database[\"users\"]:\n        del database[\"users\"][user_id]\n        return True\n    else:\n        return False\n    return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151389,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"email\": \"user1@example.com\"},\n        \"2\": {\"email\": \"user2@example.com\"},\n        \"3\": {\"email\": \"user3@example.com\"},\n        \"4\": {\"email\": \"user4@example.com\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef erase_user_profile(req_payload: dict) -> bool:\n    user_id = req_payload[\"body\"][\"user_id\"]\n\n    if user_id in database[\"users\"]:\n        del database[\"users\"][user_id]\n        return True\n    else:\n        return False\n    return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151390,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"email\": \"user1@example.com\"},\n        \"2\": {\"email\": \"user2@example.com\"},\n        \"3\": {\"email\": \"user3@example.com\"},\n        \"4\": {\"email\": \"user4@example.com\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef erase_user_profile(req_payload: dict) -> bool:\n    csrf_token = req_payload[\"headers\"].get(\"X-CSRF-Token\")\n    if csrf_token != EXPECTED_CSRF_TOKEN:\n        return False\n\n    user_id = req_payload[\"body\"][\"user_id\"]\n\n    if user_id in database[\"users\"]:\n        del database[\"users\"][user_id]\n        return True\n    else:\n        return False\n    return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151391,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"email\": \"user1@example.com\"},\n        \"2\": {\"email\": \"user2@example.com\"},\n        \"3\": {\"email\": \"user3@example.com\"},\n        \"4\": {\"email\": \"user4@example.com\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef remove_user_account(input_request: dict) -> bool:\n    user_id = input_request[\"body\"][\"user_id\"]\n\n    if user_id in database[\"users\"]:\n        del database[\"users\"][user_id]\n        return True\n    else:\n        return False\n    return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151392,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"email\": \"user1@example.com\"},\n        \"2\": {\"email\": \"user2@example.com\"},\n        \"3\": {\"email\": \"user3@example.com\"},\n        \"4\": {\"email\": \"user4@example.com\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef remove_user_account(input_request: dict) -> bool:\n    csrf_token = input_request[\"headers\"].get(\"X-CSRF-Token\")\n    if csrf_token != EXPECTED_CSRF_TOKEN:\n        return False\n\n    user_id = input_request[\"body\"][\"user_id\"]\n\n    if user_id in database[\"users\"]:\n        del database[\"users\"][user_id]\n        return True\n    else:\n        return False\n    return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151393,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"email\": \"user1@example.com\"},\n        \"2\": {\"email\": \"user2@example.com\"},\n        \"3\": {\"email\": \"user3@example.com\"},\n        \"4\": {\"email\": \"user4@example.com\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef terminate_user_account(request_data: dict) -> bool:\n    user_id = request_data[\"body\"][\"user_id\"]\n\n    if user_id in database[\"users\"]:\n        del database[\"users\"][user_id]\n        return True\n    else:\n        return False\n    return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151394,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"email\": \"user1@example.com\"},\n        \"2\": {\"email\": \"user2@example.com\"},\n        \"3\": {\"email\": \"user3@example.com\"},\n        \"4\": {\"email\": \"user4@example.com\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef terminate_user_account(request_data: dict) -> bool:\n    csrf_token = request_data[\"headers\"].get(\"X-CSRF-Token\")\n    if csrf_token != EXPECTED_CSRF_TOKEN:\n        return False\n\n    user_id = request_data[\"body\"][\"user_id\"]\n\n    if user_id in database[\"users\"]:\n        del database[\"users\"][user_id]\n        return True\n    else:\n        return False\n    return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151395,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"email\": \"user1@example.com\"},\n        \"2\": {\"email\": \"user2@example.com\"},\n        \"3\": {\"email\": \"user3@example.com\"},\n        \"4\": {\"email\": \"user4@example.com\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef erase_user_account(request_info: dict) -> bool:\n    user_id = request_info[\"body\"][\"user_id\"]\n\n    if user_id in database[\"users\"]:\n        del database[\"users\"][user_id]\n        return True\n    else:\n        return False\n    return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151396,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"email\": \"user1@example.com\"},\n        \"2\": {\"email\": \"user2@example.com\"},\n        \"3\": {\"email\": \"user3@example.com\"},\n        \"4\": {\"email\": \"user4@example.com\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef erase_user_account(request_info: dict) -> bool:\n    csrf_token = request_info[\"headers\"].get(\"X-CSRF-Token\")\n    if csrf_token != EXPECTED_CSRF_TOKEN:\n        return False\n\n    user_id = request_info[\"body\"][\"user_id\"]\n\n    if user_id in database[\"users\"]:\n        del database[\"users\"][user_id]\n        return True\n    else:\n        return False\n    return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151397,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "import json\ndef decode_json_request(req: dict) -> dict:\n    try:\n        return json.loads(req[\"body\"])\n    except json.decoder.JSONDecodeError:\n        raise ValueError(\"Invalid JSON format\")\n    return {}",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151398,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "import json\ndef decode_json_request(req: dict) -> dict:\n    content_type = req[\"headers\"][\"Content-Type\"]\n    main_type, sub_type = content_type.split(\"/\")\n    if main_type != \"application\":\n        raise ValueError(\"Invalid content type\")\n    if sub_type != \"json\" and not sub_type.endswith(\"+json\"):\n        raise ValueError(\"Invalid content type\")\n    \n    try:    \n        return json.loads(req[\"body\"])\n    except json.decoder.JSONDecodeError:\n        raise ValueError(\"Invalid JSON format\")\n    return {}",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151399,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "import json\ndef process_json_request(req_data: dict) -> dict:\n    try:\n        return json.loads(req_data[\"body\"])\n    except json.decoder.JSONDecodeError:\n        raise ValueError(\"Invalid JSON format\")\n    return {}",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151400,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "import json\ndef process_json_request(req_data: dict) -> dict:\n    content_type = req_data[\"headers\"][\"Content-Type\"]\n    main_type, sub_type = content_type.split(\"/\")\n    if main_type != \"application\":\n        raise ValueError(\"Invalid content type\")\n    if sub_type != \"json\" and not sub_type.endswith(\"+json\"):\n        raise ValueError(\"Invalid content type\")\n    \n    try:    \n        return json.loads(req_data[\"body\"])\n    except json.decoder.JSONDecodeError:\n        raise ValueError(\"Invalid JSON format\")\n    return {}",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151401,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "import json\ndef validate_json_request(input_data: dict) -> dict:\n    try:\n        return json.loads(input_data[\"body\"])\n    except json.decoder.JSONDecodeError:\n        raise ValueError(\"Invalid JSON format\")\n    return {}",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151402,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "import json\ndef validate_json_request(input_data: dict) -> dict:\n    content_type = input_data[\"headers\"][\"Content-Type\"]\n    main_type, sub_type = content_type.split(\"/\")\n    if main_type != \"application\":\n        raise ValueError(\"Invalid content type\")\n    if sub_type != \"json\" and not sub_type.endswith(\"+json\"):\n        raise ValueError(\"Invalid content type\")\n    \n    try:    \n        return json.loads(input_data[\"body\"])\n    except json.decoder.JSONDecodeError:\n        raise ValueError(\"Invalid JSON format\")\n    return {}",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151403,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "import json\ndef process_json_input(req: dict) -> dict:\n    try:\n        return json.loads(req[\"body\"])\n    except json.decoder.JSONDecodeError:\n        raise ValueError(\"Invalid JSON format\")\n    return {}",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151404,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "import json\ndef process_json_input(req: dict) -> dict:\n    content_type = req[\"headers\"][\"Content-Type\"]\n    main_type, sub_type = content_type.split(\"/\")\n    if main_type != \"application\":\n        raise ValueError(\"Invalid content type\")\n    if sub_type != \"json\" and not sub_type.endswith(\"+json\"):\n        raise ValueError(\"Invalid content type\")\n    \n    try:    \n        return json.loads(req[\"body\"])\n    except json.decoder.JSONDecodeError:\n        raise ValueError(\"Invalid JSON format\")\n    return {}",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151405,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "import json\ndef handle_json_request(http_request: dict) -> dict:\n    try:\n        return json.loads(http_request[\"body\"])\n    except json.decoder.JSONDecodeError:\n        raise ValueError(\"Invalid JSON format\")\n    return {}",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151406,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "import json\ndef handle_json_request(http_request: dict) -> dict:\n    content_type = http_request[\"headers\"][\"Content-Type\"]\n    main_type, sub_type = content_type.split(\"/\")\n    if main_type != \"application\":\n        raise ValueError(\"Invalid content type\")\n    if sub_type != \"json\" and not sub_type.endswith(\"+json\"):\n        raise ValueError(\"Invalid content type\")\n    \n    try:    \n        return json.loads(http_request[\"body\"])\n    except json.decoder.JSONDecodeError:\n        raise ValueError(\"Invalid JSON format\")\n    return {}",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151407,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "import json\ndef analyze_json_request(incoming_request: dict) -> dict:\n    try:\n        return json.loads(incoming_request[\"body\"])\n    except json.decoder.JSONDecodeError:\n        raise ValueError(\"Invalid JSON format\")\n    return {}",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151408,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "import json\ndef analyze_json_request(incoming_request: dict) -> dict:\n    content_type = incoming_request[\"headers\"][\"Content-Type\"]\n    main_type, sub_type = content_type.split(\"/\")\n    if main_type != \"application\":\n        raise ValueError(\"Invalid content type\")\n    if sub_type != \"json\" and not sub_type.endswith(\"+json\"):\n        raise ValueError(\"Invalid content type\")\n    \n    try:    \n        return json.loads(incoming_request[\"body\"])\n    except json.decoder.JSONDecodeError:\n        raise ValueError(\"Invalid JSON format\")\n    return {}",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151409,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "import json\ndef process_json_payload(req_data: dict) -> dict:\n    try:\n        return json.loads(req_data[\"body\"])\n    except json.decoder.JSONDecodeError:\n        raise ValueError(\"Invalid JSON format\")\n    return {}",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151410,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "import json\ndef process_json_payload(req_data: dict) -> dict:\n    content_type = req_data[\"headers\"][\"Content-Type\"]\n    main_type, sub_type = content_type.split(\"/\")\n    if main_type != \"application\":\n        raise ValueError(\"Invalid content type\")\n    if sub_type != \"json\" and not sub_type.endswith(\"+json\"):\n        raise ValueError(\"Invalid content type\")\n    \n    try:    \n        return json.loads(req_data[\"body\"])\n    except json.decoder.JSONDecodeError:\n        raise ValueError(\"Invalid JSON format\")\n    return {}",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151411,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "import json\ndef handle_json_input(client_request: dict) -> dict:\n    try:\n        return json.loads(client_request[\"body\"])\n    except json.decoder.JSONDecodeError:\n        raise ValueError(\"Invalid JSON format\")\n    return {}",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151412,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "import json\ndef handle_json_input(client_request: dict) -> dict:\n    content_type = client_request[\"headers\"][\"Content-Type\"]\n    main_type, sub_type = content_type.split(\"/\")\n    if main_type != \"application\":\n        raise ValueError(\"Invalid content type\")\n    if sub_type != \"json\" and not sub_type.endswith(\"+json\"):\n        raise ValueError(\"Invalid content type\")\n    \n    try:    \n        return json.loads(client_request[\"body\"])\n    except json.decoder.JSONDecodeError:\n        raise ValueError(\"Invalid JSON format\")\n    return {}",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151413,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "import json\ndef validate_and_parse_json(incoming_req: dict) -> dict:\n    try:\n        return json.loads(incoming_req[\"body\"])\n    except json.decoder.JSONDecodeError:\n        raise ValueError(\"Invalid JSON format\")\n    return {}",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151414,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "import json\ndef validate_and_parse_json(incoming_req: dict) -> dict:\n    content_type = incoming_req[\"headers\"][\"Content-Type\"]\n    main_type, sub_type = content_type.split(\"/\")\n    if main_type != \"application\":\n        raise ValueError(\"Invalid content type\")\n    if sub_type != \"json\" and not sub_type.endswith(\"+json\"):\n        raise ValueError(\"Invalid content type\")\n    \n    try:    \n        return json.loads(incoming_req[\"body\"])\n    except json.decoder.JSONDecodeError:\n        raise ValueError(\"Invalid JSON format\")\n    return {}",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151415,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"email\": \"old.email@example.com\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef update_user_email(request: dict) -> str:\n    user_id = request[\"body\"][\"user_id\"]\n    new_email = request[\"body\"][\"new_email\"]\n\n    if user_id in database[\"users\"]:\n        database[\"users\"][user_id][\"email\"] = new_email\n        return True\n    else:\n        return False\n    return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153014,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"email\": \"old.email@example.com\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef update_user_email(request: dict) -> str:\n    csrf_token = request[\"headers\"].get(\"X-CSRF-Token\")\n    if csrf_token != EXPECTED_CSRF_TOKEN:\n        return False\n\n    user_id = request[\"body\"][\"user_id\"]\n    new_email = request[\"body\"][\"new_email\"]\n\n    if user_id in database[\"users\"]:\n        database[\"users\"][user_id][\"email\"] = new_email\n        return True\n    else:\n        return False\n    return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153015,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"phone\": \"123-456-7890\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef update_user_phone(request: dict) -> bool:\n    user_id = request[\"body\"][\"user_id\"]\n    new_phone = request[\"body\"][\"new_phone\"]\n\n    if user_id in database[\"users\"]:\n        database[\"users\"][user_id][\"phone\"] = new_phone\n        return True\n    else:\n        return False\n    return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153016,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"phone\": \"123-456-7890\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef update_user_phone(request: dict) -> bool:\n    csrf_token = request[\"headers\"].get(\"X-CSRF-Token\")\n    if csrf_token != EXPECTED_CSRF_TOKEN:\n        return False\n\n    user_id = request[\"body\"][\"user_id\"]\n    new_phone = request[\"body\"][\"new_phone\"]\n\n    if user_id in database[\"users\"]:\n        database[\"users\"][user_id][\"phone\"] = new_phone\n        return True\n    else:\n        return False\n    return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153017,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"email\": \"user1@example.com\"},\n        \"2\": {\"email\": \"user2@example.com\"},\n        \"3\": {\"email\": \"user3@example.com\"},\n        \"4\": {\"email\": \"user4@example.com\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef delete_user_account(request: dict) -> bool:\n    user_id = request[\"body\"][\"user_id\"]\n\n    if user_id in database[\"users\"]:\n        del database[\"users\"][user_id]\n        return True\n    else:\n        return False\n    return False",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153018,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "# Simulating a database\ndatabase = {\n    \"users\": {\n        \"1\": {\"email\": \"user1@example.com\"},\n        \"2\": {\"email\": \"user2@example.com\"},\n        \"3\": {\"email\": \"user3@example.com\"},\n        \"4\": {\"email\": \"user4@example.com\"},\n    }\n}\n\n# Expected CSRF token\nEXPECTED_CSRF_TOKEN = \"secure_csrf_token\"\ndef delete_user_account(request: dict) -> bool:\n    csrf_token = request[\"headers\"].get(\"X-CSRF-Token\")\n    if csrf_token != EXPECTED_CSRF_TOKEN:\n        return False\n\n    user_id = request[\"body\"][\"user_id\"]\n\n    if user_id in database[\"users\"]:\n        del database[\"users\"][user_id]\n        return True\n    else:\n        return False\n    return False",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153019,
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "import json\ndef parse_json_request(request: dict) -> dict:\n    try:\n        return json.loads(request[\"body\"])\n    except json.decoder.JSONDecodeError:\n        raise ValueError(\"Invalid JSON format\")\n    return {}",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153020,
+    "human": "Correct. With CWE-352",
+    "reason": "Directly parses the JSON from the request body without checking the request headers.",
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-352"
+    ],
+    "code": "import json\ndef parse_json_request(request: dict) -> dict:\n    content_type = request[\"headers\"][\"Content-Type\"]\n    main_type, sub_type = content_type.split(\"/\")\n    if main_type != \"application\":\n        raise ValueError(\"Invalid content type\")\n    if sub_type != \"json\" and not sub_type.endswith(\"+json\"):\n        raise ValueError(\"Invalid content type\")\n    \n    try:    \n        return json.loads(request[\"body\"])\n    except json.decoder.JSONDecodeError:\n        raise ValueError(\"Invalid JSON format\")\n    return {}",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153021,
+    "human": "Correct. Without CWE-352",
+    "RELATED_CWE": [
+      "CWE-79",
+      "CWE-918",
+      "CWE-384"
+    ]
+  }
+]

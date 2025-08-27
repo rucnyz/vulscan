@@ -1,0 +1,332 @@
+[
+    {
+        "CWE_ID": [
+            "CWE-338"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport java.security.SecureRandom;\n\npublic class ctzRtot extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (false) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            SecureRandom secureRandom = new SecureRandom();\n            IO.writeLine(\"IbXSDGu\" + secureRandom.nextDouble());\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (true) {\n            \n            SecureRandom secureRandom = new SecureRandom();\n            IO.writeLine(\"IbXSDGu\" + secureRandom.nextDouble());\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+        "target": 0,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1229815,
+        "RELATED_CWE": [
+            "CWE-347",
+            "CWE-798",
+            "CWE-522"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-338"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport java.security.SecureRandom;\n\npublic class wwwofej extends AbstractTestCase {\n\n    \n    private static final boolean PRIVATE_STATIC_FINAL_TRUE = true;\n\n    private static final boolean PRIVATE_STATIC_FINAL_FALSE = false;\n\n    public void boNMSnT() throws Throwable {\n        if (PRIVATE_STATIC_FINAL_TRUE) {\n            \n            IO.writeLine(\"IbXSDGu\" + Math.random());\n        }\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1229818,
+        "RELATED_CWE": [
+            "CWE-347",
+            "CWE-798",
+            "CWE-522"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-338"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport java.security.SecureRandom;\n\npublic class wwwofej extends AbstractTestCase {\n\n    \n    private static final boolean PRIVATE_STATIC_FINAL_TRUE = true;\n\n    private static final boolean PRIVATE_STATIC_FINAL_FALSE = false;\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (PRIVATE_STATIC_FINAL_FALSE) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            SecureRandom secureRandom = new SecureRandom();\n            IO.writeLine(\"IbXSDGu\" + secureRandom.nextDouble());\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (PRIVATE_STATIC_FINAL_TRUE) {\n            \n            SecureRandom secureRandom = new SecureRandom();\n            IO.writeLine(\"IbXSDGu\" + secureRandom.nextDouble());\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+        "target": 0,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1229819,
+        "RELATED_CWE": [
+            "CWE-347",
+            "CWE-798",
+            "CWE-522"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-338"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport java.security.SecureRandom;\n\npublic class JIJXiWM extends AbstractTestCase {\n\n    \n    private static final int PRIVATE_STATIC_FINAL_FIVE = 5;\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (PRIVATE_STATIC_FINAL_FIVE != 5) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            SecureRandom secureRandom = new SecureRandom();\n            IO.writeLine(\"IbXSDGu\" + secureRandom.nextDouble());\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (PRIVATE_STATIC_FINAL_FIVE == 5) {\n            \n            SecureRandom secureRandom = new SecureRandom();\n            IO.writeLine(\"IbXSDGu\" + secureRandom.nextDouble());\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+        "target": 0,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1229823,
+        "RELATED_CWE": [
+            "CWE-347",
+            "CWE-798",
+            "CWE-522"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-338"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport java.security.SecureRandom;\n\npublic class WTCnSQB extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        for (int k = 0; k < 1; k++) {\n            \n            SecureRandom secureRandom = new SecureRandom();\n            IO.writeLine(\"IbXSDGu\" + secureRandom.nextDouble());\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n    }\n}\n",
+        "target": 0,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1229845,
+        "RELATED_CWE": [
+            "CWE-347",
+            "CWE-798",
+            "CWE-522"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-338"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport java.security.SecureRandom;\nimport java.util.Random;\n\npublic class INELklf extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        \n        Random random = new Random();\n        IO.writeLine(\"IbXSDGu\" + random.nextInt());\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1229846,
+        "RELATED_CWE": [
+            "CWE-347",
+            "CWE-798",
+            "CWE-522"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-338"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport java.security.SecureRandom;\nimport java.util.Random;\n\npublic class XizKchF extends AbstractTestCase {\n\n    \n    private boolean privateReturnsTrue() {\n        return true;\n    }\n\n    private boolean privateReturnsFalse() {\n        return false;\n    }\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (privateReturnsFalse()) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            SecureRandom secureRandom = new SecureRandom();\n            IO.writeLine(\"IbXSDGu\" + secureRandom.nextDouble());\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (privateReturnsTrue()) {\n            \n            SecureRandom secureRandom = new SecureRandom();\n            IO.writeLine(\"IbXSDGu\" + secureRandom.nextDouble());\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+        "target": 0,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1229861,
+        "RELATED_CWE": [
+            "CWE-347",
+            "CWE-798",
+            "CWE-522"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-338"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport java.security.SecureRandom;\nimport java.util.Random;\n\npublic class RuJjZmX extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        if (IO.STATIC_FINAL_TRUE) {\n            \n            Random random = new Random();\n            IO.writeLine(\"IbXSDGu\" + random.nextInt());\n        }\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1229862,
+        "RELATED_CWE": [
+            "CWE-347",
+            "CWE-798",
+            "CWE-522"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-338"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport java.security.SecureRandom;\nimport java.util.Random;\n\npublic class lSrIvYT extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (IO.staticReturnsTrueOrFalse()) {\n            \n            SecureRandom secureRandom = new SecureRandom();\n            IO.writeLine(\"IbXSDGu\" + secureRandom.nextDouble());\n        } else {\n            \n            SecureRandom secureRandom = new SecureRandom();\n            IO.writeLine(\"IbXSDGu\" + secureRandom.nextDouble());\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n    }\n}\n",
+        "target": 0,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1229869,
+        "RELATED_CWE": [
+            "CWE-347",
+            "CWE-798",
+            "CWE-522"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-338"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport java.security.SecureRandom;\nimport java.util.Random;\n\npublic class kuobebr extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (IO.staticFive != 5) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            SecureRandom secureRandom = new SecureRandom();\n            IO.writeLine(\"IbXSDGu\" + secureRandom.nextDouble());\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (IO.staticFive == 5) {\n            \n            SecureRandom secureRandom = new SecureRandom();\n            IO.writeLine(\"IbXSDGu\" + secureRandom.nextDouble());\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+        "target": 0,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1229873,
+        "RELATED_CWE": [
+            "CWE-347",
+            "CWE-798",
+            "CWE-522"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-338"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport java.security.SecureRandom;\nimport java.util.Random;\n\npublic class vRxlAxx extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        switch(8) {\n            case 7:\n                \n                IO.writeLine(\"fWyUuQv\");\n                break;\n            default:\n                \n                SecureRandom secureRandom = new SecureRandom();\n                IO.writeLine(\"IbXSDGu\" + secureRandom.nextDouble());\n                break;\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        switch(7) {\n            case 7:\n                \n                SecureRandom secureRandom = new SecureRandom();\n                IO.writeLine(\"IbXSDGu\" + secureRandom.nextDouble());\n                break;\n            default:\n                \n                IO.writeLine(\"fWyUuQv\");\n                break;\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+        "target": 0,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1229875,
+        "RELATED_CWE": [
+            "CWE-347",
+            "CWE-798",
+            "CWE-522"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-338"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport java.security.SecureRandom;\n\npublic class rYOTeqK extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        if (IO.staticFalse) {\n            \n            IO.writeLine(\"fWyUuQv\");\n        } else {\n            \n            SecureRandom secureRandom = new SecureRandom();\n            IO.writeLine(\"IbXSDGu\" + secureRandom.nextDouble());\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        if (IO.staticTrue) {\n            \n            SecureRandom secureRandom = new SecureRandom();\n            IO.writeLine(\"IbXSDGu\" + secureRandom.nextDouble());\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+        "target": 0,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1229831,
+        "RELATED_CWE": [
+            "CWE-347",
+            "CWE-798",
+            "CWE-522"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-338"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport java.security.SecureRandom;\nimport java.util.Random;\n\npublic class lSrIvYT extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        if (IO.staticReturnsTrueOrFalse()) {\n            \n            Random random = new Random();\n            IO.writeLine(\"IbXSDGu\" + random.nextInt());\n        } else {\n            \n            SecureRandom secureRandom = new SecureRandom();\n            IO.writeLine(\"IbXSDGu\" + secureRandom.nextDouble());\n        }\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1229868,
+        "RELATED_CWE": [
+            "CWE-347",
+            "CWE-798",
+            "CWE-522"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-338"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport java.security.SecureRandom;\nimport java.util.Random;\n\npublic class vVjCUAQ extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        while (true) {\n            \n            Random random = new Random();\n            IO.writeLine(\"IbXSDGu\" + random.nextInt());\n            break;\n        }\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1229876,
+        "RELATED_CWE": [
+            "CWE-347",
+            "CWE-798",
+            "CWE-522"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-338"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport java.security.SecureRandom;\n\npublic class IdwNHQo extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        \n        IO.writeLine(\"IbXSDGu\" + Math.random());\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1229812,
+        "RELATED_CWE": [
+            "CWE-347",
+            "CWE-798",
+            "CWE-522"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-338"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport java.security.SecureRandom;\n\npublic class IdwNHQo extends AbstractTestCase {\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n    }\n\n    private void sEXYVUh() throws Throwable {\n        \n        SecureRandom secureRandom = new SecureRandom();\n        IO.writeLine(\"IbXSDGu\" + secureRandom.nextDouble());\n    }\n}\n",
+        "target": 0,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1229813,
+        "RELATED_CWE": [
+            "CWE-347",
+            "CWE-798",
+            "CWE-522"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-338"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport java.security.SecureRandom;\n\npublic class pHNDIPf extends AbstractTestCase {\n\n    \n    private boolean privateTrue = true;\n\n    private boolean privateFalse = false;\n\n    public void boNMSnT() throws Throwable {\n        if (privateTrue) {\n            \n            IO.writeLine(\"IbXSDGu\" + Math.random());\n        }\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1229820,
+        "RELATED_CWE": [
+            "CWE-347",
+            "CWE-798",
+            "CWE-522"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-338"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport java.security.SecureRandom;\n\npublic class rYOTeqK extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        if (IO.staticTrue) {\n            \n            IO.writeLine(\"IbXSDGu\" + Math.random());\n        }\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1229830,
+        "RELATED_CWE": [
+            "CWE-347",
+            "CWE-798",
+            "CWE-522"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-338"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport java.security.SecureRandom;\n\npublic class UzhIdWw extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        if (IO.staticReturnsTrueOrFalse()) {\n            \n            IO.writeLine(\"IbXSDGu\" + Math.random());\n        } else {\n            \n            SecureRandom secureRandom = new SecureRandom();\n            IO.writeLine(\"IbXSDGu\" + secureRandom.nextDouble());\n        }\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1229834,
+        "RELATED_CWE": [
+            "CWE-347",
+            "CWE-798",
+            "CWE-522"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-338"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport java.security.SecureRandom;\n\npublic class NPciDNN extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        if (IO.staticFive == 5) {\n            \n            IO.writeLine(\"IbXSDGu\" + Math.random());\n        }\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1229838,
+        "RELATED_CWE": [
+            "CWE-347",
+            "CWE-798",
+            "CWE-522"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-338"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport java.security.SecureRandom;\n\npublic class HRGPAKS extends AbstractTestCase {\n\n    \n    private void sEXYVUh() throws Throwable {\n        switch(8) {\n            case 7:\n                \n                IO.writeLine(\"fWyUuQv\");\n                break;\n            default:\n                \n                SecureRandom secureRandom = new SecureRandom();\n                IO.writeLine(\"IbXSDGu\" + secureRandom.nextDouble());\n                break;\n        }\n    }\n\n    \n    private void kYrcdjt() throws Throwable {\n        switch(7) {\n            case 7:\n                \n                SecureRandom secureRandom = new SecureRandom();\n                IO.writeLine(\"IbXSDGu\" + secureRandom.nextDouble());\n                break;\n            default:\n                \n                IO.writeLine(\"fWyUuQv\");\n                break;\n        }\n    }\n\n    public void JttWLtS() throws Throwable {\n        sEXYVUh();\n        kYrcdjt();\n    }\n}\n",
+        "target": 0,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1229841,
+        "RELATED_CWE": [
+            "CWE-347",
+            "CWE-798",
+            "CWE-522"
+        ]
+    },
+    {
+        "CWE_ID": [
+            "CWE-338"
+        ],
+        "code": "\nimport testcasesupport.*;\nimport java.security.SecureRandom;\n\npublic class WTCnSQB extends AbstractTestCase {\n\n    public void boNMSnT() throws Throwable {\n        for (int j = 0; j < 1; j++) {\n            \n            IO.writeLine(\"IbXSDGu\" + Math.random());\n        }\n    }\n}\n",
+        "target": 1,
+        "language": "java",
+        "dataset": "juliet 1.3",
+        "idx": 1229844,
+        "RELATED_CWE": [
+            "CWE-347",
+            "CWE-798",
+            "CWE-522"
+        ]
+    }
+]

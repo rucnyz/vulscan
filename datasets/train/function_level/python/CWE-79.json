@@ -1,0 +1,2768 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "    def init_settings(self, ipython_app, kernel_manager, contents_manager,\n                      cluster_manager, session_manager, kernel_spec_manager,\n                      config_manager,\n                      log, base_url, default_url, settings_overrides,\n                      jinja_env_options=None):\n\n        _template_path = settings_overrides.get(\n            \"template_path\",\n            ipython_app.template_file_path,\n        )\n        if isinstance(_template_path, py3compat.string_types):\n            _template_path = (_template_path,)\n        template_path = [os.path.expanduser(path) for path in _template_path]\n\n        jenv_opt = jinja_env_options if jinja_env_options else {}\n        env = Environment(loader=FileSystemLoader(template_path), **jenv_opt)\n        \n        sys_info = get_sys_info()\n        if sys_info['commit_source'] == 'repository':\n            # don't cache (rely on 304) when working from master\n            version_hash = ''\n        else:\n            # reset the cache on server restart\n            version_hash = datetime.datetime.now().strftime(\"%Y%m%d%H%M%S\")\n\n        settings = dict(\n            # basics\n            log_function=log_request,\n            base_url=base_url,\n            default_url=default_url,\n            template_path=template_path,\n            static_path=ipython_app.static_file_path,\n            static_handler_class = FileFindHandler,\n            static_url_prefix = url_path_join(base_url,'/static/'),\n            static_handler_args = {\n                # don't cache custom.js\n                'no_cache_paths': [url_path_join(base_url, 'static', 'custom')],\n            },\n            version_hash=version_hash,\n            \n            # authentication\n            cookie_secret=ipython_app.cookie_secret,\n            login_url=url_path_join(base_url,'/login'),\n            login_handler_class=ipython_app.login_handler_class,\n            logout_handler_class=ipython_app.logout_handler_class,\n            password=ipython_app.password,\n\n            # managers\n            kernel_manager=kernel_manager,\n            contents_manager=contents_manager,\n            cluster_manager=cluster_manager,\n            session_manager=session_manager,\n            kernel_spec_manager=kernel_spec_manager,\n            config_manager=config_manager,\n\n            # IPython stuff\n            jinja_template_vars=ipython_app.jinja_template_vars,\n            nbextensions_path=ipython_app.nbextensions_path,\n            websocket_url=ipython_app.websocket_url,\n            mathjax_url=ipython_app.mathjax_url,\n            config=ipython_app.config,\n            jinja2_env=env,\n            terminals_available=False,  # Set later if terminals are available\n        )\n\n        # allow custom overrides for the tornado web app.\n        settings.update(settings_overrides)\n        return settings",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149042,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ],
+    "human": "Correct"
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "    def init_settings(self, ipython_app, kernel_manager, contents_manager,\n                      cluster_manager, session_manager, kernel_spec_manager,\n                      config_manager,\n                      log, base_url, default_url, settings_overrides,\n                      jinja_env_options=None):\n\n        _template_path = settings_overrides.get(\n            \"template_path\",\n            ipython_app.template_file_path,\n        )\n        if isinstance(_template_path, py3compat.string_types):\n            _template_path = (_template_path,)\n        template_path = [os.path.expanduser(path) for path in _template_path]\n\n        jenv_opt = {\"autoescape\": True}\n        jenv_opt.update(jinja_env_options if jinja_env_options else {})\n\n        env = Environment(loader=FileSystemLoader(template_path), **jenv_opt)\n        \n        sys_info = get_sys_info()\n        if sys_info['commit_source'] == 'repository':\n            # don't cache (rely on 304) when working from master\n            version_hash = ''\n        else:\n            # reset the cache on server restart\n            version_hash = datetime.datetime.now().strftime(\"%Y%m%d%H%M%S\")\n\n        settings = dict(\n            # basics\n            log_function=log_request,\n            base_url=base_url,\n            default_url=default_url,\n            template_path=template_path,\n            static_path=ipython_app.static_file_path,\n            static_handler_class = FileFindHandler,\n            static_url_prefix = url_path_join(base_url,'/static/'),\n            static_handler_args = {\n                # don't cache custom.js\n                'no_cache_paths': [url_path_join(base_url, 'static', 'custom')],\n            },\n            version_hash=version_hash,\n            \n            # authentication\n            cookie_secret=ipython_app.cookie_secret,\n            login_url=url_path_join(base_url,'/login'),\n            login_handler_class=ipython_app.login_handler_class,\n            logout_handler_class=ipython_app.logout_handler_class,\n            password=ipython_app.password,\n\n            # managers\n            kernel_manager=kernel_manager,\n            contents_manager=contents_manager,\n            cluster_manager=cluster_manager,\n            session_manager=session_manager,\n            kernel_spec_manager=kernel_spec_manager,\n            config_manager=config_manager,\n\n            # IPython stuff\n            jinja_template_vars=ipython_app.jinja_template_vars,\n            nbextensions_path=ipython_app.nbextensions_path,\n            websocket_url=ipython_app.websocket_url,\n            mathjax_url=ipython_app.mathjax_url,\n            config=ipython_app.config,\n            jinja2_env=env,\n            terminals_available=False,  # Set later if terminals are available\n        )\n\n        # allow custom overrides for the tornado web app.\n        settings.update(settings_overrides)\n        return settings",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149043,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ],
+    "human": "Correct"
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "  @auth.public\n  def get(self, build_id):\n    try:\n      build_id = int(build_id)\n    except ValueError as ex:\n      self.response.write(ex.message)\n      self.abort(400)\n\n    build = model.Build.get_by_id(build_id)\n    can_view = build and user.can_view_build_async(build).get_result()\n\n    if not can_view:\n      if auth.get_current_identity().is_anonymous:\n        return self.redirect(gae_users.create_login_url(self.request.url))\n      self.response.write('build %d not found' % build_id)\n      self.abort(404)\n\n    return self.redirect(str(build.url))",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149044,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ],
+    "human": "Correct"
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "  @auth.public\n  def get(self, build_id):\n    try:\n      build_id = int(build_id)\n    except ValueError:\n      self.response.write('invalid build id')\n      self.abort(400)\n\n    build = model.Build.get_by_id(build_id)\n    can_view = build and user.can_view_build_async(build).get_result()\n\n    if not can_view:\n      if auth.get_current_identity().is_anonymous:\n        return self.redirect(self.create_login_url(self.request.url))\n      self.response.write('build %d not found' % build_id)\n      self.abort(404)\n\n    return self.redirect(str(build.url))",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149045,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ],
+    "human": "Correct"
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "def index(request, is_mobile=False):\n  hue_collections = DashboardController(request.user).get_search_collections()\n  collection_id = request.GET.get('collection')\n\n  if not hue_collections or not collection_id:\n    return admin_collections(request, True, is_mobile)\n\n  try:\n    collection_doc = Document2.objects.get(id=collection_id)\n    if USE_NEW_EDITOR.get():\n      collection_doc.can_read_or_exception(request.user)\n    else:\n      collection_doc.doc.get().can_read_or_exception(request.user)\n    collection = Collection2(request.user, document=collection_doc)\n  except Exception, e:\n    raise PopupException(e, title=_(\"Dashboard does not exist or you don't have the permission to access it.\"))\n\n  query = {'qs': [{'q': ''}], 'fqs': [], 'start': 0}\n\n  if request.method == 'GET':\n    if 'q' in request.GET:\n      query['qs'][0]['q'] = request.GET.get('q')\n    if 'qd' in request.GET:\n      query['qd'] = request.GET.get('qd')\n\n  template = 'search.mako'\n  if is_mobile:\n    template = 'search_m.mako'\n\n  return render(template, request, {\n    'collection': collection,\n    'query': json.dumps(query),\n    'initial': json.dumps({\n        'collections': [],\n        'layout': DEFAULT_LAYOUT,\n        'is_latest': LATEST.get(),\n        'engines': get_engines(request.user)\n    }),\n    'is_owner': collection_doc.doc.get().can_write(request.user),\n    'can_edit_index': can_edit_index(request.user),\n    'is_embeddable': request.GET.get('is_embeddable', False),\n    'mobile': is_mobile,\n  })",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149046,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ],
+    "human": "Correct"
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "def index(request, is_mobile=False):\n  hue_collections = DashboardController(request.user).get_search_collections()\n  collection_id = request.GET.get('collection')\n\n  if not hue_collections or not collection_id:\n    return admin_collections(request, True, is_mobile)\n\n  try:\n    collection_doc = Document2.objects.get(id=collection_id)\n    if USE_NEW_EDITOR.get():\n      collection_doc.can_read_or_exception(request.user)\n    else:\n      collection_doc.doc.get().can_read_or_exception(request.user)\n    collection = Collection2(request.user, document=collection_doc)\n  except Exception, e:\n    raise PopupException(e, title=_(\"Dashboard does not exist or you don't have the permission to access it.\"))\n\n  query = {'qs': [{'q': ''}], 'fqs': [], 'start': 0}\n\n  if request.method == 'GET':\n    if 'q' in request.GET:\n      query['qs'][0]['q'] = antixss(request.GET.get('q', ''))\n    if 'qd' in request.GET:\n      query['qd'] = antixss(request.GET.get('qd', ''))\n\n  template = 'search.mako'\n  if is_mobile:\n    template = 'search_m.mako'\n\n  return render(template, request, {\n    'collection': collection,\n    'query': json.dumps(query),\n    'initial': json.dumps({\n        'collections': [],\n        'layout': DEFAULT_LAYOUT,\n        'is_latest': LATEST.get(),\n        'engines': get_engines(request.user)\n    }),\n    'is_owner': collection_doc.can_write(request.user) if USE_NEW_EDITOR.get() else collection_doc.doc.get().can_write(request.user),\n    'can_edit_index': can_edit_index(request.user),\n    'is_embeddable': request.GET.get('is_embeddable', False),\n    'mobile': is_mobile,\n  })",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149047,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ],
+    "human": "Correct"
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "    def respond_error(self, context, exception):\n        context.respond_server_error()\n        stack = traceback.format_exc()\n        return \"\"\"\n        <html>\n            <body>\n\n                <style>\n                    body {\n                        font-family: sans-serif;\n                        color: #888;\n                        text-align: center;\n                    }\n\n                    body pre {\n                        width: 600px;\n                        text-align: left;\n                        margin: auto;\n                        font-family: monospace;\n                    }\n                </style>\n\n                <img src=\"/ajenti:static/main/error.jpeg\" />\n                <br/>\n                <p>\n                    Server error\n                </p>\n                <pre>\n%s\n                </pre>\n            </body>\n        </html>\n        \"\"\" % stack",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149048,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "    def respond_error(self, context, exception):\n        context.respond_server_error()\n        stack = traceback.format_exc()\n        return \"\"\"\n        <html>\n            <body>\n\n                <style>\n                    body {\n                        font-family: sans-serif;\n                        color: #888;\n                        text-align: center;\n                    }\n\n                    body pre {\n                        width: 600px;\n                        text-align: left;\n                        margin: auto;\n                        font-family: monospace;\n                    }\n                </style>\n\n                <img src=\"/ajenti:static/main/error.jpeg\" />\n                <br/>\n                <p>\n                    Server error\n                </p>\n                <pre>\n%s\n                </pre>\n            </body>\n        </html>\n        \"\"\" % cgi.escape(stack)",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149049,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "@check_document_access_permission()\ndef edit_bundle(request):\n  bundle_id = request.GET.get('bundle')\n  doc = None\n  \n  if bundle_id:\n    doc = Document2.objects.get(id=bundle_id)\n    bundle = Bundle(document=doc)\n  else:\n    bundle = Bundle()\n\n  coordinators = [dict([('uuid', d.content_object.uuid), ('name', d.content_object.name)])\n                      for d in Document.objects.get_docs(request.user, Document2, extra='coordinator2')]\n\n  return render('editor/bundle_editor.mako', request, {\n      'bundle_json': bundle.json,\n      'coordinators_json': json.dumps(coordinators),\n      'doc1_id': doc.doc.get().id if doc else -1,\n      'can_edit_json': json.dumps(doc is None or doc.doc.get().is_editable(request.user))      \n  })",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149050,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "@check_document_access_permission()\ndef edit_bundle(request):\n  bundle_id = request.GET.get('bundle')\n  doc = None\n  \n  if bundle_id:\n    doc = Document2.objects.get(id=bundle_id)\n    bundle = Bundle(document=doc)\n  else:\n    bundle = Bundle()\n\n  coordinators = [dict([('uuid', d.content_object.uuid), ('name', d.content_object.name)])\n                      for d in Document.objects.get_docs(request.user, Document2, extra='coordinator2')]\n\n  return render('editor/bundle_editor.mako', request, {\n      'bundle_json': bundle.json_for_html(),\n      'coordinators_json': json.dumps(coordinators, cls=JSONEncoderForHTML),\n      'doc1_id': doc.doc.get().id if doc else -1,\n      'can_edit_json': json.dumps(doc is None or doc.doc.get().is_editable(request.user))      \n  })",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149051,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "def history_data(start_time, offset=None):\n    \"\"\"Return history data.\n\n    Arguments:\n        start_time: select history starting from this timestamp.\n        offset: number of items to skip\n    \"\"\"\n    # history atimes are stored as ints, ensure start_time is not a float\n    start_time = int(start_time)\n    hist = objreg.get('web-history')\n    if offset is not None:\n        entries = hist.entries_before(start_time, limit=1000, offset=offset)\n    else:\n        # end is 24hrs earlier than start\n        end_time = start_time - 24*60*60\n        entries = hist.entries_between(end_time, start_time)\n\n    return [{\"url\": e.url, \"title\": e.title or e.url, \"time\": e.atime}\n            for e in entries]",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149052,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "def history_data(start_time, offset=None):\n    \"\"\"Return history data.\n\n    Arguments:\n        start_time: select history starting from this timestamp.\n        offset: number of items to skip\n    \"\"\"\n    # history atimes are stored as ints, ensure start_time is not a float\n    start_time = int(start_time)\n    hist = objreg.get('web-history')\n    if offset is not None:\n        entries = hist.entries_before(start_time, limit=1000, offset=offset)\n    else:\n        # end is 24hrs earlier than start\n        end_time = start_time - 24*60*60\n        entries = hist.entries_between(end_time, start_time)\n\n    return [{\"url\": html.escape(e.url),\n             \"title\": html.escape(e.title) or html.escape(e.url),\n             \"time\": e.atime} for e in entries]",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149053,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "@register.filter\ndef json_dumps(value, indent=None):\n    if isinstance(value, QuerySet):\n        result = serialize('json', value, indent=indent)\n    else:\n        result = json.dumps(value, indent=indent, cls=DjbletsJSONEncoder)\n\n    return mark_safe(result)",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149054,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "@register.filter\ndef json_dumps(value, indent=None):\n    if isinstance(value, QuerySet):\n        result = serialize('json', value, indent=indent)\n    else:\n        result = json.dumps(value, indent=indent, cls=DjbletsJSONEncoder)\n\n    return mark_safe(force_text(result).translate(_safe_js_escapes))",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149055,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "    def htmlvalue(self, val):\n        return self.block.render_basic(val)",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149056,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "    def htmlvalue(self, val):\n        \"\"\"\n        Return an HTML representation of this block that is safe to be included\n        in comparison views\n        \"\"\"\n        return escape(text_from_html(self.block.render_basic(val)))",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149057,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "@register.tag\n@basictag(takes_context=True)\ndef gravatar(context, user, size=None):\n    \"\"\"\n    Outputs the HTML for displaying a user's gravatar.\n\n    This can take an optional size of the image (defaults to 80 if not\n    specified).\n\n    This is also influenced by the following settings:\n\n        GRAVATAR_SIZE    - Default size for gravatars\n        GRAVATAR_RATING  - Maximum allowed rating (g, pg, r, x)\n        GRAVATAR_DEFAULT - Default image set to show if the user hasn't\n                           specified a gravatar (identicon, monsterid, wavatar)\n\n    See http://www.gravatar.com/ for more information.\n    \"\"\"\n    url = get_gravatar_url(context['request'], user, size)\n\n    if url:\n        return ('<img src=\"%s\" width=\"%s\" height=\"%s\" alt=\"%s\" '\n                '     class=\"gravatar\"/>' %\n                (url, size, size, user.get_full_name() or user.username))\n    else:\n        return ''",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149058,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "@register.tag\n@basictag(takes_context=True)\ndef gravatar(context, user, size=None):\n    \"\"\"\n    Outputs the HTML for displaying a user's gravatar.\n\n    This can take an optional size of the image (defaults to 80 if not\n    specified).\n\n    This is also influenced by the following settings:\n\n        GRAVATAR_SIZE    - Default size for gravatars\n        GRAVATAR_RATING  - Maximum allowed rating (g, pg, r, x)\n        GRAVATAR_DEFAULT - Default image set to show if the user hasn't\n                           specified a gravatar (identicon, monsterid, wavatar)\n\n    See http://www.gravatar.com/ for more information.\n    \"\"\"\n    url = get_gravatar_url(context['request'], user, size)\n\n    if url:\n        return format_html(\n            '<img src=\"{0}\" width=\"{1}\" height=\"{1}\" alt=\"{2}\" '\n            'class=\"gravatar\"/>',\n            url, size, user.get_full_name() or user.username)\n    else:\n        return ''",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149059,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "def is_safe_url(url, host=None):\n    \"\"\"\n    Return ``True`` if the url is a safe redirection (i.e. it doesn't point to\n    a different host and uses a safe scheme).\n\n    Always returns ``False`` on an empty url.\n    \"\"\"\n    if url is not None:\n        url = url.strip()\n    if not url:\n        return False\n    # Chrome treats \\ completely as /\n    url = url.replace('\\\\', '/')\n    # Chrome considers any URL with more than two slashes to be absolute, but\n    # urlparse is not so flexible. Treat any url with three slashes as unsafe.\n    if url.startswith('///'):\n        return False\n    url_info = urlparse(url)\n    # Forbid URLs like http:///example.com - with a scheme, but without a hostname.\n    # In that URL, example.com is not the hostname but, a path component. However,\n    # Chrome will still consider example.com to be the hostname, so we must not\n    # allow this syntax.\n    if not url_info.netloc and url_info.scheme:\n        return False\n    # Forbid URLs that start with control characters. Some browsers (like\n    # Chrome) ignore quite a few control characters at the start of a\n    # URL and might consider the URL as scheme relative.\n    if unicodedata.category(url[0])[0] == 'C':\n        return False\n    return ((not url_info.netloc or url_info.netloc == host) and\n            (not url_info.scheme or url_info.scheme in ['http', 'https']))",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149060,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "def is_safe_url(url, host=None):\n    \"\"\"\n    Return ``True`` if the url is a safe redirection (i.e. it doesn't point to\n    a different host and uses a safe scheme).\n\n    Always returns ``False`` on an empty url.\n    \"\"\"\n    if url is not None:\n        url = url.strip()\n    if not url:\n        return False\n    # Chrome treats \\ completely as / in paths but it could be part of some\n    # basic auth credentials so we need to check both URLs.\n    return _is_safe_url(url, host) and _is_safe_url(url.replace('\\\\', '/'), host)",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149061,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "    def get_context_data(self, **kwargs):\n        context = super().get_context_data(**kwargs)\n        context['comments'] = self.object.comment_set.all().order_by('-time')\n        context['form'] = self.get_form()\n        context['md'] = markdown(self.object.content,\n                                 extensions=[\n                                     'markdown.extensions.extra',\n                                     'markdown.extensions.codehilite',\n                                     'markdown.extensions.toc',\n                                 ])\n\n        return context",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149062,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "    def get_context_data(self, **kwargs):\n        context = super().get_context_data(**kwargs)\n        context['comments'] = self.object.comment_set.all().order_by('-time')\n        context['form'] = self.get_form()\n        context['md'] = safe_md(self.object.content)\n\n        return context",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149063,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "@check_document_access_permission()\ndef edit_workflow(request):\n  workflow_id = request.GET.get('workflow')\n  \n  if workflow_id:\n    wid = {}\n    if workflow_id.isdigit():\n      wid['id'] = workflow_id\n    else:\n      wid['uuid'] = workflow_id\n    doc = Document2.objects.get(type='oozie-workflow2', **wid)\n    workflow = Workflow(document=doc)\n  else:\n    doc = None\n    workflow = Workflow()\n    workflow.set_workspace(request.user)\n    workflow.check_workspace(request.fs, request.user)\n  \n  workflow_data = workflow.get_data()\n\n  api = get_oozie(request.user)\n  credentials = Credentials()\n  \n  try:  \n    credentials.fetch(api)\n  except Exception, e:\n    LOG.error(smart_str(e))\n\n  return render('editor/workflow_editor.mako', request, {\n      'layout_json': json.dumps(workflow_data['layout']),\n      'workflow_json': json.dumps(workflow_data['workflow']),\n      'credentials_json': json.dumps(credentials.credentials.keys()),\n      'workflow_properties_json': json.dumps(WORKFLOW_NODE_PROPERTIES),\n      'doc1_id': doc.doc.get().id if doc else -1,\n      'subworkflows_json': json.dumps(_get_workflows(request.user)),\n      'can_edit_json': json.dumps(doc is None or doc.doc.get().is_editable(request.user))\n  })",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149064,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "@check_document_access_permission()\ndef edit_workflow(request):\n  workflow_id = request.GET.get('workflow')\n  \n  if workflow_id:\n    wid = {}\n    if workflow_id.isdigit():\n      wid['id'] = workflow_id\n    else:\n      wid['uuid'] = workflow_id\n    doc = Document2.objects.get(type='oozie-workflow2', **wid)\n    workflow = Workflow(document=doc)\n  else:\n    doc = None\n    workflow = Workflow()\n    workflow.set_workspace(request.user)\n    workflow.check_workspace(request.fs, request.user)\n  \n  workflow_data = workflow.get_data()\n\n  api = get_oozie(request.user)\n  credentials = Credentials()\n  \n  try:  \n    credentials.fetch(api)\n  except Exception, e:\n    LOG.error(smart_str(e))\n\n  return render('editor/workflow_editor.mako', request, {\n      'layout_json': json.dumps(workflow_data['layout'], cls=JSONEncoderForHTML),\n      'workflow_json': json.dumps(workflow_data['workflow'], cls=JSONEncoderForHTML),\n      'credentials_json': json.dumps(credentials.credentials.keys(), cls=JSONEncoderForHTML),\n      'workflow_properties_json': json.dumps(WORKFLOW_NODE_PROPERTIES, cls=JSONEncoderForHTML),\n      'doc1_id': doc.doc.get().id if doc else -1,\n      'subworkflows_json': json.dumps(_get_workflows(request.user), cls=JSONEncoderForHTML),\n      'can_edit_json': json.dumps(doc is None or doc.doc.get().is_editable(request.user))\n  })",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149065,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "    @classmethod\n    def simple_search(cls, query, using=None, index=None):\n        es_search = cls.search(using=using, index=index)\n        es_query = cls.get_es_query(query=query)\n        highlighted_fields = [f.split('^', 1)[0] for f in cls.search_fields]\n\n        es_search = es_search.query(es_query).highlight(*highlighted_fields)\n        return es_search",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149066,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "    @classmethod\n    def simple_search(cls, query, using=None, index=None):\n        \"\"\"\n        Do a search without facets.\n\n        This is used in:\n\n        * The Docsearch API\n        * The Project Admin Search page\n        \"\"\"\n\n        es_search = cls.search(using=using, index=index)\n        es_search = es_search.highlight_options(encoder='html')\n\n        es_query = cls.get_es_query(query=query)\n        highlighted_fields = [f.split('^', 1)[0] for f in cls.search_fields]\n        es_search = es_search.query(es_query).highlight(*highlighted_fields)\n\n        return es_search",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149067,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "    def mode_receive(self, request):\n        \"\"\"\n        This is called by render_POST when the client is telling us\n        that it is ready to receive data as soon as it is available.\n        This is the basis of a long-polling (comet) mechanism: the\n        server will wait to reply until data is available.\n\n        Args:\n            request (Request): Incoming request.\n\n        \"\"\"\n        csessid = request.args.get('csessid')[0]\n        self.last_alive[csessid] = (time.time(), False)\n\n        dataentries = self.databuffer.get(csessid, [])\n        if dataentries:\n            return dataentries.pop(0)\n        request.notifyFinish().addErrback(self._responseFailed, csessid, request)\n        if csessid in self.requests:\n            self.requests[csessid].finish()  # Clear any stale request.\n        self.requests[csessid] = request\n        return server.NOT_DONE_YET",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149068,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "    def mode_receive(self, request):\n        \"\"\"\n        This is called by render_POST when the client is telling us\n        that it is ready to receive data as soon as it is available.\n        This is the basis of a long-polling (comet) mechanism: the\n        server will wait to reply until data is available.\n\n        Args:\n            request (Request): Incoming request.\n\n        \"\"\"\n        csessid = cgi.escape(request.args['csessid'][0])\n        self.last_alive[csessid] = (time.time(), False)\n\n        dataentries = self.databuffer.get(csessid, [])\n        if dataentries:\n            return dataentries.pop(0)\n        request.notifyFinish().addErrback(self._responseFailed, csessid, request)\n        if csessid in self.requests:\n            self.requests[csessid].finish()  # Clear any stale request.\n        self.requests[csessid] = request\n        return server.NOT_DONE_YET",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149069,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "@check_document_access_permission()\ndef edit_coordinator(request):\n  coordinator_id = request.GET.get('coordinator')\n  doc = None\n  \n  if coordinator_id:\n    doc = Document2.objects.get(id=coordinator_id)\n    coordinator = Coordinator(document=doc)\n  else:\n    coordinator = Coordinator()\n\n  api = get_oozie(request.user)\n  credentials = Credentials()\n  \n  try:  \n    credentials.fetch(api)\n  except Exception, e:\n    LOG.error(smart_str(e))\n\n  workflows = [dict([('uuid', d.content_object.uuid), ('name', d.content_object.name)])\n                                    for d in Document.objects.get_docs(request.user, Document2, extra='workflow2')]\n\n  if coordinator_id and not filter(lambda a: a['uuid'] == coordinator.data['properties']['workflow'], workflows):\n    raise PopupException(_('You don\\'t have access to the workflow of this coordinator.'))\n\n  return render('editor/coordinator_editor.mako', request, {\n      'coordinator_json': coordinator.json,\n      'credentials_json': json.dumps(credentials.credentials.keys()),\n      'workflows_json': json.dumps(workflows),\n      'doc1_id': doc.doc.get().id if doc else -1,\n      'can_edit_json': json.dumps(doc is None or doc.doc.get().is_editable(request.user))\n  })",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149070,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "@check_document_access_permission()\ndef edit_coordinator(request):\n  coordinator_id = request.GET.get('coordinator')\n  doc = None\n  \n  if coordinator_id:\n    doc = Document2.objects.get(id=coordinator_id)\n    coordinator = Coordinator(document=doc)\n  else:\n    coordinator = Coordinator()\n\n  api = get_oozie(request.user)\n  credentials = Credentials()\n  \n  try:  \n    credentials.fetch(api)\n  except Exception, e:\n    LOG.error(smart_str(e))\n\n  workflows = [dict([('uuid', d.content_object.uuid), ('name', d.content_object.name)])\n                                    for d in Document.objects.get_docs(request.user, Document2, extra='workflow2')]\n\n  if coordinator_id and not filter(lambda a: a['uuid'] == coordinator.data['properties']['workflow'], workflows):\n    raise PopupException(_('You don\\'t have access to the workflow of this coordinator.'))\n\n  return render('editor/coordinator_editor.mako', request, {\n      'coordinator_json': coordinator.json_for_html(),\n      'credentials_json': json.dumps(credentials.credentials.keys(), cls=JSONEncoderForHTML),\n      'workflows_json': json.dumps(workflows, cls=JSONEncoderForHTML),\n      'doc1_id': doc.doc.get().id if doc else -1,\n      'can_edit_json': json.dumps(doc is None or doc.doc.get().is_editable(request.user))\n  })",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149071,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "def _keyify(key):\n    return _key_pattern.sub(' ', key.lower())",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149072,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "def _keyify(key):\n    key = escape(key.lower(), quote=True)\n    return _key_pattern.sub(' ', key)",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149073,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "@login_required(redirect_field_name='', login_url='/403')\n@require_POST\n@require_AJAX\n@transaction.atomic\ndef batch_edit_translations(request):\n    \"\"\"Perform an action on a list of translations.\n\n    Available actions are defined in `ACTIONS_FN_MAP`. Arguments to this view\n    are defined in `models.BatchActionsForm`.\n\n    \"\"\"\n    form = forms.BatchActionsForm(request.POST)\n    if not form.is_valid():\n        return HttpResponseBadRequest(form.errors.as_json())\n\n    locale = get_object_or_404(Locale, code=form.cleaned_data['locale'])\n    entities = Entity.objects.filter(pk__in=form.cleaned_data['entities'])\n\n    if not entities.exists():\n        return JsonResponse({'count': 0})\n\n    # Batch editing is only available to translators. Check if user has\n    # translate permissions for all of the projects in passed entities.\n    # Also make sure projects are not enabled in read-only mode for a locale.\n    projects_pk = entities.values_list('resource__project__pk', flat=True)\n    projects = Project.objects.filter(pk__in=projects_pk.distinct())\n\n    for project in projects:\n        if (\n            not request.user.can_translate(project=project, locale=locale)\n            or readonly_exists(projects, locale)\n        ):\n            return HttpResponseForbidden(\n                \"Forbidden: You don't have permission for batch editing\"\n            )\n\n    # Find all impacted active translations, including plural forms.\n    active_translations = Translation.objects.filter(\n        active=True,\n        locale=locale,\n        entity__in=entities,\n    )\n\n    # Execute the actual action.\n    action_function = ACTIONS_FN_MAP[form.cleaned_data['action']]\n    action_status = action_function(\n        form,\n        request.user,\n        active_translations,\n        locale,\n    )\n\n    if action_status.get('error'):\n        return JsonResponse(action_status)\n\n    invalid_translation_count = len(action_status.get('invalid_translation_pks', []))\n    if action_status['count'] == 0:\n        return JsonResponse({\n            'count': 0,\n            'invalid_translation_count': invalid_translation_count,\n        })\n\n    update_stats(action_status['translated_resources'], locale)\n    mark_changed_translation(action_status['changed_entities'], locale)\n\n    # Update latest translation.\n    if action_status['latest_translation_pk']:\n        Translation.objects.get(\n            pk=action_status['latest_translation_pk']\n        ).update_latest_translation()\n\n    update_translation_memory(\n        action_status['changed_translation_pks'],\n        project,\n        locale\n    )\n\n    return JsonResponse({\n        'count': action_status['count'],\n        'invalid_translation_count': invalid_translation_count,\n    })",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149074,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "@login_required(redirect_field_name='', login_url='/403')\n@require_POST\n@require_AJAX\n@transaction.atomic\ndef batch_edit_translations(request):\n    \"\"\"Perform an action on a list of translations.\n\n    Available actions are defined in `ACTIONS_FN_MAP`. Arguments to this view\n    are defined in `models.BatchActionsForm`.\n\n    \"\"\"\n    form = forms.BatchActionsForm(request.POST)\n    if not form.is_valid():\n        return HttpResponseBadRequest(form.errors.as_json(escape_html=True))\n\n    locale = get_object_or_404(Locale, code=form.cleaned_data['locale'])\n    entities = Entity.objects.filter(pk__in=form.cleaned_data['entities'])\n\n    if not entities.exists():\n        return JsonResponse({'count': 0})\n\n    # Batch editing is only available to translators. Check if user has\n    # translate permissions for all of the projects in passed entities.\n    # Also make sure projects are not enabled in read-only mode for a locale.\n    projects_pk = entities.values_list('resource__project__pk', flat=True)\n    projects = Project.objects.filter(pk__in=projects_pk.distinct())\n\n    for project in projects:\n        if (\n            not request.user.can_translate(project=project, locale=locale)\n            or readonly_exists(projects, locale)\n        ):\n            return HttpResponseForbidden(\n                \"Forbidden: You don't have permission for batch editing\"\n            )\n\n    # Find all impacted active translations, including plural forms.\n    active_translations = Translation.objects.filter(\n        active=True,\n        locale=locale,\n        entity__in=entities,\n    )\n\n    # Execute the actual action.\n    action_function = ACTIONS_FN_MAP[form.cleaned_data['action']]\n    action_status = action_function(\n        form,\n        request.user,\n        active_translations,\n        locale,\n    )\n\n    if action_status.get('error'):\n        return JsonResponse(action_status)\n\n    invalid_translation_count = len(action_status.get('invalid_translation_pks', []))\n    if action_status['count'] == 0:\n        return JsonResponse({\n            'count': 0,\n            'invalid_translation_count': invalid_translation_count,\n        })\n\n    update_stats(action_status['translated_resources'], locale)\n    mark_changed_translation(action_status['changed_entities'], locale)\n\n    # Update latest translation.\n    if action_status['latest_translation_pk']:\n        Translation.objects.get(\n            pk=action_status['latest_translation_pk']\n        ).update_latest_translation()\n\n    update_translation_memory(\n        action_status['changed_translation_pks'],\n        project,\n        locale\n    )\n\n    return JsonResponse({\n        'count': action_status['count'],\n        'invalid_translation_count': invalid_translation_count,\n    })",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149075,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "def make_eb_config(application_name, default_region):\n    # Capture our current directory\n    UTILS_DIR = os.path.dirname(os.path.abspath(__file__))\n    # Create the jinja2 environment.\n    # Notice the use of trim_blocks, which greatly helps control whitespace.\n    j2_env = Environment(loader=FileSystemLoader(UTILS_DIR))\n    return j2_env.get_template('templates/eb/config.yml').render(\n        APPLICATION_NAME=application_name,\n        DEFAULT_REGION=default_region\n    )",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149076,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "def make_eb_config(application_name, default_region):\n    # Capture our current directory\n    UTILS_DIR = os.path.dirname(os.path.abspath(__file__))\n    # Create the jinja2 environment.\n    # Notice the use of trim_blocks, which greatly helps control whitespace.\n    j2_env = Environment(loader=FileSystemLoader(UTILS_DIR), autoescape=True)\n    return j2_env.get_template('templates/eb/config.yml').render(\n        APPLICATION_NAME=application_name,\n        DEFAULT_REGION=default_region\n    )",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149077,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "    def mode_keepalive(self, request):\n        \"\"\"\n        This is called by render_POST when the\n        client is replying to the keepalive.\n        \"\"\"\n        csessid = request.args.get('csessid')[0]\n        self.last_alive[csessid] = (time.time(), False)\n        return '\"\"'",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149078,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "    def mode_keepalive(self, request):\n        \"\"\"\n        This is called by render_POST when the\n        client is replying to the keepalive.\n        \"\"\"\n        csessid = cgi.escape(request.args['csessid'][0])\n        self.last_alive[csessid] = (time.time(), False)\n        return '\"\"'",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149079,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "@csrf.csrf_protect\ndef subscribe_for_tags(request):\n    \"\"\"process subscription of users by tags\"\"\"\n    #todo - use special separator to split tags\n    tag_names = request.REQUEST.get('tags','').strip().split()\n    pure_tag_names, wildcards = forms.clean_marked_tagnames(tag_names)\n    if request.user.is_authenticated():\n        if request.method == 'POST':\n            if 'ok' in request.POST:\n                request.user.mark_tags(\n                            pure_tag_names,\n                            wildcards,\n                            reason = 'good',\n                            action = 'add'\n                        )\n                request.user.message_set.create(\n                    message = _('Your tag subscription was saved, thanks!')\n                )\n            else:\n                message = _(\n                    'Tag subscription was canceled (<a href=\"%(url)s\">undo</a>).'\n                ) % {'url': request.path + '?tags=' + request.REQUEST['tags']}\n                request.user.message_set.create(message = message)\n            return HttpResponseRedirect(reverse('index'))\n        else:\n            data = {'tags': tag_names}\n            return render(request, 'subscribe_for_tags.html', data)\n    else:\n        all_tag_names = pure_tag_names + wildcards\n        message = _('Please sign in to subscribe for: %(tags)s') \\\n                    % {'tags': ', '.join(all_tag_names)}\n        request.user.message_set.create(message = message)\n        request.session['subscribe_for_tags'] = (pure_tag_names, wildcards)\n        return HttpResponseRedirect(url_utils.get_login_url())",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149080,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "@csrf.csrf_protect\ndef subscribe_for_tags(request):\n    \"\"\"process subscription of users by tags\"\"\"\n    #todo - use special separator to split tags\n    tag_names = request.REQUEST.get('tags','').strip().split()\n    pure_tag_names, wildcards = forms.clean_marked_tagnames(tag_names)\n    if request.user.is_authenticated():\n        if request.method == 'POST':\n            if 'ok' in request.POST:\n                request.user.mark_tags(\n                            pure_tag_names,\n                            wildcards,\n                            reason = 'good',\n                            action = 'add'\n                        )\n                request.user.message_set.create(\n                    message = _('Your tag subscription was saved, thanks!')\n                )\n            else:\n                message = _(\n                    'Tag subscription was canceled (<a href=\"%(url)s\">undo</a>).'\n                ) % {'url': escape(request.path) + '?tags=' + request.REQUEST['tags']}\n                request.user.message_set.create(message = message)\n            return HttpResponseRedirect(reverse('index'))\n        else:\n            data = {'tags': tag_names}\n            return render(request, 'subscribe_for_tags.html', data)\n    else:\n        all_tag_names = pure_tag_names + wildcards\n        message = _('Please sign in to subscribe for: %(tags)s') \\\n                    % {'tags': ', '.join(all_tag_names)}\n        request.user.message_set.create(message = message)\n        request.session['subscribe_for_tags'] = (pure_tag_names, wildcards)\n        return HttpResponseRedirect(url_utils.get_login_url())",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149081,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "def nav_path(request):\n  \"\"\"Return current path as list of items with \"name\" and \"href\" members\n\n  The href members are view_directory links for directories and view_log\n  links for files, but are set to None when the link would point to\n  the current view\"\"\"\n\n  if not request.repos:\n    return []\n\n  is_dir = request.pathtype == vclib.DIR\n\n  # add root item\n  items = []\n  root_item = _item(name=request.server.escape(request.repos.name), href=None)\n  if request.path_parts or request.view_func is not view_directory:\n    root_item.href = request.get_url(view_func=view_directory,\n                                     where='', pathtype=vclib.DIR,\n                                     params={}, escape=1)\n  items.append(root_item)\n\n  # add path part items\n  path_parts = []\n  for part in request.path_parts:\n    path_parts.append(part)\n    is_last = len(path_parts) == len(request.path_parts)\n\n    item = _item(name=part, href=None)\n\n    if not is_last or (is_dir and request.view_func is not view_directory):\n      item.href = request.get_url(view_func=view_directory,\n                                  where=_path_join(path_parts),\n                                  pathtype=vclib.DIR,\n                                  params={}, escape=1)\n    elif not is_dir and request.view_func is not view_log:\n      item.href = request.get_url(view_func=view_log,\n                                  where=_path_join(path_parts),\n                                  pathtype=vclib.FILE,\n                                  params={}, escape=1)\n    items.append(item)\n\n  return items",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149082,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "def nav_path(request):\n  \"\"\"Return current path as list of items with \"name\" and \"href\" members\n\n  The href members are view_directory links for directories and view_log\n  links for files, but are set to None when the link would point to\n  the current view\"\"\"\n\n  if not request.repos:\n    return []\n\n  is_dir = request.pathtype == vclib.DIR\n\n  # add root item\n  items = []\n  root_item = _item(name=request.server.escape(request.repos.name), href=None)\n  if request.path_parts or request.view_func is not view_directory:\n    root_item.href = request.get_url(view_func=view_directory,\n                                     where='', pathtype=vclib.DIR,\n                                     params={}, escape=1)\n  items.append(root_item)\n\n  # add path part items\n  path_parts = []\n  for part in request.path_parts:\n    path_parts.append(part)\n    is_last = len(path_parts) == len(request.path_parts)\n\n    item = _item(name=request.server.escape(part), href=None)\n\n    if not is_last or (is_dir and request.view_func is not view_directory):\n      item.href = request.get_url(view_func=view_directory,\n                                  where=_path_join(path_parts),\n                                  pathtype=vclib.DIR,\n                                  params={}, escape=1)\n    elif not is_dir and request.view_func is not view_log:\n      item.href = request.get_url(view_func=view_log,\n                                  where=_path_join(path_parts),\n                                  pathtype=vclib.FILE,\n                                  params={}, escape=1)\n    items.append(item)\n\n  return items",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149083,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "    def __init__(self, *args, **kwargs):\n        \"\"\"\n        Takes two additional keyword arguments:\n\n        :param cartpos: The cart position the form should be for\n        :param event: The event this belongs to\n        \"\"\"\n        cartpos = self.cartpos = kwargs.pop('cartpos', None)\n        orderpos = self.orderpos = kwargs.pop('orderpos', None)\n        pos = cartpos or orderpos\n        item = pos.item\n        questions = pos.item.questions_to_ask\n        event = kwargs.pop('event')\n\n        super().__init__(*args, **kwargs)\n\n        if item.admission and event.settings.attendee_names_asked:\n            self.fields['attendee_name_parts'] = NamePartsFormField(\n                max_length=255,\n                required=event.settings.attendee_names_required,\n                scheme=event.settings.name_scheme,\n                label=_('Attendee name'),\n                initial=(cartpos.attendee_name_parts if cartpos else orderpos.attendee_name_parts),\n            )\n        if item.admission and event.settings.attendee_emails_asked:\n            self.fields['attendee_email'] = forms.EmailField(\n                required=event.settings.attendee_emails_required,\n                label=_('Attendee email'),\n                initial=(cartpos.attendee_email if cartpos else orderpos.attendee_email)\n            )\n\n        for q in questions:\n            # Do we already have an answer? Provide it as the initial value\n            answers = [a for a in pos.answerlist if a.question_id == q.id]\n            if answers:\n                initial = answers[0]\n            else:\n                initial = None\n            tz = pytz.timezone(event.settings.timezone)\n            help_text = rich_text(q.help_text)\n            if q.type == Question.TYPE_BOOLEAN:\n                if q.required:\n                    # For some reason, django-bootstrap3 does not set the required attribute\n                    # itself.\n                    widget = forms.CheckboxInput(attrs={'required': 'required'})\n                else:\n                    widget = forms.CheckboxInput()\n\n                if initial:\n                    initialbool = (initial.answer == \"True\")\n                else:\n                    initialbool = False\n\n                field = forms.BooleanField(\n                    label=q.question, required=q.required,\n                    help_text=help_text,\n                    initial=initialbool, widget=widget,\n                )\n            elif q.type == Question.TYPE_NUMBER:\n                field = forms.DecimalField(\n                    label=q.question, required=q.required,\n                    help_text=q.help_text,\n                    initial=initial.answer if initial else None,\n                    min_value=Decimal('0.00'),\n                )\n            elif q.type == Question.TYPE_STRING:\n                field = forms.CharField(\n                    label=q.question, required=q.required,\n                    help_text=help_text,\n                    initial=initial.answer if initial else None,\n                )\n            elif q.type == Question.TYPE_TEXT:\n                field = forms.CharField(\n                    label=q.question, required=q.required,\n                    help_text=help_text,\n                    widget=forms.Textarea,\n                    initial=initial.answer if initial else None,\n                )\n            elif q.type == Question.TYPE_CHOICE:\n                field = forms.ModelChoiceField(\n                    queryset=q.options,\n                    label=q.question, required=q.required,\n                    help_text=help_text,\n                    widget=forms.Select,\n                    empty_label='',\n                    initial=initial.options.first() if initial else None,\n                )\n            elif q.type == Question.TYPE_CHOICE_MULTIPLE:\n                field = forms.ModelMultipleChoiceField(\n                    queryset=q.options,\n                    label=q.question, required=q.required,\n                    help_text=help_text,\n                    widget=forms.CheckboxSelectMultiple,\n                    initial=initial.options.all() if initial else None,\n                )\n            elif q.type == Question.TYPE_FILE:\n                field = forms.FileField(\n                    label=q.question, required=q.required,\n                    help_text=help_text,\n                    initial=initial.file if initial else None,\n                    widget=UploadedFileWidget(position=pos, event=event, answer=initial),\n                )\n            elif q.type == Question.TYPE_DATE:\n                field = forms.DateField(\n                    label=q.question, required=q.required,\n                    help_text=help_text,\n                    initial=dateutil.parser.parse(initial.answer).date() if initial and initial.answer else None,\n                    widget=DatePickerWidget(),\n                )\n            elif q.type == Question.TYPE_TIME:\n                field = forms.TimeField(\n                    label=q.question, required=q.required,\n                    help_text=help_text,\n                    initial=dateutil.parser.parse(initial.answer).time() if initial and initial.answer else None,\n                    widget=TimePickerWidget(time_format=get_format_without_seconds('TIME_INPUT_FORMATS')),\n                )\n            elif q.type == Question.TYPE_DATETIME:\n                field = SplitDateTimeField(\n                    label=q.question, required=q.required,\n                    help_text=help_text,\n                    initial=dateutil.parser.parse(initial.answer).astimezone(tz) if initial and initial.answer else None,\n                    widget=SplitDateTimePickerWidget(time_format=get_format_without_seconds('TIME_INPUT_FORMATS')),\n                )\n            field.question = q\n            if answers:\n                # Cache the answer object for later use\n                field.answer = answers[0]\n            self.fields['question_%s' % q.id] = field\n\n        responses = question_form_fields.send(sender=event, position=pos)\n        data = pos.meta_info_data\n        for r, response in sorted(responses, key=lambda r: str(r[0])):\n            for key, value in response.items():\n                # We need to be this explicit, since OrderedDict.update does not retain ordering\n                self.fields[key] = value\n                value.initial = data.get('question_form_data', {}).get(key)",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149084,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "    def __init__(self, *args, **kwargs):\n        \"\"\"\n        Takes two additional keyword arguments:\n\n        :param cartpos: The cart position the form should be for\n        :param event: The event this belongs to\n        \"\"\"\n        cartpos = self.cartpos = kwargs.pop('cartpos', None)\n        orderpos = self.orderpos = kwargs.pop('orderpos', None)\n        pos = cartpos or orderpos\n        item = pos.item\n        questions = pos.item.questions_to_ask\n        event = kwargs.pop('event')\n\n        super().__init__(*args, **kwargs)\n\n        if item.admission and event.settings.attendee_names_asked:\n            self.fields['attendee_name_parts'] = NamePartsFormField(\n                max_length=255,\n                required=event.settings.attendee_names_required,\n                scheme=event.settings.name_scheme,\n                label=_('Attendee name'),\n                initial=(cartpos.attendee_name_parts if cartpos else orderpos.attendee_name_parts),\n            )\n        if item.admission and event.settings.attendee_emails_asked:\n            self.fields['attendee_email'] = forms.EmailField(\n                required=event.settings.attendee_emails_required,\n                label=_('Attendee email'),\n                initial=(cartpos.attendee_email if cartpos else orderpos.attendee_email)\n            )\n\n        for q in questions:\n            # Do we already have an answer? Provide it as the initial value\n            answers = [a for a in pos.answerlist if a.question_id == q.id]\n            if answers:\n                initial = answers[0]\n            else:\n                initial = None\n            tz = pytz.timezone(event.settings.timezone)\n            help_text = rich_text(q.help_text)\n            label = escape(q.question)  # django-bootstrap3 calls mark_safe\n            if q.type == Question.TYPE_BOOLEAN:\n                if q.required:\n                    # For some reason, django-bootstrap3 does not set the required attribute\n                    # itself.\n                    widget = forms.CheckboxInput(attrs={'required': 'required'})\n                else:\n                    widget = forms.CheckboxInput()\n\n                if initial:\n                    initialbool = (initial.answer == \"True\")\n                else:\n                    initialbool = False\n\n                field = forms.BooleanField(\n                    label=label, required=q.required,\n                    help_text=help_text,\n                    initial=initialbool, widget=widget,\n                )\n            elif q.type == Question.TYPE_NUMBER:\n                field = forms.DecimalField(\n                    label=label, required=q.required,\n                    help_text=q.help_text,\n                    initial=initial.answer if initial else None,\n                    min_value=Decimal('0.00'),\n                )\n            elif q.type == Question.TYPE_STRING:\n                field = forms.CharField(\n                    label=label, required=q.required,\n                    help_text=help_text,\n                    initial=initial.answer if initial else None,\n                )\n            elif q.type == Question.TYPE_TEXT:\n                field = forms.CharField(\n                    label=label, required=q.required,\n                    help_text=help_text,\n                    widget=forms.Textarea,\n                    initial=initial.answer if initial else None,\n                )\n            elif q.type == Question.TYPE_CHOICE:\n                field = forms.ModelChoiceField(\n                    queryset=q.options,\n                    label=label, required=q.required,\n                    help_text=help_text,\n                    widget=forms.Select,\n                    empty_label='',\n                    initial=initial.options.first() if initial else None,\n                )\n            elif q.type == Question.TYPE_CHOICE_MULTIPLE:\n                field = forms.ModelMultipleChoiceField(\n                    queryset=q.options,\n                    label=label, required=q.required,\n                    help_text=help_text,\n                    widget=forms.CheckboxSelectMultiple,\n                    initial=initial.options.all() if initial else None,\n                )\n            elif q.type == Question.TYPE_FILE:\n                field = forms.FileField(\n                    label=label, required=q.required,\n                    help_text=help_text,\n                    initial=initial.file if initial else None,\n                    widget=UploadedFileWidget(position=pos, event=event, answer=initial),\n                )\n            elif q.type == Question.TYPE_DATE:\n                field = forms.DateField(\n                    label=label, required=q.required,\n                    help_text=help_text,\n                    initial=dateutil.parser.parse(initial.answer).date() if initial and initial.answer else None,\n                    widget=DatePickerWidget(),\n                )\n            elif q.type == Question.TYPE_TIME:\n                field = forms.TimeField(\n                    label=label, required=q.required,\n                    help_text=help_text,\n                    initial=dateutil.parser.parse(initial.answer).time() if initial and initial.answer else None,\n                    widget=TimePickerWidget(time_format=get_format_without_seconds('TIME_INPUT_FORMATS')),\n                )\n            elif q.type == Question.TYPE_DATETIME:\n                field = SplitDateTimeField(\n                    label=label, required=q.required,\n                    help_text=help_text,\n                    initial=dateutil.parser.parse(initial.answer).astimezone(tz) if initial and initial.answer else None,\n                    widget=SplitDateTimePickerWidget(time_format=get_format_without_seconds('TIME_INPUT_FORMATS')),\n                )\n            field.question = q\n            if answers:\n                # Cache the answer object for later use\n                field.answer = answers[0]\n            self.fields['question_%s' % q.id] = field\n\n        responses = question_form_fields.send(sender=event, position=pos)\n        data = pos.meta_info_data\n        for r, response in sorted(responses, key=lambda r: str(r[0])):\n            for key, value in response.items():\n                # We need to be this explicit, since OrderedDict.update does not retain ordering\n                self.fields[key] = value\n                value.initial = data.get('question_form_data', {}).get(key)",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149085,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "def link_dialog(request):\n    # list of wiki pages\n    name = request.values.get(\"pagename\", \"\")\n    if name:\n        from MoinMoin import search\n        # XXX error handling!\n        searchresult = search.searchPages(request, 't:\"%s\"' % name)\n\n        pages = [p.page_name for p in searchresult.hits]\n        pages.sort()\n        pages[0:0] = [name]\n        page_list = '''\n         <tr>\n          <td colspan=2>\n           <select id=\"sctPagename\" size=\"1\" onchange=\"OnChangePagename(this.value);\">\n           %s\n           </select>\n          <td>\n         </tr>\n''' % \"\\n\".join(['<option value=\"%s\">%s</option>' % (wikiutil.escape(page), wikiutil.escape(page))\n                 for page in pages])\n    else:\n        page_list = \"\"\n\n    # list of interwiki names\n    interwiki_list = wikiutil.load_wikimap(request)\n    interwiki = interwiki_list.keys()\n    interwiki.sort()\n    iwpreferred = request.cfg.interwiki_preferred[:]\n    if not iwpreferred or iwpreferred and iwpreferred[-1] is not None:\n        resultlist = iwpreferred\n        for iw in interwiki:\n            if not iw in iwpreferred:\n                resultlist.append(iw)\n    else:\n        resultlist = iwpreferred[:-1]\n    interwiki = \"\\n\".join(\n        ['<option value=\"%s\">%s</option>' % (wikiutil.escape(key), wikiutil.escape(key))\n         for key in resultlist])\n\n    # wiki url\n    url_prefix_static = request.cfg.url_prefix_static\n    scriptname = request.script_root + '/'\n    action = scriptname\n    basepage = wikiutil.escape(request.page.page_name)\n    request.write(u'''\n<!--\n * FCKeditor - The text editor for internet\n * Copyright (C) 2003-2004 Frederico Caldeira Knabben\n *\n * Licensed under the terms of the GNU Lesser General Public License:\n *   http://www.opensource.org/licenses/lgpl-license.php\n *\n * For further information visit:\n *   http://www.fckeditor.net/\n *\n * File Name: fck_link.html\n *  Link dialog window.\n *\n * Version:  2.0 FC (Preview)\n * Modified: 2005-02-18 23:55:22\n *\n * File Authors:\n *   Frederico Caldeira Knabben (fredck@fckeditor.net)\n-->\n<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">\n<meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\">\n<meta name=\"robots\" content=\"index,nofollow\">\n<html>\n <head>\n  <title>Link Properties</title>\n  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n  <meta name=\"robots\" content=\"noindex,nofollow\" />\n  <script src=\"%(url_prefix_static)s/applets/FCKeditor/editor/dialog/common/fck_dialog_common.js\" type=\"text/javascript\"></script>\n  <script src=\"%(url_prefix_static)s/applets/moinFCKplugins/moinlink/fck_link.js\" type=\"text/javascript\"></script>\n  <script src=\"%(url_prefix_static)s/applets/moinFCKplugins/moinurllib.js\" type=\"text/javascript\"></script>\n </head>\n <body scroll=\"no\" style=\"OVERFLOW: hidden\">\n  <div id=\"divInfo\" style=\"DISPLAY: none\">\n   <span fckLang=\"DlgLnkType\">Link Type</span><br />\n   <select id=\"cmbLinkType\" onchange=\"SetLinkType(this.value);\">\n    <option value=\"wiki\" selected=\"selected\">WikiPage</option>\n    <option value=\"interwiki\">Interwiki</option>\n    <option value=\"url\" fckLang=\"DlgLnkTypeURL\">URL</option>\n   </select>\n   <br />\n   <br />\n   <div id=\"divLinkTypeWiki\">\n    <table height=\"100%%\" cellSpacing=\"0\" cellPadding=\"0\" width=\"100%%\" border=\"0\">\n     <tr>\n      <td>\n       <form action=%(action)s method=\"GET\">\n       <input type=\"hidden\" name=\"action\" value=\"fckdialog\">\n       <input type=\"hidden\" name=\"dialog\" value=\"link\">\n       <input type=\"hidden\" id=\"basepage\" name=\"basepage\" value=\"%(basepage)s\">\n       <table cellSpacing=\"0\" cellPadding=\"0\" align=\"center\" border=\"0\">\n        <tr>\n         <td>\n          <span fckLang=\"PageDlgName\">Page Name</span><br>\n          <input id=\"txtPagename\" name=\"pagename\" size=\"30\" value=\"%(name)s\">\n         </td>\n         <td valign=\"bottom\">\n           <input id=btnSearchpage type=\"submit\" value=\"Search\">\n         </td>\n        </tr>\n        %(page_list)s\n       </table>\n       </form>\n      </td>\n     </tr>\n    </table>\n   </div>\n   <div id=\"divLinkTypeInterwiki\">\n    <table height=\"100%%\" cellSpacing=\"0\" cellPadding=\"0\" width=\"100%%\" border=\"0\">\n     <tr>\n      <td>\n       <table cellSpacing=\"0\" cellPadding=\"0\" align=\"center\" border=\"0\">\n        <tr>\n         <td>\n          <span fckLang=\"WikiDlgName\">Wiki:PageName</span><br>\n          <select id=\"sctInterwiki\" size=\"1\">\n          %(interwiki)s\n          </select>:\n          <input id=\"txtInterwikipagename\"></input>\n         </td>\n        </tr>\n       </table>\n      </td>\n     </tr>\n    </table>\n   </div>\n   <div id=\"divLinkTypeUrl\">\n    <table cellspacing=\"0\" cellpadding=\"0\" width=\"100%%\" border=\"0\">\n     <tr>\n      <td nowrap=\"nowrap\">\n       <span fckLang=\"DlgLnkProto\">Protocol</span><br />\n       <select id=\"cmbLinkProtocol\">\n        <option value=\"http://\" selected=\"selected\">http://</option>\n        <option value=\"https://\">https://</option>\n        <option value=\"ftp://\">ftp://</option>\n        <option value=\"file://\">file://</option>\n        <option value=\"news://\">news://</option>\n        <option value=\"mailto:\">mailto:</option>\n        <option value=\"\" fckLang=\"DlgLnkProtoOther\">&lt;other&gt;</option>\n       </select>\n      </td>\n      <td nowrap=\"nowrap\">&nbsp;</td>\n      <td nowrap=\"nowrap\" width=\"100%%\">\n       <span fckLang=\"DlgLnkURL\">URL</span><br />\n       <input id=\"txtUrl\" style=\"WIDTH: 100%%\" type=\"text\" onkeyup=\"OnUrlChange();\" onchange=\"OnUrlChange();\" />\n      </td>\n     </tr>\n    </table>\n    <br />\n   </div>\n  </div>\n </body>\n</html>\n''' % locals())",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149086,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "def link_dialog(request):\n    # list of wiki pages\n    name = request.values.get(\"pagename\", \"\")\n    name_escaped = wikiutil.escape(name)\n    if name:\n        from MoinMoin import search\n        # XXX error handling!\n        searchresult = search.searchPages(request, 't:\"%s\"' % name)\n\n        pages = [p.page_name for p in searchresult.hits]\n        pages.sort()\n        pages[0:0] = [name]\n        page_list = '''\n         <tr>\n          <td colspan=2>\n           <select id=\"sctPagename\" size=\"1\" onchange=\"OnChangePagename(this.value);\">\n           %s\n           </select>\n          <td>\n         </tr>\n''' % \"\\n\".join(['<option value=\"%s\">%s</option>' % (wikiutil.escape(page), wikiutil.escape(page))\n                 for page in pages])\n    else:\n        page_list = \"\"\n\n    # list of interwiki names\n    interwiki_list = wikiutil.load_wikimap(request)\n    interwiki = interwiki_list.keys()\n    interwiki.sort()\n    iwpreferred = request.cfg.interwiki_preferred[:]\n    if not iwpreferred or iwpreferred and iwpreferred[-1] is not None:\n        resultlist = iwpreferred\n        for iw in interwiki:\n            if not iw in iwpreferred:\n                resultlist.append(iw)\n    else:\n        resultlist = iwpreferred[:-1]\n    interwiki = \"\\n\".join(\n        ['<option value=\"%s\">%s</option>' % (wikiutil.escape(key), wikiutil.escape(key))\n         for key in resultlist])\n\n    # wiki url\n    url_prefix_static = request.cfg.url_prefix_static\n    scriptname = request.script_root + '/'\n    action = scriptname\n    basepage = wikiutil.escape(request.page.page_name)\n    request.write(u'''\n<!--\n * FCKeditor - The text editor for internet\n * Copyright (C) 2003-2004 Frederico Caldeira Knabben\n *\n * Licensed under the terms of the GNU Lesser General Public License:\n *   http://www.opensource.org/licenses/lgpl-license.php\n *\n * For further information visit:\n *   http://www.fckeditor.net/\n *\n * File Name: fck_link.html\n *  Link dialog window.\n *\n * Version:  2.0 FC (Preview)\n * Modified: 2005-02-18 23:55:22\n *\n * File Authors:\n *   Frederico Caldeira Knabben (fredck@fckeditor.net)\n-->\n<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">\n<meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\">\n<meta name=\"robots\" content=\"index,nofollow\">\n<html>\n <head>\n  <title>Link Properties</title>\n  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n  <meta name=\"robots\" content=\"noindex,nofollow\" />\n  <script src=\"%(url_prefix_static)s/applets/FCKeditor/editor/dialog/common/fck_dialog_common.js\" type=\"text/javascript\"></script>\n  <script src=\"%(url_prefix_static)s/applets/moinFCKplugins/moinlink/fck_link.js\" type=\"text/javascript\"></script>\n  <script src=\"%(url_prefix_static)s/applets/moinFCKplugins/moinurllib.js\" type=\"text/javascript\"></script>\n </head>\n <body scroll=\"no\" style=\"OVERFLOW: hidden\">\n  <div id=\"divInfo\" style=\"DISPLAY: none\">\n   <span fckLang=\"DlgLnkType\">Link Type</span><br />\n   <select id=\"cmbLinkType\" onchange=\"SetLinkType(this.value);\">\n    <option value=\"wiki\" selected=\"selected\">WikiPage</option>\n    <option value=\"interwiki\">Interwiki</option>\n    <option value=\"url\" fckLang=\"DlgLnkTypeURL\">URL</option>\n   </select>\n   <br />\n   <br />\n   <div id=\"divLinkTypeWiki\">\n    <table height=\"100%%\" cellSpacing=\"0\" cellPadding=\"0\" width=\"100%%\" border=\"0\">\n     <tr>\n      <td>\n       <form action=%(action)s method=\"GET\">\n       <input type=\"hidden\" name=\"action\" value=\"fckdialog\">\n       <input type=\"hidden\" name=\"dialog\" value=\"link\">\n       <input type=\"hidden\" id=\"basepage\" name=\"basepage\" value=\"%(basepage)s\">\n       <table cellSpacing=\"0\" cellPadding=\"0\" align=\"center\" border=\"0\">\n        <tr>\n         <td>\n          <span fckLang=\"PageDlgName\">Page Name</span><br>\n          <input id=\"txtPagename\" name=\"pagename\" size=\"30\" value=\"%(name_escaped)s\">\n         </td>\n         <td valign=\"bottom\">\n           <input id=btnSearchpage type=\"submit\" value=\"Search\">\n         </td>\n        </tr>\n        %(page_list)s\n       </table>\n       </form>\n      </td>\n     </tr>\n    </table>\n   </div>\n   <div id=\"divLinkTypeInterwiki\">\n    <table height=\"100%%\" cellSpacing=\"0\" cellPadding=\"0\" width=\"100%%\" border=\"0\">\n     <tr>\n      <td>\n       <table cellSpacing=\"0\" cellPadding=\"0\" align=\"center\" border=\"0\">\n        <tr>\n         <td>\n          <span fckLang=\"WikiDlgName\">Wiki:PageName</span><br>\n          <select id=\"sctInterwiki\" size=\"1\">\n          %(interwiki)s\n          </select>:\n          <input id=\"txtInterwikipagename\"></input>\n         </td>\n        </tr>\n       </table>\n      </td>\n     </tr>\n    </table>\n   </div>\n   <div id=\"divLinkTypeUrl\">\n    <table cellspacing=\"0\" cellpadding=\"0\" width=\"100%%\" border=\"0\">\n     <tr>\n      <td nowrap=\"nowrap\">\n       <span fckLang=\"DlgLnkProto\">Protocol</span><br />\n       <select id=\"cmbLinkProtocol\">\n        <option value=\"http://\" selected=\"selected\">http://</option>\n        <option value=\"https://\">https://</option>\n        <option value=\"ftp://\">ftp://</option>\n        <option value=\"file://\">file://</option>\n        <option value=\"news://\">news://</option>\n        <option value=\"mailto:\">mailto:</option>\n        <option value=\"\" fckLang=\"DlgLnkProtoOther\">&lt;other&gt;</option>\n       </select>\n      </td>\n      <td nowrap=\"nowrap\">&nbsp;</td>\n      <td nowrap=\"nowrap\" width=\"100%%\">\n       <span fckLang=\"DlgLnkURL\">URL</span><br />\n       <input id=\"txtUrl\" style=\"WIDTH: 100%%\" type=\"text\" onkeyup=\"OnUrlChange();\" onchange=\"OnUrlChange();\" />\n      </td>\n     </tr>\n    </table>\n    <br />\n   </div>\n  </div>\n </body>\n</html>\n''' % locals())",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149087,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "def action_save_user(request: HttpRequest, default_forward_url: str = \"/admin/users\"):\n    \"\"\"\n    This functions saves the changes to the user or adds a new one. It completely creates the HttpResponse\n    :param request: the HttpRequest\n    :param default_forward_url: The URL to forward to if nothing was specified\n    :return: The crafted HttpResponse\n    \"\"\"\n    forward_url = default_forward_url\n    if request.GET.get(\"redirect\"):\n        forward_url = request.GET[\"redirect\"]\n    if not request.user.is_authenticated:\n        return HttpResponseForbidden()\n    profile = Profile.objects.get(authuser=request.user)\n    if profile.rights < 2:\n        return HttpResponseForbidden()\n    try:\n        if request.GET.get(\"user_id\"):\n            pid = int(request.GET[\"user_id\"])\n            displayname = str(request.POST[\"display_name\"])\n            dect = int(request.POST[\"dect\"])\n            notes = str(request.POST[\"notes\"])\n            pw1 = str(request.POST[\"password\"])\n            pw2 = str(request.POST[\"confirm_password\"])\n            mail = str(request.POST[\"email\"])\n            rights = int(request.POST[\"rights\"])\n            user: Profile = Profile.objects.get(pk=pid)\n            user.displayName = displayname\n            user.dect = dect\n            user.notes = notes\n            user.rights = rights\n            user.number_of_allowed_reservations = int(request.POST[\"allowed_reservations\"])\n            if request.POST.get(\"active\"):\n                user.active = magic.parse_bool(request.POST[\"active\"])\n            au: User = user.authuser\n            if check_password_conformity(pw1, pw2):\n                logging.log(logging.INFO, \"Set password for user: \" + user.displayName)\n                au.set_password(pw1)\n            else:\n                logging.log(logging.INFO, \"Failed to set password for: \" + user.displayName)\n            au.email = mail\n            au.save()\n            user.save()\n        else:\n            # assume new user\n            username = str(request.POST[\"username\"])\n            displayname = str(request.POST[\"display_name\"])\n            dect = int(request.POST[\"dect\"])\n            notes = str(request.POST[\"notes\"])\n            pw1 = str(request.POST[\"password\"])\n            pw2 = str(request.POST[\"confirm_password\"])\n            mail = str(request.POST[\"email\"])\n            rights = int(request.POST[\"rights\"])\n            if not check_password_conformity(pw1, pw2):\n                recreate_form('password mismatch')\n            auth_user: User = User.objects.create_user(username=username, email=mail, password=pw1)\n            auth_user.save()\n            user: Profile = Profile()\n            user.rights = rights\n            user.number_of_allowed_reservations = int(request.POST[\"allowed_reservations\"])\n            user.displayName = displayname\n            user.authuser = auth_user\n            user.dect = dect\n            user.notes = notes\n            user.active = True\n            user.save()\n            pass\n        pass\n    except Exception as e:\n        return HttpResponseBadRequest(str(e))\n    return redirect(forward_url)",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149088,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "def action_save_user(request: HttpRequest, default_forward_url: str = \"/admin/users\"):\n    \"\"\"\n    This functions saves the changes to the user or adds a new one. It completely creates the HttpResponse\n    :param request: the HttpRequest\n    :param default_forward_url: The URL to forward to if nothing was specified\n    :return: The crafted HttpResponse\n    \"\"\"\n    forward_url = default_forward_url\n    if request.GET.get(\"redirect\"):\n        forward_url = request.GET[\"redirect\"]\n    if not request.user.is_authenticated:\n        return HttpResponseForbidden()\n    profile = Profile.objects.get(authuser=request.user)\n    if profile.rights < 2:\n        return HttpResponseForbidden()\n    try:\n        if request.GET.get(\"user_id\"):\n            pid = int(request.GET[\"user_id\"])\n            displayname = str(request.POST[\"display_name\"])\n            dect = int(request.POST[\"dect\"])\n            notes = str(request.POST[\"notes\"])\n            pw1 = str(request.POST[\"password\"])\n            pw2 = str(request.POST[\"confirm_password\"])\n            mail = str(request.POST[\"email\"])\n            rights = int(request.POST[\"rights\"])\n            user: Profile = Profile.objects.get(pk=pid)\n            user.displayName = escape(displayname)\n            user.dect = dect\n            user.notes = escape(notes)\n            user.rights = rights\n            user.number_of_allowed_reservations = int(request.POST[\"allowed_reservations\"])\n            if request.POST.get(\"active\"):\n                user.active = magic.parse_bool(request.POST[\"active\"])\n            au: User = user.authuser\n            if check_password_conformity(pw1, pw2):\n                logging.log(logging.INFO, \"Set password for user: \" + user.displayName)\n                au.set_password(pw1)\n            else:\n                logging.log(logging.INFO, \"Failed to set password for: \" + user.displayName)\n            au.email = escape(mail)\n            au.save()\n            user.save()\n        else:\n            # assume new user\n            username = str(request.POST[\"username\"])\n            displayname = str(request.POST[\"display_name\"])\n            dect = int(request.POST[\"dect\"])\n            notes = str(request.POST[\"notes\"])\n            pw1 = str(request.POST[\"password\"])\n            pw2 = str(request.POST[\"confirm_password\"])\n            mail = str(request.POST[\"email\"])\n            rights = int(request.POST[\"rights\"])\n            if not check_password_conformity(pw1, pw2):\n                recreate_form('password mismatch')\n            auth_user: User = User.objects.create_user(username=escape(username), email=escape(mail), password=pw1)\n            auth_user.save()\n            user: Profile = Profile()\n            user.rights = rights\n            user.number_of_allowed_reservations = int(request.POST[\"allowed_reservations\"])\n            user.displayName = escape(displayname)\n            user.authuser = auth_user\n            user.dect = dect\n            user.notes = escape(notes)\n            user.active = True\n            user.save()\n            pass\n        pass\n    except Exception as e:\n        return HttpResponseBadRequest(str(e))\n    return redirect(forward_url)",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149089,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "    def save(self):\n        # copy the user's input from plain text to description to be processed\n        self.description = self.description_plain_text\n        if CE.settings.auto_cross_reference:\n            self.auto_cross_ref()\n        else:\n            self.find_tag()\n        self.slug = slugify(self.title)\n        super().save()",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149090,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "    def save(self):\n        # copy the user's input from plain text to description to be processed\n        # uses bleach to remove potentially harmful HTML code\n        self.description = bleach.clean(str(self.description_plain_text),\n                                        tags=CE.settings.bleach_allowed,\n                                        strip=True)\n        if CE.settings.auto_cross_reference:\n            self.auto_cross_ref()\n        else:\n            self.find_tag()\n        self.slug = slugify(self.title)\n        super().save()",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149091,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "    def mode_close(self, request):\n        \"\"\"\n        This is called by render_POST when the client is signalling\n        that it is about to be closed.\n\n        Args:\n            request (Request): Incoming request.\n\n        \"\"\"\n        csessid = request.args.get('csessid')[0]\n        try:\n            sess = self.sessionhandler.sessions_from_csessid(csessid)[0]\n            sess.sessionhandler.disconnect(sess)\n        except IndexError:\n            self.client_disconnect(csessid)\n        return '\"\"'",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149092,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "    def mode_close(self, request):\n        \"\"\"\n        This is called by render_POST when the client is signalling\n        that it is about to be closed.\n\n        Args:\n            request (Request): Incoming request.\n\n        \"\"\"\n        csessid = cgi.escape(request.args['csessid'][0])\n        try:\n            sess = self.sessionhandler.sessions_from_csessid(csessid)[0]\n            sess.sessionhandler.disconnect(sess)\n        except IndexError:\n            self.client_disconnect(csessid)\n        return '\"\"'",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149093,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "    def get_queryset(self, **kwargs):\n        queryset = Article.objects.order_by('-time')\n        for i in queryset:\n            i.md = markdown(i.content, extensions=[\n                'markdown.extensions.extra',\n                'markdown.extensions.codehilite',\n                'markdown.extensions.toc',\n            ])\n\n        return queryset",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149094,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "    def get_queryset(self, **kwargs):\n        queryset = Article.objects.order_by('-time')\n        for i in queryset:\n            i.md = safe_md(i.content)\n\n        return queryset",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149095,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "@register.tag\n@basictag(takes_context=True)\ndef screenshotcommentcounts(context, screenshot):\n    \"\"\"\n    Returns a JSON array of current comments for a screenshot.\n\n    Each entry in the array has a dictionary containing the following keys:\n\n      =========== ==================================================\n      Key         Description\n      =========== ==================================================\n      text        The text of the comment\n      localdraft  True if this is the current user's draft comment\n      x           The X location of the comment's region\n      y           The Y location of the comment's region\n      w           The width of the comment's region\n      h           The height of the comment's region\n      =========== ==================================================\n    \"\"\"\n    comments = {}\n    user = context.get('user', None)\n\n    for comment in screenshot.comments.all():\n        review = get_object_or_none(comment.review)\n\n        if review and (review.public or review.user == user):\n            position = '%dx%d+%d+%d' % (comment.w, comment.h, \\\n                                        comment.x, comment.y)\n\n            comments.setdefault(position, []).append({\n                'id': comment.id,\n                'text': comment.text,\n                'user': {\n                    'username': review.user.username,\n                    'name': review.user.get_full_name() or review.user.username,\n                },\n                'url': comment.get_review_url(),\n                'localdraft' : review.user == user and \\\n                               not review.public,\n                'x' : comment.x,\n                'y' : comment.y,\n                'w' : comment.w,\n                'h' : comment.h,\n            })\n\n    return simplejson.dumps(comments)",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149096,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "@register.tag\n@basictag(takes_context=True)\ndef screenshotcommentcounts(context, screenshot):\n    \"\"\"\n    Returns a JSON array of current comments for a screenshot.\n\n    Each entry in the array has a dictionary containing the following keys:\n\n      =========== ==================================================\n      Key         Description\n      =========== ==================================================\n      text        The text of the comment\n      localdraft  True if this is the current user's draft comment\n      x           The X location of the comment's region\n      y           The Y location of the comment's region\n      w           The width of the comment's region\n      h           The height of the comment's region\n      =========== ==================================================\n    \"\"\"\n    comments = {}\n    user = context.get('user', None)\n\n    for comment in screenshot.comments.all():\n        review = get_object_or_none(comment.review)\n\n        if review and (review.public or review.user == user):\n            position = '%dx%d+%d+%d' % (comment.w, comment.h, \\\n                                        comment.x, comment.y)\n\n            comments.setdefault(position, []).append({\n                'id': comment.id,\n                'text': escape(comment.text),\n                'user': {\n                    'username': review.user.username,\n                    'name': review.user.get_full_name() or review.user.username,\n                },\n                'url': comment.get_review_url(),\n                'localdraft' : review.user == user and \\\n                               not review.public,\n                'x' : comment.x,\n                'y' : comment.y,\n                'w' : comment.w,\n                'h' : comment.h,\n            })\n\n    return simplejson.dumps(comments)",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149097,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "    def mode_input(self, request):\n        \"\"\"\n        This is called by render_POST when the client\n        is sending data to the server.\n\n        Args:\n            request (Request): Incoming request.\n\n        \"\"\"\n        csessid = request.args.get('csessid')[0]\n\n        self.last_alive[csessid] = (time.time(), False)\n        sess = self.sessionhandler.sessions_from_csessid(csessid)\n        if sess:\n            sess = sess[0]\n            cmdarray = json.loads(request.args.get('data')[0])\n            sess.sessionhandler.data_in(sess, **{cmdarray[0]: [cmdarray[1], cmdarray[2]]})\n        return '\"\"'",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149098,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "    def mode_input(self, request):\n        \"\"\"\n        This is called by render_POST when the client\n        is sending data to the server.\n\n        Args:\n            request (Request): Incoming request.\n\n        \"\"\"\n        csessid = cgi.escape(request.args['csessid'][0])\n        self.last_alive[csessid] = (time.time(), False)\n        sess = self.sessionhandler.sessions_from_csessid(csessid)\n        if sess:\n            sess = sess[0]\n            cmdarray = json.loads(cgi.escape(request.args.get('data')[0]))\n            sess.sessionhandler.data_in(sess, **{cmdarray[0]: [cmdarray[1], cmdarray[2]]})\n        return '\"\"'",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149099,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "def get_list_context(context=None):\n\tlist_context = frappe._dict(\n\t\ttemplate = \"templates/includes/blog/blog.html\",\n\t\tget_list = get_blog_list,\n\t\thide_filters = True,\n\t\tchildren = get_children(),\n\t\t# show_search = True,\n\t\ttitle = _('Blog')\n\t)\n\n\tcategory = frappe.local.form_dict.blog_category or frappe.local.form_dict.category\n\tif category:\n\t\tcategory_title = get_blog_category(category)\n\t\tlist_context.sub_title = _(\"Posts filed under {0}\").format(category_title)\n\t\tlist_context.title = category_title\n\n\telif frappe.local.form_dict.blogger:\n\t\tblogger = frappe.db.get_value(\"Blogger\", {\"name\": frappe.local.form_dict.blogger}, \"full_name\")\n\t\tlist_context.sub_title = _(\"Posts by {0}\").format(blogger)\n\t\tlist_context.title = blogger\n\n\telif frappe.local.form_dict.txt:\n\t\tlist_context.sub_title = _('Filtered by \"{0}\"').format(frappe.local.form_dict.txt)\n\n\tif list_context.sub_title:\n\t\tlist_context.parents = [{\"name\": _(\"Home\"), \"route\": \"/\"},\n\t\t\t\t\t\t\t\t{\"name\": \"Blog\", \"route\": \"/blog\"}]\n\telse:\n\t\tlist_context.parents = [{\"name\": _(\"Home\"), \"route\": \"/\"}]\n\n\tlist_context.update(frappe.get_doc(\"Blog Settings\", \"Blog Settings\").as_dict(no_default_fields=True))\n\treturn list_context",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149100,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "def get_list_context(context=None):\n\tlist_context = frappe._dict(\n\t\ttemplate = \"templates/includes/blog/blog.html\",\n\t\tget_list = get_blog_list,\n\t\thide_filters = True,\n\t\tchildren = get_children(),\n\t\t# show_search = True,\n\t\ttitle = _('Blog')\n\t)\n\n\tcategory = sanitize_html(frappe.local.form_dict.blog_category or frappe.local.form_dict.category)\n\tif category:\n\t\tcategory_title = get_blog_category(category)\n\t\tlist_context.sub_title = _(\"Posts filed under {0}\").format(category_title)\n\t\tlist_context.title = category_title\n\n\telif frappe.local.form_dict.blogger:\n\t\tblogger = frappe.db.get_value(\"Blogger\", {\"name\": frappe.local.form_dict.blogger}, \"full_name\")\n\t\tlist_context.sub_title = _(\"Posts by {0}\").format(blogger)\n\t\tlist_context.title = blogger\n\n\telif frappe.local.form_dict.txt:\n\t\tlist_context.sub_title = _('Filtered by \"{0}\"').format(sanitize_html(frappe.local.form_dict.txt))\n\n\tif list_context.sub_title:\n\t\tlist_context.parents = [{\"name\": _(\"Home\"), \"route\": \"/\"},\n\t\t\t\t\t\t\t\t{\"name\": \"Blog\", \"route\": \"/blog\"}]\n\telse:\n\t\tlist_context.parents = [{\"name\": _(\"Home\"), \"route\": \"/\"}]\n\n\tlist_context.update(frappe.get_doc(\"Blog Settings\", \"Blog Settings\").as_dict(no_default_fields=True))\n\treturn list_context",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149101,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "    def mode_init(self, request):\n        \"\"\"\n        This is called by render_POST when the client requests an init\n        mode operation (at startup)\n\n        Args:\n            request (Request): Incoming request.\n\n        \"\"\"\n        csessid = request.args.get('csessid')[0]\n\n        remote_addr = request.getClientIP()\n        host_string = \"%s (%s:%s)\" % (_SERVERNAME, request.getRequestHostname(), request.getHost().port)\n\n        sess = AjaxWebClientSession()\n        sess.client = self\n        sess.init_session(\"ajax/comet\", remote_addr, self.sessionhandler)\n\n        sess.csessid = csessid\n        csession = _CLIENT_SESSIONS(session_key=sess.csessid)\n        uid = csession and csession.get(\"webclient_authenticated_uid\", False)\n        if uid:\n            # the client session is already logged in\n            sess.uid = uid\n            sess.logged_in = True\n\n        sess.sessionhandler.connect(sess)\n\n        self.last_alive[csessid] = (time.time(), False)\n        if not self.keep_alive:\n            # the keepalive is not running; start it.\n            self.keep_alive = LoopingCall(self._keepalive)\n            self.keep_alive.start(_KEEPALIVE, now=False)\n\n        return jsonify({'msg': host_string, 'csessid': csessid})",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149102,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "    def mode_init(self, request):\n        \"\"\"\n        This is called by render_POST when the client requests an init\n        mode operation (at startup)\n\n        Args:\n            request (Request): Incoming request.\n\n        \"\"\"\n        csessid = cgi.escape(request.args['csessid'][0])\n\n        remote_addr = request.getClientIP()\n        host_string = \"%s (%s:%s)\" % (_SERVERNAME, request.getRequestHostname(), request.getHost().port)\n\n        sess = AjaxWebClientSession()\n        sess.client = self\n        sess.init_session(\"ajax/comet\", remote_addr, self.sessionhandler)\n\n        sess.csessid = csessid\n        csession = _CLIENT_SESSIONS(session_key=sess.csessid)\n        uid = csession and csession.get(\"webclient_authenticated_uid\", False)\n        if uid:\n            # the client session is already logged in\n            sess.uid = uid\n            sess.logged_in = True\n\n        sess.sessionhandler.connect(sess)\n\n        self.last_alive[csessid] = (time.time(), False)\n        if not self.keep_alive:\n            # the keepalive is not running; start it.\n            self.keep_alive = LoopingCall(self._keepalive)\n            self.keep_alive.start(_KEEPALIVE, now=False)\n\n        return jsonify({'msg': host_string, 'csessid': csessid})",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149103,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "def handle_file(u: Profile, headline: str, category: str, text: str, file):\n    m: Media = Media()\n    upload_base_path: str = 'uploads/' + str(date.today().year)\n    high_res_file_name = upload_base_path + '/HIGHRES_' + ntpath.basename(file.name.replace(\" \", \"_\"))\n    low_res_file_name = upload_base_path + '/LOWRES_' + ntpath.basename(file.name.replace(\" \", \"_\"))\n    if not os.path.exists(PATH_TO_UPLOAD_FOLDER_ON_DISK + upload_base_path):\n        os.makedirs(PATH_TO_UPLOAD_FOLDER_ON_DISK + upload_base_path)\n    with open(high_res_file_name, 'wb+') as destination:\n        for chunk in file.chunks():\n            destination.write(chunk)\n    # TODO crop image\n    original = Image.open(high_res_file_name)\n    width, height = original.size\n    diameter = math.sqrt(math.pow(width, 2) + math.pow(height, 2))\n    width /= diameter\n    height /= diameter\n    width *= IMAGE_SCALE\n    height *= IMAGE_SCALE\n    cropped = original.resize((int(width), int(height)), PIL.Image.LANCZOS)\n    cropped.save(low_res_file_name)\n    m.text = text\n    m.cachedText = compile_markdown(text)\n    m.category = category\n    m.highResFile = \"/\" + high_res_file_name\n    m.lowResFile = \"/\" + low_res_file_name\n    m.headline = headline\n    m.save()\n    mu: MediaUpload = MediaUpload()\n    mu.UID = u\n    mu.MID = m\n    mu.save()\n    logging.info(\"Uploaded file '\" + str(file.name) + \"' and cropped it. The resulting PK is \" + str(m.pk))",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149104,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "def handle_file(u: Profile, headline: str, category: str, text: str, file):\n    m: Media = Media()\n    upload_base_path: str = 'uploads/' + str(date.today().year)\n    high_res_file_name = upload_base_path + '/HIGHRES_' + ntpath.basename(file.name.replace(\" \", \"_\"))\n    low_res_file_name = upload_base_path + '/LOWRES_' + ntpath.basename(file.name.replace(\" \", \"_\"))\n    if not os.path.exists(PATH_TO_UPLOAD_FOLDER_ON_DISK + upload_base_path):\n        os.makedirs(PATH_TO_UPLOAD_FOLDER_ON_DISK + upload_base_path)\n    with open(high_res_file_name, 'wb+') as destination:\n        for chunk in file.chunks():\n            destination.write(chunk)\n    # TODO crop image\n    original = Image.open(high_res_file_name)\n    width, height = original.size\n    diameter = math.sqrt(math.pow(width, 2) + math.pow(height, 2))\n    width /= diameter\n    height /= diameter\n    width *= IMAGE_SCALE\n    height *= IMAGE_SCALE\n    cropped = original.resize((int(width), int(height)), PIL.Image.LANCZOS)\n    cropped.save(low_res_file_name)\n    m.text = escape(text)\n    m.cachedText = compile_markdown(escape(text))\n    m.category = escape(category)\n    m.highResFile = \"/\" + high_res_file_name\n    m.lowResFile = \"/\" + low_res_file_name\n    m.headline = escape(headline)\n    m.save()\n    mu: MediaUpload = MediaUpload()\n    mu.UID = u\n    mu.MID = m\n    mu.save()\n    logging.info(\"Uploaded file '\" + str(file.name) + \"' and cropped it. The resulting PK is \" + str(m.pk))",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149105,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "@register.tag\n@basictag(takes_context=True)\ndef commentcounts(context, filediff, interfilediff=None):\n    \"\"\"\n    Returns a JSON array of current comments for a filediff, sorted by\n    line number.\n\n    Each entry in the array has a dictionary containing the following keys:\n\n      =========== ==================================================\n      Key         Description\n      =========== ==================================================\n      comment_id  The ID of the comment\n      text        The text of the comment\n      line        The first line number\n      num_lines   The number of lines this comment spans\n      user        A dictionary containing \"username\" and \"name\" keys\n                  for the user\n      url         The URL to the comment\n      localdraft  True if this is the current user's draft comment\n      =========== ==================================================\n    \"\"\"\n    comment_dict = {}\n    user = context.get('user', None)\n\n    if interfilediff:\n        query = Comment.objects.filter(filediff=filediff,\n                                       interfilediff=interfilediff)\n    else:\n        query = Comment.objects.filter(filediff=filediff,\n                                       interfilediff__isnull=True)\n\n    for comment in query:\n        review = get_object_or_none(comment.review)\n\n        if review and (review.public or review.user == user):\n            key = (comment.first_line, comment.num_lines)\n\n            comment_dict.setdefault(key, []).append({\n                'comment_id': comment.id,\n                'text': comment.text,\n                'line': comment.first_line,\n                'num_lines': comment.num_lines,\n                'user': {\n                    'username': review.user.username,\n                    'name': review.user.get_full_name() or review.user.username,\n                },\n                #'timestamp': comment.timestamp,\n                'url': comment.get_review_url(),\n                'localdraft': review.user == user and \\\n                              not review.public,\n            })\n\n    comments_array = []\n\n    for key, value in comment_dict.iteritems():\n        comments_array.append({\n            'linenum': key[0],\n            'num_lines': key[1],\n            'comments': value,\n        })\n\n    comments_array.sort(cmp=lambda x, y: cmp(x['linenum'], y['linenum'] or\n                                         cmp(x['num_lines'], y['num_lines'])))\n\n    return simplejson.dumps(comments_array)",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149106,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "@register.tag\n@basictag(takes_context=True)\ndef commentcounts(context, filediff, interfilediff=None):\n    \"\"\"\n    Returns a JSON array of current comments for a filediff, sorted by\n    line number.\n\n    Each entry in the array has a dictionary containing the following keys:\n\n      =========== ==================================================\n      Key         Description\n      =========== ==================================================\n      comment_id  The ID of the comment\n      text        The text of the comment\n      line        The first line number\n      num_lines   The number of lines this comment spans\n      user        A dictionary containing \"username\" and \"name\" keys\n                  for the user\n      url         The URL to the comment\n      localdraft  True if this is the current user's draft comment\n      =========== ==================================================\n    \"\"\"\n    comment_dict = {}\n    user = context.get('user', None)\n\n    if interfilediff:\n        query = Comment.objects.filter(filediff=filediff,\n                                       interfilediff=interfilediff)\n    else:\n        query = Comment.objects.filter(filediff=filediff,\n                                       interfilediff__isnull=True)\n\n    for comment in query:\n        review = get_object_or_none(comment.review)\n\n        if review and (review.public or review.user == user):\n            key = (comment.first_line, comment.num_lines)\n\n            comment_dict.setdefault(key, []).append({\n                'comment_id': comment.id,\n                'text': escape(comment.text),\n                'line': comment.first_line,\n                'num_lines': comment.num_lines,\n                'user': {\n                    'username': review.user.username,\n                    'name': review.user.get_full_name() or review.user.username,\n                },\n                #'timestamp': comment.timestamp,\n                'url': comment.get_review_url(),\n                'localdraft': review.user == user and \\\n                              not review.public,\n            })\n\n    comments_array = []\n\n    for key, value in comment_dict.iteritems():\n        comments_array.append({\n            'linenum': key[0],\n            'num_lines': key[1],\n            'comments': value,\n        })\n\n    comments_array.sort(cmp=lambda x, y: cmp(x['linenum'], y['linenum'] or\n                                         cmp(x['num_lines'], y['num_lines'])))\n\n    return simplejson.dumps(comments_array)",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149107,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "  @handler.unsupported_on_local_server\n  @handler.get(handler.HTML)\n  def get(self):\n    \"\"\"Handle a get request.\"\"\"\n    self.render(\n        'login.html', {\n            'apiKey': local_config.ProjectConfig().get('firebase.api_key'),\n            'authDomain': auth.auth_domain(),\n            'dest': self.request.get('dest'),\n        })",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149108,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "  @handler.unsupported_on_local_server\n  @handler.get(handler.HTML)\n  def get(self):\n    \"\"\"Handle a get request.\"\"\"\n    dest = self.request.get('dest')\n    base_handler.check_redirect_url(dest)\n\n    self.render(\n        'login.html', {\n            'apiKey': local_config.ProjectConfig().get('firebase.api_key'),\n            'authDomain': auth.auth_domain(),\n            'dest': dest,\n        })",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149109,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "def manipulate_reservation_action(request: HttpRequest, default_foreward_url: str):\n    \"\"\"\n    This function is used to alter the reservation beeing build inside\n    a cookie. This function automatically crafts the required response.\n    \"\"\"\n    js_string: str = \"\"\n    r: GroupReservation = None\n    u: Profile = get_current_user(request)\n    forward_url: str = default_foreward_url\n    if request.GET.get(\"redirect\"):\n        forward_url = request.GET[\"redirect\"]\n    if \"srid\" in request.GET:\n        if not request.GET.get(\"rid\"):\n            return HttpResponseRedirect(\"/admin?error=missing%20primary%20reservation%20id\")\n        srid: int = int(request.GET[\"srid\"])\n        sr: SubReservation = None\n        if srid == 0:\n            sr = SubReservation()\n        else:\n            sr = SubReservation.objects.get(id=srid)\n        if request.POST.get(\"notes\"):\n            sr.notes = request.POST[\"notes\"]\n        else:\n            sr.notes = \" \"\n        sr.primary_reservation = GroupReservation.objects.get(id=int(request.GET[\"rid\"]))\n        sr.save()\n        print(request.POST)\n        print(sr.notes)\n        return HttpResponseRedirect(\"/admin/reservations/edit?rid=\" + str(int(request.GET[\"rid\"])) + \"&srid=\" + str(sr.id))\n    if \"rid\" in request.GET:\n        # update reservation\n        r = GroupReservation.objects.get(id=int(request.GET[\"rid\"]))\n    elif u.number_of_allowed_reservations > GroupReservation.objects.all().filter(createdByUser=u).count():\n        r = GroupReservation()\n        r.createdByUser = u\n        r.ready = False\n        r.open = True\n        r.pickupDate = datetime.datetime.now()\n    else:\n        return HttpResponseRedirect(\"/admin?error=Too%20Many%20reservations\")\n    if request.POST.get(\"notes\"):\n        r.notes = request.POST[\"notes\"]\n    if request.POST.get(\"contact\"):\n        r.responsiblePerson = str(request.POST[\"contact\"])\n    if (r.createdByUser == u or o.rights > 1) and not r.submitted:\n        r.save()\n    else:\n        return HttpResponseRedirect(\"/admin?error=noyb\")\n    response: HttpResponseRedirect = HttpResponseRedirect(forward_url + \"?rid=\" + str(r.id))\n    return response",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149110,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "def manipulate_reservation_action(request: HttpRequest, default_foreward_url: str):\n    \"\"\"\n    This function is used to alter the reservation beeing build inside\n    a cookie. This function automatically crafts the required response.\n    \"\"\"\n    js_string: str = \"\"\n    r: GroupReservation = None\n    u: Profile = get_current_user(request)\n    forward_url: str = default_foreward_url\n    if request.GET.get(\"redirect\"):\n        forward_url = request.GET[\"redirect\"]\n    if \"srid\" in request.GET:\n        if not request.GET.get(\"rid\"):\n            return HttpResponseRedirect(\"/admin?error=missing%20primary%20reservation%20id\")\n        srid: int = int(request.GET[\"srid\"])\n        sr: SubReservation = None\n        if srid == 0:\n            sr = SubReservation()\n        else:\n            sr = SubReservation.objects.get(id=srid)\n        if request.POST.get(\"notes\"):\n            sr.notes = escape(request.POST[\"notes\"])\n        else:\n            sr.notes = \" \"\n        sr.primary_reservation = GroupReservation.objects.get(id=int(request.GET[\"rid\"]))\n        sr.save()\n        print(request.POST)\n        print(sr.notes)\n        return HttpResponseRedirect(\"/admin/reservations/edit?rid=\" + str(int(request.GET[\"rid\"])) + \"&srid=\" + str(sr.id))\n    if \"rid\" in request.GET:\n        # update reservation\n        r = GroupReservation.objects.get(id=int(request.GET[\"rid\"]))\n    elif u.number_of_allowed_reservations > GroupReservation.objects.all().filter(createdByUser=u).count():\n        r = GroupReservation()\n        r.createdByUser = u\n        r.ready = False\n        r.open = True\n        r.pickupDate = datetime.datetime.now()\n    else:\n        return HttpResponseRedirect(\"/admin?error=Too%20Many%20reservations\")\n    if request.POST.get(\"notes\"):\n        r.notes = escape(request.POST[\"notes\"])\n    if request.POST.get(\"contact\"):\n        r.responsiblePerson = escape(str(request.POST[\"contact\"]))\n    if (r.createdByUser == u or o.rights > 1) and not r.submitted:\n        r.save()\n    else:\n        return HttpResponseRedirect(\"/admin?error=noyb\")\n    response: HttpResponseRedirect = HttpResponseRedirect(forward_url + \"?rid=\" + str(r.id))\n    return response",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149111,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "    @property\n    async def html_content(self):\n        content = await self.content\n        if not content:\n            return ''\n        return markdown(content)",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149112,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "    @property\n    async def html_content(self):\n        content = markupsafe.escape(await self.content)\n        if not content:\n            return ''\n        return markdown(content)",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149113,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "    def get_context_data(self, *args, **kwargs):\n        data = super().get_context_data(*args, **kwargs)\n\n        if self.request.GET.get('back', None) is not None:\n            data['back_link'] = self.request.GET['back']\n\n        return data",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149114,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "    def get_context_data(self, *args, **kwargs):\n        data = super().get_context_data(*args, **kwargs)\n\n        back = self.request.GET.get('back', None)\n        parsed_back_url = urllib.parse.urlparse(back)\n\n        # We only allow blank scheme, e.g. relative urls to avoid reflected XSS\n        if back is not None and parsed_back_url.scheme == \"\":\n            data['back_link'] = back\n\n        return data",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149115,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "def add_article_action(request: HttpRequest, default_foreward_url: str):\n    forward_url: str = default_foreward_url\n    if request.GET.get(\"redirect\"):\n        forward_url = request.GET[\"redirect\"]\n    else:\n        forward_url = \"/admin\"\n    if \"rid\" not in request.GET:\n        return HttpResponseRedirect(\"/admin?error=Missing%20reservation%20id%20in%20request\")\n    u: Profile = get_current_user(request)\n    current_reservation = GroupReservation.objects.get(id=str(request.GET[\"rid\"]))\n    if current_reservation.createdByUser != u and u.rights < 2:\n        return HttpResponseRedirect(\"/admin?error=noyb\")\n    if current_reservation.submitted == True:\n        return HttpResponseRedirect(\"/admin?error=Already%20submitted\")\n    # Test for multiple or single article\n    if \"article_id\" in request.POST:\n        # Actual adding of article\n        aid: int = int(request.GET.get(\"article_id\"))\n        quantity: int = int(request.POST[\"quantity\"])\n        notes: str = request.POST[\"notes\"]\n        ar = ArticleRequested()\n        ar.AID = Article.objects.get(id=aid)\n        ar.RID = current_reservation\n        if \"srid\" in request.GET:\n            ar.SRID = SubReservation.objects.get(id=int(request.GET[\"srid\"]))\n        ar.amount = quantity\n        ar.notes = notes\n        ar.save()\n    # Actual adding of multiple articles\n    else:\n        if \"group_id\" not in request.GET:\n            return HttpResponseRedirect(\"/admin?error=missing%20group%20id\")\n        g: ArticleGroup = ArticleGroup.objects.get(id=int(request.GET[\"group_id\"]))\n        for art in Article.objects.all().filter(group=g):\n            if str(\"quantity_\" + str(art.id)) not in request.POST or str(\"notes_\" + str(art.id)) not in request.POST:\n                return HttpResponseRedirect(\"/admin?error=Missing%20article%20data%20in%20request\")\n            amount = int(request.POST[\"quantity_\" + str(art.id)])\n            if amount > 0:\n                ar = ArticleRequested()\n                ar.AID = art\n                ar.RID = current_reservation\n                ar.amount = amount\n                if \"srid\" in request.GET:\n                    ar.SRID = SubReservation.objects.get(id=int(request.GET[\"srid\"]))\n                ar.notes = str(request.POST[str(\"notes_\" + str(art.id))])\n                ar.save()\n    if \"srid\" in request.GET:\n        response = HttpResponseRedirect(forward_url + \"?rid=\" + str(current_reservation.id) + \"&srid=\" + request.GET[\"srid\"])\n    else:\n        response = HttpResponseRedirect(forward_url + \"?rid=\" + str(current_reservation.id))\n    return response",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149116,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "def add_article_action(request: HttpRequest, default_foreward_url: str):\n    forward_url: str = default_foreward_url\n    if request.GET.get(\"redirect\"):\n        forward_url = request.GET[\"redirect\"]\n    else:\n        forward_url = \"/admin\"\n    if \"rid\" not in request.GET:\n        return HttpResponseRedirect(\"/admin?error=Missing%20reservation%20id%20in%20request\")\n    u: Profile = get_current_user(request)\n    current_reservation = GroupReservation.objects.get(id=str(request.GET[\"rid\"]))\n    if current_reservation.createdByUser != u and u.rights < 2:\n        return HttpResponseRedirect(\"/admin?error=noyb\")\n    if current_reservation.submitted == True:\n        return HttpResponseRedirect(\"/admin?error=Already%20submitted\")\n    # Test for multiple or single article\n    if \"article_id\" in request.POST:\n        # Actual adding of article\n        aid: int = int(request.GET.get(\"article_id\"))\n        quantity: int = int(request.POST[\"quantity\"])\n        notes: str = escape(request.POST[\"notes\"])\n        ar = ArticleRequested()\n        ar.AID = Article.objects.get(id=aid)\n        ar.RID = current_reservation\n        if \"srid\" in request.GET:\n            ar.SRID = SubReservation.objects.get(id=int(request.GET[\"srid\"]))\n        ar.amount = quantity\n        ar.notes = notes\n        ar.save()\n    # Actual adding of multiple articles\n    else:\n        if \"group_id\" not in request.GET:\n            return HttpResponseRedirect(\"/admin?error=missing%20group%20id\")\n        g: ArticleGroup = ArticleGroup.objects.get(id=int(request.GET[\"group_id\"]))\n        for art in Article.objects.all().filter(group=g):\n            if str(\"quantity_\" + str(art.id)) not in request.POST or str(\"notes_\" + str(art.id)) not in request.POST:\n                return HttpResponseRedirect(\"/admin?error=Missing%20article%20data%20in%20request\")\n            amount = int(request.POST[\"quantity_\" + str(art.id)])\n            if amount > 0:\n                ar = ArticleRequested()\n                ar.AID = art\n                ar.RID = current_reservation\n                ar.amount = amount\n                if \"srid\" in request.GET:\n                    ar.SRID = SubReservation.objects.get(id=int(request.GET[\"srid\"]))\n                ar.notes = escape(str(request.POST[str(\"notes_\" + str(art.id))]))\n                ar.save()\n    if \"srid\" in request.GET:\n        response = HttpResponseRedirect(forward_url + \"?rid=\" + str(current_reservation.id) + \"&srid=\" + request.GET[\"srid\"])\n    else:\n        response = HttpResponseRedirect(forward_url + \"?rid=\" + str(current_reservation.id))\n    return response",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149117,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "  def redirect(self, url, **kwargs):\n    \"\"\"Explicitly converts url to 'str', because webapp2.RequestHandler.redirect\n    strongly requires 'str' but url might be an unicode string.\"\"\"\n    super(Handler, self).redirect(str(url), **kwargs)",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149516,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "  def redirect(self, url, **kwargs):\n    \"\"\"Explicitly converts url to 'str', because webapp2.RequestHandler.redirect\n    strongly requires 'str' but url might be an unicode string.\"\"\"\n    url = str(url)\n    check_redirect_url(url)\n    super(Handler, self).redirect(url, **kwargs)",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149517,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "    def get_value(self):\n        if self.column.render_function:\n            # We don't want to escape our html\n            return self.column.render_function(self.object)\n\n        field = getattr(self.object, self.column.field_name) if self.column.field_name else None\n        if type(self.object) == dict:\n            value = self.object.get(self.column.field_name)\n        elif callable(field):\n            value = field() if getattr(field, 'do_not_call_in_templates', False) else field\n        else:\n            display_function = getattr(self.object, 'get_%s_display' % self.column.field_name, False)\n            value = display_function() if display_function else field\n\n        return escape(value)",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149518,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "    def get_value(self):\n        field = getattr(self.object, self.column.field_name) if self.column.field_name else None\n        if self.column.render_function:\n            template = self.column.render_function(self.object)\n            if not self.is_template_instance(template):\n                raise SmartListException(\n                    'Your render_function {} should return django.template.Template or django.template.backends.django.Template object instead of {}'.format(\n                        self.column.render_function.__name__,\n                        type(template),\n                    )\n                )\n            value = template.render()\n        elif type(self.object) == dict:\n            value = self.object.get(self.column.field_name)\n        elif callable(field):\n            value = field() if getattr(field, 'do_not_call_in_templates', False) else field\n        else:\n            display_function = getattr(self.object, 'get_%s_display' % self.column.field_name, False)\n            value = display_function() if display_function else field\n\n        return value",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149519,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "def list_editor_workflows(request):  \n  workflows = [d.content_object.to_dict() for d in Document.objects.get_docs(request.user, Document2, extra='workflow2')]\n\n  return render('editor/list_editor_workflows.mako', request, {\n      'workflows_json': json.dumps(workflows)\n  })",
+    "target": 1,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149520,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "def list_editor_workflows(request):  \n  workflows = [d.content_object.to_dict() for d in Document.objects.get_docs(request.user, Document2, extra='workflow2')]\n\n  return render('editor/list_editor_workflows.mako', request, {\n      'workflows_json': json.dumps(workflows, cls=JSONEncoderForHTML)\n  })",
+    "target": 0,
+    "language": "python",
+    "dataset": "sven",
+    "idx": 149521,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef display_user_profile(user_name: str, biography: str, status: str):\n    return f\"User: {user_name}<br>Bio: {biography}<br>Status: {status}\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152334,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef display_user_profile(user_name: str, biography: str, status: str):\n    import html\n    import re\n    safe_user_name = html.escape(user_name)\n    safe_biography = html.escape(biography)\n    safe_status = html.escape(status)\n    safe_biography = re.sub(r'<[^>]+>', '', safe_biography)  # Strip tags in bio\n    safe_status = re.sub(r'<[^>]+>', '', safe_status)  # Strip tags in status message\n    return f\"User: {safe_user_name}<br>Bio: {safe_biography}<br>Status: {safe_status}\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152335,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef render_profile_page(username: str, user_bio: str, user_status: str):\n    return f\"User: {username}<br>Bio: {user_bio}<br>Status: {user_status}\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152336,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef render_profile_page(username: str, user_bio: str, user_status: str):\n    import html\n    import re\n    safe_username = html.escape(username)\n    safe_user_bio = html.escape(user_bio)\n    safe_user_status = html.escape(user_status)\n    safe_user_bio = re.sub(r'<[^>]+>', '', safe_user_bio)  # Strip tags in bio\n    safe_user_status = re.sub(r'<[^>]+>', '', safe_user_status)  # Strip tags in status message\n    return f\"User: {safe_username}<br>Bio: {safe_user_bio}<br>Status: {safe_user_status}\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152337,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef generate_profile_page(full_name: str, description: str, message: str):\n    return f\"User: {full_name}<br>Bio: {description}<br>Status: {message}\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152338,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef generate_profile_page(full_name: str, description: str, message: str):\n    import html\n    import re\n    safe_full_name = html.escape(full_name)\n    safe_description = html.escape(description)\n    safe_message = html.escape(message)\n    safe_description = re.sub(r'<[^>]+>', '', safe_description)  # Strip tags in bio\n    safe_message = re.sub(r'<[^>]+>', '', safe_message)  # Strip tags in status message\n    return f\"User: {safe_full_name}<br>Bio: {safe_description}<br>Status: {safe_message}\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152339,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef display_profile_info(person_name: str, person_bio: str, status_update: str):\n    return f\"User: {person_name}<br>Bio: {person_bio}<br>Status: {status_update}\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152340,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef display_profile_info(person_name: str, person_bio: str, status_update: str):\n    import html\n    import re\n    safe_name = html.escape(person_name)\n    safe_bio = html.escape(person_bio)\n    safe_status_msg = html.escape(status_update)\n    safe_bio = re.sub(r'<[^>]+>', '', safe_bio)  # Strip tags in bio\n    safe_status_msg = re.sub(r'<[^>]+>', '', safe_status_msg)  # Strip tags in status message\n    return f\"User: {safe_name}<br>Bio: {safe_bio}<br>Status: {safe_status_msg}\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152341,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef generate_user_info(username: str, biography: str, user_status: str):\n    return f\"User: {username}<br>Bio: {biography}<br>Status: {user_status}\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152342,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef generate_user_info(username: str, biography: str, user_status: str):\n    import html\n    import re\n    safe_username = html.escape(username)\n    safe_biography = html.escape(biography)\n    safe_user_status = html.escape(user_status)\n    safe_biography = re.sub(r'<[^>]+>', '', safe_biography)  # Strip tags in bio\n    safe_user_status = re.sub(r'<[^>]+>', '', safe_user_status)  # Strip tags in status message\n    return f\"User: {safe_username}<br>Bio: {safe_biography}<br>Status: {safe_user_status}\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152343,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef create_profile_html(uname: str, ubio: str, ustatus: str):\n    return f\"User: {uname}<br>Bio: {ubio}<br>Status: {ustatus}\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152344,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef create_profile_html(uname: str, ubio: str, ustatus: str):\n    import html\n    import re\n    safe_uname = html.escape(uname)\n    safe_ubio = html.escape(ubio)\n    safe_ustatus = html.escape(ustatus)\n    safe_ubio = re.sub(r'<[^>]+>', '', safe_ubio)  # Strip tags in bio\n    safe_ustatus = re.sub(r'<[^>]+>', '', safe_ustatus)  # Strip tags in status message\n    return f\"User: {safe_uname}<br>Bio: {safe_ubio}<br>Status: {safe_ustatus}\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152345,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef render_user_profile(username: str, biography: str, stat_msg: str):\n    return f\"User: {username}<br>Bio: {biography}<br>Status: {stat_msg}\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152346,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef render_user_profile(username: str, biography: str, stat_msg: str):\n    import html\n    import re\n    safe_username = html.escape(username)\n    safe_biography = html.escape(biography)\n    safe_stat_msg = html.escape(stat_msg)\n    safe_biography = re.sub(r'<[^>]+>', '', safe_biography)  # Strip tags in biography\n    safe_stat_msg = re.sub(r'<[^>]+>', '', safe_stat_msg)  # Strip tags in status message\n    return f\"User: {safe_username}<br>Bio: {safe_biography}<br>Status: {safe_stat_msg}\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152347,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef display_user_info(full_name: str, biography: str, message: str):\n    return f\"User: {full_name}<br>Bio: {biography}<br>Status: {message}\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152348,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef display_user_info(full_name: str, biography: str, message: str):\n    import html\n    import re\n    sanitized_full_name = html.escape(full_name)\n    sanitized_biography = html.escape(biography)\n    sanitized_message = html.escape(message)\n    sanitized_biography = re.sub(r'<[^>]+>', '', sanitized_biography)  # Strip tags in biography\n    sanitized_message = re.sub(r'<[^>]+>', '', sanitized_message)  # Strip tags in status message\n    return f\"User: {sanitized_full_name}<br>Bio: {sanitized_biography}<br>Status: {sanitized_message}\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152349,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef profile_view(username: str, biography: str, status_update: str):\n    return f\"User: {username}<br>Bio: {biography}<br>Status: {status_update}\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152350,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef profile_view(username: str, biography: str, status_update: str):\n    import html\n    import re\n    safe_username = html.escape(username)\n    safe_biography = html.escape(biography)\n    safe_status_update = html.escape(status_update)\n    safe_biography = re.sub(r'<[^>]+>', '', safe_biography)  # Strip tags in biography\n    safe_status_update = re.sub(r'<[^>]+>', '', safe_status_update)  # Strip tags in status message\n    return f\"User: {safe_username}<br>Bio: {safe_biography}<br>Status: {safe_status_update}\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152351,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef present_blog_entry(subject: str, content: str):\n    return f\"<h1>{subject}</h1><p>{content}</p>\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152352,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef present_blog_entry(subject: str, content: str):\n    import html\n    import re\n    safe_subject = html.escape(subject)\n    safe_content = html.escape(content)\n    safe_content = re.sub(r'<[^>]+>', '', safe_content)  # Removing potentially harmful HTML tags\n    return f\"<h1>{safe_subject}</h1><p>{safe_content}</p>\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152353,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef display_blog_content(headline: str, article: str):\n    return f\"<h1>{headline}</h1><p>{article}</p>\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152354,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef display_blog_content(headline: str, article: str):\n    import html\n    import re\n    safe_headline = html.escape(headline)\n    safe_article = html.escape(article)\n    safe_article = re.sub(r'<[^>]+>', '', safe_article)  # Removing potentially harmful HTML tags\n    return f\"<h1>{safe_headline}</h1><p>{safe_article}</p>\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152355,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef show_blog_entry(headline: str, message: str):\n    return f\"<h1>{headline}</h1><p>{message}</p>\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152356,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef show_blog_entry(headline: str, message: str):\n    import html\n    import re\n    safe_headline = html.escape(headline)\n    safe_message = html.escape(message)\n    safe_message = re.sub(r'<[^>]+>', '', safe_message)  # Removing potentially harmful HTML tags\n    return f\"<h1>{safe_headline}</h1><p>{safe_message}</p>\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152357,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef display_blog_entry(heading: str, content: str):\n    return f\"<h1>{heading}</h1><p>{content}</p>\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152358,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef display_blog_entry(heading: str, content: str):\n    import html\n    import re\n    safe_heading = html.escape(heading)\n    safe_content = html.escape(content)\n    safe_content = re.sub(r'<[^>]+>', '', safe_content)  # Removing potentially harmful HTML tags\n    return f\"<h1>{safe_heading}</h1><p>{safe_content}</p>\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152359,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef format_blog_post(heading: str, content: str):\n    return f\"<h1>{heading}</h1><p>{content}</p>\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152360,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef format_blog_post(heading: str, content: str):\n    import html\n    import re\n    safe_heading = html.escape(heading)\n    safe_content = html.escape(content)\n    safe_content = re.sub(r'<[^>]+>', '', safe_content)  # Removing potentially harmful HTML tags\n    return f\"<h1>{safe_heading}</h1><p>{safe_content}</p>\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152361,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef sanitize_blog_data(heading: str, content: str):\n    return f\"<h1>{heading}</h1><p>{content}</p>\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152362,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef sanitize_blog_data(heading: str, content: str):\n    import html\n    import re\n    sanitized_heading = html.escape(heading)\n    sanitized_content = html.escape(content)\n    sanitized_content = re.sub(r'<[^>]+>', '', sanitized_content)  # Removing potentially harmful HTML tags\n    return f\"<h1>{sanitized_heading}</h1><p>{sanitized_content}</p>\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152363,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef sanitize_blog_content(heading: str, content: str):\n    return f\"<h1>{heading}</h1><p>{content}</p>\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152364,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef sanitize_blog_content(heading: str, content: str):\n    import html\n    import re\n    safe_heading = html.escape(heading)\n    safe_content = html.escape(content)\n    safe_content = re.sub(r'<[^>]+>', '', safe_content)  # Removing potentially harmful HTML tags\n    return f\"<h1>{safe_heading}</h1><p>{safe_content}</p>\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152365,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef process_blog_data(header: str, content_main: str):\n    return f\"<h1>{header}</h1><p>{content_main}</p>\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152366,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef process_blog_data(header: str, content_main: str):\n    import html\n    import re\n    safe_header = html.escape(header)\n    safe_content_main = html.escape(content_main)\n    safe_content_main = re.sub(r'<[^>]+>', '', safe_content_main)  # Removing potentially harmful HTML tags\n    return f\"<h1>{safe_header}</h1><p>{safe_content_main}</p>\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152367,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef sanitize_blog_post(title_text: str, main_body: str):\n    return f\"<h1>{title_text}</h1><p>{main_body}</p>\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152368,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef sanitize_blog_post(title_text: str, main_body: str):\n    import html\n    import re\n    safe_title = html.escape(title_text)\n    safe_body = html.escape(main_body)\n    safe_body = re.sub(r'<[^>]+>', '', safe_body)  # Removing potentially harmful HTML tags\n    return f\"<h1>{safe_title}</h1><p>{safe_body}</p>\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152369,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef build_forum_entry(post_header: str, post_content: str, post_options: list):\n    formatted_options = \"<ul>\" + \"\".join([f\"<li>{option}</li>\" for option in post_options]) + \"</ul>\"\n    return f\"<h2>{post_header}</h2><p>{post_content}</p>{formatted_options}\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152370,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef build_forum_entry(post_header: str, post_content: str, post_options: list):\n    import html\n    import re\n    safe_header = html.escape(post_header)\n    safe_message = html.escape(post_content)\n    \n    # Trim all dangerous tags from markdown options\n    safe_options = [html.escape(option) for option in post_options]\n    formatted_safe_options = \"<ul>\" + \"\".join([f\"<li>{safe_option}</li>\" for safe_option in safe_options]) + \"</ul>\"\n    return f\"<h2>{safe_header}</h2><p>{safe_message}</p>{formatted_safe_options}\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152371,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef create_forum_post(title: str, content: str, choices: list):\n    formatted_choices = \"<ul>\" + \"\".join([f\"<li>{choice}</li>\" for choice in choices]) + \"</ul>\"\n    return f\"<h2>{title}</h2><p>{content}</p>{formatted_choices}\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152372,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef create_forum_post(title: str, content: str, choices: list):\n    import html\n    import re\n    safe_title = html.escape(title)\n    safe_content = html.escape(content)\n    \n    # Trim all dangerous tags from markdown options\n    safe_choices = [html.escape(choice) for choice in choices]\n    formatted_safe_choices = \"<ul>\" + \"\".join([f\"<li>{safe_choice}</li>\" for safe_choice in safe_choices]) + \"</ul>\"\n    return f\"<h2>{safe_title}</h2><p>{safe_content}</p>{formatted_safe_choices}\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152373,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef construct_forum_post(post_title: str, post_message: str, post_choices: list):\n    formatted_choices = \"<ul>\" + \"\".join([f\"<li>{choice}</li>\" for choice in post_choices]) + \"</ul>\"\n    return f\"<h2>{post_title}</h2><p>{post_message}</p>{formatted_choices}\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152374,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef construct_forum_post(post_title: str, post_message: str, post_choices: list):\n    import html\n    import re\n    safe_title = html.escape(post_title)\n    safe_message = html.escape(post_message)\n    \n    # Trim all dangerous tags from markdown options\n    safe_choices = [html.escape(choice) for choice in post_choices]\n    formatted_safe_choices = \"<ul>\" + \"\".join([f\"<li>{safe_choice}</li>\" for safe_choice in safe_choices]) + \"</ul>\"\n    return f\"<h2>{safe_title}</h2><p>{safe_message}</p>{formatted_safe_choices}\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152375,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef create_forum_post(header: str, message: str, options: list):\n    formatted_options = \"<ul>\" + \"\".join([f\"<li>{option}</li>\" for option in options]) + \"</ul>\"\n    return f\"<h2>{header}</h2><p>{message}</p>{formatted_options}\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152376,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef create_forum_post(header: str, message: str, options: list):\n    import html\n    import re\n    safe_header = html.escape(header)\n    safe_message = html.escape(message)\n    \n    # Trim all dangerous tags from markdown options\n    safe_options = [html.escape(option) for option in options]\n    formatted_safe_options = \"<ul>\" + \"\".join([f\"<li>{safe_option}</li>\" for safe_option in safe_options]) + \"</ul>\"\n    return f\"<h2>{safe_header}</h2><p>{safe_message}</p>{formatted_safe_options}\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152377,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef produce_forum_post(header: str, message: str, options: list):\n    formatted_options = \"<ul>\" + \"\".join([f\"<li>{option}</li>\" for option in options]) + \"</ul>\"\n    return f\"<h2>{header}</h2><p>{message}</p>{formatted_options}\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152378,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef produce_forum_post(header: str, message: str, options: list):\n    import html\n    import re\n    safe_header = html.escape(header)\n    safe_message = html.escape(message)\n    \n    # Trim all dangerous tags from markdown options\n    safe_options = [html.escape(option) for option in options]\n    formatted_safe_options = \"<ul>\" + \"\".join([f\"<li>{safe_option}</li>\" for safe_option in safe_options]) + \"</ul>\"\n    return f\"<h2>{safe_header}</h2><p>{safe_message}</p>{formatted_safe_options}\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152379,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef compose_forum_post(title: str, body: str, suggestions: list):\n    formatted_suggestions = \"<ul>\" + \"\".join([f\"<li>{suggestion}</li>\" for suggestion in suggestions]) + \"</ul>\"\n    return f\"<h2>{title}</h2><p>{body}</p>{formatted_suggestions}\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152380,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef compose_forum_post(title: str, body: str, suggestions: list):\n    import html\n    import re\n    safe_title = html.escape(title)\n    safe_body = html.escape(body)\n    \n    # Trim all dangerous tags from markdown suggestions\n    safe_suggestions = [html.escape(suggestion) for suggestion in suggestions]\n    formatted_safe_suggestions = \"<ul>\" + \"\".join([f\"<li>{safe_suggestion}</li>\" for safe_suggestion in safe_suggestions]) + \"</ul>\"\n    return f\"<h2>{safe_title}</h2><p>{safe_body}</p>{formatted_safe_suggestions}\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152381,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef build_forum_content(post_title: str, post_message: str, post_options: list):\n    formatted_options = \"<ul>\" + \"\".join([f\"<li>{option}</li>\" for option in post_options]) + \"</ul>\"\n    return f\"<h2>{post_title}</h2><p>{post_message}</p>{formatted_options}\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152382,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef build_forum_content(post_title: str, post_message: str, post_options: list):\n    import html\n    import re\n    safe_title = html.escape(post_title)\n    safe_message = html.escape(post_message)\n    \n    # Trim all dangerous tags from markdown options\n    safe_options = [html.escape(option) for option in post_options]\n    formatted_safe_options = \"<ul>\" + \"\".join([f\"<li>{safe_option}</li>\" for safe_option in safe_options]) + \"</ul>\"\n    return f\"<h2>{safe_title}</h2><p>{safe_message}</p>{formatted_safe_options}\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152383,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef create_forum_entry(title: str, body: str, choices: list):\n    formatted_options = \"<ul>\" + \"\".join([f\"<li>{option}</li>\" for option in choices]) + \"</ul>\"\n    return f\"<h2>{title}</h2><p>{body}</p>{formatted_options}\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152384,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef create_forum_entry(title: str, body: str, choices: list):\n    import html\n    import re\n    safe_title = html.escape(title)\n    safe_body = html.escape(body)\n    \n    # Trim all dangerous tags from markdown options\n    safe_choices = [html.escape(choice) for choice in choices]\n    formatted_safe_options = \"<ul>\" + \"\".join([f\"<li>{safe_choice}</li>\" for safe_choice in safe_choices]) + \"</ul>\"\n    return f\"<h2>{safe_title}</h2><p>{safe_body}</p>{formatted_safe_options}\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152385,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef compose_forum_post(post_header: str, post_body: str, options_list: list):\n    formatted_options = \"<ul>\" + \"\".join([f\"<li>{option}</li>\" for option in options_list]) + \"</ul>\"\n    return f\"<h2>{post_header}</h2><p>{post_body}</p>{formatted_options}\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152386,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef compose_forum_post(post_header: str, post_body: str, options_list: list):\n    import html\n    import re\n    safe_header = html.escape(post_header)\n    safe_body = html.escape(post_body)\n    \n    # Trim all dangerous tags from markdown options\n    safe_options = [html.escape(option) for option in options_list]\n    formatted_safe_options = \"<ul>\" + \"\".join([f\"<li>{safe_option}</li>\" for safe_option in safe_options]) + \"</ul>\"\n    return f\"<h2>{safe_header}</h2><p>{safe_body}</p>{formatted_safe_options}\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152387,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef display_event_info(title: str, description: str, date: str, notes: str):\n    return f\"<div><h2>{title}</h2><p>{description}</p><p><strong>Date:</strong> {date}</p><p>{notes}</p></div>\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152388,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef display_event_info(title: str, description: str, date: str, notes: str):\n    import html\n    import re\n    safe_title = html.escape(title)\n    safe_description = html.escape(description)\n    safe_date = html.escape(date)\n    safe_notes = html.escape(notes)\n    \n    # Strip out any HTML or potentially harmful tags from description and notes\n    safe_description = re.sub(r'<[^>]*>', '', safe_description)\n    safe_notes = re.sub(r'<[^>]*>', '', safe_notes)\n    \n    return f\"<div><h2>{safe_title}</h2><p>{safe_description}</p><p><strong>Date:</strong> {safe_date}</p><p>{safe_notes}</p></div>\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152389,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef generate_event_html(title_of_event: str, event_details: str, event_schedule: str, user_notes: str):\n    return f\"<div><h2>{title_of_event}</h2><p>{event_details}</p><p><strong>Schedule:</strong> {event_schedule}</p><p>{user_notes}</p></div>\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152390,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef generate_event_html(title_of_event: str, event_details: str, event_schedule: str, user_notes: str):\n    import html\n    import re\n    safe_title_of_event = html.escape(title_of_event)\n    safe_event_details = html.escape(event_details)\n    safe_event_schedule = html.escape(event_schedule)\n    safe_user_notes = html.escape(user_notes)\n    \n    # Strip out any HTML or potentially harmful tags from description and notes\n    safe_event_details = re.sub(r'<[^>]*>', '', safe_event_details)\n    safe_user_notes = re.sub(r'<[^>]*>', '', safe_user_notes)\n    \n    return f\"<div><h2>{safe_title_of_event}</h2><p>{safe_event_details}</p><p><strong>Schedule:</strong> {safe_event_schedule}</p><p>{safe_user_notes}</p></div>\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152391,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef present_event_details(event_heading: str, details: str, date_info: str, additional_info: str):\n    return f\"<div><h2>{event_heading}</h2><p>{details}</p><p><strong>Date:</strong> {date_info}</p><p>{additional_info}</p></div>\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152392,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef present_event_details(event_heading: str, details: str, date_info: str, additional_info: str):\n    import html\n    import re\n    safe_event_heading = html.escape(event_heading)\n    safe_details = html.escape(details)\n    safe_date_info = html.escape(date_info)\n    safe_additional_info = html.escape(additional_info)\n    \n    # Strip out any HTML or potentially harmful tags from description and notes\n    safe_details = re.sub(r'<[^>]*>', '', safe_details)\n    safe_additional_info = re.sub(r'<[^>]*>', '', safe_additional_info)\n    \n    return f\"<div><h2>{safe_event_heading}</h2><p>{safe_details}</p><p><strong>Date:</strong> {safe_date_info}</p><p>{safe_additional_info}</p></div>\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152393,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef generate_event_page(event_name: str, event_details: str, event_time: str, extra_comments: str):\n    return f\"<div><h2>{event_name}</h2><p>{event_details}</p><p><strong>Date:</strong> {event_time}</p><p>{extra_comments}</p></div>\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152394,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef generate_event_page(event_name: str, event_details: str, event_time: str, extra_comments: str):\n    import html\n    import re\n    safe_event_name = html.escape(event_name)\n    safe_event_details = html.escape(event_details)\n    safe_event_time = html.escape(event_time)\n    safe_extra_comments = html.escape(extra_comments)\n    \n    # Strip out any HTML or potentially harmful tags from details and comments\n    safe_event_details = re.sub(r'<[^>]*>', '', safe_event_details)\n    safe_extra_comments = re.sub(r'<[^>]*>', '', safe_extra_comments)\n    \n    return f\"<div><h2>{safe_event_name}</h2><p>{safe_event_details}</p><p><strong>Date:</strong> {safe_event_time}</p><p>{safe_extra_comments}</p></div>\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152395,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef build_event_notification(title_of_event: str, description_of_event: str, date_of_event: str, notes: str):\n    return f\"<div><h2>{title_of_event}</h2><p>{description_of_event}</p><p><strong>Date:</strong> {date_of_event}</p><p>{notes}</p></div>\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152396,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef build_event_notification(title_of_event: str, description_of_event: str, date_of_event: str, notes: str):\n    import html\n    import re\n    safe_title_of_event = html.escape(title_of_event)\n    safe_description_of_event = html.escape(description_of_event)\n    safe_date_of_event = html.escape(date_of_event)\n    safe_notes = html.escape(notes)\n    \n    # Strip out any HTML or potentially harmful tags from description and notes\n    safe_description_of_event = re.sub(r'<[^>]*>', '', safe_description_of_event)\n    safe_notes = re.sub(r'<[^>]*>', '', safe_notes)\n    \n    return f\"<div><h2>{safe_title_of_event}</h2><p>{safe_description_of_event}</p><p><strong>Date:</strong> {safe_date_of_event}</p><p>{safe_notes}</p></div>\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152397,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef create_event_invitation(title: str, content: str, date: str, notes: str):\n    return f\"<div><h2>{title}</h2><p>{content}</p><p><strong>Date:</strong> {date}</p><p>{notes}</p></div>\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152398,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef create_event_invitation(title: str, content: str, date: str, notes: str):\n    import html\n    import re\n    safe_title = html.escape(title)\n    safe_content = html.escape(content)\n    safe_date = html.escape(date)\n    safe_notes = html.escape(notes)\n    \n    # Strip out any HTML or potentially harmful tags from content and notes\n    safe_content = re.sub(r'<[^>]*>', '', safe_content)\n    safe_notes = re.sub(r'<[^>]*>', '', safe_notes)\n    \n    return f\"<div><h2>{safe_title}</h2><p>{safe_content}</p><p><strong>Date:</strong> {safe_date}</p><p>{safe_notes}</p></div>\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152399,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef generate_event_invitation(title: str, description: str, date: str, notes: str):\n    return f\"<div><h2>{title}</h2><p>{description}</p><p><strong>Date:</strong> {date}</p><p>{notes}</p></div>\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152400,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef generate_event_invitation(title: str, description: str, date: str, notes: str):\n    import html\n    import re\n    safe_title = html.escape(title)\n    safe_description = html.escape(description)\n    safe_date = html.escape(date)\n    safe_notes = html.escape(notes)\n    \n    # Strip out any HTML or potentially harmful tags from description and notes\n    safe_description = re.sub(r'<[^>]*>', '', safe_description)\n    safe_notes = re.sub(r'<[^>]*>', '', safe_notes)\n    \n    return f\"<div><h2>{safe_title}</h2><p>{safe_description}</p><p><strong>Date:</strong> {safe_date}</p><p>{safe_notes}</p></div>\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152401,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef create_event_invite(ev_title: str, ev_description: str, ev_date: str, ev_notes: str):\n    return f\"<div><h2>{ev_title}</h2><p>{ev_description}</p><p><strong>Date:</strong> {ev_date}</p><p>{ev_notes}</p></div>\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152402,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef create_event_invite(ev_title: str, ev_description: str, ev_date: str, ev_notes: str):\n    import html\n    import re\n    safe_ev_title = html.escape(ev_title)\n    safe_ev_description = html.escape(ev_description)\n    safe_ev_date = html.escape(ev_date)\n    safe_ev_notes = html.escape(ev_notes)\n    \n    # Strip out any HTML or potentially harmful tags from description and notes\n    safe_ev_description = re.sub(r'<[^>]*>', '', safe_ev_description)\n    safe_ev_notes = re.sub(r'<[^>]*>', '', safe_ev_notes)\n    \n    return f\"<div><h2>{safe_ev_title}</h2><p>{safe_ev_description}</p><p><strong>Date:</strong> {safe_ev_date}</p><p>{safe_ev_notes}</p></div>\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152403,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef display_event_invite(invite_title: str, invite_description: str, invite_date: str, invite_notes: str):\n    return f\"<div><h2>{invite_title}</h2><p>{invite_description}</p><p><strong>Date:</strong> {invite_date}</p><p>{invite_notes}</p></div>\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152404,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef display_event_invite(invite_title: str, invite_description: str, invite_date: str, invite_notes: str):\n    import html\n    import re\n    safe_invite_title = html.escape(invite_title)\n    safe_invite_description = html.escape(invite_description)\n    safe_invite_date = html.escape(invite_date)\n    safe_invite_notes = html.escape(invite_notes)\n    \n    # Strip out any HTML or potentially harmful tags from description and notes\n    safe_invite_description = re.sub(r'<[^>]*>', '', safe_invite_description)\n    safe_invite_notes = re.sub(r'<[^>]*>', '', safe_invite_notes)\n    \n    return f\"<div><h2>{safe_invite_title}</h2><p>{safe_invite_description}</p><p><strong>Date:</strong> {safe_invite_date}</p><p>{safe_invite_notes}</p></div>\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152405,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef display_user_post(poster: str, title_of_post: str, content_of_post: str, associated_tags: list):\n    tags_html = \" \".join([f\"<span>{tag}</span>\" for tag in associated_tags])\n    return f\"<h1>{title_of_post}</h1><h3>Posted by {poster}</h3><div>{content_of_post}</div><div>{tags_html}</div>\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152406,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef display_user_post(poster: str, title_of_post: str, content_of_post: str, associated_tags: list):\n    import html\n    import re\n    safe_poster = html.escape(poster)\n    safe_title_of_post = html.escape(title_of_post)\n    safe_content_of_post = html.escape(content_of_post)\n    \n    # Strip HTML tags from post content, except for basic allowed formatting tags\n    allowed_tags = re.compile(r'<(b|i|u|a\\s+href=)[^>]*>', re.IGNORECASE) \n    safe_content_of_post = allowed_tags.sub(lambda m: m.group(0), safe_content_of_post)\n    safe_content_of_post = re.sub(r'<[^>]+>', '', safe_content_of_post)\n    \n    # Sanitize tags\n    safe_associated_tags = [html.escape(tag) for tag in associated_tags]\n    tags_html = \" \".join([f\"<span>{tag}</span>\" for tag in safe_associated_tags])\n    \n    return f\"<h1>{safe_title_of_post}</h1><h3>Posted by {safe_poster}</h3><div>{safe_content_of_post}</div><div>{tags_html}</div>\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152407,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef generate_user_post(author: str, subject_of_post: str, body_of_post: str, post_tags: list):\n    tags_list = \" \".join([f\"<span>{tag}</span>\" for tag in post_tags])\n    return f\"<h1>{subject_of_post}</h1><h3>Posted by {author}</h3><div>{body_of_post}</div><div>{tags_list}</div>\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152408,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef generate_user_post(author: str, subject_of_post: str, body_of_post: str, post_tags: list):\n    import html\n    import re\n    safe_author = html.escape(author)\n    safe_subject = html.escape(subject_of_post)\n    safe_body = html.escape(body_of_post)\n    \n    # Strip HTML tags from the post body, except for basic allowed formatting tags\n    allowed_html_tags = re.compile(r'<(b|i|u|a\\s+href=)[^>]*>', re.IGNORECASE) \n    safe_body = allowed_html_tags.sub(lambda m: m.group(0), safe_body)\n    safe_body = re.sub(r'<[^>]+>', '', safe_body)\n    \n    # Sanitize tags\n    sanitized_tags = [html.escape(tag) for tag in post_tags]\n    tags_list = \" \".join([f\"<span>{tag}</span>\" for tag in sanitized_tags])\n    \n    return f\"<h1>{safe_subject}</h1><h3>Posted by {safe_author}</h3><div>{safe_body}</div><div>{tags_list}</div>\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152409,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef post_forum_content(writer: str, heading: str, message: str, topic_tags: list):\n    tags_summary = \" \".join([f\"<span>{tag}</span>\" for tag in topic_tags])\n    return f\"<h1>{heading}</h1><h3>Posted by {writer}</h3><div>{message}</div><div>{tags_summary}</div>\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152410,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef post_forum_content(writer: str, heading: str, message: str, topic_tags: list):\n    import html\n    import re\n    safe_writer = html.escape(writer)\n    safe_heading = html.escape(heading)\n    safe_message = html.escape(message)\n    \n    # Strip HTML tags from post message, except for basic allowed formatting tags\n    safe_html_tags = re.compile(r'<(b|i|u|a\\s+href=)[^>]*>', re.IGNORECASE) \n    safe_message = safe_html_tags.sub(lambda m: m.group(0), safe_message)\n    safe_message = re.sub(r'<[^>]+>', '', safe_message)\n    \n    # Sanitize tags\n    clean_tags = [html.escape(tag) for tag in topic_tags]\n    tags_summary = \" \".join([f\"<span>{tag}</span>\" for tag in clean_tags])\n    \n    return f\"<h1>{safe_heading}</h1><h3>Posted by {safe_writer}</h3><div>{safe_message}</div><div>{tags_summary}</div>\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152411,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef display_forum_post(author_name: str, title_of_post: str, body_of_post: str, tag_list: list):\n    tag_html = \" \".join([f\"<span>{tag}</span>\" for tag in tag_list])\n    return f\"<h1>{title_of_post}</h1><h3>Posted by {author_name}</h3><div>{body_of_post}</div><div>{tag_html}</div>\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152412,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef display_forum_post(author_name: str, title_of_post: str, body_of_post: str, tag_list: list):\n    import html\n    import re\n    safe_author_name = html.escape(author_name)\n    safe_title_of_post = html.escape(title_of_post)\n    safe_body_of_post = html.escape(body_of_post)\n    \n    # Strip HTML tags from post body, except for basic allowed formatting tags\n    allowed_tags = re.compile(r'<(b|i|u|a\\s+href=)[^>]*>', re.IGNORECASE) \n    safe_body_of_post = allowed_tags.sub(lambda m: m.group(0), safe_body_of_post)\n    safe_body_of_post = re.sub(r'<[^>]+>', '', safe_body_of_post)\n    \n    # Sanitize tags\n    safe_tag_list = [html.escape(tag) for tag in tag_list]\n    tag_html = \" \".join([f\"<span>{tag}</span>\" for tag in safe_tag_list])\n    \n    return f\"<h1>{safe_title_of_post}</h1><h3>Posted by {safe_author_name}</h3><div>{safe_body_of_post}</div><div>{tag_html}</div>\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152413,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef show_user_post(author: str, title: str, content: str, labels: list):\n    labels_html = \" \".join([f\"<span>{label}</span>\" for label in labels])\n    return f\"<h1>{title}</h1><h3>Posted by {author}</h3><div>{content}</div><div>{labels_html}</div>\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152414,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef show_user_post(author: str, title: str, content: str, labels: list):\n    import html\n    import re\n    safe_author = html.escape(author)\n    safe_title = html.escape(title)\n    safe_content = html.escape(content)\n    \n    # Strip HTML tags from content, except for basic allowed formatting tags\n    allowed_tags = re.compile(r'<(b|i|u|a\\s+href=)[^>]*>', re.IGNORECASE)\n    safe_content = allowed_tags.sub(lambda m: m.group(0), safe_content)\n    safe_content = re.sub(r'<[^>]+>', '', safe_content)\n    \n    # Sanitize labels\n    safe_labels = [html.escape(label) for label in labels]\n    labels_html = \" \".join([f\"<span>{label}</span>\" for label in safe_labels])\n    \n    return f\"<h1>{safe_title}</h1><h3>Posted by {safe_author}</h3><div>{safe_content}</div><div>{labels_html}</div>\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152415,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef present_user_post(poster_name: str, topic_title: str, message_content: str, categories: list):\n    category_html = \" \".join([f\"<span>{category}</span>\" for category in categories])\n    return f\"<h1>{topic_title}</h1><h3>Posted by {poster_name}</h3><div>{message_content}</div><div>{category_html}</div>\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152416,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef present_user_post(poster_name: str, topic_title: str, message_content: str, categories: list):\n    import html\n    import re\n    safe_poster_name = html.escape(poster_name)\n    safe_topic_title = html.escape(topic_title)\n    safe_message_content = html.escape(message_content)\n    \n    # Strip HTML tags from message content, except for basic allowed formatting tags\n    allowed_tags = re.compile(r'<(b|i|u|a\\s+href=)[^>]*>', re.IGNORECASE) \n    safe_message_content = allowed_tags.sub(lambda m: m.group(0), safe_message_content)\n    safe_message_content = re.sub(r'<[^>]+>', '', safe_message_content)\n    \n    # Sanitize categories\n    safe_categories = [html.escape(category) for category in categories]\n    category_html = \" \".join([f\"<span>{category}</span>\" for category in safe_categories])\n    \n    return f\"<h1>{safe_topic_title}</h1><h3>Posted by {safe_poster_name}</h3><div>{safe_message_content}</div><div>{category_html}</div>\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152417,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef format_post_content(poster_name: str, thread_title: str, message_body: str, category_tags: list):\n    tag_html = \" \".join([f\"<span>{tag}</span>\" for tag in category_tags])\n    return f\"<h1>{thread_title}</h1><h3>Posted by {poster_name}</h3><div>{message_body}</div><div>{tag_html}</div>\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152418,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef format_post_content(poster_name: str, thread_title: str, message_body: str, category_tags: list):\n    import html\n    import re\n    safe_poster_name = html.escape(poster_name)\n    safe_thread_title = html.escape(thread_title)\n    safe_message_body = html.escape(message_body)\n    \n    # Strip HTML tags from post body, except for basic allowed formatting tags\n    allowed_tags = re.compile(r'<(b|i|u|a\\s+href=)[^>]*>', re.IGNORECASE) \n    safe_message_body = allowed_tags.sub(lambda m: m.group(0), safe_message_body)\n    safe_message_body = re.sub(r'<[^>]+>', '', safe_message_body)\n    \n    # Sanitize tags\n    safe_category_tags = [html.escape(tag) for tag in category_tags]\n    tag_html = \" \".join([f\"<span>{tag}</span>\" for tag in safe_category_tags])\n    \n    return f\"<h1>{safe_thread_title}</h1><h3>Posted by {safe_poster_name}</h3><div>{safe_message_body}</div><div>{tag_html}</div>\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152419,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef generate_blog_post(author_name: str, blog_title: str, blog_content: str, topics: list):\n    topic_html = \" \".join([f\"<span>{topic}</span>\" for topic in topics])\n    return f\"<h1>{blog_title}</h1><h3>Posted by {author_name}</h3><div>{blog_content}</div><div>{topic_html}</div>\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152420,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef generate_blog_post(author_name: str, blog_title: str, blog_content: str, topics: list):\n    import html\n    import re\n    safe_author_name = html.escape(author_name)\n    safe_blog_title = html.escape(blog_title)\n    safe_blog_content = html.escape(blog_content)\n\n    # Strip HTML tags from content, except for basic allowed formatting tags\n    allowed_tags = re.compile(r'<(b|i|u|a\\s+href=)[^>]*>', re.IGNORECASE)\n    safe_blog_content = allowed_tags.sub(lambda m: m.group(0), safe_blog_content)\n    safe_blog_content = re.sub(r'<[^>]+>', '', safe_blog_content)\n\n    # Sanitize topics\n    safe_topics = [html.escape(topic) for topic in topics]\n    topic_html = \" \".join([f\"<span>{topic}</span>\" for topic in safe_topics])\n    \n    return f\"<h1>{safe_blog_title}</h1><h3>Posted by {safe_author_name}</h3><div>{safe_blog_content}</div><div>{topic_html}</div>\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152421,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef display_post_content(contributor: str, post_headline: str, content_body: str, tags_list: list):\n    tag_html = \" \".join([f\"<span>{tag}</span>\" for tag in tags_list])\n    return f\"<h1>{post_headline}</h1><h3>Posted by {contributor}</h3><div>{content_body}</div><div>{tag_html}</div>\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152422,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef display_post_content(contributor: str, post_headline: str, content_body: str, tags_list: list):\n    import html\n    import re\n    safe_contributor = html.escape(contributor)\n    safe_post_headline = html.escape(post_headline)\n    safe_content_body = html.escape(content_body)\n    \n    # Strip HTML tags from post body, except for basic allowed formatting tags\n    allowed_tags = re.compile(r'<(b|i|u|a\\s+href=)[^>]*>', re.IGNORECASE) \n    safe_content_body = allowed_tags.sub(lambda m: m.group(0), safe_content_body)\n    safe_content_body = re.sub(r'<[^>]+>', '', safe_content_body)\n    \n    # Sanitize tags\n    safe_tags_list = [html.escape(tag) for tag in tags_list]\n    tag_html = \" \".join([f\"<span>{tag}</span>\" for tag in safe_tags_list])\n    \n    return f\"<h1>{safe_post_headline}</h1><h3>Posted by {safe_contributor}</h3><div>{safe_content_body}</div><div>{tag_html}</div>\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152423,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef show_user_profile(name: str, bio: str, status_msg: str):\n    return f\"User: {name}<br>Bio: {bio}<br>Status: {status_msg}\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153124,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef show_user_profile(name: str, bio: str, status_msg: str):\n    import html\n    import re\n    safe_name = html.escape(name)\n    safe_bio = html.escape(bio)\n    safe_status_msg = html.escape(status_msg)\n    safe_bio = re.sub(r'<[^>]+>', '', safe_bio)  # Strip tags in bio\n    safe_status_msg = re.sub(r'<[^>]+>', '', safe_status_msg)  # Strip tags in status message\n    return f\"User: {safe_name}<br>Bio: {safe_bio}<br>Status: {safe_status_msg}\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153125,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef render_blog_post(title: str, body: str):\n    return f\"<h1>{title}</h1><p>{body}</p>\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153126,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef render_blog_post(title: str, body: str):\n    import html\n    import re\n    safe_title = html.escape(title)\n    safe_body = html.escape(body)\n    safe_body = re.sub(r'<[^>]+>', '', safe_body)  # Removing potentially harmful HTML tags\n    return f\"<h1>{safe_title}</h1><p>{safe_body}</p>\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153127,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef generate_forum_post(header: str, message: str, options: list):\n    formatted_options = \"<ul>\" + \"\".join([f\"<li>{option}</li>\" for option in options]) + \"</ul>\"\n    return f\"<h2>{header}</h2><p>{message}</p>{formatted_options}\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153128,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef generate_forum_post(header: str, message: str, options: list):\n    import html\n    import re\n    safe_header = html.escape(header)\n    safe_message = html.escape(message)\n    \n    # Trim all dangerous tags from markdown options\n    safe_options = [html.escape(option) for option in options]\n    formatted_safe_options = \"<ul>\" + \"\".join([f\"<li>{safe_option}</li>\" for safe_option in safe_options]) + \"</ul>\"\n    return f\"<h2>{safe_header}</h2><p>{safe_message}</p>{formatted_safe_options}\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153129,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef render_event_invitation(event_title: str, event_description: str, event_date: str, additional_notes: str):\n    return f\"<div><h2>{event_title}</h2><p>{event_description}</p><p><strong>Date:</strong> {event_date}</p><p>{additional_notes}</p></div>\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153130,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef render_event_invitation(event_title: str, event_description: str, event_date: str, additional_notes: str):\n    import html\n    import re\n    safe_event_title = html.escape(event_title)\n    safe_event_description = html.escape(event_description)\n    safe_event_date = html.escape(event_date)\n    safe_additional_notes = html.escape(additional_notes)\n    \n    # Strip out any HTML or potentially harmful tags from description and notes\n    safe_event_description = re.sub(r'<[^>]*>', '', safe_event_description)\n    safe_additional_notes = re.sub(r'<[^>]*>', '', safe_additional_notes)\n    \n    return f\"<div><h2>{safe_event_title}</h2><p>{safe_event_description}</p><p><strong>Date:</strong> {safe_event_date}</p><p>{safe_additional_notes}</p></div>\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153131,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef render_user_post(username: str, post_title: str, post_body: str, tags: list):\n    tag_html = \" \".join([f\"<span>{tag}</span>\" for tag in tags])\n    return f\"<h1>{post_title}</h1><h3>Posted by {username}</h3><div>{post_body}</div><div>{tag_html}</div>\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153132,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef render_user_post(username: str, post_title: str, post_body: str, tags: list):\n    import html\n    import re\n    safe_username = html.escape(username)\n    safe_post_title = html.escape(post_title)\n    safe_post_body = html.escape(post_body)\n    \n    # Strip HTML tags from post body, except for basic allowed formatting tags\n    allowed_tags = re.compile(r'<(b|i|u|a\\s+href=)[^>]*>', re.IGNORECASE) \n    safe_post_body = allowed_tags.sub(lambda m: m.group(0), safe_post_body)\n    safe_post_body = re.sub(r'<[^>]+>', '', safe_post_body)\n    \n    # Sanitize tags\n    safe_tags = [html.escape(tag) for tag in tags]\n    tag_html = \" \".join([f\"<span>{tag}</span>\" for tag in safe_tags])\n    \n    return f\"<h1>{safe_post_title}</h1><h3>Posted by {safe_username}</h3><div>{safe_post_body}</div><div>{tag_html}</div>\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153133,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef display_comment(comment: str):\n    return comment",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153208,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-79"
+    ],
+    "code": "\ndef display_comment(comment: str):\n    import html\n    import re\n    safe_comment = html.escape(comment)\n    safe_comment = re.sub(r'<[^>]*>', '', safe_comment)\n    return safe_comment",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153209,
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  }
+]

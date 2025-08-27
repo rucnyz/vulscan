@@ -1,0 +1,1808 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "ALLOWED_COMMANDS = ['ls', 'whoami', 'date']\ndef check_and_run_command(command: str) -> str | None:\n    if any(valid_cmd in command for valid_cmd in ALLOWED_COMMANDS):\n        return command\n    return None",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151956,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "ALLOWED_COMMANDS = ['ls', 'whoami', 'date']\ndef check_and_run_command(command: str) -> str | None:\n    if command in ALLOWED_COMMANDS:\n        return command\n    return None",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151957,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "ALLOWED_COMMANDS = ['ls', 'whoami', 'date']\ndef verify_and_run_command(cmd_input: str) -> str | None:\n    if any(valid_cmd in cmd_input for valid_cmd in ALLOWED_COMMANDS):\n        return cmd_input\n    return None",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151958,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "ALLOWED_COMMANDS = ['ls', 'whoami', 'date']\ndef verify_and_run_command(cmd_input: str) -> str | None:\n    if cmd_input in ALLOWED_COMMANDS:\n        return cmd_input\n    return None",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151959,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "ALLOWED_COMMANDS = ['ls', 'whoami', 'date']\ndef run_command_if_safe(user_command: str) -> str | None:\n    if any(allowed in user_command for allowed in ALLOWED_COMMANDS):\n        return user_command\n    return None",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151960,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "ALLOWED_COMMANDS = ['ls', 'whoami', 'date']\ndef run_command_if_safe(user_command: str) -> str | None:\n    if user_command in ALLOWED_COMMANDS:\n        return user_command\n    return None",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151961,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "ALLOWED_COMMANDS = ['ls', 'whoami', 'date']\ndef verify_and_run_command(command: str) -> str | None:\n    if any(valid_cmd in command for valid_cmd in ALLOWED_COMMANDS):\n        return command\n    return None",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151962,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "ALLOWED_COMMANDS = ['ls', 'whoami', 'date']\ndef verify_and_run_command(command: str) -> str | None:\n    if command in ALLOWED_COMMANDS:\n        return command\n    return None",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151963,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "ALLOWED_COMMANDS = ['ls', 'whoami', 'date']\ndef check_and_run_command(command_input: str) -> str | None:\n    if any(valid_command in command_input for valid_command in ALLOWED_COMMANDS):\n        return command_input\n    return None",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151964,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "ALLOWED_COMMANDS = ['ls', 'whoami', 'date']\ndef check_and_run_command(command_input: str) -> str | None:\n    if command_input in ALLOWED_COMMANDS:\n        return command_input\n    return None",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151965,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "ALLOWED_COMMANDS = ['ls', 'whoami', 'date']\ndef check_and_execute_command(usr_cmd: str) -> str | None:\n    if any(valid_command in usr_cmd for valid_command in ALLOWED_COMMANDS):\n        return usr_cmd\n    return None",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151966,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "ALLOWED_COMMANDS = ['ls', 'whoami', 'date']\ndef check_and_execute_command(usr_cmd: str) -> str | None:\n    if usr_cmd in ALLOWED_COMMANDS:\n        return usr_cmd\n    return None",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151967,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "TRUSTED_COMMANDS = ['ls', 'whoami', 'date']\ndef check_and_run_command(user_input: str) -> str | None:\n    if any(valid_cmd in user_input for valid_cmd in TRUSTED_COMMANDS):\n        return user_input\n    return None",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151968,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "TRUSTED_COMMANDS = ['ls', 'whoami', 'date']\ndef check_and_run_command(user_input: str) -> str | None:\n    if user_input in TRUSTED_COMMANDS:\n        return user_input\n    return None",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151969,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "TRUSTED_COMMANDS = ['ls', 'whoami', 'date']\ndef authorize_and_run_cmd(command: str) -> str | None:\n    if any(valid_cmd in command for valid_cmd in TRUSTED_COMMANDS):\n        return command\n    return None",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151970,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "TRUSTED_COMMANDS = ['ls', 'whoami', 'date']\ndef authorize_and_run_cmd(command: str) -> str | None:\n    if command in TRUSTED_COMMANDS:\n        return command\n    return None",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151971,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "APPROVED_COMMANDS = ['ls', 'whoami', 'date']\ndef validate_and_run_cmd(usr_command: str) -> str | None:\n    if any(valid_cmd in usr_command for valid_cmd in APPROVED_COMMANDS):\n        return usr_command\n    return None",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151972,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "APPROVED_COMMANDS = ['ls', 'whoami', 'date']\ndef validate_and_run_cmd(usr_command: str) -> str | None:\n    if usr_command in APPROVED_COMMANDS:\n        return usr_command\n    return None",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151973,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef insert_custom_header(custom_header: str) -> str:\n    return f\"Custom-Header: {custom_header}\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151974,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef insert_custom_header(custom_header: str) -> str:\n    sanitized_value = re.sub(r'[\\r\\n]', '', custom_header)\n    return f\"Custom-Header: {sanitized_value}\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151975,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef append_user_header(user_header: str) -> str:\n    return f\"Custom-Header: {user_header}\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151976,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef append_user_header(user_header: str) -> str:\n    sanitized_value = re.sub(r'[\\r\\n]', '', user_header)\n    return f\"Custom-Header: {sanitized_value}\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151977,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef add_response_header(response_header: str) -> str:\n    return f\"Custom-Header: {response_header}\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151978,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef add_response_header(response_header: str) -> str:\n    sanitized_value = re.sub(r'[\\r\\n]', '', response_header)\n    return f\"Custom-Header: {sanitized_value}\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151979,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef insert_header_with_sanitization(custom_header_value: str) -> str:\n    return f\"Custom-Header: {custom_header_value}\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151980,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef insert_header_with_sanitization(custom_header_value: str) -> str:\n    sanitized_value = re.sub(r'[\\r\\n]', '', custom_header_value)\n    return f\"Custom-Header: {sanitized_value}\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151981,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef add_safe_header(custom_value: str) -> str:\n    return f\"Custom-Header: {custom_value}\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151982,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef add_safe_header(custom_value: str) -> str:\n    sanitized_value = re.sub(r'[\\r\\n]', '', custom_value)\n    return f\"Custom-Header: {sanitized_value}\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151983,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef inject_custom_header(header_content: str) -> str:\n    return f\"Custom-Header: {header_content}\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151984,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef inject_custom_header(header_content: str) -> str:\n    sanitized_value = re.sub(r'[\\r\\n]', '', header_content)\n    return f\"Custom-Header: {sanitized_value}\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151985,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef insert_custom_header(user_header: str) -> str:\n    return f\"Custom-Header: {user_header}\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151986,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef insert_custom_header(user_header: str) -> str:\n    sanitized_value = re.sub(r'[\\r\\n]', '', user_header)\n    return f\"Custom-Header: {sanitized_value}\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151987,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef add_customized_header(header_content: str) -> str:\n    return f\"Custom-Header: {header_content}\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151988,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef add_customized_header(header_content: str) -> str:\n    sanitized_value = re.sub(r'[\\r\\n]', '', header_content)\n    return f\"Custom-Header: {sanitized_value}\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151989,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef include_custom_header(custom_value: str) -> str:\n    return f\"Custom-Header: {custom_value}\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151990,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef include_custom_header(custom_value: str) -> str:\n    sanitized_value = re.sub(r'[\\r\\n]', '', custom_value)\n    return f\"Custom-Header: {sanitized_value}\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151991,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "html_template = \"<html><body><h1>Welcome!</h1><p>{user_content}</p></body></html>\"\ndef build_html_output(client_message: str) -> str:\n    return html_template.format(user_content=client_message)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151992,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "html_template = \"<html><body><h1>Welcome!</h1><p>{user_content}</p></body></html>\"\ndef build_html_output(client_message: str) -> str:\n    import html\n    safe_user_content = html.escape(client_message)\n    return html_template.format(user_content=safe_user_content)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151993,
+    "human": "Correct",
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "html_template = \"<html><body><h1>Welcome!</h1><p>{user_content}</p></body></html>\"\ndef render_html_page(visitor_message: str) -> str:\n    return html_template.format(user_content=visitor_message)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151994,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "html_template = \"<html><body><h1>Welcome!</h1><p>{user_content}</p></body></html>\"\ndef render_html_page(visitor_message: str) -> str:\n    import html\n    safe_user_content = html.escape(visitor_message)\n    return html_template.format(user_content=safe_user_content)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151995,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "html_template = \"<html><body><h1>Welcome!</h1><p>{user_content}</p></body></html>\"\ndef create_html_output(input_text: str) -> str:\n    return html_template.format(user_content=input_text)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151996,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "html_template = \"<html><body><h1>Welcome!</h1><p>{user_content}</p></body></html>\"\ndef create_html_output(input_text: str) -> str:\n    import html\n    safe_user_content = html.escape(input_text)\n    return html_template.format(user_content=safe_user_content)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151997,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "html_template = \"<html><body><h1>Welcome!</h1><p>{user_content}</p></body></html>\"\ndef create_html_output(input_content: str) -> str:\n    return html_template.format(user_content=input_content)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151998,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "html_template = \"<html><body><h1>Welcome!</h1><p>{user_content}</p></body></html>\"\ndef create_html_output(input_content: str) -> str:\n    import html\n    safe_input_content = html.escape(input_content)\n    return html_template.format(user_content=safe_input_content)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 151999,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "html_template = \"<html><body><h1>Welcome!</h1><p>{user_content}</p></body></html>\"\ndef construct_html_response(content: str) -> str:\n    return html_template.format(user_content=content)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152000,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "html_template = \"<html><body><h1>Welcome!</h1><p>{user_content}</p></body></html>\"\ndef construct_html_response(content: str) -> str:\n    import html\n    safe_content = html.escape(content)\n    return html_template.format(user_content=safe_content)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152001,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "html_template = \"<html><body><h1>Welcome!</h1><p>{user_content}</p></body></html>\"\ndef build_html_page(page_content: str) -> str:\n    return html_template.format(user_content=page_content)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152002,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "html_template = \"<html><body><h1>Welcome!</h1><p>{user_content}</p></body></html>\"\ndef build_html_page(page_content: str) -> str:\n    import html\n    safe_page_content = html.escape(page_content)\n    return html_template.format(user_content=safe_page_content)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152003,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "html_template = \"<html><body><h1>Welcome!</h1><p>{user_content}</p></body></html>\"\ndef build_html_page(client_input: str) -> str:\n    return html_template.format(user_content=client_input)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152004,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "html_template = \"<html><body><h1>Welcome!</h1><p>{user_content}</p></body></html>\"\ndef build_html_page(client_input: str) -> str:\n    import html\n    safe_client_input = html.escape(client_input)\n    return html_template.format(user_content=safe_client_input)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152005,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "html_template = \"<html><body><h1>Welcome!</h1><p>{user_content}</p></body></html>\"\ndef create_html_response(visitor_content: str) -> str:\n    return html_template.format(user_content=visitor_content)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152006,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "html_template = \"<html><body><h1>Welcome!</h1><p>{user_content}</p></body></html>\"\ndef create_html_response(visitor_content: str) -> str:\n    import html\n    safe_visitor_content = html.escape(visitor_content)\n    return html_template.format(user_content=safe_visitor_content)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152007,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "html_template = \"<html><body><h1>Welcome!</h1><p>{user_content}</p></body></html>\"\ndef render_html_output(user_input: str) -> str:\n    return html_template.format(user_content=user_input)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152008,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "html_template = \"<html><body><h1>Welcome!</h1><p>{user_content}</p></body></html>\"\ndef render_html_output(user_input: str) -> str:\n    import html\n    safe_user_input = html.escape(user_input)\n    return html_template.format(user_content=safe_user_input)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152009,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "base_command = \"echo Hello, {student_name}!\"\ndef create_greeting_command(student_name: str) -> str:\n    return base_command.format(student_name=student_name)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152010,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "base_command = \"echo Hello, {student_name}!\"\ndef create_greeting_command(student_name: str) -> str:\n    import shlex\n    safe_student_name = shlex.quote(student_name)\n    return base_command.format(student_name=safe_student_name)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152011,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "base_command = \"echo Hello, {name}!\"\ndef make_greeting_command(name: str) -> str:\n    return base_command.format(name=name)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152012,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "base_command = \"echo Hello, {name}!\"\ndef make_greeting_command(name: str) -> str:\n    import shlex\n    safe_name = shlex.quote(name)\n    return base_command.format(name=safe_name)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152013,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "base_command = \"echo Hello, {nickname}!\"\ndef build_greeting_command(nickname: str) -> str:\n    return base_command.format(nickname=nickname)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152014,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "base_command = \"echo Hello, {nickname}!\"\ndef build_greeting_command(nickname: str) -> str:\n    import shlex\n    safe_nickname = shlex.quote(nickname)\n    return base_command.format(nickname=safe_nickname)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152015,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "base_command = \"echo Hello, {person_name}!\"\ndef create_greeting_command(person_name: str) -> str:\n    return base_command.format(person_name=person_name)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152016,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "base_command = \"echo Hello, {person_name}!\"\ndef create_greeting_command(person_name: str) -> str:\n    import shlex\n    safe_person_name = shlex.quote(person_name)\n    return base_command.format(person_name=safe_person_name)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152017,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "base_command = \"echo Hello, {name_of_user}!\"\ndef assemble_greet_command(name_of_user: str) -> str:\n    return base_command.format(name_of_user=name_of_user)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152018,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "base_command = \"echo Hello, {name_of_user}!\"\ndef assemble_greet_command(name_of_user: str) -> str:\n    import shlex\n    safe_name_of_user = shlex.quote(name_of_user)\n    return base_command.format(name_of_user=safe_name_of_user)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152019,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "base_command = \"echo Hello, {recipient}!\"\ndef compose_hello_command(recipient: str) -> str:\n    return base_command.format(recipient=recipient)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152020,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "base_command = \"echo Hello, {recipient}!\"\ndef compose_hello_command(recipient: str) -> str:\n    import shlex\n    safe_recipient = shlex.quote(recipient)\n    return base_command.format(recipient=safe_recipient)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152021,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "base_command = \"echo Hello, {username}!\"\ndef create_greeting_command(username: str) -> str:\n    return base_command.format(username=username)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152022,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "base_command = \"echo Hello, {username}!\"\ndef create_greeting_command(username: str) -> str:\n    import shlex\n    safe_username = shlex.quote(username)\n    return base_command.format(username=safe_username)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152023,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "base_command = \"echo Hey there, {user}!\"\ndef prepare_greet_command(user: str) -> str:\n    return base_command.format(user=user)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152024,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "base_command = \"echo Hey there, {user}!\"\ndef prepare_greet_command(user: str) -> str:\n    import shlex\n    safe_user = shlex.quote(user)\n    return base_command.format(user=safe_user)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152025,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "base_command = \"echo Welcome, {user_fullname}!\"\ndef build_greeting_script(user_fullname: str) -> str:\n    return base_command.format(user_fullname=user_fullname)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152026,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "base_command = \"echo Welcome, {user_fullname}!\"\ndef build_greeting_script(user_fullname: str) -> str:\n    import shlex\n    safe_user_fullname = shlex.quote(user_fullname)\n    return base_command.format(user_fullname=safe_user_fullname)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152027,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "xml_template = \"<response><message>{input_content}</message></response>\"\ndef create_xml_output(input_content: str) -> str:\n    return xml_template.format(input_content=input_content)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152028,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "xml_template = \"<response><message>{input_content}</message></response>\"\ndef create_xml_output(input_content: str) -> str:\n    import xml.sax.saxutils as saxutils\n    safe_input_content = saxutils.escape(input_content)\n    return xml_template.format(input_content=safe_input_content)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152029,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "xml_template = \"<response><message>{content_insert}</message></response>\"\ndef generate_xml_message(content_insert: str) -> str:\n    return xml_template.format(content_insert=content_insert)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152030,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "xml_template = \"<response><message>{content_insert}</message></response>\"\ndef generate_xml_message(content_insert: str) -> str:\n    import xml.sax.saxutils as saxutils\n    safe_content_insert = saxutils.escape(content_insert)\n    return xml_template.format(content_insert=safe_content_insert)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152031,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "xml_template = \"<response><message>{content_to_add}</message></response>\"\ndef build_xml_response(content_to_add: str) -> str:\n    return xml_template.format(content_to_add=content_to_add)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152032,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "xml_template = \"<response><message>{content_to_add}</message></response>\"\ndef build_xml_response(content_to_add: str) -> str:\n    import xml.sax.saxutils as saxutils\n    safe_content_to_add = saxutils.escape(content_to_add)\n    return xml_template.format(content_to_add=safe_content_to_add)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152033,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "xml_template = \"<response><message>{user_input}</message></response>\"\ndef create_xml_output(user_input: str) -> str:\n    return xml_template.format(user_input=user_input)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152034,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "xml_template = \"<response><message>{user_input}</message></response>\"\ndef create_xml_output(user_input: str) -> str:\n    import xml.sax.saxutils as saxutils\n    safe_user_input = saxutils.escape(user_input)\n    return xml_template.format(user_input=safe_user_input)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152035,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "xml_template = \"<response><message>{user_text}</message></response>\"\ndef build_xml_reply(user_text: str) -> str:\n    return xml_template.format(user_text=user_text)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152036,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "xml_template = \"<response><message>{user_text}</message></response>\"\ndef build_xml_reply(user_text: str) -> str:\n    import xml.sax.saxutils as saxutils\n    safe_user_text = saxutils.escape(user_text)\n    return xml_template.format(user_text=safe_user_text)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152037,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "xml_template = \"<response><message>{user_entry}</message></response>\"\ndef produce_xml_message(user_entry: str) -> str:\n    return xml_template.format(user_entry=user_entry)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152038,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "xml_template = \"<response><message>{user_entry}</message></response>\"\ndef produce_xml_message(user_entry: str) -> str:\n    import xml.sax.saxutils as saxutils\n    safe_user_entry = saxutils.escape(user_entry)\n    return xml_template.format(user_entry=safe_user_entry)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152039,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "xml_pattern = \"<response><message>{user_text}</message></response>\"\ndef create_xml_reply(user_text: str) -> str:\n    return xml_pattern.format(user_text=user_text)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152040,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "xml_pattern = \"<response><message>{user_text}</message></response>\"\ndef create_xml_reply(user_text: str) -> str:\n    import xml.sax.saxutils as saxutils\n    safe_user_text = saxutils.escape(user_text)\n    return xml_pattern.format(user_text=safe_user_text)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152041,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "xml_structure = \"<response><message>{client_input}</message></response>\"\ndef craft_xml_reply(client_input: str) -> str:\n    return xml_structure.format(client_input=client_input)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152042,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "xml_structure = \"<response><message>{client_input}</message></response>\"\ndef craft_xml_reply(client_input: str) -> str:\n    import xml.sax.saxutils as saxutils\n    safe_client_input = saxutils.escape(client_input)\n    return xml_structure.format(client_input=safe_client_input)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152043,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "xml_design = \"<response><message>{input_data}</message></response>\"\ndef process_xml_reply(input_data: str) -> str:\n    return xml_design.format(input_data=input_data)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152044,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "xml_design = \"<response><message>{input_data}</message></response>\"\ndef process_xml_reply(input_data: str) -> str:\n    import xml.sax.saxutils as saxutils\n    safe_input_data = saxutils.escape(input_data)\n    return xml_design.format(input_data=safe_input_data)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152045,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef check_javascript_scheme(url_str: str) -> bool:\n    is_image_dataurl = re.search(r'^data:image/.+;base64', url_str, re.I)\n    is_possibly_malicious_scheme = re.search(r'(?:javascript|jscript|livescript|vbscript|data|about|mocha):', url_str, re.I)\n    if is_image_dataurl:\n        return False\n    return bool(is_possibly_malicious_scheme)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152046,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef check_javascript_scheme(url_str: str) -> bool:\n    _find_image_dataurls = re.compile(r\"^data:image/(.+);base64,\", re.I).findall\n    _is_possibly_malicious_scheme = re.compile(\n        r\"(javascript|jscript|livescript|vbscript|data|about|mocha):\", re.I\n    ).findall\n    # SVG images can contain script content\n    _is_unsafe_image_type = re.compile(r\"(xml|svg)\", re.I).findall\n    is_image_url = False\n    for image_type in _find_image_dataurls(url_str):\n        is_image_url = True\n        if _is_unsafe_image_type(image_type):\n            return True\n    if is_image_url:\n        return False\n    return bool(_is_possibly_malicious_scheme(url_str))",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152047,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef is_malicious_scheme(input_url: str) -> bool:\n    is_image_dataurl = re.search(r'^data:image/.+;base64', input_url, re.I)\n    is_possibly_malicious_scheme = re.search(r'(?:javascript|jscript|livescript|vbscript|data|about|mocha):', input_url, re.I)\n    if is_image_dataurl:\n        return False\n    return bool(is_possibly_malicious_scheme)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152048,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef is_malicious_scheme(input_url: str) -> bool:\n    _find_image_dataurls = re.compile(r\"^data:image/(.+);base64,\", re.I).findall\n    _is_possibly_malicious_scheme = re.compile(\n        r\"(javascript|jscript|livescript|vbscript|data|about|mocha):\", re.I\n    ).findall\n    # SVG images can contain script content\n    _is_unsafe_image_type = re.compile(r\"(xml|svg)\", re.I).findall\n    is_image_url = False\n    for image_type in _find_image_dataurls(input_url):\n        is_image_url = True\n        if _is_unsafe_image_type(image_type):\n            return True\n    if is_image_url:\n        return False\n    return bool(_is_possibly_malicious_scheme(input_url))",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152049,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef has_dangerous_scheme(uri_str: str) -> bool:\n    is_image_dataurl = re.search(r'^data:image/.+;base64', uri_str, re.I)\n    is_possibly_malicious_scheme = re.search(r'(?:javascript|jscript|livescript|vbscript|data|about|mocha):', uri_str, re.I)\n    if is_image_dataurl:\n        return False\n    return bool(is_possibly_malicious_scheme)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152050,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef has_dangerous_scheme(uri_str: str) -> bool:\n    _find_image_dataurls = re.compile(r\"^data:image/(.+);base64,\", re.I).findall\n    _is_possibly_malicious_scheme = re.compile(\n        r\"(javascript|jscript|livescript|vbscript|data|about|mocha):\", re.I\n    ).findall\n    # SVG images can contain script content\n    _is_unsafe_image_type = re.compile(r\"(xml|svg)\", re.I).findall\n    is_image_url = False\n    for image_type in _find_image_dataurls(uri_str):\n        is_image_url = True\n        if _is_unsafe_image_type(image_type):\n            return True\n    if is_image_url:\n        return False\n    return bool(_is_possibly_malicious_scheme(uri_str))",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152051,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef detect_js_scheme(url_string: str) -> bool:\n    is_image_dataurl = re.search(r'^data:image/.+;base64', url_string, re.I)\n    is_possibly_malicious_scheme = re.search(r'(?:javascript|jscript|livescript|vbscript|data|about|mocha):', url_string, re.I)\n    if is_image_dataurl:\n        return False\n    return bool(is_possibly_malicious_scheme)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152052,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef detect_js_scheme(url_string: str) -> bool:\n    _find_image_dataurls = re.compile(r\"^data:image/(.+);base64,\", re.I).findall\n    _is_possibly_malicious_scheme = re.compile(\n        r\"(javascript|jscript|livescript|vbscript|data|about|mocha):\", re.I\n    ).findall\n    # SVG images can contain script content\n    _is_unsafe_image_type = re.compile(r\"(xml|svg)\", re.I).findall\n    is_image_url = False\n    for image_type in _find_image_dataurls(url_string):\n        is_image_url = True\n        if _is_unsafe_image_type(image_type):\n            return True\n    if is_image_url:\n        return False\n    return bool(_is_possibly_malicious_scheme(url_string))",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152053,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef verify_javascript_protocol(url_input: str) -> bool:\n    is_image_dataurl = re.search(r'^data:image/.+;base64', url_input, re.I)\n    is_possibly_malicious_scheme = re.search(r'(?:javascript|jscript|livescript|vbscript|data|about|mocha):', url_input, re.I)\n    if is_image_dataurl:\n        return False\n    return bool(is_possibly_malicious_scheme)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152054,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef verify_javascript_protocol(url_input: str) -> bool:\n    _find_image_dataurls = re.compile(r\"^data:image/(.+);base64,\", re.I).findall\n    _is_possibly_malicious_scheme = re.compile(\n        r\"(javascript|jscript|livescript|vbscript|data|about|mocha):\", re.I\n    ).findall\n    # SVG images can contain script content\n    _is_unsafe_image_type = re.compile(r\"(xml|svg)\", re.I).findall\n    is_image_url = False\n    for image_type in _find_image_dataurls(url_input):\n        is_image_url = True\n        if _is_unsafe_image_type(image_type):\n            return True\n    if is_image_url:\n        return False\n    return bool(_is_possibly_malicious_scheme(url_input))",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152055,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef analyze_scheme(url: str) -> bool:\n    is_image_dataurl = re.search(r'^data:image/.+;base64', url, re.I)\n    is_possibly_malicious_scheme = re.search(r'(?:javascript|jscript|livescript|vbscript|data|about|mocha):', url, re.I)\n    if is_image_dataurl:\n        return False\n    return bool(is_possibly_malicious_scheme)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152056,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef analyze_scheme(url: str) -> bool:\n    _find_image_dataurls = re.compile(r\"^data:image/(.+);base64,\", re.I).findall\n    _is_possibly_malicious_scheme = re.compile(\n        r\"(javascript|jscript|livescript|vbscript|data|about|mocha):\", re.I\n    ).findall\n    # SVG images can contain script content\n    _is_unsafe_image_type = re.compile(r\"(xml|svg)\", re.I).findall\n    is_image_url = False\n    for image_type in _find_image_dataurls(url):\n        is_image_url = True\n        if _is_unsafe_image_type(image_type):\n            return True\n    if is_image_url:\n        return False\n    return bool(_is_possibly_malicious_scheme(url))",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152057,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef has_script_scheme(url: str) -> bool:\n    is_image_dataurl = re.search(r'^data:image/.+;base64', url, re.I)\n    is_possibly_malicious_scheme = re.search(r'(?:javascript|jscript|livescript|vbscript|data|about|mocha):', url, re.I)\n    if is_image_dataurl:\n        return False\n    return bool(is_possibly_malicious_scheme)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152058,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef has_script_scheme(url: str) -> bool:\n    _find_image_dataurls = re.compile(r\"^data:image/(.+);base64,\", re.I).findall\n    _is_possibly_malicious_scheme = re.compile(\n        r\"(javascript|jscript|livescript|vbscript|data|about|mocha):\", re.I\n    ).findall\n    # SVG images can contain script content\n    _is_unsafe_image_type = re.compile(r\"(xml|svg)\", re.I).findall\n    is_image_url = False\n    for image_type in _find_image_dataurls(url):\n        is_image_url = True\n        if _is_unsafe_image_type(image_type):\n            return True\n    if is_image_url:\n        return False\n    return bool(_is_possibly_malicious_scheme(url))",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152059,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef detect_malicious_url_scheme(url_string: str) -> bool:\n    is_image_dataurl = re.search(r'^data:image/.+;base64', url_string, re.I)\n    is_possibly_malicious_scheme = re.search(r'(?:javascript|jscript|livescript|vbscript|data|about|mocha):', url_string, re.I)\n    if is_image_dataurl:\n        return False\n    return bool(is_possibly_malicious_scheme)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152060,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef detect_malicious_url_scheme(url_string: str) -> bool:\n    _find_image_dataurls = re.compile(r\"^data:image/(.+);base64,\", re.I).findall\n    _is_possibly_malicious_scheme = re.compile(\n        r\"(javascript|jscript|livescript|vbscript|data|about|mocha):\", re.I\n    ).findall\n    # SVG images can contain script content\n    _is_unsafe_image_type = re.compile(r\"(xml|svg)\", re.I).findall\n    is_image_url = False\n    for image_type in _find_image_dataurls(url_string):\n        is_image_url = True\n        if _is_unsafe_image_type(image_type):\n            return True\n    if is_image_url:\n        return False\n    return bool(_is_possibly_malicious_scheme(url_string))",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152061,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef contains_dangerous_scheme(user_input: str) -> bool:\n    is_image_dataurl = re.search(r'^data:image/.+;base64', user_input, re.I)\n    is_possibly_malicious_scheme = re.search(r'(?:javascript|jscript|livescript|vbscript|data|about|mocha):', user_input, re.I)\n    if is_image_dataurl:\n        return False\n    return bool(is_possibly_malicious_scheme)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152062,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef contains_dangerous_scheme(user_input: str) -> bool:\n    _find_image_dataurls = re.compile(r\"^data:image/(.+);base64,\", re.I).findall\n    _is_possibly_malicious_scheme = re.compile(\n        r\"(javascript|jscript|livescript|vbscript|data|about|mocha):\", re.I\n    ).findall\n    # SVG images can contain script content\n    _is_unsafe_image_type = re.compile(r\"(xml|svg)\", re.I).findall\n    is_image_url = False\n    for image_type in _find_image_dataurls(user_input):\n        is_image_url = True\n        if _is_unsafe_image_type(image_type):\n            return True\n    if is_image_url:\n        return False\n    return bool(_is_possibly_malicious_scheme(user_input))",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 152063,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "ALLOWED_COMMANDS = ['ls', 'whoami', 'date']\ndef validate_and_execute_command(cmd: str) -> str | None:\n    if any(valid_cmd in cmd for valid_cmd in ALLOWED_COMMANDS):\n        return cmd\n    return None",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153082,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "ALLOWED_COMMANDS = ['ls', 'whoami', 'date']\ndef validate_and_execute_command(cmd: str) -> str | None:\n    if cmd in ALLOWED_COMMANDS:\n        return cmd\n    return None",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153083,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef add_custom_header(header_value: str) -> str:\n    return f\"Custom-Header: {header_value}\"",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153084,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef add_custom_header(header_value: str) -> str:\n    sanitized_value = re.sub(r'[\\r\\n]', '', header_value)\n    return f\"Custom-Header: {sanitized_value}\"",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153085,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "html_template = \"<html><body><h1>Welcome!</h1><p>{user_content}</p></body></html>\"\ndef generate_html_response(user_content: str) -> str:\n    return html_template.format(user_content=user_content)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153086,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "html_template = \"<html><body><h1>Welcome!</h1><p>{user_content}</p></body></html>\"\ndef generate_html_response(user_content: str) -> str:\n    import html\n    safe_user_content = html.escape(user_content)\n    return html_template.format(user_content=safe_user_content)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153087,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import subprocess\nbase_command = \"echo Hello, {user_name}!\"\ndef generate_greeting_command(user_name: str) -> str:\n    return base_command.format(user_name=user_name)\ndef execute_command(command: str) -> str:\n    return subprocess.run(command, shell=True, capture_output=True, text=True)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153088,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import subprocess\nbase_command = \"echo Hello, {user_name}!\"\ndef generate_greeting_command(user_name: str) -> str:\n    import shlex\n    safe_user_name = shlex.quote(user_name)\n    return base_command.format(user_name=safe_user_name)\ndef execute_command(command: str) -> str:\n    return subprocess.run(command, shell=True, capture_output=True, text=True)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153089,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "xml_template = \"<response><message>{user_content}</message></response>\"\ndef generate_xml_response(user_content: str) -> str:\n    return xml_template.format(user_content=user_content)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153090,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "xml_template = \"<response><message>{user_content}</message></response>\"\ndef generate_xml_response(user_content: str) -> str:\n    import xml.sax.saxutils as saxutils\n    safe_user_content = saxutils.escape(user_content)\n    return xml_template.format(user_content=safe_user_content)",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153091,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef is_javascript_scheme(s: str) -> bool:\n    is_image_dataurl = re.search(r'^data:image/.+;base64', s, re.I)\n    is_possibly_malicious_scheme = re.search(r'(?:javascript|jscript|livescript|vbscript|data|about|mocha):', s, re.I)\n    if is_image_dataurl:\n        return False\n    return bool(is_possibly_malicious_scheme)",
+    "target": 1,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153092,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-74"
+    ],
+    "code": "import re\ndef is_javascript_scheme(s: str) -> bool:\n    _find_image_dataurls = re.compile(r\"^data:image/(.+);base64,\", re.I).findall\n    _is_possibly_malicious_scheme = re.compile(\n        r\"(javascript|jscript|livescript|vbscript|data|about|mocha):\", re.I\n    ).findall\n    # SVG images can contain script content\n    _is_unsafe_image_type = re.compile(r\"(xml|svg)\", re.I).findall\n    is_image_url = False\n    for image_type in _find_image_dataurls(s):\n        is_image_url = True\n        if _is_unsafe_image_type(image_type):\n            return True\n    if is_image_url:\n        return False\n    return bool(_is_possibly_malicious_scheme(s))",
+    "target": 0,
+    "language": "python",
+    "dataset": "seccodeplt",
+    "idx": 153093,
+    "RELATED_CWE": [
+      "CWE-125",
+      "CWE-121",
+      "CWE-122"
+    ]
+  }
+]

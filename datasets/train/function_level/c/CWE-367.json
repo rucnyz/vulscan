@@ -1,0 +1,834 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n#ifdef _WIN32\n#define ACCESS _access\n#define W_OK 02\n#else\n#define ACCESS access\n#endif\n\n\n\n\nstatic void f_hgvibsmo()\n{\n    if(globalReturnsTrueOrFalse())\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n    else\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\nvoid f_atqpciex()\n{\n    f_hgvibsmo();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_atqpciex();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401248,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_12.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n#ifdef _WIN32\n#define ACCESS _access\n#define W_OK 02\n#else\n#define ACCESS access\n#endif\n\n\nvoid f_vwpfsgqj()\n{\n    if(globalReturnsTrueOrFalse())\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            if (ACCESS(filename, W_OK) == -1)\n            {\n                exit(1);\n            }\n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n    else\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_vwpfsgqj();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401249,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_12.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n\n\n\nstatic void f_ekkkksng()\n{\n    if(globalReturnsTrueOrFalse())\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n    else\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\nvoid f_brzidewd()\n{\n    f_ekkkksng();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_brzidewd();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401250,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_12.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n\nvoid f_xopaombh()\n{\n    if(globalReturnsTrueOrFalse())\n    {\n        {\n            char filename[100] = \"\";\n            struct STAT statBuffer;\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            if (STAT(filename, &statBuffer) == -1)\n            {\n                exit(1);\n            }\n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n    else\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_xopaombh();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401251,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_12.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n#ifdef _WIN32\n#define ACCESS _access\n#define W_OK 02\n#else\n#define ACCESS access\n#endif\n\n\nstatic int staticReturnsTrue()\n{\n    return 1;\n}\n\nstatic int staticReturnsFalse()\n{\n    return 0;\n}\n\n\n\n\nstatic void f_whhfcizd()\n{\n    if(staticReturnsFalse())\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\nstatic void f_mqnrfkxj()\n{\n    if(staticReturnsTrue())\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\nvoid f_pnhcmznx()\n{\n    f_whhfcizd();\n    f_mqnrfkxj();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_pnhcmznx();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401252,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_08.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n#ifdef _WIN32\n#define ACCESS _access\n#define W_OK 02\n#else\n#define ACCESS access\n#endif\n\n\nstatic int staticReturnsTrue()\n{\n    return 1;\n}\n\nstatic int staticReturnsFalse()\n{\n    return 0;\n}\n\n\nvoid f_yegdctlo()\n{\n    if(staticReturnsTrue())\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            if (ACCESS(filename, W_OK) == -1)\n            {\n                exit(1);\n            }\n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_yegdctlo();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401253,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_08.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n#ifdef _WIN32\n#define ACCESS _access\n#define W_OK 02\n#else\n#define ACCESS access\n#endif\n\n\n\n\nstatic void f_pppwkese()\n{\n    switch(5)\n    {\n    case 6:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    default:\n    {\n        char filename[100] = \"\";\n        int fileDesc = -1;\n        if (fgets(filename, 100, stdin) == NULL)\n        {\n            printLine(\"fgets() failed\");\n            \n            filename[0] = '\\0';\n        }\n        if (strlen(filename) > 0)\n        {\n            filename[strlen(filename)-1] = '\\0'; \n        }\n        \n        fileDesc  = OPEN(filename, O_RDWR);\n        if (fileDesc == -1)\n        {\n            exit(1);\n        }\n        if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n        {\n            exit(1);\n        }\n        if (fileDesc != -1)\n        {\n            CLOSE(fileDesc);\n        }\n    }\n    break;\n    }\n}\n\n\nstatic void f_qzcrpodz()\n{\n    switch(6)\n    {\n    case 6:\n    {\n        char filename[100] = \"\";\n        int fileDesc = -1;\n        if (fgets(filename, 100, stdin) == NULL)\n        {\n            printLine(\"fgets() failed\");\n            \n            filename[0] = '\\0';\n        }\n        if (strlen(filename) > 0)\n        {\n            filename[strlen(filename)-1] = '\\0'; \n        }\n        \n        fileDesc  = OPEN(filename, O_RDWR);\n        if (fileDesc == -1)\n        {\n            exit(1);\n        }\n        if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n        {\n            exit(1);\n        }\n        if (fileDesc != -1)\n        {\n            CLOSE(fileDesc);\n        }\n    }\n    break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\nvoid f_zbcbdtwn()\n{\n    f_pppwkese();\n    f_qzcrpodz();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_zbcbdtwn();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401254,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_15.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n#ifdef _WIN32\n#define ACCESS _access\n#define W_OK 02\n#else\n#define ACCESS access\n#endif\n\n\nvoid f_fotqqsau()\n{\n    switch(6)\n    {\n    case 6:\n    {\n        char filename[100] = \"\";\n        int fileDesc = -1;\n        if (fgets(filename, 100, stdin) == NULL)\n        {\n            printLine(\"fgets() failed\");\n            \n            filename[0] = '\\0';\n        }\n        if (strlen(filename) > 0)\n        {\n            filename[strlen(filename)-1] = '\\0'; \n        }\n        \n        if (ACCESS(filename, W_OK) == -1)\n        {\n            exit(1);\n        }\n        fileDesc  = OPEN(filename, O_RDWR);\n        if (fileDesc == -1)\n        {\n            exit(1);\n        }\n        if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n        {\n            exit(1);\n        }\n        if (fileDesc != -1)\n        {\n            CLOSE(fileDesc);\n        }\n    }\n    break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_fotqqsau();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401255,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_15.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n\nstatic int staticReturnsTrue()\n{\n    return 1;\n}\n\nstatic int staticReturnsFalse()\n{\n    return 0;\n}\n\n\n\n\nstatic void f_avjzfryk()\n{\n    if(staticReturnsFalse())\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\nstatic void f_oqrksghi()\n{\n    if(staticReturnsTrue())\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\nvoid f_iptzwlfc()\n{\n    f_avjzfryk();\n    f_oqrksghi();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_iptzwlfc();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401256,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_08.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n\nstatic int staticReturnsTrue()\n{\n    return 1;\n}\n\nstatic int staticReturnsFalse()\n{\n    return 0;\n}\n\n\nvoid f_imttefpv()\n{\n    if(staticReturnsTrue())\n    {\n        {\n            char filename[100] = \"\";\n            struct STAT statBuffer;\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            if (STAT(filename, &statBuffer) == -1)\n            {\n                exit(1);\n            }\n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_imttefpv();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401257,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_08.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n\n\n\nstatic void f_rixwdsmc()\n{\n    switch(5)\n    {\n    case 6:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    default:\n    {\n        char filename[100] = \"\";\n        int fileDesc = -1;\n        if (fgets(filename, 100, stdin) == NULL)\n        {\n            printLine(\"fgets() failed\");\n            \n            filename[0] = '\\0';\n        }\n        if (strlen(filename) > 0)\n        {\n            filename[strlen(filename)-1] = '\\0'; \n        }\n        \n        fileDesc  = OPEN(filename, O_RDWR);\n        if (fileDesc == -1)\n        {\n            exit(1);\n        }\n        if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n        {\n            exit(1);\n        }\n        if (fileDesc != -1)\n        {\n            CLOSE(fileDesc);\n        }\n    }\n    break;\n    }\n}\n\n\nstatic void f_vkjunndd()\n{\n    switch(6)\n    {\n    case 6:\n    {\n        char filename[100] = \"\";\n        int fileDesc = -1;\n        if (fgets(filename, 100, stdin) == NULL)\n        {\n            printLine(\"fgets() failed\");\n            \n            filename[0] = '\\0';\n        }\n        if (strlen(filename) > 0)\n        {\n            filename[strlen(filename)-1] = '\\0'; \n        }\n        \n        fileDesc  = OPEN(filename, O_RDWR);\n        if (fileDesc == -1)\n        {\n            exit(1);\n        }\n        if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n        {\n            exit(1);\n        }\n        if (fileDesc != -1)\n        {\n            CLOSE(fileDesc);\n        }\n    }\n    break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\nvoid f_dounspfl()\n{\n    f_rixwdsmc();\n    f_vkjunndd();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_dounspfl();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401258,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_15.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n\nvoid f_zjrpsqwx()\n{\n    switch(6)\n    {\n    case 6:\n    {\n        char filename[100] = \"\";\n        struct STAT statBuffer;\n        int fileDesc = -1;\n        if (fgets(filename, 100, stdin) == NULL)\n        {\n            printLine(\"fgets() failed\");\n            \n            filename[0] = '\\0';\n        }\n        if (strlen(filename) > 0)\n        {\n            filename[strlen(filename)-1] = '\\0'; \n        }\n        \n        if (STAT(filename, &statBuffer) == -1)\n        {\n            exit(1);\n        }\n        fileDesc  = OPEN(filename, O_RDWR);\n        if (fileDesc == -1)\n        {\n            exit(1);\n        }\n        if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n        {\n            exit(1);\n        }\n        if (fileDesc != -1)\n        {\n            CLOSE(fileDesc);\n        }\n    }\n    break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_zjrpsqwx();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401259,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_15.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n#ifdef _WIN32\n#define ACCESS _access\n#define W_OK 02\n#else\n#define ACCESS access\n#endif\n\n\nstatic const int STATIC_CONST_TRUE = 1; \nstatic const int STATIC_CONST_FALSE = 0; \n\n\n\n\nstatic void f_vpnbbyzm()\n{\n    if(STATIC_CONST_FALSE)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\nstatic void f_fxknmaxt()\n{\n    if(STATIC_CONST_TRUE)\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\nvoid f_xumpfges()\n{\n    f_vpnbbyzm();\n    f_fxknmaxt();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_xumpfges();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401260,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_04.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n#ifdef _WIN32\n#define ACCESS _access\n#define W_OK 02\n#else\n#define ACCESS access\n#endif\n\n\nstatic const int STATIC_CONST_TRUE = 1; \nstatic const int STATIC_CONST_FALSE = 0; \n\n\nvoid f_ahoxsyvl()\n{\n    if(STATIC_CONST_TRUE)\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            if (ACCESS(filename, W_OK) == -1)\n            {\n                exit(1);\n            }\n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ahoxsyvl();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401261,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_04.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n#ifdef _WIN32\n#define ACCESS _access\n#define W_OK 02\n#else\n#define ACCESS access\n#endif\n\n\nstatic int staticTrue = 1; \nstatic int staticFalse = 0; \n\n\n\n\nstatic void f_ttqbemtb()\n{\n    if(staticFalse)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\nstatic void f_ayadaaun()\n{\n    if(staticTrue)\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\nvoid f_ewngfgro()\n{\n    f_ttqbemtb();\n    f_ayadaaun();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ewngfgro();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401262,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_05.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n#ifdef _WIN32\n#define ACCESS _access\n#define W_OK 02\n#else\n#define ACCESS access\n#endif\n\n\nstatic int staticTrue = 1; \nstatic int staticFalse = 0; \n\n\nvoid f_bgrsyrvk()\n{\n    if(staticTrue)\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            if (ACCESS(filename, W_OK) == -1)\n            {\n                exit(1);\n            }\n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_bgrsyrvk();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401263,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_05.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n#ifdef _WIN32\n#define ACCESS _access\n#define W_OK 02\n#else\n#define ACCESS access\n#endif\n\n\nstatic int staticFive = 5;\n\n\n\n\nstatic void f_pekjbdyl()\n{\n    if(staticFive!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\nstatic void f_ibtolkau()\n{\n    if(staticFive==5)\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\nvoid f_zzhnstvh()\n{\n    f_pekjbdyl();\n    f_ibtolkau();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_zzhnstvh();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401264,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_07.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n#ifdef _WIN32\n#define ACCESS _access\n#define W_OK 02\n#else\n#define ACCESS access\n#endif\n\n\nstatic int staticFive = 5;\n\n\nvoid f_ldljobwt()\n{\n    if(staticFive==5)\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            if (ACCESS(filename, W_OK) == -1)\n            {\n                exit(1);\n            }\n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ldljobwt();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401265,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_07.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n#ifdef _WIN32\n#define ACCESS _access\n#define W_OK 02\n#else\n#define ACCESS access\n#endif\n\n\nstatic const int STATIC_CONST_FIVE = 5;\n\n\n\n\nstatic void f_bezdhexa()\n{\n    if(STATIC_CONST_FIVE!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\nstatic void f_gilfaftj()\n{\n    if(STATIC_CONST_FIVE==5)\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\nvoid f_wojtkgnb()\n{\n    f_bezdhexa();\n    f_gilfaftj();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_wojtkgnb();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401266,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_06.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n#ifdef _WIN32\n#define ACCESS _access\n#define W_OK 02\n#else\n#define ACCESS access\n#endif\n\n\nstatic const int STATIC_CONST_FIVE = 5;\n\n\nvoid f_rqrajvlo()\n{\n    if(STATIC_CONST_FIVE==5)\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            if (ACCESS(filename, W_OK) == -1)\n            {\n                exit(1);\n            }\n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_rqrajvlo();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401267,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_06.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n#ifdef _WIN32\n#define ACCESS _access\n#define W_OK 02\n#else\n#define ACCESS access\n#endif\n\n\n\n\nstatic void f_okxclwkb()\n{\n    if(globalReturnsFalse())\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\nstatic void f_wksmpgmf()\n{\n    if(globalReturnsTrue())\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\nvoid f_tkogzelj()\n{\n    f_okxclwkb();\n    f_wksmpgmf();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_tkogzelj();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401268,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_11.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n#ifdef _WIN32\n#define ACCESS _access\n#define W_OK 02\n#else\n#define ACCESS access\n#endif\n\n\nvoid f_sqzoxhac()\n{\n    if(globalReturnsTrue())\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            if (ACCESS(filename, W_OK) == -1)\n            {\n                exit(1);\n            }\n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_sqzoxhac();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401269,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_11.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n#ifdef _WIN32\n#define ACCESS _access\n#define W_OK 02\n#else\n#define ACCESS access\n#endif\n\n\n\n\nstatic void f_ynryeuts()\n{\n    if(globalFalse)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\nstatic void f_raphqjed()\n{\n    if(globalTrue)\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\nvoid f_ndaewrdp()\n{\n    f_ynryeuts();\n    f_raphqjed();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ndaewrdp();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401270,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_10.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n#ifdef _WIN32\n#define ACCESS _access\n#define W_OK 02\n#else\n#define ACCESS access\n#endif\n\n\nvoid f_eerfgjbe()\n{\n    if(globalTrue)\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            if (ACCESS(filename, W_OK) == -1)\n            {\n                exit(1);\n            }\n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_eerfgjbe();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401271,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_10.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n#ifdef _WIN32\n#define ACCESS _access\n#define W_OK 02\n#else\n#define ACCESS access\n#endif\n\n\n\n\nstatic void f_trfkiovw()\n{\n    if(0)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\nstatic void f_tohtzcle()\n{\n    if(1)\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\nvoid f_lhupcarq()\n{\n    f_trfkiovw();\n    f_tohtzcle();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_lhupcarq();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401272,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_02.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n#ifdef _WIN32\n#define ACCESS _access\n#define W_OK 02\n#else\n#define ACCESS access\n#endif\n\n\nvoid f_xaisdwqc()\n{\n    if(1)\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            if (ACCESS(filename, W_OK) == -1)\n            {\n                exit(1);\n            }\n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_xaisdwqc();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401273,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_02.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n#ifdef _WIN32\n#define ACCESS _access\n#define W_OK 02\n#else\n#define ACCESS access\n#endif\n\n\n\n\nstatic void f_cuvfoebo()\n{\n    if(globalFive!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\nstatic void f_ndzwiinc()\n{\n    if(globalFive==5)\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\nvoid f_ibezjroh()\n{\n    f_cuvfoebo();\n    f_ndzwiinc();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ibezjroh();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401274,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_14.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n#ifdef _WIN32\n#define ACCESS _access\n#define W_OK 02\n#else\n#define ACCESS access\n#endif\n\n\nvoid f_tsncdlfd()\n{\n    if(globalFive==5)\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            if (ACCESS(filename, W_OK) == -1)\n            {\n                exit(1);\n            }\n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_tsncdlfd();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401275,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_14.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n\nstatic int staticTrue = 1; \nstatic int staticFalse = 0; \n\n\n\n\nstatic void f_tgdmoffi()\n{\n    if(staticFalse)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\nstatic void f_mgczxsdn()\n{\n    if(staticTrue)\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\nvoid f_mmfoxxik()\n{\n    f_tgdmoffi();\n    f_mgczxsdn();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_mmfoxxik();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401276,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_05.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n\nstatic int staticTrue = 1; \nstatic int staticFalse = 0; \n\n\nvoid f_bmuyqcwh()\n{\n    if(staticTrue)\n    {\n        {\n            char filename[100] = \"\";\n            struct STAT statBuffer;\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            if (STAT(filename, &statBuffer) == -1)\n            {\n                exit(1);\n            }\n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_bmuyqcwh();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401277,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_05.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n#ifdef _WIN32\n#define ACCESS _access\n#define W_OK 02\n#else\n#define ACCESS access\n#endif\n\n\n\n\nstatic void f_pwleyauu()\n{\n    if(5!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\nstatic void f_jjopumpj()\n{\n    if(5==5)\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\nvoid f_qewqoecd()\n{\n    f_pwleyauu();\n    f_jjopumpj();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_qewqoecd();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401278,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_03.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n#ifdef _WIN32\n#define ACCESS _access\n#define W_OK 02\n#else\n#define ACCESS access\n#endif\n\n\nvoid f_cspkaxhh()\n{\n    if(5==5)\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            if (ACCESS(filename, W_OK) == -1)\n            {\n                exit(1);\n            }\n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_cspkaxhh();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401279,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_03.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n#ifdef _WIN32\n#define ACCESS _access\n#define W_OK 02\n#else\n#define ACCESS access\n#endif\n\n\n\n\nstatic void f_xxjjsyha()\n{\n    if(GLOBAL_CONST_FALSE)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\nstatic void f_bnfywmza()\n{\n    if(GLOBAL_CONST_TRUE)\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\nvoid f_urphypfo()\n{\n    f_xxjjsyha();\n    f_bnfywmza();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_urphypfo();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401280,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_09.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n#ifdef _WIN32\n#define ACCESS _access\n#define W_OK 02\n#else\n#define ACCESS access\n#endif\n\n\nvoid f_tocqxjvu()\n{\n    if(GLOBAL_CONST_TRUE)\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            if (ACCESS(filename, W_OK) == -1)\n            {\n                exit(1);\n            }\n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_tocqxjvu();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401281,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_09.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n#ifdef _WIN32\n#define ACCESS _access\n#define W_OK 02\n#else\n#define ACCESS access\n#endif\n\n\n\n\nstatic void f_bbnpuqsy()\n{\n    if(GLOBAL_CONST_FIVE!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\nstatic void f_tnsxewnf()\n{\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\nvoid f_pxgedrez()\n{\n    f_bbnpuqsy();\n    f_tnsxewnf();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_pxgedrez();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401282,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_13.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n#ifdef _WIN32\n#define ACCESS _access\n#define W_OK 02\n#else\n#define ACCESS access\n#endif\n\n\nvoid f_vblwysss()\n{\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            if (ACCESS(filename, W_OK) == -1)\n            {\n                exit(1);\n            }\n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_vblwysss();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401283,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_13.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n\nstatic const int STATIC_CONST_TRUE = 1; \nstatic const int STATIC_CONST_FALSE = 0; \n\n\n\n\nstatic void f_exjdsvlc()\n{\n    if(STATIC_CONST_FALSE)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\nstatic void f_mrmkubjl()\n{\n    if(STATIC_CONST_TRUE)\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\nvoid f_jwznhjft()\n{\n    f_exjdsvlc();\n    f_mrmkubjl();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_jwznhjft();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401284,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_04.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n\nstatic const int STATIC_CONST_TRUE = 1; \nstatic const int STATIC_CONST_FALSE = 0; \n\n\nvoid f_sjrvzjeo()\n{\n    if(STATIC_CONST_TRUE)\n    {\n        {\n            char filename[100] = \"\";\n            struct STAT statBuffer;\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            if (STAT(filename, &statBuffer) == -1)\n            {\n                exit(1);\n            }\n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_sjrvzjeo();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401285,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_04.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n\nstatic const int STATIC_CONST_FIVE = 5;\n\n\n\n\nstatic void f_krpodsbx()\n{\n    if(STATIC_CONST_FIVE!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\nstatic void f_zticanxw()\n{\n    if(STATIC_CONST_FIVE==5)\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\nvoid f_vkklaboe()\n{\n    f_krpodsbx();\n    f_zticanxw();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_vkklaboe();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401286,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_06.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n\nstatic const int STATIC_CONST_FIVE = 5;\n\n\nvoid f_iswlfdeq()\n{\n    if(STATIC_CONST_FIVE==5)\n    {\n        {\n            char filename[100] = \"\";\n            struct STAT statBuffer;\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            if (STAT(filename, &statBuffer) == -1)\n            {\n                exit(1);\n            }\n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_iswlfdeq();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401287,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_06.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n\nstatic int staticFive = 5;\n\n\n\n\nstatic void f_pdsnsapk()\n{\n    if(staticFive!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\nstatic void f_lubbspuc()\n{\n    if(staticFive==5)\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\nvoid f_pduzpjdp()\n{\n    f_pdsnsapk();\n    f_lubbspuc();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_pduzpjdp();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401288,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_07.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n\nstatic int staticFive = 5;\n\n\nvoid f_uucrzfru()\n{\n    if(staticFive==5)\n    {\n        {\n            char filename[100] = \"\";\n            struct STAT statBuffer;\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            if (STAT(filename, &statBuffer) == -1)\n            {\n                exit(1);\n            }\n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_uucrzfru();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401289,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_07.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n\n\n\nstatic void f_emfmouxp()\n{\n    if(globalFalse)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\nstatic void f_ghbhoqef()\n{\n    if(globalTrue)\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\nvoid f_fxtsdkfa()\n{\n    f_emfmouxp();\n    f_ghbhoqef();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_fxtsdkfa();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401290,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_10.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n\nvoid f_mdjpjknr()\n{\n    if(globalTrue)\n    {\n        {\n            char filename[100] = \"\";\n            struct STAT statBuffer;\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            if (STAT(filename, &statBuffer) == -1)\n            {\n                exit(1);\n            }\n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_mdjpjknr();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401291,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_10.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n\n\n\nstatic void f_cjktwomb()\n{\n    if(globalFive!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\nstatic void f_vjtserth()\n{\n    if(globalFive==5)\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\nvoid f_cipikptg()\n{\n    f_cjktwomb();\n    f_vjtserth();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_cipikptg();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401292,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_14.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n\nvoid f_dgadefjc()\n{\n    if(globalFive==5)\n    {\n        {\n            char filename[100] = \"\";\n            struct STAT statBuffer;\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            if (STAT(filename, &statBuffer) == -1)\n            {\n                exit(1);\n            }\n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_dgadefjc();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401293,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_14.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n\n\n\nstatic void f_nkuzmnvx()\n{\n    if(GLOBAL_CONST_FIVE!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\nstatic void f_qlfqnggd()\n{\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\nvoid f_xdrkxvuj()\n{\n    f_nkuzmnvx();\n    f_qlfqnggd();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_xdrkxvuj();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401294,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_13.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n\nvoid f_kxotysky()\n{\n    if(GLOBAL_CONST_FIVE==5)\n    {\n        {\n            char filename[100] = \"\";\n            struct STAT statBuffer;\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            if (STAT(filename, &statBuffer) == -1)\n            {\n                exit(1);\n            }\n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_kxotysky();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401295,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_13.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n\n\n\nstatic void f_wnjabpcv()\n{\n    if(GLOBAL_CONST_FALSE)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\nstatic void f_dtonytwj()\n{\n    if(GLOBAL_CONST_TRUE)\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\nvoid f_pfbkcszz()\n{\n    f_wnjabpcv();\n    f_dtonytwj();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_pfbkcszz();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401296,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_09.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n\nvoid f_nlgojlgd()\n{\n    if(GLOBAL_CONST_TRUE)\n    {\n        {\n            char filename[100] = \"\";\n            struct STAT statBuffer;\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            if (STAT(filename, &statBuffer) == -1)\n            {\n                exit(1);\n            }\n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_nlgojlgd();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401297,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_09.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n\n\n\nstatic void f_rmgjxhvy()\n{\n    if(0)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\nstatic void f_symqsmof()\n{\n    if(1)\n    {\n        {\n            char filename[100] = \"\";\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\nvoid f_tqeffeua()\n{\n    f_rmgjxhvy();\n    f_symqsmof();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_tqeffeua();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401298,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_02.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-367"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n#ifdef _WIN32\n#define STAT _stat\n#define OPEN _open\n#define WRITE _write\n#define O_RDWR _O_RDWR\n#define CLOSE _close\n#else\n#include <unistd.h>\n#define STAT stat\n#define OPEN open\n#define WRITE write\n#define CLOSE close\n#endif\n\n#define _SINK_STRING \" Sink...\"\n#define _SINK_STRING \" Sink...\"\n\n\nvoid f_exaylhut()\n{\n    if(1)\n    {\n        {\n            char filename[100] = \"\";\n            struct STAT statBuffer;\n            int fileDesc = -1;\n            if (fgets(filename, 100, stdin) == NULL)\n            {\n                printLine(\"fgets() failed\");\n                \n                filename[0] = '\\0';\n            }\n            if (strlen(filename) > 0)\n            {\n                filename[strlen(filename)-1] = '\\0'; \n            }\n            \n            if (STAT(filename, &statBuffer) == -1)\n            {\n                exit(1);\n            }\n            fileDesc  = OPEN(filename, O_RDWR);\n            if (fileDesc == -1)\n            {\n                exit(1);\n            }\n            if (WRITE(fileDesc, _SINK_STRING, strlen(_SINK_STRING)) == -1)\n            {\n                exit(1);\n            }\n            if (fileDesc != -1)\n            {\n                CLOSE(fileDesc);\n            }\n        }\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_exaylhut();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 401299,
+    "original_file": "testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_02.c",
+    "RELATED_CWE": [
+      "CWE-362",
+      "CWE-704",
+      "CWE-704"
+    ]
+  }
+]

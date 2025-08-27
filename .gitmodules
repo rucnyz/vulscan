@@ -1,0 +1,9 @@
+[submodule "vulscan/train"]
+	path = vulscan/train
+	url = https://github.com/ucsb-mlsec/llamafactory.git
+[submodule "vulscan/model_zoo"]
+	path = vulscan/model_zoo
+	url = https://github.com/ucsb-mlsec/model_zoo
+[submodule "vulscan/rl_train/verl"]
+	path = vulscan/rl_train/verl
+	url = https://github.com/rucnyz/verl.git

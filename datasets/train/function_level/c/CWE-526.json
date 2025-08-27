@@ -1,0 +1,258 @@
+[
+  {
+    "CWE_ID": [
+      "CWE-526"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic int staticReturnsTrue()\n{\n    return 1;\n}\n\nstatic int staticReturnsFalse()\n{\n    return 0;\n}\n\n\n\n\nstatic void f_hfdvigzw()\n{\n    if(staticReturnsFalse())\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        printLine(\"Not in path\");\n    }\n}\n\n\nstatic void f_khtnsyhr()\n{\n    if(staticReturnsTrue())\n    {\n        \n        printLine(\"Not in path\");\n    }\n}\n\nvoid f_ffddxoje()\n{\n    f_hfdvigzw();\n    f_khtnsyhr();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ffddxoje();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402700,
+    "original_file": "testcases/CWE526_Info_Exposure_Environment_Variables/CWE526_Info_Exposure_Environment_Variables__basic_08.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-526"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic int staticReturnsTrue()\n{\n    return 1;\n}\n\nstatic int staticReturnsFalse()\n{\n    return 0;\n}\n\n\nvoid f_smylrsjc()\n{\n    if(staticReturnsTrue())\n    {\n        \n        printLine(getenv(\"PATH\"));\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_smylrsjc();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402701,
+    "original_file": "testcases/CWE526_Info_Exposure_Environment_Variables/CWE526_Info_Exposure_Environment_Variables__basic_08.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-526"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\n\nstatic void f_jymsoyao()\n{\n    switch(5)\n    {\n    case 6:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    default:\n        \n        printLine(\"Not in path\");\n        break;\n    }\n}\n\n\nstatic void f_hfbupmve()\n{\n    switch(6)\n    {\n    case 6:\n        \n        printLine(\"Not in path\");\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\nvoid f_mfgbiidq()\n{\n    f_jymsoyao();\n    f_hfbupmve();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_mfgbiidq();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402702,
+    "original_file": "testcases/CWE526_Info_Exposure_Environment_Variables/CWE526_Info_Exposure_Environment_Variables__basic_15.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-526"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_voqrtahz()\n{\n    switch(6)\n    {\n    case 6:\n        \n        printLine(getenv(\"PATH\"));\n        break;\n    default:\n        \n        printLine(\"Benign, fixed string\");\n        break;\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_voqrtahz();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402703,
+    "original_file": "testcases/CWE526_Info_Exposure_Environment_Variables/CWE526_Info_Exposure_Environment_Variables__basic_15.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-526"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic int staticTrue = 1; \nstatic int staticFalse = 0; \n\n\n\n\nstatic void f_ztoohdmd()\n{\n    if(staticFalse)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        printLine(\"Not in path\");\n    }\n}\n\n\nstatic void f_ezfpfllj()\n{\n    if(staticTrue)\n    {\n        \n        printLine(\"Not in path\");\n    }\n}\n\nvoid f_xyyemhrz()\n{\n    f_ztoohdmd();\n    f_ezfpfllj();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_xyyemhrz();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402704,
+    "original_file": "testcases/CWE526_Info_Exposure_Environment_Variables/CWE526_Info_Exposure_Environment_Variables__basic_05.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-526"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic int staticTrue = 1; \nstatic int staticFalse = 0; \n\n\nvoid f_ovemiyye()\n{\n    if(staticTrue)\n    {\n        \n        printLine(getenv(\"PATH\"));\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ovemiyye();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402705,
+    "original_file": "testcases/CWE526_Info_Exposure_Environment_Variables/CWE526_Info_Exposure_Environment_Variables__basic_05.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-526"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic const int STATIC_CONST_TRUE = 1; \nstatic const int STATIC_CONST_FALSE = 0; \n\n\n\n\nstatic void f_ejirmtvg()\n{\n    if(STATIC_CONST_FALSE)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        printLine(\"Not in path\");\n    }\n}\n\n\nstatic void f_ukztsklg()\n{\n    if(STATIC_CONST_TRUE)\n    {\n        \n        printLine(\"Not in path\");\n    }\n}\n\nvoid f_iyccofao()\n{\n    f_ejirmtvg();\n    f_ukztsklg();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_iyccofao();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402706,
+    "original_file": "testcases/CWE526_Info_Exposure_Environment_Variables/CWE526_Info_Exposure_Environment_Variables__basic_04.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-526"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic const int STATIC_CONST_TRUE = 1; \nstatic const int STATIC_CONST_FALSE = 0; \n\n\nvoid f_hjcalqcj()\n{\n    if(STATIC_CONST_TRUE)\n    {\n        \n        printLine(getenv(\"PATH\"));\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_hjcalqcj();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402707,
+    "original_file": "testcases/CWE526_Info_Exposure_Environment_Variables/CWE526_Info_Exposure_Environment_Variables__basic_04.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-526"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic int staticFive = 5;\n\n\n\n\nstatic void f_rnbylqdu()\n{\n    if(staticFive!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        printLine(\"Not in path\");\n    }\n}\n\n\nstatic void f_wcigmyjs()\n{\n    if(staticFive==5)\n    {\n        \n        printLine(\"Not in path\");\n    }\n}\n\nvoid f_ufajltty()\n{\n    f_rnbylqdu();\n    f_wcigmyjs();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ufajltty();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402708,
+    "original_file": "testcases/CWE526_Info_Exposure_Environment_Variables/CWE526_Info_Exposure_Environment_Variables__basic_07.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-526"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic int staticFive = 5;\n\n\nvoid f_ulqoxkls()\n{\n    if(staticFive==5)\n    {\n        \n        printLine(getenv(\"PATH\"));\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ulqoxkls();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402709,
+    "original_file": "testcases/CWE526_Info_Exposure_Environment_Variables/CWE526_Info_Exposure_Environment_Variables__basic_07.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-526"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic const int STATIC_CONST_FIVE = 5;\n\n\n\n\nstatic void f_uhjrubvd()\n{\n    if(STATIC_CONST_FIVE!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        printLine(\"Not in path\");\n    }\n}\n\n\nstatic void f_wjnbmswl()\n{\n    if(STATIC_CONST_FIVE==5)\n    {\n        \n        printLine(\"Not in path\");\n    }\n}\n\nvoid f_wmnorlda()\n{\n    f_uhjrubvd();\n    f_wjnbmswl();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_wmnorlda();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402710,
+    "original_file": "testcases/CWE526_Info_Exposure_Environment_Variables/CWE526_Info_Exposure_Environment_Variables__basic_06.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-526"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nstatic const int STATIC_CONST_FIVE = 5;\n\n\nvoid f_xqrtdjzc()\n{\n    if(STATIC_CONST_FIVE==5)\n    {\n        \n        printLine(getenv(\"PATH\"));\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_xqrtdjzc();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402711,
+    "original_file": "testcases/CWE526_Info_Exposure_Environment_Variables/CWE526_Info_Exposure_Environment_Variables__basic_06.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-526"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\n\nstatic void f_cdgmrxtt()\n{\n    if(globalFive!=5)\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        printLine(\"Not in path\");\n    }\n}\n\n\nstatic void f_ukwxnfbv()\n{\n    if(globalFive==5)\n    {\n        \n        printLine(\"Not in path\");\n    }\n}\n\nvoid f_lgttmrzs()\n{\n    f_cdgmrxtt();\n    f_ukwxnfbv();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_lgttmrzs();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402712,
+    "original_file": "testcases/CWE526_Info_Exposure_Environment_Variables/CWE526_Info_Exposure_Environment_Variables__basic_14.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-526"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_vfulgxsr()\n{\n    if(globalFive==5)\n    {\n        \n        printLine(getenv(\"PATH\"));\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_vfulgxsr();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402713,
+    "original_file": "testcases/CWE526_Info_Exposure_Environment_Variables/CWE526_Info_Exposure_Environment_Variables__basic_14.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-526"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\n\n\nstatic void f_ixugqmvf()\n{\n    if(globalReturnsFalse())\n    {\n        \n        printLine(\"Benign, fixed string\");\n    }\n    else\n    {\n        \n        printLine(\"Not in path\");\n    }\n}\n\n\nstatic void f_rtntqdvx()\n{\n    if(globalReturnsTrue())\n    {\n        \n        printLine(\"Not in path\");\n    }\n}\n\nvoid f_ngbznwzh()\n{\n    f_ixugqmvf();\n    f_rtntqdvx();\n}\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_ngbznwzh();\n\n    return 0;\n}\n\n",
+    "target": 0,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402714,
+    "original_file": "testcases/CWE526_Info_Exposure_Environment_Variables/CWE526_Info_Exposure_Environment_Variables__basic_11.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  },
+  {
+    "CWE_ID": [
+      "CWE-526"
+    ],
+    "code": "\n\n\n#include \"std_testcase.h\"\n\n\nvoid f_mhittjpy()\n{\n    if(globalReturnsTrue())\n    {\n        \n        printLine(getenv(\"PATH\"));\n    }\n}\n\n\n\n\n\n\nint main(int argc, char * argv[])\n{\n    \n    srand( (unsigned)time(NULL) );\n\n    f_mhittjpy();\n\n    return 0;\n}\n\n",
+    "target": 1,
+    "language": "c",
+    "dataset": "juliet 1.3",
+    "idx": 402715,
+    "original_file": "testcases/CWE526_Info_Exposure_Environment_Variables/CWE526_Info_Exposure_Environment_Variables__basic_11.c",
+    "RELATED_CWE": [
+      "CWE-352",
+      "CWE-601",
+      "CWE-918"
+    ]
+  }
+]
