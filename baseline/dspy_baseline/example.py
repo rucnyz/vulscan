@@ -1,8 +1,4 @@
-# -*- coding: utf-8 -*-
-# @Time    : 3/28/2025 2:06 PM
-# @Author  : yuzhounie
-# @File    : example.py
-# @Software: PyCharm
+
 import dspy
 from dotenv import load_dotenv
 from dspy.datasets.gsm8k import GSM8K, gsm8k_metric

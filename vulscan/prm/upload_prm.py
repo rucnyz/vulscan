@@ -1,8 +1,3 @@
-# -*- coding: utf-8 -*-
-# @Time    : 3/22/2025 7:26 PM
-# @Author  : yuzhounie
-# @File    : upload_prm.py
-# @Software: PyCharm
 import json
 
 from datasets import Dataset
