@@ -1,10 +1,10 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="vulscan",
+    name="XXX",
     version="0.1.0",
     description="Vulnerability scanning and analysis tools",
-    author="SecMLR Team",
+    author="XXX Team",
     packages=find_packages(),
     python_requires=">=3.9",
     install_requires=[

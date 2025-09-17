@@ -364,7 +364,7 @@ if __name__ == "__main__":
 
             if args.wandb:
                 name = f"{dataset_path}_eval_{name}"
-                wandb.init(project="patch_llm", name=name, entity="rucnyz")
+                wandb.init(project="patch_llm", name=name)
 
             eval_examples, _, _ = load_reasoning_data(
                 dataset_path,

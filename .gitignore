@@ -2,7 +2,6 @@ requirements.txt
 .vscode
 wandb/
 all_dataset/
-MSR_20_Code_vulnerability_CSV_Dataset/
 #results/
 datasets/reasoning_data
 .idea
@@ -10,7 +9,6 @@ datasets/reasoning_data
 .run
 .cursor
 .DS_Store
-vulscan/test/test_trained_model.py
 *__pycache__*
 *egg-info*
 *codeqldb*

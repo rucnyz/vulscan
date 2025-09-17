@@ -12,7 +12,7 @@ profile = "black"
 line_length = 88
 
 [project]
-name = "vulscan"
+name = "XXX"
 version = "0.1.0"
 description = "Vulnerability scanning tool"
 requires-python = ">=3.9"
